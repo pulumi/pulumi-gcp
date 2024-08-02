@@ -694,11 +694,18 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConnectionProfile(String name, ConnectionProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:databasemigrationservice/connectionProfile:ConnectionProfile", name, args == null ? ConnectionProfileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:databasemigrationservice/connectionProfile:ConnectionProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConnectionProfile(String name, Output<String> id, @Nullable ConnectionProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:databasemigrationservice/connectionProfile:ConnectionProfile", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConnectionProfileArgs makeArgs(ConnectionProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectionProfileArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

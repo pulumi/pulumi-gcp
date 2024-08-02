@@ -10,6 +10,8 @@ import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementCluster;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudNetworkConfig;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudNsx;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudVcenter;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +20,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPrivateCloudResult {
+    private Integer deletionDelayHours;
     private String description;
     private List<GetPrivateCloudHcx> hcxes;
     /**
@@ -31,12 +34,16 @@ public final class GetPrivateCloudResult {
     private List<GetPrivateCloudNetworkConfig> networkConfigs;
     private List<GetPrivateCloudNsx> nsxes;
     private @Nullable String project;
+    private Boolean sendDeletionDelayHoursIfZero;
     private String state;
     private String type;
     private String uid;
     private List<GetPrivateCloudVcenter> vcenters;
 
     private GetPrivateCloudResult() {}
+    public Integer deletionDelayHours() {
+        return this.deletionDelayHours;
+    }
     public String description() {
         return this.description;
     }
@@ -68,6 +75,9 @@ public final class GetPrivateCloudResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Boolean sendDeletionDelayHoursIfZero() {
+        return this.sendDeletionDelayHoursIfZero;
+    }
     public String state() {
         return this.state;
     }
@@ -90,6 +100,7 @@ public final class GetPrivateCloudResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer deletionDelayHours;
         private String description;
         private List<GetPrivateCloudHcx> hcxes;
         private String id;
@@ -99,6 +110,7 @@ public final class GetPrivateCloudResult {
         private List<GetPrivateCloudNetworkConfig> networkConfigs;
         private List<GetPrivateCloudNsx> nsxes;
         private @Nullable String project;
+        private Boolean sendDeletionDelayHoursIfZero;
         private String state;
         private String type;
         private String uid;
@@ -106,6 +118,7 @@ public final class GetPrivateCloudResult {
         public Builder() {}
         public Builder(GetPrivateCloudResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionDelayHours = defaults.deletionDelayHours;
     	      this.description = defaults.description;
     	      this.hcxes = defaults.hcxes;
     	      this.id = defaults.id;
@@ -115,12 +128,21 @@ public final class GetPrivateCloudResult {
     	      this.networkConfigs = defaults.networkConfigs;
     	      this.nsxes = defaults.nsxes;
     	      this.project = defaults.project;
+    	      this.sendDeletionDelayHoursIfZero = defaults.sendDeletionDelayHoursIfZero;
     	      this.state = defaults.state;
     	      this.type = defaults.type;
     	      this.uid = defaults.uid;
     	      this.vcenters = defaults.vcenters;
         }
 
+        @CustomType.Setter
+        public Builder deletionDelayHours(Integer deletionDelayHours) {
+            if (deletionDelayHours == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "deletionDelayHours");
+            }
+            this.deletionDelayHours = deletionDelayHours;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -204,6 +226,14 @@ public final class GetPrivateCloudResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sendDeletionDelayHoursIfZero(Boolean sendDeletionDelayHoursIfZero) {
+            if (sendDeletionDelayHoursIfZero == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "sendDeletionDelayHoursIfZero");
+            }
+            this.sendDeletionDelayHoursIfZero = sendDeletionDelayHoursIfZero;
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             if (state == null) {
               throw new MissingRequiredPropertyException("GetPrivateCloudResult", "state");
@@ -240,6 +270,7 @@ public final class GetPrivateCloudResult {
         }
         public GetPrivateCloudResult build() {
             final var _resultValue = new GetPrivateCloudResult();
+            _resultValue.deletionDelayHours = deletionDelayHours;
             _resultValue.description = description;
             _resultValue.hcxes = hcxes;
             _resultValue.id = id;
@@ -249,6 +280,7 @@ public final class GetPrivateCloudResult {
             _resultValue.networkConfigs = networkConfigs;
             _resultValue.nsxes = nsxes;
             _resultValue.project = project;
+            _resultValue.sendDeletionDelayHoursIfZero = sendDeletionDelayHoursIfZero;
             _resultValue.state = state;
             _resultValue.type = type;
             _resultValue.uid = uid;

@@ -33,16 +33,12 @@ public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.p
     /**
      * The URI of the virtual machine resource
      * 
-     * ***
-     * 
      */
     @Import(name="virtualMachine")
     private @Nullable Output<String> virtualMachine;
 
     /**
      * @return The URI of the virtual machine resource
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> virtualMachine() {
@@ -98,8 +94,6 @@ public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.p
         /**
          * @param virtualMachine The URI of the virtual machine resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -110,8 +104,6 @@ public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.p
 
         /**
          * @param virtualMachine The URI of the virtual machine resource
-         * 
-         * ***
          * 
          * @return builder
          * 

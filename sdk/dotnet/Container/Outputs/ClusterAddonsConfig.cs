@@ -91,11 +91,27 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigNetworkPolicyConfig? NetworkPolicyConfig;
         /// <summary>
+        /// . The status of the [Ray Operator
+        /// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+        /// It is disabled by default. Set `enabled = true` to enable. The minimum
+        /// cluster version to enable Ray is 1.30.0-gke.1747000.
+        /// 
+        /// Ray Operator config has optional subfields
+        /// `ray_cluster_logging_config.enabled` and
+        /// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+        /// and monitoring respectively. See [Collect and view logs and metrics for Ray
+        /// clusters on
+        /// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+        /// for more information.
+        /// 
+        /// 
+        /// This example `addons_config` disables two addons:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> RayOperatorConfigs;
+        /// <summary>
         /// .
         /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
         /// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-        /// 
-        /// This example `addons_config` disables two addons:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigStatefulHaConfig? StatefulHaConfig;
 
@@ -125,6 +141,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig,
 
+            ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs,
+
             Outputs.ClusterAddonsConfigStatefulHaConfig? statefulHaConfig)
         {
             CloudrunConfig = cloudrunConfig;
@@ -139,6 +157,7 @@ namespace Pulumi.Gcp.Container.Outputs
             IstioConfig = istioConfig;
             KalmConfig = kalmConfig;
             NetworkPolicyConfig = networkPolicyConfig;
+            RayOperatorConfigs = rayOperatorConfigs;
             StatefulHaConfig = statefulHaConfig;
         }
     }

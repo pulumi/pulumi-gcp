@@ -579,7 +579,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         default_ca_pool_iam_member = gcp.certificateauthority.CaPoolIamMember("default",
             ca_pool=default.id,
             role="roles/privateca.certificateManager",
-            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=ns_sa.member)
         default_trust_config = gcp.certificatemanager.TrustConfig("default",
             name="my-trust-config",
             description="sample trust config description",
@@ -828,7 +828,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         default_ca_pool_iam_member = gcp.certificateauthority.CaPoolIamMember("default",
             ca_pool=default.id,
             role="roles/privateca.certificateManager",
-            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=ns_sa.member)
         default_trust_config = gcp.certificatemanager.TrustConfig("default",
             name="my-trust-config",
             description="sample trust config description",

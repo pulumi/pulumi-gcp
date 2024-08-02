@@ -87,8 +87,6 @@ class NodePoolArgs:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -337,8 +335,6 @@ class NodePoolArgs:
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 
@@ -451,8 +447,6 @@ class _NodePoolState:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -741,8 +735,6 @@ class _NodePoolState:
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 
@@ -938,8 +930,6 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -1189,8 +1179,6 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -1396,8 +1384,6 @@ class NodePool(pulumi.CustomResource):
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 

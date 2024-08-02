@@ -476,8 +476,6 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-     * 
      */
     @Export(name="queuedProvisioning", refs={NodePoolQueuedProvisioning.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolQueuedProvisioning> queuedProvisioning;
@@ -485,8 +483,6 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Output<Optional<NodePoolQueuedProvisioning>> queuedProvisioning() {
@@ -555,11 +551,18 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NodePool(String name, NodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/nodePool:NodePool", name, args == null ? NodePoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:container/nodePool:NodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NodePool(String name, Output<String> id, @Nullable NodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:container/nodePool:NodePool", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NodePoolArgs makeArgs(NodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NodePoolArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

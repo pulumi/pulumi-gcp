@@ -578,8 +578,7 @@ type ServiceAttachment struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The URL of a forwarding rule that represents the service identified by
-	// this service attachment.
+	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringOutput `pulumi:"targetService"`
 }
 
@@ -675,8 +674,7 @@ type serviceAttachmentState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The URL of a forwarding rule that represents the service identified by
-	// this service attachment.
+	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService *string `pulumi:"targetService"`
 }
 
@@ -731,8 +729,7 @@ type ServiceAttachmentState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The URL of a forwarding rule that represents the service identified by
-	// this service attachment.
+	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringPtrInput
 }
 
@@ -782,8 +779,7 @@ type serviceAttachmentArgs struct {
 	ReconcileConnections *bool `pulumi:"reconcileConnections"`
 	// URL of the region where the resource resides.
 	Region *string `pulumi:"region"`
-	// The URL of a forwarding rule that represents the service identified by
-	// this service attachment.
+	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService string `pulumi:"targetService"`
 }
 
@@ -830,8 +826,7 @@ type ServiceAttachmentArgs struct {
 	ReconcileConnections pulumi.BoolPtrInput
 	// URL of the region where the resource resides.
 	Region pulumi.StringPtrInput
-	// The URL of a forwarding rule that represents the service identified by
-	// this service attachment.
+	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringInput
 }
 
@@ -1016,8 +1011,7 @@ func (o ServiceAttachmentOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The URL of a forwarding rule that represents the service identified by
-// this service attachment.
+// The URL of a service serving the endpoint identified by this service attachment.
 func (o ServiceAttachmentOutput) TargetService() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.TargetService }).(pulumi.StringOutput)
 }

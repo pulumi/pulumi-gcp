@@ -658,11 +658,18 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public V2Vm(String name, V2VmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tpu/v2Vm:V2Vm", name, args == null ? V2VmArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:tpu/v2Vm:V2Vm", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private V2Vm(String name, Output<String> id, @Nullable V2VmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:tpu/v2Vm:V2Vm", name, state, makeResourceOptions(options, id));
+    }
+
+    private static V2VmArgs makeArgs(V2VmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? V2VmArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

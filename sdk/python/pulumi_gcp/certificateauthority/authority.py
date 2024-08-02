@@ -932,11 +932,11 @@ class Authority(pulumi.CustomResource):
         privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
@@ -1273,11 +1273,11 @@ class Authority(pulumi.CustomResource):
         privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",

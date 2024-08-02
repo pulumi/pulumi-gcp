@@ -114,6 +114,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Output Only. The shared secret to be used for reverse DNS verification.
+     */
+    public /*out*/ readonly sharedSecret!: pulumi.Output<string>;
 
     /**
      * Create a PublicAdvertisedPrefix resource with the given unique name, arguments, and options.
@@ -134,6 +138,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sharedSecret"] = state ? state.sharedSecret : undefined;
         } else {
             const args = argsOrState as PublicAdvertisedPrefixArgs | undefined;
             if ((!args || args.dnsVerificationIp === undefined) && !opts.urn) {
@@ -148,6 +153,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sharedSecret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PublicAdvertisedPrefix.__pulumiType, name, resourceInputs, opts);
@@ -191,6 +197,10 @@ export interface PublicAdvertisedPrefixState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * Output Only. The shared secret to be used for reverse DNS verification.
+     */
+    sharedSecret?: pulumi.Input<string>;
 }
 
 /**

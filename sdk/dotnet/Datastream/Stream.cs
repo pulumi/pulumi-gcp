@@ -992,6 +992,133 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Stream Bigquery Append Only
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 BinaryLogEnabled = true,
+    ///             },
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Name = "db",
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "user",
+    ///         Instance = instance.Name,
+    ///         Host = "%",
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("source_connection_profile", new()
+    ///     {
+    ///         DisplayName = "Source connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         MysqlProfile = new Gcp.Datastream.Inputs.ConnectionProfileMysqlProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///         },
+    ///     });
+    /// 
+    ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destination_connection_profile", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-profile",
+    ///         BigqueryProfile = null,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.Stream("default", new()
+    ///     {
+    ///         StreamId = "my-stream",
+    ///         Location = "us-central1",
+    ///         DisplayName = "my stream",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = sourceConnectionProfile.Id,
+    ///             MysqlSourceConfig = null,
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = destinationConnectionProfile.Id,
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///                 AppendOnly = null,
+    ///             },
+    ///         },
+    ///         BackfillNone = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

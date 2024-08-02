@@ -17,7 +17,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
     public static final PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs Empty = new PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs();
 
     /**
-     * Data changes (non-schema changes) in Cloud SQL tables can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+     * Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */
@@ -25,7 +25,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
     private @Nullable Output<String> refreshFrequency;
 
     /**
-     * @return Data changes (non-schema changes) in Cloud SQL tables can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+     * @return Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */
@@ -76,7 +76,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
         }
 
         /**
-         * @param refreshFrequency Data changes (non-schema changes) in Cloud SQL tables can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+         * @param refreshFrequency Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
          * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
         }
 
         /**
-         * @param refreshFrequency Data changes (non-schema changes) in Cloud SQL tables can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+         * @param refreshFrequency Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
          * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
          * 
          * @return builder

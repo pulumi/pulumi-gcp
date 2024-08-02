@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
     /**
-     * @return A specific set of database resources for this filter to apply to.
+     * @return A specific set of buckets for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -26,14 +26,14 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference databaseResourceReference;
     /**
-     * @return Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+     * @return Match discovery resources not covered by any other filter.
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers others;
 
     private PreventionDiscoveryConfigTargetCloudSqlTargetFilter() {}
     /**
-     * @return A specific set of database resources for this filter to apply to.
+     * @return A specific set of buckets for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -49,7 +49,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
         return Optional.ofNullable(this.databaseResourceReference);
     }
     /**
-     * @return Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+     * @return Match discovery resources not covered by any other filter.
      * 
      */
     public Optional<PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers> others() {

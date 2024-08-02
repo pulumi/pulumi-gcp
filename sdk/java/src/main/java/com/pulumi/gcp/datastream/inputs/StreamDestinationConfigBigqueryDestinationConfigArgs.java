@@ -5,6 +5,8 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs;
+import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigMergeArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
 import java.lang.String;
@@ -16,6 +18,25 @@ import javax.annotation.Nullable;
 public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StreamDestinationConfigBigqueryDestinationConfigArgs Empty = new StreamDestinationConfigBigqueryDestinationConfigArgs();
+
+    /**
+     * AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+     * events) to a source table will be written to the destination Google BigQuery table, retaining the
+     * historical state of the data.
+     * 
+     */
+    @Import(name="appendOnly")
+    private @Nullable Output<StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs> appendOnly;
+
+    /**
+     * @return AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+     * events) to a source table will be written to the destination Google BigQuery table, retaining the
+     * historical state of the data.
+     * 
+     */
+    public Optional<Output<StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs>> appendOnly() {
+        return Optional.ofNullable(this.appendOnly);
+    }
 
     /**
      * The guaranteed data freshness (in seconds) when querying tables created by the stream.
@@ -36,6 +57,25 @@ public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends 
      */
     public Optional<Output<String>> dataFreshness() {
         return Optional.ofNullable(this.dataFreshness);
+    }
+
+    /**
+     * Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+     * table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+     * in the source database. With Merge mode, no historical record of the change events is kept.
+     * 
+     */
+    @Import(name="merge")
+    private @Nullable Output<StreamDestinationConfigBigqueryDestinationConfigMergeArgs> merge;
+
+    /**
+     * @return Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+     * table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+     * in the source database. With Merge mode, no historical record of the change events is kept.
+     * 
+     */
+    public Optional<Output<StreamDestinationConfigBigqueryDestinationConfigMergeArgs>> merge() {
+        return Optional.ofNullable(this.merge);
     }
 
     /**
@@ -75,7 +115,9 @@ public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends 
     private StreamDestinationConfigBigqueryDestinationConfigArgs() {}
 
     private StreamDestinationConfigBigqueryDestinationConfigArgs(StreamDestinationConfigBigqueryDestinationConfigArgs $) {
+        this.appendOnly = $.appendOnly;
         this.dataFreshness = $.dataFreshness;
+        this.merge = $.merge;
         this.singleTargetDataset = $.singleTargetDataset;
         this.sourceHierarchyDatasets = $.sourceHierarchyDatasets;
     }
@@ -96,6 +138,31 @@ public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends 
 
         public Builder(StreamDestinationConfigBigqueryDestinationConfigArgs defaults) {
             $ = new StreamDestinationConfigBigqueryDestinationConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param appendOnly AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+         * events) to a source table will be written to the destination Google BigQuery table, retaining the
+         * historical state of the data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appendOnly(@Nullable Output<StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs> appendOnly) {
+            $.appendOnly = appendOnly;
+            return this;
+        }
+
+        /**
+         * @param appendOnly AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+         * events) to a source table will be written to the destination Google BigQuery table, retaining the
+         * historical state of the data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appendOnly(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs appendOnly) {
+            return appendOnly(Output.of(appendOnly));
         }
 
         /**
@@ -123,6 +190,31 @@ public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends 
          */
         public Builder dataFreshness(String dataFreshness) {
             return dataFreshness(Output.of(dataFreshness));
+        }
+
+        /**
+         * @param merge Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+         * table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+         * in the source database. With Merge mode, no historical record of the change events is kept.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder merge(@Nullable Output<StreamDestinationConfigBigqueryDestinationConfigMergeArgs> merge) {
+            $.merge = merge;
+            return this;
+        }
+
+        /**
+         * @param merge Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+         * table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+         * in the source database. With Merge mode, no historical record of the change events is kept.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder merge(StreamDestinationConfigBigqueryDestinationConfigMergeArgs merge) {
+            return merge(Output.of(merge));
         }
 
         /**

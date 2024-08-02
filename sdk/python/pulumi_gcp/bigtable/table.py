@@ -32,11 +32,10 @@ class TableArgs:
         """
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-               Retention Period and Frequency to 0.
-        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
                
                -----
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
         :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
@@ -78,8 +77,9 @@ class TableArgs:
     @pulumi.getter(name="automatedBackupPolicy")
     def automated_backup_policy(self) -> Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']]:
         """
-        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-        Retention Period and Frequency to 0.
+        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+
+        -----
         """
         return pulumi.get(self, "automated_backup_policy")
 
@@ -92,8 +92,6 @@ class TableArgs:
     def change_stream_retention(self) -> Optional[pulumi.Input[str]]:
         """
         Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-
-        -----
         """
         return pulumi.get(self, "change_stream_retention")
 
@@ -178,11 +176,10 @@ class _TableState:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Table resources.
-        :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-               Retention Period and Frequency to 0.
-        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
                
                -----
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
         :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
@@ -214,8 +211,9 @@ class _TableState:
     @pulumi.getter(name="automatedBackupPolicy")
     def automated_backup_policy(self) -> Optional[pulumi.Input['TableAutomatedBackupPolicyArgs']]:
         """
-        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-        Retention Period and Frequency to 0.
+        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+
+        -----
         """
         return pulumi.get(self, "automated_backup_policy")
 
@@ -228,8 +226,6 @@ class _TableState:
     def change_stream_retention(self) -> Optional[pulumi.Input[str]]:
         """
         Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-
-        -----
         """
         return pulumi.get(self, "change_stream_retention")
 
@@ -362,7 +358,11 @@ class Table(pulumi.CustomResource):
                     "family": "family-second",
                 },
             ],
-            change_stream_retention="24h0m0s")
+            change_stream_retention="24h0m0s",
+            automated_backup_policy={
+                "retention_period": "72h0m0s",
+                "frequency": "24h0m0s",
+            })
         ```
 
         ## Import
@@ -393,11 +393,10 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-               Retention Period and Frequency to 0.
-        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
                
                -----
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
@@ -449,7 +448,11 @@ class Table(pulumi.CustomResource):
                     "family": "family-second",
                 },
             ],
-            change_stream_retention="24h0m0s")
+            change_stream_retention="24h0m0s",
+            automated_backup_policy={
+                "retention_period": "72h0m0s",
+                "frequency": "24h0m0s",
+            })
         ```
 
         ## Import
@@ -545,11 +548,10 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-               Retention Period and Frequency to 0.
-        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
                
                -----
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
@@ -578,8 +580,9 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="automatedBackupPolicy")
     def automated_backup_policy(self) -> pulumi.Output[Optional['outputs.TableAutomatedBackupPolicy']]:
         """
-        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-        Retention Period and Frequency to 0.
+        Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+
+        -----
         """
         return pulumi.get(self, "automated_backup_policy")
 
@@ -588,8 +591,6 @@ class Table(pulumi.CustomResource):
     def change_stream_retention(self) -> pulumi.Output[str]:
         """
         Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-
-        -----
         """
         return pulumi.get(self, "change_stream_retention")
 

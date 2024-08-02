@@ -13,6 +13,147 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AppProfileDataBoostIsolationReadOnly struct {
+	// The Compute Billing Owner for this Data Boost App Profile.
+	// Possible values are: `HOST_PAYS`.
+	ComputeBillingOwner string `pulumi:"computeBillingOwner"`
+}
+
+// AppProfileDataBoostIsolationReadOnlyInput is an input type that accepts AppProfileDataBoostIsolationReadOnlyArgs and AppProfileDataBoostIsolationReadOnlyOutput values.
+// You can construct a concrete instance of `AppProfileDataBoostIsolationReadOnlyInput` via:
+//
+//	AppProfileDataBoostIsolationReadOnlyArgs{...}
+type AppProfileDataBoostIsolationReadOnlyInput interface {
+	pulumi.Input
+
+	ToAppProfileDataBoostIsolationReadOnlyOutput() AppProfileDataBoostIsolationReadOnlyOutput
+	ToAppProfileDataBoostIsolationReadOnlyOutputWithContext(context.Context) AppProfileDataBoostIsolationReadOnlyOutput
+}
+
+type AppProfileDataBoostIsolationReadOnlyArgs struct {
+	// The Compute Billing Owner for this Data Boost App Profile.
+	// Possible values are: `HOST_PAYS`.
+	ComputeBillingOwner pulumi.StringInput `pulumi:"computeBillingOwner"`
+}
+
+func (AppProfileDataBoostIsolationReadOnlyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileDataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (i AppProfileDataBoostIsolationReadOnlyArgs) ToAppProfileDataBoostIsolationReadOnlyOutput() AppProfileDataBoostIsolationReadOnlyOutput {
+	return i.ToAppProfileDataBoostIsolationReadOnlyOutputWithContext(context.Background())
+}
+
+func (i AppProfileDataBoostIsolationReadOnlyArgs) ToAppProfileDataBoostIsolationReadOnlyOutputWithContext(ctx context.Context) AppProfileDataBoostIsolationReadOnlyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileDataBoostIsolationReadOnlyOutput)
+}
+
+func (i AppProfileDataBoostIsolationReadOnlyArgs) ToAppProfileDataBoostIsolationReadOnlyPtrOutput() AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return i.ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i AppProfileDataBoostIsolationReadOnlyArgs) ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileDataBoostIsolationReadOnlyOutput).ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(ctx)
+}
+
+// AppProfileDataBoostIsolationReadOnlyPtrInput is an input type that accepts AppProfileDataBoostIsolationReadOnlyArgs, AppProfileDataBoostIsolationReadOnlyPtr and AppProfileDataBoostIsolationReadOnlyPtrOutput values.
+// You can construct a concrete instance of `AppProfileDataBoostIsolationReadOnlyPtrInput` via:
+//
+//	        AppProfileDataBoostIsolationReadOnlyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppProfileDataBoostIsolationReadOnlyPtrInput interface {
+	pulumi.Input
+
+	ToAppProfileDataBoostIsolationReadOnlyPtrOutput() AppProfileDataBoostIsolationReadOnlyPtrOutput
+	ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(context.Context) AppProfileDataBoostIsolationReadOnlyPtrOutput
+}
+
+type appProfileDataBoostIsolationReadOnlyPtrType AppProfileDataBoostIsolationReadOnlyArgs
+
+func AppProfileDataBoostIsolationReadOnlyPtr(v *AppProfileDataBoostIsolationReadOnlyArgs) AppProfileDataBoostIsolationReadOnlyPtrInput {
+	return (*appProfileDataBoostIsolationReadOnlyPtrType)(v)
+}
+
+func (*appProfileDataBoostIsolationReadOnlyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileDataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (i *appProfileDataBoostIsolationReadOnlyPtrType) ToAppProfileDataBoostIsolationReadOnlyPtrOutput() AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return i.ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i *appProfileDataBoostIsolationReadOnlyPtrType) ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileDataBoostIsolationReadOnlyPtrOutput)
+}
+
+type AppProfileDataBoostIsolationReadOnlyOutput struct{ *pulumi.OutputState }
+
+func (AppProfileDataBoostIsolationReadOnlyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileDataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (o AppProfileDataBoostIsolationReadOnlyOutput) ToAppProfileDataBoostIsolationReadOnlyOutput() AppProfileDataBoostIsolationReadOnlyOutput {
+	return o
+}
+
+func (o AppProfileDataBoostIsolationReadOnlyOutput) ToAppProfileDataBoostIsolationReadOnlyOutputWithContext(ctx context.Context) AppProfileDataBoostIsolationReadOnlyOutput {
+	return o
+}
+
+func (o AppProfileDataBoostIsolationReadOnlyOutput) ToAppProfileDataBoostIsolationReadOnlyPtrOutput() AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return o.ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(context.Background())
+}
+
+func (o AppProfileDataBoostIsolationReadOnlyOutput) ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfileDataBoostIsolationReadOnly) *AppProfileDataBoostIsolationReadOnly {
+		return &v
+	}).(AppProfileDataBoostIsolationReadOnlyPtrOutput)
+}
+
+// The Compute Billing Owner for this Data Boost App Profile.
+// Possible values are: `HOST_PAYS`.
+func (o AppProfileDataBoostIsolationReadOnlyOutput) ComputeBillingOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v AppProfileDataBoostIsolationReadOnly) string { return v.ComputeBillingOwner }).(pulumi.StringOutput)
+}
+
+type AppProfileDataBoostIsolationReadOnlyPtrOutput struct{ *pulumi.OutputState }
+
+func (AppProfileDataBoostIsolationReadOnlyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileDataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (o AppProfileDataBoostIsolationReadOnlyPtrOutput) ToAppProfileDataBoostIsolationReadOnlyPtrOutput() AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return o
+}
+
+func (o AppProfileDataBoostIsolationReadOnlyPtrOutput) ToAppProfileDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return o
+}
+
+func (o AppProfileDataBoostIsolationReadOnlyPtrOutput) Elem() AppProfileDataBoostIsolationReadOnlyOutput {
+	return o.ApplyT(func(v *AppProfileDataBoostIsolationReadOnly) AppProfileDataBoostIsolationReadOnly {
+		if v != nil {
+			return *v
+		}
+		var ret AppProfileDataBoostIsolationReadOnly
+		return ret
+	}).(AppProfileDataBoostIsolationReadOnlyOutput)
+}
+
+// The Compute Billing Owner for this Data Boost App Profile.
+// Possible values are: `HOST_PAYS`.
+func (o AppProfileDataBoostIsolationReadOnlyPtrOutput) ComputeBillingOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppProfileDataBoostIsolationReadOnly) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComputeBillingOwner
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppProfileSingleClusterRouting struct {
 	// If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
 	// It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -15863,6 +16004,8 @@ func (o GetDatasetExternalDatasetReferenceArrayOutput) Index(i pulumi.IntInput) 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileDataBoostIsolationReadOnlyInput)(nil)).Elem(), AppProfileDataBoostIsolationReadOnlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileDataBoostIsolationReadOnlyPtrInput)(nil)).Elem(), AppProfileDataBoostIsolationReadOnlyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationInput)(nil)).Elem(), AppProfileStandardIsolationArgs{})
@@ -16031,6 +16174,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetDefaultEncryptionConfigurationArrayInput)(nil)).Elem(), GetDatasetDefaultEncryptionConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceArrayInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArray{})
+	pulumi.RegisterOutputType(AppProfileDataBoostIsolationReadOnlyOutput{})
+	pulumi.RegisterOutputType(AppProfileDataBoostIsolationReadOnlyPtrOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
 	pulumi.RegisterOutputType(AppProfileStandardIsolationOutput{})

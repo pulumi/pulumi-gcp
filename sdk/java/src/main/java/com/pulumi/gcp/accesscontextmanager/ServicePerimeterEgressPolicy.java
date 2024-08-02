@@ -125,11 +125,18 @@ public class ServicePerimeterEgressPolicy extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public ServicePerimeterEgressPolicy(String name, ServicePerimeterEgressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy", name, args == null ? ServicePerimeterEgressPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServicePerimeterEgressPolicy(String name, Output<String> id, @Nullable ServicePerimeterEgressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServicePerimeterEgressPolicyArgs makeArgs(ServicePerimeterEgressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePerimeterEgressPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

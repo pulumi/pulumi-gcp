@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamDestinationConfig {
     /**
-     * @return A configuration for how data should be loaded to Cloud Storage.
+     * @return A configuration for how data should be loaded to Google BigQuery.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class StreamDestinationConfig {
 
     private StreamDestinationConfig() {}
     /**
-     * @return A configuration for how data should be loaded to Cloud Storage.
+     * @return A configuration for how data should be loaded to Google BigQuery.
      * Structure is documented below.
      * 
      */

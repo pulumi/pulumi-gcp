@@ -193,7 +193,6 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .metadata(Map.of("terraform", "true"))
  *                 .build())
- *             .instanceOwners("my{@literal @}service-account.com")
  *             .labels(Map.of("k", "val"))
  *             .desiredState("STOPPED")
  *             .build());
@@ -217,6 +216,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.serviceaccount.IAMBinding;
+ * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
@@ -246,6 +249,16 @@ import javax.annotation.Nullable;
  *             .network(myNetwork.id())
  *             .region("us-central1")
  *             .ipCidrRange("10.0.1.0/24")
+ *             .build());
+ * 
+ *         var static_ = new Address("static", AddressArgs.builder()
+ *             .name("wbi-test-default")
+ *             .build());
+ * 
+ *         var actAsPermission = new IAMBinding("actAsPermission", IAMBindingArgs.builder()
+ *             .serviceAccountId("projects/my-project-name/serviceAccounts/my{@literal @}service-account.com")
+ *             .role("roles/iam.serviceAccountUser")
+ *             .members("user:example{@literal @}example.com")
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
@@ -282,6 +295,9 @@ import javax.annotation.Nullable;
  *                     .network(myNetwork.id())
  *                     .subnet(mySubnetwork.id())
  *                     .nicType("GVNIC")
+ *                     .accessConfigs(InstanceGceSetupNetworkInterfaceAccessConfigArgs.builder()
+ *                         .externalIp(static_.address())
+ *                         .build())
  *                     .build())
  *                 .metadata(Map.of("terraform", "true"))
  *                 .enableIpForwarding(true)
@@ -290,7 +306,7 @@ import javax.annotation.Nullable;
  *                     "def")
  *                 .build())
  *             .disableProxyAccess("true")
- *             .instanceOwners("my{@literal @}service-account.com")
+ *             .instanceOwners("example{@literal @}example.com")
  *             .labels(Map.of("k", "val"))
  *             .desiredState("ACTIVE")
  *             .build());
@@ -651,11 +667,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Instance(String name, InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workbench/instance:Instance", name, args == null ? InstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:workbench/instance:Instance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Instance(String name, Output<String> id, @Nullable InstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:workbench/instance:Instance", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstanceArgs makeArgs(InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

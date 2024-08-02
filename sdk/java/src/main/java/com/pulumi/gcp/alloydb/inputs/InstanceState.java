@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.InstanceClientConnectionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceNetworkConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstanceObservabilityConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstancePscInstanceConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
@@ -295,6 +296,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for enhanced query insights.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="observabilityConfig")
+    private @Nullable Output<InstanceObservabilityConfigArgs> observabilityConfig;
+
+    /**
+     * @return Configuration for enhanced query insights.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceObservabilityConfigArgs>> observabilityConfig() {
+        return Optional.ofNullable(this.observabilityConfig);
+    }
+
+    /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      * 
@@ -461,6 +479,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.machineConfig = $.machineConfig;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
+        this.observabilityConfig = $.observabilityConfig;
         this.pscInstanceConfig = $.pscInstanceConfig;
         this.publicIpAddress = $.publicIpAddress;
         this.pulumiLabels = $.pulumiLabels;
@@ -853,6 +872,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkConfig(InstanceNetworkConfigArgs networkConfig) {
             return networkConfig(Output.of(networkConfig));
+        }
+
+        /**
+         * @param observabilityConfig Configuration for enhanced query insights.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observabilityConfig(@Nullable Output<InstanceObservabilityConfigArgs> observabilityConfig) {
+            $.observabilityConfig = observabilityConfig;
+            return this;
+        }
+
+        /**
+         * @param observabilityConfig Configuration for enhanced query insights.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observabilityConfig(InstanceObservabilityConfigArgs observabilityConfig) {
+            return observabilityConfig(Output.of(observabilityConfig));
         }
 
         /**

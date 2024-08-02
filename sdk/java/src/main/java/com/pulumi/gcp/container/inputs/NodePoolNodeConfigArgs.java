@@ -462,14 +462,20 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The reservation affinity configuration for the node pool.
+     * The configuration of the desired reservation which instances could take capacity from.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     @Import(name="reservationAffinity")
     private @Nullable Output<NodePoolNodeConfigReservationAffinityArgs> reservationAffinity;
 
     /**
-     * @return The reservation affinity configuration for the node pool.
+     * @return The configuration of the desired reservation which instances could take capacity from.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Optional<Output<NodePoolNodeConfigReservationAffinityArgs>> reservationAffinity() {
@@ -1323,7 +1329,10 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param reservationAffinity The reservation affinity configuration for the node pool.
+         * @param reservationAffinity The configuration of the desired reservation which instances could take capacity from.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 
@@ -1334,7 +1343,10 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param reservationAffinity The reservation affinity configuration for the node pool.
+         * @param reservationAffinity The configuration of the desired reservation which instances could take capacity from.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 

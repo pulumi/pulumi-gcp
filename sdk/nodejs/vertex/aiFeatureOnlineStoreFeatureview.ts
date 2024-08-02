@@ -179,8 +179,8 @@ import * as utilities from "../utilities";
  *
  * const testProject = gcp.organizations.getProject({});
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_55138",
- *     name: "tf-test_37559",
+ *     projectId: "tf-test_13293",
+ *     name: "tf-test_40289",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * });

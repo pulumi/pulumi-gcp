@@ -178,6 +178,8 @@ type Function struct {
 	AvailableMemoryMb pulumi.IntPtrOutput `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapOutput `pulumi:"buildEnvironmentVariables"`
+	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+	BuildServiceAccount pulumi.StringOutput `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool pulumi.StringPtrOutput `pulumi:"buildWorkerPool"`
 	// Description of the function.
@@ -298,6 +300,8 @@ type functionState struct {
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
+	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+	BuildServiceAccount *string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool *string `pulumi:"buildWorkerPool"`
 	// Description of the function.
@@ -381,6 +385,8 @@ type FunctionState struct {
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapInput
+	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+	BuildServiceAccount pulumi.StringPtrInput
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool pulumi.StringPtrInput
 	// Description of the function.
@@ -468,6 +474,8 @@ type functionArgs struct {
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
+	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+	BuildServiceAccount *string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool *string `pulumi:"buildWorkerPool"`
 	// Description of the function.
@@ -543,6 +551,8 @@ type FunctionArgs struct {
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapInput
+	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+	BuildServiceAccount pulumi.StringPtrInput
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool pulumi.StringPtrInput
 	// Description of the function.
@@ -707,6 +717,11 @@ func (o FunctionOutput) AvailableMemoryMb() pulumi.IntPtrOutput {
 // A set of key/value environment variable pairs available during build time.
 func (o FunctionOutput) BuildEnvironmentVariables() pulumi.MapOutput {
 	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.BuildEnvironmentVariables }).(pulumi.MapOutput)
+}
+
+// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+func (o FunctionOutput) BuildServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.BuildServiceAccount }).(pulumi.StringOutput)
 }
 
 // Name of the Cloud Build Custom Worker Pool that should be used to build the function.

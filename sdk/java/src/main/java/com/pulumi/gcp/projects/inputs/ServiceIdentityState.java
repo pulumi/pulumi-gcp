@@ -31,6 +31,21 @@ public final class ServiceIdentityState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The Identity of the Google managed service account in the form &#39;serviceAccount:{email}&#39;. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    @Import(name="member")
+    private @Nullable Output<String> member;
+
+    /**
+     * @return The Identity of the Google managed service account in the form &#39;serviceAccount:{email}&#39;. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    public Optional<Output<String>> member() {
+        return Optional.ofNullable(this.member);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -70,6 +85,7 @@ public final class ServiceIdentityState extends com.pulumi.resources.ResourceArg
 
     private ServiceIdentityState(ServiceIdentityState $) {
         this.email = $.email;
+        this.member = $.member;
         this.project = $.project;
         this.service = $.service;
     }
@@ -111,6 +127,27 @@ public final class ServiceIdentityState extends com.pulumi.resources.ResourceArg
          */
         public Builder email(String email) {
             return email(Output.of(email));
+        }
+
+        /**
+         * @param member The Identity of the Google managed service account in the form &#39;serviceAccount:{email}&#39;. This value is often used to refer to the service account in order to grant IAM permissions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder member(@Nullable Output<String> member) {
+            $.member = member;
+            return this;
+        }
+
+        /**
+         * @param member The Identity of the Google managed service account in the form &#39;serviceAccount:{email}&#39;. This value is often used to refer to the service account in order to grant IAM permissions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder member(String member) {
+            return member(Output.of(member));
         }
 
         /**

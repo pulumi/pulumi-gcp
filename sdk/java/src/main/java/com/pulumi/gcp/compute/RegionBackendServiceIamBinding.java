@@ -215,11 +215,18 @@ public class RegionBackendServiceIamBinding extends com.pulumi.resources.CustomR
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionBackendServiceIamBinding(String name, RegionBackendServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding", name, args == null ? RegionBackendServiceIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionBackendServiceIamBinding(String name, Output<String> id, @Nullable RegionBackendServiceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionBackendServiceIamBindingArgs makeArgs(RegionBackendServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionBackendServiceIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

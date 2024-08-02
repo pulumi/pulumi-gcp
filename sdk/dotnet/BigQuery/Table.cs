@@ -120,8 +120,13 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This field is in beta. If set to true, it allows table deletion when there
-        /// are still resource tags attached. The default value is false.
+        /// If set to true, it allows table
+        /// deletion when there are still resource tags attached. The default value is
+        /// false.
+        /// 
+        /// ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+        /// removed in a future major release. The default behavior will be allowing
+        /// the presence of resource tags on deletion after the next major release.
         /// </summary>
         [Output("allowResourceTagsOnDeletion")]
         public Output<bool?> AllowResourceTagsOnDeletion { get; private set; } = null!;
@@ -303,7 +308,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<bool?> RequirePartitionFilter { get; private set; } = null!;
 
         /// <summary>
-        /// This field is in beta. The tags attached to this table. Tag keys are
+        /// The tags attached to this table. Tag keys are
         /// globally unique. Tag key is expected to be in the namespaced format, for
         /// example "123456789012/environment" where 123456789012 is the ID of the
         /// parent organization or project resource for this tag key. Tag value is
@@ -419,8 +424,13 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field is in beta. If set to true, it allows table deletion when there
-        /// are still resource tags attached. The default value is false.
+        /// If set to true, it allows table
+        /// deletion when there are still resource tags attached. The default value is
+        /// false.
+        /// 
+        /// ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+        /// removed in a future major release. The default behavior will be allowing
+        /// the presence of resource tags on deletion after the next major release.
         /// </summary>
         [Input("allowResourceTagsOnDeletion")]
         public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
@@ -548,7 +558,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _resourceTags;
 
         /// <summary>
-        /// This field is in beta. The tags attached to this table. Tag keys are
+        /// The tags attached to this table. Tag keys are
         /// globally unique. Tag key is expected to be in the namespaced format, for
         /// example "123456789012/environment" where 123456789012 is the ID of the
         /// parent organization or project resource for this tag key. Tag value is
@@ -612,8 +622,13 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field is in beta. If set to true, it allows table deletion when there
-        /// are still resource tags attached. The default value is false.
+        /// If set to true, it allows table
+        /// deletion when there are still resource tags attached. The default value is
+        /// false.
+        /// 
+        /// ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+        /// removed in a future major release. The default behavior will be allowing
+        /// the presence of resource tags on deletion after the next major release.
         /// </summary>
         [Input("allowResourceTagsOnDeletion")]
         public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
@@ -830,7 +845,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _resourceTags;
 
         /// <summary>
-        /// This field is in beta. The tags attached to this table. Tag keys are
+        /// The tags attached to this table. Tag keys are
         /// globally unique. Tag key is expected to be in the namespaced format, for
         /// example "123456789012/environment" where 123456789012 is the ID of the
         /// parent organization or project resource for this tag key. Tag value is

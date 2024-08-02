@@ -101,7 +101,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly brand!: pulumi.Output<string>;
     /**
-     * The OAuth2 ID of the client.
+     * Output only. Unique identifier of the OAuth client.
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
@@ -165,7 +165,7 @@ export interface ClientState {
      */
     brand?: pulumi.Input<string>;
     /**
-     * The OAuth2 ID of the client.
+     * Output only. Unique identifier of the OAuth client.
      */
     clientId?: pulumi.Input<string>;
     /**

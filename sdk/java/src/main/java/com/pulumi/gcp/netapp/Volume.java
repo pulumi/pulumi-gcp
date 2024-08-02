@@ -554,15 +554,15 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="smbSettings", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> smbSettings;
+    private Output<List<String>> smbSettings;
 
     /**
      * @return Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
      * 
      */
-    public Output<Optional<List<String>>> smbSettings() {
-        return Codegen.optional(this.smbSettings);
+    public Output<List<String>> smbSettings() {
+        return this.smbSettings;
     }
     /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume&#39;s snapshots. Will enable &#34;Previous Versions&#34; support for SMB.
@@ -703,11 +703,18 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Volume(String name, VolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/volume:Volume", name, args == null ? VolumeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:netapp/volume:Volume", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Volume(String name, Output<String> id, @Nullable VolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:netapp/volume:Volume", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VolumeArgs makeArgs(VolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VolumeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

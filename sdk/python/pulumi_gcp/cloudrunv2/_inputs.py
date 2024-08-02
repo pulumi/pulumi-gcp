@@ -2668,6 +2668,7 @@ if not MYPY:
         max_instance_request_concurrency: NotRequired[pulumi.Input[int]]
         """
         Sets the maximum number of requests that each serving instance can receive.
+        If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         revision: NotRequired[pulumi.Input[str]]
         """
@@ -2735,6 +2736,7 @@ class ServiceTemplateArgs:
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
+               If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param pulumi.Input['ServiceTemplateScalingArgs'] scaling: Scaling settings for this Revision.
                Structure is documented below.
@@ -2847,6 +2849,7 @@ class ServiceTemplateArgs:
     def max_instance_request_concurrency(self) -> Optional[pulumi.Input[int]]:
         """
         Sets the maximum number of requests that each serving instance can receive.
+        If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         return pulumi.get(self, "max_instance_request_concurrency")
 

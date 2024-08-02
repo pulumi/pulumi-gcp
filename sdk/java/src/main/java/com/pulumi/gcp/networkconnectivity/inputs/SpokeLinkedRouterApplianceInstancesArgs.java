@@ -18,6 +18,7 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
 
     /**
      * The list of router appliance instances
+     * Structure is documented below.
      * 
      */
     @Import(name="instances", required=true)
@@ -25,6 +26,7 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
 
     /**
      * @return The list of router appliance instances
+     * Structure is documented below.
      * 
      */
     public Output<List<SpokeLinkedRouterApplianceInstancesInstanceArgs>> instances() {
@@ -73,6 +75,7 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
 
         /**
          * @param instances The list of router appliance instances
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -84,6 +87,7 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
 
         /**
          * @param instances The list of router appliance instances
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -94,6 +98,7 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
 
         /**
          * @param instances The list of router appliance instances
+         * Structure is documented below.
          * 
          * @return builder
          * 

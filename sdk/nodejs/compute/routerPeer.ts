@@ -191,6 +191,127 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Router Peer Export And Import Policies
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-router-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "my-router-subnet",
+ *     network: network.selfLink,
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ * });
+ * const address = new gcp.compute.Address("address", {
+ *     name: "my-router",
+ *     region: subnetwork.region,
+ * });
+ * const vpnGateway = new gcp.compute.HaVpnGateway("vpn_gateway", {
+ *     name: "my-router-gateway",
+ *     network: network.selfLink,
+ *     region: subnetwork.region,
+ * });
+ * const externalGateway = new gcp.compute.ExternalVpnGateway("external_gateway", {
+ *     name: "my-router-external-gateway",
+ *     redundancyType: "SINGLE_IP_INTERNALLY_REDUNDANT",
+ *     description: "An externally managed VPN gateway",
+ *     interfaces: [{
+ *         id: 0,
+ *         ipAddress: "8.8.8.8",
+ *     }],
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     name: "my-router",
+ *     region: subnetwork.region,
+ *     network: network.selfLink,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * });
+ * const vpnTunnel = new gcp.compute.VPNTunnel("vpn_tunnel", {
+ *     name: "my-router",
+ *     region: subnetwork.region,
+ *     vpnGateway: vpnGateway.id,
+ *     peerExternalGateway: externalGateway.id,
+ *     peerExternalGatewayInterface: 0,
+ *     sharedSecret: "unguessable",
+ *     router: router.name,
+ *     vpnGatewayInterface: 0,
+ * });
+ * const routerInterface = new gcp.compute.RouterInterface("router_interface", {
+ *     name: "my-router",
+ *     router: router.name,
+ *     region: router.region,
+ *     vpnTunnel: vpnTunnel.name,
+ * });
+ * const rp_export = new gcp.compute.RouterRoutePolicy("rp-export", {
+ *     name: "my-router-rp-export",
+ *     router: router.name,
+ *     region: router.region,
+ *     type: "ROUTE_POLICY_TYPE_EXPORT",
+ *     terms: [{
+ *         priority: 2,
+ *         match: {
+ *             expression: "destination == '10.0.0.0/12'",
+ *             title: "export_expression",
+ *             description: "acceptance expression for export",
+ *         },
+ *         actions: [{
+ *             expression: "accept()",
+ *         }],
+ *     }],
+ * }, {
+ *     dependsOn: [routerInterface],
+ * });
+ * const rp_import = new gcp.compute.RouterRoutePolicy("rp-import", {
+ *     name: "my-router-rp-import",
+ *     router: router.name,
+ *     region: router.region,
+ *     type: "ROUTE_POLICY_TYPE_IMPORT",
+ *     terms: [{
+ *         priority: 1,
+ *         match: {
+ *             expression: "destination == '10.0.0.0/12'",
+ *             title: "import_expression",
+ *             description: "acceptance expression for import",
+ *         },
+ *         actions: [{
+ *             expression: "accept()",
+ *         }],
+ *     }],
+ * }, {
+ *     dependsOn: [
+ *         routerInterface,
+ *         rp_export,
+ *     ],
+ * });
+ * const routerPeer = new gcp.compute.RouterPeer("router_peer", {
+ *     name: "my-router-peer",
+ *     router: router.name,
+ *     region: router.region,
+ *     peerAsn: 65515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": routerInterface.name,
+ *     md5AuthenticationKey: {
+ *         name: "my-router-peer-key",
+ *         key: "my-router-peer-key-value",
+ *     },
+ *     importPolicies: [rp_import.name],
+ *     exportPolicies: [rp_export.name],
+ * }, {
+ *     dependsOn: [
+ *         rp_export,
+ *         rp_import,
+ *         routerInterface,
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * RouterBgpPeer can be imported using any of these accepted formats:
@@ -290,6 +411,17 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly bfd!: pulumi.Output<outputs.compute.RouterPeerBfd>;
     /**
+     * The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     */
+    public readonly customLearnedIpRanges!: pulumi.Output<outputs.compute.RouterPeerCustomLearnedIpRange[] | undefined>;
+    /**
+     * The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+     * ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+     * priority of 100 to the ranges.
+     */
+    public readonly customLearnedRoutePriority!: pulumi.Output<number | undefined>;
+    /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
@@ -304,6 +436,16 @@ export class RouterPeer extends pulumi.CustomResource {
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      */
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    /**
+     * routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+     */
+    public readonly exportPolicies!: pulumi.Output<string[] | undefined>;
+    /**
+     * routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+     */
+    public readonly importPolicies!: pulumi.Output<string[] | undefined>;
     /**
      * Name of the interface the BGP peer is associated with.
      */
@@ -414,9 +556,13 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["advertisedIpRanges"] = state ? state.advertisedIpRanges : undefined;
             resourceInputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
             resourceInputs["bfd"] = state ? state.bfd : undefined;
+            resourceInputs["customLearnedIpRanges"] = state ? state.customLearnedIpRanges : undefined;
+            resourceInputs["customLearnedRoutePriority"] = state ? state.customLearnedRoutePriority : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["enableIpv4"] = state ? state.enableIpv4 : undefined;
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["exportPolicies"] = state ? state.exportPolicies : undefined;
+            resourceInputs["importPolicies"] = state ? state.importPolicies : undefined;
             resourceInputs["interface"] = state ? state.interface : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipv4NexthopAddress"] = state ? state.ipv4NexthopAddress : undefined;
@@ -448,9 +594,13 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["advertisedIpRanges"] = args ? args.advertisedIpRanges : undefined;
             resourceInputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
             resourceInputs["bfd"] = args ? args.bfd : undefined;
+            resourceInputs["customLearnedIpRanges"] = args ? args.customLearnedIpRanges : undefined;
+            resourceInputs["customLearnedRoutePriority"] = args ? args.customLearnedRoutePriority : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["enableIpv4"] = args ? args.enableIpv4 : undefined;
             resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["exportPolicies"] = args ? args.exportPolicies : undefined;
+            resourceInputs["importPolicies"] = args ? args.importPolicies : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["ipv4NexthopAddress"] = args ? args.ipv4NexthopAddress : undefined;
@@ -517,6 +667,17 @@ export interface RouterPeerState {
      */
     bfd?: pulumi.Input<inputs.compute.RouterPeerBfd>;
     /**
+     * The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     */
+    customLearnedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerCustomLearnedIpRange>[]>;
+    /**
+     * The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+     * ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+     * priority of 100 to the ranges.
+     */
+    customLearnedRoutePriority?: pulumi.Input<number>;
+    /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
@@ -531,6 +692,16 @@ export interface RouterPeerState {
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      */
     enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+     */
+    exportPolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+     */
+    importPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the interface the BGP peer is associated with.
      */
@@ -669,6 +840,17 @@ export interface RouterPeerArgs {
      */
     bfd?: pulumi.Input<inputs.compute.RouterPeerBfd>;
     /**
+     * The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     */
+    customLearnedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerCustomLearnedIpRange>[]>;
+    /**
+     * The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+     * ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+     * priority of 100 to the ranges.
+     */
+    customLearnedRoutePriority?: pulumi.Input<number>;
+    /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
@@ -683,6 +865,16 @@ export interface RouterPeerArgs {
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      */
     enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+     */
+    exportPolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+     */
+    importPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the interface the BGP peer is associated with.
      */

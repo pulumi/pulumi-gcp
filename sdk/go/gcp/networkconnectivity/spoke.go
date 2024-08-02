@@ -14,9 +14,16 @@ import (
 
 // The NetworkConnectivity Spoke resource
 //
+// To get more information about Spoke, see:
+//
+// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+//
 // ## Example Usage
 //
-// ### Linked_vpc_network
+// ### Network Connectivity Spoke Linked Vpc Network Basic
+//
 // ```go
 // package main
 //
@@ -31,14 +38,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("network"),
+//				Name:                  pulumi.String("net"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
-//				Name:        pulumi.String("hub"),
+//				Name:        pulumi.String("hub1"),
 //				Description: pulumi.String("A sample hub"),
 //				Labels: pulumi.StringMap{
 //					"label-two": pulumi.String("value-one"),
@@ -48,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-//				Name:        pulumi.String("name"),
+//				Name:        pulumi.String("spoke1"),
 //				Location:    pulumi.String("global"),
-//				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
+//				Description: pulumi.String("A sample spoke with a linked router appliance instance"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -71,7 +78,8 @@ import (
 //	}
 //
 // ```
-// ### Router_appliance
+// ### Network Connectivity Spoke Router Appliance Basic
+//
 // ```go
 // package main
 //
@@ -86,26 +94,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("network"),
+//				Name:                  pulumi.String("tf-test-network_2067"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("subnet"),
+//				Name:        pulumi.String("tf-test-subnet_40785"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
-//				Region:      pulumi.String("us-west1"),
+//				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-//				Name:         pulumi.String("instance"),
+//				Name:         pulumi.String("tf-test-instance_79169"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(true),
-//				Zone:         pulumi.String("us-west1-a"),
+//				Zone:         pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: pulumi.String("projects/debian-cloud/global/images/debian-10-buster-v20210817"),
@@ -127,7 +135,7 @@ import (
 //				return err
 //			}
 //			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
-//				Name:        pulumi.String("hub"),
+//				Name:        pulumi.String("tf-test-hub_56529"),
 //				Description: pulumi.String("A sample hub"),
 //				Labels: pulumi.StringMap{
 //					"label-two": pulumi.String("value-one"),
@@ -137,8 +145,8 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-//				Name:        pulumi.String("name"),
-//				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("tf-test-name_75413"),
+//				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
@@ -194,33 +202,38 @@ type Spoke struct {
 	// An optional description of the spoke.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for
-	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-	// advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// Structure is documented below.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrOutput `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
+	// Structure is documented below.
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrOutput `pulumi:"linkedRouterApplianceInstances"`
 	// VPC network that is associated with the spoke.
+	// Structure is documented below.
 	LinkedVpcNetwork SpokeLinkedVpcNetworkPtrOutput `pulumi:"linkedVpcNetwork"`
 	// The URIs of linked VPN tunnel resources
+	// Structure is documented below.
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrOutput `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
-	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Output only. The current lifecycle state of this spoke.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
@@ -274,33 +287,38 @@ type spokeState struct {
 	// An optional description of the spoke.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for
-	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-	// advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// Structure is documented below.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
+	// Structure is documented below.
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
 	// VPC network that is associated with the spoke.
+	// Structure is documented below.
 	LinkedVpcNetwork *SpokeLinkedVpcNetwork `pulumi:"linkedVpcNetwork"`
 	// The URIs of linked VPN tunnel resources
+	// Structure is documented below.
 	LinkedVpnTunnels *SpokeLinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
-	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Output only. The current lifecycle state of this spoke.
 	State *string `pulumi:"state"`
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId *string `pulumi:"uniqueId"`
@@ -314,33 +332,38 @@ type SpokeState struct {
 	// An optional description of the spoke.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
-	// Optional labels in key:value format. For more information about labels, see [Requirements for
-	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-	// advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// Structure is documented below.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
 	// The URIs of linked Router appliance resources
+	// Structure is documented below.
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
 	// VPC network that is associated with the spoke.
+	// Structure is documented below.
 	LinkedVpcNetwork SpokeLinkedVpcNetworkPtrInput
 	// The URIs of linked VPN tunnel resources
+	// Structure is documented below.
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrInput
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
-	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
+	// Output only. The current lifecycle state of this spoke.
 	State pulumi.StringPtrInput
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId pulumi.StringPtrInput
@@ -357,26 +380,30 @@ type spokeArgs struct {
 	Description *string `pulumi:"description"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for
-	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-	// advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// Structure is documented below.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
+	// Structure is documented below.
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
 	// VPC network that is associated with the spoke.
+	// Structure is documented below.
 	LinkedVpcNetwork *SpokeLinkedVpcNetwork `pulumi:"linkedVpcNetwork"`
 	// The URIs of linked VPN tunnel resources
+	// Structure is documented below.
 	LinkedVpnTunnels *SpokeLinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -386,26 +413,30 @@ type SpokeArgs struct {
 	Description pulumi.StringPtrInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringInput
-	// Optional labels in key:value format. For more information about labels, see [Requirements for
-	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-	// advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// Structure is documented below.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
 	// The URIs of linked Router appliance resources
+	// Structure is documented below.
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
 	// VPC network that is associated with the spoke.
+	// Structure is documented below.
 	LinkedVpcNetwork SpokeLinkedVpcNetworkPtrInput
 	// The URIs of linked VPN tunnel resources
+	// Structure is documented below.
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrInput
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringInput
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -507,8 +538,8 @@ func (o SpokeOutput) Description() pulumi.StringPtrOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o SpokeOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Spoke) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o SpokeOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Immutable. The URI of the hub that this spoke is attached to.
@@ -516,37 +547,40 @@ func (o SpokeOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
 }
 
-// Optional labels in key:value format. For more information about labels, see [Requirements for
-// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// `effectiveLabels` for all of the labels present on the resource.
+// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SpokeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-// advertising the same prefixes.
+// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+// Structure is documented below.
 func (o SpokeOutput) LinkedInterconnectAttachments() SpokeLinkedInterconnectAttachmentsPtrOutput {
 	return o.ApplyT(func(v *Spoke) SpokeLinkedInterconnectAttachmentsPtrOutput { return v.LinkedInterconnectAttachments }).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }
 
 // The URIs of linked Router appliance resources
+// Structure is documented below.
 func (o SpokeOutput) LinkedRouterApplianceInstances() SpokeLinkedRouterApplianceInstancesPtrOutput {
 	return o.ApplyT(func(v *Spoke) SpokeLinkedRouterApplianceInstancesPtrOutput { return v.LinkedRouterApplianceInstances }).(SpokeLinkedRouterApplianceInstancesPtrOutput)
 }
 
 // VPC network that is associated with the spoke.
+// Structure is documented below.
 func (o SpokeOutput) LinkedVpcNetwork() SpokeLinkedVpcNetworkPtrOutput {
 	return o.ApplyT(func(v *Spoke) SpokeLinkedVpcNetworkPtrOutput { return v.LinkedVpcNetwork }).(SpokeLinkedVpcNetworkPtrOutput)
 }
 
 // The URIs of linked VPN tunnel resources
+// Structure is documented below.
 func (o SpokeOutput) LinkedVpnTunnels() SpokeLinkedVpnTunnelsPtrOutput {
 	return o.ApplyT(func(v *Spoke) SpokeLinkedVpnTunnelsPtrOutput { return v.LinkedVpnTunnels }).(SpokeLinkedVpnTunnelsPtrOutput)
 }
 
 // The location for the resource
+//
+// ***
 func (o SpokeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -556,17 +590,19 @@ func (o SpokeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o SpokeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o SpokeOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Spoke) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SpokeOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+// Output only. The current lifecycle state of this spoke.
 func (o SpokeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

@@ -193,7 +193,7 @@ class NatAddress(pulumi.CustomResource):
         apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigee_sa_keyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=apigee_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=apigee_sa.member)
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             display_name="apigee-org",
@@ -292,7 +292,7 @@ class NatAddress(pulumi.CustomResource):
         apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigee_sa_keyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=apigee_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=apigee_sa.member)
         apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             display_name="apigee-org",

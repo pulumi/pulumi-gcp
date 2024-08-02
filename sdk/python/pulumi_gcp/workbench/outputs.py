@@ -22,6 +22,7 @@ __all__ = [
     'InstanceGceSetupContainerImage',
     'InstanceGceSetupDataDisks',
     'InstanceGceSetupNetworkInterface',
+    'InstanceGceSetupNetworkInterfaceAccessConfig',
     'InstanceGceSetupServiceAccount',
     'InstanceGceSetupShieldedInstanceConfig',
     'InstanceGceSetupVmImage',
@@ -532,7 +533,9 @@ class InstanceGceSetupNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "nicType":
+        if key == "accessConfigs":
+            suggest = "access_configs"
+        elif key == "nicType":
             suggest = "nic_type"
 
         if suggest:
@@ -547,22 +550,42 @@ class InstanceGceSetupNetworkInterface(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 access_configs: Optional[Sequence['outputs.InstanceGceSetupNetworkInterfaceAccessConfig']] = None,
                  network: Optional[str] = None,
                  nic_type: Optional[str] = None,
                  subnet: Optional[str] = None):
         """
+        :param Sequence['InstanceGceSetupNetworkInterfaceAccessConfigArgs'] access_configs: Optional. An array of configurations for this interface. Currently, only one access
+               config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+               instance will have an external internet access through an ephemeral
+               external IP address.
+               Structure is documented below.
         :param str network: Optional. The name of the VPC that this VM instance is in.
         :param str nic_type: Optional. The type of vNIC to be used on this interface. This
                may be gVNIC or VirtioNet.
                Possible values are: `VIRTIO_NET`, `GVNIC`.
         :param str subnet: Optional. The name of the subnet that this VM instance is in.
         """
+        if access_configs is not None:
+            pulumi.set(__self__, "access_configs", access_configs)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
+
+    @property
+    @pulumi.getter(name="accessConfigs")
+    def access_configs(self) -> Optional[Sequence['outputs.InstanceGceSetupNetworkInterfaceAccessConfig']]:
+        """
+        Optional. An array of configurations for this interface. Currently, only one access
+        config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+        instance will have an external internet access through an ephemeral
+        external IP address.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_configs")
 
     @property
     @pulumi.getter
@@ -589,6 +612,49 @@ class InstanceGceSetupNetworkInterface(dict):
         Optional. The name of the subnet that this VM instance is in.
         """
         return pulumi.get(self, "subnet")
+
+
+@pulumi.output_type
+class InstanceGceSetupNetworkInterfaceAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalIp":
+            suggest = "external_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGceSetupNetworkInterfaceAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGceSetupNetworkInterfaceAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGceSetupNetworkInterfaceAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_ip: str):
+        """
+        :param str external_ip: An external IP address associated with this instance. Specify an unused
+               static external IP address available to the project or leave this field
+               undefined to use an IP from a shared ephemeral IP address pool. If you
+               specify a static external IP address, it must live in the same region as
+               the zone of the instance.
+        """
+        pulumi.set(__self__, "external_ip", external_ip)
+
+    @property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> str:
+        """
+        An external IP address associated with this instance. Specify an unused
+        static external IP address available to the project or leave this field
+        undefined to use an IP from a shared ephemeral IP address pool. If you
+        specify a static external IP address, it must live in the same region as
+        the zone of the instance.
+        """
+        return pulumi.get(self, "external_ip")
 
 
 @pulumi.output_type

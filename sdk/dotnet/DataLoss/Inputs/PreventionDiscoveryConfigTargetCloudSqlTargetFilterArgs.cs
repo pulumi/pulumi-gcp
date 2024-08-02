@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A specific set of database resources for this filter to apply to.
+        /// A specific set of buckets for this filter to apply to.
         /// Structure is documented below.
         /// </summary>
         [Input("collection")]
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs>? DatabaseResourceReference { get; set; }
 
         /// <summary>
-        /// Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        /// Match discovery resources not covered by any other filter.
         /// </summary>
         [Input("others")]
         public Input<Inputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs>? Others { get; set; }

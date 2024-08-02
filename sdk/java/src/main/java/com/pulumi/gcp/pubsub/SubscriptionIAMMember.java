@@ -412,11 +412,18 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SubscriptionIAMMember(String name, SubscriptionIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, args == null ? SubscriptionIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SubscriptionIAMMember(String name, Output<String> id, @Nullable SubscriptionIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubscriptionIAMMemberArgs makeArgs(SubscriptionIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubscriptionIAMMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

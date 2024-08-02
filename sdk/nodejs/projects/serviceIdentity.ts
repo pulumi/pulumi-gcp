@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * const hcSaBqJobuser = new gcp.projects.IAMMember("hc_sa_bq_jobuser", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/bigquery.jobUser",
- *     member: pulumi.interpolate`serviceAccount:${hcSa.email}`,
+ *     member: hcSa.member,
  * });
  * ```
  *
@@ -75,6 +75,10 @@ export class ServiceIdentity extends pulumi.CustomResource {
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
     /**
+     * The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+     */
+    public /*out*/ readonly member!: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -100,6 +104,7 @@ export class ServiceIdentity extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceIdentityState | undefined;
             resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
         } else {
@@ -110,6 +115,7 @@ export class ServiceIdentity extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["member"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceIdentity.__pulumiType, name, resourceInputs, opts);
@@ -124,6 +130,10 @@ export interface ServiceIdentityState {
      * The email address of the Google managed service account.
      */
     email?: pulumi.Input<string>;
+    /**
+     * The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+     */
+    member?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

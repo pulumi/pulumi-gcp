@@ -141,8 +141,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
@@ -227,9 +225,7 @@ import (
 //			defaultCaPoolIamMember, err := certificateauthority.NewCaPoolIamMember(ctx, "default", &certificateauthority.CaPoolIamMemberArgs{
 //				CaPool: _default.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
-//				Member: nsSa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
+//				Member: nsSa.Member,
 //			})
 //			if err != nil {
 //				return err

@@ -590,8 +590,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of a forwarding rule that represents the service identified by
-        /// this service attachment.
+        /// The URL of a service serving the endpoint identified by this service attachment.
         /// </summary>
         [Output("targetService")]
         public Output<string> TargetService { get; private set; } = null!;
@@ -753,8 +752,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The URL of a forwarding rule that represents the service identified by
-        /// this service attachment.
+        /// The URL of a service serving the endpoint identified by this service attachment.
         /// </summary>
         [Input("targetService", required: true)]
         public Input<string> TargetService { get; set; } = null!;
@@ -905,8 +903,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The URL of a forwarding rule that represents the service identified by
-        /// this service attachment.
+        /// The URL of a service serving the endpoint identified by this service attachment.
         /// </summary>
         [Input("targetService")]
         public Input<string>? TargetService { get; set; }

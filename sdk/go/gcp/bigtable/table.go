@@ -61,6 +61,10 @@ import (
 //					},
 //				},
 //				ChangeStreamRetention: pulumi.String("24h0m0s"),
+//				AutomatedBackupPolicy: &bigtable.TableAutomatedBackupPolicyArgs{
+//					RetentionPeriod: pulumi.String("72h0m0s"),
+//					Frequency:       pulumi.String("24h0m0s"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -99,12 +103,11 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-	// Retention Period and Frequency to 0.
-	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrOutput `pulumi:"automatedBackupPolicy"`
-	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
 	//
 	// ***
+	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrOutput `pulumi:"automatedBackupPolicy"`
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
 	ChangeStreamRetention pulumi.StringOutput `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayOutput `pulumi:"columnFamilies"`
@@ -156,12 +159,11 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-	// Retention Period and Frequency to 0.
-	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
-	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
 	//
 	// ***
+	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
 	ChangeStreamRetention *string `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
@@ -181,12 +183,11 @@ type tableState struct {
 }
 
 type TableState struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-	// Retention Period and Frequency to 0.
-	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
-	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
 	//
 	// ***
+	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
 	ChangeStreamRetention pulumi.StringPtrInput
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
@@ -210,12 +211,11 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-	// Retention Period and Frequency to 0.
-	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
-	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
 	//
 	// ***
+	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
 	ChangeStreamRetention *string `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
@@ -236,12 +236,11 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-	// Retention Period and Frequency to 0.
-	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
-	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
 	//
 	// ***
+	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
 	ChangeStreamRetention pulumi.StringPtrInput
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
@@ -347,15 +346,14 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
-// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-// Retention Period and Frequency to 0.
+// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+//
+// ***
 func (o TableOutput) AutomatedBackupPolicy() TableAutomatedBackupPolicyPtrOutput {
 	return o.ApplyT(func(v *Table) TableAutomatedBackupPolicyPtrOutput { return v.AutomatedBackupPolicy }).(TableAutomatedBackupPolicyPtrOutput)
 }
 
 // Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-//
-// ***
 func (o TableOutput) ChangeStreamRetention() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.ChangeStreamRetention }).(pulumi.StringOutput)
 }

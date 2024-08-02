@@ -19,8 +19,8 @@ public final class ServiceTemplateMetadataArgs extends com.pulumi.resources.Reso
 
     /**
      * Annotations is a key value map stored with a resource that
-     * may be set by external tools to store and retrieve arbitrary metadata. More
-     * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+     * may be set by external tools to store and retrieve arbitrary metadata.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -45,8 +45,8 @@ public final class ServiceTemplateMetadataArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Annotations is a key value map stored with a resource that
-     * may be set by external tools to store and retrieve arbitrary metadata. More
-     * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+     * may be set by external tools to store and retrieve arbitrary metadata.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -240,8 +240,8 @@ public final class ServiceTemplateMetadataArgs extends com.pulumi.resources.Reso
 
         /**
          * @param annotations Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * may be set by external tools to store and retrieve arbitrary metadata.
+         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -270,8 +270,8 @@ public final class ServiceTemplateMetadataArgs extends com.pulumi.resources.Reso
 
         /**
          * @param annotations Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * may be set by external tools to store and retrieve arbitrary metadata.
+         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.

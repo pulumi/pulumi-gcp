@@ -241,8 +241,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigee"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
@@ -309,9 +307,7 @@ import (
 //			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: apigeeKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member: apigeeSa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
+//				Member:      apigeeSa.Member,
 //			})
 //			if err != nil {
 //				return err

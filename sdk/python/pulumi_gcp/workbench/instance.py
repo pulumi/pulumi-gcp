@@ -629,7 +629,6 @@ class Instance(pulumi.CustomResource):
                     "terraform": "true",
                 },
             },
-            instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
             },
@@ -649,6 +648,11 @@ class Instance(pulumi.CustomResource):
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
+        static = gcp.compute.Address("static", name="wbi-test-default")
+        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+            service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
+            role="roles/iam.serviceAccountUser",
+            members=["user:example@example.com"])
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
@@ -683,6 +687,9 @@ class Instance(pulumi.CustomResource):
                     "network": my_network.id,
                     "subnet": my_subnetwork.id,
                     "nic_type": "GVNIC",
+                    "access_configs": [{
+                        "external_ip": static.address,
+                    }],
                 }],
                 "metadata": {
                     "terraform": "true",
@@ -694,7 +701,7 @@ class Instance(pulumi.CustomResource):
                 ],
             },
             disable_proxy_access=True,
-            instance_owners=["my@service-account.com"],
+            instance_owners=["example@example.com"],
             labels={
                 "k": "val",
             },
@@ -829,7 +836,6 @@ class Instance(pulumi.CustomResource):
                     "terraform": "true",
                 },
             },
-            instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
             },
@@ -849,6 +855,11 @@ class Instance(pulumi.CustomResource):
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
+        static = gcp.compute.Address("static", name="wbi-test-default")
+        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+            service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
+            role="roles/iam.serviceAccountUser",
+            members=["user:example@example.com"])
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
@@ -883,6 +894,9 @@ class Instance(pulumi.CustomResource):
                     "network": my_network.id,
                     "subnet": my_subnetwork.id,
                     "nic_type": "GVNIC",
+                    "access_configs": [{
+                        "external_ip": static.address,
+                    }],
                 }],
                 "metadata": {
                     "terraform": "true",
@@ -894,7 +908,7 @@ class Instance(pulumi.CustomResource):
                 ],
             },
             disable_proxy_access=True,
-            instance_owners=["my@service-account.com"],
+            instance_owners=["example@example.com"],
             labels={
                 "k": "val",
             },

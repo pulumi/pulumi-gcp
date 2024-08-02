@@ -67,6 +67,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
+        /// The URL of the storage pool in which the new disk is created
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
+
+        /// <summary>
         /// The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         /// </summary>
         [Input("type")]

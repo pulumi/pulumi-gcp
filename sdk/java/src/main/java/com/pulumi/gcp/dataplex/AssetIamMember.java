@@ -476,11 +476,18 @@ public class AssetIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AssetIamMember(String name, AssetIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/assetIamMember:AssetIamMember", name, args == null ? AssetIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/assetIamMember:AssetIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AssetIamMember(String name, Output<String> id, @Nullable AssetIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/assetIamMember:AssetIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AssetIamMemberArgs makeArgs(AssetIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AssetIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

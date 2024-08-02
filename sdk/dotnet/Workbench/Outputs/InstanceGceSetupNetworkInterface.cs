@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Workbench.Outputs
     public sealed class InstanceGceSetupNetworkInterface
     {
         /// <summary>
+        /// Optional. An array of configurations for this interface. Currently, only one access
+        /// config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+        /// instance will have an external internet access through an ephemeral
+        /// external IP address.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.InstanceGceSetupNetworkInterfaceAccessConfig> AccessConfigs;
+        /// <summary>
         /// Optional. The name of the VPC that this VM instance is in.
         /// </summary>
         public readonly string? Network;
@@ -30,12 +38,15 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
         [OutputConstructor]
         private InstanceGceSetupNetworkInterface(
+            ImmutableArray<Outputs.InstanceGceSetupNetworkInterfaceAccessConfig> accessConfigs,
+
             string? network,
 
             string? nicType,
 
             string? subnet)
         {
+            AccessConfigs = accessConfigs;
             Network = network;
             NicType = nicType;
             Subnet = subnet;

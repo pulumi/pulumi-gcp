@@ -4,6 +4,8 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnly;
+import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigMerge;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets;
 import java.lang.String;
@@ -14,6 +16,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamDestinationConfigBigqueryDestinationConfig {
     /**
+     * @return AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+     * events) to a source table will be written to the destination Google BigQuery table, retaining the
+     * historical state of the data.
+     * 
+     */
+    private @Nullable StreamDestinationConfigBigqueryDestinationConfigAppendOnly appendOnly;
+    /**
      * @return The guaranteed data freshness (in seconds) when querying tables created by the stream.
      * Editing this field will only affect new tables created in the future, but existing tables
      * will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -21,6 +30,13 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
      * 
      */
     private @Nullable String dataFreshness;
+    /**
+     * @return Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+     * table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+     * in the source database. With Merge mode, no historical record of the change events is kept.
+     * 
+     */
+    private @Nullable StreamDestinationConfigBigqueryDestinationConfigMerge merge;
     /**
      * @return A single target dataset to which all data will be streamed.
      * Structure is documented below.
@@ -36,6 +52,15 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
 
     private StreamDestinationConfigBigqueryDestinationConfig() {}
     /**
+     * @return AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+     * events) to a source table will be written to the destination Google BigQuery table, retaining the
+     * historical state of the data.
+     * 
+     */
+    public Optional<StreamDestinationConfigBigqueryDestinationConfigAppendOnly> appendOnly() {
+        return Optional.ofNullable(this.appendOnly);
+    }
+    /**
      * @return The guaranteed data freshness (in seconds) when querying tables created by the stream.
      * Editing this field will only affect new tables created in the future, but existing tables
      * will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -44,6 +69,15 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
      */
     public Optional<String> dataFreshness() {
         return Optional.ofNullable(this.dataFreshness);
+    }
+    /**
+     * @return Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+     * table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+     * in the source database. With Merge mode, no historical record of the change events is kept.
+     * 
+     */
+    public Optional<StreamDestinationConfigBigqueryDestinationConfigMerge> merge() {
+        return Optional.ofNullable(this.merge);
     }
     /**
      * @return A single target dataset to which all data will be streamed.
@@ -71,21 +105,37 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable StreamDestinationConfigBigqueryDestinationConfigAppendOnly appendOnly;
         private @Nullable String dataFreshness;
+        private @Nullable StreamDestinationConfigBigqueryDestinationConfigMerge merge;
         private @Nullable StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset singleTargetDataset;
         private @Nullable StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets sourceHierarchyDatasets;
         public Builder() {}
         public Builder(StreamDestinationConfigBigqueryDestinationConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.appendOnly = defaults.appendOnly;
     	      this.dataFreshness = defaults.dataFreshness;
+    	      this.merge = defaults.merge;
     	      this.singleTargetDataset = defaults.singleTargetDataset;
     	      this.sourceHierarchyDatasets = defaults.sourceHierarchyDatasets;
         }
 
         @CustomType.Setter
+        public Builder appendOnly(@Nullable StreamDestinationConfigBigqueryDestinationConfigAppendOnly appendOnly) {
+
+            this.appendOnly = appendOnly;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dataFreshness(@Nullable String dataFreshness) {
 
             this.dataFreshness = dataFreshness;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder merge(@Nullable StreamDestinationConfigBigqueryDestinationConfigMerge merge) {
+
+            this.merge = merge;
             return this;
         }
         @CustomType.Setter
@@ -102,7 +152,9 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
         }
         public StreamDestinationConfigBigqueryDestinationConfig build() {
             final var _resultValue = new StreamDestinationConfigBigqueryDestinationConfig();
+            _resultValue.appendOnly = appendOnly;
             _resultValue.dataFreshness = dataFreshness;
+            _resultValue.merge = merge;
             _resultValue.singleTargetDataset = singleTargetDataset;
             _resultValue.sourceHierarchyDatasets = sourceHierarchyDatasets;
             return _resultValue;

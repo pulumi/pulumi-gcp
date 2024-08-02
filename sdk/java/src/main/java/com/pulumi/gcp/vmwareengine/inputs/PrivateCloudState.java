@@ -10,6 +10,8 @@ import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNsxArgs;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudVcenterArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,6 +22,23 @@ import javax.annotation.Nullable;
 public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
 
     public static final PrivateCloudState Empty = new PrivateCloudState();
+
+    /**
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * 
+     */
+    @Import(name="deletionDelayHours")
+    private @Nullable Output<Integer> deletionDelayHours;
+
+    /**
+     * @return The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * 
+     */
+    public Optional<Output<Integer>> deletionDelayHours() {
+        return Optional.ofNullable(this.deletionDelayHours);
+    }
 
     /**
      * User-provided description for this private cloud.
@@ -142,6 +161,25 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+     * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+     * deletion_delay_hours.
+     * 
+     */
+    @Import(name="sendDeletionDelayHoursIfZero")
+    private @Nullable Output<Boolean> sendDeletionDelayHoursIfZero;
+
+    /**
+     * @return While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+     * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+     * deletion_delay_hours.
+     * 
+     */
+    public Optional<Output<Boolean>> sendDeletionDelayHoursIfZero() {
+        return Optional.ofNullable(this.sendDeletionDelayHoursIfZero);
+    }
+
+    /**
      * State of the appliance.
      * Possible values are: `ACTIVE`, `CREATING`.
      * 
@@ -208,6 +246,7 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
     private PrivateCloudState() {}
 
     private PrivateCloudState(PrivateCloudState $) {
+        this.deletionDelayHours = $.deletionDelayHours;
         this.description = $.description;
         this.hcxes = $.hcxes;
         this.location = $.location;
@@ -216,6 +255,7 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
         this.networkConfig = $.networkConfig;
         this.nsxes = $.nsxes;
         this.project = $.project;
+        this.sendDeletionDelayHoursIfZero = $.sendDeletionDelayHoursIfZero;
         this.state = $.state;
         this.type = $.type;
         this.uid = $.uid;
@@ -238,6 +278,29 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(PrivateCloudState defaults) {
             $ = new PrivateCloudState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionDelayHours The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+         * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionDelayHours(@Nullable Output<Integer> deletionDelayHours) {
+            $.deletionDelayHours = deletionDelayHours;
+            return this;
+        }
+
+        /**
+         * @param deletionDelayHours The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+         * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionDelayHours(Integer deletionDelayHours) {
+            return deletionDelayHours(Output.of(deletionDelayHours));
         }
 
         /**
@@ -424,6 +487,31 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
 
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+         * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+         * deletion_delay_hours.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendDeletionDelayHoursIfZero(@Nullable Output<Boolean> sendDeletionDelayHoursIfZero) {
+            $.sendDeletionDelayHoursIfZero = sendDeletionDelayHoursIfZero;
+            return this;
+        }
+
+        /**
+         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+         * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+         * deletion_delay_hours.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendDeletionDelayHoursIfZero(Boolean sendDeletionDelayHoursIfZero) {
+            return sendDeletionDelayHoursIfZero(Output.of(sendDeletionDelayHoursIfZero));
         }
 
         /**

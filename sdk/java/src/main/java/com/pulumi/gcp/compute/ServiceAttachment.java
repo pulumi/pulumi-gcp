@@ -780,16 +780,14 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
     @Export(name="targetService", refs={String.class}, tree="[0]")
     private Output<String> targetService;
 
     /**
-     * @return The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * @return The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
     public Output<String> targetService() {
@@ -818,11 +816,18 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceAttachment(String name, ServiceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/serviceAttachment:ServiceAttachment", name, args == null ? ServiceAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/serviceAttachment:ServiceAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceAttachment(String name, Output<String> id, @Nullable ServiceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/serviceAttachment:ServiceAttachment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceAttachmentArgs makeArgs(ServiceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

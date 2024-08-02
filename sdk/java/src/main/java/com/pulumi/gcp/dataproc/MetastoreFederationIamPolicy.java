@@ -414,11 +414,18 @@ public class MetastoreFederationIamPolicy extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public MetastoreFederationIamPolicy(String name, MetastoreFederationIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy", name, args == null ? MetastoreFederationIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MetastoreFederationIamPolicy(String name, Output<String> id, @Nullable MetastoreFederationIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MetastoreFederationIamPolicyArgs makeArgs(MetastoreFederationIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetastoreFederationIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -16,8 +16,8 @@ public final class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueA
     public static final ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs Empty = new ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs();
 
     /**
-     * The [KMS key name] with which the content of the Operation is encrypted. The expected
-     * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * The [KMS key name] with which the content of the Operation is encrypted. The
+     * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -25,8 +25,8 @@ public final class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueA
     private @Nullable Output<String> kmsKeyName;
 
     /**
-     * @return The [KMS key name] with which the content of the Operation is encrypted. The expected
-     * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * @return The [KMS key name] with which the content of the Operation is encrypted. The
+     * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -77,8 +77,8 @@ public final class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueA
         }
 
         /**
-         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
          * Will be empty string if google managed.
          * 
          * @return builder
@@ -90,8 +90,8 @@ public final class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueA
         }
 
         /**
-         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
          * Will be empty string if google managed.
          * 
          * @return builder

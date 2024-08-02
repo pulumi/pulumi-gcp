@@ -19,7 +19,7 @@ public final class StreamDestinationConfigArgs extends com.pulumi.resources.Reso
     public static final StreamDestinationConfigArgs Empty = new StreamDestinationConfigArgs();
 
     /**
-     * A configuration for how data should be loaded to Cloud Storage.
+     * A configuration for how data should be loaded to Google BigQuery.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class StreamDestinationConfigArgs extends com.pulumi.resources.Reso
     private @Nullable Output<StreamDestinationConfigBigqueryDestinationConfigArgs> bigqueryDestinationConfig;
 
     /**
-     * @return A configuration for how data should be loaded to Cloud Storage.
+     * @return A configuration for how data should be loaded to Google BigQuery.
      * Structure is documented below.
      * 
      */
@@ -94,7 +94,7 @@ public final class StreamDestinationConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bigqueryDestinationConfig A configuration for how data should be loaded to Cloud Storage.
+         * @param bigqueryDestinationConfig A configuration for how data should be loaded to Google BigQuery.
          * Structure is documented below.
          * 
          * @return builder
@@ -106,7 +106,7 @@ public final class StreamDestinationConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bigqueryDestinationConfig A configuration for how data should be loaded to Cloud Storage.
+         * @param bigqueryDestinationConfig A configuration for how data should be loaded to Google BigQuery.
          * Structure is documented below.
          * 
          * @return builder

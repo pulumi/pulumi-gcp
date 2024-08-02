@@ -60,6 +60,7 @@ export interface GetProjectServiceArgs {
  * A collection of values returned by getProjectService.
  */
 export interface GetProjectServiceResult {
+    readonly checkIfServiceHasUsageOnDestroy: boolean;
     readonly disableDependentServices: boolean;
     readonly disableOnDestroy: boolean;
     /**

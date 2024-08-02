@@ -453,8 +453,8 @@ if not MYPY:
         """
         kms_key_name: NotRequired[pulumi.Input[str]]
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
 elif False:
@@ -468,8 +468,8 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs:
         """
         :param pulumi.Input[str] type: Type of Encryption Key
                Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
-        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The expected
-               format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
+               expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
                Will be empty string if google managed.
         """
         pulumi.set(__self__, "type", type)
@@ -493,8 +493,8 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         return pulumi.get(self, "kms_key_name")
@@ -1341,8 +1341,8 @@ if not MYPY:
         """
         kms_key_name: NotRequired[pulumi.Input[str]]
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
 elif False:
@@ -1356,8 +1356,8 @@ class ConnectionConfigVariableEncryptionKeyValueArgs:
         """
         :param pulumi.Input[str] type: Type of Encryption Key
                Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
-        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The expected
-               format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
+               expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
                Will be empty string if google managed.
         """
         pulumi.set(__self__, "type", type)
@@ -1381,8 +1381,8 @@ class ConnectionConfigVariableEncryptionKeyValueArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         return pulumi.get(self, "kms_key_name")
@@ -1825,8 +1825,8 @@ if not MYPY:
     class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
         kms_key_name: NotRequired[pulumi.Input[str]]
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         type: NotRequired[pulumi.Input[str]]
@@ -1843,8 +1843,8 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The expected
-               format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
+               expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
                Will be empty string if google managed.
         :param pulumi.Input[str] type: Type of Encryption Key
                Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -1858,8 +1858,8 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         return pulumi.get(self, "kms_key_name")
@@ -2153,8 +2153,8 @@ if not MYPY:
     class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
         kms_key_name: NotRequired[pulumi.Input[str]]
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         type: NotRequired[pulumi.Input[str]]
@@ -2171,8 +2171,8 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The expected
-               format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
+               expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
                Will be empty string if google managed.
         :param pulumi.Input[str] type: Type of Encryption Key
                Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -2186,8 +2186,8 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         return pulumi.get(self, "kms_key_name")
@@ -3083,8 +3083,8 @@ if not MYPY:
     class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
         kms_key_name: NotRequired[pulumi.Input[str]]
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         type: NotRequired[pulumi.Input[str]]
@@ -3101,8 +3101,8 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The expected
-               format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
+               expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
                Will be empty string if google managed.
         :param pulumi.Input[str] type: Type of Encryption Key
                Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -3116,8 +3116,8 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The [KMS key name] with which the content of the Operation is encrypted. The expected
-        format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        The [KMS key name] with which the content of the Operation is encrypted. The
+        expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         Will be empty string if google managed.
         """
         return pulumi.get(self, "kms_key_name")

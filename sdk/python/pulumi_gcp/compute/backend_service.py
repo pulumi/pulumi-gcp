@@ -1476,6 +1476,9 @@ class BackendService(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
+
         ## Example Usage
 
         ### Backend Service Basic
@@ -1902,6 +1905,9 @@ class BackendService(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 
         ## Example Usage
 

@@ -119,7 +119,7 @@ import (
 //					Tier: pulumi.String("db-f1-micro"),
 //					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
 //						Ipv4Enabled:                             pulumi.Bool(false),
-//						PrivateNetwork:                          privateNetwork.ID(),
+//						PrivateNetwork:                          privateNetwork.SelfLink,
 //						EnablePrivatePathForGoogleCloudServices: pulumi.Bool(true),
 //					},
 //				},

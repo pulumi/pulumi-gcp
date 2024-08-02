@@ -138,8 +138,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The fully-qualified resource name of the Firebase Realtime Database, in the
-     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * The fully-qualified resource name of the Firebase Realtime Database, in
+     * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */
@@ -233,8 +233,8 @@ export interface DatabaseInstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The fully-qualified resource name of the Firebase Realtime Database, in the
-     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * The fully-qualified resource name of the Firebase Realtime Database, in
+     * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */

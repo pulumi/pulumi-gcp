@@ -52,6 +52,7 @@ __all__ = [
     'BackendServiceOutlierDetectionBaseEjectionTime',
     'BackendServiceOutlierDetectionInterval',
     'BackendServiceSecuritySettings',
+    'BackendServiceSecuritySettingsAwsV4Authentication',
     'DiskAsyncPrimaryDisk',
     'DiskAsyncReplicationSecondaryDisk',
     'DiskDiskEncryptionKey',
@@ -409,6 +410,25 @@ __all__ = [
     'ReservationSpecificReservationInstanceProperties',
     'ReservationSpecificReservationInstancePropertiesGuestAccelerator',
     'ReservationSpecificReservationInstancePropertiesLocalSsd',
+    'ResizeRequestRequestedRunDuration',
+    'ResizeRequestStatus',
+    'ResizeRequestStatusError',
+    'ResizeRequestStatusErrorError',
+    'ResizeRequestStatusErrorErrorErrorDetail',
+    'ResizeRequestStatusErrorErrorErrorDetailErrorInfo',
+    'ResizeRequestStatusErrorErrorErrorDetailHelp',
+    'ResizeRequestStatusErrorErrorErrorDetailHelpLink',
+    'ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage',
+    'ResizeRequestStatusErrorErrorErrorDetailQuotaInfo',
+    'ResizeRequestStatusLastAttempt',
+    'ResizeRequestStatusLastAttemptError',
+    'ResizeRequestStatusLastAttemptErrorError',
+    'ResizeRequestStatusLastAttemptErrorErrorErrorDetail',
+    'ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo',
+    'ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp',
+    'ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink',
+    'ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage',
+    'ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo',
     'ResourcePolicyDiskConsistencyGroupPolicy',
     'ResourcePolicyGroupPlacementPolicy',
     'ResourcePolicyInstanceSchedulePolicy',
@@ -430,7 +450,11 @@ __all__ = [
     'RouterNatSubnetwork',
     'RouterPeerAdvertisedIpRange',
     'RouterPeerBfd',
+    'RouterPeerCustomLearnedIpRange',
     'RouterPeerMd5AuthenticationKey',
+    'RouterRoutePolicyTerm',
+    'RouterRoutePolicyTermAction',
+    'RouterRoutePolicyTermMatch',
     'RouterStatusBestRouteResult',
     'RouterStatusBestRoutesForRouterResult',
     'SecurityPolicyAdaptiveProtectionConfig',
@@ -587,6 +611,7 @@ __all__ = [
     'GetBackendServiceOutlierDetectionBaseEjectionTimeResult',
     'GetBackendServiceOutlierDetectionIntervalResult',
     'GetBackendServiceSecuritySettingResult',
+    'GetBackendServiceSecuritySettingAwsV4AuthenticationResult',
     'GetDiskAsyncPrimaryDiskResult',
     'GetDiskDiskEncryptionKeyResult',
     'GetDiskGuestOsFeatureResult',
@@ -3597,7 +3622,9 @@ class BackendServiceSecuritySettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "clientTlsPolicy":
+        if key == "awsV4Authentication":
+            suggest = "aws_v4_authentication"
+        elif key == "clientTlsPolicy":
             suggest = "client_tls_policy"
         elif key == "subjectAltNames":
             suggest = "subject_alt_names"
@@ -3614,9 +3641,16 @@ class BackendServiceSecuritySettings(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 client_tls_policy: str,
-                 subject_alt_names: Sequence[str]):
+                 aws_v4_authentication: Optional['outputs.BackendServiceSecuritySettingsAwsV4Authentication'] = None,
+                 client_tls_policy: Optional[str] = None,
+                 subject_alt_names: Optional[Sequence[str]] = None):
         """
+        :param 'BackendServiceSecuritySettingsAwsV4AuthenticationArgs' aws_v4_authentication: The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+               Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+               Structure is documented below.
+               
+               
+               <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         :param str client_tls_policy: ClientTlsPolicy is a resource that specifies how a client should authenticate
                connections to backends of a service. This resource itself does not affect
                configuration unless it is attached to a backend service resource.
@@ -3624,12 +3658,29 @@ class BackendServiceSecuritySettings(dict):
                If specified, the client will verify that the server certificate's subject
                alt name matches one of the specified values.
         """
-        pulumi.set(__self__, "client_tls_policy", client_tls_policy)
-        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+        if aws_v4_authentication is not None:
+            pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
+        if client_tls_policy is not None:
+            pulumi.set(__self__, "client_tls_policy", client_tls_policy)
+        if subject_alt_names is not None:
+            pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter(name="awsV4Authentication")
+    def aws_v4_authentication(self) -> Optional['outputs.BackendServiceSecuritySettingsAwsV4Authentication']:
+        """
+        The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+        Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+        Structure is documented below.
+
+
+        <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
+        """
+        return pulumi.get(self, "aws_v4_authentication")
 
     @property
     @pulumi.getter(name="clientTlsPolicy")
-    def client_tls_policy(self) -> str:
+    def client_tls_policy(self) -> Optional[str]:
         """
         ClientTlsPolicy is a resource that specifies how a client should authenticate
         connections to backends of a service. This resource itself does not affect
@@ -3639,13 +3690,95 @@ class BackendServiceSecuritySettings(dict):
 
     @property
     @pulumi.getter(name="subjectAltNames")
-    def subject_alt_names(self) -> Sequence[str]:
+    def subject_alt_names(self) -> Optional[Sequence[str]]:
         """
         A list of alternate names to verify the subject identity in the certificate.
         If specified, the client will verify that the server certificate's subject
         alt name matches one of the specified values.
         """
         return pulumi.get(self, "subject_alt_names")
+
+
+@pulumi.output_type
+class BackendServiceSecuritySettingsAwsV4Authentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "accessKeyVersion":
+            suggest = "access_key_version"
+        elif key == "originRegion":
+            suggest = "origin_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceSecuritySettingsAwsV4Authentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceSecuritySettingsAwsV4Authentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceSecuritySettingsAwsV4Authentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key: Optional[str] = None,
+                 access_key_id: Optional[str] = None,
+                 access_key_version: Optional[str] = None,
+                 origin_region: Optional[str] = None):
+        """
+        :param str access_key: The access key used for s3 bucket authentication.
+               Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+        :param str access_key_id: The identifier of an access key used for s3 bucket authentication.
+        :param str access_key_version: The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+        :param str origin_region: The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+               For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+        """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if access_key_version is not None:
+            pulumi.set(__self__, "access_key_version", access_key_version)
+        if origin_region is not None:
+            pulumi.set(__self__, "origin_region", origin_region)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        """
+        The access key used for s3 bucket authentication.
+        Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[str]:
+        """
+        The identifier of an access key used for s3 bucket authentication.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter(name="accessKeyVersion")
+    def access_key_version(self) -> Optional[str]:
+        """
+        The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+        """
+        return pulumi.get(self, "access_key_version")
+
+    @property
+    @pulumi.getter(name="originRegion")
+    def origin_region(self) -> Optional[str]:
+        """
+        The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+        For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+        """
+        return pulumi.get(self, "origin_region")
 
 
 @pulumi.output_type
@@ -6212,6 +6345,8 @@ class InstanceBootDiskInitializeParams(dict):
             suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
+        elif key == "storagePool":
+            suggest = "storage_pool"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceBootDiskInitializeParams. Access the value via the '{suggest}' property getter instead.")
@@ -6232,6 +6367,7 @@ class InstanceBootDiskInitializeParams(dict):
                  provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
+                 storage_pool: Optional[str] = None,
                  type: Optional[str] = None):
         """
         :param bool enable_confidential_compute: Whether this disk is using confidential compute mode.
@@ -6264,6 +6400,10 @@ class InstanceBootDiskInitializeParams(dict):
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
+        :param str storage_pool: The URL of the storage pool in which the new disk is created.
+               For example:
+               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         :param str type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
         if enable_confidential_compute is not None:
@@ -6280,6 +6420,8 @@ class InstanceBootDiskInitializeParams(dict):
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if storage_pool is not None:
+            pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -6361,6 +6503,17 @@ class InstanceBootDiskInitializeParams(dict):
         will inherit the size of its base image.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> Optional[str]:
+        """
+        The URL of the storage pool in which the new disk is created.
+        For example:
+        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        """
+        return pulumi.get(self, "storage_pool")
 
     @property
     @pulumi.getter
@@ -6729,6 +6882,8 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
             suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
+        elif key == "storagePool":
+            suggest = "storage_pool"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageBootDiskInitializeParams. Access the value via the '{suggest}' property getter instead.")
@@ -6749,6 +6904,7 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
                  provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
+                 storage_pool: Optional[str] = None,
                  type: Optional[str] = None):
         """
         :param bool enable_confidential_compute: A flag to enable confidential compute mode on boot disk
@@ -6758,6 +6914,7 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes.
+        :param str storage_pool: The URL of the storage pool in which the new disk is created
         :param str type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
         if enable_confidential_compute is not None:
@@ -6774,6 +6931,8 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if storage_pool is not None:
+            pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -6832,6 +6991,14 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         The size of the image in gigabytes.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> Optional[str]:
+        """
+        The URL of the storage pool in which the new disk is created
+        """
+        return pulumi.get(self, "storage_pool")
 
     @property
     @pulumi.getter
@@ -8321,6 +8488,8 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
             suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
+        elif key == "storagePool":
+            suggest = "storage_pool"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateBootDiskInitializeParams. Access the value via the '{suggest}' property getter instead.")
@@ -8341,6 +8510,7 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
                  provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
+                 storage_pool: Optional[str] = None,
                  type: Optional[str] = None):
         """
         :param bool enable_confidential_compute: A flag to enable confidential compute mode on boot disk
@@ -8350,6 +8520,7 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes.
+        :param str storage_pool: The URL of the storage pool in which the new disk is created
         :param str type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
         if enable_confidential_compute is not None:
@@ -8366,6 +8537,8 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if storage_pool is not None:
+            pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -8424,6 +8597,14 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         The size of the image in gigabytes.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> Optional[str]:
+        """
+        The URL of the storage pool in which the new disk is created
+        """
+        return pulumi.get(self, "storage_pool")
 
     @property
     @pulumi.getter
@@ -29487,6 +29668,1021 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
 
 
 @pulumi.output_type
+class ResizeRequestRequestedRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: str,
+                 nanos: Optional[int] = None):
+        """
+        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> str:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class ResizeRequestStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastAttempts":
+            suggest = "last_attempts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeRequestStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeRequestStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeRequestStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.ResizeRequestStatusError']] = None,
+                 last_attempts: Optional[Sequence['outputs.ResizeRequestStatusLastAttempt']] = None):
+        """
+        :param Sequence['ResizeRequestStatusErrorArgs'] errors: (Output)
+               [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+               Structure is documented below.
+        :param Sequence['ResizeRequestStatusLastAttemptArgs'] last_attempts: (Output)
+               [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if last_attempts is not None:
+            pulumi.set(__self__, "last_attempts", last_attempts)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusError']]:
+        """
+        (Output)
+        [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter(name="lastAttempts")
+    def last_attempts(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttempt']]:
+        """
+        (Output)
+        [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "last_attempts")
+
+
+@pulumi.output_type
+class ResizeRequestStatusError(dict):
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.ResizeRequestStatusErrorError']] = None):
+        """
+        :param Sequence['ResizeRequestStatusErrorErrorArgs'] errors: (Output)
+               [Output Only] The array of errors encountered while processing this operation.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorError']]:
+        """
+        (Output)
+        [Output Only] The array of errors encountered while processing this operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class ResizeRequestStatusErrorError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeRequestStatusErrorError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeRequestStatusErrorError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeRequestStatusErrorError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 error_details: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetail']] = None,
+                 location: Optional[str] = None,
+                 message: Optional[str] = None):
+        """
+        :param str code: (Output)
+               [Output Only] The error type identifier for this error.
+        :param Sequence['ResizeRequestStatusErrorErrorErrorDetailArgs'] error_details: (Output)
+               [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+               Structure is documented below.
+        :param str location: (Output)
+               Output Only] Indicates the field in the request that caused the error. This property is optional.
+        :param str message: (Output)
+               The localized error message in the above locale.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        [Output Only] The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetail']]:
+        """
+        (Output)
+        [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_details")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        (Output)
+        Output Only] Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class ResizeRequestStatusErrorErrorErrorDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorInfos":
+            suggest = "error_infos"
+        elif key == "localizedMessages":
+            suggest = "localized_messages"
+        elif key == "quotaInfos":
+            suggest = "quota_infos"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeRequestStatusErrorErrorErrorDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeRequestStatusErrorErrorErrorDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeRequestStatusErrorErrorErrorDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_infos: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailErrorInfo']] = None,
+                 helps: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailHelp']] = None,
+                 localized_messages: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage']] = None,
+                 quota_infos: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailQuotaInfo']] = None):
+        """
+        :param Sequence['ResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs'] error_infos: (Output)
+               [Output Only]
+               Structure is documented below.
+        :param Sequence['ResizeRequestStatusErrorErrorErrorDetailHelpArgs'] helps: (Output)
+               [Output Only]
+               Structure is documented below.
+        :param Sequence['ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs'] localized_messages: (Output)
+               [Output Only]
+               Structure is documented below.
+        :param Sequence['ResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs'] quota_infos: (Output)
+               [Output Only]
+               Structure is documented below.
+        """
+        if error_infos is not None:
+            pulumi.set(__self__, "error_infos", error_infos)
+        if helps is not None:
+            pulumi.set(__self__, "helps", helps)
+        if localized_messages is not None:
+            pulumi.set(__self__, "localized_messages", localized_messages)
+        if quota_infos is not None:
+            pulumi.set(__self__, "quota_infos", quota_infos)
+
+    @property
+    @pulumi.getter(name="errorInfos")
+    def error_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailErrorInfo']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_infos")
+
+    @property
+    @pulumi.getter
+    def helps(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailHelp']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "helps")
+
+    @property
+    @pulumi.getter(name="localizedMessages")
+    def localized_messages(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "localized_messages")
+
+    @property
+    @pulumi.getter(name="quotaInfos")
+    def quota_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailQuotaInfo']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota_infos")
+
+
+@pulumi.output_type
+class ResizeRequestStatusErrorErrorErrorDetailErrorInfo(dict):
+    def __init__(__self__, *,
+                 domain: Optional[str] = None,
+                 metadatas: Optional[Mapping[str, str]] = None,
+                 reason: Optional[str] = None):
+        """
+        :param str domain: (Output)
+               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        :param Mapping[str, str] metadatas: (Output)
+               Additional structured details about this error.
+               Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        :param str reason: (Output)
+               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        (Output)
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        Additional structured details about this error.
+        Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        (Output)
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class ResizeRequestStatusErrorErrorErrorDetailHelp(dict):
+    def __init__(__self__, *,
+                 links: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailHelpLink']] = None):
+        """
+        :param Sequence['ResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs'] links: (Output)
+               [Output Only]
+               Structure is documented below.
+        """
+        if links is not None:
+            pulumi.set(__self__, "links", links)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailHelpLink']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "links")
+
+
+@pulumi.output_type
+class ResizeRequestStatusErrorErrorErrorDetailHelpLink(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str description: An optional description of this resize-request.
+        :param str url: (Output)
+               The URL of the link.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resize-request.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        (Output)
+        The URL of the link.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage(dict):
+    def __init__(__self__, *,
+                 locale: Optional[str] = None,
+                 message: Optional[str] = None):
+        """
+        :param str locale: (Output)
+               The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        :param str message: (Output)
+               The localized error message in the above locale.
+        """
+        if locale is not None:
+            pulumi.set(__self__, "locale", locale)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> Optional[str]:
+        """
+        (Output)
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        return pulumi.get(self, "locale")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class ResizeRequestStatusErrorErrorErrorDetailQuotaInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "futureLimit":
+            suggest = "future_limit"
+        elif key == "limitName":
+            suggest = "limit_name"
+        elif key == "metricName":
+            suggest = "metric_name"
+        elif key == "rolloutStatus":
+            suggest = "rollout_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeRequestStatusErrorErrorErrorDetailQuotaInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeRequestStatusErrorErrorErrorDetailQuotaInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeRequestStatusErrorErrorErrorDetailQuotaInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimensions: Optional[Mapping[str, str]] = None,
+                 future_limit: Optional[int] = None,
+                 limit: Optional[int] = None,
+                 limit_name: Optional[str] = None,
+                 metric_name: Optional[str] = None,
+                 rollout_status: Optional[str] = None):
+        """
+        :param Mapping[str, str] dimensions: (Output)
+               The map holding related quota dimensions
+        :param int future_limit: (Output)
+               Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        :param int limit: (Output)
+               Current effective quota limit. The limit's unit depends on the quota type or metric.
+        :param str limit_name: (Output)
+               The name of the quota limit.
+        :param str metric_name: (Output)
+               The Compute Engine quota metric name.
+        :param str rollout_status: (Output)
+               Rollout status of the future quota limit.
+        """
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if future_limit is not None:
+            pulumi.set(__self__, "future_limit", future_limit)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if limit_name is not None:
+            pulumi.set(__self__, "limit_name", limit_name)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if rollout_status is not None:
+            pulumi.set(__self__, "rollout_status", rollout_status)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        The map holding related quota dimensions
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="futureLimit")
+    def future_limit(self) -> Optional[int]:
+        """
+        (Output)
+        Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "future_limit")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        (Output)
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter(name="limitName")
+    def limit_name(self) -> Optional[str]:
+        """
+        (Output)
+        The name of the quota limit.
+        """
+        return pulumi.get(self, "limit_name")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[str]:
+        """
+        (Output)
+        The Compute Engine quota metric name.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter(name="rolloutStatus")
+    def rollout_status(self) -> Optional[str]:
+        """
+        (Output)
+        Rollout status of the future quota limit.
+        """
+        return pulumi.get(self, "rollout_status")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttempt(dict):
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptError']] = None):
+        """
+        :param Sequence['ResizeRequestStatusLastAttemptErrorArgs'] errors: (Output)
+               [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptError']]:
+        """
+        (Output)
+        [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptError(dict):
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorError']] = None):
+        """
+        :param Sequence['ResizeRequestStatusLastAttemptErrorErrorArgs'] errors: (Output)
+               [Output Only] The array of errors encountered while processing this operation.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorError']]:
+        """
+        (Output)
+        [Output Only] The array of errors encountered while processing this operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptErrorError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeRequestStatusLastAttemptErrorError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeRequestStatusLastAttemptErrorError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeRequestStatusLastAttemptErrorError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 error_details: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetail']] = None,
+                 location: Optional[str] = None,
+                 message: Optional[str] = None):
+        """
+        :param str code: (Output)
+               [Output Only] The error type identifier for this error.
+        :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs'] error_details: (Output)
+               [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+               Structure is documented below.
+        :param str location: (Output)
+               Output Only] Indicates the field in the request that caused the error. This property is optional.
+        :param str message: (Output)
+               The localized error message in the above locale.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        [Output Only] The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetail']]:
+        """
+        (Output)
+        [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_details")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        (Output)
+        Output Only] Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptErrorErrorErrorDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorInfos":
+            suggest = "error_infos"
+        elif key == "localizedMessages":
+            suggest = "localized_messages"
+        elif key == "quotaInfos":
+            suggest = "quota_infos"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeRequestStatusLastAttemptErrorErrorErrorDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeRequestStatusLastAttemptErrorErrorErrorDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeRequestStatusLastAttemptErrorErrorErrorDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_infos: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo']] = None,
+                 helps: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp']] = None,
+                 localized_messages: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage']] = None,
+                 quota_infos: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo']] = None):
+        """
+        :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs'] error_infos: (Output)
+               [Output Only]
+               Structure is documented below.
+        :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs'] helps: (Output)
+               [Output Only]
+               Structure is documented below.
+        :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs'] localized_messages: (Output)
+               [Output Only]
+               Structure is documented below.
+        :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs'] quota_infos: (Output)
+               [Output Only]
+               Structure is documented below.
+        """
+        if error_infos is not None:
+            pulumi.set(__self__, "error_infos", error_infos)
+        if helps is not None:
+            pulumi.set(__self__, "helps", helps)
+        if localized_messages is not None:
+            pulumi.set(__self__, "localized_messages", localized_messages)
+        if quota_infos is not None:
+            pulumi.set(__self__, "quota_infos", quota_infos)
+
+    @property
+    @pulumi.getter(name="errorInfos")
+    def error_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_infos")
+
+    @property
+    @pulumi.getter
+    def helps(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "helps")
+
+    @property
+    @pulumi.getter(name="localizedMessages")
+    def localized_messages(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "localized_messages")
+
+    @property
+    @pulumi.getter(name="quotaInfos")
+    def quota_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota_infos")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo(dict):
+    def __init__(__self__, *,
+                 domain: Optional[str] = None,
+                 metadatas: Optional[Mapping[str, str]] = None,
+                 reason: Optional[str] = None):
+        """
+        :param str domain: (Output)
+               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        :param Mapping[str, str] metadatas: (Output)
+               Additional structured details about this error.
+               Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        :param str reason: (Output)
+               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        (Output)
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        Additional structured details about this error.
+        Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        (Output)
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp(dict):
+    def __init__(__self__, *,
+                 links: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink']] = None):
+        """
+        :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs'] links: (Output)
+               [Output Only]
+               Structure is documented below.
+        """
+        if links is not None:
+            pulumi.set(__self__, "links", links)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink']]:
+        """
+        (Output)
+        [Output Only]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "links")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str description: An optional description of this resize-request.
+        :param str url: (Output)
+               The URL of the link.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resize-request.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        (Output)
+        The URL of the link.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage(dict):
+    def __init__(__self__, *,
+                 locale: Optional[str] = None,
+                 message: Optional[str] = None):
+        """
+        :param str locale: (Output)
+               The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        :param str message: (Output)
+               The localized error message in the above locale.
+        """
+        if locale is not None:
+            pulumi.set(__self__, "locale", locale)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> Optional[str]:
+        """
+        (Output)
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        return pulumi.get(self, "locale")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "futureLimit":
+            suggest = "future_limit"
+        elif key == "limitName":
+            suggest = "limit_name"
+        elif key == "metricName":
+            suggest = "metric_name"
+        elif key == "rolloutStatus":
+            suggest = "rollout_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimensions: Optional[Mapping[str, str]] = None,
+                 future_limit: Optional[int] = None,
+                 limit: Optional[int] = None,
+                 limit_name: Optional[str] = None,
+                 metric_name: Optional[str] = None,
+                 rollout_status: Optional[str] = None):
+        """
+        :param Mapping[str, str] dimensions: (Output)
+               The map holding related quota dimensions
+        :param int future_limit: (Output)
+               Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        :param int limit: (Output)
+               Current effective quota limit. The limit's unit depends on the quota type or metric.
+        :param str limit_name: (Output)
+               The name of the quota limit.
+        :param str metric_name: (Output)
+               The Compute Engine quota metric name.
+        :param str rollout_status: (Output)
+               Rollout status of the future quota limit.
+        """
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if future_limit is not None:
+            pulumi.set(__self__, "future_limit", future_limit)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if limit_name is not None:
+            pulumi.set(__self__, "limit_name", limit_name)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if rollout_status is not None:
+            pulumi.set(__self__, "rollout_status", rollout_status)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        The map holding related quota dimensions
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="futureLimit")
+    def future_limit(self) -> Optional[int]:
+        """
+        (Output)
+        Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "future_limit")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        (Output)
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter(name="limitName")
+    def limit_name(self) -> Optional[str]:
+        """
+        (Output)
+        The name of the quota limit.
+        """
+        return pulumi.get(self, "limit_name")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[str]:
+        """
+        (Output)
+        The Compute Engine quota metric name.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter(name="rolloutStatus")
+    def rollout_status(self) -> Optional[str]:
+        """
+        (Output)
+        Rollout status of the future quota limit.
+        """
+        return pulumi.get(self, "rollout_status")
+
+
+@pulumi.output_type
 class ResourcePolicyDiskConsistencyGroupPolicy(dict):
     def __init__(__self__, *,
                  enabled: bool):
@@ -30808,6 +32004,26 @@ class RouterPeerBfd(dict):
 
 
 @pulumi.output_type
+class RouterPeerCustomLearnedIpRange(dict):
+    def __init__(__self__, *,
+                 range: str):
+        """
+        :param str range: The IP range to advertise. The value must be a
+               CIDR-formatted string.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @property
+    @pulumi.getter
+    def range(self) -> str:
+        """
+        The IP range to advertise. The value must be a
+        CIDR-formatted string.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
 class RouterPeerMd5AuthenticationKey(dict):
     def __init__(__self__, *,
                  key: str,
@@ -30844,6 +32060,170 @@ class RouterPeerMd5AuthenticationKey(dict):
         except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class RouterRoutePolicyTerm(dict):
+    def __init__(__self__, *,
+                 priority: int,
+                 actions: Optional[Sequence['outputs.RouterRoutePolicyTermAction']] = None,
+                 match: Optional['outputs.RouterRoutePolicyTermMatch'] = None):
+        """
+        :param int priority: The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+        :param Sequence['RouterRoutePolicyTermActionArgs'] actions: 'CEL expressions to evaluate to modify a route when this term matches.'\\
+               Structure is documented below.
+        :param 'RouterRoutePolicyTermMatchArgs' match: CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "priority", priority)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence['outputs.RouterRoutePolicyTermAction']]:
+        """
+        'CEL expressions to evaluate to modify a route when this term matches.'\\
+        Structure is documented below.
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional['outputs.RouterRoutePolicyTermMatch']:
+        """
+        CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+
+@pulumi.output_type
+class RouterRoutePolicyTermAction(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression
+               Language syntax.
+        :param str description: Description of the expression
+        :param str location: String indicating the location of the expression for error
+               reporting, e.g. a file name and a position in the file
+               
+               - - -
+        :param str title: Title for the expression, i.e. a short string describing its
+               purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression
+        Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error
+        reporting, e.g. a file name and a position in the file
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its
+        purpose.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class RouterRoutePolicyTermMatch(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str description: Description of the expression
+        :param str location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
@@ -42265,9 +43645,12 @@ class GetBackendServiceOutlierDetectionIntervalResult(dict):
 @pulumi.output_type
 class GetBackendServiceSecuritySettingResult(dict):
     def __init__(__self__, *,
+                 aws_v4_authentications: Sequence['outputs.GetBackendServiceSecuritySettingAwsV4AuthenticationResult'],
                  client_tls_policy: str,
                  subject_alt_names: Sequence[str]):
         """
+        :param Sequence['GetBackendServiceSecuritySettingAwsV4AuthenticationArgs'] aws_v4_authentications: The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+               Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
         :param str client_tls_policy: ClientTlsPolicy is a resource that specifies how a client should authenticate
                connections to backends of a service. This resource itself does not affect
                configuration unless it is attached to a backend service resource.
@@ -42275,8 +43658,18 @@ class GetBackendServiceSecuritySettingResult(dict):
                If specified, the client will verify that the server certificate's subject
                alt name matches one of the specified values.
         """
+        pulumi.set(__self__, "aws_v4_authentications", aws_v4_authentications)
         pulumi.set(__self__, "client_tls_policy", client_tls_policy)
         pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter(name="awsV4Authentications")
+    def aws_v4_authentications(self) -> Sequence['outputs.GetBackendServiceSecuritySettingAwsV4AuthenticationResult']:
+        """
+        The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+        Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+        """
+        return pulumi.get(self, "aws_v4_authentications")
 
     @property
     @pulumi.getter(name="clientTlsPolicy")
@@ -42297,6 +43690,61 @@ class GetBackendServiceSecuritySettingResult(dict):
         alt name matches one of the specified values.
         """
         return pulumi.get(self, "subject_alt_names")
+
+
+@pulumi.output_type
+class GetBackendServiceSecuritySettingAwsV4AuthenticationResult(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 access_key_id: str,
+                 access_key_version: str,
+                 origin_region: str):
+        """
+        :param str access_key: The access key used for s3 bucket authentication.
+               Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+        :param str access_key_id: The identifier of an access key used for s3 bucket authentication.
+        :param str access_key_version: The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+        :param str origin_region: The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+               For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "access_key_version", access_key_version)
+        pulumi.set(__self__, "origin_region", origin_region)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        The access key used for s3 bucket authentication.
+        Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> str:
+        """
+        The identifier of an access key used for s3 bucket authentication.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter(name="accessKeyVersion")
+    def access_key_version(self) -> str:
+        """
+        The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+        """
+        return pulumi.get(self, "access_key_version")
+
+    @property
+    @pulumi.getter(name="originRegion")
+    def origin_region(self) -> str:
+        """
+        The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+        For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+        """
+        return pulumi.get(self, "origin_region")
 
 
 @pulumi.output_type
@@ -44504,6 +45952,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
                  provisioned_throughput: int,
                  resource_manager_tags: Mapping[str, Any],
                  size: int,
+                 storage_pool: str,
                  type: str):
         """
         :param bool enable_confidential_compute: A flag to enable confidential compute mode on boot disk
@@ -44513,6 +45962,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes.
+        :param str storage_pool: The URL of the storage pool in which the new disk is created
         :param str type: The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
@@ -44522,6 +45972,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "storage_pool", storage_pool)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -44579,6 +46030,14 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         The size of the image in gigabytes.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> str:
+        """
+        The URL of the storage pool in which the new disk is created
+        """
+        return pulumi.get(self, "storage_pool")
 
     @property
     @pulumi.getter

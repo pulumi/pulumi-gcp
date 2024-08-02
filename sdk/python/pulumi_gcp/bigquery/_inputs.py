@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AppProfileDataBoostIsolationReadOnlyArgs',
+    'AppProfileDataBoostIsolationReadOnlyArgsDict',
     'AppProfileSingleClusterRoutingArgs',
     'AppProfileSingleClusterRoutingArgsDict',
     'AppProfileStandardIsolationArgs',
@@ -174,6 +176,40 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AppProfileDataBoostIsolationReadOnlyArgsDict(TypedDict):
+        compute_billing_owner: pulumi.Input[str]
+        """
+        The Compute Billing Owner for this Data Boost App Profile.
+        Possible values are: `HOST_PAYS`.
+        """
+elif False:
+    AppProfileDataBoostIsolationReadOnlyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppProfileDataBoostIsolationReadOnlyArgs:
+    def __init__(__self__, *,
+                 compute_billing_owner: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] compute_billing_owner: The Compute Billing Owner for this Data Boost App Profile.
+               Possible values are: `HOST_PAYS`.
+        """
+        pulumi.set(__self__, "compute_billing_owner", compute_billing_owner)
+
+    @property
+    @pulumi.getter(name="computeBillingOwner")
+    def compute_billing_owner(self) -> pulumi.Input[str]:
+        """
+        The Compute Billing Owner for this Data Boost App Profile.
+        Possible values are: `HOST_PAYS`.
+        """
+        return pulumi.get(self, "compute_billing_owner")
+
+    @compute_billing_owner.setter
+    def compute_billing_owner(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compute_billing_owner", value)
+
 
 if not MYPY:
     class AppProfileSingleClusterRoutingArgsDict(TypedDict):

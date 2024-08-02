@@ -232,11 +232,18 @@ public class LbRouteExtension extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LbRouteExtension(String name, LbRouteExtensionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/lbRouteExtension:LbRouteExtension", name, args == null ? LbRouteExtensionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkservices/lbRouteExtension:LbRouteExtension", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LbRouteExtension(String name, Output<String> id, @Nullable LbRouteExtensionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/lbRouteExtension:LbRouteExtension", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LbRouteExtensionArgs makeArgs(LbRouteExtensionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LbRouteExtensionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

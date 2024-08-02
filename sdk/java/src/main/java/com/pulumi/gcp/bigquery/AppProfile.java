@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.AppProfileArgs;
 import com.pulumi.gcp.bigquery.inputs.AppProfileState;
+import com.pulumi.gcp.bigquery.outputs.AppProfileDataBoostIsolationReadOnly;
 import com.pulumi.gcp.bigquery.outputs.AppProfileSingleClusterRouting;
 import com.pulumi.gcp.bigquery.outputs.AppProfileStandardIsolation;
 import java.lang.Boolean;
@@ -319,6 +320,22 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
         return this.appProfileId;
     }
     /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dataBoostIsolationReadOnly", refs={AppProfileDataBoostIsolationReadOnly.class}, tree="[0]")
+    private Output</* @Nullable */ AppProfileDataBoostIsolationReadOnly> dataBoostIsolationReadOnly;
+
+    /**
+     * @return Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AppProfileDataBoostIsolationReadOnly>> dataBoostIsolationReadOnly() {
+        return Codegen.optional(this.dataBoostIsolationReadOnly);
+    }
+    /**
      * Long form description of the use case for this app profile.
      * 
      */
@@ -479,11 +496,18 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AppProfile(String name, AppProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/appProfile:AppProfile", name, args == null ? AppProfileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquery/appProfile:AppProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AppProfile(String name, Output<String> id, @Nullable AppProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquery/appProfile:AppProfile", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AppProfileArgs makeArgs(AppProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppProfileArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

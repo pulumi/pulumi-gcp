@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// <summary>
     /// The NetworkConnectivity Spoke resource
     /// 
+    /// To get more information about Spoke, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Linked_vpc_network
+    /// ### Network Connectivity Spoke Linked Vpc Network Basic
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,13 +32,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "network",
+    ///         Name = "net",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
-    ///         Name = "hub",
+    ///         Name = "hub1",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -41,9 +48,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
-    ///         Name = "name",
+    ///         Name = "spoke1",
     ///         Location = "global",
-    ///         Description = "A sample spoke with a linked routher appliance instance",
+    ///         Description = "A sample spoke with a linked router appliance instance",
     ///         Labels = 
     ///         {
     ///             { "label-one", "value-one" },
@@ -62,7 +69,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Router_appliance
+    /// ### Network Connectivity Spoke Router Appliance Basic
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,24 +81,24 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "network",
+    ///         Name = "tf-test-network_2067",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "subnet",
+    ///         Name = "tf-test-subnet_40785",
     ///         IpCidrRange = "10.0.0.0/28",
-    ///         Region = "us-west1",
+    ///         Region = "us-central1",
     ///         Network = network.SelfLink,
     ///     });
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
-    ///         Name = "instance",
+    ///         Name = "tf-test-instance_79169",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
-    ///         Zone = "us-west1-a",
+    ///         Zone = "us-central1-a",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
@@ -117,7 +125,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
-    ///         Name = "hub",
+    ///         Name = "tf-test-hub_56529",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -127,8 +135,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
-    ///         Name = "name",
-    ///         Location = "us-west1",
+    ///         Name = "tf-test-name_75413",
+    ///         Location = "us-central1",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 
     ///         {
@@ -195,7 +203,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
-        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The URI of the hub that this spoke is attached to.
@@ -204,42 +212,46 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> Hub { get; private set; } = null!;
 
         /// <summary>
-        /// Optional labels in key:value format. For more information about labels, see [Requirements for
-        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// `effective_labels` for all of the labels present on the resource.
+        /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-        /// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-        /// advertising the same prefixes.
+        /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        /// Structure is documented below.
         /// </summary>
         [Output("linkedInterconnectAttachments")]
         public Output<Outputs.SpokeLinkedInterconnectAttachments?> LinkedInterconnectAttachments { get; private set; } = null!;
 
         /// <summary>
         /// The URIs of linked Router appliance resources
+        /// Structure is documented below.
         /// </summary>
         [Output("linkedRouterApplianceInstances")]
         public Output<Outputs.SpokeLinkedRouterApplianceInstances?> LinkedRouterApplianceInstances { get; private set; } = null!;
 
         /// <summary>
         /// VPC network that is associated with the spoke.
+        /// Structure is documented below.
         /// </summary>
         [Output("linkedVpcNetwork")]
         public Output<Outputs.SpokeLinkedVpcNetwork?> LinkedVpcNetwork { get; private set; } = null!;
 
         /// <summary>
         /// The URIs of linked VPN tunnel resources
+        /// Structure is documented below.
         /// </summary>
         [Output("linkedVpnTunnels")]
         public Output<Outputs.SpokeLinkedVpnTunnels?> LinkedVpnTunnels { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -251,19 +263,21 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
-        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        /// Output only. The current lifecycle state of this spoke.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -347,10 +361,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional labels in key:value format. For more information about labels, see [Requirements for
-        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// `effective_labels` for all of the labels present on the resource.
+        /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -359,33 +372,38 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
-        /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-        /// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-        /// advertising the same prefixes.
+        /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedInterconnectAttachments")]
         public Input<Inputs.SpokeLinkedInterconnectAttachmentsArgs>? LinkedInterconnectAttachments { get; set; }
 
         /// <summary>
         /// The URIs of linked Router appliance resources
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedRouterApplianceInstances")]
         public Input<Inputs.SpokeLinkedRouterApplianceInstancesArgs>? LinkedRouterApplianceInstances { get; set; }
 
         /// <summary>
         /// VPC network that is associated with the spoke.
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedVpcNetwork")]
         public Input<Inputs.SpokeLinkedVpcNetworkArgs>? LinkedVpcNetwork { get; set; }
 
         /// <summary>
         /// The URIs of linked VPN tunnel resources
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedVpnTunnels")]
         public Input<Inputs.SpokeLinkedVpnTunnelsArgs>? LinkedVpnTunnels { get; set; }
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -397,7 +415,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -423,17 +442,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Description { get; set; }
 
         [Input("effectiveLabels")]
-        private InputMap<object>? _effectiveLabels;
+        private InputMap<string>? _effectiveLabels;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
-        public InputMap<object> EffectiveLabels
+        public InputMap<string> EffectiveLabels
         {
-            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -448,10 +467,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional labels in key:value format. For more information about labels, see [Requirements for
-        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// `effective_labels` for all of the labels present on the resource.
+        /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -460,33 +478,38 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
-        /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-        /// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-        /// advertising the same prefixes.
+        /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedInterconnectAttachments")]
         public Input<Inputs.SpokeLinkedInterconnectAttachmentsGetArgs>? LinkedInterconnectAttachments { get; set; }
 
         /// <summary>
         /// The URIs of linked Router appliance resources
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedRouterApplianceInstances")]
         public Input<Inputs.SpokeLinkedRouterApplianceInstancesGetArgs>? LinkedRouterApplianceInstances { get; set; }
 
         /// <summary>
         /// VPC network that is associated with the spoke.
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedVpcNetwork")]
         public Input<Inputs.SpokeLinkedVpcNetworkGetArgs>? LinkedVpcNetwork { get; set; }
 
         /// <summary>
         /// The URIs of linked VPN tunnel resources
+        /// Structure is documented below.
         /// </summary>
         [Input("linkedVpnTunnels")]
         public Input<Inputs.SpokeLinkedVpnTunnelsGetArgs>? LinkedVpnTunnels { get; set; }
 
         /// <summary>
         /// The location for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -498,29 +521,31 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         [Input("pulumiLabels")]
-        private InputMap<object>? _pulumiLabels;
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
-        public InputMap<object> PulumiLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
 
         /// <summary>
-        /// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        /// Output only. The current lifecycle state of this spoke.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

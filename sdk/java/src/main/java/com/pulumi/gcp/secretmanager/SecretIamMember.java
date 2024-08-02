@@ -716,11 +716,18 @@ public class SecretIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SecretIamMember(String name, SecretIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:secretmanager/secretIamMember:SecretIamMember", name, args == null ? SecretIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:secretmanager/secretIamMember:SecretIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SecretIamMember(String name, Output<String> id, @Nullable SecretIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:secretmanager/secretIamMember:SecretIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SecretIamMemberArgs makeArgs(SecretIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecretIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

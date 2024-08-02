@@ -13,13 +13,19 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolNodeConfigReservationAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Corresponds to the type of reservation consumption.
+        /// The type of reservation consumption
+        /// Accepted values are:
+        /// 
+        /// * `"UNSPECIFIED"`: Default value. This should not be used.
+        /// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+        /// * `"ANY_RESERVATION"`: Consume any reservation available.
+        /// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
         /// </summary>
         [Input("consumeReservationType", required: true)]
         public Input<string> ConsumeReservationType { get; set; } = null!;
 
         /// <summary>
-        /// The label key of a reservation resource.
+        /// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -28,7 +34,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// The label values of the reservation resource.
+        /// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         /// </summary>
         public InputList<string> Values
         {

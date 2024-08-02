@@ -137,8 +137,8 @@ class DomainMappingMetadata(dict):
         :param str namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
         :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -206,8 +206,8 @@ class DomainMappingMetadata(dict):
     def annotations(self) -> Optional[Mapping[str, str]]:
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -677,8 +677,8 @@ class ServiceMetadata(dict):
                  uid: Optional[str] = None):
         """
         :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -748,8 +748,8 @@ class ServiceMetadata(dict):
     def annotations(self) -> Optional[Mapping[str, str]]:
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1233,8 +1233,8 @@ class ServiceTemplateMetadata(dict):
                  uid: Optional[str] = None):
         """
         :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1298,8 +1298,8 @@ class ServiceTemplateMetadata(dict):
     def annotations(self) -> Optional[Mapping[str, str]]:
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1427,7 +1427,8 @@ class ServiceTemplateSpec(dict):
                  volumes: Optional[Sequence['outputs.ServiceTemplateSpecVolume']] = None):
         """
         :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-               requests per container of the Revision. Values are:
+               requests per container of the Revision. If not specified or 0, defaults to 80 when
+               requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param Sequence['ServiceTemplateSpecContainerArgs'] containers: Containers defines the unit of execution for this Revision.
                Structure is documented below.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the
@@ -1463,7 +1464,8 @@ class ServiceTemplateSpec(dict):
     def container_concurrency(self) -> Optional[int]:
         """
         ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-        requests per container of the Revision. Values are:
+        requests per container of the Revision. If not specified or 0, defaults to 80 when
+        requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         return pulumi.get(self, "container_concurrency")
 
@@ -3808,11 +3810,8 @@ class GetServiceTemplateSpecResult(dict):
                  volumes: Sequence['outputs.GetServiceTemplateSpecVolumeResult']):
         """
         :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-               requests per container of the Revision. Values are:
-               - '0' thread-safe, the system should manage the max concurrency. This is
-                   the default value.
-               - '1' not-thread-safe. Single concurrency
-               - '2-N' thread-safe, max concurrency of N
+               requests per container of the Revision. If not specified or 0, defaults to 80 when
+               requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param Sequence['GetServiceTemplateSpecContainerArgs'] containers: Containers defines the unit of execution for this Revision.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the
                service. The service account represents the identity of the running revision,
@@ -3837,11 +3836,8 @@ class GetServiceTemplateSpecResult(dict):
     def container_concurrency(self) -> int:
         """
         ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-        requests per container of the Revision. Values are:
-        - '0' thread-safe, the system should manage the max concurrency. This is
-            the default value.
-        - '1' not-thread-safe. Single concurrency
-        - '2-N' thread-safe, max concurrency of N
+        requests per container of the Revision. If not specified or 0, defaults to 80 when
+        requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         return pulumi.get(self, "container_concurrency")
 

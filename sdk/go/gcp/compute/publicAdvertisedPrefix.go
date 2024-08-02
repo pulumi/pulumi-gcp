@@ -97,6 +97,8 @@ type PublicAdvertisedPrefix struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Output Only. The shared secret to be used for reverse DNS verification.
+	SharedSecret pulumi.StringOutput `pulumi:"sharedSecret"`
 }
 
 // NewPublicAdvertisedPrefix registers a new resource with the given unique name, arguments, and options.
@@ -155,6 +157,8 @@ type publicAdvertisedPrefixState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Output Only. The shared secret to be used for reverse DNS verification.
+	SharedSecret *string `pulumi:"sharedSecret"`
 }
 
 type PublicAdvertisedPrefixState struct {
@@ -178,6 +182,8 @@ type PublicAdvertisedPrefixState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Output Only. The shared secret to be used for reverse DNS verification.
+	SharedSecret pulumi.StringPtrInput
 }
 
 func (PublicAdvertisedPrefixState) ElementType() reflect.Type {
@@ -350,6 +356,11 @@ func (o PublicAdvertisedPrefixOutput) Project() pulumi.StringOutput {
 // The URI of the created resource.
 func (o PublicAdvertisedPrefixOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Output Only. The shared secret to be used for reverse DNS verification.
+func (o PublicAdvertisedPrefixOutput) SharedSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.SharedSecret }).(pulumi.StringOutput)
 }
 
 type PublicAdvertisedPrefixArrayOutput struct{ *pulumi.OutputState }

@@ -145,8 +145,8 @@ class _DatabaseInstanceState:
                
                
                - - -
-        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the
-               format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in
+               the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
                PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
                Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -223,8 +223,8 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully-qualified resource name of the Firebase Realtime Database, in the
-        format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        The fully-qualified resource name of the Firebase Realtime Database, in
+        the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
         PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         """
@@ -564,8 +564,8 @@ class DatabaseInstance(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the
-               format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in
+               the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
                PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
                Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -627,8 +627,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully-qualified resource name of the Firebase Realtime Database, in the
-        format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        The fully-qualified resource name of the Firebase Realtime Database, in
+        the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
         PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         """

@@ -29,9 +29,13 @@ class RouterPeerArgs:
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
+                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
+                 custom_learned_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
@@ -77,12 +81,21 @@ class RouterPeerArgs:
                length, the routes with the lowest priority value win.
         :param pulumi.Input['RouterPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+               subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        :param pulumi.Input[int] custom_learned_route_priority: The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+               ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+               priority of 100 to the ranges.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
         :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
         :param pulumi.Input[str] ipv4_nexthop_address: IPv4 address of the interface inside Google Cloud Platform.
@@ -127,12 +140,20 @@ class RouterPeerArgs:
             pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
         if bfd is not None:
             pulumi.set(__self__, "bfd", bfd)
+        if custom_learned_ip_ranges is not None:
+            pulumi.set(__self__, "custom_learned_ip_ranges", custom_learned_ip_ranges)
+        if custom_learned_route_priority is not None:
+            pulumi.set(__self__, "custom_learned_route_priority", custom_learned_route_priority)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if enable_ipv4 is not None:
             pulumi.set(__self__, "enable_ipv4", enable_ipv4)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        if export_policies is not None:
+            pulumi.set(__self__, "export_policies", export_policies)
+        if import_policies is not None:
+            pulumi.set(__self__, "import_policies", import_policies)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if ipv4_nexthop_address is not None:
@@ -277,6 +298,33 @@ class RouterPeerArgs:
         pulumi.set(self, "bfd", value)
 
     @property
+    @pulumi.getter(name="customLearnedIpRanges")
+    def custom_learned_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]:
+        """
+        The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+        subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        """
+        return pulumi.get(self, "custom_learned_ip_ranges")
+
+    @custom_learned_ip_ranges.setter
+    def custom_learned_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]):
+        pulumi.set(self, "custom_learned_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="customLearnedRoutePriority")
+    def custom_learned_route_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+        ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+        priority of 100 to the ranges.
+        """
+        return pulumi.get(self, "custom_learned_route_priority")
+
+    @custom_learned_route_priority.setter
+    def custom_learned_route_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "custom_learned_route_priority", value)
+
+    @property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -314,6 +362,32 @@ class RouterPeerArgs:
     @enable_ipv6.setter
     def enable_ipv6(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_ipv6", value)
+
+    @property
+    @pulumi.getter(name="exportPolicies")
+    def export_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        routers.list of export policies applied to this peer, in the order they must be evaluated.
+        The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        """
+        return pulumi.get(self, "export_policies")
+
+    @export_policies.setter
+    def export_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "export_policies", value)
+
+    @property
+    @pulumi.getter(name="importPolicies")
+    def import_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        routers.list of import policies applied to this peer, in the order they must be evaluated.
+        The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        """
+        return pulumi.get(self, "import_policies")
+
+    @import_policies.setter
+    def import_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "import_policies", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -475,9 +549,13 @@ class _RouterPeerState:
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
+                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
+                 custom_learned_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
@@ -520,12 +598,21 @@ class _RouterPeerState:
                length, the routes with the lowest priority value win.
         :param pulumi.Input['RouterPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+               subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        :param pulumi.Input[int] custom_learned_route_priority: The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+               ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+               priority of 100 to the ranges.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
         :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
@@ -583,12 +670,20 @@ class _RouterPeerState:
             pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
         if bfd is not None:
             pulumi.set(__self__, "bfd", bfd)
+        if custom_learned_ip_ranges is not None:
+            pulumi.set(__self__, "custom_learned_ip_ranges", custom_learned_ip_ranges)
+        if custom_learned_route_priority is not None:
+            pulumi.set(__self__, "custom_learned_route_priority", custom_learned_route_priority)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if enable_ipv4 is not None:
             pulumi.set(__self__, "enable_ipv4", enable_ipv4)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        if export_policies is not None:
+            pulumi.set(__self__, "export_policies", export_policies)
+        if import_policies is not None:
+            pulumi.set(__self__, "import_policies", import_policies)
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if ip_address is not None:
@@ -701,6 +796,33 @@ class _RouterPeerState:
         pulumi.set(self, "bfd", value)
 
     @property
+    @pulumi.getter(name="customLearnedIpRanges")
+    def custom_learned_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]:
+        """
+        The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+        subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        """
+        return pulumi.get(self, "custom_learned_ip_ranges")
+
+    @custom_learned_ip_ranges.setter
+    def custom_learned_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]):
+        pulumi.set(self, "custom_learned_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="customLearnedRoutePriority")
+    def custom_learned_route_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+        ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+        priority of 100 to the ranges.
+        """
+        return pulumi.get(self, "custom_learned_route_priority")
+
+    @custom_learned_route_priority.setter
+    def custom_learned_route_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "custom_learned_route_priority", value)
+
+    @property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -738,6 +860,32 @@ class _RouterPeerState:
     @enable_ipv6.setter
     def enable_ipv6(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_ipv6", value)
+
+    @property
+    @pulumi.getter(name="exportPolicies")
+    def export_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        routers.list of export policies applied to this peer, in the order they must be evaluated.
+        The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        """
+        return pulumi.get(self, "export_policies")
+
+    @export_policies.setter
+    def export_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "export_policies", value)
+
+    @property
+    @pulumi.getter(name="importPolicies")
+    def import_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        routers.list of import policies applied to this peer, in the order they must be evaluated.
+        The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        """
+        return pulumi.get(self, "import_policies")
+
+    @import_policies.setter
+    def import_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "import_policies", value)
 
     @property
     @pulumi.getter
@@ -961,9 +1109,13 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
+                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+                 custom_learned_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
@@ -1149,6 +1301,113 @@ class RouterPeer(pulumi.CustomResource):
             })
         ```
 
+        ### Router Peer Export And Import Policies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="my-router-net",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="my-router-subnet",
+            network=network.self_link,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        address = gcp.compute.Address("address",
+            name="my-router",
+            region=subnetwork.region)
+        vpn_gateway = gcp.compute.HaVpnGateway("vpn_gateway",
+            name="my-router-gateway",
+            network=network.self_link,
+            region=subnetwork.region)
+        external_gateway = gcp.compute.ExternalVpnGateway("external_gateway",
+            name="my-router-external-gateway",
+            redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
+            description="An externally managed VPN gateway",
+            interfaces=[{
+                "id": 0,
+                "ip_address": "8.8.8.8",
+            }])
+        router = gcp.compute.Router("router",
+            name="my-router",
+            region=subnetwork.region,
+            network=network.self_link,
+            bgp={
+                "asn": 64514,
+            })
+        vpn_tunnel = gcp.compute.VPNTunnel("vpn_tunnel",
+            name="my-router",
+            region=subnetwork.region,
+            vpn_gateway=vpn_gateway.id,
+            peer_external_gateway=external_gateway.id,
+            peer_external_gateway_interface=0,
+            shared_secret="unguessable",
+            router=router.name,
+            vpn_gateway_interface=0)
+        router_interface = gcp.compute.RouterInterface("router_interface",
+            name="my-router",
+            router=router.name,
+            region=router.region,
+            vpn_tunnel=vpn_tunnel.name)
+        rp_export = gcp.compute.RouterRoutePolicy("rp-export",
+            name="my-router-rp-export",
+            router=router.name,
+            region=router.region,
+            type="ROUTE_POLICY_TYPE_EXPORT",
+            terms=[{
+                "priority": 2,
+                "match": {
+                    "expression": "destination == '10.0.0.0/12'",
+                    "title": "export_expression",
+                    "description": "acceptance expression for export",
+                },
+                "actions": [{
+                    "expression": "accept()",
+                }],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[router_interface]))
+        rp_import = gcp.compute.RouterRoutePolicy("rp-import",
+            name="my-router-rp-import",
+            router=router.name,
+            region=router.region,
+            type="ROUTE_POLICY_TYPE_IMPORT",
+            terms=[{
+                "priority": 1,
+                "match": {
+                    "expression": "destination == '10.0.0.0/12'",
+                    "title": "import_expression",
+                    "description": "acceptance expression for import",
+                },
+                "actions": [{
+                    "expression": "accept()",
+                }],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    router_interface,
+                    rp_export,
+                ]))
+        router_peer = gcp.compute.RouterPeer("router_peer",
+            name="my-router-peer",
+            router=router.name,
+            region=router.region,
+            peer_asn=65515,
+            advertised_route_priority=100,
+            interface=router_interface.name,
+            md5_authentication_key={
+                "name": "my-router-peer-key",
+                "key": "my-router-peer-key-value",
+            },
+            import_policies=[rp_import.name],
+            export_policies=[rp_export.name],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    rp_export,
+                    rp_import,
+                    router_interface,
+                ]))
+        ```
+
         ## Import
 
         RouterBgpPeer can be imported using any of these accepted formats:
@@ -1206,12 +1465,21 @@ class RouterPeer(pulumi.CustomResource):
                length, the routes with the lowest priority value win.
         :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+               subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        :param pulumi.Input[int] custom_learned_route_priority: The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+               ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+               priority of 100 to the ranges.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
         :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
@@ -1426,6 +1694,113 @@ class RouterPeer(pulumi.CustomResource):
             })
         ```
 
+        ### Router Peer Export And Import Policies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="my-router-net",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="my-router-subnet",
+            network=network.self_link,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        address = gcp.compute.Address("address",
+            name="my-router",
+            region=subnetwork.region)
+        vpn_gateway = gcp.compute.HaVpnGateway("vpn_gateway",
+            name="my-router-gateway",
+            network=network.self_link,
+            region=subnetwork.region)
+        external_gateway = gcp.compute.ExternalVpnGateway("external_gateway",
+            name="my-router-external-gateway",
+            redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
+            description="An externally managed VPN gateway",
+            interfaces=[{
+                "id": 0,
+                "ip_address": "8.8.8.8",
+            }])
+        router = gcp.compute.Router("router",
+            name="my-router",
+            region=subnetwork.region,
+            network=network.self_link,
+            bgp={
+                "asn": 64514,
+            })
+        vpn_tunnel = gcp.compute.VPNTunnel("vpn_tunnel",
+            name="my-router",
+            region=subnetwork.region,
+            vpn_gateway=vpn_gateway.id,
+            peer_external_gateway=external_gateway.id,
+            peer_external_gateway_interface=0,
+            shared_secret="unguessable",
+            router=router.name,
+            vpn_gateway_interface=0)
+        router_interface = gcp.compute.RouterInterface("router_interface",
+            name="my-router",
+            router=router.name,
+            region=router.region,
+            vpn_tunnel=vpn_tunnel.name)
+        rp_export = gcp.compute.RouterRoutePolicy("rp-export",
+            name="my-router-rp-export",
+            router=router.name,
+            region=router.region,
+            type="ROUTE_POLICY_TYPE_EXPORT",
+            terms=[{
+                "priority": 2,
+                "match": {
+                    "expression": "destination == '10.0.0.0/12'",
+                    "title": "export_expression",
+                    "description": "acceptance expression for export",
+                },
+                "actions": [{
+                    "expression": "accept()",
+                }],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[router_interface]))
+        rp_import = gcp.compute.RouterRoutePolicy("rp-import",
+            name="my-router-rp-import",
+            router=router.name,
+            region=router.region,
+            type="ROUTE_POLICY_TYPE_IMPORT",
+            terms=[{
+                "priority": 1,
+                "match": {
+                    "expression": "destination == '10.0.0.0/12'",
+                    "title": "import_expression",
+                    "description": "acceptance expression for import",
+                },
+                "actions": [{
+                    "expression": "accept()",
+                }],
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    router_interface,
+                    rp_export,
+                ]))
+        router_peer = gcp.compute.RouterPeer("router_peer",
+            name="my-router-peer",
+            router=router.name,
+            region=router.region,
+            peer_asn=65515,
+            advertised_route_priority=100,
+            interface=router_interface.name,
+            md5_authentication_key={
+                "name": "my-router-peer-key",
+                "key": "my-router-peer-key-value",
+            },
+            import_policies=[rp_import.name],
+            export_policies=[rp_export.name],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    rp_export,
+                    rp_import,
+                    router_interface,
+                ]))
+        ```
+
         ## Import
 
         RouterBgpPeer can be imported using any of these accepted formats:
@@ -1476,9 +1851,13 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
+                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+                 custom_learned_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
@@ -1507,9 +1886,13 @@ class RouterPeer(pulumi.CustomResource):
             __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
             __props__.__dict__["advertised_route_priority"] = advertised_route_priority
             __props__.__dict__["bfd"] = bfd
+            __props__.__dict__["custom_learned_ip_ranges"] = custom_learned_ip_ranges
+            __props__.__dict__["custom_learned_route_priority"] = custom_learned_route_priority
             __props__.__dict__["enable"] = enable
             __props__.__dict__["enable_ipv4"] = enable_ipv4
             __props__.__dict__["enable_ipv6"] = enable_ipv6
+            __props__.__dict__["export_policies"] = export_policies
+            __props__.__dict__["import_policies"] = import_policies
             if interface is None and not opts.urn:
                 raise TypeError("Missing required property 'interface'")
             __props__.__dict__["interface"] = interface
@@ -1546,9 +1929,13 @@ class RouterPeer(pulumi.CustomResource):
             advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
             advertised_route_priority: Optional[pulumi.Input[int]] = None,
             bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
+            custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+            custom_learned_route_priority: Optional[pulumi.Input[int]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             enable_ipv4: Optional[pulumi.Input[bool]] = None,
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
+            export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
@@ -1596,12 +1983,21 @@ class RouterPeer(pulumi.CustomResource):
                length, the routes with the lowest priority value win.
         :param pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]] custom_learned_ip_ranges: The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+               subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        :param pulumi.Input[int] custom_learned_route_priority: The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+               ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+               priority of 100 to the ranges.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
         :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+               The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
@@ -1658,9 +2054,13 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["advertised_ip_ranges"] = advertised_ip_ranges
         __props__.__dict__["advertised_route_priority"] = advertised_route_priority
         __props__.__dict__["bfd"] = bfd
+        __props__.__dict__["custom_learned_ip_ranges"] = custom_learned_ip_ranges
+        __props__.__dict__["custom_learned_route_priority"] = custom_learned_route_priority
         __props__.__dict__["enable"] = enable
         __props__.__dict__["enable_ipv4"] = enable_ipv4
         __props__.__dict__["enable_ipv6"] = enable_ipv6
+        __props__.__dict__["export_policies"] = export_policies
+        __props__.__dict__["import_policies"] = import_policies
         __props__.__dict__["interface"] = interface
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ipv4_nexthop_address"] = ipv4_nexthop_address
@@ -1739,6 +2139,25 @@ class RouterPeer(pulumi.CustomResource):
         return pulumi.get(self, "bfd")
 
     @property
+    @pulumi.getter(name="customLearnedIpRanges")
+    def custom_learned_ip_ranges(self) -> pulumi.Output[Optional[Sequence['outputs.RouterPeerCustomLearnedIpRange']]]:
+        """
+        The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+        subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        """
+        return pulumi.get(self, "custom_learned_ip_ranges")
+
+    @property
+    @pulumi.getter(name="customLearnedRoutePriority")
+    def custom_learned_route_priority(self) -> pulumi.Output[Optional[int]]:
+        """
+        The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+        ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+        priority of 100 to the ranges.
+        """
+        return pulumi.get(self, "custom_learned_route_priority")
+
+    @property
     @pulumi.getter
     def enable(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1764,6 +2183,24 @@ class RouterPeer(pulumi.CustomResource):
         Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         """
         return pulumi.get(self, "enable_ipv6")
+
+    @property
+    @pulumi.getter(name="exportPolicies")
+    def export_policies(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        routers.list of export policies applied to this peer, in the order they must be evaluated.
+        The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        """
+        return pulumi.get(self, "export_policies")
+
+    @property
+    @pulumi.getter(name="importPolicies")
+    def import_policies(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        routers.list of import policies applied to this peer, in the order they must be evaluated.
+        The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        """
+        return pulumi.get(self, "import_policies")
 
     @property
     @pulumi.getter

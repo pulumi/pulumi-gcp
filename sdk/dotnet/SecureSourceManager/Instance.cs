@@ -168,9 +168,9 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///     });
     /// 
     ///     // ca pool IAM permissions can take time to propagate
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
     ///     {
-    ///         CreateDuration = "60s",
+    ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -193,7 +193,451 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         DependsOn =
     ///         {
     ///             rootCa,
-    ///             wait60Seconds,
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secure Source Manager Instance Private Psc Backend
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var caPool = new Gcp.CertificateAuthority.CaPool("ca_pool", new()
+    ///     {
+    ///         Name = "ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = true,
+    ///             PublishCrl = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var rootCa = new Gcp.CertificateAuthority.Authority("root_ca", new()
+    ///     {
+    ///         Pool = caPool.Name,
+    ///         CertificateAuthorityId = "root-ca",
+    ///         Location = "us-central1",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "google",
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         DeletionProtection = false,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         SkipGracePeriod = true,
+    ///     });
+    /// 
+    ///     var caPoolBinding = new Gcp.CertificateAuthority.CaPoolIamBinding("ca_pool_binding", new()
+    ///     {
+    ///         CaPool = caPool.Id,
+    ///         Role = "roles/privateca.certificateRequester",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    ///     // ca pool IAM permissions can take time to propagate
+    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             caPoolBinding,
+    ///         },
+    ///     });
+    /// 
+    ///     // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+    ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
+    ///     {
+    ///         InstanceId = "my-instance",
+    ///         Location = "us-central1",
+    ///         PrivateConfig = new Gcp.SecureSourceManager.Inputs.InstancePrivateConfigArgs
+    ///         {
+    ///             IsPrivate = true,
+    ///             CaPool = caPool.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             rootCa,
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     // Connect SSM private instance with L4 proxy ILB.
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Name = "my-subnet",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         IpCidrRange = "10.0.1.0/24",
+    ///         PrivateIpGoogleAccess = true,
+    ///     });
+    /// 
+    ///     var pscNeg = new Gcp.Compute.RegionNetworkEndpointGroup("psc_neg", new()
+    ///     {
+    ///         Name = "my-neg",
+    ///         Region = "us-central1",
+    ///         NetworkEndpointType = "PRIVATE_SERVICE_CONNECT",
+    ///         PscTargetService = @default.PrivateConfig.Apply(privateConfig =&gt; privateConfig?.HttpServiceAttachment),
+    ///         Network = network.Id,
+    ///         Subnetwork = subnet.Id,
+    ///     });
+    /// 
+    ///     var backendService = new Gcp.Compute.RegionBackendService("backend_service", new()
+    ///     {
+    ///         Name = "my-backend-service",
+    ///         Region = "us-central1",
+    ///         Protocol = "TCP",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = pscNeg.Id,
+    ///                 BalancingMode = "UTILIZATION",
+    ///                 CapacityScaler = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var proxySubnet = new Gcp.Compute.Subnetwork("proxy_subnet", new()
+    ///     {
+    ///         Name = "my-proxy-subnet",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         IpCidrRange = "10.0.2.0/24",
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
+    ///         Role = "ACTIVE",
+    ///     });
+    /// 
+    ///     var targetProxy = new Gcp.Compute.RegionTargetTcpProxy("target_proxy", new()
+    ///     {
+    ///         Name = "my-target-proxy",
+    ///         Region = "us-central1",
+    ///         BackendService = backendService.Id,
+    ///     });
+    /// 
+    ///     var fwRuleTargetProxy = new Gcp.Compute.ForwardingRule("fw_rule_target_proxy", new()
+    ///     {
+    ///         Name = "fw-rule-target-proxy",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         IpProtocol = "TCP",
+    ///         PortRange = "443",
+    ///         Target = targetProxy.Id,
+    ///         Network = network.Id,
+    ///         Subnetwork = subnet.Id,
+    ///         NetworkTier = "PREMIUM",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             proxySubnet,
+    ///         },
+    ///     });
+    /// 
+    ///     var privateZone = new Gcp.Dns.ManagedZone("private_zone", new()
+    ///     {
+    ///         Name = "my-dns-zone",
+    ///         DnsName = "p.sourcemanager.dev.",
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var ssmInstanceHtmlRecord = new Gcp.Dns.RecordSet("ssm_instance_html_record", new()
+    ///     {
+    ///         Name = @default.HostConfigs.Apply(hostConfigs =&gt; $"{hostConfigs[0].Html}."),
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         ManagedZone = privateZone.Name,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             fwRuleTargetProxy.IpAddress,
+    ///         },
+    ///     });
+    /// 
+    ///     var ssmInstanceApiRecord = new Gcp.Dns.RecordSet("ssm_instance_api_record", new()
+    ///     {
+    ///         Name = @default.HostConfigs.Apply(hostConfigs =&gt; $"{hostConfigs[0].Api}."),
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         ManagedZone = privateZone.Name,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             fwRuleTargetProxy.IpAddress,
+    ///         },
+    ///     });
+    /// 
+    ///     var ssmInstanceGitRecord = new Gcp.Dns.RecordSet("ssm_instance_git_record", new()
+    ///     {
+    ///         Name = @default.HostConfigs.Apply(hostConfigs =&gt; $"{hostConfigs[0].GitHttp}."),
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         ManagedZone = privateZone.Name,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             fwRuleTargetProxy.IpAddress,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secure Source Manager Instance Private Psc Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var caPool = new Gcp.CertificateAuthority.CaPool("ca_pool", new()
+    ///     {
+    ///         Name = "ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = true,
+    ///             PublishCrl = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var rootCa = new Gcp.CertificateAuthority.Authority("root_ca", new()
+    ///     {
+    ///         Pool = caPool.Name,
+    ///         CertificateAuthorityId = "root-ca",
+    ///         Location = "us-central1",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "google",
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         DeletionProtection = false,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         SkipGracePeriod = true,
+    ///     });
+    /// 
+    ///     var caPoolBinding = new Gcp.CertificateAuthority.CaPoolIamBinding("ca_pool_binding", new()
+    ///     {
+    ///         CaPool = caPool.Id,
+    ///         Role = "roles/privateca.certificateRequester",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    ///     // ca pool IAM permissions can take time to propagate
+    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             caPoolBinding,
+    ///         },
+    ///     });
+    /// 
+    ///     // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+    ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
+    ///     {
+    ///         InstanceId = "my-instance",
+    ///         Location = "us-central1",
+    ///         PrivateConfig = new Gcp.SecureSourceManager.Inputs.InstancePrivateConfigArgs
+    ///         {
+    ///             IsPrivate = true,
+    ///             CaPool = caPool.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             rootCa,
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     // Connect SSM private instance with endpoint.
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Name = "my-subnet",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         IpCidrRange = "10.0.60.0/24",
+    ///         PrivateIpGoogleAccess = true,
+    ///     });
+    /// 
+    ///     var address = new Gcp.Compute.Address("address", new()
+    ///     {
+    ///         Name = "my-address",
+    ///         Region = "us-central1",
+    ///         IPAddress = "10.0.60.100",
+    ///         AddressType = "INTERNAL",
+    ///         Subnetwork = subnet.Id,
+    ///     });
+    /// 
+    ///     var fwRuleServiceAttachment = new Gcp.Compute.ForwardingRule("fw_rule_service_attachment", new()
+    ///     {
+    ///         Name = "fw-rule-service-attachment",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "",
+    ///         IpAddress = address.Id,
+    ///         Network = network.Id,
+    ///         Target = @default.PrivateConfig.Apply(privateConfig =&gt; privateConfig?.HttpServiceAttachment),
+    ///     });
+    /// 
+    ///     var privateZone = new Gcp.Dns.ManagedZone("private_zone", new()
+    ///     {
+    ///         Name = "my-dns-zone",
+    ///         DnsName = "p.sourcemanager.dev.",
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var ssmInstanceHtmlRecord = new Gcp.Dns.RecordSet("ssm_instance_html_record", new()
+    ///     {
+    ///         Name = @default.HostConfigs.Apply(hostConfigs =&gt; $"{hostConfigs[0].Html}."),
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         ManagedZone = privateZone.Name,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             fwRuleServiceAttachment.IpAddress,
+    ///         },
+    ///     });
+    /// 
+    ///     var ssmInstanceApiRecord = new Gcp.Dns.RecordSet("ssm_instance_api_record", new()
+    ///     {
+    ///         Name = @default.HostConfigs.Apply(hostConfigs =&gt; $"{hostConfigs[0].Api}."),
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         ManagedZone = privateZone.Name,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             fwRuleServiceAttachment.IpAddress,
+    ///         },
+    ///     });
+    /// 
+    ///     var ssmInstanceGitRecord = new Gcp.Dns.RecordSet("ssm_instance_git_record", new()
+    ///     {
+    ///         Name = @default.HostConfigs.Apply(hostConfigs =&gt; $"{hostConfigs[0].GitHttp}."),
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         ManagedZone = privateZone.Name,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             fwRuleServiceAttachment.IpAddress,
     ///         },
     ///     });
     /// 

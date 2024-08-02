@@ -11,7 +11,6 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.HubArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.HubState;
 import com.pulumi.gcp.networkconnectivity.outputs.HubRoutingVpc;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,10 +20,16 @@ import javax.annotation.Nullable;
 /**
  * The NetworkConnectivity Hub resource
  * 
+ * To get more information about Hub, see:
+ * 
+ * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+ * 
  * ## Example Usage
  * 
- * ### Basic_hub
- * A basic test of a networkconnectivity hub
+ * ### Network Connectivity Hub Basic
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -49,9 +54,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Hub("primary", HubArgs.builder()
- *             .name("hub")
+ *             .name("basic")
  *             .description("A sample hub")
- *             .project("my-project-name")
  *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
@@ -120,19 +124,18 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveLabels;
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Output<Map<String,Object>> effectiveLabels() {
+    public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -142,7 +145,6 @@ public class Hub extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -169,35 +171,40 @@ public class Hub extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> pulumiLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> pulumiLabels() {
+    public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
     /**
      * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+     * Structure is documented below.
      * 
      */
     @Export(name="routingVpcs", refs={List.class,HubRoutingVpc.class}, tree="[0,1]")
@@ -205,20 +212,21 @@ public class Hub extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+     * Structure is documented below.
      * 
      */
     public Output<List<HubRoutingVpc>> routingVpcs() {
         return this.routingVpcs;
     }
     /**
-     * Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * Output only. The current lifecycle state of this hub.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * @return Output only. The current lifecycle state of this hub.
      * 
      */
     public Output<String> state() {
@@ -275,11 +283,18 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Hub(String name, @Nullable HubArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/hub:Hub", name, args == null ? HubArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkconnectivity/hub:Hub", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Hub(String name, Output<String> id, @Nullable HubState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkconnectivity/hub:Hub", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HubArgs makeArgs(@Nullable HubArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HubArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

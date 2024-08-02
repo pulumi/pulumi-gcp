@@ -245,6 +245,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> AppProfileId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dataBoostIsolationReadOnly")]
+        public Output<Outputs.AppProfileDataBoostIsolationReadOnly?> DataBoostIsolationReadOnly { get; private set; } = null!;
+
+        /// <summary>
         /// Long form description of the use case for this app profile.
         /// </summary>
         [Output("description")]
@@ -360,6 +367,13 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> AppProfileId { get; set; } = null!;
 
         /// <summary>
+        /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataBoostIsolationReadOnly")]
+        public Input<Inputs.AppProfileDataBoostIsolationReadOnlyArgs>? DataBoostIsolationReadOnly { get; set; }
+
+        /// <summary>
         /// Long form description of the use case for this app profile.
         /// </summary>
         [Input("description")]
@@ -435,6 +449,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("appProfileId")]
         public Input<string>? AppProfileId { get; set; }
+
+        /// <summary>
+        /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataBoostIsolationReadOnly")]
+        public Input<Inputs.AppProfileDataBoostIsolationReadOnlyGetArgs>? DataBoostIsolationReadOnly { get; set; }
 
         /// <summary>
         /// Long form description of the use case for this app profile.

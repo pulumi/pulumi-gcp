@@ -417,11 +417,18 @@ public class NamespaceIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NamespaceIamBinding(String name, NamespaceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding", name, args == null ? NamespaceIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NamespaceIamBinding(String name, Output<String> id, @Nullable NamespaceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NamespaceIamBindingArgs makeArgs(NamespaceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NamespaceIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

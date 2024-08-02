@@ -289,11 +289,18 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionSslPolicy(String name, @Nullable RegionSslPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionSslPolicy:RegionSslPolicy", name, args == null ? RegionSslPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionSslPolicy:RegionSslPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionSslPolicy(String name, Output<String> id, @Nullable RegionSslPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionSslPolicy:RegionSslPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionSslPolicyArgs makeArgs(@Nullable RegionSslPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionSslPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

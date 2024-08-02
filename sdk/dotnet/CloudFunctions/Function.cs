@@ -164,6 +164,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<ImmutableDictionary<string, object>?> BuildEnvironmentVariables { get; private set; } = null!;
 
         /// <summary>
+        /// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        /// </summary>
+        [Output("buildServiceAccount")]
+        public Output<string> BuildServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         /// </summary>
         [Output("buildWorkerPool")]
@@ -437,6 +443,12 @@ namespace Pulumi.Gcp.CloudFunctions
         }
 
         /// <summary>
+        /// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        /// </summary>
+        [Input("buildServiceAccount")]
+        public Input<string>? BuildServiceAccount { get; set; }
+
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         /// </summary>
         [Input("buildWorkerPool")]
@@ -664,6 +676,12 @@ namespace Pulumi.Gcp.CloudFunctions
             get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<object>());
             set => _buildEnvironmentVariables = value;
         }
+
+        /// <summary>
+        /// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        /// </summary>
+        [Input("buildServiceAccount")]
+        public Input<string>? BuildServiceAccount { get; set; }
 
         /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.

@@ -51,6 +51,11 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
      */
     private @Nullable Integer size;
     /**
+     * @return The URL of the storage pool in which the new disk is created
+     * 
+     */
+    private @Nullable String storagePool;
+    /**
      * @return The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
      * 
      */
@@ -107,6 +112,13 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
         return Optional.ofNullable(this.size);
     }
     /**
+     * @return The URL of the storage pool in which the new disk is created
+     * 
+     */
+    public Optional<String> storagePool() {
+        return Optional.ofNullable(this.storagePool);
+    }
+    /**
      * @return The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
      * 
      */
@@ -130,6 +142,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
         private @Nullable Integer provisionedThroughput;
         private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable Integer size;
+        private @Nullable String storagePool;
         private @Nullable String type;
         public Builder() {}
         public Builder(InstanceFromTemplateBootDiskInitializeParams defaults) {
@@ -141,6 +154,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
 
@@ -187,6 +201,12 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
             return this;
         }
         @CustomType.Setter
+        public Builder storagePool(@Nullable String storagePool) {
+
+            this.storagePool = storagePool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
 
             this.type = type;
@@ -201,6 +221,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
             _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.size = size;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;
         }

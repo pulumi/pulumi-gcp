@@ -48,8 +48,8 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The fully-qualified resource name of the Hosting site, in the
-     * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+     * Output only. The fully-qualified resource name of the Hosting site, in
+     * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
      * Firebase project&#39;s
      * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
      * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -61,8 +61,8 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Output only. The fully-qualified resource name of the Hosting site, in the
-     * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+     * @return Output only. The fully-qualified resource name of the Hosting site, in
+     * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
      * Firebase project&#39;s
      * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
      * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -183,8 +183,8 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. The fully-qualified resource name of the Hosting site, in the
-         * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+         * @param name Output only. The fully-qualified resource name of the Hosting site, in
+         * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
          * Firebase project&#39;s
          * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
          * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -200,8 +200,8 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. The fully-qualified resource name of the Hosting site, in the
-         * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+         * @param name Output only. The fully-qualified resource name of the Hosting site, in
+         * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
          * Firebase project&#39;s
          * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
          * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).

@@ -55,6 +55,16 @@ export type EnvironmentIamPolicy = import("./environmentIamPolicy").EnvironmentI
 export const EnvironmentIamPolicy: typeof import("./environmentIamPolicy").EnvironmentIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EnvironmentIamPolicy"], () => require("./environmentIamPolicy"));
 
+export { EnvironmentKeyvaluemapsArgs, EnvironmentKeyvaluemapsState } from "./environmentKeyvaluemaps";
+export type EnvironmentKeyvaluemaps = import("./environmentKeyvaluemaps").EnvironmentKeyvaluemaps;
+export const EnvironmentKeyvaluemaps: typeof import("./environmentKeyvaluemaps").EnvironmentKeyvaluemaps = null as any;
+utilities.lazyLoad(exports, ["EnvironmentKeyvaluemaps"], () => require("./environmentKeyvaluemaps"));
+
+export { EnvironmentKeyvaluemapsEntriesArgs, EnvironmentKeyvaluemapsEntriesState } from "./environmentKeyvaluemapsEntries";
+export type EnvironmentKeyvaluemapsEntries = import("./environmentKeyvaluemapsEntries").EnvironmentKeyvaluemapsEntries;
+export const EnvironmentKeyvaluemapsEntries: typeof import("./environmentKeyvaluemapsEntries").EnvironmentKeyvaluemapsEntries = null as any;
+utilities.lazyLoad(exports, ["EnvironmentKeyvaluemapsEntries"], () => require("./environmentKeyvaluemapsEntries"));
+
 export { FlowhookArgs, FlowhookState } from "./flowhook";
 export type Flowhook = import("./flowhook").Flowhook;
 export const Flowhook: typeof import("./flowhook").Flowhook = null as any;
@@ -145,6 +155,10 @@ const _module = {
                 return new EnvironmentIamMember(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy":
                 return new EnvironmentIamPolicy(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps":
+                return new EnvironmentKeyvaluemaps(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries":
+                return new EnvironmentKeyvaluemapsEntries(name, <any>undefined, { urn })
             case "gcp:apigee/flowhook:Flowhook":
                 return new Flowhook(name, <any>undefined, { urn })
             case "gcp:apigee/instance:Instance":
@@ -184,6 +198,8 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentKeyvaluemaps", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentKeyvaluemapsEntries", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/flowhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instanceAttachment", _module)

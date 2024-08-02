@@ -239,11 +239,18 @@ public class TenantOauthIdpConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TenantOauthIdpConfig(String name, TenantOauthIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig", name, args == null ? TenantOauthIdpConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TenantOauthIdpConfig(String name, Output<String> id, @Nullable TenantOauthIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TenantOauthIdpConfigArgs makeArgs(TenantOauthIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TenantOauthIdpConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -339,11 +339,18 @@ public class Note extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Note(String name, NoteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:containeranalysis/note:Note", name, args == null ? NoteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:containeranalysis/note:Note", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Note(String name, Output<String> id, @Nullable NoteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:containeranalysis/note:Note", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NoteArgs makeArgs(NoteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NoteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
