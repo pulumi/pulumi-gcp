@@ -90,6 +90,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
+        /// The URL of the storage pool in which the new disk is created.
+        /// For example:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
+
+        /// <summary>
         /// The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         /// </summary>
         [Input("type")]

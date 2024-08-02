@@ -1714,7 +1714,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smbSettings")
-    def smb_settings(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def smb_settings(self) -> pulumi.Output[Sequence[str]]:
         """
         Settings for volumes with SMB access.
         Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.

@@ -34,8 +34,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -58,9 +56,7 @@ import (
 //			_, err = projects.NewIAMMember(ctx, "hc_sa_bq_jobuser", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.jobUser"),
-//				Member: hcSa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
+//				Member:  hcSa.Member,
 //			})
 //			if err != nil {
 //				return err
@@ -79,6 +75,8 @@ type ServiceIdentity struct {
 
 	// The email address of the Google managed service account.
 	Email pulumi.StringOutput `pulumi:"email"`
+	// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -123,6 +121,8 @@ func GetServiceIdentity(ctx *pulumi.Context,
 type serviceIdentityState struct {
 	// The email address of the Google managed service account.
 	Email *string `pulumi:"email"`
+	// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -135,6 +135,8 @@ type serviceIdentityState struct {
 type ServiceIdentityState struct {
 	// The email address of the Google managed service account.
 	Email pulumi.StringPtrInput
+	// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -259,6 +261,11 @@ func (o ServiceIdentityOutput) ToServiceIdentityOutputWithContext(ctx context.Co
 // The email address of the Google managed service account.
 func (o ServiceIdentityOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIdentity) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+func (o ServiceIdentityOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIdentity) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

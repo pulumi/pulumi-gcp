@@ -500,7 +500,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
@@ -511,8 +511,270 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
-                    wait60_seconds,
+                    wait120_seconds,
                 ]))
+        ```
+        ### Secure Source Manager Instance Private Psc Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.get_project()
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options={
+                "publish_ca_cert": True,
+                "publish_crl": True,
+            })
+        root_ca = gcp.certificateauthority.Authority("root_ca",
+            pool=ca_pool.name,
+            certificate_authority_id="root-ca",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "google",
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
+            skip_grace_period=True)
+        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
+            ca_pool=ca_pool.id,
+            role="roles/privateca.certificateRequester",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
+        # ca pool IAM permissions can take time to propagate
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
+        # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+        default = gcp.securesourcemanager.Instance("default",
+            instance_id="my-instance",
+            location="us-central1",
+            private_config={
+                "is_private": True,
+                "ca_pool": ca_pool.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    root_ca,
+                    wait120_seconds,
+                ]))
+        # Connect SSM private instance with L4 proxy ILB.
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnet",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.1.0/24",
+            private_ip_google_access=True)
+        psc_neg = gcp.compute.RegionNetworkEndpointGroup("psc_neg",
+            name="my-neg",
+            region="us-central1",
+            network_endpoint_type="PRIVATE_SERVICE_CONNECT",
+            psc_target_service=default.private_config.http_service_attachment,
+            network=network.id,
+            subnetwork=subnet.id)
+        backend_service = gcp.compute.RegionBackendService("backend_service",
+            name="my-backend-service",
+            region="us-central1",
+            protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backends=[{
+                "group": psc_neg.id,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
+            }])
+        proxy_subnet = gcp.compute.Subnetwork("proxy_subnet",
+            name="my-proxy-subnet",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.2.0/24",
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        target_proxy = gcp.compute.RegionTargetTcpProxy("target_proxy",
+            name="my-target-proxy",
+            region="us-central1",
+            backend_service=backend_service.id)
+        fw_rule_target_proxy = gcp.compute.ForwardingRule("fw_rule_target_proxy",
+            name="fw-rule-target-proxy",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            ip_protocol="TCP",
+            port_range="443",
+            target=target_proxy.id,
+            network=network.id,
+            subnetwork=subnet.id,
+            network_tier="PREMIUM",
+            opts = pulumi.ResourceOptions(depends_on=[proxy_subnet]))
+        private_zone = gcp.dns.ManagedZone("private_zone",
+            name="my-dns-zone",
+            dns_name="p.sourcemanager.dev.",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": network.id,
+                }],
+            })
+        ssm_instance_html_record = gcp.dns.RecordSet("ssm_instance_html_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].html}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_target_proxy.ip_address])
+        ssm_instance_api_record = gcp.dns.RecordSet("ssm_instance_api_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].api}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_target_proxy.ip_address])
+        ssm_instance_git_record = gcp.dns.RecordSet("ssm_instance_git_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].git_http}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_target_proxy.ip_address])
+        ```
+        ### Secure Source Manager Instance Private Psc Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.get_project()
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options={
+                "publish_ca_cert": True,
+                "publish_crl": True,
+            })
+        root_ca = gcp.certificateauthority.Authority("root_ca",
+            pool=ca_pool.name,
+            certificate_authority_id="root-ca",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "google",
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
+            skip_grace_period=True)
+        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
+            ca_pool=ca_pool.id,
+            role="roles/privateca.certificateRequester",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
+        # ca pool IAM permissions can take time to propagate
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
+        # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+        default = gcp.securesourcemanager.Instance("default",
+            instance_id="my-instance",
+            location="us-central1",
+            private_config={
+                "is_private": True,
+                "ca_pool": ca_pool.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    root_ca,
+                    wait120_seconds,
+                ]))
+        # Connect SSM private instance with endpoint.
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnet",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.60.0/24",
+            private_ip_google_access=True)
+        address = gcp.compute.Address("address",
+            name="my-address",
+            region="us-central1",
+            address="10.0.60.100",
+            address_type="INTERNAL",
+            subnetwork=subnet.id)
+        fw_rule_service_attachment = gcp.compute.ForwardingRule("fw_rule_service_attachment",
+            name="fw-rule-service-attachment",
+            region="us-central1",
+            load_balancing_scheme="",
+            ip_address=address.id,
+            network=network.id,
+            target=default.private_config.http_service_attachment)
+        private_zone = gcp.dns.ManagedZone("private_zone",
+            name="my-dns-zone",
+            dns_name="p.sourcemanager.dev.",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": network.id,
+                }],
+            })
+        ssm_instance_html_record = gcp.dns.RecordSet("ssm_instance_html_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].html}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_service_attachment.ip_address])
+        ssm_instance_api_record = gcp.dns.RecordSet("ssm_instance_api_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].api}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_service_attachment.ip_address])
+        ssm_instance_git_record = gcp.dns.RecordSet("ssm_instance_git_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].git_http}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_service_attachment.ip_address])
         ```
 
         ## Import
@@ -668,7 +930,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
@@ -679,8 +941,270 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
-                    wait60_seconds,
+                    wait120_seconds,
                 ]))
+        ```
+        ### Secure Source Manager Instance Private Psc Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.get_project()
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options={
+                "publish_ca_cert": True,
+                "publish_crl": True,
+            })
+        root_ca = gcp.certificateauthority.Authority("root_ca",
+            pool=ca_pool.name,
+            certificate_authority_id="root-ca",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "google",
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
+            skip_grace_period=True)
+        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
+            ca_pool=ca_pool.id,
+            role="roles/privateca.certificateRequester",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
+        # ca pool IAM permissions can take time to propagate
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
+        # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+        default = gcp.securesourcemanager.Instance("default",
+            instance_id="my-instance",
+            location="us-central1",
+            private_config={
+                "is_private": True,
+                "ca_pool": ca_pool.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    root_ca,
+                    wait120_seconds,
+                ]))
+        # Connect SSM private instance with L4 proxy ILB.
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnet",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.1.0/24",
+            private_ip_google_access=True)
+        psc_neg = gcp.compute.RegionNetworkEndpointGroup("psc_neg",
+            name="my-neg",
+            region="us-central1",
+            network_endpoint_type="PRIVATE_SERVICE_CONNECT",
+            psc_target_service=default.private_config.http_service_attachment,
+            network=network.id,
+            subnetwork=subnet.id)
+        backend_service = gcp.compute.RegionBackendService("backend_service",
+            name="my-backend-service",
+            region="us-central1",
+            protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backends=[{
+                "group": psc_neg.id,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
+            }])
+        proxy_subnet = gcp.compute.Subnetwork("proxy_subnet",
+            name="my-proxy-subnet",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.2.0/24",
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        target_proxy = gcp.compute.RegionTargetTcpProxy("target_proxy",
+            name="my-target-proxy",
+            region="us-central1",
+            backend_service=backend_service.id)
+        fw_rule_target_proxy = gcp.compute.ForwardingRule("fw_rule_target_proxy",
+            name="fw-rule-target-proxy",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            ip_protocol="TCP",
+            port_range="443",
+            target=target_proxy.id,
+            network=network.id,
+            subnetwork=subnet.id,
+            network_tier="PREMIUM",
+            opts = pulumi.ResourceOptions(depends_on=[proxy_subnet]))
+        private_zone = gcp.dns.ManagedZone("private_zone",
+            name="my-dns-zone",
+            dns_name="p.sourcemanager.dev.",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": network.id,
+                }],
+            })
+        ssm_instance_html_record = gcp.dns.RecordSet("ssm_instance_html_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].html}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_target_proxy.ip_address])
+        ssm_instance_api_record = gcp.dns.RecordSet("ssm_instance_api_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].api}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_target_proxy.ip_address])
+        ssm_instance_git_record = gcp.dns.RecordSet("ssm_instance_git_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].git_http}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_target_proxy.ip_address])
+        ```
+        ### Secure Source Manager Instance Private Psc Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.get_project()
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options={
+                "publish_ca_cert": True,
+                "publish_crl": True,
+            })
+        root_ca = gcp.certificateauthority.Authority("root_ca",
+            pool=ca_pool.name,
+            certificate_authority_id="root-ca",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "google",
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
+            skip_grace_period=True)
+        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
+            ca_pool=ca_pool.id,
+            role="roles/privateca.certificateRequester",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
+        # ca pool IAM permissions can take time to propagate
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
+        # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+        default = gcp.securesourcemanager.Instance("default",
+            instance_id="my-instance",
+            location="us-central1",
+            private_config={
+                "is_private": True,
+                "ca_pool": ca_pool.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    root_ca,
+                    wait120_seconds,
+                ]))
+        # Connect SSM private instance with endpoint.
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnet",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.60.0/24",
+            private_ip_google_access=True)
+        address = gcp.compute.Address("address",
+            name="my-address",
+            region="us-central1",
+            address="10.0.60.100",
+            address_type="INTERNAL",
+            subnetwork=subnet.id)
+        fw_rule_service_attachment = gcp.compute.ForwardingRule("fw_rule_service_attachment",
+            name="fw-rule-service-attachment",
+            region="us-central1",
+            load_balancing_scheme="",
+            ip_address=address.id,
+            network=network.id,
+            target=default.private_config.http_service_attachment)
+        private_zone = gcp.dns.ManagedZone("private_zone",
+            name="my-dns-zone",
+            dns_name="p.sourcemanager.dev.",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": network.id,
+                }],
+            })
+        ssm_instance_html_record = gcp.dns.RecordSet("ssm_instance_html_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].html}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_service_attachment.ip_address])
+        ssm_instance_api_record = gcp.dns.RecordSet("ssm_instance_api_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].api}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_service_attachment.ip_address])
+        ssm_instance_git_record = gcp.dns.RecordSet("ssm_instance_git_record",
+            name=default.host_configs.apply(lambda host_configs: f"{host_configs[0].git_http}."),
+            type="A",
+            ttl=300,
+            managed_zone=private_zone.name,
+            rrdatas=[fw_rule_service_attachment.ip_address])
         ```
 
         ## Import

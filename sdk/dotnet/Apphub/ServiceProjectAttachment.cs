@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.Apphub
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+        /// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.Apphub
         /// <summary>
         /// "Immutable. Service project name in the format: \"projects/abc\"
         /// or \"projects/123\". As input, project name with either project id or number
-        /// are accepted. As output, this field will contain project number. "
+        /// are accepted. As output, this field will contain project number."
         /// </summary>
         [Output("serviceProject")]
         public Output<string?> ServiceProject { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.Apphub
         /// <summary>
         /// "Immutable. Service project name in the format: \"projects/abc\"
         /// or \"projects/123\". As input, project name with either project id or number
-        /// are accepted. As output, this field will contain project number. "
+        /// are accepted. As output, this field will contain project number."
         /// </summary>
         [Input("serviceProject")]
         public Input<string>? ServiceProject { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Gcp.Apphub
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+        /// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.Gcp.Apphub
         /// <summary>
         /// "Immutable. Service project name in the format: \"projects/abc\"
         /// or \"projects/123\". As input, project name with either project id or number
-        /// are accepted. As output, this field will contain project number. "
+        /// are accepted. As output, this field will contain project number."
         /// </summary>
         [Input("serviceProject")]
         public Input<string>? ServiceProject { get; set; }

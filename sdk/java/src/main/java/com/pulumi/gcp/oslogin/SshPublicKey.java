@@ -184,11 +184,18 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SshPublicKey(String name, SshPublicKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:oslogin/sshPublicKey:SshPublicKey", name, args == null ? SshPublicKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:oslogin/sshPublicKey:SshPublicKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SshPublicKey(String name, Output<String> id, @Nullable SshPublicKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:oslogin/sshPublicKey:SshPublicKey", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SshPublicKeyArgs makeArgs(SshPublicKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SshPublicKeyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -176,11 +176,18 @@ public class OrganizationExclusion extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationExclusion(String name, OrganizationExclusionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationExclusion:OrganizationExclusion", name, args == null ? OrganizationExclusionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/organizationExclusion:OrganizationExclusion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationExclusion(String name, Output<String> id, @Nullable OrganizationExclusionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/organizationExclusion:OrganizationExclusion", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationExclusionArgs makeArgs(OrganizationExclusionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationExclusionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

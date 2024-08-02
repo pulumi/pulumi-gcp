@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 
         /// <summary>
         /// The list of router appliance instances
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs> Instances
         {

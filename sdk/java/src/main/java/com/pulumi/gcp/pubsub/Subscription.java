@@ -551,7 +551,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_79169")
+ *                 .filenameSuffix("-_91980")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -627,7 +627,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_56529")
+ *                 .filenameSuffix("-_37118")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -710,7 +710,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_75413")
+ *                 .filenameSuffix("-_80332")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -1171,11 +1171,18 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Subscription(String name, SubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/subscription:Subscription", name, args == null ? SubscriptionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/subscription:Subscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Subscription(String name, Output<String> id, @Nullable SubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/subscription:Subscription", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubscriptionArgs makeArgs(SubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubscriptionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

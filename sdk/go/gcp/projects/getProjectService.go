@@ -73,8 +73,9 @@ type GetProjectServiceArgs struct {
 
 // A collection of values returned by getProjectService.
 type GetProjectServiceResult struct {
-	DisableDependentServices bool `pulumi:"disableDependentServices"`
-	DisableOnDestroy         bool `pulumi:"disableOnDestroy"`
+	CheckIfServiceHasUsageOnDestroy bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
+	DisableDependentServices        bool `pulumi:"disableDependentServices"`
+	DisableOnDestroy                bool `pulumi:"disableOnDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	Project *string `pulumi:"project"`
@@ -122,6 +123,10 @@ func (o GetProjectServiceResultOutput) ToGetProjectServiceResultOutput() GetProj
 
 func (o GetProjectServiceResultOutput) ToGetProjectServiceResultOutputWithContext(ctx context.Context) GetProjectServiceResultOutput {
 	return o
+}
+
+func (o GetProjectServiceResultOutput) CheckIfServiceHasUsageOnDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectServiceResult) bool { return v.CheckIfServiceHasUsageOnDestroy }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectServiceResultOutput) DisableDependentServices() pulumi.BoolOutput {

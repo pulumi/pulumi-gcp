@@ -35,19 +35,24 @@ class SpokeArgs:
         The set of arguments for constructing a Spoke resource.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[str] location: The location for the resource
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional description of the spoke.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for
-               labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-               prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-               advertising the same prefixes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
+               Structure is documented below.
         :param pulumi.Input['SpokeLinkedVpcNetworkArgs'] linked_vpc_network: VPC network that is associated with the spoke.
+               Structure is documented below.
         :param pulumi.Input['SpokeLinkedVpnTunnelsArgs'] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
+               Structure is documented below.
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "hub", hub)
         pulumi.set(__self__, "location", location)
@@ -85,6 +90,9 @@ class SpokeArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -108,10 +116,9 @@ class SpokeArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional labels in key:value format. For more information about labels, see [Requirements for
-        labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        `effective_labels` for all of the labels present on the resource.
+        Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -123,9 +130,8 @@ class SpokeArgs:
     @pulumi.getter(name="linkedInterconnectAttachments")
     def linked_interconnect_attachments(self) -> Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']]:
         """
-        A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-        prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-        advertising the same prefixes.
+        A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_interconnect_attachments")
 
@@ -138,6 +144,7 @@ class SpokeArgs:
     def linked_router_appliance_instances(self) -> Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]:
         """
         The URIs of linked Router appliance resources
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_router_appliance_instances")
 
@@ -150,6 +157,7 @@ class SpokeArgs:
     def linked_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]:
         """
         VPC network that is associated with the spoke.
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_vpc_network")
 
@@ -162,6 +170,7 @@ class SpokeArgs:
     def linked_vpn_tunnels(self) -> Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']]:
         """
         The URIs of linked VPN tunnel resources
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_vpn_tunnels")
 
@@ -185,7 +194,8 @@ class SpokeArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -199,7 +209,7 @@ class _SpokeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
@@ -209,7 +219,7 @@ class _SpokeState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  unique_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -217,23 +227,29 @@ class _SpokeState:
         Input properties used for looking up and filtering Spoke resources.
         :param pulumi.Input[str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[str] description: An optional description of the spoke.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for
-               labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-               prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-               advertising the same prefixes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
+               Structure is documented below.
         :param pulumi.Input['SpokeLinkedVpcNetworkArgs'] linked_vpc_network: VPC network that is associated with the spoke.
+               Structure is documented below.
         :param pulumi.Input['SpokeLinkedVpnTunnelsArgs'] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
+               
+               
+               - - -
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
+        :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the spoke was last updated.
         """
@@ -296,14 +312,14 @@ class _SpokeState:
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @property
@@ -322,10 +338,9 @@ class _SpokeState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional labels in key:value format. For more information about labels, see [Requirements for
-        labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        `effective_labels` for all of the labels present on the resource.
+        Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -337,9 +352,8 @@ class _SpokeState:
     @pulumi.getter(name="linkedInterconnectAttachments")
     def linked_interconnect_attachments(self) -> Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']]:
         """
-        A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-        prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-        advertising the same prefixes.
+        A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_interconnect_attachments")
 
@@ -352,6 +366,7 @@ class _SpokeState:
     def linked_router_appliance_instances(self) -> Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]:
         """
         The URIs of linked Router appliance resources
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_router_appliance_instances")
 
@@ -364,6 +379,7 @@ class _SpokeState:
     def linked_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]:
         """
         VPC network that is associated with the spoke.
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_vpc_network")
 
@@ -376,6 +392,7 @@ class _SpokeState:
     def linked_vpn_tunnels(self) -> Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']]:
         """
         The URIs of linked VPN tunnel resources
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_vpn_tunnels")
 
@@ -388,6 +405,9 @@ class _SpokeState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -411,7 +431,8 @@ class _SpokeState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -421,21 +442,22 @@ class _SpokeState:
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        Output only. The current lifecycle state of this spoke.
         """
         return pulumi.get(self, "state")
 
@@ -487,26 +509,33 @@ class Spoke(pulumi.CustomResource):
         """
         The NetworkConnectivity Spoke resource
 
+        To get more information about Spoke, see:
+
+        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+
         ## Example Usage
 
-        ### Linked_vpc_network
+        ### Network Connectivity Spoke Linked Vpc Network Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="network",
+            name="net",
             auto_create_subnetworks=False)
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="hub",
+            name="hub1",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="name",
+            name="spoke1",
             location="global",
-            description="A sample spoke with a linked routher appliance instance",
+            description="A sample spoke with a linked router appliance instance",
             labels={
                 "label-one": "value-one",
             },
@@ -519,24 +548,25 @@ class Spoke(pulumi.CustomResource):
                 "uri": network.self_link,
             })
         ```
-        ### Router_appliance
+        ### Network Connectivity Spoke Router Appliance Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="network",
+            name="tf-test-network_2067",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="subnet",
+            name="tf-test-subnet_40785",
             ip_cidr_range="10.0.0.0/28",
-            region="us-west1",
+            region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="instance",
+            name="tf-test-instance_79169",
             machine_type="e2-medium",
             can_ip_forward=True,
-            zone="us-west1-a",
+            zone="us-central1-a",
             boot_disk={
                 "initialize_params": {
                     "image": "projects/debian-cloud/global/images/debian-10-buster-v20210817",
@@ -550,14 +580,14 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="hub",
+            name="tf-test-hub_56529",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="name",
-            location="us-west1",
+            name="tf-test-name_75413",
+            location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
                 "label-one": "value-one",
@@ -600,19 +630,24 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the spoke.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for
-               labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-               prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-               advertising the same prefixes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']] linked_router_appliance_instances: The URIs of linked Router appliance resources
+               Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']] linked_vpc_network: VPC network that is associated with the spoke.
+               Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
+               
+               
+               - - -
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -623,26 +658,33 @@ class Spoke(pulumi.CustomResource):
         """
         The NetworkConnectivity Spoke resource
 
+        To get more information about Spoke, see:
+
+        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+
         ## Example Usage
 
-        ### Linked_vpc_network
+        ### Network Connectivity Spoke Linked Vpc Network Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="network",
+            name="net",
             auto_create_subnetworks=False)
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="hub",
+            name="hub1",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="name",
+            name="spoke1",
             location="global",
-            description="A sample spoke with a linked routher appliance instance",
+            description="A sample spoke with a linked router appliance instance",
             labels={
                 "label-one": "value-one",
             },
@@ -655,24 +697,25 @@ class Spoke(pulumi.CustomResource):
                 "uri": network.self_link,
             })
         ```
-        ### Router_appliance
+        ### Network Connectivity Spoke Router Appliance Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="network",
+            name="tf-test-network_2067",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="subnet",
+            name="tf-test-subnet_40785",
             ip_cidr_range="10.0.0.0/28",
-            region="us-west1",
+            region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="instance",
+            name="tf-test-instance_79169",
             machine_type="e2-medium",
             can_ip_forward=True,
-            zone="us-west1-a",
+            zone="us-central1-a",
             boot_disk={
                 "initialize_params": {
                     "image": "projects/debian-cloud/global/images/debian-10-buster-v20210817",
@@ -686,14 +729,14 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="hub",
+            name="tf-test-hub_56529",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="name",
-            location="us-west1",
+            name="tf-test-name_75413",
+            location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
                 "label-one": "value-one",
@@ -800,7 +843,7 @@ class Spoke(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             hub: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
@@ -810,7 +853,7 @@ class Spoke(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             unique_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Spoke':
@@ -823,23 +866,29 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[str] description: An optional description of the spoke.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for
-               labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-               prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-               advertising the same prefixes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']] linked_router_appliance_instances: The URIs of linked Router appliance resources
+               Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']] linked_vpc_network: VPC network that is associated with the spoke.
+               Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
+               
+               
+               - - -
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
+        :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the spoke was last updated.
         """
@@ -883,7 +932,7 @@ class Spoke(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
@@ -901,10 +950,9 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional labels in key:value format. For more information about labels, see [Requirements for
-        labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        `effective_labels` for all of the labels present on the resource.
+        Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -912,9 +960,8 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter(name="linkedInterconnectAttachments")
     def linked_interconnect_attachments(self) -> pulumi.Output[Optional['outputs.SpokeLinkedInterconnectAttachments']]:
         """
-        A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-        prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-        advertising the same prefixes.
+        A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_interconnect_attachments")
 
@@ -923,6 +970,7 @@ class Spoke(pulumi.CustomResource):
     def linked_router_appliance_instances(self) -> pulumi.Output[Optional['outputs.SpokeLinkedRouterApplianceInstances']]:
         """
         The URIs of linked Router appliance resources
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_router_appliance_instances")
 
@@ -931,6 +979,7 @@ class Spoke(pulumi.CustomResource):
     def linked_vpc_network(self) -> pulumi.Output[Optional['outputs.SpokeLinkedVpcNetwork']]:
         """
         VPC network that is associated with the spoke.
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_vpc_network")
 
@@ -939,6 +988,7 @@ class Spoke(pulumi.CustomResource):
     def linked_vpn_tunnels(self) -> pulumi.Output[Optional['outputs.SpokeLinkedVpnTunnels']]:
         """
         The URIs of linked VPN tunnel resources
+        Structure is documented below.
         """
         return pulumi.get(self, "linked_vpn_tunnels")
 
@@ -947,6 +997,9 @@ class Spoke(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -962,15 +1015,17 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -978,7 +1033,7 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        Output only. The current lifecycle state of this spoke.
         """
         return pulumi.get(self, "state")
 

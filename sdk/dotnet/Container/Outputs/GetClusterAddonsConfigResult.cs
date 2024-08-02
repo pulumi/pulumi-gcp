@@ -62,6 +62,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> NetworkPolicyConfigs;
         /// <summary>
+        /// The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigRayOperatorConfigResult> RayOperatorConfigs;
+        /// <summary>
         /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> StatefulHaConfigs;
@@ -92,6 +96,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> networkPolicyConfigs,
 
+            ImmutableArray<Outputs.GetClusterAddonsConfigRayOperatorConfigResult> rayOperatorConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> statefulHaConfigs)
         {
             CloudrunConfigs = cloudrunConfigs;
@@ -106,6 +112,7 @@ namespace Pulumi.Gcp.Container.Outputs
             IstioConfigs = istioConfigs;
             KalmConfigs = kalmConfigs;
             NetworkPolicyConfigs = networkPolicyConfigs;
+            RayOperatorConfigs = rayOperatorConfigs;
             StatefulHaConfigs = statefulHaConfigs;
         }
     }

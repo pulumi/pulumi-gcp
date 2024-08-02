@@ -43,8 +43,11 @@ class ReservationArgs:
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        :param pulumi.Input[bool] multi_region_auxiliary: (Optional, Deprecated)
+               Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+               
+               > **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
                
                
@@ -63,6 +66,9 @@ class ReservationArgs:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_region_auxiliary is not None:
+            warnings.warn("""`multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.""", DeprecationWarning)
+            pulumi.log.warn("""multi_region_auxiliary is deprecated: `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.""")
         if multi_region_auxiliary is not None:
             pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
@@ -149,10 +155,14 @@ class ReservationArgs:
 
     @property
     @pulumi.getter(name="multiRegionAuxiliary")
+    @_utilities.deprecated("""`multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.""")
     def multi_region_auxiliary(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
         If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+
+        > **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
         """
         return pulumi.get(self, "multi_region_auxiliary")
 
@@ -212,8 +222,11 @@ class _ReservationState:
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        :param pulumi.Input[bool] multi_region_auxiliary: (Optional, Deprecated)
+               Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+               
+               > **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
                
                
@@ -233,6 +246,9 @@ class _ReservationState:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_region_auxiliary is not None:
+            warnings.warn("""`multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.""", DeprecationWarning)
+            pulumi.log.warn("""multi_region_auxiliary is deprecated: `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.""")
         if multi_region_auxiliary is not None:
             pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
@@ -308,10 +324,14 @@ class _ReservationState:
 
     @property
     @pulumi.getter(name="multiRegionAuxiliary")
+    @_utilities.deprecated("""`multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.""")
     def multi_region_auxiliary(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
         If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+
+        > **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
         """
         return pulumi.get(self, "multi_region_auxiliary")
 
@@ -440,8 +460,11 @@ class Reservation(pulumi.CustomResource):
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        :param pulumi.Input[bool] multi_region_auxiliary: (Optional, Deprecated)
+               Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+               
+               > **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
                
                
@@ -589,8 +612,11 @@ class Reservation(pulumi.CustomResource):
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        :param pulumi.Input[bool] multi_region_auxiliary: (Optional, Deprecated)
+               Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+               
+               > **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
                
                
@@ -661,10 +687,14 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiRegionAuxiliary")
+    @_utilities.deprecated("""`multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.""")
     def multi_region_auxiliary(self) -> pulumi.Output[Optional[bool]]:
         """
+        (Optional, Deprecated)
         Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
         If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+
+        > **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
         """
         return pulumi.get(self, "multi_region_auxiliary")
 

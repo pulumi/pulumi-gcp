@@ -56,6 +56,15 @@ namespace Pulumi.Gcp.Projects
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Beta
+        /// If `true`, the usage of the service to be disabled will be checked and an error
+        /// will be returned if the service to be disabled has usage in last 30 days.
+        /// Defaults to `false`.
+        /// </summary>
+        [Output("checkIfServiceHasUsageOnDestroy")]
+        public Output<bool?> CheckIfServiceHasUsageOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// If `true`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
         /// destroyed. If `false` or unset, an error will be generated if any enabled
@@ -127,6 +136,15 @@ namespace Pulumi.Gcp.Projects
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Beta
+        /// If `true`, the usage of the service to be disabled will be checked and an error
+        /// will be returned if the service to be disabled has usage in last 30 days.
+        /// Defaults to `false`.
+        /// </summary>
+        [Input("checkIfServiceHasUsageOnDestroy")]
+        public Input<bool>? CheckIfServiceHasUsageOnDestroy { get; set; }
+
+        /// <summary>
         /// If `true`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
         /// destroyed. If `false` or unset, an error will be generated if any enabled
@@ -159,6 +177,15 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Beta
+        /// If `true`, the usage of the service to be disabled will be checked and an error
+        /// will be returned if the service to be disabled has usage in last 30 days.
+        /// Defaults to `false`.
+        /// </summary>
+        [Input("checkIfServiceHasUsageOnDestroy")]
+        public Input<bool>? CheckIfServiceHasUsageOnDestroy { get; set; }
+
         /// <summary>
         /// If `true`, services that are enabled
         /// and which depend on this service should also be disabled when this service is

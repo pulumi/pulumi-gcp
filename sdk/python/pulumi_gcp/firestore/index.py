@@ -276,8 +276,9 @@ class Index(pulumi.CustomResource):
                  __props__=None):
         """
         Cloud Firestore indexes enable simple and complex queries against documents in a database.
-         This resource manages composite indexes and not single
-        field indexes.
+         Both Firestore Native and Datastore Mode indexes are supported.
+         This resource manages composite indexes and not single field indexes.
+         To manage single field indexes, use the `firestore.Field` resource instead.
 
         To get more information about Index, see:
 
@@ -289,9 +290,8 @@ class Index(pulumi.CustomResource):
         a Firestore database. If you haven't already created it, you may
         create a `firestore.Database` resource and `location_id` set
         to your chosen location. If you wish to use App Engine, you may
-        instead create a `appengine.Application` resource with
-        `database_type` set to `"CLOUD_FIRESTORE"`. Your Firestore location
-        will be the same as the App Engine location specified.
+        instead create a `appengine.Application` resource.
+        Your Firestore location will be the same as the App Engine location specified.
 
         ## Example Usage
 
@@ -424,8 +424,9 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Cloud Firestore indexes enable simple and complex queries against documents in a database.
-         This resource manages composite indexes and not single
-        field indexes.
+         Both Firestore Native and Datastore Mode indexes are supported.
+         This resource manages composite indexes and not single field indexes.
+         To manage single field indexes, use the `firestore.Field` resource instead.
 
         To get more information about Index, see:
 
@@ -437,9 +438,8 @@ class Index(pulumi.CustomResource):
         a Firestore database. If you haven't already created it, you may
         create a `firestore.Database` resource and `location_id` set
         to your chosen location. If you wish to use App Engine, you may
-        instead create a `appengine.Application` resource with
-        `database_type` set to `"CLOUD_FIRESTORE"`. Your Firestore location
-        will be the same as the App Engine location specified.
+        instead create a `appengine.Application` resource.
+        Your Firestore location will be the same as the App Engine location specified.
 
         ## Example Usage
 

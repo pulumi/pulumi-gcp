@@ -55,6 +55,21 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+     * 
+     */
+    @Import(name="buildServiceAccount")
+    private @Nullable Output<String> buildServiceAccount;
+
+    /**
+     * @return If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+     * 
+     */
+    public Optional<Output<String>> buildServiceAccount() {
+        return Optional.ofNullable(this.buildServiceAccount);
+    }
+
+    /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      * 
      */
@@ -563,6 +578,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     private FunctionState(FunctionState $) {
         this.availableMemoryMb = $.availableMemoryMb;
         this.buildEnvironmentVariables = $.buildEnvironmentVariables;
+        this.buildServiceAccount = $.buildServiceAccount;
         this.buildWorkerPool = $.buildWorkerPool;
         this.description = $.description;
         this.dockerRegistry = $.dockerRegistry;
@@ -655,6 +671,27 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder buildEnvironmentVariables(Map<String,Object> buildEnvironmentVariables) {
             return buildEnvironmentVariables(Output.of(buildEnvironmentVariables));
+        }
+
+        /**
+         * @param buildServiceAccount If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildServiceAccount(@Nullable Output<String> buildServiceAccount) {
+            $.buildServiceAccount = buildServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param buildServiceAccount If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildServiceAccount(String buildServiceAccount) {
+            return buildServiceAccount(Output.of(buildServiceAccount));
         }
 
         /**

@@ -295,11 +295,18 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CustomConstraint(String name, CustomConstraintArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:orgpolicy/customConstraint:CustomConstraint", name, args == null ? CustomConstraintArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:orgpolicy/customConstraint:CustomConstraint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CustomConstraint(String name, Output<String> id, @Nullable CustomConstraintState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:orgpolicy/customConstraint:CustomConstraint", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CustomConstraintArgs makeArgs(CustomConstraintArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomConstraintArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

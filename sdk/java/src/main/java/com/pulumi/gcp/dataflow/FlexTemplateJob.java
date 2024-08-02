@@ -581,11 +581,18 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FlexTemplateJob(String name, FlexTemplateJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, args == null ? FlexTemplateJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FlexTemplateJob(String name, Output<String> id, @Nullable FlexTemplateJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FlexTemplateJobArgs makeArgs(FlexTemplateJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FlexTemplateJobArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

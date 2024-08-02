@@ -20,12 +20,17 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
+                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[bool]] = None,
                  disable_dependent_services: Optional[pulumi.Input[bool]] = None,
                  disable_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] service: The service to enable.
+        :param pulumi.Input[bool] check_if_service_has_usage_on_destroy: Beta
+               If `true`, the usage of the service to be disabled will be checked and an error
+               will be returned if the service to be disabled has usage in last 30 days.
+               Defaults to `false`.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -34,6 +39,8 @@ class ServiceArgs:
                is used.
         """
         pulumi.set(__self__, "service", service)
+        if check_if_service_has_usage_on_destroy is not None:
+            pulumi.set(__self__, "check_if_service_has_usage_on_destroy", check_if_service_has_usage_on_destroy)
         if disable_dependent_services is not None:
             pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
         if disable_on_destroy is not None:
@@ -52,6 +59,21 @@ class ServiceArgs:
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
+    def check_if_service_has_usage_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Beta
+        If `true`, the usage of the service to be disabled will be checked and an error
+        will be returned if the service to be disabled has usage in last 30 days.
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "check_if_service_has_usage_on_destroy")
+
+    @check_if_service_has_usage_on_destroy.setter
+    def check_if_service_has_usage_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "check_if_service_has_usage_on_destroy", value)
 
     @property
     @pulumi.getter(name="disableDependentServices")
@@ -94,12 +116,17 @@ class ServiceArgs:
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
+                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[bool]] = None,
                  disable_dependent_services: Optional[pulumi.Input[bool]] = None,
                  disable_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+        :param pulumi.Input[bool] check_if_service_has_usage_on_destroy: Beta
+               If `true`, the usage of the service to be disabled will be checked and an error
+               will be returned if the service to be disabled has usage in last 30 days.
+               Defaults to `false`.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -108,6 +135,8 @@ class _ServiceState:
                is used.
         :param pulumi.Input[str] service: The service to enable.
         """
+        if check_if_service_has_usage_on_destroy is not None:
+            pulumi.set(__self__, "check_if_service_has_usage_on_destroy", check_if_service_has_usage_on_destroy)
         if disable_dependent_services is not None:
             pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
         if disable_on_destroy is not None:
@@ -116,6 +145,21 @@ class _ServiceState:
             pulumi.set(__self__, "project", project)
         if service is not None:
             pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
+    def check_if_service_has_usage_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Beta
+        If `true`, the usage of the service to be disabled will be checked and an error
+        will be returned if the service to be disabled has usage in last 30 days.
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "check_if_service_has_usage_on_destroy")
+
+    @check_if_service_has_usage_on_destroy.setter
+    def check_if_service_has_usage_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "check_if_service_has_usage_on_destroy", value)
 
     @property
     @pulumi.getter(name="disableDependentServices")
@@ -172,6 +216,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[bool]] = None,
                  disable_dependent_services: Optional[pulumi.Input[bool]] = None,
                  disable_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -214,6 +259,10 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] check_if_service_has_usage_on_destroy: Beta
+               If `true`, the usage of the service to be disabled will be checked and an error
+               will be returned if the service to be disabled has usage in last 30 days.
+               Defaults to `false`.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -278,6 +327,7 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[bool]] = None,
                  disable_dependent_services: Optional[pulumi.Input[bool]] = None,
                  disable_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -291,6 +341,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
+            __props__.__dict__["check_if_service_has_usage_on_destroy"] = check_if_service_has_usage_on_destroy
             __props__.__dict__["disable_dependent_services"] = disable_dependent_services
             __props__.__dict__["disable_on_destroy"] = disable_on_destroy
             __props__.__dict__["project"] = project
@@ -307,6 +358,7 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            check_if_service_has_usage_on_destroy: Optional[pulumi.Input[bool]] = None,
             disable_dependent_services: Optional[pulumi.Input[bool]] = None,
             disable_on_destroy: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -318,6 +370,10 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] check_if_service_has_usage_on_destroy: Beta
+               If `true`, the usage of the service to be disabled will be checked and an error
+               will be returned if the service to be disabled has usage in last 30 days.
+               Defaults to `false`.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -330,11 +386,23 @@ class Service(pulumi.CustomResource):
 
         __props__ = _ServiceState.__new__(_ServiceState)
 
+        __props__.__dict__["check_if_service_has_usage_on_destroy"] = check_if_service_has_usage_on_destroy
         __props__.__dict__["disable_dependent_services"] = disable_dependent_services
         __props__.__dict__["disable_on_destroy"] = disable_on_destroy
         __props__.__dict__["project"] = project
         __props__.__dict__["service"] = service
         return Service(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
+    def check_if_service_has_usage_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Beta
+        If `true`, the usage of the service to be disabled will be checked and an error
+        will be returned if the service to be disabled has usage in last 30 days.
+        Defaults to `false`.
+        """
+        return pulumi.get(self, "check_if_service_has_usage_on_destroy")
 
     @property
     @pulumi.getter(name="disableDependentServices")

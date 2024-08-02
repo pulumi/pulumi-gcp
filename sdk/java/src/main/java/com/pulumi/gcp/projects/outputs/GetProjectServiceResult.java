@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectServiceResult {
+    private Boolean checkIfServiceHasUsageOnDestroy;
     private Boolean disableDependentServices;
     private Boolean disableOnDestroy;
     /**
@@ -24,6 +25,9 @@ public final class GetProjectServiceResult {
     private String service;
 
     private GetProjectServiceResult() {}
+    public Boolean checkIfServiceHasUsageOnDestroy() {
+        return this.checkIfServiceHasUsageOnDestroy;
+    }
     public Boolean disableDependentServices() {
         return this.disableDependentServices;
     }
@@ -53,6 +57,7 @@ public final class GetProjectServiceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean checkIfServiceHasUsageOnDestroy;
         private Boolean disableDependentServices;
         private Boolean disableOnDestroy;
         private String id;
@@ -61,6 +66,7 @@ public final class GetProjectServiceResult {
         public Builder() {}
         public Builder(GetProjectServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.checkIfServiceHasUsageOnDestroy = defaults.checkIfServiceHasUsageOnDestroy;
     	      this.disableDependentServices = defaults.disableDependentServices;
     	      this.disableOnDestroy = defaults.disableOnDestroy;
     	      this.id = defaults.id;
@@ -68,6 +74,14 @@ public final class GetProjectServiceResult {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
+        public Builder checkIfServiceHasUsageOnDestroy(Boolean checkIfServiceHasUsageOnDestroy) {
+            if (checkIfServiceHasUsageOnDestroy == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceResult", "checkIfServiceHasUsageOnDestroy");
+            }
+            this.checkIfServiceHasUsageOnDestroy = checkIfServiceHasUsageOnDestroy;
+            return this;
+        }
         @CustomType.Setter
         public Builder disableDependentServices(Boolean disableDependentServices) {
             if (disableDependentServices == null) {
@@ -108,6 +122,7 @@ public final class GetProjectServiceResult {
         }
         public GetProjectServiceResult build() {
             final var _resultValue = new GetProjectServiceResult();
+            _resultValue.checkIfServiceHasUsageOnDestroy = checkIfServiceHasUsageOnDestroy;
             _resultValue.disableDependentServices = disableDependentServices;
             _resultValue.disableOnDestroy = disableOnDestroy;
             _resultValue.id = id;

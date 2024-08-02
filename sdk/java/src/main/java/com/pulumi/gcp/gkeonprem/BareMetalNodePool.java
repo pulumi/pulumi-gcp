@@ -574,11 +574,18 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BareMetalNodePool(String name, BareMetalNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, args == null ? BareMetalNodePoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BareMetalNodePool(String name, Output<String> id, @Nullable BareMetalNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BareMetalNodePoolArgs makeArgs(BareMetalNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BareMetalNodePoolArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

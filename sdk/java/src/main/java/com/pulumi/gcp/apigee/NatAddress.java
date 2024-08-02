@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *         var apigeeSaKeyuser = new CryptoKeyIAMMember("apigeeSaKeyuser", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(apigeeKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(apigeeSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(apigeeSa.member())
  *             .build());
  * 
  *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
@@ -250,11 +250,18 @@ public class NatAddress extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NatAddress(String name, NatAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/natAddress:NatAddress", name, args == null ? NatAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/natAddress:NatAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NatAddress(String name, Output<String> id, @Nullable NatAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/natAddress:NatAddress", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NatAddressArgs makeArgs(NatAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NatAddressArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -17,6 +17,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     public static final ServiceState Empty = new ServiceState();
 
     /**
+     * Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     * 
+     */
+    @Import(name="checkIfServiceHasUsageOnDestroy")
+    private @Nullable Output<Boolean> checkIfServiceHasUsageOnDestroy;
+
+    /**
+     * @return Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> checkIfServiceHasUsageOnDestroy() {
+        return Optional.ofNullable(this.checkIfServiceHasUsageOnDestroy);
+    }
+
+    /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
@@ -79,6 +100,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     private ServiceState() {}
 
     private ServiceState(ServiceState $) {
+        this.checkIfServiceHasUsageOnDestroy = $.checkIfServiceHasUsageOnDestroy;
         this.disableDependentServices = $.disableDependentServices;
         this.disableOnDestroy = $.disableOnDestroy;
         this.project = $.project;
@@ -101,6 +123,33 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ServiceState defaults) {
             $ = new ServiceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param checkIfServiceHasUsageOnDestroy Beta
+         * If `true`, the usage of the service to be disabled will be checked and an error
+         * will be returned if the service to be disabled has usage in last 30 days.
+         * Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkIfServiceHasUsageOnDestroy(@Nullable Output<Boolean> checkIfServiceHasUsageOnDestroy) {
+            $.checkIfServiceHasUsageOnDestroy = checkIfServiceHasUsageOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param checkIfServiceHasUsageOnDestroy Beta
+         * If `true`, the usage of the service to be disabled will be checked and an error
+         * will be returned if the service to be disabled has usage in last 30 days.
+         * Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkIfServiceHasUsageOnDestroy(Boolean checkIfServiceHasUsageOnDestroy) {
+            return checkIfServiceHasUsageOnDestroy(Output.of(checkIfServiceHasUsageOnDestroy));
         }
 
         /**

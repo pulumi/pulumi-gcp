@@ -458,11 +458,18 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatasetIamMember(String name, DatasetIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/datasetIamMember:DatasetIamMember", name, args == null ? DatasetIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquery/datasetIamMember:DatasetIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatasetIamMember(String name, Output<String> id, @Nullable DatasetIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquery/datasetIamMember:DatasetIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatasetIamMemberArgs makeArgs(DatasetIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatasetIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -340,8 +340,7 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.get_network(name="my-network")
-        default_private_connection = gcp.databasemigrationservice.PrivateConnection("default",
+        default = gcp.databasemigrationservice.PrivateConnection("default",
             display_name="dbms_pc",
             location="us-central1",
             private_connection_id="my-connection",
@@ -349,9 +348,12 @@ class PrivateConnection(pulumi.CustomResource):
                 "key": "value",
             },
             vpc_peering_config={
-                "vpc_name": default.id,
+                "vpc_name": google_compute_network["default"]["id"],
                 "subnet": "10.0.0.0/29",
             })
+        default_network = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
         ```
 
         ## Import
@@ -412,8 +414,7 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.get_network(name="my-network")
-        default_private_connection = gcp.databasemigrationservice.PrivateConnection("default",
+        default = gcp.databasemigrationservice.PrivateConnection("default",
             display_name="dbms_pc",
             location="us-central1",
             private_connection_id="my-connection",
@@ -421,9 +422,12 @@ class PrivateConnection(pulumi.CustomResource):
                 "key": "value",
             },
             vpc_peering_config={
-                "vpc_name": default.id,
+                "vpc_name": google_compute_network["default"]["id"],
                 "subnet": "10.0.0.0/29",
             })
+        default_network = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
         ```
 
         ## Import

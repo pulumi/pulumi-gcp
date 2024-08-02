@@ -258,11 +258,18 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PublicDelegatedPrefix(String name, PublicDelegatedPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix", name, args == null ? PublicDelegatedPrefixArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PublicDelegatedPrefix(String name, Output<String> id, @Nullable PublicDelegatedPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PublicDelegatedPrefixArgs makeArgs(PublicDelegatedPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PublicDelegatedPrefixArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

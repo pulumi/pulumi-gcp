@@ -782,6 +782,7 @@ if not MYPY:
         instances: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgsDict']]]
         """
         The list of router appliance instances
+        Structure is documented below.
         """
         site_to_site_data_transfer: pulumi.Input[bool]
         """
@@ -797,6 +798,7 @@ class SpokeLinkedRouterApplianceInstancesArgs:
                  site_to_site_data_transfer: pulumi.Input[bool]):
         """
         :param pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]] instances: The list of router appliance instances
+               Structure is documented below.
         :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
         pulumi.set(__self__, "instances", instances)
@@ -807,6 +809,7 @@ class SpokeLinkedRouterApplianceInstancesArgs:
     def instances(self) -> pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]]:
         """
         The list of router appliance instances
+        Structure is documented below.
         """
         return pulumi.get(self, "instances")
 
@@ -836,8 +839,6 @@ if not MYPY:
         virtual_machine: NotRequired[pulumi.Input[str]]
         """
         The URI of the virtual machine resource
-
-        - - -
         """
 elif False:
     SpokeLinkedRouterApplianceInstancesInstanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -850,8 +851,6 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
         """
         :param pulumi.Input[str] ip_address: The IP address on the VM to use for peering.
         :param pulumi.Input[str] virtual_machine: The URI of the virtual machine resource
-               
-               - - -
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -875,8 +874,6 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
     def virtual_machine(self) -> Optional[pulumi.Input[str]]:
         """
         The URI of the virtual machine resource
-
-        - - -
         """
         return pulumi.get(self, "virtual_machine")
 

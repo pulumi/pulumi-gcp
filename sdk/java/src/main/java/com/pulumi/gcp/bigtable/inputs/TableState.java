@@ -19,16 +19,18 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     public static final TableState Empty = new TableState();
 
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-     * Retention Period and Frequency to 0.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+     * 
+     * ***
      * 
      */
     @Import(name="automatedBackupPolicy")
     private @Nullable Output<TableAutomatedBackupPolicyArgs> automatedBackupPolicy;
 
     /**
-     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-     * Retention Period and Frequency to 0.
+     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+     * 
+     * ***
      * 
      */
     public Optional<Output<TableAutomatedBackupPolicyArgs>> automatedBackupPolicy() {
@@ -38,16 +40,12 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      * 
-     * ***
-     * 
      */
     @Import(name="changeStreamRetention")
     private @Nullable Output<String> changeStreamRetention;
 
     /**
      * @return Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> changeStreamRetention() {
@@ -182,8 +180,9 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-         * Retention Period and Frequency to 0.
+         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -194,8 +193,9 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-         * Retention Period and Frequency to 0.
+         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -207,8 +207,6 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param changeStreamRetention Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -219,8 +217,6 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param changeStreamRetention Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-         * 
-         * ***
          * 
          * @return builder
          * 

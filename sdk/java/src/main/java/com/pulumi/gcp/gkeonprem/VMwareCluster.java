@@ -913,11 +913,18 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public VMwareCluster(String name, VMwareClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/vMwareCluster:VMwareCluster", name, args == null ? VMwareClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkeonprem/vMwareCluster:VMwareCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private VMwareCluster(String name, Output<String> id, @Nullable VMwareClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkeonprem/vMwareCluster:VMwareCluster", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VMwareClusterArgs makeArgs(VMwareClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VMwareClusterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -130,11 +130,18 @@ public class EngineSplitTraffic extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EngineSplitTraffic(String name, EngineSplitTrafficArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", name, args == null ? EngineSplitTrafficArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EngineSplitTraffic(String name, Output<String> id, @Nullable EngineSplitTrafficState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EngineSplitTrafficArgs makeArgs(EngineSplitTrafficArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EngineSplitTrafficArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

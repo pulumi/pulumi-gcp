@@ -77,6 +77,8 @@ __all__ = [
     'InstanceNetworkConfigArgsDict',
     'InstanceNetworkConfigAuthorizedExternalNetworkArgs',
     'InstanceNetworkConfigAuthorizedExternalNetworkArgsDict',
+    'InstanceObservabilityConfigArgs',
+    'InstanceObservabilityConfigArgsDict',
     'InstancePscInstanceConfigArgs',
     'InstancePscInstanceConfigArgsDict',
     'InstanceQueryInsightsConfigArgs',
@@ -1802,6 +1804,178 @@ class InstanceNetworkConfigAuthorizedExternalNetworkArgs:
     @cidr_range.setter
     def cidr_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cidr_range", value)
+
+
+if not MYPY:
+    class InstanceObservabilityConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Observability feature status for an instance.
+        """
+        max_query_string_length: NotRequired[pulumi.Input[int]]
+        """
+        Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+        """
+        preserve_comments: NotRequired[pulumi.Input[bool]]
+        """
+        Preserve comments in the query string.
+        """
+        query_plans_per_minute: NotRequired[pulumi.Input[int]]
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+        """
+        record_application_tags: NotRequired[pulumi.Input[bool]]
+        """
+        Record application tags for an instance. This flag is turned "on" by default.
+        """
+        track_active_queries: NotRequired[pulumi.Input[bool]]
+        """
+        Track actively running queries. If not set, default value is "off".
+        """
+        track_wait_event_types: NotRequired[pulumi.Input[bool]]
+        """
+        Record wait event types during query execution for an instance.
+        """
+        track_wait_events: NotRequired[pulumi.Input[bool]]
+        """
+        Record wait events during query execution for an instance.
+        """
+elif False:
+    InstanceObservabilityConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceObservabilityConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 max_query_string_length: Optional[pulumi.Input[int]] = None,
+                 preserve_comments: Optional[pulumi.Input[bool]] = None,
+                 query_plans_per_minute: Optional[pulumi.Input[int]] = None,
+                 record_application_tags: Optional[pulumi.Input[bool]] = None,
+                 track_active_queries: Optional[pulumi.Input[bool]] = None,
+                 track_wait_event_types: Optional[pulumi.Input[bool]] = None,
+                 track_wait_events: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Observability feature status for an instance.
+        :param pulumi.Input[int] max_query_string_length: Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+        :param pulumi.Input[bool] preserve_comments: Preserve comments in the query string.
+        :param pulumi.Input[int] query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+        :param pulumi.Input[bool] record_application_tags: Record application tags for an instance. This flag is turned "on" by default.
+        :param pulumi.Input[bool] track_active_queries: Track actively running queries. If not set, default value is "off".
+        :param pulumi.Input[bool] track_wait_event_types: Record wait event types during query execution for an instance.
+        :param pulumi.Input[bool] track_wait_events: Record wait events during query execution for an instance.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if max_query_string_length is not None:
+            pulumi.set(__self__, "max_query_string_length", max_query_string_length)
+        if preserve_comments is not None:
+            pulumi.set(__self__, "preserve_comments", preserve_comments)
+        if query_plans_per_minute is not None:
+            pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
+        if record_application_tags is not None:
+            pulumi.set(__self__, "record_application_tags", record_application_tags)
+        if track_active_queries is not None:
+            pulumi.set(__self__, "track_active_queries", track_active_queries)
+        if track_wait_event_types is not None:
+            pulumi.set(__self__, "track_wait_event_types", track_wait_event_types)
+        if track_wait_events is not None:
+            pulumi.set(__self__, "track_wait_events", track_wait_events)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Observability feature status for an instance.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxQueryStringLength")
+    def max_query_string_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+        """
+        return pulumi.get(self, "max_query_string_length")
+
+    @max_query_string_length.setter
+    def max_query_string_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_query_string_length", value)
+
+    @property
+    @pulumi.getter(name="preserveComments")
+    def preserve_comments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Preserve comments in the query string.
+        """
+        return pulumi.get(self, "preserve_comments")
+
+    @preserve_comments.setter
+    def preserve_comments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preserve_comments", value)
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+        """
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @query_plans_per_minute.setter
+    def query_plans_per_minute(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "query_plans_per_minute", value)
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Record application tags for an instance. This flag is turned "on" by default.
+        """
+        return pulumi.get(self, "record_application_tags")
+
+    @record_application_tags.setter
+    def record_application_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "record_application_tags", value)
+
+    @property
+    @pulumi.getter(name="trackActiveQueries")
+    def track_active_queries(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Track actively running queries. If not set, default value is "off".
+        """
+        return pulumi.get(self, "track_active_queries")
+
+    @track_active_queries.setter
+    def track_active_queries(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "track_active_queries", value)
+
+    @property
+    @pulumi.getter(name="trackWaitEventTypes")
+    def track_wait_event_types(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Record wait event types during query execution for an instance.
+        """
+        return pulumi.get(self, "track_wait_event_types")
+
+    @track_wait_event_types.setter
+    def track_wait_event_types(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "track_wait_event_types", value)
+
+    @property
+    @pulumi.getter(name="trackWaitEvents")
+    def track_wait_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Record wait events during query execution for an instance.
+        """
+        return pulumi.get(self, "track_wait_events")
+
+    @track_wait_events.setter
+    def track_wait_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "track_wait_events", value)
 
 
 if not MYPY:

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var hcSaBqJobuser = new IAMMember("hcSaBqJobuser", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.jobUser")
- *             .member(hcSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(hcSa.member())
  *             .build());
  * 
  *     }
@@ -97,6 +97,20 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      */
     public Output<String> email() {
         return this.email;
+    }
+    /**
+     * The Identity of the Google managed service account in the form &#39;serviceAccount:{email}&#39;. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    @Export(name="member", refs={String.class}, tree="[0]")
+    private Output<String> member;
+
+    /**
+     * @return The Identity of the Google managed service account in the form &#39;serviceAccount:{email}&#39;. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    public Output<String> member() {
+        return this.member;
     }
     /**
      * The ID of the project in which the resource belongs.
@@ -155,11 +169,18 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceIdentity(String name, ServiceIdentityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/serviceIdentity:ServiceIdentity", name, args == null ? ServiceIdentityArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:projects/serviceIdentity:ServiceIdentity", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceIdentity(String name, Output<String> id, @Nullable ServiceIdentityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:projects/serviceIdentity:ServiceIdentity", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceIdentityArgs makeArgs(ServiceIdentityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceIdentityArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

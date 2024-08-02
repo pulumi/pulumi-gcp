@@ -18,7 +18,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
     public static final PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs Empty = new PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs();
 
     /**
-     * A specific set of database resources for this filter to apply to.
+     * A specific set of buckets for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
     private @Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs> collection;
 
     /**
-     * @return A specific set of database resources for this filter to apply to.
+     * @return A specific set of buckets for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -52,14 +52,14 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
     }
 
     /**
-     * Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+     * Match discovery resources not covered by any other filter.
      * 
      */
     @Import(name="others")
     private @Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs> others;
 
     /**
-     * @return Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+     * @return Match discovery resources not covered by any other filter.
      * 
      */
     public Optional<Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs>> others() {
@@ -93,7 +93,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
         }
 
         /**
-         * @param collection A specific set of database resources for this filter to apply to.
+         * @param collection A specific set of buckets for this filter to apply to.
          * Structure is documented below.
          * 
          * @return builder
@@ -105,7 +105,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
         }
 
         /**
-         * @param collection A specific set of database resources for this filter to apply to.
+         * @param collection A specific set of buckets for this filter to apply to.
          * Structure is documented below.
          * 
          * @return builder
@@ -139,7 +139,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
         }
 
         /**
-         * @param others Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+         * @param others Match discovery resources not covered by any other filter.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
         }
 
         /**
-         * @param others Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+         * @param others Match discovery resources not covered by any other filter.
          * 
          * @return builder
          * 

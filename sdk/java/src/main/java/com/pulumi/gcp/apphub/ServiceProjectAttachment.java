@@ -169,14 +169,14 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
         return this.createTime;
     }
     /**
-     * &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34; &#34;
+     * &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34; &#34;
+     * @return &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
      * 
      */
     public Output<String> name() {
@@ -201,7 +201,7 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
     /**
      * &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
      * or \&#34;projects/123\&#34;. As input, project name with either project id or number
-     * are accepted. As output, this field will contain project number. &#34;
+     * are accepted. As output, this field will contain project number.&#34;
      * 
      */
     @Export(name="serviceProject", refs={String.class}, tree="[0]")
@@ -210,7 +210,7 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
     /**
      * @return &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
      * or \&#34;projects/123\&#34;. As input, project name with either project id or number
-     * are accepted. As output, this field will contain project number. &#34;
+     * are accepted. As output, this field will contain project number.&#34;
      * 
      */
     public Output<Optional<String>> serviceProject() {
@@ -285,11 +285,18 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceProjectAttachment(String name, ServiceProjectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, args == null ? ServiceProjectAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceProjectAttachment(String name, Output<String> id, @Nullable ServiceProjectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceProjectAttachmentArgs makeArgs(ServiceProjectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceProjectAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

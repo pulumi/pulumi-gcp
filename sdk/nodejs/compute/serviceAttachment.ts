@@ -453,8 +453,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * The URL of a service serving the endpoint identified by this service attachment.
      */
     public readonly targetService!: pulumi.Output<string>;
 
@@ -605,8 +604,7 @@ export interface ServiceAttachmentState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * The URL of a service serving the endpoint identified by this service attachment.
      */
     targetService?: pulumi.Input<string>;
 }
@@ -680,8 +678,7 @@ export interface ServiceAttachmentArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * The URL of a service serving the endpoint identified by this service attachment.
      */
     targetService: pulumi.Input<string>;
 }

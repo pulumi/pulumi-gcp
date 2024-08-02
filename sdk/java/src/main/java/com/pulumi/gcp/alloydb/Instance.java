@@ -13,6 +13,7 @@ import com.pulumi.gcp.alloydb.inputs.InstanceState;
 import com.pulumi.gcp.alloydb.outputs.InstanceClientConnectionConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceMachineConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceNetworkConfig;
+import com.pulumi.gcp.alloydb.outputs.InstanceObservabilityConfig;
 import com.pulumi.gcp.alloydb.outputs.InstancePscInstanceConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceQueryInsightsConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceReadPoolConfig;
@@ -503,6 +504,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkConfig);
     }
     /**
+     * Configuration for enhanced query insights.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="observabilityConfig", refs={InstanceObservabilityConfig.class}, tree="[0]")
+    private Output<InstanceObservabilityConfig> observabilityConfig;
+
+    /**
+     * @return Configuration for enhanced query insights.
+     * Structure is documented below.
+     * 
+     */
+    public Output<InstanceObservabilityConfig> observabilityConfig() {
+        return this.observabilityConfig;
+    }
+    /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      * 
@@ -663,11 +680,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Instance(String name, InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:alloydb/instance:Instance", name, args == null ? InstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:alloydb/instance:Instance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Instance(String name, Output<String> id, @Nullable InstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:alloydb/instance:Instance", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstanceArgs makeArgs(InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

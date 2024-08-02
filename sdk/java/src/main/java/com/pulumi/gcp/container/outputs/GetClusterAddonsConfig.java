@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNetworkPolicyConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigRayOperatorConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
 import java.util.Objects;
@@ -83,6 +84,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+    /**
+     * @return The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
     /**
      * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
      * 
@@ -175,6 +181,13 @@ public final class GetClusterAddonsConfig {
         return this.networkPolicyConfigs;
     }
     /**
+     * @return The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    public List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs() {
+        return this.rayOperatorConfigs;
+    }
+    /**
      * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
      * 
      */
@@ -203,6 +216,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigIstioConfig> istioConfigs;
         private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
         private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+        private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
         private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
         public Builder() {}
         public Builder(GetClusterAddonsConfig defaults) {
@@ -219,6 +233,7 @@ public final class GetClusterAddonsConfig {
     	      this.istioConfigs = defaults.istioConfigs;
     	      this.kalmConfigs = defaults.kalmConfigs;
     	      this.networkPolicyConfigs = defaults.networkPolicyConfigs;
+    	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
     	      this.statefulHaConfigs = defaults.statefulHaConfigs;
         }
 
@@ -355,6 +370,17 @@ public final class GetClusterAddonsConfig {
             return networkPolicyConfigs(List.of(networkPolicyConfigs));
         }
         @CustomType.Setter
+        public Builder rayOperatorConfigs(List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs) {
+            if (rayOperatorConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "rayOperatorConfigs");
+            }
+            this.rayOperatorConfigs = rayOperatorConfigs;
+            return this;
+        }
+        public Builder rayOperatorConfigs(GetClusterAddonsConfigRayOperatorConfig... rayOperatorConfigs) {
+            return rayOperatorConfigs(List.of(rayOperatorConfigs));
+        }
+        @CustomType.Setter
         public Builder statefulHaConfigs(List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs) {
             if (statefulHaConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "statefulHaConfigs");
@@ -379,6 +405,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.istioConfigs = istioConfigs;
             _resultValue.kalmConfigs = kalmConfigs;
             _resultValue.networkPolicyConfigs = networkPolicyConfigs;
+            _resultValue.rayOperatorConfigs = rayOperatorConfigs;
             _resultValue.statefulHaConfigs = statefulHaConfigs;
             return _resultValue;
         }

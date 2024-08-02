@@ -33,7 +33,6 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -43,7 +42,6 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -72,14 +70,16 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -136,7 +136,6 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -150,7 +149,6 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -187,7 +185,8 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -198,7 +197,8 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

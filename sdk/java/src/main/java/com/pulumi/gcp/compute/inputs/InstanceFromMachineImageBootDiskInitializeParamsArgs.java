@@ -125,6 +125,21 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     }
 
     /**
+     * The URL of the storage pool in which the new disk is created
+     * 
+     */
+    @Import(name="storagePool")
+    private @Nullable Output<String> storagePool;
+
+    /**
+     * @return The URL of the storage pool in which the new disk is created
+     * 
+     */
+    public Optional<Output<String>> storagePool() {
+        return Optional.ofNullable(this.storagePool);
+    }
+
+    /**
      * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
      * 
      */
@@ -149,6 +164,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         this.provisionedThroughput = $.provisionedThroughput;
         this.resourceManagerTags = $.resourceManagerTags;
         this.size = $.size;
+        this.storagePool = $.storagePool;
         this.type = $.type;
     }
 
@@ -315,6 +331,27 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
          */
         public Builder size(Integer size) {
             return size(Output.of(size));
+        }
+
+        /**
+         * @param storagePool The URL of the storage pool in which the new disk is created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePool(@Nullable Output<String> storagePool) {
+            $.storagePool = storagePool;
+            return this;
+        }
+
+        /**
+         * @param storagePool The URL of the storage pool in which the new disk is created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePool(String storagePool) {
+            return storagePool(Output.of(storagePool));
         }
 
         /**

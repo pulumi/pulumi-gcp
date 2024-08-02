@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+        /// Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
         /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         /// </summary>
         [Input("refreshFrequency")]

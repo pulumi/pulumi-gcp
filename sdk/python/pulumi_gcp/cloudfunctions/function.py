@@ -24,6 +24,7 @@ class FunctionArgs:
                  runtime: pulumi.Input[str],
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 build_service_account: Optional[pulumi.Input[str]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input[str]] = None,
@@ -59,6 +60,7 @@ class FunctionArgs:
                - - -
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
+        :param pulumi.Input[str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -100,6 +102,8 @@ class FunctionArgs:
             pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
             pulumi.set(__self__, "build_environment_variables", build_environment_variables)
+        if build_service_account is not None:
+            pulumi.set(__self__, "build_service_account", build_service_account)
         if build_worker_pool is not None:
             pulumi.set(__self__, "build_worker_pool", build_worker_pool)
         if description is not None:
@@ -193,6 +197,18 @@ class FunctionArgs:
     @build_environment_variables.setter
     def build_environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "build_environment_variables", value)
+
+    @property
+    @pulumi.getter(name="buildServiceAccount")
+    def build_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        """
+        return pulumi.get(self, "build_service_account")
+
+    @build_service_account.setter
+    def build_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_service_account", value)
 
     @property
     @pulumi.getter(name="buildWorkerPool")
@@ -532,6 +548,7 @@ class _FunctionState:
     def __init__(__self__, *,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 build_service_account: Optional[pulumi.Input[str]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input[str]] = None,
@@ -568,6 +585,7 @@ class _FunctionState:
         Input properties used for looking up and filtering Function resources.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
+        :param pulumi.Input[str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -617,6 +635,8 @@ class _FunctionState:
             pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
             pulumi.set(__self__, "build_environment_variables", build_environment_variables)
+        if build_service_account is not None:
+            pulumi.set(__self__, "build_service_account", build_service_account)
         if build_worker_pool is not None:
             pulumi.set(__self__, "build_worker_pool", build_worker_pool)
         if description is not None:
@@ -705,6 +725,18 @@ class _FunctionState:
     @build_environment_variables.setter
     def build_environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "build_environment_variables", value)
+
+    @property
+    @pulumi.getter(name="buildServiceAccount")
+    def build_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        """
+        return pulumi.get(self, "build_service_account")
+
+    @build_service_account.setter
+    def build_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_service_account", value)
 
     @property
     @pulumi.getter(name="buildWorkerPool")
@@ -1110,6 +1142,7 @@ class Function(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 build_service_account: Optional[pulumi.Input[str]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input[str]] = None,
@@ -1246,6 +1279,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
+        :param pulumi.Input[str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -1412,6 +1446,7 @@ class Function(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 build_service_account: Optional[pulumi.Input[str]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input[str]] = None,
@@ -1451,6 +1486,7 @@ class Function(pulumi.CustomResource):
 
             __props__.__dict__["available_memory_mb"] = available_memory_mb
             __props__.__dict__["build_environment_variables"] = build_environment_variables
+            __props__.__dict__["build_service_account"] = build_service_account
             __props__.__dict__["build_worker_pool"] = build_worker_pool
             __props__.__dict__["description"] = description
             __props__.__dict__["docker_registry"] = docker_registry
@@ -1499,6 +1535,7 @@ class Function(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             available_memory_mb: Optional[pulumi.Input[int]] = None,
             build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            build_service_account: Optional[pulumi.Input[str]] = None,
             build_worker_pool: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             docker_registry: Optional[pulumi.Input[str]] = None,
@@ -1540,6 +1577,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
+        :param pulumi.Input[str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -1591,6 +1629,7 @@ class Function(pulumi.CustomResource):
 
         __props__.__dict__["available_memory_mb"] = available_memory_mb
         __props__.__dict__["build_environment_variables"] = build_environment_variables
+        __props__.__dict__["build_service_account"] = build_service_account
         __props__.__dict__["build_worker_pool"] = build_worker_pool
         __props__.__dict__["description"] = description
         __props__.__dict__["docker_registry"] = docker_registry
@@ -1640,6 +1679,14 @@ class Function(pulumi.CustomResource):
         A set of key/value environment variable pairs available during build time.
         """
         return pulumi.get(self, "build_environment_variables")
+
+    @property
+    @pulumi.getter(name="buildServiceAccount")
+    def build_service_account(self) -> pulumi.Output[str]:
+        """
+        If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        """
+        return pulumi.get(self, "build_service_account")
 
     @property
     @pulumi.getter(name="buildWorkerPool")

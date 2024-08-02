@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly int AvailableMemoryMb;
         public readonly ImmutableDictionary<string, object> BuildEnvironmentVariables;
+        public readonly string BuildServiceAccount;
         public readonly string BuildWorkerPool;
         /// <summary>
         /// Description of the function.
@@ -228,6 +229,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             ImmutableDictionary<string, object> buildEnvironmentVariables,
 
+            string buildServiceAccount,
+
             string buildWorkerPool,
 
             string description,
@@ -296,6 +299,7 @@ namespace Pulumi.Gcp.CloudFunctions
         {
             AvailableMemoryMb = availableMemoryMb;
             BuildEnvironmentVariables = buildEnvironmentVariables;
+            BuildServiceAccount = buildServiceAccount;
             BuildWorkerPool = buildWorkerPool;
             Description = description;
             DockerRegistry = dockerRegistry;

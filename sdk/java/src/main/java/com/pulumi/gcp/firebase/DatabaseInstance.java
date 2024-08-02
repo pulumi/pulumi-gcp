@@ -238,8 +238,8 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The fully-qualified resource name of the Firebase Realtime Database, in the
-     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * The fully-qualified resource name of the Firebase Realtime Database, in
+     * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
@@ -248,8 +248,8 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The fully-qualified resource name of the Firebase Realtime Database, in the
-     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * @return The fully-qualified resource name of the Firebase Realtime Database, in
+     * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
@@ -350,11 +350,18 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatabaseInstance(String name, DatabaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/databaseInstance:DatabaseInstance", name, args == null ? DatabaseInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firebase/databaseInstance:DatabaseInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatabaseInstance(String name, Output<String> id, @Nullable DatabaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firebase/databaseInstance:DatabaseInstance", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseInstanceArgs makeArgs(DatabaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseInstanceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

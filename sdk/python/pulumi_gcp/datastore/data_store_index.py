@@ -216,7 +216,9 @@ class DataStoreIndex(pulumi.CustomResource):
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataStoreIndexPropertyArgs', 'DataStoreIndexPropertyArgsDict']]]]] = None,
                  __props__=None):
         """
-        Describes a composite index for Cloud Datastore.
+        > **Warning:** `datastore_index` is deprecated and will be removed in a future major release. Use `firestore_index` instead; this resource is deprecated because it only supports the (default) database. `firestore_index` supports both Firestore in Datastore Mode and Firestore Native indexes and supports both named and the (default) database.
+
+        Describes a composite index for Firestore in Datastore Mode.
 
         To get more information about Index, see:
 
@@ -224,11 +226,15 @@ class DataStoreIndex(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 
-        > **Warning:** This resource creates a Datastore Index on a project that has already
-        enabled a Datastore-compatible database. If you haven't already enabled
-        one, you can create a `appengine.Application` resource with
-        `database_type` set to `"CLOUD_DATASTORE_COMPATIBILITY"` to do so. Your
-        Datastore location will be the same as the App Engine location specified.
+        > **Warning:** `datastore_index` is deprecated and will be removed in a future major release.
+        Use `firestore_index` instead; this resource is deprecated because it only supports the (default) database.
+        This resource creates a Datastore Index on a project that has already
+        enabled a Datastore-compatible database.  If you haven't already created it, you may
+        create a `firestore.Database` resource with `location_id` set
+        to your chosen location, and `type` set to `"DATASTORE_MODE"`.
+        If you wish to use App Engine, you may instead create a `appengine.Application` resource with
+        `database_type` set to `"CLOUD_DATASTORE_COMPATIBILITY"`.
+        Your Datastore location will be the same as the App Engine location specified.
 
         ## Example Usage
 
@@ -305,7 +311,9 @@ class DataStoreIndex(pulumi.CustomResource):
                  args: DataStoreIndexArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Describes a composite index for Cloud Datastore.
+        > **Warning:** `datastore_index` is deprecated and will be removed in a future major release. Use `firestore_index` instead; this resource is deprecated because it only supports the (default) database. `firestore_index` supports both Firestore in Datastore Mode and Firestore Native indexes and supports both named and the (default) database.
+
+        Describes a composite index for Firestore in Datastore Mode.
 
         To get more information about Index, see:
 
@@ -313,11 +321,15 @@ class DataStoreIndex(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 
-        > **Warning:** This resource creates a Datastore Index on a project that has already
-        enabled a Datastore-compatible database. If you haven't already enabled
-        one, you can create a `appengine.Application` resource with
-        `database_type` set to `"CLOUD_DATASTORE_COMPATIBILITY"` to do so. Your
-        Datastore location will be the same as the App Engine location specified.
+        > **Warning:** `datastore_index` is deprecated and will be removed in a future major release.
+        Use `firestore_index` instead; this resource is deprecated because it only supports the (default) database.
+        This resource creates a Datastore Index on a project that has already
+        enabled a Datastore-compatible database.  If you haven't already created it, you may
+        create a `firestore.Database` resource with `location_id` set
+        to your chosen location, and `type` set to `"DATASTORE_MODE"`.
+        If you wish to use App Engine, you may instead create a `appengine.Application` resource with
+        `database_type` set to `"CLOUD_DATASTORE_COMPATIBILITY"`.
+        Your Datastore location will be the same as the App Engine location specified.
 
         ## Example Usage
 

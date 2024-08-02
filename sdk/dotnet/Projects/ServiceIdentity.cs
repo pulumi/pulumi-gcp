@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Projects
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.jobUser",
-    ///         Member = hcSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = hcSa.Member,
     ///     });
     /// 
     /// });
@@ -65,6 +65,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+        /// </summary>
+        [Output("member")]
+        public Output<string> Member { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -155,6 +161,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+        /// </summary>
+        [Input("member")]
+        public Input<string>? Member { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

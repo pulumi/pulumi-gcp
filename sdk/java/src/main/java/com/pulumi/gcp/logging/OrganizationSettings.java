@@ -226,11 +226,18 @@ public class OrganizationSettings extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationSettings(String name, OrganizationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationSettings:OrganizationSettings", name, args == null ? OrganizationSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/organizationSettings:OrganizationSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationSettings(String name, Output<String> id, @Nullable OrganizationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/organizationSettings:OrganizationSettings", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationSettingsArgs makeArgs(OrganizationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationSettingsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
         /// <summary>
         /// Sets the maximum number of requests that each serving instance can receive.
+        /// If not specified or 0, defaults to 80 when requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
         /// </summary>
         [Input("maxInstanceRequestConcurrency")]
         public Input<int>? MaxInstanceRequestConcurrency { get; set; }

@@ -18,14 +18,14 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs e
     public static final PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs Empty = new PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs();
 
     /**
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
+     * File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
      * 
      */
     @Import(name="createdAfter")
     private @Nullable Output<String> createdAfter;
 
     /**
-     * @return A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
+     * @return File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
      * 
      */
     public Optional<Output<String>> createdAfter() {
@@ -111,7 +111,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs e
         }
 
         /**
-         * @param createdAfter A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
+         * @param createdAfter File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs e
         }
 
         /**
-         * @param createdAfter A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
+         * @param createdAfter File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
          * 
          * @return builder
          * 

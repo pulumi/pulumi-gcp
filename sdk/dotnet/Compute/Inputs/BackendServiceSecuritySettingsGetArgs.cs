@@ -13,14 +13,25 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class BackendServiceSecuritySettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+        /// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+        /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+        /// </summary>
+        [Input("awsV4Authentication")]
+        public Input<Inputs.BackendServiceSecuritySettingsAwsV4AuthenticationGetArgs>? AwsV4Authentication { get; set; }
+
+        /// <summary>
         /// ClientTlsPolicy is a resource that specifies how a client should authenticate
         /// connections to backends of a service. This resource itself does not affect
         /// configuration unless it is attached to a backend service resource.
         /// </summary>
-        [Input("clientTlsPolicy", required: true)]
-        public Input<string> ClientTlsPolicy { get; set; } = null!;
+        [Input("clientTlsPolicy")]
+        public Input<string>? ClientTlsPolicy { get; set; }
 
-        [Input("subjectAltNames", required: true)]
+        [Input("subjectAltNames")]
         private InputList<string>? _subjectAltNames;
 
         /// <summary>

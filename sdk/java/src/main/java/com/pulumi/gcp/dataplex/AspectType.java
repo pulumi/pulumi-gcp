@@ -511,11 +511,18 @@ public class AspectType extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AspectType(String name, @Nullable AspectTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/aspectType:AspectType", name, args == null ? AspectTypeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/aspectType:AspectType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AspectType(String name, Output<String> id, @Nullable AspectTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/aspectType:AspectType", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AspectTypeArgs makeArgs(@Nullable AspectTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AspectTypeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -230,8 +230,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // ca pool IAM permissions can take time to propagate
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
- *             .createDuration("60s")
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(caPoolBinding)
  *                 .build());
@@ -246,8 +246,454 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     rootCa,
- *                     wait60Seconds)
+ *                     wait120Seconds)
  *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secure Source Manager Instance Private Psc Backend
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxyArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
+ *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .publishCaCert(true)
+ *                 .publishCrl(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var rootCa = new Authority("rootCa", AuthorityArgs.builder()
+ *             .pool(caPool.name())
+ *             .certificateAuthorityId("root-ca")
+ *             .location("us-central1")
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization("google")
+ *                         .commonName("my-certificate-authority")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .skipGracePeriod(true)
+ *             .build());
+ * 
+ *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
+ *             .caPool(caPool.id())
+ *             .role("roles/privateca.certificateRequester")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         // ca pool IAM permissions can take time to propagate
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(caPoolBinding)
+ *                 .build());
+ * 
+ *         // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .instanceId("my-instance")
+ *             .location("us-central1")
+ *             .privateConfig(InstancePrivateConfigArgs.builder()
+ *                 .isPrivate(true)
+ *                 .caPool(caPool.id())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     rootCa,
+ *                     wait120Seconds)
+ *                 .build());
+ * 
+ *         // Connect SSM private instance with L4 proxy ILB.
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .privateIpGoogleAccess(true)
+ *             .build());
+ * 
+ *         var pscNeg = new RegionNetworkEndpointGroup("pscNeg", RegionNetworkEndpointGroupArgs.builder()
+ *             .name("my-neg")
+ *             .region("us-central1")
+ *             .networkEndpointType("PRIVATE_SERVICE_CONNECT")
+ *             .pscTargetService(default_.privateConfig().applyValue(privateConfig -> privateConfig.httpServiceAttachment()))
+ *             .network(network.id())
+ *             .subnetwork(subnet.id())
+ *             .build());
+ * 
+ *         var backendService = new RegionBackendService("backendService", RegionBackendServiceArgs.builder()
+ *             .name("my-backend-service")
+ *             .region("us-central1")
+ *             .protocol("TCP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(pscNeg.id())
+ *                 .balancingMode("UTILIZATION")
+ *                 .capacityScaler(1)
+ *                 .build())
+ *             .build());
+ * 
+ *         var proxySubnet = new Subnetwork("proxySubnet", SubnetworkArgs.builder()
+ *             .name("my-proxy-subnet")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .ipCidrRange("10.0.2.0/24")
+ *             .purpose("REGIONAL_MANAGED_PROXY")
+ *             .role("ACTIVE")
+ *             .build());
+ * 
+ *         var targetProxy = new RegionTargetTcpProxy("targetProxy", RegionTargetTcpProxyArgs.builder()
+ *             .name("my-target-proxy")
+ *             .region("us-central1")
+ *             .backendService(backendService.id())
+ *             .build());
+ * 
+ *         var fwRuleTargetProxy = new ForwardingRule("fwRuleTargetProxy", ForwardingRuleArgs.builder()
+ *             .name("fw-rule-target-proxy")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .ipProtocol("TCP")
+ *             .portRange("443")
+ *             .target(targetProxy.id())
+ *             .network(network.id())
+ *             .subnetwork(subnet.id())
+ *             .networkTier("PREMIUM")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxySubnet)
+ *                 .build());
+ * 
+ *         var privateZone = new ManagedZone("privateZone", ManagedZoneArgs.builder()
+ *             .name("my-dns-zone")
+ *             .dnsName("p.sourcemanager.dev.")
+ *             .visibility("private")
+ *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
+ *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
+ *                     .networkUrl(network.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
+ *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].html())))
+ *             .type("A")
+ *             .ttl(300)
+ *             .managedZone(privateZone.name())
+ *             .rrdatas(fwRuleTargetProxy.ipAddress())
+ *             .build());
+ * 
+ *         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
+ *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].api())))
+ *             .type("A")
+ *             .ttl(300)
+ *             .managedZone(privateZone.name())
+ *             .rrdatas(fwRuleTargetProxy.ipAddress())
+ *             .build());
+ * 
+ *         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
+ *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].gitHttp())))
+ *             .type("A")
+ *             .ttl(300)
+ *             .managedZone(privateZone.name())
+ *             .rrdatas(fwRuleTargetProxy.ipAddress())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secure Source Manager Instance Private Psc Endpoint
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
+ *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .publishCaCert(true)
+ *                 .publishCrl(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var rootCa = new Authority("rootCa", AuthorityArgs.builder()
+ *             .pool(caPool.name())
+ *             .certificateAuthorityId("root-ca")
+ *             .location("us-central1")
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization("google")
+ *                         .commonName("my-certificate-authority")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .skipGracePeriod(true)
+ *             .build());
+ * 
+ *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
+ *             .caPool(caPool.id())
+ *             .role("roles/privateca.certificateRequester")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         // ca pool IAM permissions can take time to propagate
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(caPoolBinding)
+ *                 .build());
+ * 
+ *         // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .instanceId("my-instance")
+ *             .location("us-central1")
+ *             .privateConfig(InstancePrivateConfigArgs.builder()
+ *                 .isPrivate(true)
+ *                 .caPool(caPool.id())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     rootCa,
+ *                     wait120Seconds)
+ *                 .build());
+ * 
+ *         // Connect SSM private instance with endpoint.
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .ipCidrRange("10.0.60.0/24")
+ *             .privateIpGoogleAccess(true)
+ *             .build());
+ * 
+ *         var address = new Address("address", AddressArgs.builder()
+ *             .name("my-address")
+ *             .region("us-central1")
+ *             .address("10.0.60.100")
+ *             .addressType("INTERNAL")
+ *             .subnetwork(subnet.id())
+ *             .build());
+ * 
+ *         var fwRuleServiceAttachment = new ForwardingRule("fwRuleServiceAttachment", ForwardingRuleArgs.builder()
+ *             .name("fw-rule-service-attachment")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("")
+ *             .ipAddress(address.id())
+ *             .network(network.id())
+ *             .target(default_.privateConfig().applyValue(privateConfig -> privateConfig.httpServiceAttachment()))
+ *             .build());
+ * 
+ *         var privateZone = new ManagedZone("privateZone", ManagedZoneArgs.builder()
+ *             .name("my-dns-zone")
+ *             .dnsName("p.sourcemanager.dev.")
+ *             .visibility("private")
+ *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
+ *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
+ *                     .networkUrl(network.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
+ *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].html())))
+ *             .type("A")
+ *             .ttl(300)
+ *             .managedZone(privateZone.name())
+ *             .rrdatas(fwRuleServiceAttachment.ipAddress())
+ *             .build());
+ * 
+ *         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
+ *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].api())))
+ *             .type("A")
+ *             .ttl(300)
+ *             .managedZone(privateZone.name())
+ *             .rrdatas(fwRuleServiceAttachment.ipAddress())
+ *             .build());
+ * 
+ *         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
+ *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].gitHttp())))
+ *             .type("A")
+ *             .ttl(300)
+ *             .managedZone(privateZone.name())
+ *             .rrdatas(fwRuleServiceAttachment.ipAddress())
+ *             .build());
  * 
  *     }
  * }
@@ -525,11 +971,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Instance(String name, InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securesourcemanager/instance:Instance", name, args == null ? InstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securesourcemanager/instance:Instance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Instance(String name, Output<String> id, @Nullable InstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securesourcemanager/instance:Instance", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstanceArgs makeArgs(InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

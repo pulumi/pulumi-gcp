@@ -303,11 +303,18 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LinkedDataset(String name, LinkedDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/linkedDataset:LinkedDataset", name, args == null ? LinkedDatasetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/linkedDataset:LinkedDataset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LinkedDataset(String name, Output<String> id, @Nullable LinkedDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/linkedDataset:LinkedDataset", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LinkedDatasetArgs makeArgs(LinkedDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LinkedDatasetArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

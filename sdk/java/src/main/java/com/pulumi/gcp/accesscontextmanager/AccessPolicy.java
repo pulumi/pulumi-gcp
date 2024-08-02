@@ -245,11 +245,18 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessPolicy(String name, AccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/accessPolicy:AccessPolicy", name, args == null ? AccessPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:accesscontextmanager/accessPolicy:AccessPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessPolicy(String name, Output<String> id, @Nullable AccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:accesscontextmanager/accessPolicy:AccessPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessPolicyArgs makeArgs(AccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

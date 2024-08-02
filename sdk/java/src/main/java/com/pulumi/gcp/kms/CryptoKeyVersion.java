@@ -244,11 +244,18 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CryptoKeyVersion(String name, CryptoKeyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/cryptoKeyVersion:CryptoKeyVersion", name, args == null ? CryptoKeyVersionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/cryptoKeyVersion:CryptoKeyVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CryptoKeyVersion(String name, Output<String> id, @Nullable CryptoKeyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/cryptoKeyVersion:CryptoKeyVersion", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CryptoKeyVersionArgs makeArgs(CryptoKeyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CryptoKeyVersionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

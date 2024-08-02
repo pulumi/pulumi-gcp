@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
 
         /// <summary>
         /// A list of IPs, hostnames, and domains that should skip the proxy.
-        /// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        /// For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
         /// </summary>
         public InputList<string> NoProxies
         {
@@ -27,9 +27,9 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
 
         /// <summary>
         /// Specifies the address of your proxy server.
-        /// Examples: http://domain
+        /// For Example: http://domain
         /// WARNING: Do not provide credentials in the format
-        /// http://(username:password@)domain these will be rejected by the server.
+        /// of http://(username:password@)domain these will be rejected by the server.
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

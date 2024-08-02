@@ -345,11 +345,18 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
      * @param options A bag of options that control this resource's behavior.
      */
     public FirewallEndpointAssociation(String name, FirewallEndpointAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", name, args == null ? FirewallEndpointAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FirewallEndpointAssociation(String name, Output<String> id, @Nullable FirewallEndpointAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FirewallEndpointAssociationArgs makeArgs(FirewallEndpointAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallEndpointAssociationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

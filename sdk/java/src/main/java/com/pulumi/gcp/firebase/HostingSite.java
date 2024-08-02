@@ -160,8 +160,8 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
         return this.defaultUrl;
     }
     /**
-     * Output only. The fully-qualified resource name of the Hosting site, in the
-     * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+     * Output only. The fully-qualified resource name of the Hosting site, in
+     * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
      * Firebase project&#39;s
      * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
      * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -173,8 +173,8 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Output only. The fully-qualified resource name of the Hosting site, in the
-     * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+     * @return Output only. The fully-qualified resource name of the Hosting site, in
+     * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
      * Firebase project&#39;s
      * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
      * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -242,11 +242,18 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HostingSite(String name, @Nullable HostingSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/hostingSite:HostingSite", name, args == null ? HostingSiteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firebase/hostingSite:HostingSite", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HostingSite(String name, Output<String> id, @Nullable HostingSiteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firebase/hostingSite:HostingSite", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HostingSiteArgs makeArgs(@Nullable HostingSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostingSiteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

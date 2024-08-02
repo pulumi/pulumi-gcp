@@ -16,7 +16,9 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigNetworkPolicyConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigRayOperatorConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigStatefulHaConfig;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -113,11 +115,27 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
     /**
+     * @return . The status of the [Ray Operator
+     * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+     * It is disabled by default. Set `enabled = true` to enable. The minimum
+     * cluster version to enable Ray is 1.30.0-gke.1747000.
+     * 
+     * Ray Operator config has optional subfields
+     * `ray_cluster_logging_config.enabled` and
+     * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+     * and monitoring respectively. See [Collect and view logs and metrics for Ray
+     * clusters on
+     * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+     * for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
+    /**
      * @return .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
      * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
@@ -237,11 +255,29 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.networkPolicyConfig);
     }
     /**
+     * @return . The status of the [Ray Operator
+     * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+     * It is disabled by default. Set `enabled = true` to enable. The minimum
+     * cluster version to enable Ray is 1.30.0-gke.1747000.
+     * 
+     * Ray Operator config has optional subfields
+     * `ray_cluster_logging_config.enabled` and
+     * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+     * and monitoring respectively. See [Collect and view logs and metrics for Ray
+     * clusters on
+     * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+     * for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    public List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs() {
+        return this.rayOperatorConfigs == null ? List.of() : this.rayOperatorConfigs;
+    }
+    /**
      * @return .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
      * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     public Optional<ClusterAddonsConfigStatefulHaConfig> statefulHaConfig() {
@@ -269,6 +305,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigIstioConfig istioConfig;
         private @Nullable ClusterAddonsConfigKalmConfig kalmConfig;
         private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
+        private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
         private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
         public Builder() {}
         public Builder(ClusterAddonsConfig defaults) {
@@ -285,6 +322,7 @@ public final class ClusterAddonsConfig {
     	      this.istioConfig = defaults.istioConfig;
     	      this.kalmConfig = defaults.kalmConfig;
     	      this.networkPolicyConfig = defaults.networkPolicyConfig;
+    	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
     	      this.statefulHaConfig = defaults.statefulHaConfig;
         }
 
@@ -361,6 +399,15 @@ public final class ClusterAddonsConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder rayOperatorConfigs(@Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs) {
+
+            this.rayOperatorConfigs = rayOperatorConfigs;
+            return this;
+        }
+        public Builder rayOperatorConfigs(ClusterAddonsConfigRayOperatorConfig... rayOperatorConfigs) {
+            return rayOperatorConfigs(List.of(rayOperatorConfigs));
+        }
+        @CustomType.Setter
         public Builder statefulHaConfig(@Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig) {
 
             this.statefulHaConfig = statefulHaConfig;
@@ -380,6 +427,7 @@ public final class ClusterAddonsConfig {
             _resultValue.istioConfig = istioConfig;
             _resultValue.kalmConfig = kalmConfig;
             _resultValue.networkPolicyConfig = networkPolicyConfig;
+            _resultValue.rayOperatorConfigs = rayOperatorConfigs;
             _resultValue.statefulHaConfig = statefulHaConfig;
             return _resultValue;
         }

@@ -394,11 +394,18 @@ public class TopicIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TopicIAMPolicy(String name, TopicIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/topicIAMPolicy:TopicIAMPolicy", name, args == null ? TopicIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/topicIAMPolicy:TopicIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TopicIAMPolicy(String name, Output<String> id, @Nullable TopicIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/topicIAMPolicy:TopicIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TopicIAMPolicyArgs makeArgs(TopicIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TopicIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

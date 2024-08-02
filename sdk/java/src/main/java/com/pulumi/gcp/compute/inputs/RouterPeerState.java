@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RouterPeerAdvertisedIpRangeArgs;
 import com.pulumi.gcp.compute.inputs.RouterPeerBfdArgs;
+import com.pulumi.gcp.compute.inputs.RouterPeerCustomLearnedIpRangeArgs;
 import com.pulumi.gcp.compute.inputs.RouterPeerMd5AuthenticationKeyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -137,6 +138,42 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     * 
+     */
+    @Import(name="customLearnedIpRanges")
+    private @Nullable Output<List<RouterPeerCustomLearnedIpRangeArgs>> customLearnedIpRanges;
+
+    /**
+     * @return The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     * 
+     */
+    public Optional<Output<List<RouterPeerCustomLearnedIpRangeArgs>>> customLearnedIpRanges() {
+        return Optional.ofNullable(this.customLearnedIpRanges);
+    }
+
+    /**
+     * The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+     * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
+     * priority of 100 to the ranges.
+     * 
+     */
+    @Import(name="customLearnedRoutePriority")
+    private @Nullable Output<Integer> customLearnedRoutePriority;
+
+    /**
+     * @return The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+     * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
+     * priority of 100 to the ranges.
+     * 
+     */
+    public Optional<Output<Integer>> customLearnedRoutePriority() {
+        return Optional.ofNullable(this.customLearnedRoutePriority);
+    }
+
+    /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
@@ -185,6 +222,40 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
+     * routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+     * 
+     */
+    @Import(name="exportPolicies")
+    private @Nullable Output<List<String>> exportPolicies;
+
+    /**
+     * @return routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+     * 
+     */
+    public Optional<Output<List<String>>> exportPolicies() {
+        return Optional.ofNullable(this.exportPolicies);
+    }
+
+    /**
+     * routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+     * 
+     */
+    @Import(name="importPolicies")
+    private @Nullable Output<List<String>> importPolicies;
+
+    /**
+     * @return routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+     * 
+     */
+    public Optional<Output<List<String>>> importPolicies() {
+        return Optional.ofNullable(this.importPolicies);
     }
 
     /**
@@ -480,9 +551,13 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.advertisedIpRanges = $.advertisedIpRanges;
         this.advertisedRoutePriority = $.advertisedRoutePriority;
         this.bfd = $.bfd;
+        this.customLearnedIpRanges = $.customLearnedIpRanges;
+        this.customLearnedRoutePriority = $.customLearnedRoutePriority;
         this.enable = $.enable;
         this.enableIpv4 = $.enableIpv4;
         this.enableIpv6 = $.enableIpv6;
+        this.exportPolicies = $.exportPolicies;
+        this.importPolicies = $.importPolicies;
         this.interface_ = $.interface_;
         this.ipAddress = $.ipAddress;
         this.ipv4NexthopAddress = $.ipv4NexthopAddress;
@@ -698,6 +773,65 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+         * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customLearnedIpRanges(@Nullable Output<List<RouterPeerCustomLearnedIpRangeArgs>> customLearnedIpRanges) {
+            $.customLearnedIpRanges = customLearnedIpRanges;
+            return this;
+        }
+
+        /**
+         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+         * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customLearnedIpRanges(List<RouterPeerCustomLearnedIpRangeArgs> customLearnedIpRanges) {
+            return customLearnedIpRanges(Output.of(customLearnedIpRanges));
+        }
+
+        /**
+         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+         * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customLearnedIpRanges(RouterPeerCustomLearnedIpRangeArgs... customLearnedIpRanges) {
+            return customLearnedIpRanges(List.of(customLearnedIpRanges));
+        }
+
+        /**
+         * @param customLearnedRoutePriority The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+         * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
+         * priority of 100 to the ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customLearnedRoutePriority(@Nullable Output<Integer> customLearnedRoutePriority) {
+            $.customLearnedRoutePriority = customLearnedRoutePriority;
+            return this;
+        }
+
+        /**
+         * @param customLearnedRoutePriority The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+         * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
+         * priority of 100 to the ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customLearnedRoutePriority(Integer customLearnedRoutePriority) {
+            return customLearnedRoutePriority(Output.of(customLearnedRoutePriority));
+        }
+
+        /**
          * @param enable The status of the BGP peer connection. If set to false, any active session
          * with the peer is terminated and all associated routing information is removed.
          * If set to true, the peer connection can be established with routing information.
@@ -764,6 +898,74 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
+        }
+
+        /**
+         * @param exportPolicies routers.list of export policies applied to this peer, in the order they must be evaluated.
+         * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPolicies(@Nullable Output<List<String>> exportPolicies) {
+            $.exportPolicies = exportPolicies;
+            return this;
+        }
+
+        /**
+         * @param exportPolicies routers.list of export policies applied to this peer, in the order they must be evaluated.
+         * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPolicies(List<String> exportPolicies) {
+            return exportPolicies(Output.of(exportPolicies));
+        }
+
+        /**
+         * @param exportPolicies routers.list of export policies applied to this peer, in the order they must be evaluated.
+         * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPolicies(String... exportPolicies) {
+            return exportPolicies(List.of(exportPolicies));
+        }
+
+        /**
+         * @param importPolicies routers.list of import policies applied to this peer, in the order they must be evaluated.
+         * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importPolicies(@Nullable Output<List<String>> importPolicies) {
+            $.importPolicies = importPolicies;
+            return this;
+        }
+
+        /**
+         * @param importPolicies routers.list of import policies applied to this peer, in the order they must be evaluated.
+         * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importPolicies(List<String> importPolicies) {
+            return importPolicies(Output.of(importPolicies));
+        }
+
+        /**
+         * @param importPolicies routers.list of import policies applied to this peer, in the order they must be evaluated.
+         * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importPolicies(String... importPolicies) {
+            return importPolicies(List.of(importPolicies));
         }
 
         /**

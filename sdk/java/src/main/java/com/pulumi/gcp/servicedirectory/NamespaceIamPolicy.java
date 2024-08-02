@@ -372,11 +372,18 @@ public class NamespaceIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NamespaceIamPolicy(String name, NamespaceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy", name, args == null ? NamespaceIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NamespaceIamPolicy(String name, Output<String> id, @Nullable NamespaceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NamespaceIamPolicyArgs makeArgs(NamespaceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NamespaceIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

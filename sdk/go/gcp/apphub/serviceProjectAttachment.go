@@ -136,14 +136,14 @@ type ServiceProjectAttachment struct {
 
 	// Output only. Create time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+	// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// "Immutable. Service project name in the format: \"projects/abc\"
 	// or \"projects/123\". As input, project name with either project id or number
-	// are accepted. As output, this field will contain project number. "
+	// are accepted. As output, this field will contain project number."
 	ServiceProject pulumi.StringPtrOutput `pulumi:"serviceProject"`
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
 	//
@@ -190,14 +190,14 @@ func GetServiceProjectAttachment(ctx *pulumi.Context,
 type serviceProjectAttachmentState struct {
 	// Output only. Create time.
 	CreateTime *string `pulumi:"createTime"`
-	// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+	// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// "Immutable. Service project name in the format: \"projects/abc\"
 	// or \"projects/123\". As input, project name with either project id or number
-	// are accepted. As output, this field will contain project number. "
+	// are accepted. As output, this field will contain project number."
 	ServiceProject *string `pulumi:"serviceProject"`
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
 	//
@@ -212,14 +212,14 @@ type serviceProjectAttachmentState struct {
 type ServiceProjectAttachmentState struct {
 	// Output only. Create time.
 	CreateTime pulumi.StringPtrInput
-	// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+	// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// "Immutable. Service project name in the format: \"projects/abc\"
 	// or \"projects/123\". As input, project name with either project id or number
-	// are accepted. As output, this field will contain project number. "
+	// are accepted. As output, this field will contain project number."
 	ServiceProject pulumi.StringPtrInput
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
 	//
@@ -241,7 +241,7 @@ type serviceProjectAttachmentArgs struct {
 	Project *string `pulumi:"project"`
 	// "Immutable. Service project name in the format: \"projects/abc\"
 	// or \"projects/123\". As input, project name with either project id or number
-	// are accepted. As output, this field will contain project number. "
+	// are accepted. As output, this field will contain project number."
 	ServiceProject *string `pulumi:"serviceProject"`
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
 	//
@@ -256,7 +256,7 @@ type ServiceProjectAttachmentArgs struct {
 	Project pulumi.StringPtrInput
 	// "Immutable. Service project name in the format: \"projects/abc\"
 	// or \"projects/123\". As input, project name with either project id or number
-	// are accepted. As output, this field will contain project number. "
+	// are accepted. As output, this field will contain project number."
 	ServiceProject pulumi.StringPtrInput
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
 	//
@@ -356,7 +356,7 @@ func (o ServiceProjectAttachmentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProjectAttachment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
 func (o ServiceProjectAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProjectAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -369,7 +369,7 @@ func (o ServiceProjectAttachmentOutput) Project() pulumi.StringOutput {
 
 // "Immutable. Service project name in the format: \"projects/abc\"
 // or \"projects/123\". As input, project name with either project id or number
-// are accepted. As output, this field will contain project number. "
+// are accepted. As output, this field will contain project number."
 func (o ServiceProjectAttachmentOutput) ServiceProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceProjectAttachment) pulumi.StringPtrOutput { return v.ServiceProject }).(pulumi.StringPtrOutput)
 }

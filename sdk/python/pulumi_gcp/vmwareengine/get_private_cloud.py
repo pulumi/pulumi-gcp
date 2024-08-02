@@ -27,7 +27,10 @@ class GetPrivateCloudResult:
     """
     A collection of values returned by getPrivateCloud.
     """
-    def __init__(__self__, description=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, state=None, type=None, uid=None, vcenters=None):
+    def __init__(__self__, deletion_delay_hours=None, description=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, send_deletion_delay_hours_if_zero=None, state=None, type=None, uid=None, vcenters=None):
+        if deletion_delay_hours and not isinstance(deletion_delay_hours, int):
+            raise TypeError("Expected argument 'deletion_delay_hours' to be a int")
+        pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -55,6 +58,9 @@ class GetPrivateCloudResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if send_deletion_delay_hours_if_zero and not isinstance(send_deletion_delay_hours_if_zero, bool):
+            raise TypeError("Expected argument 'send_deletion_delay_hours_if_zero' to be a bool")
+        pulumi.set(__self__, "send_deletion_delay_hours_if_zero", send_deletion_delay_hours_if_zero)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -67,6 +73,11 @@ class GetPrivateCloudResult:
         if vcenters and not isinstance(vcenters, list):
             raise TypeError("Expected argument 'vcenters' to be a list")
         pulumi.set(__self__, "vcenters", vcenters)
+
+    @property
+    @pulumi.getter(name="deletionDelayHours")
+    def deletion_delay_hours(self) -> int:
+        return pulumi.get(self, "deletion_delay_hours")
 
     @property
     @pulumi.getter
@@ -117,6 +128,11 @@ class GetPrivateCloudResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="sendDeletionDelayHoursIfZero")
+    def send_deletion_delay_hours_if_zero(self) -> bool:
+        return pulumi.get(self, "send_deletion_delay_hours_if_zero")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
@@ -143,6 +159,7 @@ class AwaitableGetPrivateCloudResult(GetPrivateCloudResult):
         if False:
             yield self
         return GetPrivateCloudResult(
+            deletion_delay_hours=self.deletion_delay_hours,
             description=self.description,
             hcxes=self.hcxes,
             id=self.id,
@@ -152,6 +169,7 @@ class AwaitableGetPrivateCloudResult(GetPrivateCloudResult):
             network_configs=self.network_configs,
             nsxes=self.nsxes,
             project=self.project,
+            send_deletion_delay_hours_if_zero=self.send_deletion_delay_hours_if_zero,
             state=self.state,
             type=self.type,
             uid=self.uid,
@@ -194,6 +212,7 @@ def get_private_cloud(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vmwareengine/getPrivateCloud:getPrivateCloud', __args__, opts=opts, typ=GetPrivateCloudResult).value
 
     return AwaitableGetPrivateCloudResult(
+        deletion_delay_hours=pulumi.get(__ret__, 'deletion_delay_hours'),
         description=pulumi.get(__ret__, 'description'),
         hcxes=pulumi.get(__ret__, 'hcxes'),
         id=pulumi.get(__ret__, 'id'),
@@ -203,6 +222,7 @@ def get_private_cloud(location: Optional[str] = None,
         network_configs=pulumi.get(__ret__, 'network_configs'),
         nsxes=pulumi.get(__ret__, 'nsxes'),
         project=pulumi.get(__ret__, 'project'),
+        send_deletion_delay_hours_if_zero=pulumi.get(__ret__, 'send_deletion_delay_hours_if_zero'),
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),

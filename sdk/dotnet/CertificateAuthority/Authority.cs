@@ -246,14 +246,14 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/cloudkms.signerVerifier",
-    ///         Member = privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = privatecaSa.Member,
     ///     });
     /// 
     ///     var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer", new()
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/viewer",
-    ///         Member = privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = privatecaSa.Member,
     ///     });
     /// 
     ///     var @default = new Gcp.CertificateAuthority.Authority("default", new()

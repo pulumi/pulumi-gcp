@@ -500,11 +500,18 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SecurityPolicy(String name, @Nullable SecurityPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/securityPolicy:SecurityPolicy", name, args == null ? SecurityPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/securityPolicy:SecurityPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SecurityPolicy(String name, Output<String> id, @Nullable SecurityPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/securityPolicy:SecurityPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SecurityPolicyArgs makeArgs(@Nullable SecurityPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecurityPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

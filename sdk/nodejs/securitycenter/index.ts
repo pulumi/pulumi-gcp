@@ -100,6 +100,11 @@ export type SourceIamPolicy = import("./sourceIamPolicy").SourceIamPolicy;
 export const SourceIamPolicy: typeof import("./sourceIamPolicy").SourceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["SourceIamPolicy"], () => require("./sourceIamPolicy"));
 
+export { V2OrganizationMuteConfigArgs, V2OrganizationMuteConfigState } from "./v2organizationMuteConfig";
+export type V2OrganizationMuteConfig = import("./v2organizationMuteConfig").V2OrganizationMuteConfig;
+export const V2OrganizationMuteConfig: typeof import("./v2organizationMuteConfig").V2OrganizationMuteConfig = null as any;
+utilities.lazyLoad(exports, ["V2OrganizationMuteConfig"], () => require("./v2organizationMuteConfig"));
+
 export { V2OrganizationNotificationConfigArgs, V2OrganizationNotificationConfigState } from "./v2organizationNotificationConfig";
 export type V2OrganizationNotificationConfig = import("./v2organizationNotificationConfig").V2OrganizationNotificationConfig;
 export const V2OrganizationNotificationConfig: typeof import("./v2organizationNotificationConfig").V2OrganizationNotificationConfig = null as any;
@@ -146,6 +151,8 @@ const _module = {
                 return new SourceIamMember(name, <any>undefined, { urn })
             case "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy":
                 return new SourceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
+                return new V2OrganizationMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
                 return new V2OrganizationNotificationConfig(name, <any>undefined, { urn })
             default:
@@ -171,4 +178,5 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationNotificationConfig", _module)

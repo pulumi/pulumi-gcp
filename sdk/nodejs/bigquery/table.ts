@@ -123,8 +123,15 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
-     * This field is in beta. If set to true, it allows table deletion when there
-     * are still resource tags attached. The default value is false.
+     * If set to true, it allows table
+     * deletion when there are still resource tags attached. The default value is
+     * false.
+     *
+     * ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+     * removed in a future major release. The default behavior will be allowing
+     * the presence of resource tags on deletion after the next major release.
+     *
+     * @deprecated This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
      */
     public readonly allowResourceTagsOnDeletion!: pulumi.Output<boolean | undefined>;
     /**
@@ -258,7 +265,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly requirePartitionFilter!: pulumi.Output<boolean | undefined>;
     /**
-     * This field is in beta. The tags attached to this table. Tag keys are
+     * The tags attached to this table. Tag keys are
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example "123456789012/environment" where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
@@ -405,8 +412,15 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableState {
     /**
-     * This field is in beta. If set to true, it allows table deletion when there
-     * are still resource tags attached. The default value is false.
+     * If set to true, it allows table
+     * deletion when there are still resource tags attached. The default value is
+     * false.
+     *
+     * ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+     * removed in a future major release. The default behavior will be allowing
+     * the presence of resource tags on deletion after the next major release.
+     *
+     * @deprecated This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
      */
     allowResourceTagsOnDeletion?: pulumi.Input<boolean>;
     /**
@@ -540,7 +554,7 @@ export interface TableState {
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
-     * This field is in beta. The tags attached to this table. Tag keys are
+     * The tags attached to this table. Tag keys are
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example "123456789012/environment" where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
@@ -593,8 +607,15 @@ export interface TableState {
  */
 export interface TableArgs {
     /**
-     * This field is in beta. If set to true, it allows table deletion when there
-     * are still resource tags attached. The default value is false.
+     * If set to true, it allows table
+     * deletion when there are still resource tags attached. The default value is
+     * false.
+     *
+     * ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+     * removed in a future major release. The default behavior will be allowing
+     * the presence of resource tags on deletion after the next major release.
+     *
+     * @deprecated This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
      */
     allowResourceTagsOnDeletion?: pulumi.Input<boolean>;
     /**
@@ -677,7 +698,7 @@ export interface TableArgs {
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
-     * This field is in beta. The tags attached to this table. Tag keys are
+     * The tags attached to this table. Tag keys are
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example "123456789012/environment" where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is

@@ -208,11 +208,18 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BiReservation(String name, BiReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/biReservation:BiReservation", name, args == null ? BiReservationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquery/biReservation:BiReservation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BiReservation(String name, Output<String> id, @Nullable BiReservationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquery/biReservation:BiReservation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BiReservationArgs makeArgs(BiReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BiReservationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

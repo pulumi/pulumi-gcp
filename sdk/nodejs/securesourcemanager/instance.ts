@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
  * // ca pool IAM permissions can take time to propagate
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [caPoolBinding],
  * });
  * const _default = new gcp.securesourcemanager.Instance("default", {
@@ -128,8 +128,302 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [
  *         rootCa,
- *         wait60Seconds,
+ *         wait120Seconds,
  *     ],
+ * });
+ * ```
+ * ### Secure Source Manager Instance Private Psc Backend
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
+ *     name: "ca-pool",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     publishingOptions: {
+ *         publishCaCert: true,
+ *         publishCrl: true,
+ *     },
+ * });
+ * const rootCa = new gcp.certificateauthority.Authority("root_ca", {
+ *     pool: caPool.name,
+ *     certificateAuthorityId: "root-ca",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "google",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     skipGracePeriod: true,
+ * });
+ * const caPoolBinding = new gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding", {
+ *     caPool: caPool.id,
+ *     role: "roles/privateca.certificateRequester",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
+ * });
+ * // ca pool IAM permissions can take time to propagate
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [caPoolBinding],
+ * });
+ * // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+ * const _default = new gcp.securesourcemanager.Instance("default", {
+ *     instanceId: "my-instance",
+ *     location: "us-central1",
+ *     privateConfig: {
+ *         isPrivate: true,
+ *         caPool: caPool.id,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         rootCa,
+ *         wait120Seconds,
+ *     ],
+ * });
+ * // Connect SSM private instance with L4 proxy ILB.
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnet",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     ipCidrRange: "10.0.1.0/24",
+ *     privateIpGoogleAccess: true,
+ * });
+ * const pscNeg = new gcp.compute.RegionNetworkEndpointGroup("psc_neg", {
+ *     name: "my-neg",
+ *     region: "us-central1",
+ *     networkEndpointType: "PRIVATE_SERVICE_CONNECT",
+ *     pscTargetService: _default.privateConfig.apply(privateConfig => privateConfig?.httpServiceAttachment),
+ *     network: network.id,
+ *     subnetwork: subnet.id,
+ * });
+ * const backendService = new gcp.compute.RegionBackendService("backend_service", {
+ *     name: "my-backend-service",
+ *     region: "us-central1",
+ *     protocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     backends: [{
+ *         group: pscNeg.id,
+ *         balancingMode: "UTILIZATION",
+ *         capacityScaler: 1,
+ *     }],
+ * });
+ * const proxySubnet = new gcp.compute.Subnetwork("proxy_subnet", {
+ *     name: "my-proxy-subnet",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     ipCidrRange: "10.0.2.0/24",
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     role: "ACTIVE",
+ * });
+ * const targetProxy = new gcp.compute.RegionTargetTcpProxy("target_proxy", {
+ *     name: "my-target-proxy",
+ *     region: "us-central1",
+ *     backendService: backendService.id,
+ * });
+ * const fwRuleTargetProxy = new gcp.compute.ForwardingRule("fw_rule_target_proxy", {
+ *     name: "fw-rule-target-proxy",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     ipProtocol: "TCP",
+ *     portRange: "443",
+ *     target: targetProxy.id,
+ *     network: network.id,
+ *     subnetwork: subnet.id,
+ *     networkTier: "PREMIUM",
+ * }, {
+ *     dependsOn: [proxySubnet],
+ * });
+ * const privateZone = new gcp.dns.ManagedZone("private_zone", {
+ *     name: "my-dns-zone",
+ *     dnsName: "p.sourcemanager.dev.",
+ *     visibility: "private",
+ *     privateVisibilityConfig: {
+ *         networks: [{
+ *             networkUrl: network.id,
+ *         }],
+ *     },
+ * });
+ * const ssmInstanceHtmlRecord = new gcp.dns.RecordSet("ssm_instance_html_record", {
+ *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].html}.`),
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: privateZone.name,
+ *     rrdatas: [fwRuleTargetProxy.ipAddress],
+ * });
+ * const ssmInstanceApiRecord = new gcp.dns.RecordSet("ssm_instance_api_record", {
+ *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].api}.`),
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: privateZone.name,
+ *     rrdatas: [fwRuleTargetProxy.ipAddress],
+ * });
+ * const ssmInstanceGitRecord = new gcp.dns.RecordSet("ssm_instance_git_record", {
+ *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].gitHttp}.`),
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: privateZone.name,
+ *     rrdatas: [fwRuleTargetProxy.ipAddress],
+ * });
+ * ```
+ * ### Secure Source Manager Instance Private Psc Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
+ *     name: "ca-pool",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     publishingOptions: {
+ *         publishCaCert: true,
+ *         publishCrl: true,
+ *     },
+ * });
+ * const rootCa = new gcp.certificateauthority.Authority("root_ca", {
+ *     pool: caPool.name,
+ *     certificateAuthorityId: "root-ca",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "google",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     skipGracePeriod: true,
+ * });
+ * const caPoolBinding = new gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding", {
+ *     caPool: caPool.id,
+ *     role: "roles/privateca.certificateRequester",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
+ * });
+ * // ca pool IAM permissions can take time to propagate
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [caPoolBinding],
+ * });
+ * // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+ * const _default = new gcp.securesourcemanager.Instance("default", {
+ *     instanceId: "my-instance",
+ *     location: "us-central1",
+ *     privateConfig: {
+ *         isPrivate: true,
+ *         caPool: caPool.id,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         rootCa,
+ *         wait120Seconds,
+ *     ],
+ * });
+ * // Connect SSM private instance with endpoint.
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnet",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     ipCidrRange: "10.0.60.0/24",
+ *     privateIpGoogleAccess: true,
+ * });
+ * const address = new gcp.compute.Address("address", {
+ *     name: "my-address",
+ *     region: "us-central1",
+ *     address: "10.0.60.100",
+ *     addressType: "INTERNAL",
+ *     subnetwork: subnet.id,
+ * });
+ * const fwRuleServiceAttachment = new gcp.compute.ForwardingRule("fw_rule_service_attachment", {
+ *     name: "fw-rule-service-attachment",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "",
+ *     ipAddress: address.id,
+ *     network: network.id,
+ *     target: _default.privateConfig.apply(privateConfig => privateConfig?.httpServiceAttachment),
+ * });
+ * const privateZone = new gcp.dns.ManagedZone("private_zone", {
+ *     name: "my-dns-zone",
+ *     dnsName: "p.sourcemanager.dev.",
+ *     visibility: "private",
+ *     privateVisibilityConfig: {
+ *         networks: [{
+ *             networkUrl: network.id,
+ *         }],
+ *     },
+ * });
+ * const ssmInstanceHtmlRecord = new gcp.dns.RecordSet("ssm_instance_html_record", {
+ *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].html}.`),
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: privateZone.name,
+ *     rrdatas: [fwRuleServiceAttachment.ipAddress],
+ * });
+ * const ssmInstanceApiRecord = new gcp.dns.RecordSet("ssm_instance_api_record", {
+ *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].api}.`),
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: privateZone.name,
+ *     rrdatas: [fwRuleServiceAttachment.ipAddress],
+ * });
+ * const ssmInstanceGitRecord = new gcp.dns.RecordSet("ssm_instance_git_record", {
+ *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].gitHttp}.`),
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: privateZone.name,
+ *     rrdatas: [fwRuleServiceAttachment.ipAddress],
  * });
  * ```
  *

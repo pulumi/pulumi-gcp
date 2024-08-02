@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  *             customCoreCount: 32,
  *         }],
  *     },
+ *     deletionDelayHours: 0,
+ *     sendDeletionDelayHoursIfZero: true,
  * });
  * ```
  *
@@ -129,6 +131,11 @@ export class PrivateCloud extends pulumi.CustomResource {
     }
 
     /**
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     */
+    public readonly deletionDelayHours!: pulumi.Output<number | undefined>;
+    /**
      * User-provided description for this private cloud.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -162,6 +169,12 @@ export class PrivateCloud extends pulumi.CustomResource {
     public /*out*/ readonly nsxes!: pulumi.Output<outputs.vmwareengine.PrivateCloudNsx[]>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
+     * only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
+     * deletion_delay_hours.
+     */
+    public readonly sendDeletionDelayHoursIfZero!: pulumi.Output<boolean | undefined>;
+    /**
      * State of the appliance.
      * Possible values are: `ACTIVE`, `CREATING`.
      */
@@ -193,6 +206,7 @@ export class PrivateCloud extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateCloudState | undefined;
+            resourceInputs["deletionDelayHours"] = state ? state.deletionDelayHours : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["hcxes"] = state ? state.hcxes : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -201,6 +215,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["nsxes"] = state ? state.nsxes : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["sendDeletionDelayHoursIfZero"] = state ? state.sendDeletionDelayHoursIfZero : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
@@ -216,12 +231,14 @@ export class PrivateCloud extends pulumi.CustomResource {
             if ((!args || args.networkConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkConfig'");
             }
+            resourceInputs["deletionDelayHours"] = args ? args.deletionDelayHours : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managementCluster"] = args ? args.managementCluster : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sendDeletionDelayHoursIfZero"] = args ? args.sendDeletionDelayHoursIfZero : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["hcxes"] = undefined /*out*/;
             resourceInputs["nsxes"] = undefined /*out*/;
@@ -238,6 +255,11 @@ export class PrivateCloud extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PrivateCloud resources.
  */
 export interface PrivateCloudState {
+    /**
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     */
+    deletionDelayHours?: pulumi.Input<number>;
     /**
      * User-provided description for this private cloud.
      */
@@ -272,6 +294,12 @@ export interface PrivateCloudState {
     nsxes?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudNsx>[]>;
     project?: pulumi.Input<string>;
     /**
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
+     * only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
+     * deletion_delay_hours.
+     */
+    sendDeletionDelayHoursIfZero?: pulumi.Input<boolean>;
+    /**
      * State of the appliance.
      * Possible values are: `ACTIVE`, `CREATING`.
      */
@@ -296,6 +324,11 @@ export interface PrivateCloudState {
  */
 export interface PrivateCloudArgs {
     /**
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     */
+    deletionDelayHours?: pulumi.Input<number>;
+    /**
      * User-provided description for this private cloud.
      */
     description?: pulumi.Input<string>;
@@ -318,6 +351,12 @@ export interface PrivateCloudArgs {
      */
     networkConfig: pulumi.Input<inputs.vmwareengine.PrivateCloudNetworkConfig>;
     project?: pulumi.Input<string>;
+    /**
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
+     * only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
+     * deletion_delay_hours.
+     */
+    sendDeletionDelayHoursIfZero?: pulumi.Input<boolean>;
     /**
      * Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
      */

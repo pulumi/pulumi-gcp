@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///                     Condition = new Gcp.OrgPolicy.Inputs.PolicySpecRuleConditionArgs
     ///                     {
     ///                         Description = "A sample condition for the policy",
-    ///                         Expression = "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+    ///                         Expression = "resource.matchTagId('tagKeys/123', 'tagValues/345')",
     ///                         Location = "sample-location.log",
     ///                         Title = "sample-condition",
     ///                     },
@@ -181,7 +181,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
     ///     {
-    ///         Name = "custom.disableGkeAutoUpgrade_40785",
+    ///         Name = "custom.disableGkeAutoUpgrade_37559",
     ///         Parent = "organizations/123456789",
     ///         DisplayName = "Disable GKE auto upgrade",
     ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",

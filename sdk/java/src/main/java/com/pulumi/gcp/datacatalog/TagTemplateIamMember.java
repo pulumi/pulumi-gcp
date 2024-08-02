@@ -440,11 +440,18 @@ public class TagTemplateIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TagTemplateIamMember(String name, TagTemplateIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember", name, args == null ? TagTemplateIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TagTemplateIamMember(String name, Output<String> id, @Nullable TagTemplateIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TagTemplateIamMemberArgs makeArgs(TagTemplateIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TagTemplateIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

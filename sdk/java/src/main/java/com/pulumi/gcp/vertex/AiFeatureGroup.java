@@ -330,11 +330,18 @@ public class AiFeatureGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AiFeatureGroup(String name, @Nullable AiFeatureGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureGroup:AiFeatureGroup", name, args == null ? AiFeatureGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:vertex/aiFeatureGroup:AiFeatureGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AiFeatureGroup(String name, Output<String> id, @Nullable AiFeatureGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:vertex/aiFeatureGroup:AiFeatureGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AiFeatureGroupArgs makeArgs(@Nullable AiFeatureGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiFeatureGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -79,7 +79,7 @@ class _ClientState:
                
                
                - - -
-        :param pulumi.Input[str] client_id: The OAuth2 ID of the client.
+        :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -114,7 +114,7 @@ class _ClientState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The OAuth2 ID of the client.
+        Output only. Unique identifier of the OAuth client.
         """
         return pulumi.get(self, "client_id")
 
@@ -345,7 +345,7 @@ class Client(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[str] client_id: The OAuth2 ID of the client.
+        :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -377,7 +377,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[str]:
         """
-        The OAuth2 ID of the client.
+        Output only. Unique identifier of the OAuth client.
         """
         return pulumi.get(self, "client_id")
 

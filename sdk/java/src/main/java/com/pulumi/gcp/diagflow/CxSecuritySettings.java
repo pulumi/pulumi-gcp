@@ -441,11 +441,18 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CxSecuritySettings(String name, CxSecuritySettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", name, args == null ? CxSecuritySettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CxSecuritySettings(String name, Output<String> id, @Nullable CxSecuritySettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CxSecuritySettingsArgs makeArgs(CxSecuritySettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CxSecuritySettingsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

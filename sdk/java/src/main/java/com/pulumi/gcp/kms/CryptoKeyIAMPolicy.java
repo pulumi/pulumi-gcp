@@ -383,11 +383,18 @@ public class CryptoKeyIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CryptoKeyIAMPolicy(String name, CryptoKeyIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, args == null ? CryptoKeyIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CryptoKeyIAMPolicy(String name, Output<String> id, @Nullable CryptoKeyIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CryptoKeyIAMPolicyArgs makeArgs(CryptoKeyIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CryptoKeyIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

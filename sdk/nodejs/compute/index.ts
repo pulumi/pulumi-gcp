@@ -835,6 +835,11 @@ export type Reservation = import("./reservation").Reservation;
 export const Reservation: typeof import("./reservation").Reservation = null as any;
 utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
 
+export { ResizeRequestArgs, ResizeRequestState } from "./resizeRequest";
+export type ResizeRequest = import("./resizeRequest").ResizeRequest;
+export const ResizeRequest: typeof import("./resizeRequest").ResizeRequest = null as any;
+utilities.lazyLoad(exports, ["ResizeRequest"], () => require("./resizeRequest"));
+
 export { ResourcePolicyArgs, ResourcePolicyState } from "./resourcePolicy";
 export type ResourcePolicy = import("./resourcePolicy").ResourcePolicy;
 export const ResourcePolicy: typeof import("./resourcePolicy").ResourcePolicy = null as any;
@@ -864,6 +869,11 @@ export { RouterPeerArgs, RouterPeerState } from "./routerPeer";
 export type RouterPeer = import("./routerPeer").RouterPeer;
 export const RouterPeer: typeof import("./routerPeer").RouterPeer = null as any;
 utilities.lazyLoad(exports, ["RouterPeer"], () => require("./routerPeer"));
+
+export { RouterRoutePolicyArgs, RouterRoutePolicyState } from "./routerRoutePolicy";
+export type RouterRoutePolicy = import("./routerRoutePolicy").RouterRoutePolicy;
+export const RouterRoutePolicy: typeof import("./routerRoutePolicy").RouterRoutePolicy = null as any;
+utilities.lazyLoad(exports, ["RouterRoutePolicy"], () => require("./routerRoutePolicy"));
 
 export { RouterStatusArgs, RouterStatusResult, RouterStatusOutputArgs } from "./routerStatus";
 export const routerStatus: typeof import("./routerStatus").routerStatus = null as any;
@@ -1227,6 +1237,8 @@ const _module = {
                 return new RegionUrlMap(name, <any>undefined, { urn })
             case "gcp:compute/reservation:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
+            case "gcp:compute/resizeRequest:ResizeRequest":
+                return new ResizeRequest(name, <any>undefined, { urn })
             case "gcp:compute/resourcePolicy:ResourcePolicy":
                 return new ResourcePolicy(name, <any>undefined, { urn })
             case "gcp:compute/route:Route":
@@ -1239,6 +1251,8 @@ const _module = {
                 return new RouterNat(name, <any>undefined, { urn })
             case "gcp:compute/routerPeer:RouterPeer":
                 return new RouterPeer(name, <any>undefined, { urn })
+            case "gcp:compute/routerRoutePolicy:RouterRoutePolicy":
+                return new RouterRoutePolicy(name, <any>undefined, { urn })
             case "gcp:compute/sSLCertificate:SSLCertificate":
                 return new SSLCertificate(name, <any>undefined, { urn })
             case "gcp:compute/sSLPolicy:SSLPolicy":
@@ -1407,12 +1421,14 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetHttpsProxy", _
 pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetTcpProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionUrlMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/reservation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/resizeRequest", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/resourcePolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/route", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/router", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerInterface", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerNat", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerPeer", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/routerRoutePolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sSLCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sSLPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/securityPolicy", _module)

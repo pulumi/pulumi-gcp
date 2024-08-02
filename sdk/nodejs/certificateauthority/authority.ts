@@ -178,12 +178,12 @@ import * as utilities from "../utilities";
  * const privatecaSaKeyuserSignerverifier = new gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier", {
  *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     role: "roles/cloudkms.signerVerifier",
- *     member: pulumi.interpolate`serviceAccount:${privatecaSa.email}`,
+ *     member: privatecaSa.member,
  * });
  * const privatecaSaKeyuserViewer = new gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer", {
  *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     role: "roles/viewer",
- *     member: pulumi.interpolate`serviceAccount:${privatecaSa.email}`,
+ *     member: privatecaSa.member,
  * });
  * const _default = new gcp.certificateauthority.Authority("default", {
  *     pool: "ca-pool",

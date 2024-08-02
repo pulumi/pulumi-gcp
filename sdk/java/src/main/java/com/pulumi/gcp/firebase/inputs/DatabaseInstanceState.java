@@ -69,8 +69,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The fully-qualified resource name of the Firebase Realtime Database, in the
-     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * The fully-qualified resource name of the Firebase Realtime Database, in
+     * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
@@ -79,8 +79,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully-qualified resource name of the Firebase Realtime Database, in the
-     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * @return The fully-qualified resource name of the Firebase Realtime Database, in
+     * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
@@ -266,8 +266,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The fully-qualified resource name of the Firebase Realtime Database, in the
-         * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+         * @param name The fully-qualified resource name of the Firebase Realtime Database, in
+         * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
          * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
          * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 
@@ -280,8 +280,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The fully-qualified resource name of the Firebase Realtime Database, in the
-         * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+         * @param name The fully-qualified resource name of the Firebase Realtime Database, in
+         * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
          * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
          * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 

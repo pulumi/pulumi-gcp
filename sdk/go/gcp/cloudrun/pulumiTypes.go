@@ -15,8 +15,8 @@ var _ = internal.GetEnvOrDefault
 
 type DomainMappingMetadata struct {
 	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+	// may be set by external tools to store and retrieve arbitrary metadata.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -76,8 +76,8 @@ type DomainMappingMetadataInput interface {
 
 type DomainMappingMetadataArgs struct {
 	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+	// may be set by external tools to store and retrieve arbitrary metadata.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -202,8 +202,8 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext
 }
 
 // Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+// may be set by external tools to store and retrieve arbitrary metadata.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -303,8 +303,8 @@ func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
 }
 
 // Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+// may be set by external tools to store and retrieve arbitrary metadata.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1375,8 +1375,8 @@ func (o IamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type ServiceMetadata struct {
 	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+	// may be set by external tools to store and retrieve arbitrary metadata.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1444,8 +1444,8 @@ type ServiceMetadataInput interface {
 
 type ServiceMetadataArgs struct {
 	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+	// may be set by external tools to store and retrieve arbitrary metadata.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1578,8 +1578,8 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context
 }
 
 // Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+// may be set by external tools to store and retrieve arbitrary metadata.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1687,8 +1687,8 @@ func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
 }
 
 // Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+// may be set by external tools to store and retrieve arbitrary metadata.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -2494,8 +2494,8 @@ func (o ServiceTemplatePtrOutput) Spec() ServiceTemplateSpecPtrOutput {
 
 type ServiceTemplateMetadata struct {
 	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+	// may be set by external tools to store and retrieve arbitrary metadata.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -2559,8 +2559,8 @@ type ServiceTemplateMetadataInput interface {
 
 type ServiceTemplateMetadataArgs struct {
 	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+	// may be set by external tools to store and retrieve arbitrary metadata.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -2689,8 +2689,8 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithCon
 }
 
 // Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+// may be set by external tools to store and retrieve arbitrary metadata.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -2788,8 +2788,8 @@ func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
 }
 
 // Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+// may be set by external tools to store and retrieve arbitrary metadata.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -2904,7 +2904,8 @@ func (o ServiceTemplateMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
 
 type ServiceTemplateSpec struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-	// requests per container of the Revision. Values are:
+	// requests per container of the Revision. If not specified or 0, defaults to 80 when
+	// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
 	// Containers defines the unit of execution for this Revision.
 	// Structure is documented below.
@@ -2944,7 +2945,8 @@ type ServiceTemplateSpecInput interface {
 
 type ServiceTemplateSpecArgs struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-	// requests per container of the Revision. Values are:
+	// requests per container of the Revision. If not specified or 0, defaults to 80 when
+	// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
 	// Containers defines the unit of execution for this Revision.
 	// Structure is documented below.
@@ -3049,7 +3051,8 @@ func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecPtrOutputWithContext(ctx
 }
 
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-// requests per container of the Revision. Values are:
+// requests per container of the Revision. If not specified or 0, defaults to 80 when
+// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 func (o ServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -3117,7 +3120,8 @@ func (o ServiceTemplateSpecPtrOutput) Elem() ServiceTemplateSpecOutput {
 }
 
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-// requests per container of the Revision. Values are:
+// requests per container of the Revision. If not specified or 0, defaults to 80 when
+// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 func (o ServiceTemplateSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) *int {
 		if v == nil {
@@ -8836,11 +8840,8 @@ func (o GetServiceTemplateMetadataArrayOutput) Index(i pulumi.IntInput) GetServi
 
 type GetServiceTemplateSpec struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-	// requests per container of the Revision. Values are:
-	// - '0' thread-safe, the system should manage the max concurrency. This is
-	//     the default value.
-	// - '1' not-thread-safe. Single concurrency
-	// - '2-N' thread-safe, max concurrency of N
+	// requests per container of the Revision. If not specified or 0, defaults to 80 when
+	// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	ContainerConcurrency int `pulumi:"containerConcurrency"`
 	// Containers defines the unit of execution for this Revision.
 	Containers []GetServiceTemplateSpecContainer `pulumi:"containers"`
@@ -8873,11 +8874,8 @@ type GetServiceTemplateSpecInput interface {
 
 type GetServiceTemplateSpecArgs struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-	// requests per container of the Revision. Values are:
-	// - '0' thread-safe, the system should manage the max concurrency. This is
-	//     the default value.
-	// - '1' not-thread-safe. Single concurrency
-	// - '2-N' thread-safe, max concurrency of N
+	// requests per container of the Revision. If not specified or 0, defaults to 80 when
+	// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	ContainerConcurrency pulumi.IntInput `pulumi:"containerConcurrency"`
 	// Containers defines the unit of execution for this Revision.
 	Containers GetServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
@@ -8949,11 +8947,8 @@ func (o GetServiceTemplateSpecOutput) ToGetServiceTemplateSpecOutputWithContext(
 }
 
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-// requests per container of the Revision. Values are:
-//   - '0' thread-safe, the system should manage the max concurrency. This is
-//     the default value.
-//   - '1' not-thread-safe. Single concurrency
-//   - '2-N' thread-safe, max concurrency of N
+// requests per container of the Revision. If not specified or 0, defaults to 80 when
+// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 func (o GetServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpec) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
 }

@@ -84,7 +84,6 @@ import * as utilities from "../utilities";
  *             terraform: "true",
  *         },
  *     },
- *     instanceOwners: ["my@service-account.com"],
  *     labels: {
  *         k: "val",
  *     },
@@ -106,6 +105,12 @@ import * as utilities from "../utilities";
  *     network: myNetwork.id,
  *     region: "us-central1",
  *     ipCidrRange: "10.0.1.0/24",
+ * });
+ * const static = new gcp.compute.Address("static", {name: "wbi-test-default"});
+ * const actAsPermission = new gcp.serviceaccount.IAMBinding("act_as_permission", {
+ *     serviceAccountId: "projects/my-project-name/serviceAccounts/my@service-account.com",
+ *     role: "roles/iam.serviceAccountUser",
+ *     members: ["user:example@example.com"],
  * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
@@ -141,6 +146,9 @@ import * as utilities from "../utilities";
  *             network: myNetwork.id,
  *             subnet: mySubnetwork.id,
  *             nicType: "GVNIC",
+ *             accessConfigs: [{
+ *                 externalIp: static.address,
+ *             }],
  *         }],
  *         metadata: {
  *             terraform: "true",
@@ -152,7 +160,7 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  *     disableProxyAccess: true,
- *     instanceOwners: ["my@service-account.com"],
+ *     instanceOwners: ["example@example.com"],
  *     labels: {
  *         k: "val",
  *     },

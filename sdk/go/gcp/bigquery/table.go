@@ -126,8 +126,15 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	// This field is in beta. If set to true, it allows table deletion when there
-	// are still resource tags attached. The default value is false.
+	// If set to true, it allows table
+	// deletion when there are still resource tags attached. The default value is
+	// false.
+	//
+	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+	// removed in a future major release. The default behavior will be allowing
+	// the presence of resource tags on deletion after the next major release.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
 	AllowResourceTagsOnDeletion pulumi.BoolPtrOutput `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -213,7 +220,7 @@ type Table struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrOutput `pulumi:"requirePartitionFilter"`
-	// This field is in beta. The tags attached to this table. Tag keys are
+	// The tags attached to this table. Tag keys are
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
@@ -285,8 +292,15 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// This field is in beta. If set to true, it allows table deletion when there
-	// are still resource tags attached. The default value is false.
+	// If set to true, it allows table
+	// deletion when there are still resource tags attached. The default value is
+	// false.
+	//
+	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+	// removed in a future major release. The default behavior will be allowing
+	// the presence of resource tags on deletion after the next major release.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
 	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -372,7 +386,7 @@ type tableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// This field is in beta. The tags attached to this table. Tag keys are
+	// The tags attached to this table. Tag keys are
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
@@ -404,8 +418,15 @@ type tableState struct {
 }
 
 type TableState struct {
-	// This field is in beta. If set to true, it allows table deletion when there
-	// are still resource tags attached. The default value is false.
+	// If set to true, it allows table
+	// deletion when there are still resource tags attached. The default value is
+	// false.
+	//
+	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+	// removed in a future major release. The default behavior will be allowing
+	// the presence of resource tags on deletion after the next major release.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
 	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -491,7 +512,7 @@ type TableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
-	// This field is in beta. The tags attached to this table. Tag keys are
+	// The tags attached to this table. Tag keys are
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
@@ -527,8 +548,15 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// This field is in beta. If set to true, it allows table deletion when there
-	// are still resource tags attached. The default value is false.
+	// If set to true, it allows table
+	// deletion when there are still resource tags attached. The default value is
+	// false.
+	//
+	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+	// removed in a future major release. The default behavior will be allowing
+	// the presence of resource tags on deletion after the next major release.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
 	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -581,7 +609,7 @@ type tableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// This field is in beta. The tags attached to this table. Tag keys are
+	// The tags attached to this table. Tag keys are
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
@@ -610,8 +638,15 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// This field is in beta. If set to true, it allows table deletion when there
-	// are still resource tags attached. The default value is false.
+	// If set to true, it allows table
+	// deletion when there are still resource tags attached. The default value is
+	// false.
+	//
+	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+	// removed in a future major release. The default behavior will be allowing
+	// the presence of resource tags on deletion after the next major release.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
 	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
@@ -664,7 +699,7 @@ type TableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
-	// This field is in beta. The tags attached to this table. Tag keys are
+	// The tags attached to this table. Tag keys are
 	// globally unique. Tag key is expected to be in the namespaced format, for
 	// example "123456789012/environment" where 123456789012 is the ID of the
 	// parent organization or project resource for this tag key. Tag value is
@@ -778,8 +813,15 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
-// This field is in beta. If set to true, it allows table deletion when there
-// are still resource tags attached. The default value is false.
+// If set to true, it allows table
+// deletion when there are still resource tags attached. The default value is
+// false.
+//
+// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
+// removed in a future major release. The default behavior will be allowing
+// the presence of resource tags on deletion after the next major release.
+//
+// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
 func (o TableOutput) AllowResourceTagsOnDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.AllowResourceTagsOnDeletion }).(pulumi.BoolPtrOutput)
 }
@@ -937,7 +979,7 @@ func (o TableOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
-// This field is in beta. The tags attached to this table. Tag keys are
+// The tags attached to this table. Tag keys are
 // globally unique. Tag key is expected to be in the namespaced format, for
 // example "123456789012/environment" where 123456789012 is the ID of the
 // parent organization or project resource for this tag key. Tag value is

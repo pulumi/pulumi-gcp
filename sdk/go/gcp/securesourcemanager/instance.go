@@ -192,8 +192,8 @@ import (
 //				return err
 //			}
 //			// ca pool IAM permissions can take time to propagate
-//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				caPoolBinding,
 //			}))
@@ -209,8 +209,469 @@ import (
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootCa,
-//				wait60Seconds,
+//				wait120Seconds,
 //			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secure Source Manager Instance Private Psc Backend
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			caPool, err := certificateauthority.NewCaPool(ctx, "ca_pool", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("ca-pool"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+//					PublishCaCert: pulumi.Bool(true),
+//					PublishCrl:    pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rootCa, err := certificateauthority.NewAuthority(ctx, "root_ca", &certificateauthority.AuthorityArgs{
+//				Pool:                   caPool.Name,
+//				CertificateAuthorityId: pulumi.String("root-ca"),
+//				Location:               pulumi.String("us-central1"),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("google"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
+//				CaPool: caPool.ID(),
+//				Role:   pulumi.String("roles/privateca.certificateRequester"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ca pool IAM permissions can take time to propagate
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: "120s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				caPoolBinding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+//			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
+//				InstanceId: pulumi.String("my-instance"),
+//				Location:   pulumi.String("us-central1"),
+//				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
+//					IsPrivate: pulumi.Bool(true),
+//					CaPool:    caPool.ID(),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				rootCa,
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Connect SSM private instance with L4 proxy ILB.
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:                  pulumi.String("my-subnet"),
+//				Region:                pulumi.String("us-central1"),
+//				Network:               network.ID(),
+//				IpCidrRange:           pulumi.String("10.0.1.0/24"),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscNeg, err := compute.NewRegionNetworkEndpointGroup(ctx, "psc_neg", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("my-neg"),
+//				Region:              pulumi.String("us-central1"),
+//				NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				PscTargetService: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
+//					return &privateConfig.HttpServiceAttachment, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Network:    network.ID(),
+//				Subnetwork: subnet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backendService, err := compute.NewRegionBackendService(ctx, "backend_service", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("my-backend-service"),
+//				Region:              pulumi.String("us-central1"),
+//				Protocol:            pulumi.String("TCP"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				Backends: compute.RegionBackendServiceBackendArray{
+//					&compute.RegionBackendServiceBackendArgs{
+//						Group:          pscNeg.ID(),
+//						BalancingMode:  pulumi.String("UTILIZATION"),
+//						CapacityScaler: pulumi.Float64(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			proxySubnet, err := compute.NewSubnetwork(ctx, "proxy_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-proxy-subnet"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.ID(),
+//				IpCidrRange: pulumi.String("10.0.2.0/24"),
+//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
+//				Role:        pulumi.String("ACTIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetProxy, err := compute.NewRegionTargetTcpProxy(ctx, "target_proxy", &compute.RegionTargetTcpProxyArgs{
+//				Name:           pulumi.String("my-target-proxy"),
+//				Region:         pulumi.String("us-central1"),
+//				BackendService: backendService.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fwRuleTargetProxy, err := compute.NewForwardingRule(ctx, "fw_rule_target_proxy", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("fw-rule-target-proxy"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				IpProtocol:          pulumi.String("TCP"),
+//				PortRange:           pulumi.String("443"),
+//				Target:              targetProxy.ID(),
+//				Network:             network.ID(),
+//				Subnetwork:          subnet.ID(),
+//				NetworkTier:         pulumi.String("PREMIUM"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				proxySubnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			privateZone, err := dns.NewManagedZone(ctx, "private_zone", &dns.ManagedZoneArgs{
+//				Name:       pulumi.String("my-dns-zone"),
+//				DnsName:    pulumi.String("p.sourcemanager.dev."),
+//				Visibility: pulumi.String("private"),
+//				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
+//					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
+//						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
+//							NetworkUrl: network.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "ssm_instance_html_record", &dns.RecordSetArgs{
+//				Name: _default.HostConfigs.ApplyT(func(hostConfigs []securesourcemanager.InstanceHostConfig) (string, error) {
+//					return fmt.Sprintf("%v.", hostConfigs[0].Html), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: privateZone.Name,
+//				Rrdatas: pulumi.StringArray{
+//					fwRuleTargetProxy.IpAddress,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "ssm_instance_api_record", &dns.RecordSetArgs{
+//				Name: _default.HostConfigs.ApplyT(func(hostConfigs []securesourcemanager.InstanceHostConfig) (string, error) {
+//					return fmt.Sprintf("%v.", hostConfigs[0].Api), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: privateZone.Name,
+//				Rrdatas: pulumi.StringArray{
+//					fwRuleTargetProxy.IpAddress,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "ssm_instance_git_record", &dns.RecordSetArgs{
+//				Name: _default.HostConfigs.ApplyT(func(hostConfigs []securesourcemanager.InstanceHostConfig) (string, error) {
+//					return fmt.Sprintf("%v.", hostConfigs[0].GitHttp), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: privateZone.Name,
+//				Rrdatas: pulumi.StringArray{
+//					fwRuleTargetProxy.IpAddress,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secure Source Manager Instance Private Psc Endpoint
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			caPool, err := certificateauthority.NewCaPool(ctx, "ca_pool", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("ca-pool"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+//					PublishCaCert: pulumi.Bool(true),
+//					PublishCrl:    pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rootCa, err := certificateauthority.NewAuthority(ctx, "root_ca", &certificateauthority.AuthorityArgs{
+//				Pool:                   caPool.Name,
+//				CertificateAuthorityId: pulumi.String("root-ca"),
+//				Location:               pulumi.String("us-central1"),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("google"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
+//				CaPool: caPool.ID(),
+//				Role:   pulumi.String("roles/privateca.certificateRequester"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ca pool IAM permissions can take time to propagate
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: "120s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				caPoolBinding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
+//			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
+//				InstanceId: pulumi.String("my-instance"),
+//				Location:   pulumi.String("us-central1"),
+//				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
+//					IsPrivate: pulumi.Bool(true),
+//					CaPool:    caPool.ID(),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				rootCa,
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Connect SSM private instance with endpoint.
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:                  pulumi.String("my-subnet"),
+//				Region:                pulumi.String("us-central1"),
+//				Network:               network.ID(),
+//				IpCidrRange:           pulumi.String("10.0.60.0/24"),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			address, err := compute.NewAddress(ctx, "address", &compute.AddressArgs{
+//				Name:        pulumi.String("my-address"),
+//				Region:      pulumi.String("us-central1"),
+//				Address:     pulumi.String("10.0.60.100"),
+//				AddressType: pulumi.String("INTERNAL"),
+//				Subnetwork:  subnet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fwRuleServiceAttachment, err := compute.NewForwardingRule(ctx, "fw_rule_service_attachment", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("fw-rule-service-attachment"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String(""),
+//				IpAddress:           address.ID(),
+//				Network:             network.ID(),
+//				Target: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
+//					return &privateConfig.HttpServiceAttachment, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateZone, err := dns.NewManagedZone(ctx, "private_zone", &dns.ManagedZoneArgs{
+//				Name:       pulumi.String("my-dns-zone"),
+//				DnsName:    pulumi.String("p.sourcemanager.dev."),
+//				Visibility: pulumi.String("private"),
+//				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
+//					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
+//						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
+//							NetworkUrl: network.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "ssm_instance_html_record", &dns.RecordSetArgs{
+//				Name: _default.HostConfigs.ApplyT(func(hostConfigs []securesourcemanager.InstanceHostConfig) (string, error) {
+//					return fmt.Sprintf("%v.", hostConfigs[0].Html), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: privateZone.Name,
+//				Rrdatas: pulumi.StringArray{
+//					fwRuleServiceAttachment.IpAddress,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "ssm_instance_api_record", &dns.RecordSetArgs{
+//				Name: _default.HostConfigs.ApplyT(func(hostConfigs []securesourcemanager.InstanceHostConfig) (string, error) {
+//					return fmt.Sprintf("%v.", hostConfigs[0].Api), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: privateZone.Name,
+//				Rrdatas: pulumi.StringArray{
+//					fwRuleServiceAttachment.IpAddress,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "ssm_instance_git_record", &dns.RecordSetArgs{
+//				Name: _default.HostConfigs.ApplyT(func(hostConfigs []securesourcemanager.InstanceHostConfig) (string, error) {
+//					return fmt.Sprintf("%v.", hostConfigs[0].GitHttp), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: privateZone.Name,
+//				Rrdatas: pulumi.StringArray{
+//					fwRuleServiceAttachment.IpAddress,
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}

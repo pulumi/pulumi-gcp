@@ -464,11 +464,18 @@ public class DiskIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DiskIamMember(String name, DiskIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/diskIamMember:DiskIamMember", name, args == null ? DiskIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/diskIamMember:DiskIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DiskIamMember(String name, Output<String> id, @Nullable DiskIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/diskIamMember:DiskIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DiskIamMemberArgs makeArgs(DiskIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DiskIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

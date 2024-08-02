@@ -422,11 +422,18 @@ public class DataExchangeIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DataExchangeIamPolicy(String name, DataExchangeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy", name, args == null ? DataExchangeIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DataExchangeIamPolicy(String name, Output<String> id, @Nullable DataExchangeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DataExchangeIamPolicyArgs makeArgs(DataExchangeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DataExchangeIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

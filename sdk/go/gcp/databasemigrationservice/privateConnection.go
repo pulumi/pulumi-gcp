@@ -37,13 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "my-network",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
+//			_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
 //				DisplayName:         pulumi.String("dbms_pc"),
 //				Location:            pulumi.String("us-central1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
@@ -51,9 +45,16 @@ import (
 //					"key": pulumi.String("value"),
 //				},
 //				VpcPeeringConfig: &databasemigrationservice.PrivateConnectionVpcPeeringConfigArgs{
-//					VpcName: pulumi.String(_default.Id),
+//					VpcName: pulumi.Any(googleComputeNetwork.Default.Id),
 //					Subnet:  pulumi.String("10.0.0.0/29"),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

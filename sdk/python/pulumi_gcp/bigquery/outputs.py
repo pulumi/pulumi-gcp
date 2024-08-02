@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AppProfileDataBoostIsolationReadOnly',
     'AppProfileSingleClusterRouting',
     'AppProfileStandardIsolation',
     'BiReservationPreferredTable',
@@ -102,6 +103,43 @@ __all__ = [
     'GetDatasetDefaultEncryptionConfigurationResult',
     'GetDatasetExternalDatasetReferenceResult',
 ]
+
+@pulumi.output_type
+class AppProfileDataBoostIsolationReadOnly(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computeBillingOwner":
+            suggest = "compute_billing_owner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppProfileDataBoostIsolationReadOnly. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppProfileDataBoostIsolationReadOnly.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppProfileDataBoostIsolationReadOnly.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compute_billing_owner: str):
+        """
+        :param str compute_billing_owner: The Compute Billing Owner for this Data Boost App Profile.
+               Possible values are: `HOST_PAYS`.
+        """
+        pulumi.set(__self__, "compute_billing_owner", compute_billing_owner)
+
+    @property
+    @pulumi.getter(name="computeBillingOwner")
+    def compute_billing_owner(self) -> str:
+        """
+        The Compute Billing Owner for this Data Boost App Profile.
+        Possible values are: `HOST_PAYS`.
+        """
+        return pulumi.get(self, "compute_billing_owner")
+
 
 @pulumi.output_type
 class AppProfileSingleClusterRouting(dict):

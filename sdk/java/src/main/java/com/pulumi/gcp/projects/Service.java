@@ -79,6 +79,26 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:projects/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
+     * Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     * 
+     */
+    @Export(name="checkIfServiceHasUsageOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> checkIfServiceHasUsageOnDestroy;
+
+    /**
+     * @return Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> checkIfServiceHasUsageOnDestroy() {
+        return Codegen.optional(this.checkIfServiceHasUsageOnDestroy);
+    }
+    /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
@@ -157,11 +177,18 @@ public class Service extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Service(String name, ServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/service:Service", name, args == null ? ServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:projects/service:Service", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Service(String name, Output<String> id, @Nullable ServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:projects/service:Service", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceArgs makeArgs(ServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

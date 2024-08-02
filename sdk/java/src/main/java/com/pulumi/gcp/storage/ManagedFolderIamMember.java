@@ -720,11 +720,18 @@ public class ManagedFolderIamMember extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public ManagedFolderIamMember(String name, ManagedFolderIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/managedFolderIamMember:ManagedFolderIamMember", name, args == null ? ManagedFolderIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/managedFolderIamMember:ManagedFolderIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ManagedFolderIamMember(String name, Output<String> id, @Nullable ManagedFolderIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/managedFolderIamMember:ManagedFolderIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ManagedFolderIamMemberArgs makeArgs(ManagedFolderIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ManagedFolderIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

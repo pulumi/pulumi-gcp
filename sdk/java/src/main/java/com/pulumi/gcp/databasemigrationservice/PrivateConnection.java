@@ -39,11 +39,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
  * import com.pulumi.gcp.databasemigrationservice.PrivateConnection;
  * import com.pulumi.gcp.databasemigrationservice.PrivateConnectionArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionVpcPeeringConfigArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,19 +57,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name("my-network")
- *             .build());
- * 
- *         var defaultPrivateConnection = new PrivateConnection("defaultPrivateConnection", PrivateConnectionArgs.builder()
+ *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
  *             .displayName("dbms_pc")
  *             .location("us-central1")
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
- *                 .vpcName(default_.id())
+ *                 .vpcName(googleComputeNetwork.default().id())
  *                 .subnet("10.0.0.0/29")
  *                 .build())
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *     }
@@ -284,11 +285,18 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PrivateConnection(String name, PrivateConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:databasemigrationservice/privateConnection:PrivateConnection", name, args == null ? PrivateConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:databasemigrationservice/privateConnection:PrivateConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PrivateConnection(String name, Output<String> id, @Nullable PrivateConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:databasemigrationservice/privateConnection:PrivateConnection", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PrivateConnectionArgs makeArgs(PrivateConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrivateConnectionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

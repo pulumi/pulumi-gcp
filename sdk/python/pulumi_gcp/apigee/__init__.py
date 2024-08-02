@@ -15,6 +15,8 @@ from .environment import *
 from .environment_iam_binding import *
 from .environment_iam_member import *
 from .environment_iam_policy import *
+from .environment_keyvaluemaps import *
+from .environment_keyvaluemaps_entries import *
 from .flowhook import *
 from .get_environment_iam_policy import *
 from .instance import *

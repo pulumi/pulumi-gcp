@@ -113,8 +113,13 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
      * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     *
+     * > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+     *
+     * @deprecated `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
      */
     public readonly multiRegionAuxiliary!: pulumi.Output<boolean | undefined>;
     /**
@@ -206,8 +211,13 @@ export interface ReservationState {
      */
     location?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
      * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     *
+     * > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+     *
+     * @deprecated `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
      */
     multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
@@ -258,8 +268,13 @@ export interface ReservationArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
      * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     *
+     * > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+     *
+     * @deprecated `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
      */
     multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**

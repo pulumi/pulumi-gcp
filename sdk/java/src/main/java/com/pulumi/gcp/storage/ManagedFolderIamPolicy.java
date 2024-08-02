@@ -666,11 +666,18 @@ public class ManagedFolderIamPolicy extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public ManagedFolderIamPolicy(String name, ManagedFolderIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy", name, args == null ? ManagedFolderIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ManagedFolderIamPolicy(String name, Output<String> id, @Nullable ManagedFolderIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ManagedFolderIamPolicyArgs makeArgs(ManagedFolderIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ManagedFolderIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

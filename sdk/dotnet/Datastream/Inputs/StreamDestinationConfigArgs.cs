@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamDestinationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A configuration for how data should be loaded to Cloud Storage.
+        /// A configuration for how data should be loaded to Google BigQuery.
         /// Structure is documented below.
         /// </summary>
         [Input("bigqueryDestinationConfig")]

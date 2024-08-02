@@ -263,11 +263,18 @@ public class NetworkPeering extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkPeering(String name, NetworkPeeringArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkPeering:NetworkPeering", name, args == null ? NetworkPeeringArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/networkPeering:NetworkPeering", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkPeering(String name, Output<String> id, @Nullable NetworkPeeringState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/networkPeering:NetworkPeering", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkPeeringArgs makeArgs(NetworkPeeringArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkPeeringArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

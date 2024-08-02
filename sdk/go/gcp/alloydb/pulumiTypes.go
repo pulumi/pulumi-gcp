@@ -4361,6 +4361,276 @@ func (o InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) Index(i pulum
 	}).(InstanceNetworkConfigAuthorizedExternalNetworkOutput)
 }
 
+type InstanceObservabilityConfig struct {
+	// Observability feature status for an instance.
+	Enabled *bool `pulumi:"enabled"`
+	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+	MaxQueryStringLength *int `pulumi:"maxQueryStringLength"`
+	// Preserve comments in the query string.
+	PreserveComments *bool `pulumi:"preserveComments"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
+	// Track actively running queries. If not set, default value is "off".
+	TrackActiveQueries *bool `pulumi:"trackActiveQueries"`
+	// Record wait event types during query execution for an instance.
+	TrackWaitEventTypes *bool `pulumi:"trackWaitEventTypes"`
+	// Record wait events during query execution for an instance.
+	TrackWaitEvents *bool `pulumi:"trackWaitEvents"`
+}
+
+// InstanceObservabilityConfigInput is an input type that accepts InstanceObservabilityConfigArgs and InstanceObservabilityConfigOutput values.
+// You can construct a concrete instance of `InstanceObservabilityConfigInput` via:
+//
+//	InstanceObservabilityConfigArgs{...}
+type InstanceObservabilityConfigInput interface {
+	pulumi.Input
+
+	ToInstanceObservabilityConfigOutput() InstanceObservabilityConfigOutput
+	ToInstanceObservabilityConfigOutputWithContext(context.Context) InstanceObservabilityConfigOutput
+}
+
+type InstanceObservabilityConfigArgs struct {
+	// Observability feature status for an instance.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+	MaxQueryStringLength pulumi.IntPtrInput `pulumi:"maxQueryStringLength"`
+	// Preserve comments in the query string.
+	PreserveComments pulumi.BoolPtrInput `pulumi:"preserveComments"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+	QueryPlansPerMinute pulumi.IntPtrInput `pulumi:"queryPlansPerMinute"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
+	// Track actively running queries. If not set, default value is "off".
+	TrackActiveQueries pulumi.BoolPtrInput `pulumi:"trackActiveQueries"`
+	// Record wait event types during query execution for an instance.
+	TrackWaitEventTypes pulumi.BoolPtrInput `pulumi:"trackWaitEventTypes"`
+	// Record wait events during query execution for an instance.
+	TrackWaitEvents pulumi.BoolPtrInput `pulumi:"trackWaitEvents"`
+}
+
+func (InstanceObservabilityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (i InstanceObservabilityConfigArgs) ToInstanceObservabilityConfigOutput() InstanceObservabilityConfigOutput {
+	return i.ToInstanceObservabilityConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceObservabilityConfigArgs) ToInstanceObservabilityConfigOutputWithContext(ctx context.Context) InstanceObservabilityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceObservabilityConfigOutput)
+}
+
+func (i InstanceObservabilityConfigArgs) ToInstanceObservabilityConfigPtrOutput() InstanceObservabilityConfigPtrOutput {
+	return i.ToInstanceObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceObservabilityConfigArgs) ToInstanceObservabilityConfigPtrOutputWithContext(ctx context.Context) InstanceObservabilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceObservabilityConfigOutput).ToInstanceObservabilityConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceObservabilityConfigPtrInput is an input type that accepts InstanceObservabilityConfigArgs, InstanceObservabilityConfigPtr and InstanceObservabilityConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceObservabilityConfigPtrInput` via:
+//
+//	        InstanceObservabilityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceObservabilityConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceObservabilityConfigPtrOutput() InstanceObservabilityConfigPtrOutput
+	ToInstanceObservabilityConfigPtrOutputWithContext(context.Context) InstanceObservabilityConfigPtrOutput
+}
+
+type instanceObservabilityConfigPtrType InstanceObservabilityConfigArgs
+
+func InstanceObservabilityConfigPtr(v *InstanceObservabilityConfigArgs) InstanceObservabilityConfigPtrInput {
+	return (*instanceObservabilityConfigPtrType)(v)
+}
+
+func (*instanceObservabilityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (i *instanceObservabilityConfigPtrType) ToInstanceObservabilityConfigPtrOutput() InstanceObservabilityConfigPtrOutput {
+	return i.ToInstanceObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceObservabilityConfigPtrType) ToInstanceObservabilityConfigPtrOutputWithContext(ctx context.Context) InstanceObservabilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceObservabilityConfigPtrOutput)
+}
+
+type InstanceObservabilityConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceObservabilityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (o InstanceObservabilityConfigOutput) ToInstanceObservabilityConfigOutput() InstanceObservabilityConfigOutput {
+	return o
+}
+
+func (o InstanceObservabilityConfigOutput) ToInstanceObservabilityConfigOutputWithContext(ctx context.Context) InstanceObservabilityConfigOutput {
+	return o
+}
+
+func (o InstanceObservabilityConfigOutput) ToInstanceObservabilityConfigPtrOutput() InstanceObservabilityConfigPtrOutput {
+	return o.ToInstanceObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceObservabilityConfigOutput) ToInstanceObservabilityConfigPtrOutputWithContext(ctx context.Context) InstanceObservabilityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceObservabilityConfig) *InstanceObservabilityConfig {
+		return &v
+	}).(InstanceObservabilityConfigPtrOutput)
+}
+
+// Observability feature status for an instance.
+func (o InstanceObservabilityConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+func (o InstanceObservabilityConfigOutput) MaxQueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *int { return v.MaxQueryStringLength }).(pulumi.IntPtrOutput)
+}
+
+// Preserve comments in the query string.
+func (o InstanceObservabilityConfigOutput) PreserveComments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.PreserveComments }).(pulumi.BoolPtrOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+func (o InstanceObservabilityConfigOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *int { return v.QueryPlansPerMinute }).(pulumi.IntPtrOutput)
+}
+
+// Record application tags for an instance. This flag is turned "on" by default.
+func (o InstanceObservabilityConfigOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.RecordApplicationTags }).(pulumi.BoolPtrOutput)
+}
+
+// Track actively running queries. If not set, default value is "off".
+func (o InstanceObservabilityConfigOutput) TrackActiveQueries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.TrackActiveQueries }).(pulumi.BoolPtrOutput)
+}
+
+// Record wait event types during query execution for an instance.
+func (o InstanceObservabilityConfigOutput) TrackWaitEventTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.TrackWaitEventTypes }).(pulumi.BoolPtrOutput)
+}
+
+// Record wait events during query execution for an instance.
+func (o InstanceObservabilityConfigOutput) TrackWaitEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.TrackWaitEvents }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceObservabilityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceObservabilityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceObservabilityConfig)(nil)).Elem()
+}
+
+func (o InstanceObservabilityConfigPtrOutput) ToInstanceObservabilityConfigPtrOutput() InstanceObservabilityConfigPtrOutput {
+	return o
+}
+
+func (o InstanceObservabilityConfigPtrOutput) ToInstanceObservabilityConfigPtrOutputWithContext(ctx context.Context) InstanceObservabilityConfigPtrOutput {
+	return o
+}
+
+func (o InstanceObservabilityConfigPtrOutput) Elem() InstanceObservabilityConfigOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) InstanceObservabilityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceObservabilityConfig
+		return ret
+	}).(InstanceObservabilityConfigOutput)
+}
+
+// Observability feature status for an instance.
+func (o InstanceObservabilityConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+func (o InstanceObservabilityConfigPtrOutput) MaxQueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxQueryStringLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Preserve comments in the query string.
+func (o InstanceObservabilityConfigPtrOutput) PreserveComments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveComments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+func (o InstanceObservabilityConfigPtrOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryPlansPerMinute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Record application tags for an instance. This flag is turned "on" by default.
+func (o InstanceObservabilityConfigPtrOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RecordApplicationTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Track actively running queries. If not set, default value is "off".
+func (o InstanceObservabilityConfigPtrOutput) TrackActiveQueries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackActiveQueries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Record wait event types during query execution for an instance.
+func (o InstanceObservabilityConfigPtrOutput) TrackWaitEventTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackWaitEventTypes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Record wait events during query execution for an instance.
+func (o InstanceObservabilityConfigPtrOutput) TrackWaitEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackWaitEvents
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstancePscInstanceConfig struct {
 	// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
 	// These should be specified as project numbers only.
@@ -5365,6 +5635,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetworkInput)(nil)).Elem(), InstanceNetworkConfigAuthorizedExternalNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigAuthorizedExternalNetworkArrayInput)(nil)).Elem(), InstanceNetworkConfigAuthorizedExternalNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceObservabilityConfigInput)(nil)).Elem(), InstanceObservabilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceObservabilityConfigPtrInput)(nil)).Elem(), InstanceObservabilityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigInput)(nil)).Elem(), InstancePscInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscInstanceConfigPtrInput)(nil)).Elem(), InstancePscInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
@@ -5438,6 +5710,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigAuthorizedExternalNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput{})
+	pulumi.RegisterOutputType(InstanceObservabilityConfigOutput{})
+	pulumi.RegisterOutputType(InstanceObservabilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstancePscInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstancePscInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceQueryInsightsConfigOutput{})

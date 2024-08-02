@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetBigQueryTargetConditions {
     /**
-     * @return A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
+     * @return File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
      * 
      */
     private @Nullable String createdAfter;
@@ -39,7 +39,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetConditions {
 
     private PreventionDiscoveryConfigTargetBigQueryTargetConditions() {}
     /**
-     * @return A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
+     * @return File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC &#34;Zulu&#34; format with nanosecond resolution and upto nine fractional digits.
      * 
      */
     public Optional<String> createdAfter() {
