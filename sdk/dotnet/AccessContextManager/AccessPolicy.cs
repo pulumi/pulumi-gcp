@@ -97,21 +97,21 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the AccessPolicy. Format: {policy_id}
+        /// Resource name of the AccessPolicy. Format: '{{policy_id}}'
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-        /// Format: organizations/{organization_id}
+        /// Format: 'organizations/{{organization_id}}'
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
         /// Folder or project on which this policy is applicable.
-        /// Format: folders/{{folder_id}} or projects/{{project_id}}
+        /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         /// </summary>
         [Output("scopes")]
         public Output<string?> Scopes { get; private set; } = null!;
@@ -179,14 +179,14 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-        /// Format: organizations/{organization_id}
+        /// Format: 'organizations/{{organization_id}}'
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
         /// Folder or project on which this policy is applicable.
-        /// Format: folders/{{folder_id}} or projects/{{project_id}}
+        /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         /// </summary>
         [Input("scopes")]
         public Input<string>? Scopes { get; set; }
@@ -215,21 +215,21 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Resource name of the AccessPolicy. Format: {policy_id}
+        /// Resource name of the AccessPolicy. Format: '{{policy_id}}'
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-        /// Format: organizations/{organization_id}
+        /// Format: 'organizations/{{organization_id}}'
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// Folder or project on which this policy is applicable.
-        /// Format: folders/{{folder_id}} or projects/{{project_id}}
+        /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         /// </summary>
         [Input("scopes")]
         public Input<string>? Scopes { get; set; }

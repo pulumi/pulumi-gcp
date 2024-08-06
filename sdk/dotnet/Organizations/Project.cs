@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API.
+        /// without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
         /// </summary>
         [Output("skipDelete")]
         public Output<bool> SkipDelete { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API.
+        /// without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
         /// </summary>
         [Input("skipDelete")]
         public Input<bool>? SkipDelete { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API.
+        /// without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
         /// </summary>
         [Input("skipDelete")]
         public Input<bool>? SkipDelete { get; set; }

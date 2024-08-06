@@ -71,7 +71,7 @@ public final class KeyHandleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      * 
      */
     @Import(name="resourceTypeSelector", required=true)
@@ -79,7 +79,7 @@ public final class KeyHandleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      * 
      */
     public Output<String> resourceTypeSelector() {
@@ -186,7 +186,7 @@ public final class KeyHandleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceTypeSelector Selector of the resource type where we want to protect resources.
-         * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+         * For example, `storage.googleapis.com/Bucket`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class KeyHandleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceTypeSelector Selector of the resource type where we want to protect resources.
-         * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+         * For example, `storage.googleapis.com/Bucket`.
          * 
          * @return builder
          * 

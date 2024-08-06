@@ -25,13 +25,13 @@ class AccessPolicyArgs:
         """
         The set of arguments for constructing a AccessPolicy resource.
         :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-               Format: organizations/{organization_id}
+               Format: 'organizations/{{organization_id}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
                
                
                - - -
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
-               Format: folders/{{folder_id}} or projects/{{project_id}}
+               Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "title", title)
@@ -43,7 +43,7 @@ class AccessPolicyArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-        Format: organizations/{organization_id}
+        Format: 'organizations/{{organization_id}}'
         """
         return pulumi.get(self, "parent")
 
@@ -71,7 +71,7 @@ class AccessPolicyArgs:
     def scopes(self) -> Optional[pulumi.Input[str]]:
         """
         Folder or project on which this policy is applicable.
-        Format: folders/{{folder_id}} or projects/{{project_id}}
+        Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         """
         return pulumi.get(self, "scopes")
 
@@ -92,11 +92,11 @@ class _AccessPolicyState:
         """
         Input properties used for looking up and filtering AccessPolicy resources.
         :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
-        :param pulumi.Input[str] name: Resource name of the AccessPolicy. Format: {policy_id}
+        :param pulumi.Input[str] name: Resource name of the AccessPolicy. Format: '{{policy_id}}'
         :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-               Format: organizations/{organization_id}
+               Format: 'organizations/{{organization_id}}'
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
-               Format: folders/{{folder_id}} or projects/{{project_id}}
+               Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
                
                
@@ -132,7 +132,7 @@ class _AccessPolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the AccessPolicy. Format: {policy_id}
+        Resource name of the AccessPolicy. Format: '{{policy_id}}'
         """
         return pulumi.get(self, "name")
 
@@ -145,7 +145,7 @@ class _AccessPolicyState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-        Format: organizations/{organization_id}
+        Format: 'organizations/{{organization_id}}'
         """
         return pulumi.get(self, "parent")
 
@@ -158,7 +158,7 @@ class _AccessPolicyState:
     def scopes(self) -> Optional[pulumi.Input[str]]:
         """
         Folder or project on which this policy is applicable.
-        Format: folders/{{folder_id}} or projects/{{project_id}}
+        Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         """
         return pulumi.get(self, "scopes")
 
@@ -265,9 +265,9 @@ class AccessPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-               Format: organizations/{organization_id}
+               Format: 'organizations/{{organization_id}}'
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
-               Format: folders/{{folder_id}} or projects/{{project_id}}
+               Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
                
                
@@ -399,11 +399,11 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
-        :param pulumi.Input[str] name: Resource name of the AccessPolicy. Format: {policy_id}
+        :param pulumi.Input[str] name: Resource name of the AccessPolicy. Format: '{{policy_id}}'
         :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-               Format: organizations/{organization_id}
+               Format: 'organizations/{{organization_id}}'
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
-               Format: folders/{{folder_id}} or projects/{{project_id}}
+               Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
                
                
@@ -434,7 +434,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the AccessPolicy. Format: {policy_id}
+        Resource name of the AccessPolicy. Format: '{{policy_id}}'
         """
         return pulumi.get(self, "name")
 
@@ -443,7 +443,7 @@ class AccessPolicy(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-        Format: organizations/{organization_id}
+        Format: 'organizations/{{organization_id}}'
         """
         return pulumi.get(self, "parent")
 
@@ -452,7 +452,7 @@ class AccessPolicy(pulumi.CustomResource):
     def scopes(self) -> pulumi.Output[Optional[str]]:
         """
         Folder or project on which this policy is applicable.
-        Format: folders/{{folder_id}} or projects/{{project_id}}
+        Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         """
         return pulumi.get(self, "scopes")
 

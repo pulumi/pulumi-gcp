@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetHcVpnGatewayResult {
     private String description;
+    private String gatewayIpVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -31,6 +32,9 @@ public final class GetHcVpnGatewayResult {
     private GetHcVpnGatewayResult() {}
     public String description() {
         return this.description;
+    }
+    public String gatewayIpVersion() {
+        return this.gatewayIpVersion;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -71,6 +75,7 @@ public final class GetHcVpnGatewayResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private String gatewayIpVersion;
         private String id;
         private String name;
         private String network;
@@ -83,6 +88,7 @@ public final class GetHcVpnGatewayResult {
         public Builder(GetHcVpnGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.gatewayIpVersion = defaults.gatewayIpVersion;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
@@ -99,6 +105,14 @@ public final class GetHcVpnGatewayResult {
               throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gatewayIpVersion(String gatewayIpVersion) {
+            if (gatewayIpVersion == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "gatewayIpVersion");
+            }
+            this.gatewayIpVersion = gatewayIpVersion;
             return this;
         }
         @CustomType.Setter
@@ -167,6 +181,7 @@ public final class GetHcVpnGatewayResult {
         public GetHcVpnGatewayResult build() {
             final var _resultValue = new GetHcVpnGatewayResult();
             _resultValue.description = description;
+            _resultValue.gatewayIpVersion = gatewayIpVersion;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.network = network;

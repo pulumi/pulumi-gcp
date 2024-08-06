@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -29,6 +30,21 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     * 
+     */
+    @Import(name="exportPsc")
+    private @Nullable Output<Boolean> exportPsc;
+
+    /**
+     * @return Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     * 
+     */
+    public Optional<Output<Boolean>> exportPsc() {
+        return Optional.ofNullable(this.exportPsc);
     }
 
     /**
@@ -90,6 +106,7 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
     private HubArgs(HubArgs $) {
         this.description = $.description;
+        this.exportPsc = $.exportPsc;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
@@ -132,6 +149,27 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param exportPsc Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPsc(@Nullable Output<Boolean> exportPsc) {
+            $.exportPsc = exportPsc;
+            return this;
+        }
+
+        /**
+         * @param exportPsc Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPsc(Boolean exportPsc) {
+            return exportPsc(Output.of(exportPsc));
         }
 
         /**

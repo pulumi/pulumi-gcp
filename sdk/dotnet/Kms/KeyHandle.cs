@@ -239,7 +239,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// Selector of the resource type where we want to protect resources.
-        /// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+        /// For example, `storage.googleapis.com/Bucket`.
         /// </summary>
         [Output("resourceTypeSelector")]
         public Output<string> ResourceTypeSelector { get; private set; } = null!;
@@ -315,7 +315,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// Selector of the resource type where we want to protect resources.
-        /// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+        /// For example, `storage.googleapis.com/Bucket`.
         /// </summary>
         [Input("resourceTypeSelector", required: true)]
         public Input<string> ResourceTypeSelector { get; set; } = null!;
@@ -361,7 +361,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// Selector of the resource type where we want to protect resources.
-        /// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+        /// For example, `storage.googleapis.com/Bucket`.
         /// </summary>
         [Input("resourceTypeSelector")]
         public Input<string>? ResourceTypeSelector { get; set; }

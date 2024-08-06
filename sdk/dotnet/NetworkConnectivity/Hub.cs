@@ -42,6 +42,25 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Hub With Export Psc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
+    ///     {
+    ///         Name = "basic",
+    ///         Description = "A sample hub with Private Service Connect transitivity is enabled",
+    ///         ExportPsc = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -87,6 +106,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        /// </summary>
+        [Output("exportPsc")]
+        public Output<bool> ExportPsc { get; private set; } = null!;
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -201,6 +226,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        /// </summary>
+        [Input("exportPsc")]
+        public Input<bool>? ExportPsc { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -266,6 +297,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        /// </summary>
+        [Input("exportPsc")]
+        public Input<bool>? ExportPsc { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

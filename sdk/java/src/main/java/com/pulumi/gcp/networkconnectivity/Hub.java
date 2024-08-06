@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.HubArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.HubState;
 import com.pulumi.gcp.networkconnectivity.outputs.HubRoutingVpc;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,42 @@ import javax.annotation.Nullable;
  *             .name("basic")
  *             .description("A sample hub")
  *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Hub With Export Psc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Hub("primary", HubArgs.builder()
+ *             .name("basic")
+ *             .description("A sample hub with Private Service Connect transitivity is enabled")
+ *             .exportPsc(true)
  *             .build());
  * 
  *     }
@@ -133,6 +170,20 @@ public class Hub extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     * 
+     */
+    @Export(name="exportPsc", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> exportPsc;
+
+    /**
+     * @return Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     * 
+     */
+    public Output<Boolean> exportPsc() {
+        return this.exportPsc;
     }
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).

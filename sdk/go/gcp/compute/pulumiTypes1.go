@@ -22828,13 +22828,13 @@ func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pulumi.In
 }
 
 type GetInstanceGroupManagerUpdatePolicy struct {
-	// The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
 	MaxSurgeFixed int `pulumi:"maxSurgeFixed"`
-	// The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
 	MaxSurgePercent int `pulumi:"maxSurgePercent"`
-	// The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+	// Specifies a fixed number of VM instances. This must be a positive integer.
 	MaxUnavailableFixed int `pulumi:"maxUnavailableFixed"`
-	// The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
 	MaxUnavailablePercent int `pulumi:"maxUnavailablePercent"`
 	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
 	MinReadySec int `pulumi:"minReadySec"`
@@ -22860,13 +22860,13 @@ type GetInstanceGroupManagerUpdatePolicyInput interface {
 }
 
 type GetInstanceGroupManagerUpdatePolicyArgs struct {
-	// The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
 	MaxSurgeFixed pulumi.IntInput `pulumi:"maxSurgeFixed"`
-	// The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
 	MaxSurgePercent pulumi.IntInput `pulumi:"maxSurgePercent"`
-	// The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+	// Specifies a fixed number of VM instances. This must be a positive integer.
 	MaxUnavailableFixed pulumi.IntInput `pulumi:"maxUnavailableFixed"`
-	// The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
 	MaxUnavailablePercent pulumi.IntInput `pulumi:"maxUnavailablePercent"`
 	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
 	MinReadySec pulumi.IntInput `pulumi:"minReadySec"`
@@ -22931,22 +22931,22 @@ func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpda
 	return o
 }
 
-// The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgeFixed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgeFixed }).(pulumi.IntOutput)
 }
 
-// The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgePercent }).(pulumi.IntOutput)
 }
 
-// The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+// Specifies a fixed number of VM instances. This must be a positive integer.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailableFixed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailableFixed }).(pulumi.IntOutput)
 }
 
-// The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailablePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailablePercent }).(pulumi.IntOutput)
 }

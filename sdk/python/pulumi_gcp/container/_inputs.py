@@ -7856,7 +7856,7 @@ if not MYPY:
         """
         relay_mode: NotRequired[pulumi.Input[str]]
         """
-        Mode used to make Relay available.
+        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
 elif False:
     ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -7870,7 +7870,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
         """
         :param pulumi.Input[bool] enable_metrics: Whether or not to enable advanced datapath metrics.
         :param pulumi.Input[bool] enable_relay: Whether or not Relay is enabled.
-        :param pulumi.Input[str] relay_mode: Mode used to make Relay available.
+        :param pulumi.Input[str] relay_mode: Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
         if enable_relay is not None:
@@ -7910,7 +7910,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
     @_utilities.deprecated("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
     def relay_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode used to make Relay available.
+        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         return pulumi.get(self, "relay_mode")
 

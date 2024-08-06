@@ -17,28 +17,14 @@ public final class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences
     public static final PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs Empty = new PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs();
 
     /**
-     * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * ON_DEMAND
-     * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-     * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-     * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-     * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+     * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
      * 
      */
     @Import(name="commitmentPlan")
     private @Nullable Output<String> commitmentPlan;
 
     /**
-     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * ON_DEMAND
-     * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-     * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-     * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-     * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
      * 
      */
     public Optional<Output<String>> commitmentPlan() {
@@ -118,14 +104,7 @@ public final class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences
         }
 
         /**
-         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-         * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
          * 
          * @return builder
          * 
@@ -136,14 +115,7 @@ public final class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences
         }
 
         /**
-         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-         * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
          * 
          * @return builder
          * 

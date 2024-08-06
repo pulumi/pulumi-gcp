@@ -63,7 +63,7 @@ func LookupRegionInstanceTemplate(ctx *pulumi.Context, args *LookupRegionInstanc
 // A collection of arguments for invoking getRegionInstanceTemplate.
 type LookupRegionInstanceTemplateArgs struct {
 	// A filter to retrieve the instance templates.
-	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+	// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
 	// If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
 	Filter *string `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
@@ -176,7 +176,7 @@ func LookupRegionInstanceTemplateOutput(ctx *pulumi.Context, args LookupRegionIn
 // A collection of arguments for invoking getRegionInstanceTemplate.
 type LookupRegionInstanceTemplateOutputArgs struct {
 	// A filter to retrieve the instance templates.
-	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+	// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
 	// If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.

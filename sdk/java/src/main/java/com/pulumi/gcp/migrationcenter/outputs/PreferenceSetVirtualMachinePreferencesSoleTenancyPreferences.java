@@ -15,12 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
     /**
-     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * ON_DEMAND
-     * COMMITMENT_1_YEAR
-     * COMMITMENT_3_YEAR
+     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
      * 
      */
     private @Nullable String commitmentPlan;
@@ -30,12 +25,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences 
      */
     private @Nullable Double cpuOvercommitRatio;
     /**
-     * @return Sole Tenancy nodes maintenance policy.
-     * Possible values:
-     * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-     * HOST_MAINTENANCE_POLICY_DEFAULT
-     * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-     * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+     * @return Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
      * 
      */
     private @Nullable String hostMaintenancePolicy;
@@ -48,12 +38,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences 
 
     private PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences() {}
     /**
-     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * ON_DEMAND
-     * COMMITMENT_1_YEAR
-     * COMMITMENT_3_YEAR
+     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
      * 
      */
     public Optional<String> commitmentPlan() {
@@ -67,12 +52,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences 
         return Optional.ofNullable(this.cpuOvercommitRatio);
     }
     /**
-     * @return Sole Tenancy nodes maintenance policy.
-     * Possible values:
-     * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-     * HOST_MAINTENANCE_POLICY_DEFAULT
-     * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-     * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+     * @return Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
      * 
      */
     public Optional<String> hostMaintenancePolicy() {

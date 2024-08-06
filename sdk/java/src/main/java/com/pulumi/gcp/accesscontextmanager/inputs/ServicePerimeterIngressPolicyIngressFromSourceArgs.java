@@ -47,7 +47,10 @@ public final class ServicePerimeterIngressPolicyIngressFromSourceArgs extends co
     /**
      * A Google Cloud resource that is allowed to ingress the perimeter.
      * Requests from these resources will be allowed to access perimeter data.
-     * Currently only projects are allowed. Format `projects/{project_number}`
+     * Currently only projects and VPCs are allowed.
+     * Project format: `projects/{projectNumber}`
+     * VPC network format:
+     * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
      * The project may be in any Google Cloud organization, not just the
      * organization that the perimeter is defined in. `*` is not allowed, the case
      * of allowing all Google Cloud resources only is not supported.
@@ -59,7 +62,10 @@ public final class ServicePerimeterIngressPolicyIngressFromSourceArgs extends co
     /**
      * @return A Google Cloud resource that is allowed to ingress the perimeter.
      * Requests from these resources will be allowed to access perimeter data.
-     * Currently only projects are allowed. Format `projects/{project_number}`
+     * Currently only projects and VPCs are allowed.
+     * Project format: `projects/{projectNumber}`
+     * VPC network format:
+     * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
      * The project may be in any Google Cloud organization, not just the
      * organization that the perimeter is defined in. `*` is not allowed, the case
      * of allowing all Google Cloud resources only is not supported.
@@ -132,7 +138,10 @@ public final class ServicePerimeterIngressPolicyIngressFromSourceArgs extends co
         /**
          * @param resource A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
+         * Currently only projects and VPCs are allowed.
+         * Project format: `projects/{projectNumber}`
+         * VPC network format:
+         * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
          * The project may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.
@@ -148,7 +157,10 @@ public final class ServicePerimeterIngressPolicyIngressFromSourceArgs extends co
         /**
          * @param resource A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
+         * Currently only projects and VPCs are allowed.
+         * Project format: `projects/{projectNumber}`
+         * VPC network format:
+         * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
          * The project may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.

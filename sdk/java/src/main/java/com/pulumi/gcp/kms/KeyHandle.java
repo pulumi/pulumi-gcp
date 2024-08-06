@@ -256,7 +256,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
     }
     /**
      * Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      * 
      */
     @Export(name="resourceTypeSelector", refs={String.class}, tree="[0]")
@@ -264,7 +264,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      * 
      */
     public Output<String> resourceTypeSelector() {

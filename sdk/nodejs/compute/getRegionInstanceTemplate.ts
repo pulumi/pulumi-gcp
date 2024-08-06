@@ -48,7 +48,7 @@ export function getRegionInstanceTemplate(args?: GetRegionInstanceTemplateArgs, 
 export interface GetRegionInstanceTemplateArgs {
     /**
      * A filter to retrieve the instance templates.
-     * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+     * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
      * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
      */
     filter?: string;
@@ -238,7 +238,7 @@ export function getRegionInstanceTemplateOutput(args?: GetRegionInstanceTemplate
 export interface GetRegionInstanceTemplateOutputArgs {
     /**
      * A filter to retrieve the instance templates.
-     * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+     * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
      * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
      */
     filter?: pulumi.Input<string>;

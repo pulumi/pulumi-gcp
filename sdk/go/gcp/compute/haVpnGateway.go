@@ -231,6 +231,10 @@ type HaVpnGateway struct {
 
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+	// Default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	GatewayIpVersion pulumi.StringPtrOutput `pulumi:"gatewayIpVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -253,7 +257,7 @@ type HaVpnGateway struct {
 	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringPtrOutput `pulumi:"stackType"`
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
@@ -295,6 +299,10 @@ func GetHaVpnGateway(ctx *pulumi.Context,
 type haVpnGatewayState struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+	// Default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	GatewayIpVersion *string `pulumi:"gatewayIpVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -317,7 +325,7 @@ type haVpnGatewayState struct {
 	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType *string `pulumi:"stackType"`
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
@@ -327,6 +335,10 @@ type haVpnGatewayState struct {
 type HaVpnGatewayState struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+	// Default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	GatewayIpVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -349,7 +361,7 @@ type HaVpnGatewayState struct {
 	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringPtrInput
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
@@ -363,6 +375,10 @@ func (HaVpnGatewayState) ElementType() reflect.Type {
 type haVpnGatewayArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+	// Default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	GatewayIpVersion *string `pulumi:"gatewayIpVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -383,7 +399,7 @@ type haVpnGatewayArgs struct {
 	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType *string `pulumi:"stackType"`
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
@@ -394,6 +410,10 @@ type haVpnGatewayArgs struct {
 type HaVpnGatewayArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+	// Default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	GatewayIpVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -414,7 +434,7 @@ type HaVpnGatewayArgs struct {
 	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringPtrInput
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
@@ -513,6 +533,13 @@ func (o HaVpnGatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+// Default value is `IPV4`.
+// Possible values are: `IPV4`, `IPV6`.
+func (o HaVpnGatewayOutput) GatewayIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringPtrOutput { return v.GatewayIpVersion }).(pulumi.StringPtrOutput)
+}
+
 // Name of the resource. Provided by the client when the resource is
 // created. The name must be 1-63 characters long, and comply with
 // RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -550,7 +577,7 @@ func (o HaVpnGatewayOutput) SelfLink() pulumi.StringOutput {
 // The stack type for this VPN gateway to identify the IP protocols that are enabled.
 // If not specified, IPV4_ONLY will be used.
 // Default value is `IPV4_ONLY`.
-// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 func (o HaVpnGatewayOutput) StackType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringPtrOutput { return v.StackType }).(pulumi.StringPtrOutput)
 }

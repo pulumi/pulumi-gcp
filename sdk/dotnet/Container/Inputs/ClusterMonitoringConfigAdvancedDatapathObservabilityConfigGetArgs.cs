@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? EnableRelay { get; set; }
 
         /// <summary>
-        /// Mode used to make Relay available.
+        /// Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         /// </summary>
         [Input("relayMode")]
         public Input<string>? RelayMode { get; set; }

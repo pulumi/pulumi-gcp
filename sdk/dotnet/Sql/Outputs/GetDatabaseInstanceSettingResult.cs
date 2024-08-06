@@ -68,6 +68,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string Edition;
         /// <summary>
+        /// Enables Dataplex Integration.
+        /// </summary>
+        public readonly bool EnableDataplexIntegration;
+        /// <summary>
         /// Enables Vertex AI Integration.
         /// </summary>
         public readonly bool EnableGoogleMlIntegration;
@@ -138,6 +142,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string edition,
 
+            bool enableDataplexIntegration,
+
             bool enableGoogleMlIntegration,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingInsightsConfigResult> insightsConfigs,
@@ -178,6 +184,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskSize = diskSize;
             DiskType = diskType;
             Edition = edition;
+            EnableDataplexIntegration = enableDataplexIntegration;
             EnableGoogleMlIntegration = enableGoogleMlIntegration;
             InsightsConfigs = insightsConfigs;
             IpConfigurations = ipConfigurations;
