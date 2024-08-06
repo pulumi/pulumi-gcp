@@ -584,7 +584,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
+         * Currently only projects and VPCs are allowed.
+         * Project format: `projects/{projectNumber}`
+         * VPC network format:
+         * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
          * The project may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.
@@ -23051,19 +23054,19 @@ export namespace compute {
 
     export interface GetInstanceGroupManagerUpdatePolicy {
         /**
-         * The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+         * Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
          */
         maxSurgeFixed: number;
         /**
-         * The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+         * Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
          */
         maxSurgePercent: number;
         /**
-         * The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+         * Specifies a fixed number of VM instances. This must be a positive integer.
          */
         maxUnavailableFixed: number;
         /**
-         * The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+         * Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
          */
         maxUnavailablePercent: number;
         /**
@@ -27337,19 +27340,19 @@ export namespace compute {
 
     export interface InstanceGroupManagerUpdatePolicy {
         /**
-         * , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `maxSurgePercent`. If neither is set, defaults to 1
+         * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          */
         maxSurgeFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `maxSurgeFixed`.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
          */
         maxSurgePercent?: number;
         /**
-         * , The maximum number of instances that can be unavailable during the update process. Conflicts with `maxUnavailablePercent`. If neither is set, defaults to 1
+         * , Specifies a fixed number of VM instances. This must be a positive integer.
          */
         maxUnavailableFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          */
         maxUnavailablePercent?: number;
         /**
@@ -30359,19 +30362,19 @@ export namespace compute {
          */
         instanceRedistributionType?: string;
         /**
-         * , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `maxSurgePercent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `maxUnavailableFixed` or `maxSurgeFixed` must be greater than 0.
+         * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          */
         maxSurgeFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `maxSurgeFixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
          */
         maxSurgePercent?: number;
         /**
-         * , The maximum number of instances that can be unavailable during the update process. Conflicts with `maxUnavailablePercent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `maxUnavailableFixed` or `maxSurgeFixed` must be greater than 0.
+         * , Specifies a fixed number of VM instances. This must be a positive integer.
          */
         maxUnavailableFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          */
         maxUnavailablePercent?: number;
         /**
@@ -38628,7 +38631,7 @@ export namespace container {
          */
         enableRelay?: boolean;
         /**
-         * Mode used to make Relay available.
+         * Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
          *
          * @deprecated Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
          */
@@ -38980,7 +38983,7 @@ export namespace container {
         /**
          * Configuration for auto installation of GPU driver. Structure is documented below.
          */
-        gpuDriverInstallationConfig?: outputs.container.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        gpuDriverInstallationConfig: outputs.container.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
         /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
@@ -39810,7 +39813,7 @@ export namespace container {
         /**
          * Configuration for auto installation of GPU driver. Structure is documented below.
          */
-        gpuDriverInstallationConfig?: outputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        gpuDriverInstallationConfig: outputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
         /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
@@ -42713,7 +42716,7 @@ export namespace container {
         /**
          * Configuration for auto installation of GPU driver.
          */
-        gpuDriverInstallationConfig?: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        gpuDriverInstallationConfig: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
         /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
          */
@@ -67013,12 +67016,7 @@ export namespace memcache {
 export namespace migrationcenter {
     export interface PreferenceSetVirtualMachinePreferences {
         /**
-         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * COMMITMENT_PLAN_NONE
-         * COMMITMENT_PLAN_ONE_YEAR
-         * COMMITMENT_PLAN_THREE_YEARS
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
          */
         commitmentPlan?: string;
         /**
@@ -67032,12 +67030,7 @@ export namespace migrationcenter {
          */
         regionPreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesRegionPreferences;
         /**
-         * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-         * Possible values:
-         * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-         * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-         * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-         * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+         * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
          */
         sizingOptimizationStrategy?: string;
         /**
@@ -67046,12 +67039,7 @@ export namespace migrationcenter {
          */
         soleTenancyPreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences;
         /**
-         * Target product for assets using this preference set. Specify either target product or business goal, but not both.
-         * Possible values:
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+         * Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
          */
         targetProduct?: string;
         /**
@@ -67063,11 +67051,7 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferences {
         /**
-         * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-         * Possible values:
-         * LICENSE_TYPE_UNSPECIFIED
-         * LICENSE_TYPE_DEFAULT
-         * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+         * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
          */
         licenseType?: string;
         /**
@@ -67101,12 +67085,7 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
         /**
-         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR
-         * COMMITMENT_3_YEAR
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
          */
         commitmentPlan?: string;
         /**
@@ -67114,12 +67093,7 @@ export namespace migrationcenter {
          */
         cpuOvercommitRatio?: number;
         /**
-         * Sole Tenancy nodes maintenance policy.
-         * Possible values:
-         * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-         * HOST_MAINTENANCE_POLICY_DEFAULT
-         * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-         * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+         * Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
          */
         hostMaintenancePolicy?: string;
         /**
@@ -67138,14 +67112,7 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences {
         /**
-         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-         * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
          */
         commitmentPlan?: string;
         /**
@@ -77542,7 +77509,7 @@ export namespace sql {
         deletionProtectionEnabled?: boolean;
         denyMaintenancePeriod?: outputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod;
         /**
-         * Enables auto-resizing of the storage size. Defaults to `true`.
+         * Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
          */
         diskAutoresize?: boolean;
         /**
@@ -77550,7 +77517,7 @@ export namespace sql {
          */
         diskAutoresizeLimit?: number;
         /**
-         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          */
         diskSize: number;
         /**
@@ -77562,13 +77529,17 @@ export namespace sql {
          */
         edition?: string;
         /**
+         * Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+         */
+        enableDataplexIntegration?: boolean;
+        /**
          * Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
          */
         enableGoogleMlIntegration?: boolean;
         /**
          * Configuration of Query Insights.
          */
-        insightsConfig?: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
+        insightsConfig: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
         ipConfiguration: outputs.sql.DatabaseInstanceSettingsIpConfiguration;
         locationPreference: outputs.sql.DatabaseInstanceSettingsLocationPreference;
         /**
@@ -77682,11 +77653,11 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsDenyMaintenancePeriod {
         /**
-         * "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         * "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
          */
         endDate: string;
         /**
-         * "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         * "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
          */
         startDate: string;
         /**
@@ -77753,7 +77724,7 @@ export namespace sql {
          */
         requireSsl?: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
          * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
          * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
          * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -78057,6 +78028,10 @@ export namespace sql {
          */
         edition: string;
         /**
+         * Enables Dataplex Integration.
+         */
+        enableDataplexIntegration: boolean;
+        /**
          * Enables Vertex AI Integration.
          */
         enableGoogleMlIntegration: boolean;
@@ -78230,7 +78205,7 @@ export namespace sql {
          */
         requireSsl: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
         sslMode: string;
     }
@@ -78573,6 +78548,10 @@ export namespace sql {
          */
         edition: string;
         /**
+         * Enables Dataplex Integration.
+         */
+        enableDataplexIntegration: boolean;
+        /**
          * Enables Vertex AI Integration.
          */
         enableGoogleMlIntegration: boolean;
@@ -78746,7 +78725,7 @@ export namespace sql {
          */
         requireSsl: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
         sslMode: string;
     }

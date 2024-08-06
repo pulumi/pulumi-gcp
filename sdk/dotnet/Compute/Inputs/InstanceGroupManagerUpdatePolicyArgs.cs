@@ -13,25 +13,25 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceGroupManagerUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+        /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         /// </summary>
         [Input("maxSurgeFixed")]
         public Input<int>? MaxSurgeFixed { get; set; }
 
         /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         /// </summary>
         [Input("maxSurgePercent")]
         public Input<int>? MaxSurgePercent { get; set; }
 
         /// <summary>
-        /// , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+        /// , Specifies a fixed number of VM instances. This must be a positive integer.
         /// </summary>
         [Input("maxUnavailableFixed")]
         public Input<int>? MaxUnavailableFixed { get; set; }
 
         /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         /// </summary>
         [Input("maxUnavailablePercent")]
         public Input<int>? MaxUnavailablePercent { get; set; }

@@ -14,19 +14,19 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceGroupManagerUpdatePolicy
     {
         /// <summary>
-        /// , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+        /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         /// </summary>
         public readonly int? MaxSurgeFixed;
         /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         /// </summary>
         public readonly int? MaxSurgePercent;
         /// <summary>
-        /// , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+        /// , Specifies a fixed number of VM instances. This must be a positive integer.
         /// </summary>
         public readonly int? MaxUnavailableFixed;
         /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         /// </summary>
         public readonly int? MaxUnavailablePercent;
         /// <summary>

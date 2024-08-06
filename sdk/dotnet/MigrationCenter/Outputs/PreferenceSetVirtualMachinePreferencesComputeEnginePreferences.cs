@@ -14,11 +14,7 @@ namespace Pulumi.Gcp.MigrationCenter.Outputs
     public sealed class PreferenceSetVirtualMachinePreferencesComputeEnginePreferences
     {
         /// <summary>
-        /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-        /// Possible values:
-        /// LICENSE_TYPE_UNSPECIFIED
-        /// LICENSE_TYPE_DEFAULT
-        /// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+        /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
         /// </summary>
         public readonly string? LicenseType;
         /// <summary>

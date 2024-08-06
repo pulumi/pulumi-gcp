@@ -10485,10 +10485,10 @@ class InstanceGroupManagerUpdatePolicy(dict):
         """
         :param str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
-        :param int max_surge_fixed: , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
-        :param int max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
-        :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
-        :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+        :param int max_surge_fixed: , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+        :param int max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+        :param int max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
+        :param int max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
@@ -10531,7 +10531,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxSurgeFixed")
     def max_surge_fixed(self) -> Optional[int]:
         """
-        , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+        , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         """
         return pulumi.get(self, "max_surge_fixed")
 
@@ -10539,7 +10539,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxSurgePercent")
     def max_surge_percent(self) -> Optional[int]:
         """
-        , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+        , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         """
         return pulumi.get(self, "max_surge_percent")
 
@@ -10547,7 +10547,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxUnavailableFixed")
     def max_unavailable_fixed(self) -> Optional[int]:
         """
-        , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+        , Specifies a fixed number of VM instances. This must be a positive integer.
         """
         return pulumi.get(self, "max_unavailable_fixed")
 
@@ -10555,7 +10555,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxUnavailablePercent")
     def max_unavailable_percent(self) -> Optional[int]:
         """
-        , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+        , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         """
         return pulumi.get(self, "max_unavailable_percent")
 
@@ -20333,10 +20333,10 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         :param str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         :param str instance_redistribution_type: The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
-        :param int max_surge_fixed: , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        :param int max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+        :param int max_surge_fixed: , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+        :param int max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+        :param int max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
+        :param int max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
@@ -20389,7 +20389,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxSurgeFixed")
     def max_surge_fixed(self) -> Optional[int]:
         """
-        , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+        , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         """
         return pulumi.get(self, "max_surge_fixed")
 
@@ -20397,7 +20397,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxSurgePercent")
     def max_surge_percent(self) -> Optional[int]:
         """
-        , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+        , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         """
         return pulumi.get(self, "max_surge_percent")
 
@@ -20405,7 +20405,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxUnavailableFixed")
     def max_unavailable_fixed(self) -> Optional[int]:
         """
-        , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+        , Specifies a fixed number of VM instances. This must be a positive integer.
         """
         return pulumi.get(self, "max_unavailable_fixed")
 
@@ -20413,7 +20413,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="maxUnavailablePercent")
     def max_unavailable_percent(self) -> Optional[int]:
         """
-        , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+        , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         """
         return pulumi.get(self, "max_unavailable_percent")
 
@@ -46489,10 +46489,10 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
                  replacement_method: str,
                  type: str):
         """
-        :param int max_surge_fixed: The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
-        :param int max_surge_percent: The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
-        :param int max_unavailable_fixed: The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
-        :param int max_unavailable_percent: The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+        :param int max_surge_fixed: Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+        :param int max_surge_percent: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+        :param int max_unavailable_fixed: Specifies a fixed number of VM instances. This must be a positive integer.
+        :param int max_unavailable_percent: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
         :param int min_ready_sec: Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
         :param str minimal_action: Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
@@ -46513,7 +46513,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
     @pulumi.getter(name="maxSurgeFixed")
     def max_surge_fixed(self) -> int:
         """
-        The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+        Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
         """
         return pulumi.get(self, "max_surge_fixed")
 
@@ -46521,7 +46521,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
     @pulumi.getter(name="maxSurgePercent")
     def max_surge_percent(self) -> int:
         """
-        The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+        Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
         """
         return pulumi.get(self, "max_surge_percent")
 
@@ -46529,7 +46529,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
     @pulumi.getter(name="maxUnavailableFixed")
     def max_unavailable_fixed(self) -> int:
         """
-        The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+        Specifies a fixed number of VM instances. This must be a positive integer.
         """
         return pulumi.get(self, "max_unavailable_fixed")
 
@@ -46537,7 +46537,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
     @pulumi.getter(name="maxUnavailablePercent")
     def max_unavailable_percent(self) -> int:
         """
-        The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+        Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
         """
         return pulumi.get(self, "max_unavailable_percent")
 

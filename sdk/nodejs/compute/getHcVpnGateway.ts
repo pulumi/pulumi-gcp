@@ -49,6 +49,7 @@ export interface GetHcVpnGatewayArgs {
  */
 export interface GetHcVpnGatewayResult {
     readonly description: string;
+    readonly gatewayIpVersion: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

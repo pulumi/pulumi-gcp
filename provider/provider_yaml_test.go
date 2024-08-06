@@ -406,7 +406,7 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 				  "guestAccelerators": [
 					{
 					  "count": 1,
-					  "gpuDriverInstallationConfig": null,
+					  "gpuDriverInstallationConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
 					  "gpuPartitionSize": "",
 					  "gpuSharingConfig": null,
 					  "type": "nvidia-tesla-t4"

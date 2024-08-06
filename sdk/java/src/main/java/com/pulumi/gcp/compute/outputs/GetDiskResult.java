@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDiskResult {
+    private String accessMode;
     private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
     /**
      * @return Creation timestamp in RFC3339 text format.
@@ -148,6 +149,9 @@ public final class GetDiskResult {
     private @Nullable String zone;
 
     private GetDiskResult() {}
+    public String accessMode() {
+        return this.accessMode;
+    }
     public List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks() {
         return this.asyncPrimaryDisks;
     }
@@ -357,6 +361,7 @@ public final class GetDiskResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String accessMode;
         private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
         private String creationTimestamp;
         private String description;
@@ -397,6 +402,7 @@ public final class GetDiskResult {
         public Builder() {}
         public Builder(GetDiskResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessMode = defaults.accessMode;
     	      this.asyncPrimaryDisks = defaults.asyncPrimaryDisks;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
@@ -436,6 +442,14 @@ public final class GetDiskResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder accessMode(String accessMode) {
+            if (accessMode == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "accessMode");
+            }
+            this.accessMode = accessMode;
+            return this;
+        }
         @CustomType.Setter
         public Builder asyncPrimaryDisks(List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks) {
             if (asyncPrimaryDisks == null) {
@@ -754,6 +768,7 @@ public final class GetDiskResult {
         }
         public GetDiskResult build() {
             final var _resultValue = new GetDiskResult();
+            _resultValue.accessMode = accessMode;
             _resultValue.asyncPrimaryDisks = asyncPrimaryDisks;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;

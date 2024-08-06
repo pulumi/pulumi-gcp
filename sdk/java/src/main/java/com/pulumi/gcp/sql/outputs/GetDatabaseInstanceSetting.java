@@ -92,6 +92,11 @@ public final class GetDatabaseInstanceSetting {
      */
     private String edition;
     /**
+     * @return Enables Dataplex Integration.
+     * 
+     */
+    private Boolean enableDataplexIntegration;
+    /**
      * @return Enables Vertex AI Integration.
      * 
      */
@@ -235,6 +240,13 @@ public final class GetDatabaseInstanceSetting {
         return this.edition;
     }
     /**
+     * @return Enables Dataplex Integration.
+     * 
+     */
+    public Boolean enableDataplexIntegration() {
+        return this.enableDataplexIntegration;
+    }
+    /**
      * @return Enables Vertex AI Integration.
      * 
      */
@@ -328,6 +340,7 @@ public final class GetDatabaseInstanceSetting {
         private Integer diskSize;
         private String diskType;
         private String edition;
+        private Boolean enableDataplexIntegration;
         private Boolean enableGoogleMlIntegration;
         private List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs;
         private List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
@@ -359,6 +372,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.edition = defaults.edition;
+    	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
     	      this.insightsConfigs = defaults.insightsConfigs;
     	      this.ipConfigurations = defaults.ipConfigurations;
@@ -520,6 +534,14 @@ public final class GetDatabaseInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder enableDataplexIntegration(Boolean enableDataplexIntegration) {
+            if (enableDataplexIntegration == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "enableDataplexIntegration");
+            }
+            this.enableDataplexIntegration = enableDataplexIntegration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableGoogleMlIntegration(Boolean enableGoogleMlIntegration) {
             if (enableGoogleMlIntegration == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "enableGoogleMlIntegration");
@@ -651,6 +673,7 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;
             _resultValue.edition = edition;
+            _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
             _resultValue.insightsConfigs = insightsConfigs;
             _resultValue.ipConfigurations = ipConfigurations;

@@ -19252,7 +19252,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
 	EnableMetrics bool `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
 	EnableRelay *bool `pulumi:"enableRelay"`
-	// Mode used to make Relay available.
+	// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
 	//
 	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
 	RelayMode *string `pulumi:"relayMode"`
@@ -19274,7 +19274,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
 	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
 	EnableRelay pulumi.BoolPtrInput `pulumi:"enableRelay"`
-	// Mode used to make Relay available.
+	// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
 	//
 	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
 	RelayMode pulumi.StringPtrInput `pulumi:"relayMode"`
@@ -19341,7 +19341,7 @@ func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) Enable
 	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *bool { return v.EnableRelay }).(pulumi.BoolPtrOutput)
 }
 
-// Mode used to make Relay available.
+// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
 //
 // Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
 func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringPtrOutput {

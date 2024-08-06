@@ -145,14 +145,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Resource name of the AccessPolicy. Format: {policy_id}
+     * Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Resource name of the AccessPolicy. Format: {policy_id}
+     * @return Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
      * 
      */
     public Output<String> name() {
@@ -160,7 +160,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: &#39;organizations/{{organization_id}}&#39;
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -168,7 +168,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: &#39;organizations/{{organization_id}}&#39;
      * 
      */
     public Output<String> parent() {
@@ -176,7 +176,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
      * 
      */
     @Export(name="scopes", refs={String.class}, tree="[0]")
@@ -184,7 +184,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
      * 
      */
     public Output<Optional<String>> scopes() {

@@ -152,7 +152,9 @@ export class Project extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+     *
+     * @deprecated skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
      */
     public readonly skipDelete!: pulumi.Output<boolean>;
 
@@ -264,7 +266,9 @@ export interface ProjectState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+     *
+     * @deprecated skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
      */
     skipDelete?: pulumi.Input<boolean>;
 }
@@ -320,7 +324,9 @@ export interface ProjectArgs {
     projectId?: pulumi.Input<string>;
     /**
      * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+     *
+     * @deprecated skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
      */
     skipDelete?: pulumi.Input<boolean>;
 }

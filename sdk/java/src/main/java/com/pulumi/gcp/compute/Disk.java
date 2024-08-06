@@ -220,6 +220,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/disk:Disk")
 public class Disk extends com.pulumi.resources.CustomResource {
     /**
+     * The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
+    private Output<String> accessMode;
+
+    /**
+     * @return The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    public Output<String> accessMode() {
+        return this.accessMode;
+    }
+    /**
      * A nested object resource
      * Structure is documented below.
      * 

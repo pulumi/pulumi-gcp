@@ -22,12 +22,14 @@ __all__ = ['HubArgs', 'Hub']
 class HubArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Hub resource.
         :param pulumi.Input[str] description: An optional description of the hub.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -40,6 +42,8 @@ class HubArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if export_psc is not None:
+            pulumi.set(__self__, "export_psc", export_psc)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -58,6 +62,18 @@ class HubArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="exportPsc")
+    def export_psc(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        """
+        return pulumi.get(self, "export_psc")
+
+    @export_psc.setter
+    def export_psc(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "export_psc", value)
 
     @property
     @pulumi.getter
@@ -108,6 +124,7 @@ class _HubState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -121,6 +138,7 @@ class _HubState:
         :param pulumi.Input[str] create_time: Output only. The time the hub was created.
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -144,6 +162,8 @@ class _HubState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if export_psc is not None:
+            pulumi.set(__self__, "export_psc", export_psc)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -196,6 +216,18 @@ class _HubState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="exportPsc")
+    def export_psc(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        """
+        return pulumi.get(self, "export_psc")
+
+    @export_psc.setter
+    def export_psc(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "export_psc", value)
 
     @property
     @pulumi.getter
@@ -308,6 +340,7 @@ class Hub(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -335,6 +368,17 @@ class Hub(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             })
+        ```
+        ### Network Connectivity Hub With Export Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="basic",
+            description="A sample hub with Private Service Connect transitivity is enabled",
+            export_psc=True)
         ```
 
         ## Import
@@ -364,6 +408,7 @@ class Hub(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the hub.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -403,6 +448,17 @@ class Hub(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             })
+        ```
+        ### Network Connectivity Hub With Export Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="basic",
+            description="A sample hub with Private Service Connect transitivity is enabled",
+            export_psc=True)
         ```
 
         ## Import
@@ -445,6 +501,7 @@ class Hub(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -458,6 +515,7 @@ class Hub(pulumi.CustomResource):
             __props__ = HubArgs.__new__(HubArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["export_psc"] = export_psc
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -483,6 +541,7 @@ class Hub(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            export_psc: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -501,6 +560,7 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time the hub was created.
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -525,6 +585,7 @@ class Hub(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["export_psc"] = export_psc
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -558,6 +619,14 @@ class Hub(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="exportPsc")
+    def export_psc(self) -> pulumi.Output[bool]:
+        """
+        Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        """
+        return pulumi.get(self, "export_psc")
 
     @property
     @pulumi.getter

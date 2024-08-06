@@ -24,7 +24,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
      */
     private @Nullable Boolean enableRelay;
     /**
-     * @return Mode used to make Relay available.
+     * @return Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
      * 
      * @deprecated
      * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
@@ -49,7 +49,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
         return Optional.ofNullable(this.enableRelay);
     }
     /**
-     * @return Mode used to make Relay available.
+     * @return Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
      * 
      * @deprecated
      * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.

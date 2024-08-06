@@ -19,25 +19,25 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? InstanceRedistributionType { get; set; }
 
         /// <summary>
-        /// , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+        /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         /// </summary>
         [Input("maxSurgeFixed")]
         public Input<int>? MaxSurgeFixed { get; set; }
 
         /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         /// </summary>
         [Input("maxSurgePercent")]
         public Input<int>? MaxSurgePercent { get; set; }
 
         /// <summary>
-        /// , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+        /// , Specifies a fixed number of VM instances. This must be a positive integer.
         /// </summary>
         [Input("maxUnavailableFixed")]
         public Input<int>? MaxUnavailableFixed { get; set; }
 
         /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         /// </summary>
         [Input("maxUnavailablePercent")]
         public Input<int>? MaxUnavailablePercent { get; set; }

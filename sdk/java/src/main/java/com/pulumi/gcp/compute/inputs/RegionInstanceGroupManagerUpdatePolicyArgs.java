@@ -33,14 +33,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+     * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
      * 
      */
     @Import(name="maxSurgeFixed")
     private @Nullable Output<Integer> maxSurgeFixed;
 
     /**
-     * @return , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
      * 
      */
     public Optional<Output<Integer>> maxSurgeFixed() {
@@ -48,14 +48,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+     * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
      * 
      */
     @Import(name="maxSurgePercent")
     private @Nullable Output<Integer> maxSurgePercent;
 
     /**
-     * @return , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
      * 
      */
     public Optional<Output<Integer>> maxSurgePercent() {
@@ -63,14 +63,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+     * , Specifies a fixed number of VM instances. This must be a positive integer.
      * 
      */
     @Import(name="maxUnavailableFixed")
     private @Nullable Output<Integer> maxUnavailableFixed;
 
     /**
-     * @return , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+     * @return , Specifies a fixed number of VM instances. This must be a positive integer.
      * 
      */
     public Optional<Output<Integer>> maxUnavailableFixed() {
@@ -78,14 +78,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+     * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
      * 
      */
     @Import(name="maxUnavailablePercent")
     private @Nullable Output<Integer> maxUnavailablePercent;
 
     /**
-     * @return , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
      * 
      */
     public Optional<Output<Integer>> maxUnavailablePercent() {
@@ -224,7 +224,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxSurgeFixed , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxSurgeFixed , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxSurgePercent , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxSurgePercent , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxUnavailableFixed , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+         * @param maxUnavailableFixed , Specifies a fixed number of VM instances. This must be a positive integer.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxUnavailableFixed , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+         * @param maxUnavailableFixed , Specifies a fixed number of VM instances. This must be a positive integer.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxUnavailablePercent , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * @param maxUnavailablePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param maxUnavailablePercent , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * @param maxUnavailablePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          * 
          * @return builder
          * 

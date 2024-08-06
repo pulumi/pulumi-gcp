@@ -31,6 +31,18 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Connectivity Hub With Export Psc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.networkconnectivity.Hub("primary", {
+ *     name: "basic",
+ *     description: "A sample hub with Private Service Connect transitivity is enabled",
+ *     exportPsc: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -97,6 +109,10 @@ export class Hub extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     */
+    public readonly exportPsc!: pulumi.Output<boolean>;
+    /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -153,6 +169,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["exportPsc"] = state ? state.exportPsc : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -164,6 +181,7 @@ export class Hub extends pulumi.CustomResource {
         } else {
             const args = argsOrState as HubArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["exportPsc"] = args ? args.exportPsc : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -198,6 +216,10 @@ export interface HubState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     */
+    exportPsc?: pulumi.Input<boolean>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -248,6 +270,10 @@ export interface HubArgs {
      * An optional description of the hub.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     */
+    exportPsc?: pulumi.Input<boolean>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

@@ -70,7 +70,7 @@ public final class DatabaseInstanceSettings {
     private @Nullable Boolean deletionProtectionEnabled;
     private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
     /**
-     * @return Enables auto-resizing of the storage size. Defaults to `true`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
      * 
      */
     private @Nullable Boolean diskAutoresize;
@@ -80,7 +80,7 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable Integer diskAutoresizeLimit;
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     private @Nullable Integer diskSize;
@@ -94,6 +94,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String edition;
+    /**
+     * @return Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+     * 
+     */
+    private @Nullable Boolean enableDataplexIntegration;
     /**
      * @return Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
      * 
@@ -207,7 +212,7 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.denyMaintenancePeriod);
     }
     /**
-     * @return Enables auto-resizing of the storage size. Defaults to `true`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
      * 
      */
     public Optional<Boolean> diskAutoresize() {
@@ -221,7 +226,7 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.diskAutoresizeLimit);
     }
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     public Optional<Integer> diskSize() {
@@ -240,6 +245,13 @@ public final class DatabaseInstanceSettings {
      */
     public Optional<String> edition() {
         return Optional.ofNullable(this.edition);
+    }
+    /**
+     * @return Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> enableDataplexIntegration() {
+        return Optional.ofNullable(this.enableDataplexIntegration);
     }
     /**
      * @return Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
@@ -338,6 +350,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable Integer diskSize;
         private @Nullable String diskType;
         private @Nullable String edition;
+        private @Nullable Boolean enableDataplexIntegration;
         private @Nullable Boolean enableGoogleMlIntegration;
         private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
         private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
@@ -369,6 +382,7 @@ public final class DatabaseInstanceSettings {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.edition = defaults.edition;
+    	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
     	      this.insightsConfig = defaults.insightsConfig;
     	      this.ipConfiguration = defaults.ipConfiguration;
@@ -483,6 +497,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder enableDataplexIntegration(@Nullable Boolean enableDataplexIntegration) {
+
+            this.enableDataplexIntegration = enableDataplexIntegration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableGoogleMlIntegration(@Nullable Boolean enableGoogleMlIntegration) {
 
             this.enableGoogleMlIntegration = enableGoogleMlIntegration;
@@ -574,6 +594,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;
             _resultValue.edition = edition;
+            _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
             _resultValue.insightsConfig = insightsConfig;
             _resultValue.ipConfiguration = ipConfiguration;

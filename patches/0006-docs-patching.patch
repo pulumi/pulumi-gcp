@@ -522,27 +522,45 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 31735da2c..0eb77e1d3 100644
+index 77abc0296..46bd484a8 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
-@@ -27,18 +27,18 @@ To get more information about Environments, see:
- We **STRONGLY** recommend you read the [GCP
- guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
- deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
--cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Terraform
+@@ -32,24 +32,21 @@ To get more information about Environments, see:
+   Cloud Composer 2 or Cloud Composer 3 instead.
+ </Note>
+ 
+-Several special considerations apply to managing Cloud Composer environments 
+-with Terraform:
+-
+-* The Environment resource is based on several layers of GCP infrastructure. 
+-    Terraform does not manage these underlying resources. For example, in Cloud 
+-    Composer 2, this includes a Kubernetes Engine cluster, Cloud Storage, and 
+-    Compute networking resources.
+-* Creating or updating an environment usually takes around 25 minutes.
+-* In some cases errors in the configuration will be detected and reported only 
+-    during the process of the environment creation. If you encounter such 
+-    errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs for the Terraform provider.
+-* **Environments have Google Cloud Storage buckets that are not automatically 
+-    deleted** with the environment.
+-    See [Delete environments](https://cloud.google.com/composer/docs/composer-2/delete-environments)
+-    for more information.
+-* Please refer to
+-    [Troubleshooting pages](https://cloud.devsite.corp.google.com/composer/docs/composer-2/troubleshooting-environment-creation) if you encounter
+-    problems.
++We **STRONGLY** recommend you read the [GCP
++guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
++deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
 +cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
- will not be able to find or manage many of these underlying resources automatically. In particular:
- * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
-   detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
-   process), and is prone to limited error reporting. If you encounter confusing or uninformative
-   errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
--  against the Terraform provider.
++will not be able to find or manage many of these underlying resources automatically. In particular:
++* Creating or updating an environment resource can take up to one hour. In addition, GCP may only
++  detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
++  process), and is prone to limited error reporting. If you encounter confusing or uninformative
++  errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
 +  against the provider.
- * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
-   Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
- * Please review the [known
-   issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
--  problems.
++* **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
++  Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
++* Please review the [known
++  issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
 +  problems.***
  
  ## Example Usage
@@ -615,7 +633,7 @@ index a6bbbfa4b..92a6811de 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index d845a3cf1..6000ed89a 100644
+index 0d44ace83..2e715bdbd 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -43,9 +43,6 @@ To get more information about Disk, see:
@@ -808,7 +826,7 @@ index 5d846e846..8dda2ecb4 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index 7f59c534c..cf9f9c52d 100644
+index 49cb8ccb6..992998e68 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
 @@ -165,7 +165,7 @@ The following arguments are supported:
@@ -1141,7 +1159,7 @@ index db7f57628..dceb98ac2 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index 4a4e7be0e..3891cdef3 100644
+index e0074ea64..2448154fd 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
 @@ -166,7 +166,7 @@ The following arguments are supported:
@@ -1593,7 +1611,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index c53020d20..ea580fa3b 100644
+index 411ac707c..117c575f2 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1780,7 +1798,7 @@ index c53020d20..ea580fa3b 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index 310b0fbbb..69d5dc166 100644
+index eaedb6f0f..2a0477581 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -6,14 +6,11 @@ description: |-
@@ -2145,7 +2163,7 @@ index c4477a93e..8ca08942a 100644
  * `enable_inbound_forwarding` -
    (Optional)
 diff --git a/website/docs/r/firebase_project.html.markdown b/website/docs/r/firebase_project.html.markdown
-index 05bad6930..ccab67a22 100644
+index 0c434dc17..15c09fe7c 100644
 --- a/website/docs/r/firebase_project.html.markdown
 +++ b/website/docs/r/firebase_project.html.markdown
 @@ -24,9 +24,6 @@ Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses u
@@ -2689,7 +2707,7 @@ index 1e419d9e4..16c9465d2 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project.html.markdown b/website/docs/r/google_project.html.markdown
-index 58ab9b193..875a3ec3c 100644
+index 00ee09dc4..304699bf9 100644
 --- a/website/docs/r/google_project.html.markdown
 +++ b/website/docs/r/google_project.html.markdown
 @@ -11,15 +11,13 @@ Allows creation and management of a Google Cloud Platform project.
@@ -2722,7 +2740,7 @@ index 58ab9b193..875a3ec3c 100644
  
 -* `skip_delete` - (Optional) If true, the Terraform resource can be deleted
 +* `skip_delete` - (Optional) If true, the resource can be deleted
-     without deleting the Project via the Google API.
+     without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
  
  * `labels` - (Optional) A set of key/value label pairs to assign to the project.
 diff --git a/website/docs/r/google_project_iam.html.markdown b/website/docs/r/google_project_iam.html.markdown
@@ -3581,7 +3599,7 @@ index 2ac02739f..da87bdaae 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 180e0cb5a..0f6e86b61 100644
+index 429b84d0d..195b61f47 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3643,7 +3661,7 @@ index 180e0cb5a..0f6e86b61 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -500,7 +496,7 @@ The optional `clone` block supports:
+@@ -502,7 +498,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3652,7 +3670,7 @@ index 180e0cb5a..0f6e86b61 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -538,21 +534,13 @@ instance.
+@@ -540,21 +536,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  

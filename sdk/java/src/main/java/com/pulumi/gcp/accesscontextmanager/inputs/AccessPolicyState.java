@@ -31,14 +31,14 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name of the AccessPolicy. Format: {policy_id}
+     * Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name of the AccessPolicy. Format: {policy_id}
+     * @return Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,7 +47,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: &#39;organizations/{{organization_id}}&#39;
      * 
      */
     @Import(name="parent")
@@ -55,7 +55,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: &#39;organizations/{{organization_id}}&#39;
      * 
      */
     public Optional<Output<String>> parent() {
@@ -64,7 +64,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
      * 
      */
     @Import(name="scopes")
@@ -72,7 +72,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
      * 
      */
     public Optional<Output<String>> scopes() {
@@ -164,7 +164,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of the AccessPolicy. Format: {policy_id}
+         * @param name Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of the AccessPolicy. Format: {policy_id}
+         * @param name Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parent The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-         * Format: organizations/{organization_id}
+         * Format: &#39;organizations/{{organization_id}}&#39;
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parent The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-         * Format: organizations/{organization_id}
+         * Format: &#39;organizations/{{organization_id}}&#39;
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scopes Folder or project on which this policy is applicable.
-         * Format: folders/{{folder_id}} or projects/{{project_id}}
+         * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scopes Folder or project on which this policy is applicable.
-         * Format: folders/{{folder_id}} or projects/{{project_id}}
+         * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
          * 
          * @return builder
          * 

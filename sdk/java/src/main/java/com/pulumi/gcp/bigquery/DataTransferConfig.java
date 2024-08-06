@@ -101,6 +101,64 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquerydatatransfer Config Salesforce
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DataTransferConfig;
+ * import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
+ *             .datasetId("my_dataset")
+ *             .description("My dataset")
+ *             .location("asia-northeast1")
+ *             .build());
+ * 
+ *         var salesforceConfig = new DataTransferConfig("salesforceConfig", DataTransferConfigArgs.builder()
+ *             .displayName("my-salesforce-config")
+ *             .location("asia-northeast1")
+ *             .dataSourceId("salesforce")
+ *             .schedule("first sunday of quarter 00:00")
+ *             .destinationDatasetId(myDataset.datasetId())
+ *             .params(Map.ofEntries(
+ *                 Map.entry("connector.authentication.oauth.clientId", "client-id"),
+ *                 Map.entry("connector.authentication.oauth.clientSecret", "client-secret"),
+ *                 Map.entry("connector.authentication.username", "username"),
+ *                 Map.entry("connector.authentication.password", "password"),
+ *                 Map.entry("connector.authentication.securityToken", "security-token"),
+ *                 Map.entry("assets", "[\"asset-a\",\"asset-b\"]")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly bool? DeletionProtectionEnabled;
         public readonly Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? DenyMaintenancePeriod;
         /// <summary>
-        /// Enables auto-resizing of the storage size. Defaults to `true`.
+        /// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         /// </summary>
         public readonly bool? DiskAutoresize;
         /// <summary>
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int? DiskAutoresizeLimit;
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         /// </summary>
         public readonly int? DiskSize;
         /// <summary>
@@ -68,6 +68,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         /// </summary>
         public readonly string? Edition;
+        /// <summary>
+        /// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+        /// </summary>
+        public readonly bool? EnableDataplexIntegration;
         /// <summary>
         /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         /// </summary>
@@ -142,6 +146,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? edition,
 
+            bool? enableDataplexIntegration,
+
             bool? enableGoogleMlIntegration,
 
             Outputs.DatabaseInstanceSettingsInsightsConfig? insightsConfig,
@@ -182,6 +188,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskSize = diskSize;
             DiskType = diskType;
             Edition = edition;
+            EnableDataplexIntegration = enableDataplexIntegration;
             EnableGoogleMlIntegration = enableGoogleMlIntegration;
             InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;

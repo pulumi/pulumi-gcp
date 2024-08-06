@@ -308,15 +308,19 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+     * 
+     * @deprecated
+     * skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.
      * 
      */
+    @Deprecated /* skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead. */
     @Export(name="skipDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> skipDelete;
 
     /**
      * @return If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
      * 
      */
     public Output<Boolean> skipDelete() {

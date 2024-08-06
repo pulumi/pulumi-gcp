@@ -14,12 +14,7 @@ namespace Pulumi.Gcp.MigrationCenter.Outputs
     public sealed class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences
     {
         /// <summary>
-        /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-        /// Possible values:
-        /// COMMITMENT_PLAN_UNSPECIFIED
-        /// ON_DEMAND
-        /// COMMITMENT_1_YEAR
-        /// COMMITMENT_3_YEAR
+        /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
         /// </summary>
         public readonly string? CommitmentPlan;
         /// <summary>
@@ -27,12 +22,7 @@ namespace Pulumi.Gcp.MigrationCenter.Outputs
         /// </summary>
         public readonly double? CpuOvercommitRatio;
         /// <summary>
-        /// Sole Tenancy nodes maintenance policy.
-        /// Possible values:
-        /// HOST_MAINTENANCE_POLICY_UNSPECIFIED
-        /// HOST_MAINTENANCE_POLICY_DEFAULT
-        /// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-        /// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+        /// Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
         /// </summary>
         public readonly string? HostMaintenancePolicy;
         /// <summary>
