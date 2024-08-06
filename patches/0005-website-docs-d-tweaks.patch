@@ -99,7 +99,7 @@ index 2739af406..dd2ff2598 100644
  <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
  
 diff --git a/website/docs/d/compute_instance_template.html.markdown b/website/docs/d/compute_instance_template.html.markdown
-index a5729e9d9..cd2fb0876 100644
+index b3b7133bf..bae508658 100644
 --- a/website/docs/d/compute_instance_template.html.markdown
 +++ b/website/docs/d/compute_instance_template.html.markdown
 @@ -65,7 +65,7 @@ The following arguments are supported:
