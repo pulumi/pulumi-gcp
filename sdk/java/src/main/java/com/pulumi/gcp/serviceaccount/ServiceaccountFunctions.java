@@ -430,20 +430,20 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
-     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
-     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
+     *             .members("serviceAccount:service_A}{@literal @}{@code projectA.iam.gserviceaccount.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -470,16 +470,16 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .scopes(            
      *                 "userinfo-email",
      *                 "cloud-platform")
@@ -489,8 +489,8 @@ public final class ServiceaccountFunctions {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
      *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -530,20 +530,20 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
-     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
-     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
+     *             .members("serviceAccount:service_A}{@literal @}{@code projectA.iam.gserviceaccount.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -570,16 +570,16 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .scopes(            
      *                 "userinfo-email",
      *                 "cloud-platform")
@@ -589,8 +589,8 @@ public final class ServiceaccountFunctions {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
      *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -630,20 +630,20 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
-     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
-     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
+     *             .members("serviceAccount:service_A}{@literal @}{@code projectA.iam.gserviceaccount.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -670,16 +670,16 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .scopes(            
      *                 "userinfo-email",
      *                 "cloud-platform")
@@ -689,8 +689,8 @@ public final class ServiceaccountFunctions {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
      *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -730,20 +730,20 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var token_creator_iam = new IAMBinding("token-creator-iam", IAMBindingArgs.builder()
-     *             .serviceAccountId("projects/-/serviceAccounts/service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .serviceAccountId("projects/-/serviceAccounts/service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .role("roles/iam.serviceAccountTokenCreator")
-     *             .members("serviceAccount:service_A{@literal @}projectA.iam.gserviceaccount.com")
+     *             .members("serviceAccount:service_A}{@literal @}{@code projectA.iam.gserviceaccount.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -770,16 +770,16 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var default = OrganizationsFunctions.getClientConfig();
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("service_B{@literal @}projectB.iam.gserviceaccount.com")
+     *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
      *             .scopes(            
      *                 "userinfo-email",
      *                 "cloud-platform")
@@ -789,8 +789,8 @@ public final class ServiceaccountFunctions {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
      *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -870,14 +870,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
      *                 "userinfo-email",
@@ -886,15 +886,15 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
      *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1017,14 +1017,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
      *                 "userinfo-email",
@@ -1033,15 +1033,15 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
      *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1164,14 +1164,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
      *                 "userinfo-email",
@@ -1180,15 +1180,15 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
      *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1311,14 +1311,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var impersonated = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .scopes(            
      *                 "userinfo-email",
@@ -1327,15 +1327,15 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .delegates()
      *             .includeEmail(true)
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
      *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1414,14 +1414,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("foo", "bar"),
@@ -1431,8 +1431,8 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1466,14 +1466,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("foo", "bar"),
@@ -1483,8 +1483,8 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1518,14 +1518,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("foo", "bar"),
@@ -1535,8 +1535,8 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1570,14 +1570,14 @@ public final class ServiceaccountFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var foo = ServiceaccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
-     *             .targetServiceAccount("impersonated-account{@literal @}project.iam.gserviceaccount.com")
+     *             .targetServiceAccount("impersonated-account}{@literal @}{@code project.iam.gserviceaccount.com")
      *             .payload(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("foo", "bar"),
@@ -1587,8 +1587,8 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

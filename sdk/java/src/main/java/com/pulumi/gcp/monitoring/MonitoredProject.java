@@ -140,7 +140,7 @@ public class MonitoredProject extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MonitoredProject(String name) {
+    public MonitoredProject(java.lang.String name) {
         this(name, MonitoredProjectArgs.Empty);
     }
     /**
@@ -148,7 +148,7 @@ public class MonitoredProject extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MonitoredProject(String name, MonitoredProjectArgs args) {
+    public MonitoredProject(java.lang.String name, MonitoredProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -157,12 +157,12 @@ public class MonitoredProject extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MonitoredProject(String name, MonitoredProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/monitoredProject:MonitoredProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MonitoredProject(java.lang.String name, MonitoredProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/monitoredProject:MonitoredProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MonitoredProject(String name, Output<String> id, @Nullable MonitoredProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/monitoredProject:MonitoredProject", name, state, makeResourceOptions(options, id));
+    private MonitoredProject(java.lang.String name, Output<java.lang.String> id, @Nullable MonitoredProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/monitoredProject:MonitoredProject", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MonitoredProjectArgs makeArgs(MonitoredProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -172,7 +172,7 @@ public class MonitoredProject extends com.pulumi.resources.CustomResource {
         return args == null ? MonitoredProjectArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -188,7 +188,7 @@ public class MonitoredProject extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MonitoredProject get(String name, Output<String> id, @Nullable MonitoredProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MonitoredProject get(java.lang.String name, Output<java.lang.String> id, @Nullable MonitoredProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MonitoredProject(name, id, state, options);
     }
 }

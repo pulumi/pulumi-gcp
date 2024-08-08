@@ -55,7 +55,7 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs ex
 
     /**
      * (Output)
-     * The name of the created workflow invocation, if one was successfully created. In the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}workflowInvocations/*.
+     * The name of the created workflow invocation, if one was successfully created. In the format projects/*&#47;locations/*&#47;repositories/*&#47;workflowInvocations/*.
      * 
      */
     @Import(name="workflowInvocation")
@@ -63,7 +63,7 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs ex
 
     /**
      * @return (Output)
-     * The name of the created workflow invocation, if one was successfully created. In the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}workflowInvocations/*.
+     * The name of the created workflow invocation, if one was successfully created. In the format projects/*&#47;locations/*&#47;repositories/*&#47;workflowInvocations/*.
      * 
      */
     public Optional<Output<String>> workflowInvocation() {
@@ -158,7 +158,7 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs ex
 
         /**
          * @param workflowInvocation (Output)
-         * The name of the created workflow invocation, if one was successfully created. In the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}workflowInvocations/*.
+         * The name of the created workflow invocation, if one was successfully created. In the format projects/*&#47;locations/*&#47;repositories/*&#47;workflowInvocations/*.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs ex
 
         /**
          * @param workflowInvocation (Output)
-         * The name of the created workflow invocation, if one was successfully created. In the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}workflowInvocations/*.
+         * The name of the created workflow invocation, if one was successfully created. In the format projects/*&#47;locations/*&#47;repositories/*&#47;workflowInvocations/*.
          * 
          * @return builder
          * 

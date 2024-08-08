@@ -16,7 +16,7 @@ public final class AuthoritySubordinateConfig {
      * @return This can refer to a CertificateAuthority that was used to create a
      * subordinate CertificateAuthority. This field is used for information
      * and usability purposes only. The resource name is in the format
-     * `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
+     * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      * 
      */
     private @Nullable String certificateAuthority;
@@ -33,7 +33,7 @@ public final class AuthoritySubordinateConfig {
      * @return This can refer to a CertificateAuthority that was used to create a
      * subordinate CertificateAuthority. This field is used for information
      * and usability purposes only. The resource name is in the format
-     * `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
+     * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      * 
      */
     public Optional<String> certificateAuthority() {

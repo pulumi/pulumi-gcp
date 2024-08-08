@@ -97,40 +97,6 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## gcp.healthcare.FhirStoreIamPolicy
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
-    ///     {
-    ///         Bindings = new[]
-    ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
-    ///             {
-    ///                 Role = "roles/editor",
-    ///                 Members = new[]
-    ///                 {
-    ///                     "user:jane@example.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamPolicy("fhir_store", new()
-    ///     {
-    ///         FhirStoreId = "your-fhir-store-id",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## gcp.healthcare.FhirStoreIamBinding
     /// 
     /// ```csharp

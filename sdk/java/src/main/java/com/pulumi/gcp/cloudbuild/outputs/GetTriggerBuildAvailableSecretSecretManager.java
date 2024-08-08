@@ -18,7 +18,7 @@ public final class GetTriggerBuildAvailableSecretSecretManager {
      */
     private String env;
     /**
-     * @return Resource name of the SecretVersion. In format: projects/*{@literal /}secrets/*{@literal /}versions/*
+     * @return Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
      * 
      */
     private String versionName;
@@ -34,7 +34,7 @@ public final class GetTriggerBuildAvailableSecretSecretManager {
         return this.env;
     }
     /**
-     * @return Resource name of the SecretVersion. In format: projects/*{@literal /}secrets/*{@literal /}versions/*
+     * @return Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
      * 
      */
     public String versionName() {

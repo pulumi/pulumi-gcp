@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username("admin{@literal @}hashicorptest.com")
+ *                     .username("admin}{@literal @}{@code hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
@@ -113,8 +113,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(nodePool)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -379,7 +379,7 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VpnConnection(String name) {
+    public VpnConnection(java.lang.String name) {
         this(name, VpnConnectionArgs.Empty);
     }
     /**
@@ -387,7 +387,7 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VpnConnection(String name, VpnConnectionArgs args) {
+    public VpnConnection(java.lang.String name, VpnConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -396,12 +396,12 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VpnConnection(String name, VpnConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:edgecontainer/vpnConnection:VpnConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public VpnConnection(java.lang.String name, VpnConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:edgecontainer/vpnConnection:VpnConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VpnConnection(String name, Output<String> id, @Nullable VpnConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:edgecontainer/vpnConnection:VpnConnection", name, state, makeResourceOptions(options, id));
+    private VpnConnection(java.lang.String name, Output<java.lang.String> id, @Nullable VpnConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:edgecontainer/vpnConnection:VpnConnection", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VpnConnectionArgs makeArgs(VpnConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -411,7 +411,7 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
         return args == null ? VpnConnectionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -431,7 +431,7 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VpnConnection get(String name, Output<String> id, @Nullable VpnConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VpnConnection get(java.lang.String name, Output<java.lang.String> id, @Nullable VpnConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VpnConnection(name, id, state, options);
     }
 }

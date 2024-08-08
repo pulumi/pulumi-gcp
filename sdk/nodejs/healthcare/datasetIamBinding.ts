@@ -61,24 +61,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.healthcare.DatasetIamPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const dataset = new gcp.healthcare.DatasetIamPolicy("dataset", {
- *     datasetId: "your-dataset-id",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## gcp.healthcare.DatasetIamBinding
  *
  * ```typescript

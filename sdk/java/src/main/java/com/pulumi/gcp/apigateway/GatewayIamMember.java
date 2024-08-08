@@ -51,16 +51,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/apigateway.viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -96,22 +96,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
  *             .role("roles/apigateway.viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -135,25 +135,44 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
  *             .role("roles/apigateway.viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for API Gateway Gateway
+ * Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
+ * 
+ * * `gcp.apigateway.GatewayIamPolicy`: Authoritative. Sets the IAM policy for the gateway and replaces any existing policy already attached.
+ * * `gcp.apigateway.GatewayIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the gateway are preserved.
+ * * `gcp.apigateway.GatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the gateway are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.apigateway.GatewayIamPolicy`: Retrieves the IAM policy for the gateway
+ * 
+ * &gt; **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_api\_gateway\_gateway\_iam\_policy
  * 
@@ -176,16 +195,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/apigateway.viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -196,8 +215,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -221,22 +240,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
  *             .role("roles/apigateway.viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -260,22 +279,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()
  *             .project(apiGw.project())
  *             .region(apiGw.region())
  *             .gateway(apiGw.gatewayId())
  *             .role("roles/apigateway.viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -440,7 +459,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayIamMember(String name) {
+    public GatewayIamMember(java.lang.String name) {
         this(name, GatewayIamMemberArgs.Empty);
     }
     /**
@@ -448,7 +467,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayIamMember(String name, GatewayIamMemberArgs args) {
+    public GatewayIamMember(java.lang.String name, GatewayIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -457,12 +476,12 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayIamMember(String name, GatewayIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/gatewayIamMember:GatewayIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GatewayIamMember(java.lang.String name, GatewayIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigateway/gatewayIamMember:GatewayIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayIamMember(String name, Output<String> id, @Nullable GatewayIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/gatewayIamMember:GatewayIamMember", name, state, makeResourceOptions(options, id));
+    private GatewayIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigateway/gatewayIamMember:GatewayIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GatewayIamMemberArgs makeArgs(GatewayIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -472,7 +491,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
         return args == null ? GatewayIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -488,7 +507,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayIamMember get(String name, Output<String> id, @Nullable GatewayIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayIamMember(name, id, state, options);
     }
 }

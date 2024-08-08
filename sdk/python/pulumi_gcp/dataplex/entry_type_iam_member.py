@@ -359,6 +359,25 @@ class EntryTypeIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Dataplex EntryType
+        Three different resources help you manage your IAM policy for Dataplex EntryType. Each of these resources serves a different use case:
+
+        * `dataplex.EntryTypeIamPolicy`: Authoritative. Sets the IAM policy for the entrytype and replaces any existing policy already attached.
+        * `dataplex.EntryTypeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrytype are preserved.
+        * `dataplex.EntryTypeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the entrytype are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `dataplex.EntryTypeIamPolicy`: Retrieves the IAM policy for the entrytype
+
+        > **Note:** `dataplex.EntryTypeIamPolicy` **cannot** be used in conjunction with `dataplex.EntryTypeIamBinding` and `dataplex.EntryTypeIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataplex.EntryTypeIamBinding` resources **can be** used in conjunction with `dataplex.EntryTypeIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## dataplex.EntryTypeIamPolicy
 
         ```python
@@ -530,6 +549,25 @@ class EntryTypeIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Dataplex EntryType
+        Three different resources help you manage your IAM policy for Dataplex EntryType. Each of these resources serves a different use case:
+
+        * `dataplex.EntryTypeIamPolicy`: Authoritative. Sets the IAM policy for the entrytype and replaces any existing policy already attached.
+        * `dataplex.EntryTypeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrytype are preserved.
+        * `dataplex.EntryTypeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the entrytype are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `dataplex.EntryTypeIamPolicy`: Retrieves the IAM policy for the entrytype
+
+        > **Note:** `dataplex.EntryTypeIamPolicy` **cannot** be used in conjunction with `dataplex.EntryTypeIamBinding` and `dataplex.EntryTypeIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataplex.EntryTypeIamBinding` resources **can be** used in conjunction with `dataplex.EntryTypeIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## dataplex.EntryTypeIamPolicy
 

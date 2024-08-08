@@ -71,12 +71,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("my-basic-ca-pool")
  *             .location("us-central1")
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-networksecurity.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-networksecurity.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()
@@ -157,8 +157,8 @@ import javax.annotation.Nullable;
  *                     tlsInspectionPermission)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -549,7 +549,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TlsInspectionPolicy(String name) {
+    public TlsInspectionPolicy(java.lang.String name) {
         this(name, TlsInspectionPolicyArgs.Empty);
     }
     /**
@@ -557,7 +557,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TlsInspectionPolicy(String name, TlsInspectionPolicyArgs args) {
+    public TlsInspectionPolicy(java.lang.String name, TlsInspectionPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -566,12 +566,12 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TlsInspectionPolicy(String name, TlsInspectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TlsInspectionPolicy(java.lang.String name, TlsInspectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TlsInspectionPolicy(String name, Output<String> id, @Nullable TlsInspectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy", name, state, makeResourceOptions(options, id));
+    private TlsInspectionPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable TlsInspectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TlsInspectionPolicyArgs makeArgs(TlsInspectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -581,7 +581,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? TlsInspectionPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -597,7 +597,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TlsInspectionPolicy get(String name, Output<String> id, @Nullable TlsInspectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TlsInspectionPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable TlsInspectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TlsInspectionPolicy(name, id, state, options);
     }
 }

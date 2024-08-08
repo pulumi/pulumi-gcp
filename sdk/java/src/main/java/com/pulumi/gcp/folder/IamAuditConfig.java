@@ -59,16 +59,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -77,8 +77,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -104,16 +104,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/compute.admin")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("expires_after_2019_12_31")
  *                     .description("Expiring at midnight of 2019-12-31")
@@ -127,8 +127,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -152,20 +152,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -190,16 +190,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/container.admin")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMBindingConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -207,8 +207,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -232,20 +232,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -270,16 +270,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/firebase.admin")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMMemberConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -287,8 +287,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -313,12 +313,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()
  *             .folder("folders/1234567")
  *             .service("allServices")
@@ -328,115 +328,12 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 IamAuditConfigAuditLogConfigArgs.builder()
  *                     .logType("DATA_READ")
- *                     .exemptedMembers("user:joebloggs{@literal @}example.com")
+ *                     .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
  *                     .build())
  *             .build());
  * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## gcp.folder.IAMPolicy
- * 
- * !&gt; **Be careful!** You can accidentally lock yourself out of your folder
- *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
- *    from anyone without permissions on its parent folder/organization. Proceed with caution.
- *    It&#39;s not recommended to use `gcp.folder.IAMPolicy` with your provider folder
- *    to avoid locking yourself out, and it should generally only be used with folders
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
- *    applying the change.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.folder.IAMPolicy;
- * import com.pulumi.gcp.folder.IAMPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
- *                 .build())
- *             .build());
- * 
- *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
- *             .folder("folders/1234567")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * With IAM Conditions:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.folder.IAMPolicy;
- * import com.pulumi.gcp.folder.IAMPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/compute.admin")
- *                 .members("user:jane{@literal @}example.com")
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title("expires_after_2019_12_31")
- *                     .description("Expiring at midnight of 2019-12-31")
- *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
- *             .folder("folders/1234567")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -460,20 +357,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -498,16 +395,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMBinding("folder", IAMBindingArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/container.admin")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMBindingConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -515,8 +412,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -540,20 +437,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -578,16 +475,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IAMMember("folder", IAMMemberArgs.builder()
  *             .folder("folders/1234567")
  *             .role("roles/firebase.admin")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMMemberConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -595,8 +492,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -621,12 +518,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new IamAuditConfig("folder", IamAuditConfigArgs.builder()
  *             .folder("folders/1234567")
  *             .service("allServices")
@@ -636,12 +533,12 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 IamAuditConfigAuditLogConfigArgs.builder()
  *                     .logType("DATA_READ")
- *                     .exemptedMembers("user:joebloggs{@literal @}example.com")
+ *                     .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -736,7 +633,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IamAuditConfig(String name) {
+    public IamAuditConfig(java.lang.String name) {
         this(name, IamAuditConfigArgs.Empty);
     }
     /**
@@ -744,7 +641,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IamAuditConfig(String name, IamAuditConfigArgs args) {
+    public IamAuditConfig(java.lang.String name, IamAuditConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -753,12 +650,12 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IamAuditConfig(String name, IamAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:folder/iamAuditConfig:IamAuditConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IamAuditConfig(java.lang.String name, IamAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:folder/iamAuditConfig:IamAuditConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IamAuditConfig(String name, Output<String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:folder/iamAuditConfig:IamAuditConfig", name, state, makeResourceOptions(options, id));
+    private IamAuditConfig(java.lang.String name, Output<java.lang.String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:folder/iamAuditConfig:IamAuditConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IamAuditConfigArgs makeArgs(IamAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -768,7 +665,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
         return args == null ? IamAuditConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -784,7 +681,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IamAuditConfig get(String name, Output<String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IamAuditConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IamAuditConfig(name, id, state, options);
     }
 }

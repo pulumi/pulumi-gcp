@@ -383,6 +383,28 @@ class ManagedFolderIamBinding(pulumi.CustomResource):
             })
         ```
 
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud Storage ManagedFolder
+        Three different resources help you manage your IAM policy for Cloud Storage ManagedFolder. Each of these resources serves a different use case:
+
+        * `storage.ManagedFolderIamPolicy`: Authoritative. Sets the IAM policy for the managedfolder and replaces any existing policy already attached.
+        * `storage.ManagedFolderIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the managedfolder are preserved.
+        * `storage.ManagedFolderIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the managedfolder are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `storage.ManagedFolderIamPolicy`: Retrieves the IAM policy for the managedfolder
+
+        > **Note:** `storage.ManagedFolderIamPolicy` **cannot** be used in conjunction with `storage.ManagedFolderIamBinding` and `storage.ManagedFolderIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `storage.ManagedFolderIamBinding` resources **can be** used in conjunction with `storage.ManagedFolderIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## storage.ManagedFolderIamPolicy
 
         ```python
@@ -654,6 +676,28 @@ class ManagedFolderIamBinding(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud Storage ManagedFolder
+        Three different resources help you manage your IAM policy for Cloud Storage ManagedFolder. Each of these resources serves a different use case:
+
+        * `storage.ManagedFolderIamPolicy`: Authoritative. Sets the IAM policy for the managedfolder and replaces any existing policy already attached.
+        * `storage.ManagedFolderIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the managedfolder are preserved.
+        * `storage.ManagedFolderIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the managedfolder are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `storage.ManagedFolderIamPolicy`: Retrieves the IAM policy for the managedfolder
+
+        > **Note:** `storage.ManagedFolderIamPolicy` **cannot** be used in conjunction with `storage.ManagedFolderIamBinding` and `storage.ManagedFolderIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `storage.ManagedFolderIamBinding` resources **can be** used in conjunction with `storage.ManagedFolderIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
         ## storage.ManagedFolderIamPolicy
 

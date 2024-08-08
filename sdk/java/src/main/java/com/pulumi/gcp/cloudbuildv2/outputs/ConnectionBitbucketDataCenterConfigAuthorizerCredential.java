@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionBitbucketDataCenterConfigAuthorizerCredential {
     /**
-     * @return Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     private String userTokenSecretVersion;
@@ -26,7 +26,7 @@ public final class ConnectionBitbucketDataCenterConfigAuthorizerCredential {
 
     private ConnectionBitbucketDataCenterConfigAuthorizerCredential() {}
     /**
-     * @return Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public String userTokenSecretVersion() {

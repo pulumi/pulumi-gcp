@@ -107,6 +107,25 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Dataproc metastore Federation
+    /// Three different resources help you manage your IAM policy for Dataproc metastore Federation. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.dataproc.MetastoreFederationIamPolicy`: Authoritative. Sets the IAM policy for the federation and replaces any existing policy already attached.
+    /// * `gcp.dataproc.MetastoreFederationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the federation are preserved.
+    /// * `gcp.dataproc.MetastoreFederationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the federation are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.dataproc.MetastoreFederationIamPolicy`: Retrieves the IAM policy for the federation
+    /// 
+    /// &gt; **Note:** `gcp.dataproc.MetastoreFederationIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.MetastoreFederationIamBinding` and `gcp.dataproc.MetastoreFederationIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.dataproc.MetastoreFederationIamBinding` resources **can be** used in conjunction with `gcp.dataproc.MetastoreFederationIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
     /// ## gcp.dataproc.MetastoreFederationIamPolicy
     /// 
     /// ```csharp

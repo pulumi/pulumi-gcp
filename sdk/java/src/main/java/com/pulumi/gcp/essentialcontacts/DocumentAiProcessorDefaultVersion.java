@@ -116,7 +116,7 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DocumentAiProcessorDefaultVersion(String name) {
+    public DocumentAiProcessorDefaultVersion(java.lang.String name) {
         this(name, DocumentAiProcessorDefaultVersionArgs.Empty);
     }
     /**
@@ -124,7 +124,7 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DocumentAiProcessorDefaultVersion(String name, DocumentAiProcessorDefaultVersionArgs args) {
+    public DocumentAiProcessorDefaultVersion(java.lang.String name, DocumentAiProcessorDefaultVersionArgs args) {
         this(name, args, null);
     }
     /**
@@ -133,12 +133,12 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DocumentAiProcessorDefaultVersion(String name, DocumentAiProcessorDefaultVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DocumentAiProcessorDefaultVersion(java.lang.String name, DocumentAiProcessorDefaultVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DocumentAiProcessorDefaultVersion(String name, Output<String> id, @Nullable DocumentAiProcessorDefaultVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion", name, state, makeResourceOptions(options, id));
+    private DocumentAiProcessorDefaultVersion(java.lang.String name, Output<java.lang.String> id, @Nullable DocumentAiProcessorDefaultVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DocumentAiProcessorDefaultVersionArgs makeArgs(DocumentAiProcessorDefaultVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -148,7 +148,7 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
         return args == null ? DocumentAiProcessorDefaultVersionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -164,7 +164,7 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DocumentAiProcessorDefaultVersion get(String name, Output<String> id, @Nullable DocumentAiProcessorDefaultVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DocumentAiProcessorDefaultVersion get(java.lang.String name, Output<java.lang.String> id, @Nullable DocumentAiProcessorDefaultVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DocumentAiProcessorDefaultVersion(name, id, state, options);
     }
 }

@@ -200,7 +200,7 @@ public class OauthIdpConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OauthIdpConfig(String name) {
+    public OauthIdpConfig(java.lang.String name) {
         this(name, OauthIdpConfigArgs.Empty);
     }
     /**
@@ -208,7 +208,7 @@ public class OauthIdpConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OauthIdpConfig(String name, OauthIdpConfigArgs args) {
+    public OauthIdpConfig(java.lang.String name, OauthIdpConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,12 +217,12 @@ public class OauthIdpConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OauthIdpConfig(String name, OauthIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OauthIdpConfig(java.lang.String name, OauthIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OauthIdpConfig(String name, Output<String> id, @Nullable OauthIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, state, makeResourceOptions(options, id));
+    private OauthIdpConfig(java.lang.String name, Output<java.lang.String> id, @Nullable OauthIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OauthIdpConfigArgs makeArgs(OauthIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -232,7 +232,7 @@ public class OauthIdpConfig extends com.pulumi.resources.CustomResource {
         return args == null ? OauthIdpConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +248,7 @@ public class OauthIdpConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OauthIdpConfig get(String name, Output<String> id, @Nullable OauthIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OauthIdpConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable OauthIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OauthIdpConfig(name, id, state, options);
     }
 }

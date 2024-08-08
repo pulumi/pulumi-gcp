@@ -19,7 +19,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
     /**
      * Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
      * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
-     * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * Specified in the form as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     @Import(name="clientKey")
@@ -28,7 +28,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
     /**
      * @return Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
      * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
-     * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * Specified in the form as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public Optional<Output<ConnectionAuthConfigOauth2JwtBearerClientKeyArgs>> clientKey() {
@@ -78,7 +78,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
         /**
          * @param clientKey Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
          * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
-         * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * Specified in the form as: projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerArgs extends com.pulumi.re
         /**
          * @param clientKey Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
          * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
-         * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * Specified in the form as: projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 

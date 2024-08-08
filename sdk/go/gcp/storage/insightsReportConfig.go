@@ -55,7 +55,7 @@ import (
 //			admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
 //				Bucket: reportBucket.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-storageinsights.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-storageinsights.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

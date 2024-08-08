@@ -128,6 +128,25 @@ import (
 //
 // ```
 //
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Binary Authorization Attestor
+// Three different resources help you manage your IAM policy for Binary Authorization Attestor. Each of these resources serves a different use case:
+//
+// * `binaryauthorization.AttestorIamPolicy`: Authoritative. Sets the IAM policy for the attestor and replaces any existing policy already attached.
+// * `binaryauthorization.AttestorIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the attestor are preserved.
+// * `binaryauthorization.AttestorIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the attestor are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `binaryauthorization.AttestorIamPolicy`: Retrieves the IAM policy for the attestor
+//
+// > **Note:** `binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `binaryauthorization.AttestorIamBinding` and `binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
+//
 // ## binaryauthorization.AttestorIamPolicy
 //
 // ```go

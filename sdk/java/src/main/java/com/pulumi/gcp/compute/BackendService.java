@@ -1304,7 +1304,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BackendService(String name) {
+    public BackendService(java.lang.String name) {
         this(name, BackendServiceArgs.Empty);
     }
     /**
@@ -1312,7 +1312,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BackendService(String name, @Nullable BackendServiceArgs args) {
+    public BackendService(java.lang.String name, @Nullable BackendServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -1321,12 +1321,12 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BackendService(String name, @Nullable BackendServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendService:BackendService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BackendService(java.lang.String name, @Nullable BackendServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendService:BackendService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BackendService(String name, Output<String> id, @Nullable BackendServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendService:BackendService", name, state, makeResourceOptions(options, id));
+    private BackendService(java.lang.String name, Output<java.lang.String> id, @Nullable BackendServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendService:BackendService", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BackendServiceArgs makeArgs(@Nullable BackendServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1336,7 +1336,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return args == null ? BackendServiceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1352,7 +1352,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BackendService get(String name, Output<String> id, @Nullable BackendServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BackendService get(java.lang.String name, Output<java.lang.String> id, @Nullable BackendServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BackendService(name, id, state, options);
     }
 }

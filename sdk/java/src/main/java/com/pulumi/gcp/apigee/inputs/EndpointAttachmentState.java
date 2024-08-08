@@ -114,14 +114,14 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      * 
      */
     @Import(name="serviceAttachment")
     private @Nullable Output<String> serviceAttachment;
 
     /**
-     * @return Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+     * @return Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      * 
      */
     public Optional<Output<String>> serviceAttachment() {
@@ -293,7 +293,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceAttachment Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceAttachment Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
          * 
          * @return builder
          * 

@@ -61,24 +61,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.healthcare.Hl7StoreIamPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store", {
- *     hl7V2StoreId: "your-hl7-v2-store-id",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## gcp.healthcare.Hl7StoreIamBinding
  *
  * ```typescript

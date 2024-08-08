@@ -449,7 +449,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiIndexEndpoint(String name) {
+    public AiIndexEndpoint(java.lang.String name) {
         this(name, AiIndexEndpointArgs.Empty);
     }
     /**
@@ -457,7 +457,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiIndexEndpoint(String name, AiIndexEndpointArgs args) {
+    public AiIndexEndpoint(java.lang.String name, AiIndexEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -466,12 +466,12 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiIndexEndpoint(String name, AiIndexEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiIndexEndpoint:AiIndexEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiIndexEndpoint(java.lang.String name, AiIndexEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiIndexEndpoint:AiIndexEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiIndexEndpoint(String name, Output<String> id, @Nullable AiIndexEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiIndexEndpoint:AiIndexEndpoint", name, state, makeResourceOptions(options, id));
+    private AiIndexEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable AiIndexEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiIndexEndpoint:AiIndexEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiIndexEndpointArgs makeArgs(AiIndexEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -481,7 +481,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
         return args == null ? AiIndexEndpointArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -501,7 +501,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiIndexEndpoint get(String name, Output<String> id, @Nullable AiIndexEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiIndexEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable AiIndexEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiIndexEndpoint(name, id, state, options);
     }
 }

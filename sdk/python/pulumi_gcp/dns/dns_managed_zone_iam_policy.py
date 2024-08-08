@@ -216,6 +216,25 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud DNS ManagedZone
+        Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
+
+        * `dns.DnsManagedZoneIamPolicy`: Authoritative. Sets the IAM policy for the managedzone and replaces any existing policy already attached.
+        * `dns.DnsManagedZoneIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the managedzone are preserved.
+        * `dns.DnsManagedZoneIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the managedzone are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `dns.DnsManagedZoneIamPolicy`: Retrieves the IAM policy for the managedzone
+
+        > **Note:** `dns.DnsManagedZoneIamPolicy` **cannot** be used in conjunction with `dns.DnsManagedZoneIamBinding` and `dns.DnsManagedZoneIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## dns.DnsManagedZoneIamPolicy
 
         ```python
@@ -364,6 +383,25 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud DNS ManagedZone
+        Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
+
+        * `dns.DnsManagedZoneIamPolicy`: Authoritative. Sets the IAM policy for the managedzone and replaces any existing policy already attached.
+        * `dns.DnsManagedZoneIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the managedzone are preserved.
+        * `dns.DnsManagedZoneIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the managedzone are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `dns.DnsManagedZoneIamPolicy`: Retrieves the IAM policy for the managedzone
+
+        > **Note:** `dns.DnsManagedZoneIamPolicy` **cannot** be used in conjunction with `dns.DnsManagedZoneIamBinding` and `dns.DnsManagedZoneIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## dns.DnsManagedZoneIamPolicy
 

@@ -51,14 +51,14 @@ public final class ConnectionBitbucketCloudConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     @Import(name="webhookSecretSecretVersion", required=true)
     private Output<String> webhookSecretSecretVersion;
 
     /**
-     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Output<String> webhookSecretSecretVersion() {
@@ -154,7 +154,7 @@ public final class ConnectionBitbucketCloudConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class ConnectionBitbucketCloudConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 

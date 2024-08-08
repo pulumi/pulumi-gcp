@@ -204,7 +204,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DefaultSupportedIdpConfig(String name) {
+    public DefaultSupportedIdpConfig(java.lang.String name) {
         this(name, DefaultSupportedIdpConfigArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DefaultSupportedIdpConfig(String name, DefaultSupportedIdpConfigArgs args) {
+    public DefaultSupportedIdpConfig(java.lang.String name, DefaultSupportedIdpConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,12 +221,12 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DefaultSupportedIdpConfig(String name, DefaultSupportedIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DefaultSupportedIdpConfig(java.lang.String name, DefaultSupportedIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DefaultSupportedIdpConfig(String name, Output<String> id, @Nullable DefaultSupportedIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig", name, state, makeResourceOptions(options, id));
+    private DefaultSupportedIdpConfig(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultSupportedIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DefaultSupportedIdpConfigArgs makeArgs(DefaultSupportedIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -236,7 +236,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
         return args == null ? DefaultSupportedIdpConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -252,7 +252,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DefaultSupportedIdpConfig get(String name, Output<String> id, @Nullable DefaultSupportedIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DefaultSupportedIdpConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultSupportedIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DefaultSupportedIdpConfig(name, id, state, options);
     }
 }

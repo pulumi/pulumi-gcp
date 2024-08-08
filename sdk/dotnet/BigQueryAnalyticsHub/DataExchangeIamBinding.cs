@@ -107,6 +107,25 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// });
     /// ```
     /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Bigquery Analytics Hub DataExchange
+    /// Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.bigqueryanalyticshub.DataExchangeIamPolicy`: Authoritative. Sets the IAM policy for the dataexchange and replaces any existing policy already attached.
+    /// * `gcp.bigqueryanalyticshub.DataExchangeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataexchange are preserved.
+    /// * `gcp.bigqueryanalyticshub.DataExchangeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataexchange are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.bigqueryanalyticshub.DataExchangeIamPolicy`: Retrieves the IAM policy for the dataexchange
+    /// 
+    /// &gt; **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamPolicy` **cannot** be used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamBinding` and `gcp.bigqueryanalyticshub.DataExchangeIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
     /// ## gcp.bigqueryanalyticshub.DataExchangeIamPolicy
     /// 
     /// ```csharp

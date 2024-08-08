@@ -72,7 +72,7 @@ import (
 //				Topic: pulumi.Any(topic.Name),
 //				Role:  pulumi.String("roles/pubsub.publisher"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//					pulumi.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress),
 //				},
 //			})
 //			if err != nil {
@@ -109,7 +109,7 @@ import (
 //				CryptoKeyId: pulumi.String("your-crypto-key-id"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//					pulumi.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress),
 //				},
 //			})
 //			if err != nil {

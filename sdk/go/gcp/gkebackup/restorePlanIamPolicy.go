@@ -131,6 +131,25 @@ import (
 //
 // ```
 //
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Backup for GKE RestorePlan
+// Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
+//
+// * `gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+// * `gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+// * `gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
+//
+// > **Note:** `gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gkebackup.RestorePlanIamBinding` and `gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
+//
 // ## gkebackup.RestorePlanIamPolicy
 //
 // ```go

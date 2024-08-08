@@ -183,7 +183,7 @@ public class UserWorkloadsSecret extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserWorkloadsSecret(String name) {
+    public UserWorkloadsSecret(java.lang.String name) {
         this(name, UserWorkloadsSecretArgs.Empty);
     }
     /**
@@ -191,7 +191,7 @@ public class UserWorkloadsSecret extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserWorkloadsSecret(String name, UserWorkloadsSecretArgs args) {
+    public UserWorkloadsSecret(java.lang.String name, UserWorkloadsSecretArgs args) {
         this(name, args, null);
     }
     /**
@@ -200,12 +200,12 @@ public class UserWorkloadsSecret extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserWorkloadsSecret(String name, UserWorkloadsSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:composer/userWorkloadsSecret:UserWorkloadsSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public UserWorkloadsSecret(java.lang.String name, UserWorkloadsSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:composer/userWorkloadsSecret:UserWorkloadsSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserWorkloadsSecret(String name, Output<String> id, @Nullable UserWorkloadsSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:composer/userWorkloadsSecret:UserWorkloadsSecret", name, state, makeResourceOptions(options, id));
+    private UserWorkloadsSecret(java.lang.String name, Output<java.lang.String> id, @Nullable UserWorkloadsSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:composer/userWorkloadsSecret:UserWorkloadsSecret", name, state, makeResourceOptions(options, id), false);
     }
 
     private static UserWorkloadsSecretArgs makeArgs(UserWorkloadsSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -215,7 +215,7 @@ public class UserWorkloadsSecret extends com.pulumi.resources.CustomResource {
         return args == null ? UserWorkloadsSecretArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -234,7 +234,7 @@ public class UserWorkloadsSecret extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserWorkloadsSecret get(String name, Output<String> id, @Nullable UserWorkloadsSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserWorkloadsSecret get(java.lang.String name, Output<java.lang.String> id, @Nullable UserWorkloadsSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserWorkloadsSecret(name, id, state, options);
     }
 }

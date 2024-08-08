@@ -140,12 +140,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
  *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *         var secretIam = new SecretIamMember("secretIam", SecretIamMemberArgs.builder()
  *             .secretId(secret_basic.id())
  *             .role("roles/secretmanager.admin")
- *             .member(String.format("serviceAccount:%s-compute{@literal @}developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret_version_basic)
  *                 .build());
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *             .name("test-zendesk")
  *             .description("tf updated description")
  *             .location("us-central1")
- *             .serviceAccount(String.format("%s-compute{@literal @}developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .connectorVersion(String.format("projects/%s/locations/global/providers/zendesk/connectors/zendesk/versions/1", testProject.applyValue(getProjectResult -> getProjectResult.projectId())))
  *             .configVariables(            
  *                 ConnectionConfigVariableArgs.builder()
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *                 .authType("USER_PASSWORD")
  *                 .authKey("sampleAuthKey")
  *                 .userPassword(ConnectionAuthConfigUserPasswordArgs.builder()
- *                     .username("user{@literal @}xyz.com")
+ *                     .username("user}{@literal @}{@code xyz.com")
  *                     .password(ConnectionAuthConfigUserPasswordPasswordArgs.builder()
  *                         .secretVersion(secret_version_basic.name())
  *                         .build())
@@ -340,7 +340,7 @@ import javax.annotation.Nullable;
  *                     .authType("USER_PASSWORD")
  *                     .authKey("sampleAuthKey")
  *                     .userPassword(ConnectionEventingConfigAuthConfigUserPasswordArgs.builder()
- *                         .username("user{@literal @}xyz.com")
+ *                         .username("user}{@literal @}{@code xyz.com")
  *                         .password(ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs.builder()
  *                             .secretVersion(secret_version_basic.name())
  *                             .build())
@@ -376,8 +376,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -848,7 +848,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Connection(String name) {
+    public Connection(java.lang.String name) {
         this(name, ConnectionArgs.Empty);
     }
     /**
@@ -856,7 +856,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Connection(String name, ConnectionArgs args) {
+    public Connection(java.lang.String name, ConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -865,12 +865,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Connection(String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:integrationconnectors/connection:Connection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Connection(java.lang.String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:integrationconnectors/connection:Connection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Connection(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:integrationconnectors/connection:Connection", name, state, makeResourceOptions(options, id));
+    private Connection(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:integrationconnectors/connection:Connection", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConnectionArgs makeArgs(ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -880,7 +880,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return args == null ? ConnectionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -900,7 +900,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Connection get(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Connection get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Connection(name, id, state, options);
     }
 }

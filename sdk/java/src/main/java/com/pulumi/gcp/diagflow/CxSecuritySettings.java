@@ -423,7 +423,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CxSecuritySettings(String name) {
+    public CxSecuritySettings(java.lang.String name) {
         this(name, CxSecuritySettingsArgs.Empty);
     }
     /**
@@ -431,7 +431,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CxSecuritySettings(String name, CxSecuritySettingsArgs args) {
+    public CxSecuritySettings(java.lang.String name, CxSecuritySettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -440,12 +440,12 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CxSecuritySettings(String name, CxSecuritySettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CxSecuritySettings(java.lang.String name, CxSecuritySettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CxSecuritySettings(String name, Output<String> id, @Nullable CxSecuritySettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", name, state, makeResourceOptions(options, id));
+    private CxSecuritySettings(java.lang.String name, Output<java.lang.String> id, @Nullable CxSecuritySettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/cxSecuritySettings:CxSecuritySettings", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CxSecuritySettingsArgs makeArgs(CxSecuritySettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -455,7 +455,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
         return args == null ? CxSecuritySettingsArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -471,7 +471,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CxSecuritySettings get(String name, Output<String> id, @Nullable CxSecuritySettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CxSecuritySettings get(java.lang.String name, Output<java.lang.String> id, @Nullable CxSecuritySettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CxSecuritySettings(name, id, state, options);
     }
 }

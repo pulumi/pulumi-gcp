@@ -172,7 +172,7 @@ public class BackendServiceIamMember extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BackendServiceIamMember(String name) {
+    public BackendServiceIamMember(java.lang.String name) {
         this(name, BackendServiceIamMemberArgs.Empty);
     }
     /**
@@ -180,7 +180,7 @@ public class BackendServiceIamMember extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BackendServiceIamMember(String name, BackendServiceIamMemberArgs args) {
+    public BackendServiceIamMember(java.lang.String name, BackendServiceIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -189,12 +189,12 @@ public class BackendServiceIamMember extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BackendServiceIamMember(String name, BackendServiceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendServiceIamMember:BackendServiceIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BackendServiceIamMember(java.lang.String name, BackendServiceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendServiceIamMember:BackendServiceIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BackendServiceIamMember(String name, Output<String> id, @Nullable BackendServiceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendServiceIamMember:BackendServiceIamMember", name, state, makeResourceOptions(options, id));
+    private BackendServiceIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable BackendServiceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendServiceIamMember:BackendServiceIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BackendServiceIamMemberArgs makeArgs(BackendServiceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -204,7 +204,7 @@ public class BackendServiceIamMember extends com.pulumi.resources.CustomResource
         return args == null ? BackendServiceIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -220,7 +220,7 @@ public class BackendServiceIamMember extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BackendServiceIamMember get(String name, Output<String> id, @Nullable BackendServiceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BackendServiceIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable BackendServiceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BackendServiceIamMember(name, id, state, options);
     }
 }
