@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class EdgeCacheKeysetValidationSharedKey {
     /**
      * @return The name of the secret version in Secret Manager.
-     * The resource name of the secret version must be in the format `projects/*{@literal /}secrets/*{@literal /}versions/*` where the `*` values are replaced by the secrets themselves.
+     * The resource name of the secret version must be in the format `projects/*&#47;secrets/*&#47;versions/*` where the `*` values are replaced by the secrets themselves.
      * The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
      * * If you are using HMAC-SHA1, we suggest 20-byte secrets.
      * * If you are using HMAC-SHA256, we suggest 32-byte secrets.
@@ -24,7 +24,7 @@ public final class EdgeCacheKeysetValidationSharedKey {
     private EdgeCacheKeysetValidationSharedKey() {}
     /**
      * @return The name of the secret version in Secret Manager.
-     * The resource name of the secret version must be in the format `projects/*{@literal /}secrets/*{@literal /}versions/*` where the `*` values are replaced by the secrets themselves.
+     * The resource name of the secret version must be in the format `projects/*&#47;secrets/*&#47;versions/*` where the `*` values are replaced by the secrets themselves.
      * The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
      * * If you are using HMAC-SHA1, we suggest 20-byte secrets.
      * * If you are using HMAC-SHA256, we suggest 32-byte secrets.

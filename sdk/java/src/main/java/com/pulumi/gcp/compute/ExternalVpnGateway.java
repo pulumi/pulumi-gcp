@@ -377,7 +377,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ExternalVpnGateway(String name) {
+    public ExternalVpnGateway(java.lang.String name) {
         this(name, ExternalVpnGatewayArgs.Empty);
     }
     /**
@@ -385,7 +385,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ExternalVpnGateway(String name, @Nullable ExternalVpnGatewayArgs args) {
+    public ExternalVpnGateway(java.lang.String name, @Nullable ExternalVpnGatewayArgs args) {
         this(name, args, null);
     }
     /**
@@ -394,12 +394,12 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ExternalVpnGateway(String name, @Nullable ExternalVpnGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/externalVpnGateway:ExternalVpnGateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ExternalVpnGateway(java.lang.String name, @Nullable ExternalVpnGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/externalVpnGateway:ExternalVpnGateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ExternalVpnGateway(String name, Output<String> id, @Nullable ExternalVpnGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/externalVpnGateway:ExternalVpnGateway", name, state, makeResourceOptions(options, id));
+    private ExternalVpnGateway(java.lang.String name, Output<java.lang.String> id, @Nullable ExternalVpnGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/externalVpnGateway:ExternalVpnGateway", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ExternalVpnGatewayArgs makeArgs(@Nullable ExternalVpnGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -409,7 +409,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
         return args == null ? ExternalVpnGatewayArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -429,7 +429,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ExternalVpnGateway get(String name, Output<String> id, @Nullable ExternalVpnGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ExternalVpnGateway get(java.lang.String name, Output<java.lang.String> id, @Nullable ExternalVpnGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ExternalVpnGateway(name, id, state, options);
     }
 }

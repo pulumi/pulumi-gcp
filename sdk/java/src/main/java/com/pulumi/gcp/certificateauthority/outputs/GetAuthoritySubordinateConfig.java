@@ -16,7 +16,7 @@ public final class GetAuthoritySubordinateConfig {
      * @return This can refer to a CertificateAuthority that was used to create a
      * subordinate CertificateAuthority. This field is used for information
      * and usability purposes only. The resource name is in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * &#39;projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*&#39;.
      * 
      */
     private String certificateAuthority;
@@ -32,7 +32,7 @@ public final class GetAuthoritySubordinateConfig {
      * @return This can refer to a CertificateAuthority that was used to create a
      * subordinate CertificateAuthority. This field is used for information
      * and usability purposes only. The resource name is in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * &#39;projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*&#39;.
      * 
      */
     public String certificateAuthority() {

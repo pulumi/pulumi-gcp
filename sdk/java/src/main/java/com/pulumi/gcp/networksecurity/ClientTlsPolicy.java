@@ -333,7 +333,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClientTlsPolicy(String name) {
+    public ClientTlsPolicy(java.lang.String name) {
         this(name, ClientTlsPolicyArgs.Empty);
     }
     /**
@@ -341,7 +341,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClientTlsPolicy(String name, @Nullable ClientTlsPolicyArgs args) {
+    public ClientTlsPolicy(java.lang.String name, @Nullable ClientTlsPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -350,12 +350,12 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClientTlsPolicy(String name, @Nullable ClientTlsPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ClientTlsPolicy(java.lang.String name, @Nullable ClientTlsPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClientTlsPolicy(String name, Output<String> id, @Nullable ClientTlsPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy", name, state, makeResourceOptions(options, id));
+    private ClientTlsPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable ClientTlsPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ClientTlsPolicyArgs makeArgs(@Nullable ClientTlsPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -365,7 +365,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? ClientTlsPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -385,7 +385,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClientTlsPolicy get(String name, Output<String> id, @Nullable ClientTlsPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClientTlsPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable ClientTlsPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClientTlsPolicy(name, id, state, options);
     }
 }

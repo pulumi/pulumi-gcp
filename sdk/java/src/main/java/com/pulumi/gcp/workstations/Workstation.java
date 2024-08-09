@@ -386,7 +386,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Workstation(String name) {
+    public Workstation(java.lang.String name) {
         this(name, WorkstationArgs.Empty);
     }
     /**
@@ -394,7 +394,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Workstation(String name, WorkstationArgs args) {
+    public Workstation(java.lang.String name, WorkstationArgs args) {
         this(name, args, null);
     }
     /**
@@ -403,12 +403,12 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Workstation(String name, WorkstationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstation:Workstation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Workstation(java.lang.String name, WorkstationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workstations/workstation:Workstation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Workstation(String name, Output<String> id, @Nullable WorkstationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstation:Workstation", name, state, makeResourceOptions(options, id));
+    private Workstation(java.lang.String name, Output<java.lang.String> id, @Nullable WorkstationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workstations/workstation:Workstation", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WorkstationArgs makeArgs(WorkstationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -418,7 +418,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
         return args == null ? WorkstationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -438,7 +438,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Workstation get(String name, Output<String> id, @Nullable WorkstationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Workstation get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkstationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Workstation(name, id, state, options);
     }
 }

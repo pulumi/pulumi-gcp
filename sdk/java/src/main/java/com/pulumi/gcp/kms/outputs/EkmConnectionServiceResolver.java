@@ -31,7 +31,7 @@ public final class EkmConnectionServiceResolver {
      */
     private List<EkmConnectionServiceResolverServerCertificate> serverCertificates;
     /**
-     * @return Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * @return Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     private String serviceDirectoryService;
@@ -60,7 +60,7 @@ public final class EkmConnectionServiceResolver {
         return this.serverCertificates;
     }
     /**
-     * @return Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * @return Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     public String serviceDirectoryService() {

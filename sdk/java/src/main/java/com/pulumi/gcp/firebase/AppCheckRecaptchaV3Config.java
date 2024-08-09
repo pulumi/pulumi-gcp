@@ -216,7 +216,7 @@ public class AppCheckRecaptchaV3Config extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppCheckRecaptchaV3Config(String name) {
+    public AppCheckRecaptchaV3Config(java.lang.String name) {
         this(name, AppCheckRecaptchaV3ConfigArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class AppCheckRecaptchaV3Config extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppCheckRecaptchaV3Config(String name, AppCheckRecaptchaV3ConfigArgs args) {
+    public AppCheckRecaptchaV3Config(java.lang.String name, AppCheckRecaptchaV3ConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,12 +233,12 @@ public class AppCheckRecaptchaV3Config extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppCheckRecaptchaV3Config(String name, AppCheckRecaptchaV3ConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AppCheckRecaptchaV3Config(java.lang.String name, AppCheckRecaptchaV3ConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppCheckRecaptchaV3Config(String name, Output<String> id, @Nullable AppCheckRecaptchaV3ConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config", name, state, makeResourceOptions(options, id));
+    private AppCheckRecaptchaV3Config(java.lang.String name, Output<java.lang.String> id, @Nullable AppCheckRecaptchaV3ConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AppCheckRecaptchaV3ConfigArgs makeArgs(AppCheckRecaptchaV3ConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -248,7 +248,7 @@ public class AppCheckRecaptchaV3Config extends com.pulumi.resources.CustomResour
         return args == null ? AppCheckRecaptchaV3ConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -267,7 +267,7 @@ public class AppCheckRecaptchaV3Config extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppCheckRecaptchaV3Config get(String name, Output<String> id, @Nullable AppCheckRecaptchaV3ConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppCheckRecaptchaV3Config get(java.lang.String name, Output<java.lang.String> id, @Nullable AppCheckRecaptchaV3ConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppCheckRecaptchaV3Config(name, id, state, options);
     }
 }

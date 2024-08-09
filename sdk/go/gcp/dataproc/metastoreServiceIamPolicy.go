@@ -131,6 +131,25 @@ import (
 //
 // ```
 //
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Dataproc metastore Service
+// Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+//
+// * `dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+// * `dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+// * `dataproc.MetastoreServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `dataproc.MetastoreServiceIamPolicy`: Retrieves the IAM policy for the service
+//
+// > **Note:** `dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `dataproc.MetastoreServiceIamBinding` and `dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
+//
 // ## dataproc.MetastoreServiceIamPolicy
 //
 // ```go

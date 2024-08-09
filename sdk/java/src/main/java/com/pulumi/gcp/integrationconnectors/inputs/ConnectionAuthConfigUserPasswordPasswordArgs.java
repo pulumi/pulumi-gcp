@@ -16,7 +16,7 @@ public final class ConnectionAuthConfigUserPasswordPasswordArgs extends com.pulu
 
     /**
      * The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     @Import(name="secretVersion", required=true)
@@ -24,7 +24,7 @@ public final class ConnectionAuthConfigUserPasswordPasswordArgs extends com.pulu
 
     /**
      * @return The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public Output<String> secretVersion() {
@@ -57,7 +57,7 @@ public final class ConnectionAuthConfigUserPasswordPasswordArgs extends com.pulu
 
         /**
          * @param secretVersion The resource name of the secret version in the format,
-         * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 
@@ -69,7 +69,7 @@ public final class ConnectionAuthConfigUserPasswordPasswordArgs extends com.pulu
 
         /**
          * @param secretVersion The resource name of the secret version in the format,
-         * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 

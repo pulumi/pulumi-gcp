@@ -209,7 +209,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReservationAssignment(String name) {
+    public ReservationAssignment(java.lang.String name) {
         this(name, ReservationAssignmentArgs.Empty);
     }
     /**
@@ -217,7 +217,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReservationAssignment(String name, ReservationAssignmentArgs args) {
+    public ReservationAssignment(java.lang.String name, ReservationAssignmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -226,12 +226,12 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReservationAssignment(String name, ReservationAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ReservationAssignment(java.lang.String name, ReservationAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReservationAssignment(String name, Output<String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, state, makeResourceOptions(options, id));
+    private ReservationAssignment(java.lang.String name, Output<java.lang.String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ReservationAssignmentArgs makeArgs(ReservationAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -241,7 +241,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
         return args == null ? ReservationAssignmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +257,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReservationAssignment get(String name, Output<String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReservationAssignment get(java.lang.String name, Output<java.lang.String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReservationAssignment(name, id, state, options);
     }
 }

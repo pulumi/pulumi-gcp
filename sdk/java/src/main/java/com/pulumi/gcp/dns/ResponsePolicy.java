@@ -247,7 +247,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ResponsePolicy(String name) {
+    public ResponsePolicy(java.lang.String name) {
         this(name, ResponsePolicyArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ResponsePolicy(String name, ResponsePolicyArgs args) {
+    public ResponsePolicy(java.lang.String name, ResponsePolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,12 +264,12 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ResponsePolicy(String name, ResponsePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dns/responsePolicy:ResponsePolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ResponsePolicy(java.lang.String name, ResponsePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dns/responsePolicy:ResponsePolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ResponsePolicy(String name, Output<String> id, @Nullable ResponsePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dns/responsePolicy:ResponsePolicy", name, state, makeResourceOptions(options, id));
+    private ResponsePolicy(java.lang.String name, Output<java.lang.String> id, @Nullable ResponsePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dns/responsePolicy:ResponsePolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ResponsePolicyArgs makeArgs(ResponsePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -279,7 +279,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
         return args == null ? ResponsePolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -295,7 +295,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ResponsePolicy get(String name, Output<String> id, @Nullable ResponsePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ResponsePolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable ResponsePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ResponsePolicy(name, id, state, options);
     }
 }

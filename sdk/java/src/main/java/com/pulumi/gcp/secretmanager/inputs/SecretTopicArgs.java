@@ -15,7 +15,7 @@ public final class SecretTopicArgs extends com.pulumi.resources.ResourceArgs {
     public static final SecretTopicArgs Empty = new SecretTopicArgs();
 
     /**
-     * The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
+     * The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
      * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
      * 
      */
@@ -23,7 +23,7 @@ public final class SecretTopicArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> name;
 
     /**
-     * @return The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
+     * @return The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
      * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
      * 
      */
@@ -56,7 +56,7 @@ public final class SecretTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
+         * @param name The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
          * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
          * 
          * @return builder
@@ -68,7 +68,7 @@ public final class SecretTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
+         * @param name The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
          * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
          * 
          * @return builder

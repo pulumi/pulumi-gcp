@@ -208,14 +208,14 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Name of the Registration resource, in the format projects/*{@literal /}locations/*{@literal /}registrations/&lt;domain_name&gt;.
+     * Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/&lt;domain_name&gt;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Output only. Name of the Registration resource, in the format projects/*{@literal /}locations/*{@literal /}registrations/&lt;domain_name&gt;.
+     * @return Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/&lt;domain_name&gt;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -641,7 +641,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. Name of the Registration resource, in the format projects/*{@literal /}locations/*{@literal /}registrations/&lt;domain_name&gt;.
+         * @param name Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/&lt;domain_name&gt;.
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. Name of the Registration resource, in the format projects/*{@literal /}locations/*{@literal /}registrations/&lt;domain_name&gt;.
+         * @param name Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/&lt;domain_name&gt;.
          * 
          * @return builder
          * 

@@ -271,6 +271,26 @@ class ServiceIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud Endpoints Service
+        Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
+
+        * `endpoints.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+        * `endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+        * `endpoints.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `endpoints.ServiceIamPolicy`: Retrieves the IAM policy for the service
+
+        > **Note:** `endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `endpoints.ServiceIamBinding` and `endpoints.ServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## endpoints.ServiceIamPolicy
 
         ```python
@@ -420,6 +440,26 @@ class ServiceIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud Endpoints Service
+        Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
+
+        * `endpoints.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+        * `endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+        * `endpoints.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `endpoints.ServiceIamPolicy`: Retrieves the IAM policy for the service
+
+        > **Note:** `endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `endpoints.ServiceIamBinding` and `endpoints.ServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## endpoints.ServiceIamPolicy
 

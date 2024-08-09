@@ -56,7 +56,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
     /**
      * (Output)
      * The operation for running the maintenance event. Specified in the format
-     * projects/*{@literal /}locations/*{@literal /}operations/*. If the maintenance event is split
+     * projects/*&#47;locations/*&#47;operations/*. If the maintenance event is split
      * into multiple operations (e.g. due to maintenance windows), the latest
      * one is recorded.
      * 
@@ -67,7 +67,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
     /**
      * @return (Output)
      * The operation for running the maintenance event. Specified in the format
-     * projects/*{@literal /}locations/*{@literal /}operations/*. If the maintenance event is split
+     * projects/*&#47;locations/*&#47;operations/*. If the maintenance event is split
      * into multiple operations (e.g. due to maintenance windows), the latest
      * one is recorded.
      * 
@@ -281,7 +281,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         /**
          * @param operation (Output)
          * The operation for running the maintenance event. Specified in the format
-         * projects/*{@literal /}locations/*{@literal /}operations/*. If the maintenance event is split
+         * projects/*&#47;locations/*&#47;operations/*. If the maintenance event is split
          * into multiple operations (e.g. due to maintenance windows), the latest
          * one is recorded.
          * 
@@ -296,7 +296,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         /**
          * @param operation (Output)
          * The operation for running the maintenance event. Specified in the format
-         * projects/*{@literal /}locations/*{@literal /}operations/*. If the maintenance event is split
+         * projects/*&#47;locations/*&#47;operations/*. If the maintenance event is split
          * into multiple operations (e.g. due to maintenance windows), the latest
          * one is recorded.
          * 

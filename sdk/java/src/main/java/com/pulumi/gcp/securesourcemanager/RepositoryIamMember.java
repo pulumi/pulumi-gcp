@@ -51,16 +51,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/securesourcemanager.repoAdmin")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -96,22 +96,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .repositoryId(default_.repositoryId())
  *             .role("roles/securesourcemanager.repoAdmin")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -135,25 +135,44 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .repositoryId(default_.repositoryId())
  *             .role("roles/securesourcemanager.repoAdmin")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Secure Source Manager Repository
+ * Three different resources help you manage your IAM policy for Secure Source Manager Repository. Each of these resources serves a different use case:
+ * 
+ * * `gcp.securesourcemanager.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+ * * `gcp.securesourcemanager.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+ * * `gcp.securesourcemanager.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.securesourcemanager.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
+ * 
+ * &gt; **Note:** `gcp.securesourcemanager.RepositoryIamPolicy` **cannot** be used in conjunction with `gcp.securesourcemanager.RepositoryIamBinding` and `gcp.securesourcemanager.RepositoryIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.securesourcemanager.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.securesourcemanager.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## gcp.securesourcemanager.RepositoryIamPolicy
  * 
@@ -176,16 +195,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/securesourcemanager.repoAdmin")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -196,8 +215,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -221,22 +240,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .repositoryId(default_.repositoryId())
  *             .role("roles/securesourcemanager.repoAdmin")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -260,22 +279,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
  *             .project(default_.project())
  *             .location(default_.location())
  *             .repositoryId(default_.repositoryId())
  *             .role("roles/securesourcemanager.repoAdmin")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -450,7 +469,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RepositoryIamMember(String name) {
+    public RepositoryIamMember(java.lang.String name) {
         this(name, RepositoryIamMemberArgs.Empty);
     }
     /**
@@ -458,7 +477,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RepositoryIamMember(String name, RepositoryIamMemberArgs args) {
+    public RepositoryIamMember(java.lang.String name, RepositoryIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -467,12 +486,12 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RepositoryIamMember(String name, RepositoryIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RepositoryIamMember(java.lang.String name, RepositoryIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RepositoryIamMember(String name, Output<String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember", name, state, makeResourceOptions(options, id));
+    private RepositoryIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RepositoryIamMemberArgs makeArgs(RepositoryIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -482,7 +501,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
         return args == null ? RepositoryIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -498,7 +517,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RepositoryIamMember get(String name, Output<String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RepositoryIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RepositoryIamMember(name, id, state, options);
     }
 }

@@ -157,7 +157,7 @@ import (
 //				CryptoKeyId: key.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId)),
+//					pulumi.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId),
 //				},
 //			})
 //			if err != nil {

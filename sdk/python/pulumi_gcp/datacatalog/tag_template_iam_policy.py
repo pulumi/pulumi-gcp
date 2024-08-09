@@ -238,6 +238,25 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Data catalog TagTemplate
+        Three different resources help you manage your IAM policy for Data catalog TagTemplate. Each of these resources serves a different use case:
+
+        * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
+        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
+        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `datacatalog.TagTemplateIamPolicy`: Retrieves the IAM policy for the tagtemplate
+
+        > **Note:** `datacatalog.TagTemplateIamPolicy` **cannot** be used in conjunction with `datacatalog.TagTemplateIamBinding` and `datacatalog.TagTemplateIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## datacatalog.TagTemplateIamPolicy
 
         ```python
@@ -382,6 +401,25 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Data catalog TagTemplate
+        Three different resources help you manage your IAM policy for Data catalog TagTemplate. Each of these resources serves a different use case:
+
+        * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
+        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
+        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `datacatalog.TagTemplateIamPolicy`: Retrieves the IAM policy for the tagtemplate
+
+        > **Note:** `datacatalog.TagTemplateIamPolicy` **cannot** be used in conjunction with `datacatalog.TagTemplateIamBinding` and `datacatalog.TagTemplateIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## datacatalog.TagTemplateIamPolicy
 

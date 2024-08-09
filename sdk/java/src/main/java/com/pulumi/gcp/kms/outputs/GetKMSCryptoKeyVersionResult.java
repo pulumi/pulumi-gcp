@@ -27,7 +27,7 @@ public final class GetKMSCryptoKeyVersionResult {
      */
     private String id;
     /**
-     * @return The resource name for this CryptoKeyVersion in the format `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`
+     * @return The resource name for this CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`
      * 
      */
     private String name;
@@ -67,7 +67,7 @@ public final class GetKMSCryptoKeyVersionResult {
         return this.id;
     }
     /**
-     * @return The resource name for this CryptoKeyVersion in the format `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`
+     * @return The resource name for this CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`
      * 
      */
     public String name() {

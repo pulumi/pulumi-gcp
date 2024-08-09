@@ -106,14 +106,14 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
+     * The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
+     * @return The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -319,7 +319,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
+         * @param name The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
+         * @param name The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
          * 
          * @return builder
          * 

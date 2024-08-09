@@ -261,6 +261,25 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine RegionDisk
+        Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
+
+        * `compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
+        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
+        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.RegionDiskIamPolicy`: Retrieves the IAM policy for the regiondisk
+
+        > **Note:** `compute.RegionDiskIamPolicy` **cannot** be used in conjunction with `compute.RegionDiskIamBinding` and `compute.RegionDiskIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.RegionDiskIamBinding` resources **can be** used in conjunction with `compute.RegionDiskIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## compute.RegionDiskIamPolicy
 
         ```python
@@ -420,6 +439,25 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine RegionDisk
+        Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
+
+        * `compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
+        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
+        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.RegionDiskIamPolicy`: Retrieves the IAM policy for the regiondisk
+
+        > **Note:** `compute.RegionDiskIamPolicy` **cannot** be used in conjunction with `compute.RegionDiskIamBinding` and `compute.RegionDiskIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.RegionDiskIamBinding` resources **can be** used in conjunction with `compute.RegionDiskIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## compute.RegionDiskIamPolicy
 

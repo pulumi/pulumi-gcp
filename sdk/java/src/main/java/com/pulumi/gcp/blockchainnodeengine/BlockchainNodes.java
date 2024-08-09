@@ -358,7 +358,7 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BlockchainNodes(String name) {
+    public BlockchainNodes(java.lang.String name) {
         this(name, BlockchainNodesArgs.Empty);
     }
     /**
@@ -366,7 +366,7 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BlockchainNodes(String name, BlockchainNodesArgs args) {
+    public BlockchainNodes(java.lang.String name, BlockchainNodesArgs args) {
         this(name, args, null);
     }
     /**
@@ -375,12 +375,12 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BlockchainNodes(String name, BlockchainNodesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BlockchainNodes(java.lang.String name, BlockchainNodesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BlockchainNodes(String name, Output<String> id, @Nullable BlockchainNodesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes", name, state, makeResourceOptions(options, id));
+    private BlockchainNodes(java.lang.String name, Output<java.lang.String> id, @Nullable BlockchainNodesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BlockchainNodesArgs makeArgs(BlockchainNodesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -390,7 +390,7 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
         return args == null ? BlockchainNodesArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -410,7 +410,7 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BlockchainNodes get(String name, Output<String> id, @Nullable BlockchainNodesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BlockchainNodes get(java.lang.String name, Output<java.lang.String> id, @Nullable BlockchainNodesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BlockchainNodes(name, id, state, options);
     }
 }

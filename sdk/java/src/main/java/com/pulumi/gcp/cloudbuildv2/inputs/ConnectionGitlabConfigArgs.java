@@ -118,14 +118,14 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     @Import(name="webhookSecretSecretVersion", required=true)
     private Output<String> webhookSecretSecretVersion;
 
     /**
-     * @return Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Output<String> webhookSecretSecretVersion() {
@@ -297,7 +297,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param webhookSecretSecretVersion Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 

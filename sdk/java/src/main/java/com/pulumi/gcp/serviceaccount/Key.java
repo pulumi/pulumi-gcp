@@ -354,7 +354,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Key(String name) {
+    public Key(java.lang.String name) {
         this(name, KeyArgs.Empty);
     }
     /**
@@ -362,7 +362,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Key(String name, KeyArgs args) {
+    public Key(java.lang.String name, KeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -371,12 +371,12 @@ public class Key extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Key(String name, KeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceaccount/key:Key", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Key(java.lang.String name, KeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceaccount/key:Key", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Key(String name, Output<String> id, @Nullable KeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceaccount/key:Key", name, state, makeResourceOptions(options, id));
+    private Key(java.lang.String name, Output<java.lang.String> id, @Nullable KeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceaccount/key:Key", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KeyArgs makeArgs(KeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -386,7 +386,7 @@ public class Key extends com.pulumi.resources.CustomResource {
         return args == null ? KeyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
@@ -408,7 +408,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Key get(String name, Output<String> id, @Nullable KeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Key get(java.lang.String name, Output<java.lang.String> id, @Nullable KeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Key(name, id, state, options);
     }
 }

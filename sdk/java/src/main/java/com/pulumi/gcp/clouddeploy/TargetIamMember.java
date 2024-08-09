@@ -64,7 +64,7 @@ public class TargetIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TargetIamMember(String name) {
+    public TargetIamMember(java.lang.String name) {
         this(name, TargetIamMemberArgs.Empty);
     }
     /**
@@ -72,7 +72,7 @@ public class TargetIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TargetIamMember(String name, TargetIamMemberArgs args) {
+    public TargetIamMember(java.lang.String name, TargetIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -81,12 +81,12 @@ public class TargetIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TargetIamMember(String name, TargetIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/targetIamMember:TargetIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TargetIamMember(java.lang.String name, TargetIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/targetIamMember:TargetIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TargetIamMember(String name, Output<String> id, @Nullable TargetIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/targetIamMember:TargetIamMember", name, state, makeResourceOptions(options, id));
+    private TargetIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable TargetIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/targetIamMember:TargetIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TargetIamMemberArgs makeArgs(TargetIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -96,7 +96,7 @@ public class TargetIamMember extends com.pulumi.resources.CustomResource {
         return args == null ? TargetIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -112,7 +112,7 @@ public class TargetIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TargetIamMember get(String name, Output<String> id, @Nullable TargetIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TargetIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable TargetIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TargetIamMember(name, id, state, options);
     }
 }
