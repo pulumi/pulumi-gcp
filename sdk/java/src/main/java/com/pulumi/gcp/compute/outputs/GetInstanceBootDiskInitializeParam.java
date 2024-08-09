@@ -50,6 +50,11 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     private Integer size;
     /**
+     * @return The URL of the storage pool in which the new disk is created
+     * 
+     */
+    private String storagePool;
+    /**
      * @return The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -106,6 +111,13 @@ public final class GetInstanceBootDiskInitializeParam {
         return this.size;
     }
     /**
+     * @return The URL of the storage pool in which the new disk is created
+     * 
+     */
+    public String storagePool() {
+        return this.storagePool;
+    }
+    /**
      * @return The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -129,6 +141,7 @@ public final class GetInstanceBootDiskInitializeParam {
         private Integer provisionedThroughput;
         private Map<String,Object> resourceManagerTags;
         private Integer size;
+        private String storagePool;
         private String type;
         public Builder() {}
         public Builder(GetInstanceBootDiskInitializeParam defaults) {
@@ -140,6 +153,7 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
 
@@ -200,6 +214,14 @@ public final class GetInstanceBootDiskInitializeParam {
             return this;
         }
         @CustomType.Setter
+        public Builder storagePool(String storagePool) {
+            if (storagePool == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "storagePool");
+            }
+            this.storagePool = storagePool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "type");
@@ -216,6 +238,7 @@ public final class GetInstanceBootDiskInitializeParam {
             _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.size = size;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;
         }

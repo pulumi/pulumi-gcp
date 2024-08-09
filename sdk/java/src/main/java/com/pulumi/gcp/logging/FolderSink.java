@@ -305,11 +305,18 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FolderSink(String name, FolderSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/folderSink:FolderSink", name, args == null ? FolderSinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/folderSink:FolderSink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FolderSink(String name, Output<String> id, @Nullable FolderSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/folderSink:FolderSink", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FolderSinkArgs makeArgs(FolderSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FolderSinkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

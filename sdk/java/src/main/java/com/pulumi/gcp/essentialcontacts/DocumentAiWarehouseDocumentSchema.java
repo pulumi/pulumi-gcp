@@ -217,11 +217,18 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * @param options A bag of options that control this resource's behavior.
      */
     public DocumentAiWarehouseDocumentSchema(String name, DocumentAiWarehouseDocumentSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", name, args == null ? DocumentAiWarehouseDocumentSchemaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DocumentAiWarehouseDocumentSchema(String name, Output<String> id, @Nullable DocumentAiWarehouseDocumentSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DocumentAiWarehouseDocumentSchemaArgs makeArgs(DocumentAiWarehouseDocumentSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DocumentAiWarehouseDocumentSchemaArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -69,6 +69,13 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
+     * Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     */
+    public readonly checkIfServiceHasUsageOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
@@ -99,6 +106,7 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
+            resourceInputs["checkIfServiceHasUsageOnDestroy"] = state ? state.checkIfServiceHasUsageOnDestroy : undefined;
             resourceInputs["disableDependentServices"] = state ? state.disableDependentServices : undefined;
             resourceInputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -108,6 +116,7 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
+            resourceInputs["checkIfServiceHasUsageOnDestroy"] = args ? args.checkIfServiceHasUsageOnDestroy : undefined;
             resourceInputs["disableDependentServices"] = args ? args.disableDependentServices : undefined;
             resourceInputs["disableOnDestroy"] = args ? args.disableOnDestroy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -122,6 +131,13 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
+    /**
+     * Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     */
+    checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean>;
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
@@ -145,6 +161,13 @@ export interface ServiceState {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
+    /**
+     * Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     */
+    checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean>;
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is

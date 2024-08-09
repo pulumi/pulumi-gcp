@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.RouterPeerArgs;
 import com.pulumi.gcp.compute.inputs.RouterPeerState;
 import com.pulumi.gcp.compute.outputs.RouterPeerAdvertisedIpRange;
 import com.pulumi.gcp.compute.outputs.RouterPeerBfd;
+import com.pulumi.gcp.compute.outputs.RouterPeerCustomLearnedIpRange;
 import com.pulumi.gcp.compute.outputs.RouterPeerMd5AuthenticationKey;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -361,6 +362,183 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Router Peer Export And Import Policies
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.HaVpnGateway;
+ * import com.pulumi.gcp.compute.HaVpnGatewayArgs;
+ * import com.pulumi.gcp.compute.ExternalVpnGateway;
+ * import com.pulumi.gcp.compute.ExternalVpnGatewayArgs;
+ * import com.pulumi.gcp.compute.inputs.ExternalVpnGatewayInterfaceArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+ * import com.pulumi.gcp.compute.VPNTunnel;
+ * import com.pulumi.gcp.compute.VPNTunnelArgs;
+ * import com.pulumi.gcp.compute.RouterInterface;
+ * import com.pulumi.gcp.compute.RouterInterfaceArgs;
+ * import com.pulumi.gcp.compute.RouterRoutePolicy;
+ * import com.pulumi.gcp.compute.RouterRoutePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermMatchArgs;
+ * import com.pulumi.gcp.compute.RouterPeer;
+ * import com.pulumi.gcp.compute.RouterPeerArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterPeerMd5AuthenticationKeyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("my-router-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("my-router-subnet")
+ *             .network(network.selfLink())
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
+ *             .build());
+ * 
+ *         var address = new Address("address", AddressArgs.builder()
+ *             .name("my-router")
+ *             .region(subnetwork.region())
+ *             .build());
+ * 
+ *         var vpnGateway = new HaVpnGateway("vpnGateway", HaVpnGatewayArgs.builder()
+ *             .name("my-router-gateway")
+ *             .network(network.selfLink())
+ *             .region(subnetwork.region())
+ *             .build());
+ * 
+ *         var externalGateway = new ExternalVpnGateway("externalGateway", ExternalVpnGatewayArgs.builder()
+ *             .name("my-router-external-gateway")
+ *             .redundancyType("SINGLE_IP_INTERNALLY_REDUNDANT")
+ *             .description("An externally managed VPN gateway")
+ *             .interfaces(ExternalVpnGatewayInterfaceArgs.builder()
+ *                 .id(0)
+ *                 .ipAddress("8.8.8.8")
+ *                 .build())
+ *             .build());
+ * 
+ *         var router = new Router("router", RouterArgs.builder()
+ *             .name("my-router")
+ *             .region(subnetwork.region())
+ *             .network(network.selfLink())
+ *             .bgp(RouterBgpArgs.builder()
+ *                 .asn(64514)
+ *                 .build())
+ *             .build());
+ * 
+ *         var vpnTunnel = new VPNTunnel("vpnTunnel", VPNTunnelArgs.builder()
+ *             .name("my-router")
+ *             .region(subnetwork.region())
+ *             .vpnGateway(vpnGateway.id())
+ *             .peerExternalGateway(externalGateway.id())
+ *             .peerExternalGatewayInterface(0)
+ *             .sharedSecret("unguessable")
+ *             .router(router.name())
+ *             .vpnGatewayInterface(0)
+ *             .build());
+ * 
+ *         var routerInterface = new RouterInterface("routerInterface", RouterInterfaceArgs.builder()
+ *             .name("my-router")
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .vpnTunnel(vpnTunnel.name())
+ *             .build());
+ * 
+ *         var rp_export = new RouterRoutePolicy("rp-export", RouterRoutePolicyArgs.builder()
+ *             .name("my-router-rp-export")
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .type("ROUTE_POLICY_TYPE_EXPORT")
+ *             .terms(RouterRoutePolicyTermArgs.builder()
+ *                 .priority(2)
+ *                 .match(RouterRoutePolicyTermMatchArgs.builder()
+ *                     .expression("destination == '10.0.0.0/12'")
+ *                     .title("export_expression")
+ *                     .description("acceptance expression for export")
+ *                     .build())
+ *                 .actions(RouterRoutePolicyTermActionArgs.builder()
+ *                     .expression("accept()")
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(routerInterface)
+ *                 .build());
+ * 
+ *         var rp_import = new RouterRoutePolicy("rp-import", RouterRoutePolicyArgs.builder()
+ *             .name("my-router-rp-import")
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .type("ROUTE_POLICY_TYPE_IMPORT")
+ *             .terms(RouterRoutePolicyTermArgs.builder()
+ *                 .priority(1)
+ *                 .match(RouterRoutePolicyTermMatchArgs.builder()
+ *                     .expression("destination == '10.0.0.0/12'")
+ *                     .title("import_expression")
+ *                     .description("acceptance expression for import")
+ *                     .build())
+ *                 .actions(RouterRoutePolicyTermActionArgs.builder()
+ *                     .expression("accept()")
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     routerInterface,
+ *                     rp_export)
+ *                 .build());
+ * 
+ *         var routerPeer = new RouterPeer("routerPeer", RouterPeerArgs.builder()
+ *             .name("my-router-peer")
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .peerAsn(65515)
+ *             .advertisedRoutePriority(100)
+ *             .interface_(routerInterface.name())
+ *             .md5AuthenticationKey(RouterPeerMd5AuthenticationKeyArgs.builder()
+ *                 .name("my-router-peer-key")
+ *                 .key("my-router-peer-key-value")
+ *                 .build())
+ *             .importPolicies(rp_import.name())
+ *             .exportPolicies(rp_export.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     rp_export,
+ *                     rp_import,
+ *                     routerInterface)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * RouterBgpPeer can be imported using any of these accepted formats:
@@ -505,6 +683,40 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return this.bfd;
     }
     /**
+     * The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     * 
+     */
+    @Export(name="customLearnedIpRanges", refs={List.class,RouterPeerCustomLearnedIpRange.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<RouterPeerCustomLearnedIpRange>> customLearnedIpRanges;
+
+    /**
+     * @return The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     * 
+     */
+    public Output<Optional<List<RouterPeerCustomLearnedIpRange>>> customLearnedIpRanges() {
+        return Codegen.optional(this.customLearnedIpRanges);
+    }
+    /**
+     * The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+     * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
+     * priority of 100 to the ranges.
+     * 
+     */
+    @Export(name="customLearnedRoutePriority", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> customLearnedRoutePriority;
+
+    /**
+     * @return The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+     * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
+     * priority of 100 to the ranges.
+     * 
+     */
+    public Output<Optional<Integer>> customLearnedRoutePriority() {
+        return Codegen.optional(this.customLearnedRoutePriority);
+    }
+    /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
@@ -551,6 +763,38 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableIpv6() {
         return Codegen.optional(this.enableIpv6);
+    }
+    /**
+     * routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+     * 
+     */
+    @Export(name="exportPolicies", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> exportPolicies;
+
+    /**
+     * @return routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+     * 
+     */
+    public Output<Optional<List<String>>> exportPolicies() {
+        return Codegen.optional(this.exportPolicies);
+    }
+    /**
+     * routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+     * 
+     */
+    @Export(name="importPolicies", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> importPolicies;
+
+    /**
+     * @return routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+     * 
+     */
+    public Output<Optional<List<String>>> importPolicies() {
+        return Codegen.optional(this.importPolicies);
     }
     /**
      * Name of the interface the BGP peer is associated with.
@@ -845,11 +1089,18 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RouterPeer(String name, RouterPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/routerPeer:RouterPeer", name, args == null ? RouterPeerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/routerPeer:RouterPeer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RouterPeer(String name, Output<String> id, @Nullable RouterPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/routerPeer:RouterPeer", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RouterPeerArgs makeArgs(RouterPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RouterPeerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

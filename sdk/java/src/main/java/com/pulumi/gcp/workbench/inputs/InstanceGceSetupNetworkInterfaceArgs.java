@@ -5,7 +5,9 @@ package com.pulumi.gcp.workbench.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceAccessConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,29 @@ import javax.annotation.Nullable;
 public final class InstanceGceSetupNetworkInterfaceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceGceSetupNetworkInterfaceArgs Empty = new InstanceGceSetupNetworkInterfaceArgs();
+
+    /**
+     * Optional. An array of configurations for this interface. Currently, only one access
+     * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+     * instance will have an external internet access through an ephemeral
+     * external IP address.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accessConfigs")
+    private @Nullable Output<List<InstanceGceSetupNetworkInterfaceAccessConfigArgs>> accessConfigs;
+
+    /**
+     * @return Optional. An array of configurations for this interface. Currently, only one access
+     * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+     * instance will have an external internet access through an ephemeral
+     * external IP address.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceGceSetupNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
+        return Optional.ofNullable(this.accessConfigs);
+    }
 
     /**
      * Optional. The name of the VPC that this VM instance is in.
@@ -67,6 +92,7 @@ public final class InstanceGceSetupNetworkInterfaceArgs extends com.pulumi.resou
     private InstanceGceSetupNetworkInterfaceArgs() {}
 
     private InstanceGceSetupNetworkInterfaceArgs(InstanceGceSetupNetworkInterfaceArgs $) {
+        this.accessConfigs = $.accessConfigs;
         this.network = $.network;
         this.nicType = $.nicType;
         this.subnet = $.subnet;
@@ -88,6 +114,49 @@ public final class InstanceGceSetupNetworkInterfaceArgs extends com.pulumi.resou
 
         public Builder(InstanceGceSetupNetworkInterfaceArgs defaults) {
             $ = new InstanceGceSetupNetworkInterfaceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessConfigs Optional. An array of configurations for this interface. Currently, only one access
+         * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+         * instance will have an external internet access through an ephemeral
+         * external IP address.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessConfigs(@Nullable Output<List<InstanceGceSetupNetworkInterfaceAccessConfigArgs>> accessConfigs) {
+            $.accessConfigs = accessConfigs;
+            return this;
+        }
+
+        /**
+         * @param accessConfigs Optional. An array of configurations for this interface. Currently, only one access
+         * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+         * instance will have an external internet access through an ephemeral
+         * external IP address.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessConfigs(List<InstanceGceSetupNetworkInterfaceAccessConfigArgs> accessConfigs) {
+            return accessConfigs(Output.of(accessConfigs));
+        }
+
+        /**
+         * @param accessConfigs Optional. An array of configurations for this interface. Currently, only one access
+         * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+         * instance will have an external internet access through an ephemeral
+         * external IP address.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessConfigs(InstanceGceSetupNetworkInterfaceAccessConfigArgs... accessConfigs) {
+            return accessConfigs(List.of(accessConfigs));
         }
 
         /**

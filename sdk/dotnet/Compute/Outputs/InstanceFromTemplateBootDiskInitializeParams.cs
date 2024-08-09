@@ -42,6 +42,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? Size;
         /// <summary>
+        /// The URL of the storage pool in which the new disk is created
+        /// </summary>
+        public readonly string? StoragePool;
+        /// <summary>
         /// The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         /// </summary>
         public readonly string? Type;
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? size,
 
+            string? storagePool,
+
             string? type)
         {
             EnableConfidentialCompute = enableConfidentialCompute;
@@ -71,6 +77,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ProvisionedThroughput = provisionedThroughput;
             ResourceManagerTags = resourceManagerTags;
             Size = size;
+            StoragePool = storagePool;
             Type = type;
         }
     }

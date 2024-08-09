@@ -10488,11 +10488,24 @@ type ClusterAddonsConfig struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig *ClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfig"`
+	// . The status of the [Ray Operator
+	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+	// It is disabled by default. Set `enabled = true` to enable. The minimum
+	// cluster version to enable Ray is 1.30.0-gke.1747000.
+	//
+	// Ray Operator config has optional subfields
+	// `ray_cluster_logging_config.enabled` and
+	// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+	// and monitoring respectively. See [Collect and view logs and metrics for Ray
+	// clusters on
+	// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+	// for more information.
+	//
+	// This example `addonsConfig` disables two addons:
+	RayOperatorConfigs []ClusterAddonsConfigRayOperatorConfig `pulumi:"rayOperatorConfigs"`
 	// .
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
 	// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-	//
-	// This example `addonsConfig` disables two addons:
 	StatefulHaConfig *ClusterAddonsConfigStatefulHaConfig `pulumi:"statefulHaConfig"`
 }
 
@@ -10561,11 +10574,24 @@ type ClusterAddonsConfigArgs struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig ClusterAddonsConfigNetworkPolicyConfigPtrInput `pulumi:"networkPolicyConfig"`
+	// . The status of the [Ray Operator
+	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+	// It is disabled by default. Set `enabled = true` to enable. The minimum
+	// cluster version to enable Ray is 1.30.0-gke.1747000.
+	//
+	// Ray Operator config has optional subfields
+	// `ray_cluster_logging_config.enabled` and
+	// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+	// and monitoring respectively. See [Collect and view logs and metrics for Ray
+	// clusters on
+	// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+	// for more information.
+	//
+	// This example `addonsConfig` disables two addons:
+	RayOperatorConfigs ClusterAddonsConfigRayOperatorConfigArrayInput `pulumi:"rayOperatorConfigs"`
 	// .
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
 	// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-	//
-	// This example `addonsConfig` disables two addons:
 	StatefulHaConfig ClusterAddonsConfigStatefulHaConfigPtrInput `pulumi:"statefulHaConfig"`
 }
 
@@ -10743,11 +10769,27 @@ func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetw
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
+// . The status of the [Ray Operator
+// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+// It is disabled by default. Set `enabled = true` to enable. The minimum
+// cluster version to enable Ray is 1.30.0-gke.1747000.
+//
+// Ray Operator config has optional subfields
+// `ray_cluster_logging_config.enabled` and
+// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+// and monitoring respectively. See [Collect and view logs and metrics for Ray
+// clusters on
+// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+// for more information.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigOutput) RayOperatorConfigs() ClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) []ClusterAddonsConfigRayOperatorConfig { return v.RayOperatorConfigs }).(ClusterAddonsConfigRayOperatorConfigArrayOutput)
+}
+
 // .
 // The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
 // It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigOutput) StatefulHaConfig() ClusterAddonsConfigStatefulHaConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigStatefulHaConfig { return v.StatefulHaConfig }).(ClusterAddonsConfigStatefulHaConfigPtrOutput)
 }
@@ -10925,11 +10967,32 @@ func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigN
 	}).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
+// . The status of the [Ray Operator
+// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+// It is disabled by default. Set `enabled = true` to enable. The minimum
+// cluster version to enable Ray is 1.30.0-gke.1747000.
+//
+// Ray Operator config has optional subfields
+// `ray_cluster_logging_config.enabled` and
+// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+// and monitoring respectively. See [Collect and view logs and metrics for Ray
+// clusters on
+// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+// for more information.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigPtrOutput) RayOperatorConfigs() ClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) []ClusterAddonsConfigRayOperatorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RayOperatorConfigs
+	}).(ClusterAddonsConfigRayOperatorConfigArrayOutput)
+}
+
 // .
 // The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
 // It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigPtrOutput) StatefulHaConfig() ClusterAddonsConfigStatefulHaConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigStatefulHaConfig {
 		if v == nil {
@@ -12622,6 +12685,388 @@ func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolP
 			return nil
 		}
 		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfig struct {
+	Enabled bool `pulumi:"enabled"`
+	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+	RayClusterLoggingConfig *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig `pulumi:"rayClusterLoggingConfig"`
+	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+	RayClusterMonitoringConfig *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig `pulumi:"rayClusterMonitoringConfig"`
+}
+
+// ClusterAddonsConfigRayOperatorConfigInput is an input type that accepts ClusterAddonsConfigRayOperatorConfigArgs and ClusterAddonsConfigRayOperatorConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigRayOperatorConfigInput` via:
+//
+//	ClusterAddonsConfigRayOperatorConfigArgs{...}
+type ClusterAddonsConfigRayOperatorConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigRayOperatorConfigOutput() ClusterAddonsConfigRayOperatorConfigOutput
+	ToClusterAddonsConfigRayOperatorConfigOutputWithContext(context.Context) ClusterAddonsConfigRayOperatorConfigOutput
+}
+
+type ClusterAddonsConfigRayOperatorConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+	RayClusterLoggingConfig ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrInput `pulumi:"rayClusterLoggingConfig"`
+	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+	RayClusterMonitoringConfig ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput `pulumi:"rayClusterMonitoringConfig"`
+}
+
+func (ClusterAddonsConfigRayOperatorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigArgs) ToClusterAddonsConfigRayOperatorConfigOutput() ClusterAddonsConfigRayOperatorConfigOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigArgs) ToClusterAddonsConfigRayOperatorConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigOutput)
+}
+
+// ClusterAddonsConfigRayOperatorConfigArrayInput is an input type that accepts ClusterAddonsConfigRayOperatorConfigArray and ClusterAddonsConfigRayOperatorConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigRayOperatorConfigArrayInput` via:
+//
+//	ClusterAddonsConfigRayOperatorConfigArray{ ClusterAddonsConfigRayOperatorConfigArgs{...} }
+type ClusterAddonsConfigRayOperatorConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigRayOperatorConfigArrayOutput() ClusterAddonsConfigRayOperatorConfigArrayOutput
+	ToClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(context.Context) ClusterAddonsConfigRayOperatorConfigArrayOutput
+}
+
+type ClusterAddonsConfigRayOperatorConfigArray []ClusterAddonsConfigRayOperatorConfigInput
+
+func (ClusterAddonsConfigRayOperatorConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigArray) ToClusterAddonsConfigRayOperatorConfigArrayOutput() ClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigArray) ToClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigArrayOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigRayOperatorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigOutput) ToClusterAddonsConfigRayOperatorConfigOutput() ClusterAddonsConfigRayOperatorConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigOutput) ToClusterAddonsConfigRayOperatorConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+func (o ClusterAddonsConfigRayOperatorConfigOutput) RayClusterLoggingConfig() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfig) *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+		return v.RayClusterLoggingConfig
+	}).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput)
+}
+
+// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+func (o ClusterAddonsConfigRayOperatorConfigOutput) RayClusterMonitoringConfig() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfig) *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
+		return v.RayClusterMonitoringConfig
+	}).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigRayOperatorConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigArrayOutput) ToClusterAddonsConfigRayOperatorConfigArrayOutput() ClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigArrayOutput) ToClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigArrayOutput) Index(i pulumi.IntInput) ClusterAddonsConfigRayOperatorConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAddonsConfigRayOperatorConfig {
+		return vs[0].([]ClusterAddonsConfigRayOperatorConfig)[vs[1].(int)]
+	}).(ClusterAddonsConfigRayOperatorConfigOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput is an input type that accepts ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs and ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput` via:
+//
+//	ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{...}
+type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput
+	ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput)
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput).ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrInput is an input type that accepts ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs, ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtr and ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput
+	ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput
+}
+
+type clusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrType ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs
+
+func ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtr(v *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrInput {
+	return (*clusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrType) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrType) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return o.ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig) *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+		return &v
+	}).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput)
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) Elem() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig) ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig
+		return ret
+	}).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput)
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput is an input type that accepts ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs and ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput` via:
+//
+//	ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{...}
+type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput
+	ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput)
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput).ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput is an input type that accepts ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs, ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtr and ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput
+	ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput
+}
+
+type clusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrType ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs
+
+func ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtr(v *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput {
+	return (*clusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrType) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return i.ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrType) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return o.ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig) *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
+		return &v
+	}).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput)
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput) ToClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput) Elem() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig) ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig
+		return ret
+	}).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput)
+}
+
+func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -18807,7 +19252,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
 	EnableMetrics bool `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
 	EnableRelay *bool `pulumi:"enableRelay"`
-	// Mode used to make Relay available.
+	// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
 	//
 	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
 	RelayMode *string `pulumi:"relayMode"`
@@ -18829,7 +19274,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
 	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
 	EnableRelay pulumi.BoolPtrInput `pulumi:"enableRelay"`
-	// Mode used to make Relay available.
+	// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
 	//
 	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
 	RelayMode pulumi.StringPtrInput `pulumi:"relayMode"`
@@ -18896,7 +19341,7 @@ func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) Enable
 	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *bool { return v.EnableRelay }).(pulumi.BoolPtrOutput)
 }
 
-// Mode used to make Relay available.
+// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
 //
 // Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
 func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringPtrOutput {
@@ -36790,7 +37235,10 @@ type NodePoolNodeConfig struct {
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// Whether the nodes are created as preemptible VM instances.
 	Preemptible *bool `pulumi:"preemptible"`
-	// The reservation affinity configuration for the node pool.
+	// The configuration of the desired reservation which instances could take capacity from.
+	// Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	ReservationAffinity *NodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
@@ -36884,7 +37332,10 @@ type NodePoolNodeConfigArgs struct {
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// Whether the nodes are created as preemptible VM instances.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// The reservation affinity configuration for the node pool.
+	// The configuration of the desired reservation which instances could take capacity from.
+	// Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	ReservationAffinity NodePoolNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
@@ -37133,7 +37584,10 @@ func (o NodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// The reservation affinity configuration for the node pool.
+// The configuration of the desired reservation which instances could take capacity from.
+// Structure is documented below.
+//
+// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 func (o NodePoolNodeConfigOutput) ReservationAffinity() NodePoolNodeConfigReservationAffinityPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigReservationAffinity { return v.ReservationAffinity }).(NodePoolNodeConfigReservationAffinityPtrOutput)
 }
@@ -37497,7 +37951,10 @@ func (o NodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The reservation affinity configuration for the node pool.
+// The configuration of the desired reservation which instances could take capacity from.
+// Structure is documented below.
+//
+// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 func (o NodePoolNodeConfigPtrOutput) ReservationAffinity() NodePoolNodeConfigReservationAffinityPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigReservationAffinity {
 		if v == nil {
@@ -40232,11 +40689,17 @@ func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulu
 }
 
 type NodePoolNodeConfigReservationAffinity struct {
-	// Corresponds to the type of reservation consumption.
+	// The type of reservation consumption
+	// Accepted values are:
+	//
+	// * `"UNSPECIFIED"`: Default value. This should not be used.
+	// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+	// * `"ANY_RESERVATION"`: Consume any reservation available.
+	// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 	ConsumeReservationType string `pulumi:"consumeReservationType"`
-	// The label key of a reservation resource.
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key *string `pulumi:"key"`
-	// The label values of the reservation resource.
+	// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
 	Values []string `pulumi:"values"`
 }
 
@@ -40252,11 +40715,17 @@ type NodePoolNodeConfigReservationAffinityInput interface {
 }
 
 type NodePoolNodeConfigReservationAffinityArgs struct {
-	// Corresponds to the type of reservation consumption.
+	// The type of reservation consumption
+	// Accepted values are:
+	//
+	// * `"UNSPECIFIED"`: Default value. This should not be used.
+	// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+	// * `"ANY_RESERVATION"`: Consume any reservation available.
+	// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
-	// The label key of a reservation resource.
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The label values of the reservation resource.
+	// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -40337,17 +40806,23 @@ func (o NodePoolNodeConfigReservationAffinityOutput) ToNodePoolNodeConfigReserva
 	}).(NodePoolNodeConfigReservationAffinityPtrOutput)
 }
 
-// Corresponds to the type of reservation consumption.
+// The type of reservation consumption
+// Accepted values are:
+//
+// * `"UNSPECIFIED"`: Default value. This should not be used.
+// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+// * `"ANY_RESERVATION"`: Consume any reservation available.
+// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 func (o NodePoolNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
 }
 
-// The label key of a reservation resource.
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 func (o NodePoolNodeConfigReservationAffinityOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The label values of the reservation resource.
+// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
 func (o NodePoolNodeConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -40376,7 +40851,13 @@ func (o NodePoolNodeConfigReservationAffinityPtrOutput) Elem() NodePoolNodeConfi
 	}).(NodePoolNodeConfigReservationAffinityOutput)
 }
 
-// Corresponds to the type of reservation consumption.
+// The type of reservation consumption
+// Accepted values are:
+//
+// * `"UNSPECIFIED"`: Default value. This should not be used.
+// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+// * `"ANY_RESERVATION"`: Consume any reservation available.
+// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 func (o NodePoolNodeConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigReservationAffinity) *string {
 		if v == nil {
@@ -40386,7 +40867,7 @@ func (o NodePoolNodeConfigReservationAffinityPtrOutput) ConsumeReservationType()
 	}).(pulumi.StringPtrOutput)
 }
 
-// The label key of a reservation resource.
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 func (o NodePoolNodeConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigReservationAffinity) *string {
 		if v == nil {
@@ -40396,7 +40877,7 @@ func (o NodePoolNodeConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The label values of the reservation resource.
+// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
 func (o NodePoolNodeConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigReservationAffinity) []string {
 		if v == nil {
@@ -42227,6 +42708,8 @@ type GetClusterAddonsConfig struct {
 	KalmConfigs []GetClusterAddonsConfigKalmConfig `pulumi:"kalmConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs []GetClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfigs"`
+	// The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+	RayOperatorConfigs []GetClusterAddonsConfigRayOperatorConfig `pulumi:"rayOperatorConfigs"`
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
 	StatefulHaConfigs []GetClusterAddonsConfigStatefulHaConfig `pulumi:"statefulHaConfigs"`
 }
@@ -42267,6 +42750,8 @@ type GetClusterAddonsConfigArgs struct {
 	KalmConfigs GetClusterAddonsConfigKalmConfigArrayInput `pulumi:"kalmConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs GetClusterAddonsConfigNetworkPolicyConfigArrayInput `pulumi:"networkPolicyConfigs"`
+	// The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+	RayOperatorConfigs GetClusterAddonsConfigRayOperatorConfigArrayInput `pulumi:"rayOperatorConfigs"`
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
 	StatefulHaConfigs GetClusterAddonsConfigStatefulHaConfigArrayInput `pulumi:"statefulHaConfigs"`
 }
@@ -42394,6 +42879,11 @@ func (o GetClusterAddonsConfigOutput) NetworkPolicyConfigs() GetClusterAddonsCon
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigNetworkPolicyConfig {
 		return v.NetworkPolicyConfigs
 	}).(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput)
+}
+
+// The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+func (o GetClusterAddonsConfigOutput) RayOperatorConfigs() GetClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigRayOperatorConfig { return v.RayOperatorConfigs }).(GetClusterAddonsConfigRayOperatorConfigArrayOutput)
 }
 
 // The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
@@ -43565,6 +44055,310 @@ func (o GetClusterAddonsConfigNetworkPolicyConfigArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigNetworkPolicyConfig {
 		return vs[0].([]GetClusterAddonsConfigNetworkPolicyConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigNetworkPolicyConfigOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfig struct {
+	Enabled bool `pulumi:"enabled"`
+	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+	RayClusterLoggingConfigs []GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig `pulumi:"rayClusterLoggingConfigs"`
+	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+	RayClusterMonitoringConfigs []GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig `pulumi:"rayClusterMonitoringConfigs"`
+}
+
+// GetClusterAddonsConfigRayOperatorConfigInput is an input type that accepts GetClusterAddonsConfigRayOperatorConfigArgs and GetClusterAddonsConfigRayOperatorConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigRayOperatorConfigInput` via:
+//
+//	GetClusterAddonsConfigRayOperatorConfigArgs{...}
+type GetClusterAddonsConfigRayOperatorConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigRayOperatorConfigOutput() GetClusterAddonsConfigRayOperatorConfigOutput
+	ToGetClusterAddonsConfigRayOperatorConfigOutputWithContext(context.Context) GetClusterAddonsConfigRayOperatorConfigOutput
+}
+
+type GetClusterAddonsConfigRayOperatorConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+	RayClusterLoggingConfigs GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayInput `pulumi:"rayClusterLoggingConfigs"`
+	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+	RayClusterMonitoringConfigs GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayInput `pulumi:"rayClusterMonitoringConfigs"`
+}
+
+func (GetClusterAddonsConfigRayOperatorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigArgs) ToGetClusterAddonsConfigRayOperatorConfigOutput() GetClusterAddonsConfigRayOperatorConfigOutput {
+	return i.ToGetClusterAddonsConfigRayOperatorConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigArgs) ToGetClusterAddonsConfigRayOperatorConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigRayOperatorConfigOutput)
+}
+
+// GetClusterAddonsConfigRayOperatorConfigArrayInput is an input type that accepts GetClusterAddonsConfigRayOperatorConfigArray and GetClusterAddonsConfigRayOperatorConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigRayOperatorConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigRayOperatorConfigArray{ GetClusterAddonsConfigRayOperatorConfigArgs{...} }
+type GetClusterAddonsConfigRayOperatorConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigRayOperatorConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigArrayOutput
+	ToGetClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigRayOperatorConfigArrayOutput
+}
+
+type GetClusterAddonsConfigRayOperatorConfigArray []GetClusterAddonsConfigRayOperatorConfigInput
+
+func (GetClusterAddonsConfigRayOperatorConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigArray) ToGetClusterAddonsConfigRayOperatorConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigArray) ToGetClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigRayOperatorConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigRayOperatorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigOutput) ToGetClusterAddonsConfigRayOperatorConfigOutput() GetClusterAddonsConfigRayOperatorConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigOutput) ToGetClusterAddonsConfigRayOperatorConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigRayOperatorConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+func (o GetClusterAddonsConfigRayOperatorConfigOutput) RayClusterLoggingConfigs() GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigRayOperatorConfig) []GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+		return v.RayClusterLoggingConfigs
+	}).(GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput)
+}
+
+// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+func (o GetClusterAddonsConfigRayOperatorConfigOutput) RayClusterMonitoringConfigs() GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigRayOperatorConfig) []GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
+		return v.RayClusterMonitoringConfigs
+	}).(GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigRayOperatorConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigRayOperatorConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigArrayOutput) ToGetClusterAddonsConfigRayOperatorConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigArrayOutput) ToGetClusterAddonsConfigRayOperatorConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigRayOperatorConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigRayOperatorConfig {
+		return vs[0].([]GetClusterAddonsConfigRayOperatorConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigRayOperatorConfigOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput is an input type that accepts GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs and GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput` via:
+//
+//	GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{...}
+type GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return i.ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput)
+}
+
+// GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayInput is an input type that accepts GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArray and GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArray{ GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{...} }
+type GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArray []GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArray) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArray) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+		return vs[0].([]GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput is an input type that accepts GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs and GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput` via:
+//
+//	GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{...}
+type GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return i.ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput)
+}
+
+// GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayInput is an input type that accepts GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray and GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray{ GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{...} }
+type GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput
+	ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray []GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput() GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput) ToGetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
+		return vs[0].([]GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput)
 }
 
 type GetClusterAddonsConfigStatefulHaConfig struct {
@@ -59228,6 +60022,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigKalmConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigKalmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigArrayInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfigInput)(nil)).Elem(), ClusterAddonsConfigStatefulHaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigStatefulHaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), ClusterAuthenticatorGroupsConfigArgs{})
@@ -59602,6 +60402,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigKalmConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigKalmConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfigInput)(nil)).Elem(), GetClusterAddonsConfigStatefulHaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigStatefulHaConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), GetClusterAuthenticatorGroupsConfigArgs{})
@@ -60034,6 +60840,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigStatefulHaConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigStatefulHaConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigOutput{})
@@ -60408,6 +61220,12 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigStatefulHaConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigStatefulHaConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigOutput{})

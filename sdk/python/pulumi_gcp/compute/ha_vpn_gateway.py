@@ -23,6 +23,7 @@ class HaVpnGatewayArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,9 @@ class HaVpnGatewayArgs:
                
                - - -
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+               Default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -48,13 +52,15 @@ class HaVpnGatewayArgs:
         :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
         pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gateway_ip_version is not None:
+            pulumi.set(__self__, "gateway_ip_version", gateway_ip_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -92,6 +98,20 @@ class HaVpnGatewayArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gatewayIpVersion")
+    def gateway_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        Default value is `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "gateway_ip_version")
+
+    @gateway_ip_version.setter
+    def gateway_ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_ip_version", value)
 
     @property
     @pulumi.getter
@@ -143,7 +163,7 @@ class HaVpnGatewayArgs:
         The stack type for this VPN gateway to identify the IP protocols that are enabled.
         If not specified, IPV4_ONLY will be used.
         Default value is `IPV4_ONLY`.
-        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         return pulumi.get(self, "stack_type")
 
@@ -169,6 +189,7 @@ class HaVpnGatewayArgs:
 class _HaVpnGatewayState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -179,6 +200,9 @@ class _HaVpnGatewayState:
         """
         Input properties used for looking up and filtering HaVpnGateway resources.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+               Default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -197,12 +221,14 @@ class _HaVpnGatewayState:
         :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gateway_ip_version is not None:
+            pulumi.set(__self__, "gateway_ip_version", gateway_ip_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -229,6 +255,20 @@ class _HaVpnGatewayState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gatewayIpVersion")
+    def gateway_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        Default value is `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "gateway_ip_version")
+
+    @gateway_ip_version.setter
+    def gateway_ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_ip_version", value)
 
     @property
     @pulumi.getter
@@ -307,7 +347,7 @@ class _HaVpnGatewayState:
         The stack type for this VPN gateway to identify the IP protocols that are enabled.
         If not specified, IPV4_ONLY will be used.
         Default value is `IPV4_ONLY`.
-        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         return pulumi.get(self, "stack_type")
 
@@ -335,6 +375,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -477,6 +518,9 @@ class HaVpnGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+               Default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -494,7 +538,7 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HaVpnGatewayVpnInterfaceArgs', 'HaVpnGatewayVpnInterfaceArgsDict']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
@@ -652,6 +696,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -668,6 +713,7 @@ class HaVpnGateway(pulumi.CustomResource):
             __props__ = HaVpnGatewayArgs.__new__(HaVpnGatewayArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["gateway_ip_version"] = gateway_ip_version
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
@@ -688,6 +734,7 @@ class HaVpnGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            gateway_ip_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -703,6 +750,9 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+               Default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -721,7 +771,7 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HaVpnGatewayVpnInterfaceArgs', 'HaVpnGatewayVpnInterfaceArgsDict']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
@@ -730,6 +780,7 @@ class HaVpnGateway(pulumi.CustomResource):
         __props__ = _HaVpnGatewayState.__new__(_HaVpnGatewayState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["gateway_ip_version"] = gateway_ip_version
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
@@ -746,6 +797,16 @@ class HaVpnGateway(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gatewayIpVersion")
+    def gateway_ip_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        Default value is `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "gateway_ip_version")
 
     @property
     @pulumi.getter
@@ -804,7 +865,7 @@ class HaVpnGateway(pulumi.CustomResource):
         The stack type for this VPN gateway to identify the IP protocols that are enabled.
         If not specified, IPV4_ONLY will be used.
         Default value is `IPV4_ONLY`.
-        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         return pulumi.get(self, "stack_type")
 

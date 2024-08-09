@@ -209,6 +209,11 @@ export class AppProfile extends pulumi.CustomResource {
      */
     public readonly appProfileId!: pulumi.Output<string>;
     /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     */
+    public readonly dataBoostIsolationReadOnly!: pulumi.Output<outputs.bigquery.AppProfileDataBoostIsolationReadOnly | undefined>;
+    /**
      * Long form description of the use case for this app profile.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -265,6 +270,7 @@ export class AppProfile extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AppProfileState | undefined;
             resourceInputs["appProfileId"] = state ? state.appProfileId : undefined;
+            resourceInputs["dataBoostIsolationReadOnly"] = state ? state.dataBoostIsolationReadOnly : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ignoreWarnings"] = state ? state.ignoreWarnings : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
@@ -280,6 +286,7 @@ export class AppProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'appProfileId'");
             }
             resourceInputs["appProfileId"] = args ? args.appProfileId : undefined;
+            resourceInputs["dataBoostIsolationReadOnly"] = args ? args.dataBoostIsolationReadOnly : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
@@ -306,6 +313,11 @@ export interface AppProfileState {
      * - - -
      */
     appProfileId?: pulumi.Input<string>;
+    /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     */
+    dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigquery.AppProfileDataBoostIsolationReadOnly>;
     /**
      * Long form description of the use case for this app profile.
      */
@@ -361,6 +373,11 @@ export interface AppProfileArgs {
      * - - -
      */
     appProfileId: pulumi.Input<string>;
+    /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     */
+    dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigquery.AppProfileDataBoostIsolationReadOnly>;
     /**
      * Long form description of the use case for this app profile.
      */

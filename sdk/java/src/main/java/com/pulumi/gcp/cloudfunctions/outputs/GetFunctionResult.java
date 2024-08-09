@@ -27,6 +27,7 @@ public final class GetFunctionResult {
      */
     private Integer availableMemoryMb;
     private Map<String,Object> buildEnvironmentVariables;
+    private String buildServiceAccount;
     private String buildWorkerPool;
     /**
      * @return Description of the function.
@@ -143,6 +144,9 @@ public final class GetFunctionResult {
     }
     public Map<String,Object> buildEnvironmentVariables() {
         return this.buildEnvironmentVariables;
+    }
+    public String buildServiceAccount() {
+        return this.buildServiceAccount;
     }
     public String buildWorkerPool() {
         return this.buildWorkerPool;
@@ -327,6 +331,7 @@ public final class GetFunctionResult {
     public static final class Builder {
         private Integer availableMemoryMb;
         private Map<String,Object> buildEnvironmentVariables;
+        private String buildServiceAccount;
         private String buildWorkerPool;
         private String description;
         private String dockerRegistry;
@@ -365,6 +370,7 @@ public final class GetFunctionResult {
     	      Objects.requireNonNull(defaults);
     	      this.availableMemoryMb = defaults.availableMemoryMb;
     	      this.buildEnvironmentVariables = defaults.buildEnvironmentVariables;
+    	      this.buildServiceAccount = defaults.buildServiceAccount;
     	      this.buildWorkerPool = defaults.buildWorkerPool;
     	      this.description = defaults.description;
     	      this.dockerRegistry = defaults.dockerRegistry;
@@ -414,6 +420,14 @@ public final class GetFunctionResult {
               throw new MissingRequiredPropertyException("GetFunctionResult", "buildEnvironmentVariables");
             }
             this.buildEnvironmentVariables = buildEnvironmentVariables;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder buildServiceAccount(String buildServiceAccount) {
+            if (buildServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "buildServiceAccount");
+            }
+            this.buildServiceAccount = buildServiceAccount;
             return this;
         }
         @CustomType.Setter
@@ -692,6 +706,7 @@ public final class GetFunctionResult {
             final var _resultValue = new GetFunctionResult();
             _resultValue.availableMemoryMb = availableMemoryMb;
             _resultValue.buildEnvironmentVariables = buildEnvironmentVariables;
+            _resultValue.buildServiceAccount = buildServiceAccount;
             _resultValue.buildWorkerPool = buildWorkerPool;
             _resultValue.description = description;
             _resultValue.dockerRegistry = dockerRegistry;

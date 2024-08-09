@@ -12,6 +12,22 @@ namespace Pulumi.Gcp.Workbench.Inputs
 
     public sealed class InstanceGceSetupNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessConfigs")]
+        private InputList<Inputs.InstanceGceSetupNetworkInterfaceAccessConfigGetArgs>? _accessConfigs;
+
+        /// <summary>
+        /// Optional. An array of configurations for this interface. Currently, only one access
+        /// config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+        /// instance will have an external internet access through an ephemeral
+        /// external IP address.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceGceSetupNetworkInterfaceAccessConfigGetArgs> AccessConfigs
+        {
+            get => _accessConfigs ?? (_accessConfigs = new InputList<Inputs.InstanceGceSetupNetworkInterfaceAccessConfigGetArgs>());
+            set => _accessConfigs = value;
+        }
+
         /// <summary>
         /// Optional. The name of the VPC that this VM instance is in.
         /// </summary>

@@ -19,8 +19,6 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
     /**
      * @return The URI of the virtual machine resource
      * 
-     * ***
-     * 
      */
     private @Nullable String virtualMachine;
 
@@ -34,8 +32,6 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
     }
     /**
      * @return The URI of the virtual machine resource
-     * 
-     * ***
      * 
      */
     public Optional<String> virtualMachine() {

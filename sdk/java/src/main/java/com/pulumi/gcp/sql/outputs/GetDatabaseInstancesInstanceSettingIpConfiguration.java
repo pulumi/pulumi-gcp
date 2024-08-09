@@ -46,7 +46,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
      */
     private Boolean requireSsl;
     /**
-     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
      * 
      */
     private String sslMode;
@@ -98,7 +98,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         return this.requireSsl;
     }
     /**
-     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
      * 
      */
     public String sslMode() {

@@ -9,6 +9,7 @@ resources:
       type: "FIRESTORE_NATIVE"
       project: ${gcpProj}
       locationId: "us-central1"
+      deletionPolicy: DELETE
   noidx:
     type: gcp:firestore:Field
     properties:

@@ -185,6 +185,12 @@ import (
 type Disk struct {
 	pulumi.CustomResourceState
 
+	// The accessMode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE
+	// * READ_WRITE_MANY
+	// * READ_ONLY_SINGLE
+	AccessMode pulumi.StringOutput `pulumi:"accessMode"`
 	// A nested object resource
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
@@ -391,6 +397,12 @@ func GetDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Disk resources.
 type diskState struct {
+	// The accessMode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE
+	// * READ_WRITE_MANY
+	// * READ_ONLY_SINGLE
+	AccessMode *string `pulumi:"accessMode"`
 	// A nested object resource
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
@@ -563,6 +575,12 @@ type diskState struct {
 }
 
 type DiskState struct {
+	// The accessMode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE
+	// * READ_WRITE_MANY
+	// * READ_ONLY_SINGLE
+	AccessMode pulumi.StringPtrInput
 	// A nested object resource
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
@@ -739,6 +757,12 @@ func (DiskState) ElementType() reflect.Type {
 }
 
 type diskArgs struct {
+	// The accessMode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE
+	// * READ_WRITE_MANY
+	// * READ_ONLY_SINGLE
+	AccessMode *string `pulumi:"accessMode"`
 	// A nested object resource
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
@@ -874,6 +898,12 @@ type diskArgs struct {
 
 // The set of arguments for constructing a Disk resource.
 type DiskArgs struct {
+	// The accessMode of the disk.
+	// For example:
+	// * READ_WRITE_SINGLE
+	// * READ_WRITE_MANY
+	// * READ_ONLY_SINGLE
+	AccessMode pulumi.StringPtrInput
 	// A nested object resource
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
@@ -1092,6 +1122,15 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+// The accessMode of the disk.
+// For example:
+// * READ_WRITE_SINGLE
+// * READ_WRITE_MANY
+// * READ_ONLY_SINGLE
+func (o DiskOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AccessMode }).(pulumi.StringOutput)
 }
 
 // A nested object resource

@@ -301,8 +301,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-     * 
      */
     @Import(name="queuedProvisioning")
     private @Nullable Output<NodePoolQueuedProvisioningArgs> queuedProvisioning;
@@ -310,8 +308,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Optional<Output<NodePoolQueuedProvisioningArgs>> queuedProvisioning() {
@@ -777,8 +773,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param queuedProvisioning Specifies node pool-level settings of queued provisioning.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-         * 
          * @return builder
          * 
          */
@@ -790,8 +784,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param queuedProvisioning Specifies node pool-level settings of queued provisioning.
          * Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 

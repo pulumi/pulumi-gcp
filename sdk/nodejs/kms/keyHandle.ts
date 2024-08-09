@@ -170,7 +170,7 @@ export class KeyHandle extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      */
     public readonly resourceTypeSelector!: pulumi.Output<string>;
 
@@ -240,7 +240,7 @@ export interface KeyHandleState {
     project?: pulumi.Input<string>;
     /**
      * Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      */
     resourceTypeSelector?: pulumi.Input<string>;
 }
@@ -268,7 +268,7 @@ export interface KeyHandleArgs {
     project?: pulumi.Input<string>;
     /**
      * Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      */
     resourceTypeSelector: pulumi.Input<string>;
 }

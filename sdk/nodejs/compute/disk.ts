@@ -158,6 +158,14 @@ export class Disk extends pulumi.CustomResource {
     }
 
     /**
+     * The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     */
+    public readonly accessMode!: pulumi.Output<string>;
+    /**
      * A nested object resource
      * Structure is documented below.
      */
@@ -413,6 +421,7 @@ export class Disk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskState | undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
             resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -451,6 +460,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DiskArgs | undefined;
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
@@ -499,6 +509,14 @@ export class Disk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Disk resources.
  */
 export interface DiskState {
+    /**
+     * The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     */
+    accessMode?: pulumi.Input<string>;
     /**
      * A nested object resource
      * Structure is documented below.
@@ -747,6 +765,14 @@ export interface DiskState {
  * The set of arguments for constructing a Disk resource.
  */
 export interface DiskArgs {
+    /**
+     * The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     */
+    accessMode?: pulumi.Input<string>;
     /**
      * A nested object resource
      * Structure is documented below.

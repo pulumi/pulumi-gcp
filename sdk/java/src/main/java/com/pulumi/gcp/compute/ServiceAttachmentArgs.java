@@ -223,16 +223,14 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
     @Import(name="targetService", required=true)
     private Output<String> targetService;
 
     /**
-     * @return The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * @return The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
     public Output<String> targetService() {
@@ -590,8 +588,7 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param targetService The URL of a forwarding rule that represents the service identified by
-         * this service attachment.
+         * @param targetService The URL of a service serving the endpoint identified by this service attachment.
          * 
          * @return builder
          * 
@@ -602,8 +599,7 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param targetService The URL of a forwarding rule that represents the service identified by
-         * this service attachment.
+         * @param targetService The URL of a service serving the endpoint identified by this service attachment.
          * 
          * @return builder
          * 

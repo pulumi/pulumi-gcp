@@ -128,10 +128,6 @@ namespace Pulumi.Gcp.Workbench
     ///                 { "terraform", "true" },
     ///             },
     ///         },
-    ///         InstanceOwners = new[]
-    ///         {
-    ///             "my@service-account.com",
-    ///         },
     ///         Labels = 
     ///         {
     ///             { "k", "val" },
@@ -163,6 +159,21 @@ namespace Pulumi.Gcp.Workbench
     ///         Network = myNetwork.Id,
     ///         Region = "us-central1",
     ///         IpCidrRange = "10.0.1.0/24",
+    ///     });
+    /// 
+    ///     var @static = new Gcp.Compute.Address("static", new()
+    ///     {
+    ///         Name = "wbi-test-default",
+    ///     });
+    /// 
+    ///     var actAsPermission = new Gcp.ServiceAccount.IAMBinding("act_as_permission", new()
+    ///     {
+    ///         ServiceAccountId = "projects/my-project-name/serviceAccounts/my@service-account.com",
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:example@example.com",
+    ///         },
     ///     });
     /// 
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
@@ -215,6 +226,13 @@ namespace Pulumi.Gcp.Workbench
     ///                     Network = myNetwork.Id,
     ///                     Subnet = mySubnetwork.Id,
     ///                     NicType = "GVNIC",
+    ///                     AccessConfigs = new[]
+    ///                     {
+    ///                         new Gcp.Workbench.Inputs.InstanceGceSetupNetworkInterfaceAccessConfigArgs
+    ///                         {
+    ///                             ExternalIp = @static.IPAddress,
+    ///                         },
+    ///                     },
     ///                 },
     ///             },
     ///             Metadata = 
@@ -231,7 +249,7 @@ namespace Pulumi.Gcp.Workbench
     ///         DisableProxyAccess = true,
     ///         InstanceOwners = new[]
     ///         {
-    ///             "my@service-account.com",
+    ///             "example@example.com",
     ///         },
     ///         Labels = 
     ///         {

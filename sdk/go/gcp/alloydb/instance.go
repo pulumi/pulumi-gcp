@@ -271,6 +271,9 @@ type Instance struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrOutput `pulumi:"networkConfig"`
+	// Configuration for enhanced query insights.
+	// Structure is documented below.
+	ObservabilityConfig InstanceObservabilityConfigOutput `pulumi:"observabilityConfig"`
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig InstancePscInstanceConfigPtrOutput `pulumi:"pscInstanceConfig"`
@@ -389,6 +392,9 @@ type instanceState struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// Configuration for enhanced query insights.
+	// Structure is documented below.
+	ObservabilityConfig *InstanceObservabilityConfig `pulumi:"observabilityConfig"`
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig *InstancePscInstanceConfig `pulumi:"pscInstanceConfig"`
@@ -464,6 +470,9 @@ type InstanceState struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
+	// Configuration for enhanced query insights.
+	// Structure is documented below.
+	ObservabilityConfig InstanceObservabilityConfigPtrInput
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig InstancePscInstanceConfigPtrInput
@@ -534,6 +543,9 @@ type instanceArgs struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// Configuration for enhanced query insights.
+	// Structure is documented below.
+	ObservabilityConfig *InstanceObservabilityConfig `pulumi:"observabilityConfig"`
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig *InstancePscInstanceConfig `pulumi:"pscInstanceConfig"`
@@ -586,6 +598,9 @@ type InstanceArgs struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
+	// Configuration for enhanced query insights.
+	// Structure is documented below.
+	ObservabilityConfig InstanceObservabilityConfigPtrInput
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig InstancePscInstanceConfigPtrInput
@@ -781,6 +796,12 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkConfigPtrOutput { return v.NetworkConfig }).(InstanceNetworkConfigPtrOutput)
+}
+
+// Configuration for enhanced query insights.
+// Structure is documented below.
+func (o InstanceOutput) ObservabilityConfig() InstanceObservabilityConfigOutput {
+	return o.ApplyT(func(v *Instance) InstanceObservabilityConfigOutput { return v.ObservabilityConfig }).(InstanceObservabilityConfigOutput)
 }
 
 // Configuration for Private Service Connect (PSC) for the instance.

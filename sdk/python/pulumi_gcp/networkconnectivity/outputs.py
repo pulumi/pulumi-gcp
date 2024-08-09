@@ -578,6 +578,7 @@ class SpokeLinkedRouterApplianceInstances(dict):
                  site_to_site_data_transfer: bool):
         """
         :param Sequence['SpokeLinkedRouterApplianceInstancesInstanceArgs'] instances: The list of router appliance instances
+               Structure is documented below.
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
         pulumi.set(__self__, "instances", instances)
@@ -588,6 +589,7 @@ class SpokeLinkedRouterApplianceInstances(dict):
     def instances(self) -> Sequence['outputs.SpokeLinkedRouterApplianceInstancesInstance']:
         """
         The list of router appliance instances
+        Structure is documented below.
         """
         return pulumi.get(self, "instances")
 
@@ -627,8 +629,6 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
         """
         :param str ip_address: The IP address on the VM to use for peering.
         :param str virtual_machine: The URI of the virtual machine resource
-               
-               - - -
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -648,8 +648,6 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
     def virtual_machine(self) -> Optional[str]:
         """
         The URI of the virtual machine resource
-
-        - - -
         """
         return pulumi.get(self, "virtual_machine")
 

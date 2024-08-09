@@ -69,6 +69,7 @@ type LookupFunctionResult struct {
 	// Available memory (in MB) to the function.
 	AvailableMemoryMb         int                    `pulumi:"availableMemoryMb"`
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
+	BuildServiceAccount       string                 `pulumi:"buildServiceAccount"`
 	BuildWorkerPool           string                 `pulumi:"buildWorkerPool"`
 	// Description of the function.
 	Description      string            `pulumi:"description"`
@@ -175,6 +176,10 @@ func (o LookupFunctionResultOutput) AvailableMemoryMb() pulumi.IntOutput {
 
 func (o LookupFunctionResultOutput) BuildEnvironmentVariables() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupFunctionResult) map[string]interface{} { return v.BuildEnvironmentVariables }).(pulumi.MapOutput)
+}
+
+func (o LookupFunctionResultOutput) BuildServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildServiceAccount }).(pulumi.StringOutput)
 }
 
 func (o LookupFunctionResultOutput) BuildWorkerPool() pulumi.StringOutput {

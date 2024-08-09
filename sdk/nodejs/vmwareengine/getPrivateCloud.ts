@@ -59,6 +59,7 @@ export interface GetPrivateCloudArgs {
  * A collection of values returned by getPrivateCloud.
  */
 export interface GetPrivateCloudResult {
+    readonly deletionDelayHours: number;
     readonly description: string;
     readonly hcxes: outputs.vmwareengine.GetPrivateCloudHcx[];
     /**
@@ -71,6 +72,7 @@ export interface GetPrivateCloudResult {
     readonly networkConfigs: outputs.vmwareengine.GetPrivateCloudNetworkConfig[];
     readonly nsxes: outputs.vmwareengine.GetPrivateCloudNsx[];
     readonly project?: string;
+    readonly sendDeletionDelayHoursIfZero: boolean;
     readonly state: string;
     readonly type: string;
     readonly uid: string;

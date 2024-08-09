@@ -6,7 +6,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkconnectivity.inputs.HubRoutingVpcArgs;
-import java.lang.Object;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -54,19 +54,33 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="effectiveLabels")
-    private @Nullable Output<Map<String,Object>> effectiveLabels;
+    private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
 
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
      * 
+     */
+    @Import(name="exportPsc")
+    private @Nullable Output<Boolean> exportPsc;
+
+    /**
+     * @return Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     * 
+     */
+    public Optional<Output<Boolean>> exportPsc() {
+        return Optional.ofNullable(this.exportPsc);
+    }
+
+    /**
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -76,7 +90,6 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -105,14 +118,16 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -120,22 +135,25 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
-    private @Nullable Output<Map<String,Object>> pulumiLabels;
+    private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
         return Optional.ofNullable(this.pulumiLabels);
     }
 
     /**
      * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+     * Structure is documented below.
      * 
      */
     @Import(name="routingVpcs")
@@ -143,6 +161,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<HubRoutingVpcArgs>>> routingVpcs() {
@@ -150,14 +169,14 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * Output only. The current lifecycle state of this hub.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * @return Output only. The current lifecycle state of this hub.
      * 
      */
     public Optional<Output<String>> state() {
@@ -200,6 +219,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.exportPsc = $.exportPsc;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
@@ -276,7 +296,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
@@ -287,13 +307,33 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
-         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+         * @param exportPsc Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
          * 
+         * @return builder
+         * 
+         */
+        public Builder exportPsc(@Nullable Output<Boolean> exportPsc) {
+            $.exportPsc = exportPsc;
+            return this;
+        }
+
+        /**
+         * @param exportPsc Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPsc(Boolean exportPsc) {
+            return exportPsc(Output.of(exportPsc));
+        }
+
+        /**
+         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -307,7 +347,6 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -344,7 +383,8 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -355,7 +395,8 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -365,28 +406,31 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
             $.pulumiLabels = pulumiLabels;
             return this;
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**
          * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -398,6 +442,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -408,6 +453,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -417,7 +463,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+         * @param state Output only. The current lifecycle state of this hub.
          * 
          * @return builder
          * 
@@ -428,7 +474,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+         * @param state Output only. The current lifecycle state of this hub.
          * 
          * @return builder
          * 

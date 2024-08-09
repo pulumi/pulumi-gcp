@@ -220,6 +220,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/disk:Disk")
 public class Disk extends com.pulumi.resources.CustomResource {
     /**
+     * The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
+    private Output<String> accessMode;
+
+    /**
+     * @return The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    public Output<String> accessMode() {
+        return this.accessMode;
+    }
+    /**
      * A nested object resource
      * Structure is documented below.
      * 
@@ -940,11 +962,18 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Disk(String name, @Nullable DiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/disk:Disk", name, args == null ? DiskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/disk:Disk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Disk(String name, Output<String> id, @Nullable DiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/disk:Disk", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DiskArgs makeArgs(@Nullable DiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DiskArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

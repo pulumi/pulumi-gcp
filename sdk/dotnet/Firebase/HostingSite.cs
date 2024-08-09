@@ -103,8 +103,8 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> DefaultUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The fully-qualified resource name of the Hosting site, in the
-        /// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+        /// Output only. The fully-qualified resource name of the Hosting site, in
+        /// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
         /// Firebase project's
         /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
         /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -219,8 +219,8 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DefaultUrl { get; set; }
 
         /// <summary>
-        /// Output only. The fully-qualified resource name of the Hosting site, in the
-        /// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+        /// Output only. The fully-qualified resource name of the Hosting site, in
+        /// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
         /// Firebase project's
         /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
         /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).

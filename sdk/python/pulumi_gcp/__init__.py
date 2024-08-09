@@ -748,6 +748,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/environmentKeyvaluemaps",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps": "EnvironmentKeyvaluemaps"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/environmentKeyvaluemapsEntries",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries": "EnvironmentKeyvaluemapsEntries"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/flowhook",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -2980,6 +2996,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/resizeRequest",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/resizeRequest:ResizeRequest": "ResizeRequest"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/resourcePolicy",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3024,6 +3048,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/routerPeer:RouterPeer": "RouterPeer"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/routerRoutePolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/routerRoutePolicy:RouterRoutePolicy": "RouterRoutePolicy"
   }
  },
  {
@@ -7072,6 +7104,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "SourceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationMuteConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig": "V2OrganizationMuteConfig"
   }
  },
  {

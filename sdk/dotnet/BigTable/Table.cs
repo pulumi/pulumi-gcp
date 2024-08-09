@@ -61,6 +61,11 @@ namespace Pulumi.Gcp.BigTable
     ///             },
     ///         },
     ///         ChangeStreamRetention = "24h0m0s",
+    ///         AutomatedBackupPolicy = new Gcp.BigTable.Inputs.TableAutomatedBackupPolicyArgs
+    ///         {
+    ///             RetentionPeriod = "72h0m0s",
+    ///             Frequency = "24h0m0s",
+    ///         },
     ///     });
     /// 
     /// });
@@ -96,16 +101,15 @@ namespace Pulumi.Gcp.BigTable
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-        /// Retention Period and Frequency to 0.
+        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+        /// 
+        /// -----
         /// </summary>
         [Output("automatedBackupPolicy")]
         public Output<Outputs.TableAutomatedBackupPolicy?> AutomatedBackupPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        /// 
-        /// -----
         /// </summary>
         [Output("changeStreamRetention")]
         public Output<string> ChangeStreamRetention { get; private set; } = null!;
@@ -196,16 +200,15 @@ namespace Pulumi.Gcp.BigTable
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-        /// Retention Period and Frequency to 0.
+        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+        /// 
+        /// -----
         /// </summary>
         [Input("automatedBackupPolicy")]
         public Input<Inputs.TableAutomatedBackupPolicyArgs>? AutomatedBackupPolicy { get; set; }
 
         /// <summary>
         /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        /// 
-        /// -----
         /// </summary>
         [Input("changeStreamRetention")]
         public Input<string>? ChangeStreamRetention { get; set; }
@@ -270,16 +273,15 @@ namespace Pulumi.Gcp.BigTable
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-        /// Retention Period and Frequency to 0.
+        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+        /// 
+        /// -----
         /// </summary>
         [Input("automatedBackupPolicy")]
         public Input<Inputs.TableAutomatedBackupPolicyGetArgs>? AutomatedBackupPolicy { get; set; }
 
         /// <summary>
         /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        /// 
-        /// -----
         /// </summary>
         [Input("changeStreamRetention")]
         public Input<string>? ChangeStreamRetention { get; set; }

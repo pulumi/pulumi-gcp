@@ -755,7 +755,7 @@ if not MYPY:
         deny_maintenance_period: NotRequired[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgsDict']]
         disk_autoresize: NotRequired[pulumi.Input[bool]]
         """
-        Enables auto-resizing of the storage size. Defaults to `true`.
+        Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         """
         disk_autoresize_limit: NotRequired[pulumi.Input[int]]
         """
@@ -763,7 +763,7 @@ if not MYPY:
         """
         disk_size: NotRequired[pulumi.Input[int]]
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         """
         disk_type: NotRequired[pulumi.Input[str]]
         """
@@ -772,6 +772,10 @@ if not MYPY:
         edition: NotRequired[pulumi.Input[str]]
         """
         The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        """
+        enable_dataplex_integration: NotRequired[pulumi.Input[bool]]
+        """
+        Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         """
         enable_google_ml_integration: NotRequired[pulumi.Input[bool]]
         """
@@ -829,6 +833,7 @@ class DatabaseInstanceSettingsArgs:
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 enable_dataplex_integration: Optional[pulumi.Input[bool]] = None,
                  enable_google_ml_integration: Optional[pulumi.Input[bool]] = None,
                  insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
                  ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
@@ -856,11 +861,12 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[str] connector_enforcement: Specifies if connections must use Cloud SQL connectors.
         :param pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs'] data_cache_config: Data cache configurations.
         :param pulumi.Input[bool] deletion_protection_enabled: Configuration to protect against accidental instance deletion.
-        :param pulumi.Input[bool] disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`.
+        :param pulumi.Input[bool] disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         :param pulumi.Input[int] disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         :param pulumi.Input[str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        :param pulumi.Input[bool] enable_dataplex_integration: Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         :param pulumi.Input[bool] enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         :param pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs'] insights_config: Configuration of Query Insights.
         :param pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs'] maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
@@ -903,6 +909,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if enable_dataplex_integration is not None:
+            pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         if enable_google_ml_integration is not None:
             pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         if insights_config is not None:
@@ -1067,7 +1075,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables auto-resizing of the storage size. Defaults to `true`.
+        Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
 
@@ -1091,7 +1099,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         """
         return pulumi.get(self, "disk_size")
 
@@ -1122,6 +1130,18 @@ class DatabaseInstanceSettingsArgs:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="enableDataplexIntegration")
+    def enable_dataplex_integration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_dataplex_integration")
+
+    @enable_dataplex_integration.setter
+    def enable_dataplex_integration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_dataplex_integration", value)
 
     @property
     @pulumi.getter(name="enableGoogleMlIntegration")
@@ -1609,11 +1629,11 @@ if not MYPY:
     class DatabaseInstanceSettingsDenyMaintenancePeriodArgsDict(TypedDict):
         end_date: pulumi.Input[str]
         """
-        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         """
         start_date: pulumi.Input[str]
         """
-        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         """
         time: pulumi.Input[str]
         """
@@ -1629,8 +1649,8 @@ class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
                  start_date: pulumi.Input[str],
                  time: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] end_date: "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
-        :param pulumi.Input[str] start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param pulumi.Input[str] end_date: "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
+        :param pulumi.Input[str] start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         :param pulumi.Input[str] time: Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -1641,7 +1661,7 @@ class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
     @pulumi.getter(name="endDate")
     def end_date(self) -> pulumi.Input[str]:
         """
-        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         """
         return pulumi.get(self, "end_date")
 
@@ -1653,7 +1673,7 @@ class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
     @pulumi.getter(name="startDate")
     def start_date(self) -> pulumi.Input[str]:
         """
-        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         """
         return pulumi.get(self, "start_date")
 
@@ -1821,7 +1841,7 @@ if not MYPY:
         """
         ssl_mode: NotRequired[pulumi.Input[str]]
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
         * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
         * For MySQL instances, use the same value pairs as the PostgreSQL instances.
         * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -1853,7 +1873,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]] psc_configs: PSC settings for a Cloud SQL instance.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-        :param pulumi.Input[str] ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+        :param pulumi.Input[str] ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
                * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
                * For MySQL instances, use the same value pairs as the PostgreSQL instances.
                * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -1970,7 +1990,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
         * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
         * For MySQL instances, use the same value pairs as the PostgreSQL instances.
         * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.

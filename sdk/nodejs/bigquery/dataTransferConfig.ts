@@ -53,6 +53,34 @@ import * as utilities from "../utilities";
  *     dependsOn: [permissions],
  * });
  * ```
+ * ### Bigquerydatatransfer Config Salesforce
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const myDataset = new gcp.bigquery.Dataset("my_dataset", {
+ *     datasetId: "my_dataset",
+ *     description: "My dataset",
+ *     location: "asia-northeast1",
+ * });
+ * const salesforceConfig = new gcp.bigquery.DataTransferConfig("salesforce_config", {
+ *     displayName: "my-salesforce-config",
+ *     location: "asia-northeast1",
+ *     dataSourceId: "salesforce",
+ *     schedule: "first sunday of quarter 00:00",
+ *     destinationDatasetId: myDataset.datasetId,
+ *     params: {
+ *         "connector.authentication.oauth.clientId": "client-id",
+ *         "connector.authentication.oauth.clientSecret": "client-secret",
+ *         "connector.authentication.username": "username",
+ *         "connector.authentication.password": "password",
+ *         "connector.authentication.securityToken": "security-token",
+ *         assets: "[\"asset-a\",\"asset-b\"]",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

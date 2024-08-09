@@ -1570,6 +1570,7 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Uris() pulumi.StringArrayOu
 
 type SpokeLinkedRouterApplianceInstances struct {
 	// The list of router appliance instances
+	// Structure is documented below.
 	Instances []SpokeLinkedRouterApplianceInstancesInstance `pulumi:"instances"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
@@ -1588,6 +1589,7 @@ type SpokeLinkedRouterApplianceInstancesInput interface {
 
 type SpokeLinkedRouterApplianceInstancesArgs struct {
 	// The list of router appliance instances
+	// Structure is documented below.
 	Instances SpokeLinkedRouterApplianceInstancesInstanceArrayInput `pulumi:"instances"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
@@ -1671,6 +1673,7 @@ func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceI
 }
 
 // The list of router appliance instances
+// Structure is documented below.
 func (o SpokeLinkedRouterApplianceInstancesOutput) Instances() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []SpokeLinkedRouterApplianceInstancesInstance {
 		return v.Instances
@@ -1707,6 +1710,7 @@ func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Elem() SpokeLinkedRouterAp
 }
 
 // The list of router appliance instances
+// Structure is documented below.
 func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Instances() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []SpokeLinkedRouterApplianceInstancesInstance {
 		if v == nil {
@@ -1730,8 +1734,6 @@ type SpokeLinkedRouterApplianceInstancesInstance struct {
 	// The IP address on the VM to use for peering.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
-	//
-	// ***
 	VirtualMachine *string `pulumi:"virtualMachine"`
 }
 
@@ -1750,8 +1752,6 @@ type SpokeLinkedRouterApplianceInstancesInstanceArgs struct {
 	// The IP address on the VM to use for peering.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
-	//
-	// ***
 	VirtualMachine pulumi.StringPtrInput `pulumi:"virtualMachine"`
 }
 
@@ -1812,8 +1812,6 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) IpAddress() pulumi.St
 }
 
 // The URI of the virtual machine resource
-//
-// ***
 func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) VirtualMachine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) *string { return v.VirtualMachine }).(pulumi.StringPtrOutput)
 }

@@ -12,22 +12,22 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceGroupManagerUpdatePolicy {
     /**
-     * @return The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+     * @return Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
      * 
      */
     private Integer maxSurgeFixed;
     /**
-     * @return The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+     * @return Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
      * 
      */
     private Integer maxSurgePercent;
     /**
-     * @return The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+     * @return Specifies a fixed number of VM instances. This must be a positive integer.
      * 
      */
     private Integer maxUnavailableFixed;
     /**
-     * @return The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+     * @return Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
      * 
      */
     private Integer maxUnavailablePercent;
@@ -59,28 +59,28 @@ public final class GetInstanceGroupManagerUpdatePolicy {
 
     private GetInstanceGroupManagerUpdatePolicy() {}
     /**
-     * @return The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+     * @return Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
      * 
      */
     public Integer maxSurgeFixed() {
         return this.maxSurgeFixed;
     }
     /**
-     * @return The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+     * @return Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
      * 
      */
     public Integer maxSurgePercent() {
         return this.maxSurgePercent;
     }
     /**
-     * @return The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+     * @return Specifies a fixed number of VM instances. This must be a positive integer.
      * 
      */
     public Integer maxUnavailableFixed() {
         return this.maxUnavailableFixed;
     }
     /**
-     * @return The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+     * @return Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
      * 
      */
     public Integer maxUnavailablePercent() {

@@ -113,8 +113,8 @@ if not MYPY:
         annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -190,8 +190,8 @@ class DomainMappingMetadataArgs:
         :param pulumi.Input[str] namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -263,8 +263,8 @@ class DomainMappingMetadataArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -889,8 +889,8 @@ if not MYPY:
         annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -977,8 +977,8 @@ class ServiceMetadataArgs:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1048,8 +1048,8 @@ class ServiceMetadataArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1698,8 +1698,8 @@ if not MYPY:
         annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1778,8 +1778,8 @@ class ServiceTemplateMetadataArgs:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               may be set by external tools to store and retrieve arbitrary metadata.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1843,8 +1843,8 @@ class ServiceTemplateMetadataArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        may be set by external tools to store and retrieve arbitrary metadata.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -1975,7 +1975,8 @@ if not MYPY:
         container_concurrency: NotRequired[pulumi.Input[int]]
         """
         ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-        requests per container of the Revision. Values are:
+        requests per container of the Revision. If not specified or 0, defaults to 80 when
+        requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArgsDict']]]]
         """
@@ -2022,7 +2023,8 @@ class ServiceTemplateSpecArgs:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]]] = None):
         """
         :param pulumi.Input[int] container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-               requests per container of the Revision. Values are:
+               requests per container of the Revision. If not specified or 0, defaults to 80 when
+               requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerArgs']]] containers: Containers defines the unit of execution for this Revision.
                Structure is documented below.
         :param pulumi.Input[str] service_account_name: Email address of the IAM service account associated with the revision of the
@@ -2061,7 +2063,8 @@ class ServiceTemplateSpecArgs:
     def container_concurrency(self) -> Optional[pulumi.Input[int]]:
         """
         ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-        requests per container of the Revision. Values are:
+        requests per container of the Revision. If not specified or 0, defaults to 80 when
+        requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         return pulumi.get(self, "container_concurrency")
 

@@ -325,6 +325,13 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.InstanceNetworkConfig?> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for enhanced query insights.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("observabilityConfig")]
+        public Output<Outputs.InstanceObservabilityConfig> ObservabilityConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for Private Service Connect (PSC) for the instance.
         /// Structure is documented below.
         /// </summary>
@@ -540,6 +547,13 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.InstanceNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
+        /// Configuration for enhanced query insights.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("observabilityConfig")]
+        public Input<Inputs.InstanceObservabilityConfigArgs>? ObservabilityConfig { get; set; }
+
+        /// <summary>
         /// Configuration for Private Service Connect (PSC) for the instance.
         /// Structure is documented below.
         /// </summary>
@@ -713,6 +727,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.InstanceNetworkConfigGetArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for enhanced query insights.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("observabilityConfig")]
+        public Input<Inputs.InstanceObservabilityConfigGetArgs>? ObservabilityConfig { get; set; }
 
         /// <summary>
         /// Configuration for Private Service Connect (PSC) for the instance.

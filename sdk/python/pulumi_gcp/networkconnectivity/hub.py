@@ -22,25 +22,28 @@ __all__ = ['HubArgs', 'Hub']
 class HubArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Hub resource.
         :param pulumi.Input[str] description: An optional description of the hub.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if export_psc is not None:
+            pulumi.set(__self__, "export_psc", export_psc)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -61,11 +64,22 @@ class HubArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="exportPsc")
+    def export_psc(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        """
+        return pulumi.get(self, "export_psc")
+
+    @export_psc.setter
+    def export_psc(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "export_psc", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -82,7 +96,6 @@ class HubArgs:
         Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -95,7 +108,8 @@ class HubArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -109,11 +123,12 @@ class _HubState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  unique_id: Optional[pulumi.Input[str]] = None,
@@ -122,20 +137,22 @@ class _HubState:
         Input properties used for looking up and filtering Hub resources.
         :param pulumi.Input[str] create_time: Output only. The time the hub was created.
         :param pulumi.Input[str] description: An optional description of the hub.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
-        :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+               Structure is documented below.
+        :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.
         """
@@ -145,6 +162,8 @@ class _HubState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if export_psc is not None:
+            pulumi.set(__self__, "export_psc", export_psc)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -188,22 +207,33 @@ class _HubState:
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="exportPsc")
+    def export_psc(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        """
+        return pulumi.get(self, "export_psc")
+
+    @export_psc.setter
+    def export_psc(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "export_psc", value)
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -220,7 +250,6 @@ class _HubState:
         Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -233,7 +262,8 @@ class _HubState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -243,14 +273,15 @@ class _HubState:
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @property
@@ -258,6 +289,7 @@ class _HubState:
     def routing_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]]:
         """
         The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        Structure is documented below.
         """
         return pulumi.get(self, "routing_vpcs")
 
@@ -269,7 +301,7 @@ class _HubState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        Output only. The current lifecycle state of this hub.
         """
         return pulumi.get(self, "state")
 
@@ -308,6 +340,7 @@ class Hub(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -315,21 +348,37 @@ class Hub(pulumi.CustomResource):
         """
         The NetworkConnectivity Hub resource
 
+        To get more information about Hub, see:
+
+        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+
         ## Example Usage
 
-        ### Basic_hub
-        A basic test of a networkconnectivity hub
+        ### Network Connectivity Hub Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         primary = gcp.networkconnectivity.Hub("primary",
-            name="hub",
+            name="basic",
             description="A sample hub",
-            project="my-project-name",
             labels={
                 "label-one": "value-one",
             })
+        ```
+        ### Network Connectivity Hub With Export Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="basic",
+            description="A sample hub with Private Service Connect transitivity is enabled",
+            export_psc=True)
         ```
 
         ## Import
@@ -359,16 +408,16 @@ class Hub(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the hub.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -379,21 +428,37 @@ class Hub(pulumi.CustomResource):
         """
         The NetworkConnectivity Hub resource
 
+        To get more information about Hub, see:
+
+        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+
         ## Example Usage
 
-        ### Basic_hub
-        A basic test of a networkconnectivity hub
+        ### Network Connectivity Hub Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         primary = gcp.networkconnectivity.Hub("primary",
-            name="hub",
+            name="basic",
             description="A sample hub",
-            project="my-project-name",
             labels={
                 "label-one": "value-one",
             })
+        ```
+        ### Network Connectivity Hub With Export Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="basic",
+            description="A sample hub with Private Service Connect transitivity is enabled",
+            export_psc=True)
         ```
 
         ## Import
@@ -436,6 +501,7 @@ class Hub(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 export_psc: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -449,6 +515,7 @@ class Hub(pulumi.CustomResource):
             __props__ = HubArgs.__new__(HubArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["export_psc"] = export_psc
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -473,11 +540,12 @@ class Hub(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            export_psc: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HubRoutingVpcArgs', 'HubRoutingVpcArgsDict']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             unique_id: Optional[pulumi.Input[str]] = None,
@@ -491,20 +559,22 @@ class Hub(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time the hub was created.
         :param pulumi.Input[str] description: An optional description of the hub.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HubRoutingVpcArgs', 'HubRoutingVpcArgsDict']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
-        :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+               Structure is documented below.
+        :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.
         """
@@ -515,6 +585,7 @@ class Hub(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["export_psc"] = export_psc
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -543,18 +614,25 @@ class Hub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="exportPsc")
+    def export_psc(self) -> pulumi.Output[bool]:
+        """
+        Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        """
+        return pulumi.get(self, "export_psc")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -567,7 +645,6 @@ class Hub(pulumi.CustomResource):
         Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -576,15 +653,17 @@ class Hub(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -593,6 +672,7 @@ class Hub(pulumi.CustomResource):
     def routing_vpcs(self) -> pulumi.Output[Sequence['outputs.HubRoutingVpc']]:
         """
         The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        Structure is documented below.
         """
         return pulumi.get(self, "routing_vpcs")
 
@@ -600,7 +680,7 @@ class Hub(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        Output only. The current lifecycle state of this hub.
         """
         return pulumi.get(self, "state")
 

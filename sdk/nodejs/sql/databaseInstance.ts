@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *         tier: "db-f1-micro",
  *         ipConfiguration: {
  *             ipv4Enabled: false,
- *             privateNetwork: privateNetwork.id,
+ *             privateNetwork: privateNetwork.selfLink,
  *             enablePrivatePathForGoogleCloudServices: true,
  *         },
  *     },

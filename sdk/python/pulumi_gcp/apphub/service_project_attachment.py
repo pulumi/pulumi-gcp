@@ -32,7 +32,7 @@ class ServiceProjectAttachmentArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_project: "Immutable. Service project name in the format: \\"projects/abc\\"
                or \\"projects/123\\". As input, project name with either project id or number
-               are accepted. As output, this field will contain project number. "
+               are accepted. As output, this field will contain project number."
         """
         pulumi.set(__self__, "service_project_attachment_id", service_project_attachment_id)
         if project is not None:
@@ -74,7 +74,7 @@ class ServiceProjectAttachmentArgs:
         """
         "Immutable. Service project name in the format: \\"projects/abc\\"
         or \\"projects/123\\". As input, project name with either project id or number
-        are accepted. As output, this field will contain project number. "
+        are accepted. As output, this field will contain project number."
         """
         return pulumi.get(self, "service_project")
 
@@ -96,12 +96,12 @@ class _ServiceProjectAttachmentState:
         """
         Input properties used for looking up and filtering ServiceProjectAttachment resources.
         :param pulumi.Input[str] create_time: Output only. Create time.
-        :param pulumi.Input[str] name: "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\" "
+        :param pulumi.Input[str] name: "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\""
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_project: "Immutable. Service project name in the format: \\"projects/abc\\"
                or \\"projects/123\\". As input, project name with either project id or number
-               are accepted. As output, this field will contain project number. "
+               are accepted. As output, this field will contain project number."
         :param pulumi.Input[str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
                
                
@@ -140,7 +140,7 @@ class _ServiceProjectAttachmentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\" "
+        "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\""
         """
         return pulumi.get(self, "name")
 
@@ -167,7 +167,7 @@ class _ServiceProjectAttachmentState:
         """
         "Immutable. Service project name in the format: \\"projects/abc\\"
         or \\"projects/123\\". As input, project name with either project id or number
-        are accepted. As output, this field will contain project number. "
+        are accepted. As output, this field will contain project number."
         """
         return pulumi.get(self, "service_project")
 
@@ -294,7 +294,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_project: "Immutable. Service project name in the format: \\"projects/abc\\"
                or \\"projects/123\\". As input, project name with either project id or number
-               are accepted. As output, this field will contain project number. "
+               are accepted. As output, this field will contain project number."
         :param pulumi.Input[str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
                
                
@@ -431,12 +431,12 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. Create time.
-        :param pulumi.Input[str] name: "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\" "
+        :param pulumi.Input[str] name: "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\""
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_project: "Immutable. Service project name in the format: \\"projects/abc\\"
                or \\"projects/123\\". As input, project name with either project id or number
-               are accepted. As output, this field will contain project number. "
+               are accepted. As output, this field will contain project number."
         :param pulumi.Input[str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
                
                
@@ -469,7 +469,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\" "
+        "Identifier. The resource name of a ServiceProjectAttachment. Format:\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\""
         """
         return pulumi.get(self, "name")
 
@@ -488,7 +488,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         """
         "Immutable. Service project name in the format: \\"projects/abc\\"
         or \\"projects/123\\". As input, project name with either project id or number
-        are accepted. As output, this field will contain project number. "
+        are accepted. As output, this field will contain project number."
         """
         return pulumi.get(self, "service_project")
 

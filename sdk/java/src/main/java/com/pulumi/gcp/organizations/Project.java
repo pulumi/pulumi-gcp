@@ -308,15 +308,19 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+     * 
+     * @deprecated
+     * skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.
      * 
      */
+    @Deprecated /* skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead. */
     @Export(name="skipDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> skipDelete;
 
     /**
      * @return If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
      * 
      */
     public Output<Boolean> skipDelete() {
@@ -345,11 +349,18 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Project(String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/project:Project", name, args == null ? ProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:organizations/project:Project", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Project(String name, Output<String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:organizations/project:Project", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ProjectArgs makeArgs(@Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

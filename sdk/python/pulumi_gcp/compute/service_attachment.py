@@ -44,8 +44,7 @@ class ServiceAttachmentArgs:
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
-        :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
-               this service attachment.
+        :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
                attachment.
                Structure is documented below.
@@ -136,8 +135,7 @@ class ServiceAttachmentArgs:
     @pulumi.getter(name="targetService")
     def target_service(self) -> pulumi.Input[str]:
         """
-        The URL of a forwarding rule that represents the service identified by
-        this service attachment.
+        The URL of a service serving the endpoint identified by this service attachment.
         """
         return pulumi.get(self, "target_service")
 
@@ -313,8 +311,7 @@ class _ServiceAttachmentState:
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
-               this service attachment.
+        :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         """
         if connected_endpoints is not None:
             pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -542,8 +539,7 @@ class _ServiceAttachmentState:
     @pulumi.getter(name="targetService")
     def target_service(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of a forwarding rule that represents the service identified by
-        this service attachment.
+        The URL of a service serving the endpoint identified by this service attachment.
         """
         return pulumi.get(self, "target_service")
 
@@ -906,8 +902,7 @@ class ServiceAttachment(pulumi.CustomResource):
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
-        :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
-               this service attachment.
+        :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         """
         ...
     @overload
@@ -1346,8 +1341,7 @@ class ServiceAttachment(pulumi.CustomResource):
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
         :param pulumi.Input[str] region: URL of the region where the resource resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target_service: The URL of a forwarding rule that represents the service identified by
-               this service attachment.
+        :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1509,8 +1503,7 @@ class ServiceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="targetService")
     def target_service(self) -> pulumi.Output[str]:
         """
-        The URL of a forwarding rule that represents the service identified by
-        this service attachment.
+        The URL of a service serving the endpoint identified by this service attachment.
         """
         return pulumi.get(self, "target_service")
 

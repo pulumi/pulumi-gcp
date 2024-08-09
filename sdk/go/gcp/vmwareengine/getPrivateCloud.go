@@ -67,20 +67,22 @@ type LookupPrivateCloudArgs struct {
 
 // A collection of values returned by getPrivateCloud.
 type LookupPrivateCloudResult struct {
-	Description string               `pulumi:"description"`
-	Hcxes       []GetPrivateCloudHcx `pulumi:"hcxes"`
+	DeletionDelayHours int                  `pulumi:"deletionDelayHours"`
+	Description        string               `pulumi:"description"`
+	Hcxes              []GetPrivateCloudHcx `pulumi:"hcxes"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                             `pulumi:"id"`
-	Location           string                             `pulumi:"location"`
-	ManagementClusters []GetPrivateCloudManagementCluster `pulumi:"managementClusters"`
-	Name               string                             `pulumi:"name"`
-	NetworkConfigs     []GetPrivateCloudNetworkConfig     `pulumi:"networkConfigs"`
-	Nsxes              []GetPrivateCloudNsx               `pulumi:"nsxes"`
-	Project            *string                            `pulumi:"project"`
-	State              string                             `pulumi:"state"`
-	Type               string                             `pulumi:"type"`
-	Uid                string                             `pulumi:"uid"`
-	Vcenters           []GetPrivateCloudVcenter           `pulumi:"vcenters"`
+	Id                           string                             `pulumi:"id"`
+	Location                     string                             `pulumi:"location"`
+	ManagementClusters           []GetPrivateCloudManagementCluster `pulumi:"managementClusters"`
+	Name                         string                             `pulumi:"name"`
+	NetworkConfigs               []GetPrivateCloudNetworkConfig     `pulumi:"networkConfigs"`
+	Nsxes                        []GetPrivateCloudNsx               `pulumi:"nsxes"`
+	Project                      *string                            `pulumi:"project"`
+	SendDeletionDelayHoursIfZero bool                               `pulumi:"sendDeletionDelayHoursIfZero"`
+	State                        string                             `pulumi:"state"`
+	Type                         string                             `pulumi:"type"`
+	Uid                          string                             `pulumi:"uid"`
+	Vcenters                     []GetPrivateCloudVcenter           `pulumi:"vcenters"`
 }
 
 func LookupPrivateCloudOutput(ctx *pulumi.Context, args LookupPrivateCloudOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateCloudResultOutput {
@@ -128,6 +130,10 @@ func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutputWithCont
 	return o
 }
 
+func (o LookupPrivateCloudResultOutput) DeletionDelayHours() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) int { return v.DeletionDelayHours }).(pulumi.IntOutput)
+}
+
 func (o LookupPrivateCloudResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -163,6 +169,10 @@ func (o LookupPrivateCloudResultOutput) Nsxes() GetPrivateCloudNsxArrayOutput {
 
 func (o LookupPrivateCloudResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) SendDeletionDelayHoursIfZero() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) bool { return v.SendDeletionDelayHoursIfZero }).(pulumi.BoolOutput)
 }
 
 func (o LookupPrivateCloudResultOutput) State() pulumi.StringOutput {

@@ -14,11 +14,20 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class BackendServiceSecuritySettings
     {
         /// <summary>
+        /// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+        /// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+        /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+        /// </summary>
+        public readonly Outputs.BackendServiceSecuritySettingsAwsV4Authentication? AwsV4Authentication;
+        /// <summary>
         /// ClientTlsPolicy is a resource that specifies how a client should authenticate
         /// connections to backends of a service. This resource itself does not affect
         /// configuration unless it is attached to a backend service resource.
         /// </summary>
-        public readonly string ClientTlsPolicy;
+        public readonly string? ClientTlsPolicy;
         /// <summary>
         /// A list of alternate names to verify the subject identity in the certificate.
         /// If specified, the client will verify that the server certificate's subject
@@ -28,10 +37,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private BackendServiceSecuritySettings(
-            string clientTlsPolicy,
+            Outputs.BackendServiceSecuritySettingsAwsV4Authentication? awsV4Authentication,
+
+            string? clientTlsPolicy,
 
             ImmutableArray<string> subjectAltNames)
         {
+            AwsV4Authentication = awsV4Authentication;
             ClientTlsPolicy = clientTlsPolicy;
             SubjectAltNames = subjectAltNames;
         }

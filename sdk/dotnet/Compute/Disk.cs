@@ -169,6 +169,16 @@ namespace Pulumi.Gcp.Compute
     public partial class Disk : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The accessMode of the disk.
+        /// For example:
+        /// * READ_WRITE_SINGLE
+        /// * READ_WRITE_MANY
+        /// * READ_ONLY_SINGLE
+        /// </summary>
+        [Output("accessMode")]
+        public Output<string> AccessMode { get; private set; } = null!;
+
+        /// <summary>
         /// A nested object resource
         /// Structure is documented below.
         /// </summary>
@@ -532,6 +542,16 @@ namespace Pulumi.Gcp.Compute
     public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The accessMode of the disk.
+        /// For example:
+        /// * READ_WRITE_SINGLE
+        /// * READ_WRITE_MANY
+        /// * READ_ONLY_SINGLE
+        /// </summary>
+        [Input("accessMode")]
+        public Input<string>? AccessMode { get; set; }
+
+        /// <summary>
         /// A nested object resource
         /// Structure is documented below.
         /// </summary>
@@ -789,6 +809,16 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class DiskState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The accessMode of the disk.
+        /// For example:
+        /// * READ_WRITE_SINGLE
+        /// * READ_WRITE_MANY
+        /// * READ_ONLY_SINGLE
+        /// </summary>
+        [Input("accessMode")]
+        public Input<string>? AccessMode { get; set; }
+
         /// <summary>
         /// A nested object resource
         /// Structure is documented below.

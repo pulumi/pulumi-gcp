@@ -5,10 +5,12 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.BackendServiceSecuritySettingsAwsV4AuthenticationArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,13 +18,36 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
     public static final BackendServiceSecuritySettingsArgs Empty = new BackendServiceSecuritySettingsArgs();
 
     /**
+     * The configuration needed to generate a signature for access to private storage buckets that support AWS&#39;s Signature Version 4 for authentication.
+     * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * 
+     */
+    @Import(name="awsV4Authentication")
+    private @Nullable Output<BackendServiceSecuritySettingsAwsV4AuthenticationArgs> awsV4Authentication;
+
+    /**
+     * @return The configuration needed to generate a signature for access to private storage buckets that support AWS&#39;s Signature Version 4 for authentication.
+     * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * 
+     */
+    public Optional<Output<BackendServiceSecuritySettingsAwsV4AuthenticationArgs>> awsV4Authentication() {
+        return Optional.ofNullable(this.awsV4Authentication);
+    }
+
+    /**
      * ClientTlsPolicy is a resource that specifies how a client should authenticate
      * connections to backends of a service. This resource itself does not affect
      * configuration unless it is attached to a backend service resource.
      * 
      */
-    @Import(name="clientTlsPolicy", required=true)
-    private Output<String> clientTlsPolicy;
+    @Import(name="clientTlsPolicy")
+    private @Nullable Output<String> clientTlsPolicy;
 
     /**
      * @return ClientTlsPolicy is a resource that specifies how a client should authenticate
@@ -30,8 +55,8 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
      * configuration unless it is attached to a backend service resource.
      * 
      */
-    public Output<String> clientTlsPolicy() {
-        return this.clientTlsPolicy;
+    public Optional<Output<String>> clientTlsPolicy() {
+        return Optional.ofNullable(this.clientTlsPolicy);
     }
 
     /**
@@ -40,8 +65,8 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
      * alt name matches one of the specified values.
      * 
      */
-    @Import(name="subjectAltNames", required=true)
-    private Output<List<String>> subjectAltNames;
+    @Import(name="subjectAltNames")
+    private @Nullable Output<List<String>> subjectAltNames;
 
     /**
      * @return A list of alternate names to verify the subject identity in the certificate.
@@ -49,13 +74,14 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
      * alt name matches one of the specified values.
      * 
      */
-    public Output<List<String>> subjectAltNames() {
-        return this.subjectAltNames;
+    public Optional<Output<List<String>>> subjectAltNames() {
+        return Optional.ofNullable(this.subjectAltNames);
     }
 
     private BackendServiceSecuritySettingsArgs() {}
 
     private BackendServiceSecuritySettingsArgs(BackendServiceSecuritySettingsArgs $) {
+        this.awsV4Authentication = $.awsV4Authentication;
         this.clientTlsPolicy = $.clientTlsPolicy;
         this.subjectAltNames = $.subjectAltNames;
     }
@@ -79,6 +105,35 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param awsV4Authentication The configuration needed to generate a signature for access to private storage buckets that support AWS&#39;s Signature Version 4 for authentication.
+         * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsV4Authentication(@Nullable Output<BackendServiceSecuritySettingsAwsV4AuthenticationArgs> awsV4Authentication) {
+            $.awsV4Authentication = awsV4Authentication;
+            return this;
+        }
+
+        /**
+         * @param awsV4Authentication The configuration needed to generate a signature for access to private storage buckets that support AWS&#39;s Signature Version 4 for authentication.
+         * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsV4Authentication(BackendServiceSecuritySettingsAwsV4AuthenticationArgs awsV4Authentication) {
+            return awsV4Authentication(Output.of(awsV4Authentication));
+        }
+
+        /**
          * @param clientTlsPolicy ClientTlsPolicy is a resource that specifies how a client should authenticate
          * connections to backends of a service. This resource itself does not affect
          * configuration unless it is attached to a backend service resource.
@@ -86,7 +141,7 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder clientTlsPolicy(Output<String> clientTlsPolicy) {
+        public Builder clientTlsPolicy(@Nullable Output<String> clientTlsPolicy) {
             $.clientTlsPolicy = clientTlsPolicy;
             return this;
         }
@@ -111,7 +166,7 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder subjectAltNames(Output<List<String>> subjectAltNames) {
+        public Builder subjectAltNames(@Nullable Output<List<String>> subjectAltNames) {
             $.subjectAltNames = subjectAltNames;
             return this;
         }
@@ -141,12 +196,6 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
         }
 
         public BackendServiceSecuritySettingsArgs build() {
-            if ($.clientTlsPolicy == null) {
-                throw new MissingRequiredPropertyException("BackendServiceSecuritySettingsArgs", "clientTlsPolicy");
-            }
-            if ($.subjectAltNames == null) {
-                throw new MissingRequiredPropertyException("BackendServiceSecuritySettingsArgs", "subjectAltNames");
-            }
             return $;
         }
     }

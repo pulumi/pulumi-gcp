@@ -584,7 +584,10 @@ export namespace accesscontextmanager {
         /**
          * A Google Cloud resource that is allowed to ingress the perimeter.
          * Requests from these resources will be allowed to access perimeter data.
-         * Currently only projects are allowed. Format `projects/{project_number}`
+         * Currently only projects and VPCs are allowed.
+         * Project format: `projects/{projectNumber}`
+         * VPC network format:
+         * `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
          * The project may be in any Google Cloud organization, not just the
          * organization that the perimeter is defined in. `*` is not allowed, the case
          * of allowing all Google Cloud resources only is not supported.
@@ -2245,6 +2248,41 @@ export namespace alloydb {
          * CIDR range for one authorized network of the instance.
          */
         cidrRange?: string;
+    }
+
+    export interface InstanceObservabilityConfig {
+        /**
+         * Observability feature status for an instance.
+         */
+        enabled?: boolean;
+        /**
+         * Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+         */
+        maxQueryStringLength?: number;
+        /**
+         * Preserve comments in the query string.
+         */
+        preserveComments?: boolean;
+        /**
+         * Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+         */
+        queryPlansPerMinute?: number;
+        /**
+         * Record application tags for an instance. This flag is turned "on" by default.
+         */
+        recordApplicationTags?: boolean;
+        /**
+         * Track actively running queries. If not set, default value is "off".
+         */
+        trackActiveQueries?: boolean;
+        /**
+         * Record wait event types during query execution for an instance.
+         */
+        trackWaitEventTypes?: boolean;
+        /**
+         * Record wait events during query execution for an instance.
+         */
+        trackWaitEvents?: boolean;
     }
 
     export interface InstancePscInstanceConfig {
@@ -5299,6 +5337,14 @@ export namespace biglake {
 }
 
 export namespace bigquery {
+    export interface AppProfileDataBoostIsolationReadOnly {
+        /**
+         * The Compute Billing Owner for this Data Boost App Profile.
+         * Possible values are: `HOST_PAYS`.
+         */
+        computeBillingOwner: string;
+    }
+
     export interface AppProfileSingleClusterRouting {
         /**
          * If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
@@ -14802,8 +14848,8 @@ export namespace cloudrun {
     export interface DomainMappingMetadata {
         /**
          * Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * may be set by external tools to store and retrieve arbitrary metadata.
+         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -15149,11 +15195,8 @@ export namespace cloudrun {
     export interface GetServiceTemplateSpec {
         /**
          * ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-         * requests per container of the Revision. Values are:
-         * - '0' thread-safe, the system should manage the max concurrency. This is
-         *     the default value.
-         * - '1' not-thread-safe. Single concurrency
-         * - '2-N' thread-safe, max concurrency of N
+         * requests per container of the Revision. If not specified or 0, defaults to 80 when
+         * requested CPU >= 1 and defaults to 1 when requested CPU < 1.
          */
         containerConcurrency: number;
         /**
@@ -15704,8 +15747,8 @@ export namespace cloudrun {
     export interface ServiceMetadata {
         /**
          * Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * may be set by external tools to store and retrieve arbitrary metadata.
+         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -15896,8 +15939,8 @@ export namespace cloudrun {
     export interface ServiceTemplateMetadata {
         /**
          * Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * may be set by external tools to store and retrieve arbitrary metadata.
+         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -15966,7 +16009,8 @@ export namespace cloudrun {
     export interface ServiceTemplateSpec {
         /**
          * ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-         * requests per container of the Revision. Values are:
+         * requests per container of the Revision. If not specified or 0, defaults to 80 when
+         * requested CPU >= 1 and defaults to 1 when requested CPU < 1.
          */
         containerConcurrency: number;
         /**
@@ -17054,6 +17098,7 @@ export namespace cloudrunv2 {
         labels: {[key: string]: string};
         /**
          * Sets the maximum number of requests that each serving instance can receive.
+         * If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
          */
         maxInstanceRequestConcurrency: number;
         /**
@@ -18157,6 +18202,7 @@ export namespace cloudrunv2 {
         labels?: {[key: string]: string};
         /**
          * Sets the maximum number of requests that each serving instance can receive.
+         * If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
          */
         maxInstanceRequestConcurrency: number;
         /**
@@ -20920,17 +20966,47 @@ export namespace compute {
 
     export interface BackendServiceSecuritySettings {
         /**
+         * The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+         * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
+         */
+        awsV4Authentication?: outputs.compute.BackendServiceSecuritySettingsAwsV4Authentication;
+        /**
          * ClientTlsPolicy is a resource that specifies how a client should authenticate
          * connections to backends of a service. This resource itself does not affect
          * configuration unless it is attached to a backend service resource.
          */
-        clientTlsPolicy: string;
+        clientTlsPolicy?: string;
         /**
          * A list of alternate names to verify the subject identity in the certificate.
          * If specified, the client will verify that the server certificate's subject
          * alt name matches one of the specified values.
          */
-        subjectAltNames: string[];
+        subjectAltNames?: string[];
+    }
+
+    export interface BackendServiceSecuritySettingsAwsV4Authentication {
+        /**
+         * The access key used for s3 bucket authentication.
+         * Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+         */
+        accessKey?: string;
+        /**
+         * The identifier of an access key used for s3 bucket authentication.
+         */
+        accessKeyId?: string;
+        /**
+         * The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+         */
+        accessKeyVersion?: string;
+        /**
+         * The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+         * For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+         */
+        originRegion?: string;
     }
 
     export interface DiskAsyncPrimaryDisk {
@@ -21826,6 +21902,11 @@ export namespace compute {
 
     export interface GetBackendServiceSecuritySetting {
         /**
+         * The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+         * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+         */
+        awsV4Authentications: outputs.compute.GetBackendServiceSecuritySettingAwsV4Authentication[];
+        /**
          * ClientTlsPolicy is a resource that specifies how a client should authenticate
          * connections to backends of a service. This resource itself does not affect
          * configuration unless it is attached to a backend service resource.
@@ -21837,6 +21918,27 @@ export namespace compute {
          * alt name matches one of the specified values.
          */
         subjectAltNames: string[];
+    }
+
+    export interface GetBackendServiceSecuritySettingAwsV4Authentication {
+        /**
+         * The access key used for s3 bucket authentication.
+         * Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+         */
+        accessKey: string;
+        /**
+         * The identifier of an access key used for s3 bucket authentication.
+         */
+        accessKeyId: string;
+        /**
+         * The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+         */
+        accessKeyVersion: string;
+        /**
+         * The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+         * For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+         */
+        originRegion: string;
     }
 
     export interface GetDiskAsyncPrimaryDisk {
@@ -22778,6 +22880,10 @@ export namespace compute {
          */
         size: number;
         /**
+         * The URL of the storage pool in which the new disk is created
+         */
+        storagePool: string;
+        /**
          * The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
@@ -22948,19 +23054,19 @@ export namespace compute {
 
     export interface GetInstanceGroupManagerUpdatePolicy {
         /**
-         * The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+         * Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
          */
         maxSurgeFixed: number;
         /**
-         * The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+         * Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
          */
         maxSurgePercent: number;
         /**
-         * The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+         * Specifies a fixed number of VM instances. This must be a positive integer.
          */
         maxUnavailableFixed: number;
         /**
-         * The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+         * Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
          */
         maxUnavailablePercent: number;
         /**
@@ -26185,6 +26291,13 @@ export namespace compute {
          */
         size: number;
         /**
+         * The URL of the storage pool in which the new disk is created.
+         * For example:
+         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+         */
+        storagePool?: string;
+        /**
          * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
          */
         type: string;
@@ -26307,6 +26420,10 @@ export namespace compute {
          * The size of the image in gigabytes.
          */
         size: number;
+        /**
+         * The URL of the storage pool in which the new disk is created
+         */
+        storagePool: string;
         /**
          * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
          */
@@ -26736,6 +26853,10 @@ export namespace compute {
          * The size of the image in gigabytes.
          */
         size: number;
+        /**
+         * The URL of the storage pool in which the new disk is created
+         */
+        storagePool: string;
         /**
          * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
          */
@@ -27219,19 +27340,19 @@ export namespace compute {
 
     export interface InstanceGroupManagerUpdatePolicy {
         /**
-         * , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `maxSurgePercent`. If neither is set, defaults to 1
+         * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          */
         maxSurgeFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `maxSurgeFixed`.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
          */
         maxSurgePercent?: number;
         /**
-         * , The maximum number of instances that can be unavailable during the update process. Conflicts with `maxUnavailablePercent`. If neither is set, defaults to 1
+         * , Specifies a fixed number of VM instances. This must be a positive integer.
          */
         maxUnavailableFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          */
         maxUnavailablePercent?: number;
         /**
@@ -30241,19 +30362,19 @@ export namespace compute {
          */
         instanceRedistributionType?: string;
         /**
-         * , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `maxSurgePercent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `maxUnavailableFixed` or `maxSurgeFixed` must be greater than 0.
+         * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          */
         maxSurgeFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `maxSurgeFixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
          */
         maxSurgePercent?: number;
         /**
-         * , The maximum number of instances that can be unavailable during the update process. Conflicts with `maxUnavailablePercent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `maxUnavailableFixed` or `maxSurgeFixed` must be greater than 0.
+         * , Specifies a fixed number of VM instances. This must be a positive integer.
          */
         maxUnavailableFixed: number;
         /**
-         * , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+         * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          */
         maxUnavailablePercent?: number;
         /**
@@ -33069,6 +33190,333 @@ export namespace compute {
         interface?: string;
     }
 
+    export interface ResizeRequestRequestedRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds: string;
+    }
+
+    export interface ResizeRequestStatus {
+        /**
+         * (Output)
+         * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Structure is documented below.
+         */
+        errors: outputs.compute.ResizeRequestStatusError[];
+        /**
+         * (Output)
+         * [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+         * Structure is documented below.
+         */
+        lastAttempts: outputs.compute.ResizeRequestStatusLastAttempt[];
+    }
+
+    export interface ResizeRequestStatusError {
+        /**
+         * (Output)
+         * [Output Only] The array of errors encountered while processing this operation.
+         * Structure is documented below.
+         */
+        errors: outputs.compute.ResizeRequestStatusErrorError[];
+    }
+
+    export interface ResizeRequestStatusErrorError {
+        /**
+         * (Output)
+         * [Output Only] The error type identifier for this error.
+         */
+        code: string;
+        /**
+         * (Output)
+         * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * Structure is documented below.
+         */
+        errorDetails: outputs.compute.ResizeRequestStatusErrorErrorErrorDetail[];
+        /**
+         * (Output)
+         * Output Only] Indicates the field in the request that caused the error. This property is optional.
+         */
+        location: string;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message: string;
+    }
+
+    export interface ResizeRequestStatusErrorErrorErrorDetail {
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        errorInfos: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailErrorInfo[];
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        helps: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailHelp[];
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        localizedMessages: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage[];
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        quotaInfos: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailQuotaInfo[];
+    }
+
+    export interface ResizeRequestStatusErrorErrorErrorDetailErrorInfo {
+        /**
+         * (Output)
+         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+         */
+        domain: string;
+        /**
+         * (Output)
+         * Additional structured details about this error.
+         * Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+         */
+        metadatas: {[key: string]: string};
+        /**
+         * (Output)
+         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+         */
+        reason: string;
+    }
+
+    export interface ResizeRequestStatusErrorErrorErrorDetailHelp {
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        links: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailHelpLink[];
+    }
+
+    export interface ResizeRequestStatusErrorErrorErrorDetailHelpLink {
+        /**
+         * An optional description of this resize-request.
+         */
+        description: string;
+        /**
+         * (Output)
+         * The URL of the link.
+         */
+        url: string;
+    }
+
+    export interface ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage {
+        /**
+         * (Output)
+         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+         */
+        locale: string;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message: string;
+    }
+
+    export interface ResizeRequestStatusErrorErrorErrorDetailQuotaInfo {
+        /**
+         * (Output)
+         * The map holding related quota dimensions
+         */
+        dimensions: {[key: string]: string};
+        /**
+         * (Output)
+         * Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+         */
+        futureLimit: number;
+        /**
+         * (Output)
+         * Current effective quota limit. The limit's unit depends on the quota type or metric.
+         */
+        limit: number;
+        /**
+         * (Output)
+         * The name of the quota limit.
+         */
+        limitName: string;
+        /**
+         * (Output)
+         * The Compute Engine quota metric name.
+         */
+        metricName: string;
+        /**
+         * (Output)
+         * Rollout status of the future quota limit.
+         */
+        rolloutStatus: string;
+    }
+
+    export interface ResizeRequestStatusLastAttempt {
+        /**
+         * (Output)
+         * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Structure is documented below.
+         */
+        errors: outputs.compute.ResizeRequestStatusLastAttemptError[];
+    }
+
+    export interface ResizeRequestStatusLastAttemptError {
+        /**
+         * (Output)
+         * [Output Only] The array of errors encountered while processing this operation.
+         * Structure is documented below.
+         */
+        errors: outputs.compute.ResizeRequestStatusLastAttemptErrorError[];
+    }
+
+    export interface ResizeRequestStatusLastAttemptErrorError {
+        /**
+         * (Output)
+         * [Output Only] The error type identifier for this error.
+         */
+        code: string;
+        /**
+         * (Output)
+         * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * Structure is documented below.
+         */
+        errorDetails: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetail[];
+        /**
+         * (Output)
+         * Output Only] Indicates the field in the request that caused the error. This property is optional.
+         */
+        location: string;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message: string;
+    }
+
+    export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        errorInfos: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo[];
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        helps: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp[];
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        localizedMessages: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage[];
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        quotaInfos: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo[];
+    }
+
+    export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo {
+        /**
+         * (Output)
+         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+         */
+        domain: string;
+        /**
+         * (Output)
+         * Additional structured details about this error.
+         * Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+         */
+        metadatas: {[key: string]: string};
+        /**
+         * (Output)
+         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+         */
+        reason: string;
+    }
+
+    export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
+        /**
+         * (Output)
+         * [Output Only]
+         * Structure is documented below.
+         */
+        links: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink[];
+    }
+
+    export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
+        /**
+         * An optional description of this resize-request.
+         */
+        description: string;
+        /**
+         * (Output)
+         * The URL of the link.
+         */
+        url: string;
+    }
+
+    export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage {
+        /**
+         * (Output)
+         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+         */
+        locale: string;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message: string;
+    }
+
+    export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo {
+        /**
+         * (Output)
+         * The map holding related quota dimensions
+         */
+        dimensions: {[key: string]: string};
+        /**
+         * (Output)
+         * Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+         */
+        futureLimit: number;
+        /**
+         * (Output)
+         * Current effective quota limit. The limit's unit depends on the quota type or metric.
+         */
+        limit: number;
+        /**
+         * (Output)
+         * The name of the quota limit.
+         */
+        limitName: string;
+        /**
+         * (Output)
+         * The Compute Engine quota metric name.
+         */
+        metricName: string;
+        /**
+         * (Output)
+         * Rollout status of the future quota limit.
+         */
+        rolloutStatus: string;
+    }
+
     export interface ResourcePolicyDiskConsistencyGroupPolicy {
         /**
          * Enable disk consistency on the resource policy.
@@ -33463,6 +33911,14 @@ export namespace compute {
         sessionInitializationMode: string;
     }
 
+    export interface RouterPeerCustomLearnedIpRange {
+        /**
+         * The IP range to advertise. The value must be a
+         * CIDR-formatted string.
+         */
+        range: string;
+    }
+
     export interface RouterPeerMd5AuthenticationKey {
         /**
          * Value of the key.
@@ -33477,6 +33933,66 @@ export namespace compute {
          * except the last character, which cannot be a dash.
          */
         name: string;
+    }
+
+    export interface RouterRoutePolicyTerm {
+        /**
+         * 'CEL expressions to evaluate to modify a route when this term matches.'\
+         * Structure is documented below.
+         */
+        actions?: outputs.compute.RouterRoutePolicyTermAction[];
+        /**
+         * CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+         * Structure is documented below.
+         */
+        match?: outputs.compute.RouterRoutePolicyTermMatch;
+        /**
+         * The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+         */
+        priority: number;
+    }
+
+    export interface RouterRoutePolicyTermAction {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression
+         * Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error
+         * reporting, e.g. a file name and a position in the file
+         *
+         * - - -
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its
+         * purpose.
+         */
+        title?: string;
+    }
+
+    export interface RouterRoutePolicyTermMatch {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: string;
     }
 
     export interface RouterStatusBestRoute {
@@ -37410,11 +37926,27 @@ export namespace container {
          */
         networkPolicyConfig: outputs.container.ClusterAddonsConfigNetworkPolicyConfig;
         /**
+         * . The status of the [Ray Operator
+         * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+         * It is disabled by default. Set `enabled = true` to enable. The minimum
+         * cluster version to enable Ray is 1.30.0-gke.1747000.
+         *
+         * Ray Operator config has optional subfields
+         * `ray_cluster_logging_config.enabled` and
+         * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+         * and monitoring respectively. See [Collect and view logs and metrics for Ray
+         * clusters on
+         * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+         * for more information.
+         *
+         *
+         * This example `addonsConfig` disables two addons:
+         */
+        rayOperatorConfigs: outputs.container.ClusterAddonsConfigRayOperatorConfig[];
+        /**
          * .
          * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
          * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-         *
-         * This example `addonsConfig` disables two addons:
          */
         statefulHaConfig: outputs.container.ClusterAddonsConfigStatefulHaConfig;
     }
@@ -37496,6 +38028,26 @@ export namespace container {
          * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigRayOperatorConfig {
+        enabled: boolean;
+        /**
+         * The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+         */
+        rayClusterLoggingConfig: outputs.container.ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig;
+        /**
+         * The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+         */
+        rayClusterMonitoringConfig: outputs.container.ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig;
+    }
+
+    export interface ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+        enabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
+        enabled: boolean;
     }
 
     export interface ClusterAddonsConfigStatefulHaConfig {
@@ -38079,7 +38631,7 @@ export namespace container {
          */
         enableRelay?: boolean;
         /**
-         * Mode used to make Relay available.
+         * Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
          *
          * @deprecated Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
          */
@@ -38431,7 +38983,7 @@ export namespace container {
         /**
          * Configuration for auto installation of GPU driver. Structure is documented below.
          */
-        gpuDriverInstallationConfig?: outputs.container.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        gpuDriverInstallationConfig: outputs.container.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
         /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
@@ -39261,7 +39813,7 @@ export namespace container {
         /**
          * Configuration for auto installation of GPU driver. Structure is documented below.
          */
-        gpuDriverInstallationConfig?: outputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        gpuDriverInstallationConfig: outputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
         /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
@@ -39813,6 +40365,10 @@ export namespace container {
          */
         networkPolicyConfigs: outputs.container.GetClusterAddonsConfigNetworkPolicyConfig[];
         /**
+         * The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+         */
+        rayOperatorConfigs: outputs.container.GetClusterAddonsConfigRayOperatorConfig[];
+        /**
          * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
          */
         statefulHaConfigs: outputs.container.GetClusterAddonsConfigStatefulHaConfig[];
@@ -39872,6 +40428,26 @@ export namespace container {
 
     export interface GetClusterAddonsConfigNetworkPolicyConfig {
         disabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigRayOperatorConfig {
+        enabled: boolean;
+        /**
+         * The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+         */
+        rayClusterLoggingConfigs: outputs.container.GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig[];
+        /**
+         * The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+         */
+        rayClusterMonitoringConfigs: outputs.container.GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig[];
+    }
+
+    export interface GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+        enabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterAddonsConfigStatefulHaConfig {
@@ -41982,7 +42558,10 @@ export namespace container {
          */
         preemptible?: boolean;
         /**
-         * The reservation affinity configuration for the node pool.
+         * The configuration of the desired reservation which instances could take capacity from.
+         * Structure is documented below.
+         *
+         * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
          */
         reservationAffinity?: outputs.container.NodePoolNodeConfigReservationAffinity;
         /**
@@ -42137,7 +42716,7 @@ export namespace container {
         /**
          * Configuration for auto installation of GPU driver.
          */
-        gpuDriverInstallationConfig?: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        gpuDriverInstallationConfig: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
         /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
          */
@@ -42223,15 +42802,21 @@ export namespace container {
 
     export interface NodePoolNodeConfigReservationAffinity {
         /**
-         * Corresponds to the type of reservation consumption.
+         * The type of reservation consumption
+         * Accepted values are:
+         *
+         * * `"UNSPECIFIED"`: Default value. This should not be used.
+         * * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+         * * `"ANY_RESERVATION"`: Consume any reservation available.
+         * * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
          */
         consumeReservationType: string;
         /**
-         * The label key of a reservation resource.
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
          */
         key?: string;
         /**
-         * The label values of the reservation resource.
+         * The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
          */
         values?: string[];
     }
@@ -47253,6 +47838,11 @@ export namespace dataloss {
          */
         cloudSqlTarget?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTarget;
         /**
+         * Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
+         * Structure is documented below.
+         */
+        cloudStorageTarget?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTarget;
+        /**
          * Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
          */
         secretsTarget?: outputs.dataloss.PreventionDiscoveryConfigTargetSecretsTarget;
@@ -47321,7 +47911,7 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetConditions {
         /**
-         * A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+         * File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
          */
         createdAfter?: string;
         /**
@@ -47404,7 +47994,7 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes {
         /**
-         * A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+         * The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
          * Structure is documented below.
          */
         patterns?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern[];
@@ -47465,7 +48055,7 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
         /**
-         * A specific set of database resources for this filter to apply to.
+         * A specific set of buckets for this filter to apply to.
          * Structure is documented below.
          */
         collection?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection;
@@ -47475,14 +48065,14 @@ export namespace dataloss {
          */
         databaseResourceReference?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference;
         /**
-         * Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+         * Match discovery resources not covered by any other filter.
          */
         others?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers;
     }
 
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection {
         /**
-         * A collection of regular expressions to match a database resource against.
+         * A collection of regular expressions to match a file store against.
          * Structure is documented below.
          */
         includeRegexes?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes;
@@ -47490,7 +48080,7 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes {
         /**
-         * A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+         * The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
          * Structure is documented below.
          */
         patterns?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern[];
@@ -47539,7 +48129,7 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence {
         /**
-         * Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+         * Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
          * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
          */
         refreshFrequency?: string;
@@ -47561,6 +48151,147 @@ export namespace dataloss {
          * Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
          */
         types?: string[];
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTarget {
+        /**
+         * In addition to matching the filter, these conditions must be true before a profile is generated.
+         * Structure is documented below.
+         */
+        conditions?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetConditions;
+        /**
+         * Disable profiling for buckets that match this filter.
+         */
+        disabled?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetDisabled;
+        /**
+         * The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+         * Structure is documented below.
+         */
+        filter: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetFilter;
+        /**
+         * How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+         * Structure is documented below.
+         */
+        generationCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
+        /**
+         * Cloud Storage conditions.
+         * Structure is documented below.
+         */
+        cloudStorageConditions?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions;
+        /**
+         * File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+         */
+        createdAfter?: string;
+        /**
+         * Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+         */
+        minAge?: string;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions {
+        /**
+         * Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
+         * Each value may be one of: `ALL_SUPPORTED_BUCKETS`, `AUTOCLASS_DISABLED`, `AUTOCLASS_ENABLED`.
+         */
+        includedBucketAttributes?: string[];
+        /**
+         * Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
+         * Each value may be one of: `ALL_SUPPORTED_OBJECTS`, `STANDARD`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `REGIONAL`, `MULTI_REGIONAL`, `DURABLE_REDUCED_AVAILABILITY`.
+         */
+        includedObjectAttributes?: string[];
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetDisabled {
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetFilter {
+        /**
+         * The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
+         * Structure is documented below.
+         */
+        cloudStorageResourceReference?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference;
+        /**
+         * A specific set of buckets for this filter to apply to.
+         * Structure is documented below.
+         */
+        collection?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection;
+        /**
+         * Match discovery resources not covered by any other filter.
+         */
+        others?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthers;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference {
+        /**
+         * The bucket to scan.
+         */
+        bucketName?: string;
+        /**
+         * If within a project-level config, then this must match the config's project id.
+         */
+        projectId?: string;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection {
+        /**
+         * A collection of regular expressions to match a file store against.
+         * Structure is documented below.
+         */
+        includeRegexes?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes {
+        /**
+         * The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+         * Structure is documented below.
+         */
+        patterns?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern[];
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern {
+        /**
+         * Regex for Cloud Storage.
+         * Structure is documented below.
+         */
+        cloudStorageRegex?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex {
+        /**
+         * Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\d{4}" will both match the bucket gs://marketing2021
+         */
+        bucketNameRegex?: string;
+        /**
+         * For organizations, if unset, will match all projects.
+         */
+        projectIdRegex?: string;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthers {
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence {
+        /**
+         * Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+         * Structure is documented below.
+         */
+        inspectTemplateModifiedCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence;
+        /**
+         * Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        refreshFrequency?: string;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence {
+        /**
+         * How frequently data profiles can be updated when the template is modified. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        frequency?: string;
     }
 
     export interface PreventionDiscoveryConfigTargetSecretsTarget {
@@ -53674,7 +54405,7 @@ export namespace datastream {
 
     export interface StreamDestinationConfig {
         /**
-         * A configuration for how data should be loaded to Cloud Storage.
+         * A configuration for how data should be loaded to Google BigQuery.
          * Structure is documented below.
          */
         bigqueryDestinationConfig?: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfig;
@@ -53691,12 +54422,24 @@ export namespace datastream {
 
     export interface StreamDestinationConfigBigqueryDestinationConfig {
         /**
+         * AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+         * events) to a source table will be written to the destination Google BigQuery table, retaining the
+         * historical state of the data.
+         */
+        appendOnly?: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfigAppendOnly;
+        /**
          * The guaranteed data freshness (in seconds) when querying tables created by the stream.
          * Editing this field will only affect new tables created in the future, but existing tables
          * will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
          */
         dataFreshness?: string;
+        /**
+         * Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+         * table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+         * in the source database. With Merge mode, no historical record of the change events is kept.
+         */
+        merge?: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfigMerge;
         /**
          * A single target dataset to which all data will be streamed.
          * Structure is documented below.
@@ -53707,6 +54450,12 @@ export namespace datastream {
          * Structure is documented below.
          */
         sourceHierarchyDatasets?: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigAppendOnly {
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigMerge {
     }
 
     export interface StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
@@ -60860,9 +61609,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -60890,9 +61639,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -61015,14 +61764,14 @@ export namespace gkeonprem {
     export interface BareMetalAdminClusterProxy {
         /**
          * A list of IPs, hostnames, and domains that should skip the proxy.
-         * Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+         * For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
          */
         noProxies?: string[];
         /**
          * Specifies the address of your proxy server.
-         * Examples: http://domain
+         * For Example: http://domain
          * WARNING: Do not provide credentials in the format
-         * http://(username:password@)domain these will be rejected by the server.
+         * of http://(username:password@)domain these will be rejected by the server.
          */
         uri: string;
     }
@@ -61261,9 +62010,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels: {[key: string]: string};
         /**
@@ -61291,9 +62040,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -61450,9 +62199,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -61508,9 +62257,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -61595,9 +62344,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels: {[key: string]: string};
         /**
@@ -61625,9 +62374,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -61765,14 +62514,14 @@ export namespace gkeonprem {
     export interface BareMetalClusterProxy {
         /**
          * A list of IPs, hostnames, and domains that should skip the proxy.
-         * Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+         * For example ["127.0.0.1", "example.com", ".corp", "localhost"].
          */
         noProxies?: string[];
         /**
          * Specifies the address of your proxy server.
-         * Examples: http://domain
+         * For example: http://domain
          * WARNING: Do not provide credentials in the format
-         * http://(username:password@)domain these will be rejected by the server.
+         * of http://(username:password@)domain these will be rejected by the server.
          */
         uri: string;
     }
@@ -61971,9 +62720,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels: {[key: string]: string};
         /**
@@ -62001,9 +62750,9 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
          * An object containing a list of "key": value pairs.
-         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -64339,8 +65088,8 @@ export namespace integrationconnectors {
 
     export interface ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
         /**
-         * The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          */
         kmsKeyName?: string;
@@ -64536,8 +65285,8 @@ export namespace integrationconnectors {
 
     export interface ConnectionConfigVariableEncryptionKeyValue {
         /**
-         * The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          */
         kmsKeyName?: string;
@@ -64643,8 +65392,8 @@ export namespace integrationconnectors {
 
     export interface ConnectionEventingConfigAdditionalVariableEncryptionKeyValue {
         /**
-         * The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          */
         kmsKeyName?: string;
@@ -64715,8 +65464,8 @@ export namespace integrationconnectors {
 
     export interface ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue {
         /**
-         * The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          */
         kmsKeyName?: string;
@@ -64918,8 +65667,8 @@ export namespace integrationconnectors {
 
     export interface ConnectionSslConfigAdditionalVariableEncryptionKeyValue {
         /**
-         * The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          */
         kmsKeyName?: string;
@@ -66267,12 +67016,7 @@ export namespace memcache {
 export namespace migrationcenter {
     export interface PreferenceSetVirtualMachinePreferences {
         /**
-         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * COMMITMENT_PLAN_NONE
-         * COMMITMENT_PLAN_ONE_YEAR
-         * COMMITMENT_PLAN_THREE_YEARS
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
          */
         commitmentPlan?: string;
         /**
@@ -66286,12 +67030,7 @@ export namespace migrationcenter {
          */
         regionPreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesRegionPreferences;
         /**
-         * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-         * Possible values:
-         * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-         * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-         * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-         * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+         * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
          */
         sizingOptimizationStrategy?: string;
         /**
@@ -66300,12 +67039,7 @@ export namespace migrationcenter {
          */
         soleTenancyPreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences;
         /**
-         * Target product for assets using this preference set. Specify either target product or business goal, but not both.
-         * Possible values:
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+         * Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
          */
         targetProduct?: string;
         /**
@@ -66317,11 +67051,7 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferences {
         /**
-         * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-         * Possible values:
-         * LICENSE_TYPE_UNSPECIFIED
-         * LICENSE_TYPE_DEFAULT
-         * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+         * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
          */
         licenseType?: string;
         /**
@@ -66355,12 +67085,7 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
         /**
-         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR
-         * COMMITMENT_3_YEAR
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
          */
         commitmentPlan?: string;
         /**
@@ -66368,12 +67093,7 @@ export namespace migrationcenter {
          */
         cpuOvercommitRatio?: number;
         /**
-         * Sole Tenancy nodes maintenance policy.
-         * Possible values:
-         * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-         * HOST_MAINTENANCE_POLICY_DEFAULT
-         * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-         * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+         * Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
          */
         hostMaintenancePolicy?: string;
         /**
@@ -66392,14 +67112,7 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences {
         /**
-         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-         * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-         * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
          */
         commitmentPlan?: string;
         /**
@@ -68254,7 +68967,7 @@ export namespace networkconnectivity {
         /**
          * The URI of the VPC network.
          */
-        uri: string;
+        uri?: string;
     }
 
     export interface PolicyBasedRouteFilter {
@@ -68411,6 +69124,7 @@ export namespace networkconnectivity {
     export interface SpokeLinkedRouterApplianceInstances {
         /**
          * The list of router appliance instances
+         * Structure is documented below.
          */
         instances: outputs.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstance[];
         /**
@@ -68426,8 +69140,6 @@ export namespace networkconnectivity {
         ipAddress?: string;
         /**
          * The URI of the virtual machine resource
-         *
-         * - - -
          */
         virtualMachine?: string;
     }
@@ -76797,7 +77509,7 @@ export namespace sql {
         deletionProtectionEnabled?: boolean;
         denyMaintenancePeriod?: outputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod;
         /**
-         * Enables auto-resizing of the storage size. Defaults to `true`.
+         * Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
          */
         diskAutoresize?: boolean;
         /**
@@ -76805,7 +77517,7 @@ export namespace sql {
          */
         diskAutoresizeLimit?: number;
         /**
-         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          */
         diskSize: number;
         /**
@@ -76817,13 +77529,17 @@ export namespace sql {
          */
         edition?: string;
         /**
+         * Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+         */
+        enableDataplexIntegration?: boolean;
+        /**
          * Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
          */
         enableGoogleMlIntegration?: boolean;
         /**
          * Configuration of Query Insights.
          */
-        insightsConfig?: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
+        insightsConfig: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
         ipConfiguration: outputs.sql.DatabaseInstanceSettingsIpConfiguration;
         locationPreference: outputs.sql.DatabaseInstanceSettingsLocationPreference;
         /**
@@ -76937,11 +77653,11 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsDenyMaintenancePeriod {
         /**
-         * "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         * "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
          */
         endDate: string;
         /**
-         * "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         * "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
          */
         startDate: string;
         /**
@@ -77008,7 +77724,7 @@ export namespace sql {
          */
         requireSsl?: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
          * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
          * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
          * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -77312,6 +78028,10 @@ export namespace sql {
          */
         edition: string;
         /**
+         * Enables Dataplex Integration.
+         */
+        enableDataplexIntegration: boolean;
+        /**
          * Enables Vertex AI Integration.
          */
         enableGoogleMlIntegration: boolean;
@@ -77485,7 +78205,7 @@ export namespace sql {
          */
         requireSsl: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
         sslMode: string;
     }
@@ -77828,6 +78548,10 @@ export namespace sql {
          */
         edition: string;
         /**
+         * Enables Dataplex Integration.
+         */
+        enableDataplexIntegration: boolean;
+        /**
          * Enables Vertex AI Integration.
          */
         enableGoogleMlIntegration: boolean;
@@ -78001,7 +78725,7 @@ export namespace sql {
          */
         requireSsl: boolean;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
         sslMode: string;
     }
@@ -80881,6 +81605,14 @@ export namespace workbench {
 
     export interface InstanceGceSetupNetworkInterface {
         /**
+         * Optional. An array of configurations for this interface. Currently, only one access
+         * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+         * instance will have an external internet access through an ephemeral
+         * external IP address.
+         * Structure is documented below.
+         */
+        accessConfigs: outputs.workbench.InstanceGceSetupNetworkInterfaceAccessConfig[];
+        /**
          * Optional. The name of the VPC that this VM instance is in.
          */
         network: string;
@@ -80894,6 +81626,17 @@ export namespace workbench {
          * Optional. The name of the subnet that this VM instance is in.
          */
         subnet: string;
+    }
+
+    export interface InstanceGceSetupNetworkInterfaceAccessConfig {
+        /**
+         * An external IP address associated with this instance. Specify an unused
+         * static external IP address available to the project or leave this field
+         * undefined to use an IP from a shared ephemeral IP address pool. If you
+         * specify a static external IP address, it must live in the same region as
+         * the zone of the instance.
+         */
+        externalIp: string;
     }
 
     export interface InstanceGceSetupServiceAccount {

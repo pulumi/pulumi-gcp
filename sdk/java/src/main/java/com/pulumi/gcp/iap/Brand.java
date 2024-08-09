@@ -209,11 +209,18 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Brand(String name, BrandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/brand:Brand", name, args == null ? BrandArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/brand:Brand", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Brand(String name, Output<String> id, @Nullable BrandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/brand:Brand", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BrandArgs makeArgs(BrandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BrandArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A filter to retrieve the instance templates.
-        /// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+        /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
         /// If multiple instance templates match, either adjust the filter or specify `most_recent`.
         /// One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A filter to retrieve the instance templates.
-        /// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+        /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
         /// If multiple instance templates match, either adjust the filter or specify `most_recent`.
         /// One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>

@@ -256,7 +256,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
     }
     /**
      * Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      * 
      */
     @Export(name="resourceTypeSelector", refs={String.class}, tree="[0]")
@@ -264,7 +264,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Selector of the resource type where we want to protect resources.
-     * For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+     * For example, `storage.googleapis.com/Bucket`.
      * 
      */
     public Output<String> resourceTypeSelector() {
@@ -293,11 +293,18 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KeyHandle(String name, KeyHandleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyHandle:KeyHandle", name, args == null ? KeyHandleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/keyHandle:KeyHandle", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KeyHandle(String name, Output<String> id, @Nullable KeyHandleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/keyHandle:KeyHandle", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KeyHandleArgs makeArgs(KeyHandleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeyHandleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -175,6 +175,12 @@ __all__ = [
     'ClusterAddonsConfigKalmConfigArgsDict',
     'ClusterAddonsConfigNetworkPolicyConfigArgs',
     'ClusterAddonsConfigNetworkPolicyConfigArgsDict',
+    'ClusterAddonsConfigRayOperatorConfigArgs',
+    'ClusterAddonsConfigRayOperatorConfigArgsDict',
+    'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs',
+    'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgsDict',
+    'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs',
+    'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgsDict',
     'ClusterAddonsConfigStatefulHaConfigArgs',
     'ClusterAddonsConfigStatefulHaConfigArgsDict',
     'ClusterAuthenticatorGroupsConfigArgs',
@@ -4472,13 +4478,29 @@ if not MYPY:
         It can only be disabled if the nodes already do not have network policies enabled.
         Defaults to disabled; set `disabled = false` to enable.
         """
+        ray_operator_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgsDict']]]]
+        """
+        . The status of the [Ray Operator
+        addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+        It is disabled by default. Set `enabled = true` to enable. The minimum
+        cluster version to enable Ray is 1.30.0-gke.1747000.
+
+        Ray Operator config has optional subfields
+        `ray_cluster_logging_config.enabled` and
+        `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+        and monitoring respectively. See [Collect and view logs and metrics for Ray
+        clusters on
+        GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+        for more information.
+
+
+        This example `addons_config` disables two addons:
+        """
         stateful_ha_config: NotRequired[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgsDict']]
         """
         .
         The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
         It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-
-        This example `addons_config` disables two addons:
         """
 elif False:
     ClusterAddonsConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -4498,6 +4520,7 @@ class ClusterAddonsConfigArgs:
                  istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
                  kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']] = None,
                  network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None,
+                 ray_operator_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]] = None,
                  stateful_ha_config: Optional[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs'] cloudrun_config: . Structure is documented below.
@@ -4541,11 +4564,24 @@ class ClusterAddonsConfigArgs:
                otherwise nothing will happen.
                It can only be disabled if the nodes already do not have network policies enabled.
                Defaults to disabled; set `disabled = false` to enable.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]] ray_operator_configs: . The status of the [Ray Operator
+               addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+               It is disabled by default. Set `enabled = true` to enable. The minimum
+               cluster version to enable Ray is 1.30.0-gke.1747000.
+               
+               Ray Operator config has optional subfields
+               `ray_cluster_logging_config.enabled` and
+               `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+               and monitoring respectively. See [Collect and view logs and metrics for Ray
+               clusters on
+               GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+               for more information.
+               
+               
+               This example `addons_config` disables two addons:
         :param pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-               
-               This example `addons_config` disables two addons:
         """
         if cloudrun_config is not None:
             pulumi.set(__self__, "cloudrun_config", cloudrun_config)
@@ -4571,6 +4607,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "kalm_config", kalm_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if ray_operator_configs is not None:
+            pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         if stateful_ha_config is not None:
             pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
@@ -4748,14 +4786,38 @@ class ClusterAddonsConfigArgs:
         pulumi.set(self, "network_policy_config", value)
 
     @property
+    @pulumi.getter(name="rayOperatorConfigs")
+    def ray_operator_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]]:
+        """
+        . The status of the [Ray Operator
+        addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+        It is disabled by default. Set `enabled = true` to enable. The minimum
+        cluster version to enable Ray is 1.30.0-gke.1747000.
+
+        Ray Operator config has optional subfields
+        `ray_cluster_logging_config.enabled` and
+        `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+        and monitoring respectively. See [Collect and view logs and metrics for Ray
+        clusters on
+        GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+        for more information.
+
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "ray_operator_configs")
+
+    @ray_operator_configs.setter
+    def ray_operator_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]]):
+        pulumi.set(self, "ray_operator_configs", value)
+
+    @property
     @pulumi.getter(name="statefulHaConfig")
     def stateful_ha_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs']]:
         """
         .
         The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
         It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "stateful_ha_config")
 
@@ -5135,6 +5197,114 @@ class ClusterAddonsConfigNetworkPolicyConfigArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class ClusterAddonsConfigRayOperatorConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        ray_cluster_logging_config: NotRequired[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgsDict']]
+        """
+        The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        """
+        ray_cluster_monitoring_config: NotRequired[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgsDict']]
+        """
+        The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        """
+elif False:
+    ClusterAddonsConfigRayOperatorConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAddonsConfigRayOperatorConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 ray_cluster_logging_config: Optional[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs']] = None,
+                 ray_cluster_monitoring_config: Optional[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs']] = None):
+        """
+        :param pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs'] ray_cluster_logging_config: The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        :param pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs'] ray_cluster_monitoring_config: The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if ray_cluster_logging_config is not None:
+            pulumi.set(__self__, "ray_cluster_logging_config", ray_cluster_logging_config)
+        if ray_cluster_monitoring_config is not None:
+            pulumi.set(__self__, "ray_cluster_monitoring_config", ray_cluster_monitoring_config)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="rayClusterLoggingConfig")
+    def ray_cluster_logging_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs']]:
+        """
+        The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "ray_cluster_logging_config")
+
+    @ray_cluster_logging_config.setter
+    def ray_cluster_logging_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs']]):
+        pulumi.set(self, "ray_cluster_logging_config", value)
+
+    @property
+    @pulumi.getter(name="rayClusterMonitoringConfig")
+    def ray_cluster_monitoring_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs']]:
+        """
+        The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "ray_cluster_monitoring_config")
+
+    @ray_cluster_monitoring_config.setter
+    def ray_cluster_monitoring_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs']]):
+        pulumi.set(self, "ray_cluster_monitoring_config", value)
+
+
+if not MYPY:
+    class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+elif False:
+    ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+elif False:
+    ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -7686,7 +7856,7 @@ if not MYPY:
         """
         relay_mode: NotRequired[pulumi.Input[str]]
         """
-        Mode used to make Relay available.
+        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
 elif False:
     ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -7700,7 +7870,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
         """
         :param pulumi.Input[bool] enable_metrics: Whether or not to enable advanced datapath metrics.
         :param pulumi.Input[bool] enable_relay: Whether or not Relay is enabled.
-        :param pulumi.Input[str] relay_mode: Mode used to make Relay available.
+        :param pulumi.Input[str] relay_mode: Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
         if enable_relay is not None:
@@ -7740,7 +7910,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
     @_utilities.deprecated("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
     def relay_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode used to make Relay available.
+        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         return pulumi.get(self, "relay_mode")
 
@@ -15896,7 +16066,10 @@ if not MYPY:
         """
         reservation_affinity: NotRequired[pulumi.Input['NodePoolNodeConfigReservationAffinityArgsDict']]
         """
-        The reservation affinity configuration for the node pool.
+        The configuration of the desired reservation which instances could take capacity from.
+        Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         resource_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -16017,7 +16190,10 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input[str] node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs.
         :param pulumi.Input[bool] preemptible: Whether the nodes are created as preemptible VM instances.
-        :param pulumi.Input['NodePoolNodeConfigReservationAffinityArgs'] reservation_affinity: The reservation affinity configuration for the node pool.
+        :param pulumi.Input['NodePoolNodeConfigReservationAffinityArgs'] reservation_affinity: The configuration of the desired reservation which instances could take capacity from.
+               Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
         :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input['NodePoolNodeConfigSandboxConfigArgs'] sandbox_config: Sandbox configuration for this node.
@@ -16451,7 +16627,10 @@ class NodePoolNodeConfigArgs:
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArgs']]:
         """
-        The reservation affinity configuration for the node pool.
+        The configuration of the desired reservation which instances could take capacity from.
+        Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -17468,15 +17647,21 @@ if not MYPY:
     class NodePoolNodeConfigReservationAffinityArgsDict(TypedDict):
         consume_reservation_type: pulumi.Input[str]
         """
-        Corresponds to the type of reservation consumption.
+        The type of reservation consumption
+        Accepted values are:
+
+        * `"UNSPECIFIED"`: Default value. This should not be used.
+        * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+        * `"ANY_RESERVATION"`: Consume any reservation available.
+        * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
         """
         key: NotRequired[pulumi.Input[str]]
         """
-        The label key of a reservation resource.
+        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         """
         values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The label values of the reservation resource.
+        The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
 elif False:
     NodePoolNodeConfigReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
@@ -17488,9 +17673,15 @@ class NodePoolNodeConfigReservationAffinityArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] consume_reservation_type: Corresponds to the type of reservation consumption.
-        :param pulumi.Input[str] key: The label key of a reservation resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The label values of the reservation resource.
+        :param pulumi.Input[str] consume_reservation_type: The type of reservation consumption
+               Accepted values are:
+               
+               * `"UNSPECIFIED"`: Default value. This should not be used.
+               * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+               * `"ANY_RESERVATION"`: Consume any reservation available.
+               * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        :param pulumi.Input[str] key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
         pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
         if key is not None:
@@ -17502,7 +17693,13 @@ class NodePoolNodeConfigReservationAffinityArgs:
     @pulumi.getter(name="consumeReservationType")
     def consume_reservation_type(self) -> pulumi.Input[str]:
         """
-        Corresponds to the type of reservation consumption.
+        The type of reservation consumption
+        Accepted values are:
+
+        * `"UNSPECIFIED"`: Default value. This should not be used.
+        * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+        * `"ANY_RESERVATION"`: Consume any reservation available.
+        * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
         """
         return pulumi.get(self, "consume_reservation_type")
 
@@ -17514,7 +17711,7 @@ class NodePoolNodeConfigReservationAffinityArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The label key of a reservation resource.
+        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         """
         return pulumi.get(self, "key")
 
@@ -17526,7 +17723,7 @@ class NodePoolNodeConfigReservationAffinityArgs:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The label values of the reservation resource.
+        The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
         return pulumi.get(self, "values")
 

@@ -235,7 +235,7 @@ export class Volume extends pulumi.CustomResource {
      * Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
      */
-    public readonly smbSettings!: pulumi.Output<string[] | undefined>;
+    public readonly smbSettings!: pulumi.Output<string[]>;
     /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
      */

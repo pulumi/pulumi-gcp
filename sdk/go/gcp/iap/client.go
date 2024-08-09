@@ -104,7 +104,7 @@ type Client struct {
 	//
 	// ***
 	Brand pulumi.StringOutput `pulumi:"brand"`
-	// The OAuth2 ID of the client.
+	// Output only. Unique identifier of the OAuth client.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -159,7 +159,7 @@ type clientState struct {
 	//
 	// ***
 	Brand *string `pulumi:"brand"`
-	// The OAuth2 ID of the client.
+	// Output only. Unique identifier of the OAuth client.
 	ClientId *string `pulumi:"clientId"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName *string `pulumi:"displayName"`
@@ -175,7 +175,7 @@ type ClientState struct {
 	//
 	// ***
 	Brand pulumi.StringPtrInput
-	// The OAuth2 ID of the client.
+	// Output only. Unique identifier of the OAuth client.
 	ClientId pulumi.StringPtrInput
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringPtrInput
@@ -307,7 +307,7 @@ func (o ClientOutput) Brand() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Brand }).(pulumi.StringOutput)
 }
 
-// The OAuth2 ID of the client.
+// Output only. Unique identifier of the OAuth client.
 func (o ClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }

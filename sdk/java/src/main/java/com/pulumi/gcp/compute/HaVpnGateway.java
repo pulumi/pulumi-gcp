@@ -270,6 +270,24 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Export(name="gatewayIpVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gatewayIpVersion;
+
+    /**
+     * @return The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Output<Optional<String>> gatewayIpVersion() {
+        return Codegen.optional(this.gatewayIpVersion);
+    }
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -361,7 +379,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     @Export(name="stackType", refs={String.class}, tree="[0]")
@@ -371,7 +389,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * @return The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     public Output<Optional<String>> stackType() {
@@ -416,11 +434,18 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HaVpnGateway(String name, HaVpnGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/haVpnGateway:HaVpnGateway", name, args == null ? HaVpnGatewayArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/haVpnGateway:HaVpnGateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HaVpnGateway(String name, Output<String> id, @Nullable HaVpnGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/haVpnGateway:HaVpnGateway", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HaVpnGatewayArgs makeArgs(HaVpnGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HaVpnGatewayArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

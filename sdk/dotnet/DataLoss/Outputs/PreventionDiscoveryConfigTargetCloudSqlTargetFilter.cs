@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetFilter
     {
         /// <summary>
-        /// A specific set of database resources for this filter to apply to.
+        /// A specific set of buckets for this filter to apply to.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection? Collection;
@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference? DatabaseResourceReference;
         /// <summary>
-        /// Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        /// Match discovery resources not covered by any other filter.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthers? Others;
 

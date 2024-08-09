@@ -312,11 +312,18 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionAutoscaler(String name, RegionAutoscalerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, args == null ? RegionAutoscalerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionAutoscaler(String name, Output<String> id, @Nullable RegionAutoscalerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionAutoscalerArgs makeArgs(RegionAutoscalerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionAutoscalerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

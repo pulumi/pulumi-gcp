@@ -378,11 +378,18 @@ public class SubscriptionIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SubscriptionIAMPolicy(String name, SubscriptionIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args == null ? SubscriptionIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SubscriptionIAMPolicy(String name, Output<String> id, @Nullable SubscriptionIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubscriptionIAMPolicyArgs makeArgs(SubscriptionIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubscriptionIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

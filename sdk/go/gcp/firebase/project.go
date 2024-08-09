@@ -20,7 +20,11 @@ import (
 //
 // * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
 // * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/)
+//   - Official Documentation
+//
+// > **Note:** This resource should usually be used with a provider configuration
+// with `userProjectOverride = true` unless you wish for your quota
+// project to be different from the Firebase project.
 //
 // ## Example Usage
 //

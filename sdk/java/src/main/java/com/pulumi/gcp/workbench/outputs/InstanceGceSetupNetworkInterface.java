@@ -4,13 +4,24 @@
 package com.pulumi.gcp.workbench.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.workbench.outputs.InstanceGceSetupNetworkInterfaceAccessConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceGceSetupNetworkInterface {
+    /**
+     * @return Optional. An array of configurations for this interface. Currently, only one access
+     * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+     * instance will have an external internet access through an ephemeral
+     * external IP address.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<InstanceGceSetupNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return Optional. The name of the VPC that this VM instance is in.
      * 
@@ -30,6 +41,17 @@ public final class InstanceGceSetupNetworkInterface {
     private @Nullable String subnet;
 
     private InstanceGceSetupNetworkInterface() {}
+    /**
+     * @return Optional. An array of configurations for this interface. Currently, only one access
+     * config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+     * instance will have an external internet access through an ephemeral
+     * external IP address.
+     * Structure is documented below.
+     * 
+     */
+    public List<InstanceGceSetupNetworkInterfaceAccessConfig> accessConfigs() {
+        return this.accessConfigs == null ? List.of() : this.accessConfigs;
+    }
     /**
      * @return Optional. The name of the VPC that this VM instance is in.
      * 
@@ -63,17 +85,28 @@ public final class InstanceGceSetupNetworkInterface {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<InstanceGceSetupNetworkInterfaceAccessConfig> accessConfigs;
         private @Nullable String network;
         private @Nullable String nicType;
         private @Nullable String subnet;
         public Builder() {}
         public Builder(InstanceGceSetupNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessConfigs = defaults.accessConfigs;
     	      this.network = defaults.network;
     	      this.nicType = defaults.nicType;
     	      this.subnet = defaults.subnet;
         }
 
+        @CustomType.Setter
+        public Builder accessConfigs(@Nullable List<InstanceGceSetupNetworkInterfaceAccessConfig> accessConfigs) {
+
+            this.accessConfigs = accessConfigs;
+            return this;
+        }
+        public Builder accessConfigs(InstanceGceSetupNetworkInterfaceAccessConfig... accessConfigs) {
+            return accessConfigs(List.of(accessConfigs));
+        }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
 
@@ -94,6 +127,7 @@ public final class InstanceGceSetupNetworkInterface {
         }
         public InstanceGceSetupNetworkInterface build() {
             final var _resultValue = new InstanceGceSetupNetworkInterface();
+            _resultValue.accessConfigs = accessConfigs;
             _resultValue.network = network;
             _resultValue.nicType = nicType;
             _resultValue.subnet = subnet;

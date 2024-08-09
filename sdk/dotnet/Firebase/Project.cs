@@ -19,7 +19,11 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
     /// * How-to Guides
-    ///     * [Official Documentation](https://firebase.google.com/)
+    ///     * Official Documentation
+    /// 
+    /// &gt; **Note:** This resource should usually be used with a provider configuration
+    /// with `user_project_override = true` unless you wish for your quota
+    /// project to be different from the Firebase project.
     /// 
     /// ## Example Usage
     /// 

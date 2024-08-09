@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMMember("apigee_sa_keyuser", {
  *     cryptoKeyId: apigeeKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: pulumi.interpolate`serviceAccount:${apigeeSa.email}`,
+ *     member: apigeeSa.member,
  * });
  * const org = new gcp.apigee.Organization("org", {
  *     analyticsRegion: "us-central1",
@@ -132,7 +132,7 @@ import * as utilities from "../utilities";
  * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMMember("apigee_sa_keyuser", {
  *     cryptoKeyId: apigeeKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: pulumi.interpolate`serviceAccount:${apigeeSa.email}`,
+ *     member: apigeeSa.member,
  * });
  * const org = new gcp.apigee.Organization("org", {
  *     analyticsRegion: "us-central1",

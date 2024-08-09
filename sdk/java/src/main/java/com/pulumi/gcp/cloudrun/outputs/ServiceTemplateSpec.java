@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
 public final class ServiceTemplateSpec {
     /**
      * @return ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-     * requests per container of the Revision. Values are:
+     * requests per container of the Revision. If not specified or 0, defaults to 80 when
+     * requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
      * 
      */
     private @Nullable Integer containerConcurrency;
@@ -65,7 +66,8 @@ public final class ServiceTemplateSpec {
     private ServiceTemplateSpec() {}
     /**
      * @return ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-     * requests per container of the Revision. Values are:
+     * requests per container of the Revision. If not specified or 0, defaults to 80 when
+     * requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
      * 
      */
     public Optional<Integer> containerConcurrency() {

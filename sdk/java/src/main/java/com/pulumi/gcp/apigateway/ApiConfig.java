@@ -305,11 +305,18 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApiConfig(String name, ApiConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/apiConfig:ApiConfig", name, args == null ? ApiConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigateway/apiConfig:ApiConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApiConfig(String name, Output<String> id, @Nullable ApiConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigateway/apiConfig:ApiConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApiConfigArgs makeArgs(ApiConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

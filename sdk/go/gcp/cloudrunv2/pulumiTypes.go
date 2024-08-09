@@ -4712,6 +4712,7 @@ type ServiceTemplate struct {
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
+	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision *string `pulumi:"revision"`
@@ -4764,6 +4765,7 @@ type ServiceTemplateArgs struct {
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
+	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
@@ -4896,6 +4898,7 @@ func (o ServiceTemplateOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Sets the maximum number of requests that each serving instance can receive.
+// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 func (o ServiceTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -5022,6 +5025,7 @@ func (o ServiceTemplatePtrOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Sets the maximum number of requests that each serving instance can receive.
+// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 func (o ServiceTemplatePtrOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *int {
 		if v == nil {
@@ -13021,6 +13025,7 @@ type GetServiceTemplate struct {
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
+	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision string `pulumi:"revision"`
@@ -13072,6 +13077,7 @@ type GetServiceTemplateArgs struct {
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
+	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency pulumi.IntInput `pulumi:"maxInstanceRequestConcurrency"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringInput `pulumi:"revision"`
@@ -13177,6 +13183,7 @@ func (o GetServiceTemplateOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Sets the maximum number of requests that each serving instance can receive.
+// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 func (o GetServiceTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplate) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
 }

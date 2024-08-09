@@ -756,11 +756,18 @@ public class IAMAuditConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IAMAuditConfig(String name, IAMAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, args == null ? IAMAuditConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IAMAuditConfig(String name, Output<String> id, @Nullable IAMAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IAMAuditConfigArgs makeArgs(IAMAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IAMAuditConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

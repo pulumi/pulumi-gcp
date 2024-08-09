@@ -420,11 +420,18 @@ public class FeatureIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FeatureIamPolicy(String name, FeatureIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/featureIamPolicy:FeatureIamPolicy", name, args == null ? FeatureIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/featureIamPolicy:FeatureIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FeatureIamPolicy(String name, Output<String> id, @Nullable FeatureIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/featureIamPolicy:FeatureIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FeatureIamPolicyArgs makeArgs(FeatureIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FeatureIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

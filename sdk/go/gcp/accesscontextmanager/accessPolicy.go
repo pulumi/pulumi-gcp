@@ -115,13 +115,13 @@ type AccessPolicy struct {
 
 	// Time the AccessPolicy was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Resource name of the AccessPolicy. Format: {policy_id}
+	// Resource name of the AccessPolicy. Format: '{{policy_id}}'
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-	// Format: organizations/{organization_id}
+	// Format: 'organizations/{{organization_id}}'
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Folder or project on which this policy is applicable.
-	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes pulumi.StringPtrOutput `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
 	//
@@ -169,13 +169,13 @@ func GetAccessPolicy(ctx *pulumi.Context,
 type accessPolicyState struct {
 	// Time the AccessPolicy was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// Resource name of the AccessPolicy. Format: {policy_id}
+	// Resource name of the AccessPolicy. Format: '{{policy_id}}'
 	Name *string `pulumi:"name"`
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-	// Format: organizations/{organization_id}
+	// Format: 'organizations/{{organization_id}}'
 	Parent *string `pulumi:"parent"`
 	// Folder or project on which this policy is applicable.
-	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes *string `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
 	//
@@ -188,13 +188,13 @@ type accessPolicyState struct {
 type AccessPolicyState struct {
 	// Time the AccessPolicy was created in UTC.
 	CreateTime pulumi.StringPtrInput
-	// Resource name of the AccessPolicy. Format: {policy_id}
+	// Resource name of the AccessPolicy. Format: '{{policy_id}}'
 	Name pulumi.StringPtrInput
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-	// Format: organizations/{organization_id}
+	// Format: 'organizations/{{organization_id}}'
 	Parent pulumi.StringPtrInput
 	// Folder or project on which this policy is applicable.
-	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes pulumi.StringPtrInput
 	// Human readable title. Does not affect behavior.
 	//
@@ -210,10 +210,10 @@ func (AccessPolicyState) ElementType() reflect.Type {
 
 type accessPolicyArgs struct {
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-	// Format: organizations/{organization_id}
+	// Format: 'organizations/{{organization_id}}'
 	Parent string `pulumi:"parent"`
 	// Folder or project on which this policy is applicable.
-	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes *string `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
 	//
@@ -224,10 +224,10 @@ type accessPolicyArgs struct {
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-	// Format: organizations/{organization_id}
+	// Format: 'organizations/{{organization_id}}'
 	Parent pulumi.StringInput
 	// Folder or project on which this policy is applicable.
-	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes pulumi.StringPtrInput
 	// Human readable title. Does not affect behavior.
 	//
@@ -327,19 +327,19 @@ func (o AccessPolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Resource name of the AccessPolicy. Format: {policy_id}
+// Resource name of the AccessPolicy. Format: '{{policy_id}}'
 func (o AccessPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-// Format: organizations/{organization_id}
+// Format: 'organizations/{{organization_id}}'
 func (o AccessPolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // Folder or project on which this policy is applicable.
-// Format: folders/{{folder_id}} or projects/{{project_id}}
+// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 func (o AccessPolicyOutput) Scopes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.Scopes }).(pulumi.StringPtrOutput)
 }

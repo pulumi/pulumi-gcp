@@ -668,7 +668,7 @@ import * as utilities from "../utilities";
  *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
  *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gs-project-accounts.iam.gserviceaccount.com`),
  *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@serverless-robot-prod.iam.gserviceaccount.com`),
- *         pulumi.interpolate`serviceAccount:${eaSa.email}`,
+ *         eaSa.member,
  *     ],
  * }, {
  *     dependsOn: [eaSa],

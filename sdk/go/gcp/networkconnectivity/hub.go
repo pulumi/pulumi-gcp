@@ -13,10 +13,16 @@ import (
 
 // The NetworkConnectivity Hub resource
 //
+// To get more information about Hub, see:
+//
+// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+//
 // ## Example Usage
 //
-// ### Basic_hub
-// A basic test of a networkconnectivity hub
+// ### Network Connectivity Hub Basic
+//
 // ```go
 // package main
 //
@@ -30,12 +36,38 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
-//				Name:        pulumi.String("hub"),
+//				Name:        pulumi.String("basic"),
 //				Description: pulumi.String("A sample hub"),
-//				Project:     pulumi.String("my-project-name"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Connectivity Hub With Export Psc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+//				Name:        pulumi.String("basic"),
+//				Description: pulumi.String("A sample hub with Private Service Connect transitivity is enabled"),
+//				ExportPsc:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -77,9 +109,10 @@ type Hub struct {
 	// An optional description of the hub.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+	ExportPsc pulumi.BoolOutput `pulumi:"exportPsc"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -87,13 +120,16 @@ type Hub struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+	// Structure is documented below.
 	RoutingVpcs HubRoutingVpcArrayOutput `pulumi:"routingVpcs"`
-	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+	// Output only. The current lifecycle state of this hub.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
@@ -141,9 +177,10 @@ type hubState struct {
 	// An optional description of the hub.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+	ExportPsc *bool `pulumi:"exportPsc"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -151,13 +188,16 @@ type hubState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+	// Structure is documented below.
 	RoutingVpcs []HubRoutingVpc `pulumi:"routingVpcs"`
-	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+	// Output only. The current lifecycle state of this hub.
 	State *string `pulumi:"state"`
 	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
 	UniqueId *string `pulumi:"uniqueId"`
@@ -171,9 +211,10 @@ type HubState struct {
 	// An optional description of the hub.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
+	// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+	ExportPsc pulumi.BoolPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -181,13 +222,16 @@ type HubState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+	// Structure is documented below.
 	RoutingVpcs HubRoutingVpcArrayInput
-	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+	// Output only. The current lifecycle state of this hub.
 	State pulumi.StringPtrInput
 	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
 	UniqueId pulumi.StringPtrInput
@@ -202,8 +246,9 @@ func (HubState) ElementType() reflect.Type {
 type hubArgs struct {
 	// An optional description of the hub.
 	Description *string `pulumi:"description"`
+	// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+	ExportPsc *bool `pulumi:"exportPsc"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -211,7 +256,8 @@ type hubArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -219,8 +265,9 @@ type hubArgs struct {
 type HubArgs struct {
 	// An optional description of the hub.
 	Description pulumi.StringPtrInput
+	// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+	ExportPsc pulumi.BoolPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -228,7 +275,8 @@ type HubArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -330,12 +378,16 @@ func (o HubOutput) Description() pulumi.StringPtrOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o HubOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Hub) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o HubOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+func (o HubOutput) ExportPsc() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Hub) pulumi.BoolOutput { return v.ExportPsc }).(pulumi.BoolOutput)
 }
 
 // Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-//
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o HubOutput) Labels() pulumi.StringMapOutput {
@@ -349,22 +401,25 @@ func (o HubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o HubOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o HubOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Hub) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o HubOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+// Structure is documented below.
 func (o HubOutput) RoutingVpcs() HubRoutingVpcArrayOutput {
 	return o.ApplyT(func(v *Hub) HubRoutingVpcArrayOutput { return v.RoutingVpcs }).(HubRoutingVpcArrayOutput)
 }
 
-// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+// Output only. The current lifecycle state of this hub.
 func (o HubOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

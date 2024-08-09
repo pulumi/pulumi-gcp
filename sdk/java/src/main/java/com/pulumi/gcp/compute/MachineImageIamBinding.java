@@ -724,11 +724,18 @@ public class MachineImageIamBinding extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public MachineImageIamBinding(String name, MachineImageIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/machineImageIamBinding:MachineImageIamBinding", name, args == null ? MachineImageIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/machineImageIamBinding:MachineImageIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MachineImageIamBinding(String name, Output<String> id, @Nullable MachineImageIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/machineImageIamBinding:MachineImageIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MachineImageIamBindingArgs makeArgs(MachineImageIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MachineImageIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

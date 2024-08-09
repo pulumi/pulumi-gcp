@@ -1085,7 +1085,7 @@ class Function(pulumi.CustomResource):
                 f"serviceAccount:service-{project_get_project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
                 f"serviceAccount:service-{project_get_project.number}@gs-project-accounts.iam.gserviceaccount.com",
                 f"serviceAccount:service-{project_get_project.number}@serverless-robot-prod.iam.gserviceaccount.com",
-                ea_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+                ea_sa.member,
             ],
             opts = pulumi.ResourceOptions(depends_on=[ea_sa]))
         encoded_ar_repo = gcp.artifactregistry.Repository("encoded-ar-repo",
@@ -1890,7 +1890,7 @@ class Function(pulumi.CustomResource):
                 f"serviceAccount:service-{project_get_project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
                 f"serviceAccount:service-{project_get_project.number}@gs-project-accounts.iam.gserviceaccount.com",
                 f"serviceAccount:service-{project_get_project.number}@serverless-robot-prod.iam.gserviceaccount.com",
-                ea_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+                ea_sa.member,
             ],
             opts = pulumi.ResourceOptions(depends_on=[ea_sa]))
         encoded_ar_repo = gcp.artifactregistry.Repository("encoded-ar-repo",

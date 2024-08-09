@@ -47,6 +47,8 @@ __all__ = [
     'StreamBackfillNone',
     'StreamDestinationConfig',
     'StreamDestinationConfigBigqueryDestinationConfig',
+    'StreamDestinationConfigBigqueryDestinationConfigAppendOnly',
+    'StreamDestinationConfigBigqueryDestinationConfigMerge',
     'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset',
     'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets',
     'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate',
@@ -1923,7 +1925,7 @@ class StreamDestinationConfig(dict):
                  gcs_destination_config: Optional['outputs.StreamDestinationConfigGcsDestinationConfig'] = None):
         """
         :param str destination_connection_profile: Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
-        :param 'StreamDestinationConfigBigqueryDestinationConfigArgs' bigquery_destination_config: A configuration for how data should be loaded to Cloud Storage.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigArgs' bigquery_destination_config: A configuration for how data should be loaded to Google BigQuery.
                Structure is documented below.
         :param 'StreamDestinationConfigGcsDestinationConfigArgs' gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
                Structure is documented below.
@@ -1946,7 +1948,7 @@ class StreamDestinationConfig(dict):
     @pulumi.getter(name="bigqueryDestinationConfig")
     def bigquery_destination_config(self) -> Optional['outputs.StreamDestinationConfigBigqueryDestinationConfig']:
         """
-        A configuration for how data should be loaded to Cloud Storage.
+        A configuration for how data should be loaded to Google BigQuery.
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_destination_config")
@@ -1966,7 +1968,9 @@ class StreamDestinationConfigBigqueryDestinationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dataFreshness":
+        if key == "appendOnly":
+            suggest = "append_only"
+        elif key == "dataFreshness":
             suggest = "data_freshness"
         elif key == "singleTargetDataset":
             suggest = "single_target_dataset"
@@ -1985,25 +1989,47 @@ class StreamDestinationConfigBigqueryDestinationConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 append_only: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnly'] = None,
                  data_freshness: Optional[str] = None,
+                 merge: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigMerge'] = None,
                  single_target_dataset: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset'] = None,
                  source_hierarchy_datasets: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets'] = None):
         """
+        :param 'StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs' append_only: AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+               events) to a source table will be written to the destination Google BigQuery table, retaining the
+               historical state of the data.
         :param str data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream.
                Editing this field will only affect new tables created in the future, but existing tables
                will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigMergeArgs' merge: Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+               table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+               in the source database. With Merge mode, no historical record of the change events is kept.
         :param 'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs' single_target_dataset: A single target dataset to which all data will be streamed.
                Structure is documented below.
         :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs' source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
                Structure is documented below.
         """
+        if append_only is not None:
+            pulumi.set(__self__, "append_only", append_only)
         if data_freshness is not None:
             pulumi.set(__self__, "data_freshness", data_freshness)
+        if merge is not None:
+            pulumi.set(__self__, "merge", merge)
         if single_target_dataset is not None:
             pulumi.set(__self__, "single_target_dataset", single_target_dataset)
         if source_hierarchy_datasets is not None:
             pulumi.set(__self__, "source_hierarchy_datasets", source_hierarchy_datasets)
+
+    @property
+    @pulumi.getter(name="appendOnly")
+    def append_only(self) -> Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnly']:
+        """
+        AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+        events) to a source table will be written to the destination Google BigQuery table, retaining the
+        historical state of the data.
+        """
+        return pulumi.get(self, "append_only")
 
     @property
     @pulumi.getter(name="dataFreshness")
@@ -2015,6 +2041,16 @@ class StreamDestinationConfigBigqueryDestinationConfig(dict):
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
         """
         return pulumi.get(self, "data_freshness")
+
+    @property
+    @pulumi.getter
+    def merge(self) -> Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigMerge']:
+        """
+        Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+        table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+        in the source database. With Merge mode, no historical record of the change events is kept.
+        """
+        return pulumi.get(self, "merge")
 
     @property
     @pulumi.getter(name="singleTargetDataset")
@@ -2033,6 +2069,18 @@ class StreamDestinationConfigBigqueryDestinationConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "source_hierarchy_datasets")
+
+
+@pulumi.output_type
+class StreamDestinationConfigBigqueryDestinationConfigAppendOnly(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class StreamDestinationConfigBigqueryDestinationConfigMerge(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

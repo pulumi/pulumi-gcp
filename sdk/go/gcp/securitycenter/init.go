@@ -57,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SourceIamMember{}
 	case "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy":
 		r = &SourceIamPolicy{}
+	case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
+		r = &V2OrganizationMuteConfig{}
 	case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
 		r = &V2OrganizationNotificationConfig{}
 	default:
@@ -160,6 +162,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/sourceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationMuteConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

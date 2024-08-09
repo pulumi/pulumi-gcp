@@ -300,13 +300,13 @@ import javax.annotation.Nullable;
  *         var privatecaSaKeyuserSignerverifier = new CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
  *             .role("roles/cloudkms.signerVerifier")
- *             .member(privatecaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(privatecaSa.member())
  *             .build());
  * 
  *         var privatecaSaKeyuserViewer = new CryptoKeyIAMMember("privatecaSaKeyuserViewer", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
  *             .role("roles/viewer")
- *             .member(privatecaSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(privatecaSa.member())
  *             .build());
  * 
  *         var default_ = new Authority("default", AuthorityArgs.builder()
@@ -878,11 +878,18 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Authority(String name, AuthorityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/authority:Authority", name, args == null ? AuthorityArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:certificateauthority/authority:Authority", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Authority(String name, Output<String> id, @Nullable AuthorityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:certificateauthority/authority:Authority", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AuthorityArgs makeArgs(AuthorityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthorityArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

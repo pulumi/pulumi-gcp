@@ -244,6 +244,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.alloydb.InstanceNetworkConfig | undefined>;
     /**
+     * Configuration for enhanced query insights.
+     * Structure is documented below.
+     */
+    public readonly observabilityConfig!: pulumi.Output<outputs.alloydb.InstanceObservabilityConfig>;
+    /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      */
@@ -316,6 +321,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["machineConfig"] = state ? state.machineConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["observabilityConfig"] = state ? state.observabilityConfig : undefined;
             resourceInputs["pscInstanceConfig"] = state ? state.pscInstanceConfig : undefined;
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -348,6 +354,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineConfig"] = args ? args.machineConfig : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["observabilityConfig"] = args ? args.observabilityConfig : undefined;
             resourceInputs["pscInstanceConfig"] = args ? args.pscInstanceConfig : undefined;
             resourceInputs["queryInsightsConfig"] = args ? args.queryInsightsConfig : undefined;
             resourceInputs["readPoolConfig"] = args ? args.readPoolConfig : undefined;
@@ -453,6 +460,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
+    /**
+     * Configuration for enhanced query insights.
+     * Structure is documented below.
+     */
+    observabilityConfig?: pulumi.Input<inputs.alloydb.InstanceObservabilityConfig>;
     /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
@@ -563,6 +575,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
+    /**
+     * Configuration for enhanced query insights.
+     * Structure is documented below.
+     */
+    observabilityConfig?: pulumi.Input<inputs.alloydb.InstanceObservabilityConfig>;
     /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.

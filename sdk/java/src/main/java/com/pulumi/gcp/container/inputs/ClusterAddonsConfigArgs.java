@@ -17,7 +17,9 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHttpLoadBalancingArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigIstioConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigKalmConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNetworkPolicyConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigRayOperatorConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigStatefulHaConfigArgs;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -266,11 +268,50 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * . The status of the [Ray Operator
+     * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+     * It is disabled by default. Set `enabled = true` to enable. The minimum
+     * cluster version to enable Ray is 1.30.0-gke.1747000.
+     * 
+     * Ray Operator config has optional subfields
+     * `ray_cluster_logging_config.enabled` and
+     * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+     * and monitoring respectively. See [Collect and view logs and metrics for Ray
+     * clusters on
+     * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+     * for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    @Import(name="rayOperatorConfigs")
+    private @Nullable Output<List<ClusterAddonsConfigRayOperatorConfigArgs>> rayOperatorConfigs;
+
+    /**
+     * @return . The status of the [Ray Operator
+     * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+     * It is disabled by default. Set `enabled = true` to enable. The minimum
+     * cluster version to enable Ray is 1.30.0-gke.1747000.
+     * 
+     * Ray Operator config has optional subfields
+     * `ray_cluster_logging_config.enabled` and
+     * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+     * and monitoring respectively. See [Collect and view logs and metrics for Ray
+     * clusters on
+     * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+     * for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    public Optional<Output<List<ClusterAddonsConfigRayOperatorConfigArgs>>> rayOperatorConfigs() {
+        return Optional.ofNullable(this.rayOperatorConfigs);
+    }
+
+    /**
      * .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
      * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     @Import(name="statefulHaConfig")
@@ -280,8 +321,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * @return .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
      * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     public Optional<Output<ClusterAddonsConfigStatefulHaConfigArgs>> statefulHaConfig() {
@@ -303,6 +342,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.istioConfig = $.istioConfig;
         this.kalmConfig = $.kalmConfig;
         this.networkPolicyConfig = $.networkPolicyConfig;
+        this.rayOperatorConfigs = $.rayOperatorConfigs;
         this.statefulHaConfig = $.statefulHaConfig;
     }
 
@@ -635,11 +675,79 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param rayOperatorConfigs . The status of the [Ray Operator
+         * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+         * It is disabled by default. Set `enabled = true` to enable. The minimum
+         * cluster version to enable Ray is 1.30.0-gke.1747000.
+         * 
+         * Ray Operator config has optional subfields
+         * `ray_cluster_logging_config.enabled` and
+         * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+         * and monitoring respectively. See [Collect and view logs and metrics for Ray
+         * clusters on
+         * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+         * for more information.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rayOperatorConfigs(@Nullable Output<List<ClusterAddonsConfigRayOperatorConfigArgs>> rayOperatorConfigs) {
+            $.rayOperatorConfigs = rayOperatorConfigs;
+            return this;
+        }
+
+        /**
+         * @param rayOperatorConfigs . The status of the [Ray Operator
+         * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+         * It is disabled by default. Set `enabled = true` to enable. The minimum
+         * cluster version to enable Ray is 1.30.0-gke.1747000.
+         * 
+         * Ray Operator config has optional subfields
+         * `ray_cluster_logging_config.enabled` and
+         * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+         * and monitoring respectively. See [Collect and view logs and metrics for Ray
+         * clusters on
+         * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+         * for more information.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rayOperatorConfigs(List<ClusterAddonsConfigRayOperatorConfigArgs> rayOperatorConfigs) {
+            return rayOperatorConfigs(Output.of(rayOperatorConfigs));
+        }
+
+        /**
+         * @param rayOperatorConfigs . The status of the [Ray Operator
+         * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+         * It is disabled by default. Set `enabled = true` to enable. The minimum
+         * cluster version to enable Ray is 1.30.0-gke.1747000.
+         * 
+         * Ray Operator config has optional subfields
+         * `ray_cluster_logging_config.enabled` and
+         * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+         * and monitoring respectively. See [Collect and view logs and metrics for Ray
+         * clusters on
+         * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+         * for more information.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rayOperatorConfigs(ClusterAddonsConfigRayOperatorConfigArgs... rayOperatorConfigs) {
+            return rayOperatorConfigs(List.of(rayOperatorConfigs));
+        }
+
+        /**
          * @param statefulHaConfig .
          * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
          * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-         * 
-         * This example `addons_config` disables two addons:
          * 
          * @return builder
          * 
@@ -653,8 +761,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * @param statefulHaConfig .
          * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
          * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-         * 
-         * This example `addons_config` disables two addons:
          * 
          * @return builder
          * 

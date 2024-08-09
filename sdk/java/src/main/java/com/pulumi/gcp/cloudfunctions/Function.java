@@ -230,6 +230,20 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.buildEnvironmentVariables);
     }
     /**
+     * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+     * 
+     */
+    @Export(name="buildServiceAccount", refs={String.class}, tree="[0]")
+    private Output<String> buildServiceAccount;
+
+    /**
+     * @return If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+     * 
+     */
+    public Output<String> buildServiceAccount() {
+        return this.buildServiceAccount;
+    }
+    /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      * 
      */
@@ -724,11 +738,18 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Function(String name, FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudfunctions/function:Function", name, args == null ? FunctionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:cloudfunctions/function:Function", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Function(String name, Output<String> id, @Nullable FunctionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudfunctions/function:Function", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FunctionArgs makeArgs(FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FunctionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

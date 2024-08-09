@@ -1053,9 +1053,7 @@ import (
 //					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", projectGetProject.Number)),
 //					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gs-project-accounts.iam.gserviceaccount.com", projectGetProject.Number)),
 //					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@serverless-robot-prod.iam.gserviceaccount.com", projectGetProject.Number)),
-//					eaSa.Email.ApplyT(func(email string) (string, error) {
-//						return fmt.Sprintf("serviceAccount:%v", email), nil
-//					}).(pulumi.StringOutput),
+//					eaSa.Member,
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				eaSa,

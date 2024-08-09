@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.VMwareEngine
     [OutputType]
     public sealed class GetPrivateCloudResult
     {
+        public readonly int DeletionDelayHours;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetPrivateCloudHcxResult> Hcxes;
         /// <summary>
@@ -143,6 +144,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly ImmutableArray<Outputs.GetPrivateCloudNetworkConfigResult> NetworkConfigs;
         public readonly ImmutableArray<Outputs.GetPrivateCloudNsxResult> Nsxes;
         public readonly string? Project;
+        public readonly bool SendDeletionDelayHoursIfZero;
         public readonly string State;
         public readonly string Type;
         public readonly string Uid;
@@ -150,6 +152,8 @@ namespace Pulumi.Gcp.VMwareEngine
 
         [OutputConstructor]
         private GetPrivateCloudResult(
+            int deletionDelayHours,
+
             string description,
 
             ImmutableArray<Outputs.GetPrivateCloudHcxResult> hcxes,
@@ -168,6 +172,8 @@ namespace Pulumi.Gcp.VMwareEngine
 
             string? project,
 
+            bool sendDeletionDelayHoursIfZero,
+
             string state,
 
             string type,
@@ -176,6 +182,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
             ImmutableArray<Outputs.GetPrivateCloudVcenterResult> vcenters)
         {
+            DeletionDelayHours = deletionDelayHours;
             Description = description;
             Hcxes = hcxes;
             Id = id;
@@ -185,6 +192,7 @@ namespace Pulumi.Gcp.VMwareEngine
             NetworkConfigs = networkConfigs;
             Nsxes = nsxes;
             Project = project;
+            SendDeletionDelayHoursIfZero = sendDeletionDelayHoursIfZero;
             State = state;
             Type = type;
             Uid = uid;

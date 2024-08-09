@@ -28,18 +28,36 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     public static final TableState Empty = new TableState();
 
     /**
-     * This field is in beta. If set to true, it allows table deletion when there
-     * are still resource tags attached. The default value is false.
+     * If set to true, it allows table
+     * deletion when there are still resource tags attached. The default value is
+     * false.
+     * 
+     * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+     * removed in a future major release. The default behavior will be allowing
+     * the presence of resource tags on deletion after the next major release.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release. */
     @Import(name="allowResourceTagsOnDeletion")
     private @Nullable Output<Boolean> allowResourceTagsOnDeletion;
 
     /**
-     * @return This field is in beta. If set to true, it allows table deletion when there
-     * are still resource tags attached. The default value is false.
+     * @return If set to true, it allows table
+     * deletion when there are still resource tags attached. The default value is
+     * false.
+     * 
+     * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+     * removed in a future major release. The default behavior will be allowing
+     * the presence of resource tags on deletion after the next major release.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release. */
     public Optional<Output<Boolean>> allowResourceTagsOnDeletion() {
         return Optional.ofNullable(this.allowResourceTagsOnDeletion);
     }
@@ -466,7 +484,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This field is in beta. The tags attached to this table. Tag keys are
+     * The tags attached to this table. Tag keys are
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
@@ -477,7 +495,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> resourceTags;
 
     /**
-     * @return This field is in beta. The tags attached to this table. Tag keys are
+     * @return The tags attached to this table. Tag keys are
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
@@ -679,24 +697,42 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowResourceTagsOnDeletion This field is in beta. If set to true, it allows table deletion when there
-         * are still resource tags attached. The default value is false.
+         * @param allowResourceTagsOnDeletion If set to true, it allows table
+         * deletion when there are still resource tags attached. The default value is
+         * false.
+         * 
+         * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+         * removed in a future major release. The default behavior will be allowing
+         * the presence of resource tags on deletion after the next major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release. */
         public Builder allowResourceTagsOnDeletion(@Nullable Output<Boolean> allowResourceTagsOnDeletion) {
             $.allowResourceTagsOnDeletion = allowResourceTagsOnDeletion;
             return this;
         }
 
         /**
-         * @param allowResourceTagsOnDeletion This field is in beta. If set to true, it allows table deletion when there
-         * are still resource tags attached. The default value is false.
+         * @param allowResourceTagsOnDeletion If set to true, it allows table
+         * deletion when there are still resource tags attached. The default value is
+         * false.
+         * 
+         * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+         * removed in a future major release. The default behavior will be allowing
+         * the presence of resource tags on deletion after the next major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release. */
         public Builder allowResourceTagsOnDeletion(Boolean allowResourceTagsOnDeletion) {
             return allowResourceTagsOnDeletion(Output.of(allowResourceTagsOnDeletion));
         }
@@ -1273,7 +1309,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceTags This field is in beta. The tags attached to this table. Tag keys are
+         * @param resourceTags The tags attached to this table. Tag keys are
          * globally unique. Tag key is expected to be in the namespaced format, for
          * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
          * parent organization or project resource for this tag key. Tag value is
@@ -1288,7 +1324,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceTags This field is in beta. The tags attached to this table. Tag keys are
+         * @param resourceTags The tags attached to this table. Tag keys are
          * globally unique. Tag key is expected to be in the namespaced format, for
          * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
          * parent organization or project resource for this tag key. Tag value is

@@ -108,6 +108,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetHcVpnGatewayResult
     {
         public readonly string Description;
+        public readonly string GatewayIpVersion;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -123,6 +124,8 @@ namespace Pulumi.Gcp.Compute
         [OutputConstructor]
         private GetHcVpnGatewayResult(
             string description,
+
+            string gatewayIpVersion,
 
             string id,
 
@@ -141,6 +144,7 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetHcVpnGatewayVpnInterfaceResult> vpnInterfaces)
         {
             Description = description;
+            GatewayIpVersion = gatewayIpVersion;
             Id = id;
             Name = name;
             Network = network;

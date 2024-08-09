@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetBackendServiceSecuritySettingResult
     {
         /// <summary>
+        /// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+        /// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBackendServiceSecuritySettingAwsV4AuthenticationResult> AwsV4Authentications;
+        /// <summary>
         /// ClientTlsPolicy is a resource that specifies how a client should authenticate
         /// connections to backends of a service. This resource itself does not affect
         /// configuration unless it is attached to a backend service resource.
@@ -28,10 +33,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetBackendServiceSecuritySettingResult(
+            ImmutableArray<Outputs.GetBackendServiceSecuritySettingAwsV4AuthenticationResult> awsV4Authentications,
+
             string clientTlsPolicy,
 
             ImmutableArray<string> subjectAltNames)
         {
+            AwsV4Authentications = awsV4Authentications;
             ClientTlsPolicy = clientTlsPolicy;
             SubjectAltNames = subjectAltNames;
         }

@@ -1152,6 +1152,12 @@ func (o InstanceGceSetupDataDisksPtrOutput) KmsKey() pulumi.StringPtrOutput {
 }
 
 type InstanceGceSetupNetworkInterface struct {
+	// Optional. An array of configurations for this interface. Currently, only one access
+	// config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+	// instance will have an external internet access through an ephemeral
+	// external IP address.
+	// Structure is documented below.
+	AccessConfigs []InstanceGceSetupNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// Optional. The name of the VPC that this VM instance is in.
 	Network *string `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This
@@ -1174,6 +1180,12 @@ type InstanceGceSetupNetworkInterfaceInput interface {
 }
 
 type InstanceGceSetupNetworkInterfaceArgs struct {
+	// Optional. An array of configurations for this interface. Currently, only one access
+	// config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+	// instance will have an external internet access through an ephemeral
+	// external IP address.
+	// Structure is documented below.
+	AccessConfigs InstanceGceSetupNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// Optional. The name of the VPC that this VM instance is in.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This
@@ -1235,6 +1247,17 @@ func (o InstanceGceSetupNetworkInterfaceOutput) ToInstanceGceSetupNetworkInterfa
 	return o
 }
 
+// Optional. An array of configurations for this interface. Currently, only one access
+// config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the
+// instance will have an external internet access through an ephemeral
+// external IP address.
+// Structure is documented below.
+func (o InstanceGceSetupNetworkInterfaceOutput) AccessConfigs() InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v InstanceGceSetupNetworkInterface) []InstanceGceSetupNetworkInterfaceAccessConfig {
+		return v.AccessConfigs
+	}).(InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput)
+}
+
 // Optional. The name of the VPC that this VM instance is in.
 func (o InstanceGceSetupNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetupNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
@@ -1270,6 +1293,115 @@ func (o InstanceGceSetupNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGceSetupNetworkInterface {
 		return vs[0].([]InstanceGceSetupNetworkInterface)[vs[1].(int)]
 	}).(InstanceGceSetupNetworkInterfaceOutput)
+}
+
+type InstanceGceSetupNetworkInterfaceAccessConfig struct {
+	// An external IP address associated with this instance. Specify an unused
+	// static external IP address available to the project or leave this field
+	// undefined to use an IP from a shared ephemeral IP address pool. If you
+	// specify a static external IP address, it must live in the same region as
+	// the zone of the instance.
+	ExternalIp string `pulumi:"externalIp"`
+}
+
+// InstanceGceSetupNetworkInterfaceAccessConfigInput is an input type that accepts InstanceGceSetupNetworkInterfaceAccessConfigArgs and InstanceGceSetupNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `InstanceGceSetupNetworkInterfaceAccessConfigInput` via:
+//
+//	InstanceGceSetupNetworkInterfaceAccessConfigArgs{...}
+type InstanceGceSetupNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupNetworkInterfaceAccessConfigOutput() InstanceGceSetupNetworkInterfaceAccessConfigOutput
+	ToInstanceGceSetupNetworkInterfaceAccessConfigOutputWithContext(context.Context) InstanceGceSetupNetworkInterfaceAccessConfigOutput
+}
+
+type InstanceGceSetupNetworkInterfaceAccessConfigArgs struct {
+	// An external IP address associated with this instance. Specify an unused
+	// static external IP address available to the project or leave this field
+	// undefined to use an IP from a shared ephemeral IP address pool. If you
+	// specify a static external IP address, it must live in the same region as
+	// the zone of the instance.
+	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
+}
+
+func (InstanceGceSetupNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i InstanceGceSetupNetworkInterfaceAccessConfigArgs) ToInstanceGceSetupNetworkInterfaceAccessConfigOutput() InstanceGceSetupNetworkInterfaceAccessConfigOutput {
+	return i.ToInstanceGceSetupNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupNetworkInterfaceAccessConfigArgs) ToInstanceGceSetupNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) InstanceGceSetupNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupNetworkInterfaceAccessConfigOutput)
+}
+
+// InstanceGceSetupNetworkInterfaceAccessConfigArrayInput is an input type that accepts InstanceGceSetupNetworkInterfaceAccessConfigArray and InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `InstanceGceSetupNetworkInterfaceAccessConfigArrayInput` via:
+//
+//	InstanceGceSetupNetworkInterfaceAccessConfigArray{ InstanceGceSetupNetworkInterfaceAccessConfigArgs{...} }
+type InstanceGceSetupNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupNetworkInterfaceAccessConfigArrayOutput() InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput
+	ToInstanceGceSetupNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput
+}
+
+type InstanceGceSetupNetworkInterfaceAccessConfigArray []InstanceGceSetupNetworkInterfaceAccessConfigInput
+
+func (InstanceGceSetupNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGceSetupNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i InstanceGceSetupNetworkInterfaceAccessConfigArray) ToInstanceGceSetupNetworkInterfaceAccessConfigArrayOutput() InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToInstanceGceSetupNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupNetworkInterfaceAccessConfigArray) ToInstanceGceSetupNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type InstanceGceSetupNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o InstanceGceSetupNetworkInterfaceAccessConfigOutput) ToInstanceGceSetupNetworkInterfaceAccessConfigOutput() InstanceGceSetupNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o InstanceGceSetupNetworkInterfaceAccessConfigOutput) ToInstanceGceSetupNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) InstanceGceSetupNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+// An external IP address associated with this instance. Specify an unused
+// static external IP address available to the project or leave this field
+// undefined to use an IP from a shared ephemeral IP address pool. If you
+// specify a static external IP address, it must live in the same region as
+// the zone of the instance.
+func (o InstanceGceSetupNetworkInterfaceAccessConfigOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGceSetupNetworkInterfaceAccessConfig) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+type InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGceSetupNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput) ToInstanceGceSetupNetworkInterfaceAccessConfigArrayOutput() InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput) ToInstanceGceSetupNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) InstanceGceSetupNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGceSetupNetworkInterfaceAccessConfig {
+		return vs[0].([]InstanceGceSetupNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(InstanceGceSetupNetworkInterfaceAccessConfigOutput)
 }
 
 type InstanceGceSetupServiceAccount struct {
@@ -2376,6 +2508,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupDataDisksPtrInput)(nil)).Elem(), InstanceGceSetupDataDisksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceArrayInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceAccessConfigInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceAccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupServiceAccountInput)(nil)).Elem(), InstanceGceSetupServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupServiceAccountArrayInput)(nil)).Elem(), InstanceGceSetupServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupShieldedInstanceConfigInput)(nil)).Elem(), InstanceGceSetupShieldedInstanceConfigArgs{})
@@ -2402,6 +2536,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGceSetupDataDisksPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupServiceAccountOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupShieldedInstanceConfigOutput{})

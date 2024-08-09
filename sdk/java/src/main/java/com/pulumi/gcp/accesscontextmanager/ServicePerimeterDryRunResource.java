@@ -168,11 +168,18 @@ public class ServicePerimeterDryRunResource extends com.pulumi.resources.CustomR
      * @param options A bag of options that control this resource's behavior.
      */
     public ServicePerimeterDryRunResource(String name, ServicePerimeterDryRunResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource", name, args == null ? ServicePerimeterDryRunResourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServicePerimeterDryRunResource(String name, Output<String> id, @Nullable ServicePerimeterDryRunResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServicePerimeterDryRunResourceArgs makeArgs(ServicePerimeterDryRunResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePerimeterDryRunResourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

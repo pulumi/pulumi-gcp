@@ -86,6 +86,56 @@ import (
 //	}
 //
 // ```
+// ### Bigquerydatatransfer Config Salesforce
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			myDataset, err := bigquery.NewDataset(ctx, "my_dataset", &bigquery.DatasetArgs{
+//				DatasetId:   pulumi.String("my_dataset"),
+//				Description: pulumi.String("My dataset"),
+//				Location:    pulumi.String("asia-northeast1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataTransferConfig(ctx, "salesforce_config", &bigquery.DataTransferConfigArgs{
+//				DisplayName:          pulumi.String("my-salesforce-config"),
+//				Location:             pulumi.String("asia-northeast1"),
+//				DataSourceId:         pulumi.String("salesforce"),
+//				Schedule:             pulumi.String("first sunday of quarter 00:00"),
+//				DestinationDatasetId: myDataset.DatasetId,
+//				Params: pulumi.StringMap{
+//					"connector.authentication.oauth.clientId":     pulumi.String("client-id"),
+//					"connector.authentication.oauth.clientSecret": pulumi.String("client-secret"),
+//					"connector.authentication.username":           pulumi.String("username"),
+//					"connector.authentication.password":           pulumi.String("password"),
+//					"connector.authentication.securityToken":      pulumi.String("security-token"),
+//					"assets":                                      pulumi.String("[\"asset-a\",\"asset-b\"]"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

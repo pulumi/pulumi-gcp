@@ -2058,6 +2058,7 @@ class ServiceTemplate(dict):
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param int max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
+               If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param 'ServiceTemplateScalingArgs' scaling: Scaling settings for this Revision.
                Structure is documented below.
@@ -2150,6 +2151,7 @@ class ServiceTemplate(dict):
     def max_instance_request_concurrency(self) -> Optional[int]:
         """
         Sets the maximum number of requests that each serving instance can receive.
+        If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         return pulumi.get(self, "max_instance_request_concurrency")
 
@@ -5336,6 +5338,7 @@ class GetServiceTemplateResult(dict):
                Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param int max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
+               If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param Sequence['GetServiceTemplateScalingArgs'] scalings: Scaling settings for this Revision.
         :param str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -5414,6 +5417,7 @@ class GetServiceTemplateResult(dict):
     def max_instance_request_concurrency(self) -> int:
         """
         Sets the maximum number of requests that each serving instance can receive.
+        If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         return pulumi.get(self, "max_instance_request_concurrency")
 

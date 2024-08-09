@@ -267,6 +267,192 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### Router Peer Export And Import Policies
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "my-router-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "my-router-subnet",
+    ///         Network = network.SelfLink,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var address = new Gcp.Compute.Address("address", new()
+    ///     {
+    ///         Name = "my-router",
+    ///         Region = subnetwork.Region,
+    ///     });
+    /// 
+    ///     var vpnGateway = new Gcp.Compute.HaVpnGateway("vpn_gateway", new()
+    ///     {
+    ///         Name = "my-router-gateway",
+    ///         Network = network.SelfLink,
+    ///         Region = subnetwork.Region,
+    ///     });
+    /// 
+    ///     var externalGateway = new Gcp.Compute.ExternalVpnGateway("external_gateway", new()
+    ///     {
+    ///         Name = "my-router-external-gateway",
+    ///         RedundancyType = "SINGLE_IP_INTERNALLY_REDUNDANT",
+    ///         Description = "An externally managed VPN gateway",
+    ///         Interfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.ExternalVpnGatewayInterfaceArgs
+    ///             {
+    ///                 Id = 0,
+    ///                 IpAddress = "8.8.8.8",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Name = "my-router",
+    ///         Region = subnetwork.Region,
+    ///         Network = network.SelfLink,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///         },
+    ///     });
+    /// 
+    ///     var vpnTunnel = new Gcp.Compute.VPNTunnel("vpn_tunnel", new()
+    ///     {
+    ///         Name = "my-router",
+    ///         Region = subnetwork.Region,
+    ///         VpnGateway = vpnGateway.Id,
+    ///         PeerExternalGateway = externalGateway.Id,
+    ///         PeerExternalGatewayInterface = 0,
+    ///         SharedSecret = "unguessable",
+    ///         Router = router.Name,
+    ///         VpnGatewayInterface = 0,
+    ///     });
+    /// 
+    ///     var routerInterface = new Gcp.Compute.RouterInterface("router_interface", new()
+    ///     {
+    ///         Name = "my-router",
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         VpnTunnel = vpnTunnel.Name,
+    ///     });
+    /// 
+    ///     var rp_export = new Gcp.Compute.RouterRoutePolicy("rp-export", new()
+    ///     {
+    ///         Name = "my-router-rp-export",
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         Type = "ROUTE_POLICY_TYPE_EXPORT",
+    ///         Terms = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RouterRoutePolicyTermArgs
+    ///             {
+    ///                 Priority = 2,
+    ///                 Match = new Gcp.Compute.Inputs.RouterRoutePolicyTermMatchArgs
+    ///                 {
+    ///                     Expression = "destination == '10.0.0.0/12'",
+    ///                     Title = "export_expression",
+    ///                     Description = "acceptance expression for export",
+    ///                 },
+    ///                 Actions = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RouterRoutePolicyTermActionArgs
+    ///                     {
+    ///                         Expression = "accept()",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             routerInterface,
+    ///         },
+    ///     });
+    /// 
+    ///     var rp_import = new Gcp.Compute.RouterRoutePolicy("rp-import", new()
+    ///     {
+    ///         Name = "my-router-rp-import",
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         Type = "ROUTE_POLICY_TYPE_IMPORT",
+    ///         Terms = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RouterRoutePolicyTermArgs
+    ///             {
+    ///                 Priority = 1,
+    ///                 Match = new Gcp.Compute.Inputs.RouterRoutePolicyTermMatchArgs
+    ///                 {
+    ///                     Expression = "destination == '10.0.0.0/12'",
+    ///                     Title = "import_expression",
+    ///                     Description = "acceptance expression for import",
+    ///                 },
+    ///                 Actions = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RouterRoutePolicyTermActionArgs
+    ///                     {
+    ///                         Expression = "accept()",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             routerInterface,
+    ///             rp_export,
+    ///         },
+    ///     });
+    /// 
+    ///     var routerPeer = new Gcp.Compute.RouterPeer("router_peer", new()
+    ///     {
+    ///         Name = "my-router-peer",
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         PeerAsn = 65515,
+    ///         AdvertisedRoutePriority = 100,
+    ///         Interface = routerInterface.Name,
+    ///         Md5AuthenticationKey = new Gcp.Compute.Inputs.RouterPeerMd5AuthenticationKeyArgs
+    ///         {
+    ///             Name = "my-router-peer-key",
+    ///             Key = "my-router-peer-key-value",
+    ///         },
+    ///         ImportPolicies = new[]
+    ///         {
+    ///             rp_import.Name,
+    ///         },
+    ///         ExportPolicies = new[]
+    ///         {
+    ///             rp_export.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             rp_export,
+    ///             rp_import,
+    ///             routerInterface,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RouterBgpPeer can be imported using any of these accepted formats:
@@ -351,6 +537,21 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RouterPeerBfd> Bfd { get; private set; } = null!;
 
         /// <summary>
+        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+        /// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        /// </summary>
+        [Output("customLearnedIpRanges")]
+        public Output<ImmutableArray<Outputs.RouterPeerCustomLearnedIpRange>> CustomLearnedIpRanges { get; private set; } = null!;
+
+        /// <summary>
+        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+        /// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+        /// priority of 100 to the ranges.
+        /// </summary>
+        [Output("customLearnedRoutePriority")]
+        public Output<int?> CustomLearnedRoutePriority { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the BGP peer connection. If set to false, any active session
         /// with the peer is terminated and all associated routing information is removed.
         /// If set to true, the peer connection can be established with routing information.
@@ -370,6 +571,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// routers.list of export policies applied to this peer, in the order they must be evaluated.
+        /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        /// </summary>
+        [Output("exportPolicies")]
+        public Output<ImmutableArray<string>> ExportPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// routers.list of import policies applied to this peer, in the order they must be evaluated.
+        /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        /// </summary>
+        [Output("importPolicies")]
+        public Output<ImmutableArray<string>> ImportPolicies { get; private set; } = null!;
 
         /// <summary>
         /// Name of the interface the BGP peer is associated with.
@@ -600,6 +815,27 @@ namespace Pulumi.Gcp.Compute
         [Input("bfd")]
         public Input<Inputs.RouterPeerBfdArgs>? Bfd { get; set; }
 
+        [Input("customLearnedIpRanges")]
+        private InputList<Inputs.RouterPeerCustomLearnedIpRangeArgs>? _customLearnedIpRanges;
+
+        /// <summary>
+        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+        /// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        /// </summary>
+        public InputList<Inputs.RouterPeerCustomLearnedIpRangeArgs> CustomLearnedIpRanges
+        {
+            get => _customLearnedIpRanges ?? (_customLearnedIpRanges = new InputList<Inputs.RouterPeerCustomLearnedIpRangeArgs>());
+            set => _customLearnedIpRanges = value;
+        }
+
+        /// <summary>
+        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+        /// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+        /// priority of 100 to the ranges.
+        /// </summary>
+        [Input("customLearnedRoutePriority")]
+        public Input<int>? CustomLearnedRoutePriority { get; set; }
+
         /// <summary>
         /// The status of the BGP peer connection. If set to false, any active session
         /// with the peer is terminated and all associated routing information is removed.
@@ -620,6 +856,32 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
+
+        [Input("exportPolicies")]
+        private InputList<string>? _exportPolicies;
+
+        /// <summary>
+        /// routers.list of export policies applied to this peer, in the order they must be evaluated.
+        /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        /// </summary>
+        public InputList<string> ExportPolicies
+        {
+            get => _exportPolicies ?? (_exportPolicies = new InputList<string>());
+            set => _exportPolicies = value;
+        }
+
+        [Input("importPolicies")]
+        private InputList<string>? _importPolicies;
+
+        /// <summary>
+        /// routers.list of import policies applied to this peer, in the order they must be evaluated.
+        /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        /// </summary>
+        public InputList<string> ImportPolicies
+        {
+            get => _importPolicies ?? (_importPolicies = new InputList<string>());
+            set => _importPolicies = value;
+        }
 
         /// <summary>
         /// Name of the interface the BGP peer is associated with.
@@ -798,6 +1060,27 @@ namespace Pulumi.Gcp.Compute
         [Input("bfd")]
         public Input<Inputs.RouterPeerBfdGetArgs>? Bfd { get; set; }
 
+        [Input("customLearnedIpRanges")]
+        private InputList<Inputs.RouterPeerCustomLearnedIpRangeGetArgs>? _customLearnedIpRanges;
+
+        /// <summary>
+        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
+        /// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        /// </summary>
+        public InputList<Inputs.RouterPeerCustomLearnedIpRangeGetArgs> CustomLearnedIpRanges
+        {
+            get => _customLearnedIpRanges ?? (_customLearnedIpRanges = new InputList<Inputs.RouterPeerCustomLearnedIpRangeGetArgs>());
+            set => _customLearnedIpRanges = value;
+        }
+
+        /// <summary>
+        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
+        /// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
+        /// priority of 100 to the ranges.
+        /// </summary>
+        [Input("customLearnedRoutePriority")]
+        public Input<int>? CustomLearnedRoutePriority { get; set; }
+
         /// <summary>
         /// The status of the BGP peer connection. If set to false, any active session
         /// with the peer is terminated and all associated routing information is removed.
@@ -818,6 +1101,32 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
+
+        [Input("exportPolicies")]
+        private InputList<string>? _exportPolicies;
+
+        /// <summary>
+        /// routers.list of export policies applied to this peer, in the order they must be evaluated.
+        /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        /// </summary>
+        public InputList<string> ExportPolicies
+        {
+            get => _exportPolicies ?? (_exportPolicies = new InputList<string>());
+            set => _exportPolicies = value;
+        }
+
+        [Input("importPolicies")]
+        private InputList<string>? _importPolicies;
+
+        /// <summary>
+        /// routers.list of import policies applied to this peer, in the order they must be evaluated.
+        /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        /// </summary>
+        public InputList<string> ImportPolicies
+        {
+            get => _importPolicies ?? (_importPolicies = new InputList<string>());
+            set => _importPolicies = value;
+        }
 
         /// <summary>
         /// Name of the interface the BGP peer is associated with.

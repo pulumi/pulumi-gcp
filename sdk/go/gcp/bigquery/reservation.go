@@ -96,8 +96,13 @@ type Reservation struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// (Optional, Deprecated)
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	//
+	// > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+	//
+	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary pulumi.BoolPtrOutput `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	//
@@ -158,8 +163,13 @@ type reservationState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
+	// (Optional, Deprecated)
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	//
+	// > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+	//
+	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	//
@@ -188,8 +198,13 @@ type ReservationState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	//
+	// > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+	//
+	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	//
@@ -222,8 +237,13 @@ type reservationArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
+	// (Optional, Deprecated)
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	//
+	// > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+	//
+	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	//
@@ -253,8 +273,13 @@ type ReservationArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	//
+	// > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+	//
+	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	//
@@ -384,8 +409,13 @@ func (o ReservationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
 // If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+//
+// > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
+//
+// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 func (o ReservationOutput) MultiRegionAuxiliary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolPtrOutput { return v.MultiRegionAuxiliary }).(pulumi.BoolPtrOutput)
 }

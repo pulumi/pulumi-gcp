@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         CryptoKeyId = apigeeKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = apigeeSa.Member,
     ///     });
     /// 
     ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()

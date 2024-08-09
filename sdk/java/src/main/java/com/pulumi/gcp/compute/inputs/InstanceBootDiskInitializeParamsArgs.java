@@ -171,6 +171,27 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
+     * The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * 
+     */
+    @Import(name="storagePool")
+    private @Nullable Output<String> storagePool;
+
+    /**
+     * @return The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * 
+     */
+    public Optional<Output<String>> storagePool() {
+        return Optional.ofNullable(this.storagePool);
+    }
+
+    /**
      * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
      */
@@ -195,6 +216,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         this.provisionedThroughput = $.provisionedThroughput;
         this.resourceManagerTags = $.resourceManagerTags;
         this.size = $.size;
+        this.storagePool = $.storagePool;
         this.type = $.type;
     }
 
@@ -407,6 +429,33 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          */
         public Builder size(Integer size) {
             return size(Output.of(size));
+        }
+
+        /**
+         * @param storagePool The URL of the storage pool in which the new disk is created.
+         * For example:
+         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePool(@Nullable Output<String> storagePool) {
+            $.storagePool = storagePool;
+            return this;
+        }
+
+        /**
+         * @param storagePool The URL of the storage pool in which the new disk is created.
+         * For example:
+         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePool(String storagePool) {
+            return storagePool(Output.of(storagePool));
         }
 
         /**

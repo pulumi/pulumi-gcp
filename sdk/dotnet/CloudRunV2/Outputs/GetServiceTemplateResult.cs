@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// Sets the maximum number of requests that each serving instance can receive.
+        /// If not specified or 0, defaults to 80 when requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
         /// </summary>
         public readonly int MaxInstanceRequestConcurrency;
         /// <summary>

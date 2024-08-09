@@ -14,15 +14,15 @@ import javax.annotation.Nullable;
 public final class BareMetalAdminClusterProxy {
     /**
      * @return A list of IPs, hostnames, and domains that should skip the proxy.
-     * Examples: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
+     * For example: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
      * 
      */
     private @Nullable List<String> noProxies;
     /**
      * @return Specifies the address of your proxy server.
-     * Examples: http://domain
+     * For Example: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password{@literal @})domain these will be rejected by the server.
+     * of http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     private String uri;
@@ -30,7 +30,7 @@ public final class BareMetalAdminClusterProxy {
     private BareMetalAdminClusterProxy() {}
     /**
      * @return A list of IPs, hostnames, and domains that should skip the proxy.
-     * Examples: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
+     * For example: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
      * 
      */
     public List<String> noProxies() {
@@ -38,9 +38,9 @@ public final class BareMetalAdminClusterProxy {
     }
     /**
      * @return Specifies the address of your proxy server.
-     * Examples: http://domain
+     * For Example: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password{@literal @})domain these will be rejected by the server.
+     * of http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     public String uri() {

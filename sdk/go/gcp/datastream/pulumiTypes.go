@@ -4632,7 +4632,7 @@ func (o StreamBackfillNonePtrOutput) Elem() StreamBackfillNoneOutput {
 }
 
 type StreamDestinationConfig struct {
-	// A configuration for how data should be loaded to Cloud Storage.
+	// A configuration for how data should be loaded to Google BigQuery.
 	// Structure is documented below.
 	BigqueryDestinationConfig *StreamDestinationConfigBigqueryDestinationConfig `pulumi:"bigqueryDestinationConfig"`
 	// Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -4654,7 +4654,7 @@ type StreamDestinationConfigInput interface {
 }
 
 type StreamDestinationConfigArgs struct {
-	// A configuration for how data should be loaded to Cloud Storage.
+	// A configuration for how data should be loaded to Google BigQuery.
 	// Structure is documented below.
 	BigqueryDestinationConfig StreamDestinationConfigBigqueryDestinationConfigPtrInput `pulumi:"bigqueryDestinationConfig"`
 	// Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -4741,7 +4741,7 @@ func (o StreamDestinationConfigOutput) ToStreamDestinationConfigPtrOutputWithCon
 	}).(StreamDestinationConfigPtrOutput)
 }
 
-// A configuration for how data should be loaded to Cloud Storage.
+// A configuration for how data should be loaded to Google BigQuery.
 // Structure is documented below.
 func (o StreamDestinationConfigOutput) BigqueryDestinationConfig() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfig {
@@ -4786,7 +4786,7 @@ func (o StreamDestinationConfigPtrOutput) Elem() StreamDestinationConfigOutput {
 	}).(StreamDestinationConfigOutput)
 }
 
-// A configuration for how data should be loaded to Cloud Storage.
+// A configuration for how data should be loaded to Google BigQuery.
 // Structure is documented below.
 func (o StreamDestinationConfigPtrOutput) BigqueryDestinationConfig() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfig {
@@ -4819,11 +4819,19 @@ func (o StreamDestinationConfigPtrOutput) GcsDestinationConfig() StreamDestinati
 }
 
 type StreamDestinationConfigBigqueryDestinationConfig struct {
+	// AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+	// events) to a source table will be written to the destination Google BigQuery table, retaining the
+	// historical state of the data.
+	AppendOnly *StreamDestinationConfigBigqueryDestinationConfigAppendOnly `pulumi:"appendOnly"`
 	// The guaranteed data freshness (in seconds) when querying tables created by the stream.
 	// Editing this field will only affect new tables created in the future, but existing tables
 	// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
 	DataFreshness *string `pulumi:"dataFreshness"`
+	// Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+	// table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+	// in the source database. With Merge mode, no historical record of the change events is kept.
+	Merge *StreamDestinationConfigBigqueryDestinationConfigMerge `pulumi:"merge"`
 	// A single target dataset to which all data will be streamed.
 	// Structure is documented below.
 	SingleTargetDataset *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset `pulumi:"singleTargetDataset"`
@@ -4844,11 +4852,19 @@ type StreamDestinationConfigBigqueryDestinationConfigInput interface {
 }
 
 type StreamDestinationConfigBigqueryDestinationConfigArgs struct {
+	// AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+	// events) to a source table will be written to the destination Google BigQuery table, retaining the
+	// historical state of the data.
+	AppendOnly StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput `pulumi:"appendOnly"`
 	// The guaranteed data freshness (in seconds) when querying tables created by the stream.
 	// Editing this field will only affect new tables created in the future, but existing tables
 	// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
 	DataFreshness pulumi.StringPtrInput `pulumi:"dataFreshness"`
+	// Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+	// table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+	// in the source database. With Merge mode, no historical record of the change events is kept.
+	Merge StreamDestinationConfigBigqueryDestinationConfigMergePtrInput `pulumi:"merge"`
 	// A single target dataset to which all data will be streamed.
 	// Structure is documented below.
 	SingleTargetDataset StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput `pulumi:"singleTargetDataset"`
@@ -4934,12 +4950,30 @@ func (o StreamDestinationConfigBigqueryDestinationConfigOutput) ToStreamDestinat
 	}).(StreamDestinationConfigBigqueryDestinationConfigPtrOutput)
 }
 
+// AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+// events) to a source table will be written to the destination Google BigQuery table, retaining the
+// historical state of the data.
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) AppendOnly() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigAppendOnly {
+		return v.AppendOnly
+	}).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput)
+}
+
 // The guaranteed data freshness (in seconds) when querying tables created by the stream.
 // Editing this field will only affect new tables created in the future, but existing tables
 // will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
 func (o StreamDestinationConfigBigqueryDestinationConfigOutput) DataFreshness() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfig) *string { return v.DataFreshness }).(pulumi.StringPtrOutput)
+}
+
+// Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+// table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+// in the source database. With Merge mode, no historical record of the change events is kept.
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) Merge() StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigMerge {
+		return v.Merge
+	}).(StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput)
 }
 
 // A single target dataset to which all data will be streamed.
@@ -4982,6 +5016,18 @@ func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) Elem() Stream
 	}).(StreamDestinationConfigBigqueryDestinationConfigOutput)
 }
 
+// AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+// events) to a source table will be written to the destination Google BigQuery table, retaining the
+// historical state of the data.
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) AppendOnly() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigAppendOnly {
+		if v == nil {
+			return nil
+		}
+		return v.AppendOnly
+	}).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput)
+}
+
 // The guaranteed data freshness (in seconds) when querying tables created by the stream.
 // Editing this field will only affect new tables created in the future, but existing tables
 // will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -4993,6 +5039,18 @@ func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) DataFreshness
 		}
 		return v.DataFreshness
 	}).(pulumi.StringPtrOutput)
+}
+
+// Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+// table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+// in the source database. With Merge mode, no historical record of the change events is kept.
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) Merge() StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigMerge {
+		if v == nil {
+			return nil
+		}
+		return v.Merge
+	}).(StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput)
 }
 
 // A single target dataset to which all data will be streamed.
@@ -5015,6 +5073,242 @@ func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) SourceHierarc
 		}
 		return v.SourceHierarchyDatasets
 	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigAppendOnly struct {
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigAppendOnlyInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs and StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigAppendOnlyInput` via:
+//
+//	StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{...}
+type StreamDestinationConfigBigqueryDestinationConfigAppendOnlyInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs struct {
+}
+
+func (StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigAppendOnly)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput)
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput).ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs, StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtr and StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput` via:
+//
+//	        StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput
+}
+
+type streamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrType StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs
+
+func StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtr(v *StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput {
+	return (*streamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrType)(v)
+}
+
+func (*streamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigAppendOnly)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrType) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrType) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigAppendOnly)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return o.ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfigAppendOnly) *StreamDestinationConfigBigqueryDestinationConfigAppendOnly {
+		return &v
+	}).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigAppendOnly)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigAppendOnly) StreamDestinationConfigBigqueryDestinationConfigAppendOnly {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigBigqueryDestinationConfigAppendOnly
+		return ret
+	}).(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigMerge struct {
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigMergeInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigMergeArgs and StreamDestinationConfigBigqueryDestinationConfigMergeOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigMergeInput` via:
+//
+//	StreamDestinationConfigBigqueryDestinationConfigMergeArgs{...}
+type StreamDestinationConfigBigqueryDestinationConfigMergeInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigMergeOutput() StreamDestinationConfigBigqueryDestinationConfigMergeOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigMergeOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigMergeOutput
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigMergeArgs struct {
+}
+
+func (StreamDestinationConfigBigqueryDestinationConfigMergeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigMerge)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigMergeArgs) ToStreamDestinationConfigBigqueryDestinationConfigMergeOutput() StreamDestinationConfigBigqueryDestinationConfigMergeOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigMergeOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigMergeArgs) ToStreamDestinationConfigBigqueryDestinationConfigMergeOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigMergeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigMergeOutput)
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigMergeArgs) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutput() StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigMergeArgs) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigMergeOutput).ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigMergePtrInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigMergeArgs, StreamDestinationConfigBigqueryDestinationConfigMergePtr and StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigMergePtrInput` via:
+//
+//	        StreamDestinationConfigBigqueryDestinationConfigMergeArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigBigqueryDestinationConfigMergePtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutput() StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput
+}
+
+type streamDestinationConfigBigqueryDestinationConfigMergePtrType StreamDestinationConfigBigqueryDestinationConfigMergeArgs
+
+func StreamDestinationConfigBigqueryDestinationConfigMergePtr(v *StreamDestinationConfigBigqueryDestinationConfigMergeArgs) StreamDestinationConfigBigqueryDestinationConfigMergePtrInput {
+	return (*streamDestinationConfigBigqueryDestinationConfigMergePtrType)(v)
+}
+
+func (*streamDestinationConfigBigqueryDestinationConfigMergePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigMerge)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigMergePtrType) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutput() StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigMergePtrType) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigMergeOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigMergeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigMerge)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigMergeOutput) ToStreamDestinationConfigBigqueryDestinationConfigMergeOutput() StreamDestinationConfigBigqueryDestinationConfigMergeOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigMergeOutput) ToStreamDestinationConfigBigqueryDestinationConfigMergeOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigMergeOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigMergeOutput) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutput() StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return o.ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigMergeOutput) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfigMerge) *StreamDestinationConfigBigqueryDestinationConfigMerge {
+		return &v
+	}).(StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigMerge)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutput() StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigMergePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigMergeOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigMerge) StreamDestinationConfigBigqueryDestinationConfigMerge {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigBigqueryDestinationConfigMerge
+		return ret
+	}).(StreamDestinationConfigBigqueryDestinationConfigMergeOutput)
 }
 
 type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset struct {
@@ -11916,6 +12210,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigPtrInput)(nil)).Elem(), StreamDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigAppendOnlyInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigMergeInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigMergeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigMergePtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigMergeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{})
@@ -12068,6 +12366,10 @@ func init() {
 	pulumi.RegisterOutputType(StreamDestinationConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigMergeOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigMergePtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput{})

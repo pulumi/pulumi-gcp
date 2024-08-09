@@ -376,11 +376,18 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EndpointPolicy(String name, EndpointPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/endpointPolicy:EndpointPolicy", name, args == null ? EndpointPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkservices/endpointPolicy:EndpointPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EndpointPolicy(String name, Output<String> id, @Nullable EndpointPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/endpointPolicy:EndpointPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EndpointPolicyArgs makeArgs(EndpointPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EndpointPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -277,8 +277,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
-        /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Output("queuedProvisioning")]
         public Output<Outputs.NodePoolQueuedProvisioning?> QueuedProvisioning { get; private set; } = null!;
@@ -471,8 +469,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
-        /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("queuedProvisioning")]
         public Input<Inputs.NodePoolQueuedProvisioningArgs>? QueuedProvisioning { get; set; }
@@ -654,8 +650,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
-        /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("queuedProvisioning")]
         public Input<Inputs.NodePoolQueuedProvisioningGetArgs>? QueuedProvisioning { get; set; }

@@ -49,8 +49,13 @@ class TableArgs:
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: This field is in beta. If set to true, it allows table deletion when there
-               are still resource tags attached. The default value is false.
+        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
+               deletion when there are still resource tags attached. The default value is
+               false.
+               
+               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+               removed in a future major release. The default behavior will be allowing
+               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -86,7 +91,7 @@ class TableArgs:
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: This field is in beta. The tags attached to this table. Tag keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
@@ -105,6 +110,9 @@ class TableArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "table_id", table_id)
+        if allow_resource_tags_on_deletion is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""allow_resource_tags_on_deletion is deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
         if allow_resource_tags_on_deletion is not None:
             pulumi.set(__self__, "allow_resource_tags_on_deletion", allow_resource_tags_on_deletion)
         if clusterings is not None:
@@ -174,10 +182,16 @@ class TableArgs:
 
     @property
     @pulumi.getter(name="allowResourceTagsOnDeletion")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
     def allow_resource_tags_on_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        This field is in beta. If set to true, it allows table deletion when there
-        are still resource tags attached. The default value is false.
+        If set to true, it allows table
+        deletion when there are still resource tags attached. The default value is
+        false.
+
+        ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+        removed in a future major release. The default behavior will be allowing
+        the presence of resource tags on deletion after the next major release.
         """
         return pulumi.get(self, "allow_resource_tags_on_deletion")
 
@@ -367,7 +381,7 @@ class TableArgs:
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        This field is in beta. The tags attached to this table. Tag keys are
+        The tags attached to this table. Tag keys are
         globally unique. Tag key is expected to be in the namespaced format, for
         example "123456789012/environment" where 123456789012 is the ID of the
         parent organization or project resource for this tag key. Tag value is
@@ -484,8 +498,13 @@ class _TableState:
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
         """
         Input properties used for looking up and filtering Table resources.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: This field is in beta. If set to true, it allows table deletion when there
-               are still resource tags attached. The default value is false.
+        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
+               deletion when there are still resource tags attached. The default value is
+               false.
+               
+               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+               removed in a future major release. The default behavior will be allowing
+               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -547,7 +566,7 @@ class _TableState:
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: This field is in beta. The tags attached to this table. Tag keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
@@ -568,6 +587,9 @@ class _TableState:
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
                Structure is documented below.
         """
+        if allow_resource_tags_on_deletion is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""allow_resource_tags_on_deletion is deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
         if allow_resource_tags_on_deletion is not None:
             pulumi.set(__self__, "allow_resource_tags_on_deletion", allow_resource_tags_on_deletion)
         if clusterings is not None:
@@ -637,10 +659,16 @@ class _TableState:
 
     @property
     @pulumi.getter(name="allowResourceTagsOnDeletion")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
     def allow_resource_tags_on_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        This field is in beta. If set to true, it allows table deletion when there
-        are still resource tags attached. The default value is false.
+        If set to true, it allows table
+        deletion when there are still resource tags attached. The default value is
+        false.
+
+        ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+        removed in a future major release. The default behavior will be allowing
+        the presence of resource tags on deletion after the next major release.
         """
         return pulumi.get(self, "allow_resource_tags_on_deletion")
 
@@ -966,7 +994,7 @@ class _TableState:
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        This field is in beta. The tags attached to this table. Tag keys are
+        The tags attached to this table. Tag keys are
         globally unique. Tag key is expected to be in the namespaced format, for
         example "123456789012/environment" where 123456789012 is the ID of the
         parent organization or project resource for this tag key. Tag value is
@@ -1197,8 +1225,13 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: This field is in beta. If set to true, it allows table deletion when there
-               are still resource tags attached. The default value is false.
+        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
+               deletion when there are still resource tags attached. The default value is
+               false.
+               
+               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+               removed in a future major release. The default behavior will be allowing
+               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -1236,7 +1269,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: This field is in beta. The tags attached to this table. Tag keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
@@ -1481,8 +1514,13 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: This field is in beta. If set to true, it allows table deletion when there
-               are still resource tags attached. The default value is false.
+        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
+               deletion when there are still resource tags attached. The default value is
+               false.
+               
+               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+               removed in a future major release. The default behavior will be allowing
+               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -1544,7 +1582,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: This field is in beta. The tags attached to this table. Tag keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are
                globally unique. Tag key is expected to be in the namespaced format, for
                example "123456789012/environment" where 123456789012 is the ID of the
                parent organization or project resource for this tag key. Tag value is
@@ -1606,10 +1644,16 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowResourceTagsOnDeletion")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
     def allow_resource_tags_on_deletion(self) -> pulumi.Output[Optional[bool]]:
         """
-        This field is in beta. If set to true, it allows table deletion when there
-        are still resource tags attached. The default value is false.
+        If set to true, it allows table
+        deletion when there are still resource tags attached. The default value is
+        false.
+
+        ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+        removed in a future major release. The default behavior will be allowing
+        the presence of resource tags on deletion after the next major release.
         """
         return pulumi.get(self, "allow_resource_tags_on_deletion")
 
@@ -1839,7 +1883,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        This field is in beta. The tags attached to this table. Tag keys are
+        The tags attached to this table. Tag keys are
         globally unique. Tag key is expected to be in the namespaced format, for
         example "123456789012/environment" where 123456789012 is the ID of the
         parent organization or project resource for this tag key. Tag value is

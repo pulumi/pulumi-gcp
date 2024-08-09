@@ -183,7 +183,7 @@ import (
 //						&orgpolicy.PolicySpecRuleArgs{
 //							Condition: &orgpolicy.PolicySpecRuleConditionArgs{
 //								Description: pulumi.String("A sample condition for the policy"),
-//								Expression:  pulumi.String("resource.matchLabels('labelKeys/123', 'labelValues/345')"),
+//								Expression:  pulumi.String("resource.matchTagId('tagKeys/123', 'tagValues/345')"),
 //								Location:    pulumi.String("sample-location.log"),
 //								Title:       pulumi.String("sample-condition"),
 //							},
@@ -227,7 +227,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			constraint, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-//				Name:        pulumi.String("custom.disableGkeAutoUpgrade_40785"),
+//				Name:        pulumi.String("custom.disableGkeAutoUpgrade_37559"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				DisplayName: pulumi.String("Disable GKE auto upgrade"),
 //				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),

@@ -28,9 +28,9 @@ public final class BareMetalNodePoolNodePoolConfigArgs extends com.pulumi.resour
      * version -- it&#39;s best to assume the behavior is undefined and
      * conflicts should be avoided. For more information, including usage
      * and the valid values, see:
-     * http://kubernetes.io/v1.1/docs/user-guide/labels.html
-     * An object containing a list of &#34;key&#34;: value pairs.
-     * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+     *   An object containing a list of &#34;key&#34;: value pairs.
+     *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     @Import(name="labels")
@@ -44,9 +44,9 @@ public final class BareMetalNodePoolNodePoolConfigArgs extends com.pulumi.resour
      * version -- it&#39;s best to assume the behavior is undefined and
      * conflicts should be avoided. For more information, including usage
      * and the valid values, see:
-     * http://kubernetes.io/v1.1/docs/user-guide/labels.html
-     * An object containing a list of &#34;key&#34;: value pairs.
-     * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+     *   An object containing a list of &#34;key&#34;: value pairs.
+     *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -137,9 +137,9 @@ public final class BareMetalNodePoolNodePoolConfigArgs extends com.pulumi.resour
          * version -- it&#39;s best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
-         * An object containing a list of &#34;key&#34;: value pairs.
-         * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         *   An object containing a list of &#34;key&#34;: value pairs.
+         *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * @return builder
          * 
@@ -157,9 +157,9 @@ public final class BareMetalNodePoolNodePoolConfigArgs extends com.pulumi.resour
          * version -- it&#39;s best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
-         * An object containing a list of &#34;key&#34;: value pairs.
-         * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         *   An object containing a list of &#34;key&#34;: value pairs.
+         *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * @return builder
          * 

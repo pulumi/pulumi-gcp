@@ -209,6 +209,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        /// Default value is `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Output("gatewayIpVersion")]
+        public Output<string?> GatewayIpVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -252,7 +260,7 @@ namespace Pulumi.Gcp.Compute
         /// The stack type for this VPN gateway to identify the IP protocols that are enabled.
         /// If not specified, IPV4_ONLY will be used.
         /// Default value is `IPV4_ONLY`.
-        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         /// </summary>
         [Output("stackType")]
         public Output<string?> StackType { get; private set; } = null!;
@@ -317,6 +325,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        /// Default value is `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("gatewayIpVersion")]
+        public Input<string>? GatewayIpVersion { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -354,7 +370,7 @@ namespace Pulumi.Gcp.Compute
         /// The stack type for this VPN gateway to identify the IP protocols that are enabled.
         /// If not specified, IPV4_ONLY will be used.
         /// Default value is `IPV4_ONLY`.
-        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
@@ -385,6 +401,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        /// Default value is `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("gatewayIpVersion")]
+        public Input<string>? GatewayIpVersion { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -430,7 +454,7 @@ namespace Pulumi.Gcp.Compute
         /// The stack type for this VPN gateway to identify the IP protocols that are enabled.
         /// If not specified, IPV4_ONLY will be used.
         /// Default value is `IPV4_ONLY`.
-        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }

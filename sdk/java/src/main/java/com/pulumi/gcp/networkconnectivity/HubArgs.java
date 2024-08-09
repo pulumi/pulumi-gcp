@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -32,8 +33,22 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
      * 
+     */
+    @Import(name="exportPsc")
+    private @Nullable Output<Boolean> exportPsc;
+
+    /**
+     * @return Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+     * 
+     */
+    public Optional<Output<Boolean>> exportPsc() {
+        return Optional.ofNullable(this.exportPsc);
+    }
+
+    /**
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -43,7 +58,6 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -72,14 +86,16 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -90,6 +106,7 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
     private HubArgs(HubArgs $) {
         this.description = $.description;
+        this.exportPsc = $.exportPsc;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
@@ -135,8 +152,28 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+         * @param exportPsc Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
          * 
+         * @return builder
+         * 
+         */
+        public Builder exportPsc(@Nullable Output<Boolean> exportPsc) {
+            $.exportPsc = exportPsc;
+            return this;
+        }
+
+        /**
+         * @param exportPsc Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPsc(Boolean exportPsc) {
+            return exportPsc(Output.of(exportPsc));
+        }
+
+        /**
+         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -150,7 +187,6 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -187,7 +223,8 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -198,7 +235,8 @@ public final class HubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

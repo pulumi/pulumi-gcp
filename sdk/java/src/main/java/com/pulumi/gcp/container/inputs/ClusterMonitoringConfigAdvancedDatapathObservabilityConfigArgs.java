@@ -48,7 +48,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
     }
 
     /**
-     * Mode used to make Relay available.
+     * Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
      * 
      * @deprecated
      * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
@@ -59,7 +59,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
     private @Nullable Output<String> relayMode;
 
     /**
-     * @return Mode used to make Relay available.
+     * @return Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
      * 
      * @deprecated
      * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
@@ -139,7 +139,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
         }
 
         /**
-         * @param relayMode Mode used to make Relay available.
+         * @param relayMode Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
         }
 
         /**
-         * @param relayMode Mode used to make Relay available.
+         * @param relayMode Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
          * 
          * @return builder
          * 

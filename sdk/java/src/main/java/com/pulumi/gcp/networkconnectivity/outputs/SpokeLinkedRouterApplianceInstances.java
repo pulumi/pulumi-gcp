@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class SpokeLinkedRouterApplianceInstances {
     /**
      * @return The list of router appliance instances
+     * Structure is documented below.
      * 
      */
     private List<SpokeLinkedRouterApplianceInstancesInstance> instances;
@@ -26,6 +27,7 @@ public final class SpokeLinkedRouterApplianceInstances {
     private SpokeLinkedRouterApplianceInstances() {}
     /**
      * @return The list of router appliance instances
+     * Structure is documented below.
      * 
      */
     public List<SpokeLinkedRouterApplianceInstancesInstance> instances() {

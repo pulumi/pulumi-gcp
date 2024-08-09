@@ -108,7 +108,7 @@ export class ServiceProjectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+     * "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -119,7 +119,7 @@ export class ServiceProjectAttachment extends pulumi.CustomResource {
     /**
      * "Immutable. Service project name in the format: \"projects/abc\"
      * or \"projects/123\". As input, project name with either project id or number
-     * are accepted. As output, this field will contain project number. "
+     * are accepted. As output, this field will contain project number."
      */
     public readonly serviceProject!: pulumi.Output<string | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface ServiceProjectAttachmentState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\" "
+     * "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
      */
     name?: pulumi.Input<string>;
     /**
@@ -196,7 +196,7 @@ export interface ServiceProjectAttachmentState {
     /**
      * "Immutable. Service project name in the format: \"projects/abc\"
      * or \"projects/123\". As input, project name with either project id or number
-     * are accepted. As output, this field will contain project number. "
+     * are accepted. As output, this field will contain project number."
      */
     serviceProject?: pulumi.Input<string>;
     /**
@@ -228,7 +228,7 @@ export interface ServiceProjectAttachmentArgs {
     /**
      * "Immutable. Service project name in the format: \"projects/abc\"
      * or \"projects/123\". As input, project name with either project id or number
-     * are accepted. As output, this field will contain project number. "
+     * are accepted. As output, this field will contain project number."
      */
     serviceProject?: pulumi.Input<string>;
     /**

@@ -466,8 +466,8 @@ func (o ConnectionAuthConfigAdditionalVariableArrayOutput) Index(i pulumi.IntInp
 }
 
 type ConnectionAuthConfigAdditionalVariableEncryptionKeyValue struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -487,8 +487,8 @@ type ConnectionAuthConfigAdditionalVariableEncryptionKeyValueInput interface {
 }
 
 type ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -573,8 +573,8 @@ func (o ConnectionAuthConfigAdditionalVariableEncryptionKeyValueOutput) ToConnec
 	}).(ConnectionAuthConfigAdditionalVariableEncryptionKeyValuePtrOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionAuthConfigAdditionalVariableEncryptionKeyValueOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigAdditionalVariableEncryptionKeyValue) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -610,8 +610,8 @@ func (o ConnectionAuthConfigAdditionalVariableEncryptionKeyValuePtrOutput) Elem(
 	}).(ConnectionAuthConfigAdditionalVariableEncryptionKeyValueOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionAuthConfigAdditionalVariableEncryptionKeyValuePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigAdditionalVariableEncryptionKeyValue) *string {
@@ -2865,8 +2865,8 @@ func (o ConnectionConfigVariableArrayOutput) Index(i pulumi.IntInput) Connection
 }
 
 type ConnectionConfigVariableEncryptionKeyValue struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -2886,8 +2886,8 @@ type ConnectionConfigVariableEncryptionKeyValueInput interface {
 }
 
 type ConnectionConfigVariableEncryptionKeyValueArgs struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -2972,8 +2972,8 @@ func (o ConnectionConfigVariableEncryptionKeyValueOutput) ToConnectionConfigVari
 	}).(ConnectionConfigVariableEncryptionKeyValuePtrOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionConfigVariableEncryptionKeyValueOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionConfigVariableEncryptionKeyValue) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -3009,8 +3009,8 @@ func (o ConnectionConfigVariableEncryptionKeyValuePtrOutput) Elem() ConnectionCo
 	}).(ConnectionConfigVariableEncryptionKeyValueOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionConfigVariableEncryptionKeyValuePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionConfigVariableEncryptionKeyValue) *string {
@@ -3856,8 +3856,8 @@ func (o ConnectionEventingConfigAdditionalVariableArrayOutput) Index(i pulumi.In
 }
 
 type ConnectionEventingConfigAdditionalVariableEncryptionKeyValue struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -3877,8 +3877,8 @@ type ConnectionEventingConfigAdditionalVariableEncryptionKeyValueInput interface
 }
 
 type ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -3963,8 +3963,8 @@ func (o ConnectionEventingConfigAdditionalVariableEncryptionKeyValueOutput) ToCo
 	}).(ConnectionEventingConfigAdditionalVariableEncryptionKeyValuePtrOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionEventingConfigAdditionalVariableEncryptionKeyValueOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionEventingConfigAdditionalVariableEncryptionKeyValue) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -4000,8 +4000,8 @@ func (o ConnectionEventingConfigAdditionalVariableEncryptionKeyValuePtrOutput) E
 	}).(ConnectionEventingConfigAdditionalVariableEncryptionKeyValueOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionEventingConfigAdditionalVariableEncryptionKeyValuePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionEventingConfigAdditionalVariableEncryptionKeyValue) *string {
@@ -4523,8 +4523,8 @@ func (o ConnectionEventingConfigAuthConfigAdditionalVariableArrayOutput) Index(i
 }
 
 type ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -4544,8 +4544,8 @@ type ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueInput
 }
 
 type ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -4630,8 +4630,8 @@ func (o ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueOu
 	}).(ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValuePtrOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue) *string {
@@ -4669,8 +4669,8 @@ func (o ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValuePt
 	}).(ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValuePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue) *string {
@@ -6580,8 +6580,8 @@ func (o ConnectionSslConfigAdditionalVariableArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ConnectionSslConfigAdditionalVariableEncryptionKeyValue struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -6601,8 +6601,8 @@ type ConnectionSslConfigAdditionalVariableEncryptionKeyValueInput interface {
 }
 
 type ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs struct {
-	// The [KMS key name] with which the content of the Operation is encrypted. The expected
-	// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// The [KMS key name] with which the content of the Operation is encrypted. The
+	// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	// Will be empty string if google managed.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Type of Encryption Key
@@ -6687,8 +6687,8 @@ func (o ConnectionSslConfigAdditionalVariableEncryptionKeyValueOutput) ToConnect
 	}).(ConnectionSslConfigAdditionalVariableEncryptionKeyValuePtrOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionSslConfigAdditionalVariableEncryptionKeyValueOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionSslConfigAdditionalVariableEncryptionKeyValue) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -6724,8 +6724,8 @@ func (o ConnectionSslConfigAdditionalVariableEncryptionKeyValuePtrOutput) Elem()
 	}).(ConnectionSslConfigAdditionalVariableEncryptionKeyValueOutput)
 }
 
-// The [KMS key name] with which the content of the Operation is encrypted. The expected
-// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// The [KMS key name] with which the content of the Operation is encrypted. The
+// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 // Will be empty string if google managed.
 func (o ConnectionSslConfigAdditionalVariableEncryptionKeyValuePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionSslConfigAdditionalVariableEncryptionKeyValue) *string {

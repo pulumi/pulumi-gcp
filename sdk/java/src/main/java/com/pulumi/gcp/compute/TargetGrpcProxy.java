@@ -387,11 +387,18 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TargetGrpcProxy(String name, @Nullable TargetGrpcProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetGrpcProxy:TargetGrpcProxy", name, args == null ? TargetGrpcProxyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/targetGrpcProxy:TargetGrpcProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TargetGrpcProxy(String name, Output<String> id, @Nullable TargetGrpcProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/targetGrpcProxy:TargetGrpcProxy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TargetGrpcProxyArgs makeArgs(@Nullable TargetGrpcProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TargetGrpcProxyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

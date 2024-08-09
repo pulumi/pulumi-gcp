@@ -1006,6 +1006,9 @@
                             }
                         }
                     },
+                    "observability_config": {
+                        "maxItemsOne": true
+                    },
                     "psc_instance_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1248,6 +1251,14 @@
             },
             "google_apigee_environment_iam_policy": {
                 "current": "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy",
+                "majorVersion": 7
+            },
+            "google_apigee_environment_keyvaluemaps": {
+                "current": "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps",
+                "majorVersion": 7
+            },
+            "google_apigee_environment_keyvaluemaps_entries": {
+                "current": "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries",
                 "majorVersion": 7
             },
             "google_apigee_flowhook": {
@@ -2673,6 +2684,9 @@
                 "current": "gcp:bigquery/appProfile:AppProfile",
                 "majorVersion": 7,
                 "fields": {
+                    "data_boost_isolation_read_only": {
+                        "maxItemsOne": true
+                    },
                     "multi_cluster_routing_cluster_ids": {
                         "maxItemsOne": false
                     },
@@ -5240,6 +5254,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "aws_v4_authentication": {
+                                    "maxItemsOne": true
+                                },
                                 "subject_alt_names": {
                                     "maxItemsOne": false
                                 }
@@ -7794,6 +7811,109 @@
                     }
                 }
             },
+            "google_compute_resize_request": {
+                "current": "gcp:compute/resizeRequest:ResizeRequest",
+                "majorVersion": 7,
+                "fields": {
+                    "requested_run_duration": {
+                        "maxItemsOne": true
+                    },
+                    "status": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "error": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "errors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "error_details": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "error_info": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "help": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "links": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "localized_message": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "quota_info": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_attempt": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "error": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "errors": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "error_details": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "error_info": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "help": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "links": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "localized_message": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "quota_info": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_compute_resource_policy": {
                 "current": "gcp:compute/resourcePolicy:ResourcePolicy",
                 "majorVersion": 7,
@@ -7964,8 +8084,36 @@
                     "bfd": {
                         "maxItemsOne": true
                     },
+                    "custom_learned_ip_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "export_policies": {
+                        "maxItemsOne": false
+                    },
+                    "import_policies": {
+                        "maxItemsOne": false
+                    },
                     "md5_authentication_key": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "google_compute_router_route_policy": {
+                "current": "gcp:compute/routerRoutePolicy:RouterRoutePolicy",
+                "majorVersion": 7,
+                "fields": {
+                    "terms": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "match": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -9454,6 +9602,19 @@
                                 },
                                 "network_policy_config": {
                                     "maxItemsOne": true
+                                },
+                                "ray_operator_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ray_cluster_logging_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ray_cluster_monitoring_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "stateful_ha_config": {
                                     "maxItemsOne": true
@@ -11772,6 +11933,83 @@
                                                                     }
                                                                 }
                                                             }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "cloud_storage_target": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cloud_storage_conditions": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "included_bucket_attributes": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "included_object_attributes": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "disabled": {
+                                                "maxItemsOne": true
+                                            },
+                                            "filter": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cloud_storage_resource_reference": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "collection": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "include_regexes": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "patterns": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "cloud_storage_regex": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "others": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "generation_cadence": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "inspect_template_modified_cadence": {
+                                                            "maxItemsOne": true
                                                         }
                                                     }
                                                 }
@@ -14528,6 +14766,12 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "append_only": {
+                                                "maxItemsOne": true
+                                            },
+                                            "merge": {
+                                                "maxItemsOne": true
+                                            },
                                             "single_target_dataset": {
                                                 "maxItemsOne": true
                                             },
@@ -24000,6 +24244,10 @@
                 "current": "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy",
                 "majorVersion": 7
             },
+            "google_scc_v2_organization_mute_config": {
+                "current": "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig",
+                "majorVersion": 7
+            },
             "google_scc_v2_organization_notification_config": {
                 "current": "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig",
                 "majorVersion": 7,
@@ -25738,7 +25986,14 @@
                                     "maxItemsOne": true
                                 },
                                 "network_interfaces": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_configs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "service_accounts": {
                                     "maxItemsOne": false,
@@ -27719,6 +27974,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "aws_v4_authentication": {
+                                    "maxItemsOne": false
+                                },
                                 "subject_alt_names": {
                                     "maxItemsOne": false
                                 }
@@ -29015,6 +29273,19 @@
                                 },
                                 "network_policy_config": {
                                     "maxItemsOne": false
+                                },
+                                "ray_operator_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ray_cluster_logging_config": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ray_cluster_monitoring_config": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "stateful_ha_config": {
                                     "maxItemsOne": false
@@ -32667,6 +32938,8 @@
             "gcp:apigee/environmentIamBinding:EnvironmentIamBinding": 0,
             "gcp:apigee/environmentIamMember:EnvironmentIamMember": 0,
             "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy": 0,
+            "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps": 0,
+            "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries": 0,
             "gcp:apigee/flowhook:Flowhook": 0,
             "gcp:apigee/instance:Instance": 0,
             "gcp:apigee/instanceAttachment:InstanceAttachment": 0,
@@ -32946,12 +33219,14 @@
             "gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy": 0,
             "gcp:compute/regionUrlMap:RegionUrlMap": 0,
             "gcp:compute/reservation:Reservation": 0,
+            "gcp:compute/resizeRequest:ResizeRequest": 0,
             "gcp:compute/resourcePolicy:ResourcePolicy": 0,
             "gcp:compute/route:Route": 0,
             "gcp:compute/router:Router": 0,
             "gcp:compute/routerInterface:RouterInterface": 0,
             "gcp:compute/routerNat:RouterNat": 0,
             "gcp:compute/routerPeer:RouterPeer": 0,
+            "gcp:compute/routerRoutePolicy:RouterRoutePolicy": 0,
             "gcp:compute/sSLCertificate:SSLCertificate": 0,
             "gcp:compute/sSLPolicy:SSLPolicy": 0,
             "gcp:compute/securityPolicy:SecurityPolicy": 0,
@@ -33458,6 +33733,7 @@
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
+            "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig": 0,
             "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": 0,
             "gcp:securityposture/posture:Posture": 0,
             "gcp:securityposture/postureDeployment:PostureDeployment": 0,

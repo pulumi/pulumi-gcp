@@ -458,9 +458,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
         """
@@ -494,9 +494,9 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
@@ -523,9 +523,9 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -583,9 +583,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_ip: NotRequired[pulumi.Input[str]]
         """
@@ -608,9 +608,9 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
                Example: 192.168.0.1
         """
@@ -630,9 +630,9 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -1142,14 +1142,14 @@ if not MYPY:
         uri: pulumi.Input[str]
         """
         Specifies the address of your proxy server.
-        Examples: http://domain
+        For Example: http://domain
         WARNING: Do not provide credentials in the format
-        http://(username:password@)domain these will be rejected by the server.
+        of http://(username:password@)domain these will be rejected by the server.
         """
         no_proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         A list of IPs, hostnames, and domains that should skip the proxy.
-        Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
         """
 elif False:
     BareMetalAdminClusterProxyArgsDict: TypeAlias = Mapping[str, Any]
@@ -1161,11 +1161,11 @@ class BareMetalAdminClusterProxyArgs:
                  no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] uri: Specifies the address of your proxy server.
-               Examples: http://domain
+               For Example: http://domain
                WARNING: Do not provide credentials in the format
-               http://(username:password@)domain these will be rejected by the server.
+               of http://(username:password@)domain these will be rejected by the server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] no_proxies: A list of IPs, hostnames, and domains that should skip the proxy.
-               Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+               For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
         """
         pulumi.set(__self__, "uri", uri)
         if no_proxies is not None:
@@ -1176,9 +1176,9 @@ class BareMetalAdminClusterProxyArgs:
     def uri(self) -> pulumi.Input[str]:
         """
         Specifies the address of your proxy server.
-        Examples: http://domain
+        For Example: http://domain
         WARNING: Do not provide credentials in the format
-        http://(username:password@)domain these will be rejected by the server.
+        of http://(username:password@)domain these will be rejected by the server.
         """
         return pulumi.get(self, "uri")
 
@@ -1191,7 +1191,7 @@ class BareMetalAdminClusterProxyArgs:
     def no_proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of IPs, hostnames, and domains that should skip the proxy.
-        Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
         """
         return pulumi.get(self, "no_proxies")
 
@@ -2196,9 +2196,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
         """
@@ -2232,9 +2232,9 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
@@ -2261,9 +2261,9 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -2321,9 +2321,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_ip: NotRequired[pulumi.Input[str]]
         """
@@ -2346,9 +2346,9 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
                Example: 192.168.0.1
         """
@@ -2368,9 +2368,9 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -2987,9 +2987,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
         """
@@ -3026,9 +3026,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
@@ -3070,9 +3070,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -3241,9 +3241,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_ip: NotRequired[pulumi.Input[str]]
         """
@@ -3266,9 +3266,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
                Example: 192.168.0.1
         """
@@ -3288,9 +3288,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -3620,9 +3620,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
         """
@@ -3656,9 +3656,9 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
@@ -3685,9 +3685,9 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -3745,9 +3745,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_ip: NotRequired[pulumi.Input[str]]
         """
@@ -3770,9 +3770,9 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
                Example: 192.168.0.1
         """
@@ -3792,9 +3792,9 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -4374,14 +4374,14 @@ if not MYPY:
         uri: pulumi.Input[str]
         """
         Specifies the address of your proxy server.
-        Examples: http://domain
+        For example: http://domain
         WARNING: Do not provide credentials in the format
-        http://(username:password@)domain these will be rejected by the server.
+        of http://(username:password@)domain these will be rejected by the server.
         """
         no_proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         A list of IPs, hostnames, and domains that should skip the proxy.
-        Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        For example ["127.0.0.1", "example.com", ".corp", "localhost"].
         """
 elif False:
     BareMetalClusterProxyArgsDict: TypeAlias = Mapping[str, Any]
@@ -4393,11 +4393,11 @@ class BareMetalClusterProxyArgs:
                  no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] uri: Specifies the address of your proxy server.
-               Examples: http://domain
+               For example: http://domain
                WARNING: Do not provide credentials in the format
-               http://(username:password@)domain these will be rejected by the server.
+               of http://(username:password@)domain these will be rejected by the server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] no_proxies: A list of IPs, hostnames, and domains that should skip the proxy.
-               Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+               For example ["127.0.0.1", "example.com", ".corp", "localhost"].
         """
         pulumi.set(__self__, "uri", uri)
         if no_proxies is not None:
@@ -4408,9 +4408,9 @@ class BareMetalClusterProxyArgs:
     def uri(self) -> pulumi.Input[str]:
         """
         Specifies the address of your proxy server.
-        Examples: http://domain
+        For example: http://domain
         WARNING: Do not provide credentials in the format
-        http://(username:password@)domain these will be rejected by the server.
+        of http://(username:password@)domain these will be rejected by the server.
         """
         return pulumi.get(self, "uri")
 
@@ -4423,7 +4423,7 @@ class BareMetalClusterProxyArgs:
     def no_proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of IPs, hostnames, and domains that should skip the proxy.
-        Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        For example ["127.0.0.1", "example.com", ".corp", "localhost"].
         """
         return pulumi.get(self, "no_proxies")
 
@@ -5257,9 +5257,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         operating_system: NotRequired[pulumi.Input[str]]
         """
@@ -5290,9 +5290,9 @@ class BareMetalNodePoolNodePoolConfigArgs:
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
@@ -5329,9 +5329,9 @@ class BareMetalNodePoolNodePoolConfigArgs:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -5376,9 +5376,9 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_ip: NotRequired[pulumi.Input[str]]
         """
@@ -5401,9 +5401,9 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
                An object containing a list of "key": value pairs.
-               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
                Example: 192.168.0.1
         """
@@ -5423,9 +5423,9 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
         An object containing a list of "key": value pairs.
-        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 

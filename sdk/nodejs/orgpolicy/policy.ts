@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *             {
  *                 condition: {
  *                     description: "A sample condition for the policy",
- *                     expression: "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+ *                     expression: "resource.matchTagId('tagKeys/123', 'tagValues/345')",
  *                     location: "sample-location.log",
  *                     title: "sample-condition",
  *                 },
@@ -116,7 +116,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
- *     name: "custom.disableGkeAutoUpgrade_40785",
+ *     name: "custom.disableGkeAutoUpgrade_37559",
  *     parent: "organizations/123456789",
  *     displayName: "Disable GKE auto upgrade",
  *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",

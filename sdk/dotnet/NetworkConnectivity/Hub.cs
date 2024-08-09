@@ -12,10 +12,16 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// <summary>
     /// The NetworkConnectivity Hub resource
     /// 
+    /// To get more information about Hub, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_hub
-    /// A basic test of a networkconnectivity hub
+    /// ### Network Connectivity Hub Basic
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,13 +32,31 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
     ///     {
-    ///         Name = "hub",
+    ///         Name = "basic",
     ///         Description = "A sample hub",
-    ///         Project = "my-project-name",
     ///         Labels = 
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Connectivity Hub With Export Psc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
+    ///     {
+    ///         Name = "basic",
+    ///         Description = "A sample hub with Private Service Connect transitivity is enabled",
+    ///         ExportPsc = true,
     ///     });
     /// 
     /// });
@@ -81,11 +105,16 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
-        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        /// </summary>
+        [Output("exportPsc")]
+        public Output<bool> ExportPsc { get; private set; } = null!;
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -96,32 +125,34 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
-        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        /// Structure is documented below.
         /// </summary>
         [Output("routingVpcs")]
         public Output<ImmutableArray<Outputs.HubRoutingVpc>> RoutingVpcs { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        /// Output only. The current lifecycle state of this hub.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -195,12 +226,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        /// </summary>
+        [Input("exportPsc")]
+        public Input<bool>? ExportPsc { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -214,14 +250,14 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -247,27 +283,32 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Description { get; set; }
 
         [Input("effectiveLabels")]
-        private InputMap<object>? _effectiveLabels;
+        private InputMap<string>? _effectiveLabels;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
-        public InputMap<object> EffectiveLabels
+        public InputMap<string> EffectiveLabels
         {
-            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        /// </summary>
+        [Input("exportPsc")]
+        public Input<bool>? ExportPsc { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -281,30 +322,31 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         [Input("pulumiLabels")]
-        private InputMap<object>? _pulumiLabels;
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
-        public InputMap<object> PulumiLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -314,6 +356,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.HubRoutingVpcGetArgs> RoutingVpcs
         {
@@ -322,7 +365,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
-        /// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        /// Output only. The current lifecycle state of this hub.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

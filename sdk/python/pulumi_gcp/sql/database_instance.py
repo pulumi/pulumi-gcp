@@ -859,7 +859,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 "tier": "db-f1-micro",
                 "ip_configuration": {
                     "ipv4_enabled": False,
-                    "private_network": private_network.id,
+                    "private_network": private_network.self_link,
                     "enable_private_path_for_google_cloud_services": True,
                 },
             },
@@ -1053,7 +1053,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 "tier": "db-f1-micro",
                 "ip_configuration": {
                     "ipv4_enabled": False,
-                    "private_network": private_network.id,
+                    "private_network": private_network.self_link,
                     "enable_private_path_for_google_cloud_services": True,
                 },
             },

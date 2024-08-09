@@ -25,6 +25,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     public static final DiskState Empty = new DiskState();
 
     /**
+     * The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    @Import(name="accessMode")
+    private @Nullable Output<String> accessMode;
+
+    /**
+     * @return The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    public Optional<Output<String>> accessMode() {
+        return Optional.ofNullable(this.accessMode);
+    }
+
+    /**
      * A nested object resource
      * Structure is documented below.
      * 
@@ -765,6 +788,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private DiskState() {}
 
     private DiskState(DiskState $) {
+        this.accessMode = $.accessMode;
         this.asyncPrimaryDisk = $.asyncPrimaryDisk;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
@@ -819,6 +843,35 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DiskState defaults) {
             $ = new DiskState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessMode The accessMode of the disk.
+         * For example:
+         * * READ_WRITE_SINGLE
+         * * READ_WRITE_MANY
+         * * READ_ONLY_SINGLE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(@Nullable Output<String> accessMode) {
+            $.accessMode = accessMode;
+            return this;
+        }
+
+        /**
+         * @param accessMode The accessMode of the disk.
+         * For example:
+         * * READ_WRITE_SINGLE
+         * * READ_WRITE_MANY
+         * * READ_ONLY_SINGLE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(String accessMode) {
+            return accessMode(Output.of(accessMode));
         }
 
         /**
