@@ -209,7 +209,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessBoundaryPolicy(String name) {
+    public AccessBoundaryPolicy(java.lang.String name) {
         this(name, AccessBoundaryPolicyArgs.Empty);
     }
     /**
@@ -217,7 +217,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessBoundaryPolicy(String name, AccessBoundaryPolicyArgs args) {
+    public AccessBoundaryPolicy(java.lang.String name, AccessBoundaryPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -226,12 +226,12 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessBoundaryPolicy(String name, AccessBoundaryPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccessBoundaryPolicy(java.lang.String name, AccessBoundaryPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessBoundaryPolicy(String name, Output<String> id, @Nullable AccessBoundaryPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", name, state, makeResourceOptions(options, id));
+    private AccessBoundaryPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AccessBoundaryPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccessBoundaryPolicyArgs makeArgs(AccessBoundaryPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -241,7 +241,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? AccessBoundaryPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +257,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessBoundaryPolicy get(String name, Output<String> id, @Nullable AccessBoundaryPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessBoundaryPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessBoundaryPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessBoundaryPolicy(name, id, state, options);
     }
 }

@@ -202,6 +202,27 @@ namespace Pulumi.Gcp.Iap
     /// });
     /// ```
     /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Identity-Aware Proxy WebTypeAppEngine
+    /// Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeAppEngine. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.iap.WebTypeAppEngingIamPolicy`: Authoritative. Sets the IAM policy for the webtypeappengine and replaces any existing policy already attached.
+    /// * `gcp.iap.WebTypeAppEngingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webtypeappengine are preserved.
+    /// * `gcp.iap.WebTypeAppEngingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webtypeappengine are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.iap.WebTypeAppEngingIamPolicy`: Retrieves the IAM policy for the webtypeappengine
+    /// 
+    /// &gt; **Note:** `gcp.iap.WebTypeAppEngingIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebTypeAppEngingIamBinding` and `gcp.iap.WebTypeAppEngingIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+    /// 
     /// ## gcp.iap.WebTypeAppEngingIamPolicy
     /// 
     /// ```csharp

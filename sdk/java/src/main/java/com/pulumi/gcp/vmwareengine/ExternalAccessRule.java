@@ -428,7 +428,7 @@ public class ExternalAccessRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ExternalAccessRule(String name) {
+    public ExternalAccessRule(java.lang.String name) {
         this(name, ExternalAccessRuleArgs.Empty);
     }
     /**
@@ -436,7 +436,7 @@ public class ExternalAccessRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ExternalAccessRule(String name, ExternalAccessRuleArgs args) {
+    public ExternalAccessRule(java.lang.String name, ExternalAccessRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -445,12 +445,12 @@ public class ExternalAccessRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ExternalAccessRule(String name, ExternalAccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vmwareengine/externalAccessRule:ExternalAccessRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ExternalAccessRule(java.lang.String name, ExternalAccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vmwareengine/externalAccessRule:ExternalAccessRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ExternalAccessRule(String name, Output<String> id, @Nullable ExternalAccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vmwareengine/externalAccessRule:ExternalAccessRule", name, state, makeResourceOptions(options, id));
+    private ExternalAccessRule(java.lang.String name, Output<java.lang.String> id, @Nullable ExternalAccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vmwareengine/externalAccessRule:ExternalAccessRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ExternalAccessRuleArgs makeArgs(ExternalAccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -460,7 +460,7 @@ public class ExternalAccessRule extends com.pulumi.resources.CustomResource {
         return args == null ? ExternalAccessRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -476,7 +476,7 @@ public class ExternalAccessRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ExternalAccessRule get(String name, Output<String> id, @Nullable ExternalAccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ExternalAccessRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ExternalAccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ExternalAccessRule(name, id, state, options);
     }
 }

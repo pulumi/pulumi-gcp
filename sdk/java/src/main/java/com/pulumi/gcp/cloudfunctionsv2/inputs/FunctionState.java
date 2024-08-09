@@ -161,7 +161,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A user-defined name of the function. Function names must
-     * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
+     * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      * 
      */
     @Import(name="name")
@@ -169,7 +169,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A user-defined name of the function. Function names must
-     * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
+     * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -500,7 +500,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A user-defined name of the function. Function names must
-         * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
+         * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A user-defined name of the function. Function names must
-         * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
+         * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
          * 
          * @return builder
          * 

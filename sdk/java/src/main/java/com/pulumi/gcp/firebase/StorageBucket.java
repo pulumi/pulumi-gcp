@@ -137,7 +137,7 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StorageBucket(String name) {
+    public StorageBucket(java.lang.String name) {
         this(name, StorageBucketArgs.Empty);
     }
     /**
@@ -145,7 +145,7 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StorageBucket(String name, @Nullable StorageBucketArgs args) {
+    public StorageBucket(java.lang.String name, @Nullable StorageBucketArgs args) {
         this(name, args, null);
     }
     /**
@@ -154,12 +154,12 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StorageBucket(String name, @Nullable StorageBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/storageBucket:StorageBucket", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public StorageBucket(java.lang.String name, @Nullable StorageBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/storageBucket:StorageBucket", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StorageBucket(String name, Output<String> id, @Nullable StorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/storageBucket:StorageBucket", name, state, makeResourceOptions(options, id));
+    private StorageBucket(java.lang.String name, Output<java.lang.String> id, @Nullable StorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/storageBucket:StorageBucket", name, state, makeResourceOptions(options, id), false);
     }
 
     private static StorageBucketArgs makeArgs(@Nullable StorageBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -169,7 +169,7 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
         return args == null ? StorageBucketArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -185,7 +185,7 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StorageBucket get(String name, Output<String> id, @Nullable StorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StorageBucket get(java.lang.String name, Output<java.lang.String> id, @Nullable StorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StorageBucket(name, id, state, options);
     }
 }

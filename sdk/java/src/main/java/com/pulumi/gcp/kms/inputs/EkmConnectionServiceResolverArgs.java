@@ -66,14 +66,14 @@ public final class EkmConnectionServiceResolverArgs extends com.pulumi.resources
     }
 
     /**
-     * Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     @Import(name="serviceDirectoryService", required=true)
     private Output<String> serviceDirectoryService;
 
     /**
-     * @return Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * @return Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     public Output<String> serviceDirectoryService() {
@@ -184,7 +184,7 @@ public final class EkmConnectionServiceResolverArgs extends com.pulumi.resources
         }
 
         /**
-         * @param serviceDirectoryService Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+         * @param serviceDirectoryService Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class EkmConnectionServiceResolverArgs extends com.pulumi.resources
         }
 
         /**
-         * @param serviceDirectoryService Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+         * @param serviceDirectoryService Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
          * 
          * @return builder
          * 

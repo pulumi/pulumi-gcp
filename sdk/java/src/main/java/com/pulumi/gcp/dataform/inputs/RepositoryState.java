@@ -108,14 +108,14 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
      * 
      */
     @Import(name="npmrcEnvironmentVariablesSecretVersion")
     private @Nullable Output<String> npmrcEnvironmentVariablesSecretVersion;
 
     /**
-     * @return Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * @return Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
      * 
      */
     public Optional<Output<String>> npmrcEnvironmentVariablesSecretVersion() {
@@ -357,7 +357,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
          * 
          * @return builder
          * 

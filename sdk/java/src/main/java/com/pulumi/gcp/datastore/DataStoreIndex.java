@@ -212,7 +212,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DataStoreIndex(String name) {
+    public DataStoreIndex(java.lang.String name) {
         this(name, DataStoreIndexArgs.Empty);
     }
     /**
@@ -220,7 +220,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DataStoreIndex(String name, DataStoreIndexArgs args) {
+    public DataStoreIndex(java.lang.String name, DataStoreIndexArgs args) {
         this(name, args, null);
     }
     /**
@@ -229,12 +229,12 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DataStoreIndex(String name, DataStoreIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datastore/dataStoreIndex:DataStoreIndex", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DataStoreIndex(java.lang.String name, DataStoreIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datastore/dataStoreIndex:DataStoreIndex", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DataStoreIndex(String name, Output<String> id, @Nullable DataStoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datastore/dataStoreIndex:DataStoreIndex", name, state, makeResourceOptions(options, id));
+    private DataStoreIndex(java.lang.String name, Output<java.lang.String> id, @Nullable DataStoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datastore/dataStoreIndex:DataStoreIndex", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DataStoreIndexArgs makeArgs(DataStoreIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -244,7 +244,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
         return args == null ? DataStoreIndexArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -260,7 +260,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DataStoreIndex get(String name, Output<String> id, @Nullable DataStoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DataStoreIndex get(java.lang.String name, Output<java.lang.String> id, @Nullable DataStoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DataStoreIndex(name, id, state, options);
     }
 }

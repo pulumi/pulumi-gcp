@@ -275,7 +275,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewRecordSet(ctx, "geo", &dns.RecordSetArgs{
-//				Name:        pulumi.String(fmt.Sprintf("backend.%v", prod.DnsName)),
+//				Name:        pulumi.Sprintf("backend.%v", prod.DnsName),
 //				ManagedZone: pulumi.Any(prod.Name),
 //				Type:        pulumi.String("A"),
 //				Ttl:         pulumi.Int(300),

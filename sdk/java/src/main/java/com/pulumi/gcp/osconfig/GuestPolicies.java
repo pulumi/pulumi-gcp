@@ -462,7 +462,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GuestPolicies(String name) {
+    public GuestPolicies(java.lang.String name) {
         this(name, GuestPoliciesArgs.Empty);
     }
     /**
@@ -470,7 +470,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GuestPolicies(String name, GuestPoliciesArgs args) {
+    public GuestPolicies(java.lang.String name, GuestPoliciesArgs args) {
         this(name, args, null);
     }
     /**
@@ -479,12 +479,12 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GuestPolicies(String name, GuestPoliciesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:osconfig/guestPolicies:GuestPolicies", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GuestPolicies(java.lang.String name, GuestPoliciesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:osconfig/guestPolicies:GuestPolicies", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GuestPolicies(String name, Output<String> id, @Nullable GuestPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:osconfig/guestPolicies:GuestPolicies", name, state, makeResourceOptions(options, id));
+    private GuestPolicies(java.lang.String name, Output<java.lang.String> id, @Nullable GuestPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:osconfig/guestPolicies:GuestPolicies", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GuestPoliciesArgs makeArgs(GuestPoliciesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -494,7 +494,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
         return args == null ? GuestPoliciesArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -510,7 +510,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GuestPolicies get(String name, Output<String> id, @Nullable GuestPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GuestPolicies get(java.lang.String name, Output<java.lang.String> id, @Nullable GuestPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GuestPolicies(name, id, state, options);
     }
 }

@@ -279,6 +279,26 @@ class TagKeyIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Tags TagKey
+        Three different resources help you manage your IAM policy for Tags TagKey. Each of these resources serves a different use case:
+
+        * `tags.TagKeyIamPolicy`: Authoritative. Sets the IAM policy for the tagkey and replaces any existing policy already attached.
+        * `tags.TagKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagkey are preserved.
+        * `tags.TagKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagkey are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `tags.TagKeyIamPolicy`: Retrieves the IAM policy for the tagkey
+
+        > **Note:** `tags.TagKeyIamPolicy` **cannot** be used in conjunction with `tags.TagKeyIamBinding` and `tags.TagKeyIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## tags.TagKeyIamPolicy
 
         ```python
@@ -429,6 +449,26 @@ class TagKeyIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Tags TagKey
+        Three different resources help you manage your IAM policy for Tags TagKey. Each of these resources serves a different use case:
+
+        * `tags.TagKeyIamPolicy`: Authoritative. Sets the IAM policy for the tagkey and replaces any existing policy already attached.
+        * `tags.TagKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagkey are preserved.
+        * `tags.TagKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagkey are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `tags.TagKeyIamPolicy`: Retrieves the IAM policy for the tagkey
+
+        > **Note:** `tags.TagKeyIamPolicy` **cannot** be used in conjunction with `tags.TagKeyIamBinding` and `tags.TagKeyIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## tags.TagKeyIamPolicy
 

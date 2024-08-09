@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("basic-cluster")
  *             .location("us-central1-a")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding("membershipRbacRoleBinding", MembershipRbacRoleBindingArgs.builder()
  *             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_9106")
  *             .membershipId(membership.membershipId())
- *             .user(String.format("service-%s{@literal @}gcp-sa-anthossupport.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .user(String.format("service-%s}{@literal @}{@code gcp-sa-anthossupport.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .role(MembershipRbacRoleBindingRoleArgs.builder()
  *                 .predefinedRole("ANTHOS_SUPPORT")
  *                 .build())
@@ -87,8 +87,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(membership)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -295,7 +295,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MembershipRbacRoleBinding(String name) {
+    public MembershipRbacRoleBinding(java.lang.String name) {
         this(name, MembershipRbacRoleBindingArgs.Empty);
     }
     /**
@@ -303,7 +303,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MembershipRbacRoleBinding(String name, MembershipRbacRoleBindingArgs args) {
+    public MembershipRbacRoleBinding(java.lang.String name, MembershipRbacRoleBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -312,12 +312,12 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MembershipRbacRoleBinding(String name, MembershipRbacRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MembershipRbacRoleBinding(java.lang.String name, MembershipRbacRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MembershipRbacRoleBinding(String name, Output<String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", name, state, makeResourceOptions(options, id));
+    private MembershipRbacRoleBinding(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MembershipRbacRoleBindingArgs makeArgs(MembershipRbacRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -327,7 +327,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
         return args == null ? MembershipRbacRoleBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -343,7 +343,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MembershipRbacRoleBinding get(String name, Output<String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MembershipRbacRoleBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MembershipRbacRoleBinding(name, id, state, options);
     }
 }

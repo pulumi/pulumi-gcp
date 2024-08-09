@@ -35,7 +35,7 @@ public final class ConnectionGithubEnterpriseConfig {
      */
     private String hostUri;
     /**
-     * @return SecretManager resource containing the private key of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return SecretManager resource containing the private key of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     private @Nullable String privateKeySecretVersion;
@@ -51,7 +51,7 @@ public final class ConnectionGithubEnterpriseConfig {
      */
     private @Nullable String sslCa;
     /**
-     * @return SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     private @Nullable String webhookSecretSecretVersion;
@@ -86,7 +86,7 @@ public final class ConnectionGithubEnterpriseConfig {
         return this.hostUri;
     }
     /**
-     * @return SecretManager resource containing the private key of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return SecretManager resource containing the private key of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Optional<String> privateKeySecretVersion() {
@@ -108,7 +108,7 @@ public final class ConnectionGithubEnterpriseConfig {
         return Optional.ofNullable(this.sslCa);
     }
     /**
-     * @return SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Optional<String> webhookSecretSecretVersion() {

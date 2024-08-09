@@ -319,12 +319,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
  *         var project = new Project("project", ProjectArgs.builder()
@@ -375,7 +375,7 @@ import javax.annotation.Nullable;
  *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .datasetId(sampleDataset.datasetId())
  *             .role("roles/bigquery.dataViewer")
- *             .member(project.number().applyValue(number -> String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", number)))
+ *             .member(project.number().applyValue(number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", number)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(featureonlinestore)
  *                 .build());
@@ -392,21 +392,21 @@ import javax.annotation.Nullable;
  *             .tableId("example_cross_project_featureview")
  *             .schema("""
  * [
- *     {
+ *     }{{@code
  *         "name": "feature_id",
  *         "type": "STRING",
  *         "mode": "NULLABLE"
- *     },
- *     {
+ *     }}{@code ,
+ *     }{{@code
  *         "name": "example_cross_project_featureview",
  *         "type": "STRING",
  *         "mode": "NULLABLE"
- *     },
- *     {
+ *     }}{@code ,
+ *     }{{@code
  *         "name": "feature_timestamp",
  *         "type": "TIMESTAMP",
  *         "mode": "NULLABLE"
- *     }
+ *     }}{@code
  * ]
  *             """)
  *             .build());
@@ -418,12 +418,12 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
  *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
- *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> {
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> }{{@code
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         var tableId = values.t3;
  *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
- *                     }))
+ *                     }}{@code ))
  *                     .build())
  *                 .entityIdColumns("feature_id")
  *                 .build())
@@ -458,8 +458,8 @@ import javax.annotation.Nullable;
  *                     wait30Seconds)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -856,7 +856,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiFeatureOnlineStoreFeatureview(String name) {
+    public AiFeatureOnlineStoreFeatureview(java.lang.String name) {
         this(name, AiFeatureOnlineStoreFeatureviewArgs.Empty);
     }
     /**
@@ -864,7 +864,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiFeatureOnlineStoreFeatureview(String name, AiFeatureOnlineStoreFeatureviewArgs args) {
+    public AiFeatureOnlineStoreFeatureview(java.lang.String name, AiFeatureOnlineStoreFeatureviewArgs args) {
         this(name, args, null);
     }
     /**
@@ -873,12 +873,12 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiFeatureOnlineStoreFeatureview(String name, AiFeatureOnlineStoreFeatureviewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiFeatureOnlineStoreFeatureview(java.lang.String name, AiFeatureOnlineStoreFeatureviewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiFeatureOnlineStoreFeatureview(String name, Output<String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, state, makeResourceOptions(options, id));
+    private AiFeatureOnlineStoreFeatureview(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiFeatureOnlineStoreFeatureviewArgs makeArgs(AiFeatureOnlineStoreFeatureviewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -888,7 +888,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
         return args == null ? AiFeatureOnlineStoreFeatureviewArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -908,7 +908,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiFeatureOnlineStoreFeatureview get(String name, Output<String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiFeatureOnlineStoreFeatureview get(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiFeatureOnlineStoreFeatureview(name, id, state, options);
     }
 }

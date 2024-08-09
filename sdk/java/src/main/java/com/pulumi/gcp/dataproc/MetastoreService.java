@@ -1051,7 +1051,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetastoreService(String name) {
+    public MetastoreService(java.lang.String name) {
         this(name, MetastoreServiceArgs.Empty);
     }
     /**
@@ -1059,7 +1059,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetastoreService(String name, MetastoreServiceArgs args) {
+    public MetastoreService(java.lang.String name, MetastoreServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -1068,12 +1068,12 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetastoreService(String name, MetastoreServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreService:MetastoreService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MetastoreService(java.lang.String name, MetastoreServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/metastoreService:MetastoreService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetastoreService(String name, Output<String> id, @Nullable MetastoreServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreService:MetastoreService", name, state, makeResourceOptions(options, id));
+    private MetastoreService(java.lang.String name, Output<java.lang.String> id, @Nullable MetastoreServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/metastoreService:MetastoreService", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MetastoreServiceArgs makeArgs(MetastoreServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1083,7 +1083,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
         return args == null ? MetastoreServiceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -1103,7 +1103,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetastoreService get(String name, Output<String> id, @Nullable MetastoreServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetastoreService get(java.lang.String name, Output<java.lang.String> id, @Nullable MetastoreServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetastoreService(name, id, state, options);
     }
 }

@@ -311,6 +311,25 @@ class ApiIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for API Gateway Api
+        Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
+
+        * `apigateway.ApiIamPolicy`: Authoritative. Sets the IAM policy for the api and replaces any existing policy already attached.
+        * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved.
+        * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `apigateway.ApiIamPolicy`: Retrieves the IAM policy for the api
+
+        > **Note:** `apigateway.ApiIamPolicy` **cannot** be used in conjunction with `apigateway.ApiIamBinding` and `apigateway.ApiIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiIamBinding` resources **can be** used in conjunction with `apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## google\\_api\\_gateway\\_api\\_iam\\_policy
 
         ```python
@@ -470,6 +489,25 @@ class ApiIamMember(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for API Gateway Api
+        Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
+
+        * `apigateway.ApiIamPolicy`: Authoritative. Sets the IAM policy for the api and replaces any existing policy already attached.
+        * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved.
+        * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `apigateway.ApiIamPolicy`: Retrieves the IAM policy for the api
+
+        > **Note:** `apigateway.ApiIamPolicy` **cannot** be used in conjunction with `apigateway.ApiIamBinding` and `apigateway.ApiIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiIamBinding` resources **can be** used in conjunction with `apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_api\\_gateway\\_api\\_iam\\_policy
 

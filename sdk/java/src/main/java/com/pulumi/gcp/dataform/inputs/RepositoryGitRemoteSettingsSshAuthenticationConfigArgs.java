@@ -30,14 +30,14 @@ public final class RepositoryGitRemoteSettingsSshAuthenticationConfigArgs extend
     }
 
     /**
-     * The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     @Import(name="userPrivateKeySecretVersion", required=true)
     private Output<String> userPrivateKeySecretVersion;
 
     /**
-     * @return The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * @return The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public Output<String> userPrivateKeySecretVersion() {
@@ -91,7 +91,7 @@ public final class RepositoryGitRemoteSettingsSshAuthenticationConfigArgs extend
         }
 
         /**
-         * @param userPrivateKeySecretVersion The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * @param userPrivateKeySecretVersion The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class RepositoryGitRemoteSettingsSshAuthenticationConfigArgs extend
         }
 
         /**
-         * @param userPrivateKeySecretVersion The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * @param userPrivateKeySecretVersion The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 

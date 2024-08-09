@@ -221,7 +221,7 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EkmConnection(String name) {
+    public EkmConnection(java.lang.String name) {
         this(name, EkmConnectionArgs.Empty);
     }
     /**
@@ -229,7 +229,7 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EkmConnection(String name, EkmConnectionArgs args) {
+    public EkmConnection(java.lang.String name, EkmConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -238,12 +238,12 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EkmConnection(String name, EkmConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/ekmConnection:EkmConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public EkmConnection(java.lang.String name, EkmConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/ekmConnection:EkmConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EkmConnection(String name, Output<String> id, @Nullable EkmConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/ekmConnection:EkmConnection", name, state, makeResourceOptions(options, id));
+    private EkmConnection(java.lang.String name, Output<java.lang.String> id, @Nullable EkmConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/ekmConnection:EkmConnection", name, state, makeResourceOptions(options, id), false);
     }
 
     private static EkmConnectionArgs makeArgs(EkmConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -253,7 +253,7 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
         return args == null ? EkmConnectionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -269,7 +269,7 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EkmConnection get(String name, Output<String> id, @Nullable EkmConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EkmConnection get(java.lang.String name, Output<java.lang.String> id, @Nullable EkmConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EkmConnection(name, id, state, options);
     }
 }

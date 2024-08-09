@@ -51,16 +51,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -96,22 +96,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new RestorePlanIamBinding("binding", RestorePlanIamBindingArgs.builder()
  *             .project(allNs.project())
  *             .location(allNs.location())
  *             .name(allNs.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -135,25 +135,44 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new RestorePlanIamMember("member", RestorePlanIamMemberArgs.builder()
  *             .project(allNs.project())
  *             .location(allNs.location())
  *             .name(allNs.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Backup for GKE RestorePlan
+ * Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
+ * 
+ * * `gcp.gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+ * * `gcp.gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+ * * `gcp.gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
+ * 
+ * &gt; **Note:** `gcp.gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gcp.gkebackup.RestorePlanIamBinding` and `gcp.gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## gcp.gkebackup.RestorePlanIamPolicy
  * 
@@ -176,16 +195,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -196,8 +215,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -221,22 +240,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new RestorePlanIamBinding("binding", RestorePlanIamBindingArgs.builder()
  *             .project(allNs.project())
  *             .location(allNs.location())
  *             .name(allNs.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -260,22 +279,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new RestorePlanIamMember("member", RestorePlanIamMemberArgs.builder()
  *             .project(allNs.project())
  *             .location(allNs.location())
  *             .name(allNs.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -448,7 +467,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RestorePlanIamMember(String name) {
+    public RestorePlanIamMember(java.lang.String name) {
         this(name, RestorePlanIamMemberArgs.Empty);
     }
     /**
@@ -456,7 +475,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RestorePlanIamMember(String name, RestorePlanIamMemberArgs args) {
+    public RestorePlanIamMember(java.lang.String name, RestorePlanIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -465,12 +484,12 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RestorePlanIamMember(String name, RestorePlanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RestorePlanIamMember(java.lang.String name, RestorePlanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RestorePlanIamMember(String name, Output<String> id, @Nullable RestorePlanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember", name, state, makeResourceOptions(options, id));
+    private RestorePlanIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable RestorePlanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RestorePlanIamMemberArgs makeArgs(RestorePlanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -480,7 +499,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
         return args == null ? RestorePlanIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -496,7 +515,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RestorePlanIamMember get(String name, Output<String> id, @Nullable RestorePlanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RestorePlanIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable RestorePlanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RestorePlanIamMember(name, id, state, options);
     }
 }

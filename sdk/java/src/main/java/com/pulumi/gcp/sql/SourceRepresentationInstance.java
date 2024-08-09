@@ -322,7 +322,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SourceRepresentationInstance(String name) {
+    public SourceRepresentationInstance(java.lang.String name) {
         this(name, SourceRepresentationInstanceArgs.Empty);
     }
     /**
@@ -330,7 +330,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SourceRepresentationInstance(String name, SourceRepresentationInstanceArgs args) {
+    public SourceRepresentationInstance(java.lang.String name, SourceRepresentationInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -339,12 +339,12 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SourceRepresentationInstance(String name, SourceRepresentationInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SourceRepresentationInstance(java.lang.String name, SourceRepresentationInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SourceRepresentationInstance(String name, Output<String> id, @Nullable SourceRepresentationInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, state, makeResourceOptions(options, id));
+    private SourceRepresentationInstance(java.lang.String name, Output<java.lang.String> id, @Nullable SourceRepresentationInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SourceRepresentationInstanceArgs makeArgs(SourceRepresentationInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -354,7 +354,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
         return args == null ? SourceRepresentationInstanceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -373,7 +373,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SourceRepresentationInstance get(String name, Output<String> id, @Nullable SourceRepresentationInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SourceRepresentationInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable SourceRepresentationInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SourceRepresentationInstance(name, id, state, options);
     }
 }

@@ -298,7 +298,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TargetServer(String name) {
+    public TargetServer(java.lang.String name) {
         this(name, TargetServerArgs.Empty);
     }
     /**
@@ -306,7 +306,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TargetServer(String name, TargetServerArgs args) {
+    public TargetServer(java.lang.String name, TargetServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -315,12 +315,12 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TargetServer(String name, TargetServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/targetServer:TargetServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TargetServer(java.lang.String name, TargetServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/targetServer:TargetServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TargetServer(String name, Output<String> id, @Nullable TargetServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/targetServer:TargetServer", name, state, makeResourceOptions(options, id));
+    private TargetServer(java.lang.String name, Output<java.lang.String> id, @Nullable TargetServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/targetServer:TargetServer", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TargetServerArgs makeArgs(TargetServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -330,7 +330,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
         return args == null ? TargetServerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -346,7 +346,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TargetServer get(String name, Output<String> id, @Nullable TargetServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TargetServer get(java.lang.String name, Output<java.lang.String> id, @Nullable TargetServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TargetServer(name, id, state, options);
     }
 }

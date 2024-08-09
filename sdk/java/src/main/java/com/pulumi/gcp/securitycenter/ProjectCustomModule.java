@@ -301,7 +301,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectCustomModule(String name) {
+    public ProjectCustomModule(java.lang.String name) {
         this(name, ProjectCustomModuleArgs.Empty);
     }
     /**
@@ -309,7 +309,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectCustomModule(String name, ProjectCustomModuleArgs args) {
+    public ProjectCustomModule(java.lang.String name, ProjectCustomModuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -318,12 +318,12 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectCustomModule(String name, ProjectCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/projectCustomModule:ProjectCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ProjectCustomModule(java.lang.String name, ProjectCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/projectCustomModule:ProjectCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectCustomModule(String name, Output<String> id, @Nullable ProjectCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/projectCustomModule:ProjectCustomModule", name, state, makeResourceOptions(options, id));
+    private ProjectCustomModule(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/projectCustomModule:ProjectCustomModule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ProjectCustomModuleArgs makeArgs(ProjectCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -333,7 +333,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
         return args == null ? ProjectCustomModuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -349,7 +349,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectCustomModule get(String name, Output<String> id, @Nullable ProjectCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectCustomModule get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectCustomModule(name, id, state, options);
     }
 }

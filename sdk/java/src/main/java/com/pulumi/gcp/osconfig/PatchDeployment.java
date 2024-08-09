@@ -506,7 +506,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PatchDeployment(String name) {
+    public PatchDeployment(java.lang.String name) {
         this(name, PatchDeploymentArgs.Empty);
     }
     /**
@@ -514,7 +514,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PatchDeployment(String name, PatchDeploymentArgs args) {
+    public PatchDeployment(java.lang.String name, PatchDeploymentArgs args) {
         this(name, args, null);
     }
     /**
@@ -523,12 +523,12 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PatchDeployment(String name, PatchDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:osconfig/patchDeployment:PatchDeployment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PatchDeployment(java.lang.String name, PatchDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:osconfig/patchDeployment:PatchDeployment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PatchDeployment(String name, Output<String> id, @Nullable PatchDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:osconfig/patchDeployment:PatchDeployment", name, state, makeResourceOptions(options, id));
+    private PatchDeployment(java.lang.String name, Output<java.lang.String> id, @Nullable PatchDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:osconfig/patchDeployment:PatchDeployment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PatchDeploymentArgs makeArgs(PatchDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -538,7 +538,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
         return args == null ? PatchDeploymentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -554,7 +554,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PatchDeployment get(String name, Output<String> id, @Nullable PatchDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PatchDeployment get(java.lang.String name, Output<java.lang.String> id, @Nullable PatchDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PatchDeployment(name, id, state, options);
     }
 }

@@ -107,6 +107,25 @@ namespace Pulumi.Gcp.CloudTasks
     /// });
     /// ```
     /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Cloud Tasks Queue
+    /// Three different resources help you manage your IAM policy for Cloud Tasks Queue. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.cloudtasks.QueueIamPolicy`: Authoritative. Sets the IAM policy for the queue and replaces any existing policy already attached.
+    /// * `gcp.cloudtasks.QueueIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the queue are preserved.
+    /// * `gcp.cloudtasks.QueueIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the queue are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.cloudtasks.QueueIamPolicy`: Retrieves the IAM policy for the queue
+    /// 
+    /// &gt; **Note:** `gcp.cloudtasks.QueueIamPolicy` **cannot** be used in conjunction with `gcp.cloudtasks.QueueIamBinding` and `gcp.cloudtasks.QueueIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `gcp.cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
     /// ## gcp.cloudtasks.QueueIamPolicy
     /// 
     /// ```csharp

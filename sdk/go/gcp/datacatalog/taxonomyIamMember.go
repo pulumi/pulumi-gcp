@@ -125,6 +125,25 @@ import (
 //
 // ```
 //
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Data catalog Taxonomy
+// Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
+//
+// * `datacatalog.TaxonomyIamPolicy`: Authoritative. Sets the IAM policy for the taxonomy and replaces any existing policy already attached.
+// * `datacatalog.TaxonomyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the taxonomy are preserved.
+// * `datacatalog.TaxonomyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the taxonomy are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `datacatalog.TaxonomyIamPolicy`: Retrieves the IAM policy for the taxonomy
+//
+// > **Note:** `datacatalog.TaxonomyIamPolicy` **cannot** be used in conjunction with `datacatalog.TaxonomyIamBinding` and `datacatalog.TaxonomyIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
+//
 // ## datacatalog.TaxonomyIamPolicy
 //
 // ```go

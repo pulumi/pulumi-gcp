@@ -72,6 +72,25 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for Dataplex Zone
+ * Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
+ *
+ * * `gcp.dataplex.ZoneIamPolicy`: Authoritative. Sets the IAM policy for the zone and replaces any existing policy already attached.
+ * * `gcp.dataplex.ZoneIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the zone are preserved.
+ * * `gcp.dataplex.ZoneIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the zone are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.dataplex.ZoneIamPolicy`: Retrieves the IAM policy for the zone
+ *
+ * > **Note:** `gcp.dataplex.ZoneIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.ZoneIamBinding` and `gcp.dataplex.ZoneIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.dataplex.ZoneIamBinding` resources **can be** used in conjunction with `gcp.dataplex.ZoneIamMember` resources **only if** they do not grant privilege to the same role.
+ *
  * ## gcp.dataplex.ZoneIamPolicy
  *
  * ```typescript

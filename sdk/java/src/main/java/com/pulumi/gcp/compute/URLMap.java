@@ -833,12 +833,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
  *             .name("health-check")
  *             .requestPath("/")
@@ -889,19 +889,19 @@ import javax.annotation.Nullable;
  *                 .routeRules(                
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}")
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/}{{@code username=*}}{@code /carts/}{{@code cartid=**}}{@code ")
  *                             .build())
  *                         .service(cart_backend.id())
  *                         .priority(1)
  *                         .routeAction(URLMapPathMatcherRouteRuleRouteActionArgs.builder()
  *                             .urlRewrite(URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs.builder()
- *                                 .pathTemplateRewrite("/{username}-{cartid}/")
+ *                                 .pathTemplateRewrite("/}{{@code username}}{@code -}{{@code cartid}}{@code /")
  *                                 .build())
  *                             .build())
  *                         .build(),
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*")
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/*}&#47;{@code accountinfo/*")
  *                             .build())
  *                         .service(user_backend.id())
  *                         .priority(2)
@@ -909,8 +909,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -1344,7 +1344,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public URLMap(String name) {
+    public URLMap(java.lang.String name) {
         this(name, URLMapArgs.Empty);
     }
     /**
@@ -1352,7 +1352,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public URLMap(String name, @Nullable URLMapArgs args) {
+    public URLMap(java.lang.String name, @Nullable URLMapArgs args) {
         this(name, args, null);
     }
     /**
@@ -1361,12 +1361,12 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public URLMap(String name, @Nullable URLMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/uRLMap:URLMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public URLMap(java.lang.String name, @Nullable URLMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/uRLMap:URLMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private URLMap(String name, Output<String> id, @Nullable URLMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/uRLMap:URLMap", name, state, makeResourceOptions(options, id));
+    private URLMap(java.lang.String name, Output<java.lang.String> id, @Nullable URLMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/uRLMap:URLMap", name, state, makeResourceOptions(options, id), false);
     }
 
     private static URLMapArgs makeArgs(@Nullable URLMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1376,7 +1376,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
         return args == null ? URLMapArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1392,7 +1392,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static URLMap get(String name, Output<String> id, @Nullable URLMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static URLMap get(java.lang.String name, Output<java.lang.String> id, @Nullable URLMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new URLMap(name, id, state, options);
     }
 }

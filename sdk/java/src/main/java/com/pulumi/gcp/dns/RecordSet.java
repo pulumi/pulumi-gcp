@@ -564,7 +564,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RecordSet(String name) {
+    public RecordSet(java.lang.String name) {
         this(name, RecordSetArgs.Empty);
     }
     /**
@@ -572,7 +572,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RecordSet(String name, RecordSetArgs args) {
+    public RecordSet(java.lang.String name, RecordSetArgs args) {
         this(name, args, null);
     }
     /**
@@ -581,12 +581,12 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RecordSet(String name, RecordSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dns/recordSet:RecordSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RecordSet(java.lang.String name, RecordSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dns/recordSet:RecordSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RecordSet(String name, Output<String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dns/recordSet:RecordSet", name, state, makeResourceOptions(options, id));
+    private RecordSet(java.lang.String name, Output<java.lang.String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dns/recordSet:RecordSet", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RecordSetArgs makeArgs(RecordSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -596,7 +596,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
         return args == null ? RecordSetArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -612,7 +612,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RecordSet get(String name, Output<String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RecordSet get(java.lang.String name, Output<java.lang.String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RecordSet(name, id, state, options);
     }
 }

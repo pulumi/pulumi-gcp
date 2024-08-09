@@ -15,14 +15,14 @@ public final class BackupPlanBackupConfigEncryptionKeyArgs extends com.pulumi.re
     public static final BackupPlanBackupConfigEncryptionKeyArgs Empty = new BackupPlanBackupConfigEncryptionKeyArgs();
 
     /**
-     * Google Cloud KMS encryption key. Format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*
+     * Google Cloud KMS encryption key. Format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
      * 
      */
     @Import(name="gcpKmsEncryptionKey", required=true)
     private Output<String> gcpKmsEncryptionKey;
 
     /**
-     * @return Google Cloud KMS encryption key. Format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*
+     * @return Google Cloud KMS encryption key. Format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
      * 
      */
     public Output<String> gcpKmsEncryptionKey() {
@@ -54,7 +54,7 @@ public final class BackupPlanBackupConfigEncryptionKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param gcpKmsEncryptionKey Google Cloud KMS encryption key. Format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*
+         * @param gcpKmsEncryptionKey Google Cloud KMS encryption key. Format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class BackupPlanBackupConfigEncryptionKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param gcpKmsEncryptionKey Google Cloud KMS encryption key. Format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*
+         * @param gcpKmsEncryptionKey Google Cloud KMS encryption key. Format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
          * 
          * @return builder
          * 

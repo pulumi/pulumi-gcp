@@ -18,7 +18,7 @@ public final class GetAuthorityKeySpec {
     private String algorithm;
     /**
      * @return The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*&#39;.
+     * &#39;projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*&#39;.
      * 
      */
     private String cloudKmsKeyVersion;
@@ -34,7 +34,7 @@ public final class GetAuthorityKeySpec {
     }
     /**
      * @return The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*&#39;.
+     * &#39;projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*&#39;.
      * 
      */
     public String cloudKmsKeyVersion() {

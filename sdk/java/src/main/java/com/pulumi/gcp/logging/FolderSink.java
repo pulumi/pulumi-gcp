@@ -287,7 +287,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FolderSink(String name) {
+    public FolderSink(java.lang.String name) {
         this(name, FolderSinkArgs.Empty);
     }
     /**
@@ -295,7 +295,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FolderSink(String name, FolderSinkArgs args) {
+    public FolderSink(java.lang.String name, FolderSinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -304,12 +304,12 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FolderSink(String name, FolderSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/folderSink:FolderSink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FolderSink(java.lang.String name, FolderSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/folderSink:FolderSink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FolderSink(String name, Output<String> id, @Nullable FolderSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/folderSink:FolderSink", name, state, makeResourceOptions(options, id));
+    private FolderSink(java.lang.String name, Output<java.lang.String> id, @Nullable FolderSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/folderSink:FolderSink", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FolderSinkArgs makeArgs(FolderSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -319,7 +319,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
         return args == null ? FolderSinkArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -335,7 +335,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FolderSink get(String name, Output<String> id, @Nullable FolderSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FolderSink get(java.lang.String name, Output<java.lang.String> id, @Nullable FolderSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FolderSink(name, id, state, options);
     }
 }

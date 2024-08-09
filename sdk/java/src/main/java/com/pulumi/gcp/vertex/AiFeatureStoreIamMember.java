@@ -182,7 +182,7 @@ public class AiFeatureStoreIamMember extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiFeatureStoreIamMember(String name) {
+    public AiFeatureStoreIamMember(java.lang.String name) {
         this(name, AiFeatureStoreIamMemberArgs.Empty);
     }
     /**
@@ -190,7 +190,7 @@ public class AiFeatureStoreIamMember extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiFeatureStoreIamMember(String name, AiFeatureStoreIamMemberArgs args) {
+    public AiFeatureStoreIamMember(java.lang.String name, AiFeatureStoreIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,12 +199,12 @@ public class AiFeatureStoreIamMember extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiFeatureStoreIamMember(String name, AiFeatureStoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiFeatureStoreIamMember(java.lang.String name, AiFeatureStoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiFeatureStoreIamMember(String name, Output<String> id, @Nullable AiFeatureStoreIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember", name, state, makeResourceOptions(options, id));
+    private AiFeatureStoreIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiFeatureStoreIamMemberArgs makeArgs(AiFeatureStoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -214,7 +214,7 @@ public class AiFeatureStoreIamMember extends com.pulumi.resources.CustomResource
         return args == null ? AiFeatureStoreIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +230,7 @@ public class AiFeatureStoreIamMember extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiFeatureStoreIamMember get(String name, Output<String> id, @Nullable AiFeatureStoreIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiFeatureStoreIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiFeatureStoreIamMember(name, id, state, options);
     }
 }

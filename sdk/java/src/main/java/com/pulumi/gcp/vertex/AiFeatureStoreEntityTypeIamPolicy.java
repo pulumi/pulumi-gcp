@@ -114,7 +114,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiFeatureStoreEntityTypeIamPolicy(String name) {
+    public AiFeatureStoreEntityTypeIamPolicy(java.lang.String name) {
         this(name, AiFeatureStoreEntityTypeIamPolicyArgs.Empty);
     }
     /**
@@ -122,7 +122,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiFeatureStoreEntityTypeIamPolicy(String name, AiFeatureStoreEntityTypeIamPolicyArgs args) {
+    public AiFeatureStoreEntityTypeIamPolicy(java.lang.String name, AiFeatureStoreEntityTypeIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -131,12 +131,12 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiFeatureStoreEntityTypeIamPolicy(String name, AiFeatureStoreEntityTypeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiFeatureStoreEntityTypeIamPolicy(java.lang.String name, AiFeatureStoreEntityTypeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiFeatureStoreEntityTypeIamPolicy(String name, Output<String> id, @Nullable AiFeatureStoreEntityTypeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy", name, state, makeResourceOptions(options, id));
+    private AiFeatureStoreEntityTypeIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreEntityTypeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiFeatureStoreEntityTypeIamPolicyArgs makeArgs(AiFeatureStoreEntityTypeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -146,7 +146,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
         return args == null ? AiFeatureStoreEntityTypeIamPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -162,7 +162,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiFeatureStoreEntityTypeIamPolicy get(String name, Output<String> id, @Nullable AiFeatureStoreEntityTypeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiFeatureStoreEntityTypeIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreEntityTypeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiFeatureStoreEntityTypeIamPolicy(name, id, state, options);
     }
 }

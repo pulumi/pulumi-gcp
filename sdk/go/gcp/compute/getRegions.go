@@ -38,7 +38,7 @@ import (
 //				val0 := index
 //				__res, err := compute.NewSubnetwork(ctx, fmt.Sprintf("cluster-%v", key0), &compute.SubnetworkArgs{
 //					Name:        pulumi.String("my-network"),
-//					IpCidrRange: pulumi.String(fmt.Sprintf("10.36.%v.0/24", val0)),
+//					IpCidrRange: pulumi.Sprintf("10.36.%v.0/24", val0),
 //					Network:     pulumi.String("my-network"),
 //					Region:      pulumi.String(available.Names[val0]),
 //				})

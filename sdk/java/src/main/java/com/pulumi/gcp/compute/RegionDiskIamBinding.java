@@ -52,16 +52,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -72,8 +72,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -97,22 +97,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionDiskIamBinding("binding", RegionDiskIamBindingArgs.builder()
  *             .project(regiondisk.project())
  *             .region(regiondisk.region())
  *             .name(regiondisk.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -136,25 +136,44 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionDiskIamMember("member", RegionDiskIamMemberArgs.builder()
  *             .project(regiondisk.project())
  *             .region(regiondisk.region())
  *             .name(regiondisk.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Compute Engine RegionDisk
+ * Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
+ * 
+ * * `gcp.compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
+ * * `gcp.compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
+ * * `gcp.compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.compute.RegionDiskIamPolicy`: Retrieves the IAM policy for the regiondisk
+ * 
+ * &gt; **Note:** `gcp.compute.RegionDiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionDiskIamBinding` and `gcp.compute.RegionDiskIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.compute.RegionDiskIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionDiskIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## gcp.compute.RegionDiskIamPolicy
  * 
@@ -177,16 +196,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -197,8 +216,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -222,22 +241,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionDiskIamBinding("binding", RegionDiskIamBindingArgs.builder()
  *             .project(regiondisk.project())
  *             .region(regiondisk.region())
  *             .name(regiondisk.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -261,22 +280,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionDiskIamMember("member", RegionDiskIamMemberArgs.builder()
  *             .project(regiondisk.project())
  *             .region(regiondisk.region())
  *             .name(regiondisk.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -447,7 +466,7 @@ public class RegionDiskIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionDiskIamBinding(String name) {
+    public RegionDiskIamBinding(java.lang.String name) {
         this(name, RegionDiskIamBindingArgs.Empty);
     }
     /**
@@ -455,7 +474,7 @@ public class RegionDiskIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionDiskIamBinding(String name, RegionDiskIamBindingArgs args) {
+    public RegionDiskIamBinding(java.lang.String name, RegionDiskIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -464,12 +483,12 @@ public class RegionDiskIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionDiskIamBinding(String name, RegionDiskIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RegionDiskIamBinding(java.lang.String name, RegionDiskIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionDiskIamBinding(String name, Output<String> id, @Nullable RegionDiskIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", name, state, makeResourceOptions(options, id));
+    private RegionDiskIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable RegionDiskIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RegionDiskIamBindingArgs makeArgs(RegionDiskIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -479,7 +498,7 @@ public class RegionDiskIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? RegionDiskIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -495,7 +514,7 @@ public class RegionDiskIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionDiskIamBinding get(String name, Output<String> id, @Nullable RegionDiskIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionDiskIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionDiskIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionDiskIamBinding(name, id, state, options);
     }
 }

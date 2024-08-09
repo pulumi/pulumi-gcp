@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class RepositoryReleaseConfigRecentScheduledReleaseRecord {
     /**
      * @return (Output)
-     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}compilationResults/*.
+     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*.
      * 
      */
     private @Nullable String compilationResult;
@@ -36,7 +36,7 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecord {
     private RepositoryReleaseConfigRecentScheduledReleaseRecord() {}
     /**
      * @return (Output)
-     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}compilationResults/*.
+     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*.
      * 
      */
     public Optional<String> compilationResult() {

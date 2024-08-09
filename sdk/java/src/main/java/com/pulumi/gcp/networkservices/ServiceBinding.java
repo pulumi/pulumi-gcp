@@ -214,7 +214,7 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The full Service Directory Service name of the format
-     * projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
@@ -222,7 +222,7 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The full Service Directory Service name of the format
-     * projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     public Output<String> service() {
@@ -247,7 +247,7 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceBinding(String name) {
+    public ServiceBinding(java.lang.String name) {
         this(name, ServiceBindingArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceBinding(String name, ServiceBindingArgs args) {
+    public ServiceBinding(java.lang.String name, ServiceBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,12 +264,12 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceBinding(String name, ServiceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/serviceBinding:ServiceBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServiceBinding(java.lang.String name, ServiceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/serviceBinding:ServiceBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceBinding(String name, Output<String> id, @Nullable ServiceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/serviceBinding:ServiceBinding", name, state, makeResourceOptions(options, id));
+    private ServiceBinding(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/serviceBinding:ServiceBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServiceBindingArgs makeArgs(ServiceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -279,7 +279,7 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
         return args == null ? ServiceBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -299,7 +299,7 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceBinding get(String name, Output<String> id, @Nullable ServiceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceBinding(name, id, state, options);
     }
 }

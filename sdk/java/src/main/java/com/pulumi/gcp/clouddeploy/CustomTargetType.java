@@ -477,7 +477,7 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomTargetType(String name) {
+    public CustomTargetType(java.lang.String name) {
         this(name, CustomTargetTypeArgs.Empty);
     }
     /**
@@ -485,7 +485,7 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomTargetType(String name, CustomTargetTypeArgs args) {
+    public CustomTargetType(java.lang.String name, CustomTargetTypeArgs args) {
         this(name, args, null);
     }
     /**
@@ -494,12 +494,12 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomTargetType(String name, CustomTargetTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/customTargetType:CustomTargetType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CustomTargetType(java.lang.String name, CustomTargetTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/customTargetType:CustomTargetType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomTargetType(String name, Output<String> id, @Nullable CustomTargetTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/customTargetType:CustomTargetType", name, state, makeResourceOptions(options, id));
+    private CustomTargetType(java.lang.String name, Output<java.lang.String> id, @Nullable CustomTargetTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/customTargetType:CustomTargetType", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CustomTargetTypeArgs makeArgs(CustomTargetTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -509,7 +509,7 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
         return args == null ? CustomTargetTypeArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -529,7 +529,7 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomTargetType get(String name, Output<String> id, @Nullable CustomTargetTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomTargetType get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomTargetTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomTargetType(name, id, state, options);
     }
 }

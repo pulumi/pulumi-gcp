@@ -159,7 +159,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CaExternalAccountKey(String name) {
+    public CaExternalAccountKey(java.lang.String name) {
         this(name, CaExternalAccountKeyArgs.Empty);
     }
     /**
@@ -167,7 +167,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CaExternalAccountKey(String name, @Nullable CaExternalAccountKeyArgs args) {
+    public CaExternalAccountKey(java.lang.String name, @Nullable CaExternalAccountKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -176,12 +176,12 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CaExternalAccountKey(String name, @Nullable CaExternalAccountKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/caExternalAccountKey:CaExternalAccountKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CaExternalAccountKey(java.lang.String name, @Nullable CaExternalAccountKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/caExternalAccountKey:CaExternalAccountKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CaExternalAccountKey(String name, Output<String> id, @Nullable CaExternalAccountKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/caExternalAccountKey:CaExternalAccountKey", name, state, makeResourceOptions(options, id));
+    private CaExternalAccountKey(java.lang.String name, Output<java.lang.String> id, @Nullable CaExternalAccountKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/caExternalAccountKey:CaExternalAccountKey", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CaExternalAccountKeyArgs makeArgs(@Nullable CaExternalAccountKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -191,7 +191,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
         return args == null ? CaExternalAccountKeyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -211,7 +211,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CaExternalAccountKey get(String name, Output<String> id, @Nullable CaExternalAccountKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CaExternalAccountKey get(java.lang.String name, Output<java.lang.String> id, @Nullable CaExternalAccountKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CaExternalAccountKey(name, id, state, options);
     }
 }

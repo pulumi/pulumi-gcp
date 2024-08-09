@@ -71,6 +71,25 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for Compute Engine RegionDisk
+ * Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
+ *
+ * * `gcp.compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
+ * * `gcp.compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
+ * * `gcp.compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.compute.RegionDiskIamPolicy`: Retrieves the IAM policy for the regiondisk
+ *
+ * > **Note:** `gcp.compute.RegionDiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionDiskIamBinding` and `gcp.compute.RegionDiskIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.compute.RegionDiskIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionDiskIamMember` resources **only if** they do not grant privilege to the same role.
+ *
  * ## gcp.compute.RegionDiskIamPolicy
  *
  * ```typescript

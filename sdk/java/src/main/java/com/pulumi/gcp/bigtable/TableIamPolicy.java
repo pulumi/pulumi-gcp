@@ -45,16 +45,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/bigtable.user")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -90,21 +90,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -128,21 +128,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -168,16 +168,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/bigtable.user")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -188,8 +188,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -213,21 +213,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -251,21 +251,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()
  *             .table("your-bigtable-table")
  *             .instance("your-bigtable-instance")
  *             .role("roles/bigtable.user")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -384,7 +384,7 @@ public class TableIamPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TableIamPolicy(String name) {
+    public TableIamPolicy(java.lang.String name) {
         this(name, TableIamPolicyArgs.Empty);
     }
     /**
@@ -392,7 +392,7 @@ public class TableIamPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TableIamPolicy(String name, TableIamPolicyArgs args) {
+    public TableIamPolicy(java.lang.String name, TableIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -401,12 +401,12 @@ public class TableIamPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TableIamPolicy(String name, TableIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/tableIamPolicy:TableIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TableIamPolicy(java.lang.String name, TableIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigtable/tableIamPolicy:TableIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TableIamPolicy(String name, Output<String> id, @Nullable TableIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/tableIamPolicy:TableIamPolicy", name, state, makeResourceOptions(options, id));
+    private TableIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable TableIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigtable/tableIamPolicy:TableIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TableIamPolicyArgs makeArgs(TableIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -416,7 +416,7 @@ public class TableIamPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? TableIamPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -432,7 +432,7 @@ public class TableIamPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TableIamPolicy get(String name, Output<String> id, @Nullable TableIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TableIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable TableIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TableIamPolicy(name, id, state, options);
     }
 }

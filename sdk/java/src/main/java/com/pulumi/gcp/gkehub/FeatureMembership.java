@@ -128,12 +128,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-central1-a")
@@ -167,14 +167,14 @@ import javax.annotation.Nullable;
  *                         .policyDir("config-connector")
  *                         .syncWaitSecs("20")
  *                         .secretType("gcpserviceaccount")
- *                         .gcpServiceAccountEmail("sa{@literal @}project-id.iam.gserviceaccount.com")
+ *                         .gcpServiceAccountEmail("sa}{@literal @}{@code project-id.iam.gserviceaccount.com")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -665,7 +665,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FeatureMembership(String name) {
+    public FeatureMembership(java.lang.String name) {
         this(name, FeatureMembershipArgs.Empty);
     }
     /**
@@ -673,7 +673,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FeatureMembership(String name, FeatureMembershipArgs args) {
+    public FeatureMembership(java.lang.String name, FeatureMembershipArgs args) {
         this(name, args, null);
     }
     /**
@@ -682,12 +682,12 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FeatureMembership(String name, FeatureMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/featureMembership:FeatureMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FeatureMembership(java.lang.String name, FeatureMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkehub/featureMembership:FeatureMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FeatureMembership(String name, Output<String> id, @Nullable FeatureMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/featureMembership:FeatureMembership", name, state, makeResourceOptions(options, id));
+    private FeatureMembership(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkehub/featureMembership:FeatureMembership", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FeatureMembershipArgs makeArgs(FeatureMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -697,7 +697,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
         return args == null ? FeatureMembershipArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -713,7 +713,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FeatureMembership get(String name, Output<String> id, @Nullable FeatureMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FeatureMembership get(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FeatureMembership(name, id, state, options);
     }
 }

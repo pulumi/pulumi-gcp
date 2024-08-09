@@ -48,16 +48,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -91,20 +91,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fhirStore = new FhirStoreIamBinding("fhirStore", FhirStoreIamBindingArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -128,65 +128,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fhirStore = new FhirStoreIamMember("fhirStore", FhirStoreIamMemberArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## gcp.healthcare.FhirStoreIamPolicy
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.healthcare.FhirStoreIamPolicy;
- * import com.pulumi.gcp.healthcare.FhirStoreIamPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
- *                 .build())
- *             .build());
- * 
- *         var fhirStore = new FhirStoreIamPolicy("fhirStore", FhirStoreIamPolicyArgs.builder()
- *             .fhirStoreId("your-fhir-store-id")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -210,20 +165,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fhirStore = new FhirStoreIamBinding("fhirStore", FhirStoreIamBindingArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -247,20 +202,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fhirStore = new FhirStoreIamMember("fhirStore", FhirStoreIamMemberArgs.builder()
  *             .fhirStoreId("your-fhir-store-id")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -385,7 +340,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FhirStoreIamBinding(String name) {
+    public FhirStoreIamBinding(java.lang.String name) {
         this(name, FhirStoreIamBindingArgs.Empty);
     }
     /**
@@ -393,7 +348,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FhirStoreIamBinding(String name, FhirStoreIamBindingArgs args) {
+    public FhirStoreIamBinding(java.lang.String name, FhirStoreIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -402,12 +357,12 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FhirStoreIamBinding(String name, FhirStoreIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FhirStoreIamBinding(java.lang.String name, FhirStoreIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FhirStoreIamBinding(String name, Output<String> id, @Nullable FhirStoreIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", name, state, makeResourceOptions(options, id));
+    private FhirStoreIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable FhirStoreIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FhirStoreIamBindingArgs makeArgs(FhirStoreIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -417,7 +372,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? FhirStoreIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -433,7 +388,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FhirStoreIamBinding get(String name, Output<String> id, @Nullable FhirStoreIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FhirStoreIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable FhirStoreIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FhirStoreIamBinding(name, id, state, options);
     }
 }

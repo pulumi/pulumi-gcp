@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create Folder in GCP Organization
  *         var autokmsFolder = new Folder("autokmsFolder", FolderArgs.builder()
  *             .displayName("folder-example")
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *         var autokeyProjectAdmin = new IAMMember("autokeyProjectAdmin", IAMMemberArgs.builder()
  *             .project(keyProject.projectId())
  *             .role("roles/cloudkms.admin")
- *             .member(keyProject.number().applyValue(number -> String.format("serviceAccount:service-%s{@literal @}gcp-sa-cloudkms.iam.gserviceaccount.com", number)))
+ *             .member(keyProject.number().applyValue(number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-cloudkms.iam.gserviceaccount.com", number)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(waitServiceAgent)
  *                 .build());
@@ -153,8 +153,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(waitAutokeyConfig)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -275,7 +275,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeyHandle(String name) {
+    public KeyHandle(java.lang.String name) {
         this(name, KeyHandleArgs.Empty);
     }
     /**
@@ -283,7 +283,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeyHandle(String name, KeyHandleArgs args) {
+    public KeyHandle(java.lang.String name, KeyHandleArgs args) {
         this(name, args, null);
     }
     /**
@@ -292,12 +292,12 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeyHandle(String name, KeyHandleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyHandle:KeyHandle", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KeyHandle(java.lang.String name, KeyHandleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/keyHandle:KeyHandle", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KeyHandle(String name, Output<String> id, @Nullable KeyHandleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyHandle:KeyHandle", name, state, makeResourceOptions(options, id));
+    private KeyHandle(java.lang.String name, Output<java.lang.String> id, @Nullable KeyHandleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/keyHandle:KeyHandle", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KeyHandleArgs makeArgs(KeyHandleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -307,7 +307,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
         return args == null ? KeyHandleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -323,7 +323,7 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeyHandle get(String name, Output<String> id, @Nullable KeyHandleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KeyHandle get(java.lang.String name, Output<java.lang.String> id, @Nullable KeyHandleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KeyHandle(name, id, state, options);
     }
 }

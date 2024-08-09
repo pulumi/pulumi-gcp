@@ -375,7 +375,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewaySecurityPolicyRule(String name) {
+    public GatewaySecurityPolicyRule(java.lang.String name) {
         this(name, GatewaySecurityPolicyRuleArgs.Empty);
     }
     /**
@@ -383,7 +383,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewaySecurityPolicyRule(String name, GatewaySecurityPolicyRuleArgs args) {
+    public GatewaySecurityPolicyRule(java.lang.String name, GatewaySecurityPolicyRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -392,12 +392,12 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewaySecurityPolicyRule(String name, GatewaySecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GatewaySecurityPolicyRule(java.lang.String name, GatewaySecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewaySecurityPolicyRule(String name, Output<String> id, @Nullable GatewaySecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule", name, state, makeResourceOptions(options, id));
+    private GatewaySecurityPolicyRule(java.lang.String name, Output<java.lang.String> id, @Nullable GatewaySecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GatewaySecurityPolicyRuleArgs makeArgs(GatewaySecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -407,7 +407,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
         return args == null ? GatewaySecurityPolicyRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -423,7 +423,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewaySecurityPolicyRule get(String name, Output<String> id, @Nullable GatewaySecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewaySecurityPolicyRule get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewaySecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewaySecurityPolicyRule(name, id, state, options);
     }
 }

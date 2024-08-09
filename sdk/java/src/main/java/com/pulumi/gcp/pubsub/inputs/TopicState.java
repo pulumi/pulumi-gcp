@@ -56,7 +56,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
      * to messages published on this topic. Your project&#39;s PubSub service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
+     * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      * 
      */
     @Import(name="kmsKeyName")
@@ -67,7 +67,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
      * to messages published on this topic. Your project&#39;s PubSub service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
+     * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -297,7 +297,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * to messages published on this topic. Your project&#39;s PubSub service account
          * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-         * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
+         * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * to messages published on this topic. Your project&#39;s PubSub service account
          * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-         * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
+         * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
          * 
          * @return builder
          * 

@@ -322,6 +322,26 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud Healthcare ConsentStore
+        Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
+
+        * `healthcare.ConsentStoreIamPolicy`: Authoritative. Sets the IAM policy for the consentstore and replaces any existing policy already attached.
+        * `healthcare.ConsentStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the consentstore are preserved.
+        * `healthcare.ConsentStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the consentstore are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `healthcare.ConsentStoreIamPolicy`: Retrieves the IAM policy for the consentstore
+
+        > **Note:** `healthcare.ConsentStoreIamPolicy` **cannot** be used in conjunction with `healthcare.ConsentStoreIamBinding` and `healthcare.ConsentStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## healthcare.ConsentStoreIamPolicy
 
         ```python
@@ -481,6 +501,26 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud Healthcare ConsentStore
+        Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
+
+        * `healthcare.ConsentStoreIamPolicy`: Authoritative. Sets the IAM policy for the consentstore and replaces any existing policy already attached.
+        * `healthcare.ConsentStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the consentstore are preserved.
+        * `healthcare.ConsentStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the consentstore are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `healthcare.ConsentStoreIamPolicy`: Retrieves the IAM policy for the consentstore
+
+        > **Note:** `healthcare.ConsentStoreIamPolicy` **cannot** be used in conjunction with `healthcare.ConsentStoreIamBinding` and `healthcare.ConsentStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## healthcare.ConsentStoreIamPolicy
 

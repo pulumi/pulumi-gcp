@@ -107,6 +107,25 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// });
     /// ```
     /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Cloud Functions (2nd gen) function
+    /// Three different resources help you manage your IAM policy for Cloud Functions (2nd gen) function. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.cloudfunctionsv2.FunctionIamPolicy`: Authoritative. Sets the IAM policy for the function and replaces any existing policy already attached.
+    /// * `gcp.cloudfunctionsv2.FunctionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the function are preserved.
+    /// * `gcp.cloudfunctionsv2.FunctionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the function are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.cloudfunctionsv2.FunctionIamPolicy`: Retrieves the IAM policy for the function
+    /// 
+    /// &gt; **Note:** `gcp.cloudfunctionsv2.FunctionIamPolicy` **cannot** be used in conjunction with `gcp.cloudfunctionsv2.FunctionIamBinding` and `gcp.cloudfunctionsv2.FunctionIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `gcp.cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
     /// ## gcp.cloudfunctionsv2.FunctionIamPolicy
     /// 
     /// ```csharp

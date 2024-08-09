@@ -84,12 +84,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
@@ -161,25 +161,25 @@ import javax.annotation.Nullable;
  *         var viewer = new BucketIAMMember("viewer", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.objectViewer")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var creator = new BucketIAMMember("creator", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.objectCreator")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var reader = new BucketIAMMember("reader", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.legacyBucketReader")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var keyUser = new CryptoKeyIAMMember("keyUser", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datastream.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var destinationConnectionProfile = new ConnectionProfile("destinationConnectionProfile", ConnectionProfileArgs.builder()
@@ -275,8 +275,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(keyUser)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -1387,7 +1387,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Stream(String name) {
+    public Stream(java.lang.String name) {
         this(name, StreamArgs.Empty);
     }
     /**
@@ -1395,7 +1395,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Stream(String name, StreamArgs args) {
+    public Stream(java.lang.String name, StreamArgs args) {
         this(name, args, null);
     }
     /**
@@ -1404,12 +1404,12 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Stream(String name, StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datastream/stream:Stream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Stream(java.lang.String name, StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datastream/stream:Stream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Stream(String name, Output<String> id, @Nullable StreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datastream/stream:Stream", name, state, makeResourceOptions(options, id));
+    private Stream(java.lang.String name, Output<java.lang.String> id, @Nullable StreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datastream/stream:Stream", name, state, makeResourceOptions(options, id), false);
     }
 
     private static StreamArgs makeArgs(StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1419,7 +1419,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return args == null ? StreamArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -1439,7 +1439,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Stream get(String name, Output<String> id, @Nullable StreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Stream get(java.lang.String name, Output<java.lang.String> id, @Nullable StreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Stream(name, id, state, options);
     }
 }

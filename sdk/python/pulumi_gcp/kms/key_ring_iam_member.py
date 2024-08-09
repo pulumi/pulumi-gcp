@@ -347,47 +347,6 @@ class KeyRingIAMMember(pulumi.CustomResource):
             })
         ```
 
-        ## kms.KeyRingIAMPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring",
-            name="keyring-example",
-            location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
-            key_ring_id=keyring.id,
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring",
-            name="keyring-example",
-            location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-            "condition": {
-                "title": "expires_after_2019_12_31",
-                "description": "Expiring at midnight of 2019-12-31",
-                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            },
-        }])
-        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
-            key_ring_id=keyring.id,
-            policy_data=admin.policy_data)
-        ```
-
         ## kms.KeyRingIAMBinding
 
         ```python
@@ -606,47 +565,6 @@ class KeyRingIAMMember(pulumi.CustomResource):
                 "description": "Expiring at midnight of 2019-12-31",
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
-        ```
-
-        ## kms.KeyRingIAMPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring",
-            name="keyring-example",
-            location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
-            key_ring_id=keyring.id,
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring",
-            name="keyring-example",
-            location="global")
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-            "condition": {
-                "title": "expires_after_2019_12_31",
-                "description": "Expiring at midnight of 2019-12-31",
-                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            },
-        }])
-        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
-            key_ring_id=keyring.id,
-            policy_data=admin.policy_data)
         ```
 
         ## kms.KeyRingIAMBinding

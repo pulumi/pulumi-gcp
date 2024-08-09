@@ -79,14 +79,14 @@ public final class ConnectionGithubEnterpriseConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * SecretManager resource containing the private key of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * SecretManager resource containing the private key of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     @Import(name="privateKeySecretVersion")
     private @Nullable Output<String> privateKeySecretVersion;
 
     /**
-     * @return SecretManager resource containing the private key of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return SecretManager resource containing the private key of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Optional<Output<String>> privateKeySecretVersion() {
@@ -126,14 +126,14 @@ public final class ConnectionGithubEnterpriseConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     @Import(name="webhookSecretSecretVersion")
     private @Nullable Output<String> webhookSecretSecretVersion;
 
     /**
-     * @return SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Optional<Output<String>> webhookSecretSecretVersion() {
@@ -256,7 +256,7 @@ public final class ConnectionGithubEnterpriseConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privateKeySecretVersion SecretManager resource containing the private key of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param privateKeySecretVersion SecretManager resource containing the private key of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ConnectionGithubEnterpriseConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privateKeySecretVersion SecretManager resource containing the private key of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param privateKeySecretVersion SecretManager resource containing the private key of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ConnectionGithubEnterpriseConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param webhookSecretSecretVersion SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param webhookSecretSecretVersion SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class ConnectionGithubEnterpriseConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param webhookSecretSecretVersion SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param webhookSecretSecretVersion SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 

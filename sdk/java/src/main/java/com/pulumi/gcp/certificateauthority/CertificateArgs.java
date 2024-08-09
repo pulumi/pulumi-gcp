@@ -41,7 +41,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name for a CertificateTemplate used to issue this certificate,
-     * in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`. If this is specified,
+     * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
      * the caller must have the necessary permission to use this template. If this is
      * omitted, no template will be used. This template must be in the same location
      * as the Certificate.
@@ -52,7 +52,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name for a CertificateTemplate used to issue this certificate,
-     * in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`. If this is specified,
+     * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
      * the caller must have the necessary permission to use this template. If this is
      * omitted, no template will be used. This template must be in the same location
      * as the Certificate.
@@ -264,7 +264,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificateTemplate The resource name for a CertificateTemplate used to issue this certificate,
-         * in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`. If this is specified,
+         * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
          * the caller must have the necessary permission to use this template. If this is
          * omitted, no template will be used. This template must be in the same location
          * as the Certificate.
@@ -279,7 +279,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificateTemplate The resource name for a CertificateTemplate used to issue this certificate,
-         * in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`. If this is specified,
+         * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
          * the caller must have the necessary permission to use this template. If this is
          * omitted, no template will be used. This template must be in the same location
          * as the Certificate.

@@ -17,7 +17,7 @@ public final class ResponsePolicyGkeClusterArgs extends com.pulumi.resources.Res
     /**
      * The resource name of the cluster to bind this ManagedZone to.
      * This should be specified in the format like
-     * `projects/*{@literal /}locations/*{@literal /}clusters/*`
+     * `projects/*&#47;locations/*&#47;clusters/*`
      * 
      */
     @Import(name="gkeClusterName", required=true)
@@ -26,7 +26,7 @@ public final class ResponsePolicyGkeClusterArgs extends com.pulumi.resources.Res
     /**
      * @return The resource name of the cluster to bind this ManagedZone to.
      * This should be specified in the format like
-     * `projects/*{@literal /}locations/*{@literal /}clusters/*`
+     * `projects/*&#47;locations/*&#47;clusters/*`
      * 
      */
     public Output<String> gkeClusterName() {
@@ -60,7 +60,7 @@ public final class ResponsePolicyGkeClusterArgs extends com.pulumi.resources.Res
         /**
          * @param gkeClusterName The resource name of the cluster to bind this ManagedZone to.
          * This should be specified in the format like
-         * `projects/*{@literal /}locations/*{@literal /}clusters/*`
+         * `projects/*&#47;locations/*&#47;clusters/*`
          * 
          * @return builder
          * 
@@ -73,7 +73,7 @@ public final class ResponsePolicyGkeClusterArgs extends com.pulumi.resources.Res
         /**
          * @param gkeClusterName The resource name of the cluster to bind this ManagedZone to.
          * This should be specified in the format like
-         * `projects/*{@literal /}locations/*{@literal /}clusters/*`
+         * `projects/*&#47;locations/*&#47;clusters/*`
          * 
          * @return builder
          * 

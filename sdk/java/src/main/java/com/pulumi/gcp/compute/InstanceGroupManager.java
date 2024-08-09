@@ -716,7 +716,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceGroupManager(String name) {
+    public InstanceGroupManager(java.lang.String name) {
         this(name, InstanceGroupManagerArgs.Empty);
     }
     /**
@@ -724,7 +724,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceGroupManager(String name, InstanceGroupManagerArgs args) {
+    public InstanceGroupManager(java.lang.String name, InstanceGroupManagerArgs args) {
         this(name, args, null);
     }
     /**
@@ -733,12 +733,12 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceGroupManager(String name, InstanceGroupManagerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceGroupManager:InstanceGroupManager", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstanceGroupManager(java.lang.String name, InstanceGroupManagerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceGroupManager:InstanceGroupManager", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceGroupManager(String name, Output<String> id, @Nullable InstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceGroupManager:InstanceGroupManager", name, state, makeResourceOptions(options, id));
+    private InstanceGroupManager(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceGroupManager:InstanceGroupManager", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstanceGroupManagerArgs makeArgs(InstanceGroupManagerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -748,7 +748,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return args == null ? InstanceGroupManagerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -764,7 +764,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceGroupManager get(String name, Output<String> id, @Nullable InstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceGroupManager get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceGroupManager(name, id, state, options);
     }
 }

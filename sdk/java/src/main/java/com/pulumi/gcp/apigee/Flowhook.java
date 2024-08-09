@@ -134,7 +134,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Flowhook(String name) {
+    public Flowhook(java.lang.String name) {
         this(name, FlowhookArgs.Empty);
     }
     /**
@@ -142,7 +142,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Flowhook(String name, FlowhookArgs args) {
+    public Flowhook(java.lang.String name, FlowhookArgs args) {
         this(name, args, null);
     }
     /**
@@ -151,12 +151,12 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Flowhook(String name, FlowhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/flowhook:Flowhook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Flowhook(java.lang.String name, FlowhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/flowhook:Flowhook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Flowhook(String name, Output<String> id, @Nullable FlowhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/flowhook:Flowhook", name, state, makeResourceOptions(options, id));
+    private Flowhook(java.lang.String name, Output<java.lang.String> id, @Nullable FlowhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/flowhook:Flowhook", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FlowhookArgs makeArgs(FlowhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -166,7 +166,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
         return args == null ? FlowhookArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -182,7 +182,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Flowhook get(String name, Output<String> id, @Nullable FlowhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Flowhook get(java.lang.String name, Output<java.lang.String> id, @Nullable FlowhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Flowhook(name, id, state, options);
     }
 }

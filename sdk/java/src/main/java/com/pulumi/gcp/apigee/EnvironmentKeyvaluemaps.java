@@ -188,7 +188,7 @@ public class EnvironmentKeyvaluemaps extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnvironmentKeyvaluemaps(String name) {
+    public EnvironmentKeyvaluemaps(java.lang.String name) {
         this(name, EnvironmentKeyvaluemapsArgs.Empty);
     }
     /**
@@ -196,7 +196,7 @@ public class EnvironmentKeyvaluemaps extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnvironmentKeyvaluemaps(String name, EnvironmentKeyvaluemapsArgs args) {
+    public EnvironmentKeyvaluemaps(java.lang.String name, EnvironmentKeyvaluemapsArgs args) {
         this(name, args, null);
     }
     /**
@@ -205,12 +205,12 @@ public class EnvironmentKeyvaluemaps extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnvironmentKeyvaluemaps(String name, EnvironmentKeyvaluemapsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public EnvironmentKeyvaluemaps(java.lang.String name, EnvironmentKeyvaluemapsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnvironmentKeyvaluemaps(String name, Output<String> id, @Nullable EnvironmentKeyvaluemapsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps", name, state, makeResourceOptions(options, id));
+    private EnvironmentKeyvaluemaps(java.lang.String name, Output<java.lang.String> id, @Nullable EnvironmentKeyvaluemapsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps", name, state, makeResourceOptions(options, id), false);
     }
 
     private static EnvironmentKeyvaluemapsArgs makeArgs(EnvironmentKeyvaluemapsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -220,7 +220,7 @@ public class EnvironmentKeyvaluemaps extends com.pulumi.resources.CustomResource
         return args == null ? EnvironmentKeyvaluemapsArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -236,7 +236,7 @@ public class EnvironmentKeyvaluemaps extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnvironmentKeyvaluemaps get(String name, Output<String> id, @Nullable EnvironmentKeyvaluemapsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnvironmentKeyvaluemaps get(java.lang.String name, Output<java.lang.String> id, @Nullable EnvironmentKeyvaluemapsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnvironmentKeyvaluemaps(name, id, state, options);
     }
 }

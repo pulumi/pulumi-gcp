@@ -199,7 +199,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DocumentAiWarehouseDocumentSchema(String name) {
+    public DocumentAiWarehouseDocumentSchema(java.lang.String name) {
         this(name, DocumentAiWarehouseDocumentSchemaArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DocumentAiWarehouseDocumentSchema(String name, DocumentAiWarehouseDocumentSchemaArgs args) {
+    public DocumentAiWarehouseDocumentSchema(java.lang.String name, DocumentAiWarehouseDocumentSchemaArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,12 +216,12 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DocumentAiWarehouseDocumentSchema(String name, DocumentAiWarehouseDocumentSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DocumentAiWarehouseDocumentSchema(java.lang.String name, DocumentAiWarehouseDocumentSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DocumentAiWarehouseDocumentSchema(String name, Output<String> id, @Nullable DocumentAiWarehouseDocumentSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", name, state, makeResourceOptions(options, id));
+    private DocumentAiWarehouseDocumentSchema(java.lang.String name, Output<java.lang.String> id, @Nullable DocumentAiWarehouseDocumentSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DocumentAiWarehouseDocumentSchemaArgs makeArgs(DocumentAiWarehouseDocumentSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -231,7 +231,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
         return args == null ? DocumentAiWarehouseDocumentSchemaArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -247,7 +247,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DocumentAiWarehouseDocumentSchema get(String name, Output<String> id, @Nullable DocumentAiWarehouseDocumentSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DocumentAiWarehouseDocumentSchema get(java.lang.String name, Output<java.lang.String> id, @Nullable DocumentAiWarehouseDocumentSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DocumentAiWarehouseDocumentSchema(name, id, state, options);
     }
 }

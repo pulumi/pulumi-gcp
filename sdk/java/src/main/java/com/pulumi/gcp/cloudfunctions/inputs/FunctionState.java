@@ -544,14 +544,14 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
+     * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      * 
      */
     @Import(name="vpcConnector")
     private @Nullable Output<String> vpcConnector;
 
     /**
-     * @return The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
+     * @return The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      * 
      */
     public Optional<Output<String>> vpcConnector() {
@@ -1369,7 +1369,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcConnector The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
+         * @param vpcConnector The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
          * 
          * @return builder
          * 
@@ -1380,7 +1380,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcConnector The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
+         * @param vpcConnector The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
          * 
          * @return builder
          * 

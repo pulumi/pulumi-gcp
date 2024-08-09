@@ -6,10 +6,10 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.14
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.41.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.0
-	github.com/pulumi/pulumi/pkg/v3 v3.126.0
-	github.com/pulumi/pulumi/sdk/v3 v3.126.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.41.1-0.20240809155429-1e495a901b6d
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.1-0.20240809155429-1e495a901b6d
+	github.com/pulumi/pulumi/pkg/v3 v3.128.0
+	github.com/pulumi/pulumi/sdk/v3 v3.128.0
 	github.com/stretchr/testify v1.9.0
 	google.golang.org/api v0.189.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -146,7 +146,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.21.0 // indirect
 	github.com/hashicorp/terraform-json v0.22.1 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.10.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.11.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
@@ -235,6 +235,7 @@ require (
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
+	github.com/yuin/goldmark v1.7.4 // indirect
 	github.com/zclconf/go-cty v1.14.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect

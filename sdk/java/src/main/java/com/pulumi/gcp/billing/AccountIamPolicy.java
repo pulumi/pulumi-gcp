@@ -45,16 +45,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/billing.viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -88,20 +88,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -125,20 +125,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -164,16 +164,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/billing.viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -182,8 +182,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -207,20 +207,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new AccountIamBinding("editor", AccountIamBindingArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -244,20 +244,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var editor = new AccountIamMember("editor", AccountIamMemberArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
  *             .role("roles/billing.viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -346,7 +346,7 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccountIamPolicy(String name) {
+    public AccountIamPolicy(java.lang.String name) {
         this(name, AccountIamPolicyArgs.Empty);
     }
     /**
@@ -354,7 +354,7 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccountIamPolicy(String name, AccountIamPolicyArgs args) {
+    public AccountIamPolicy(java.lang.String name, AccountIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -363,12 +363,12 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccountIamPolicy(String name, AccountIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:billing/accountIamPolicy:AccountIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccountIamPolicy(java.lang.String name, AccountIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:billing/accountIamPolicy:AccountIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccountIamPolicy(String name, Output<String> id, @Nullable AccountIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:billing/accountIamPolicy:AccountIamPolicy", name, state, makeResourceOptions(options, id));
+    private AccountIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AccountIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:billing/accountIamPolicy:AccountIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccountIamPolicyArgs makeArgs(AccountIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -378,7 +378,7 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? AccountIamPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -394,7 +394,7 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccountIamPolicy get(String name, Output<String> id, @Nullable AccountIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccountIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AccountIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccountIamPolicy(name, id, state, options);
     }
 }

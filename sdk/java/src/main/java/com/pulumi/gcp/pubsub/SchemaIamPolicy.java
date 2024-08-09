@@ -49,16 +49,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -93,21 +93,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -131,24 +131,43 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Cloud Pub/Sub Schema
+ * Three different resources help you manage your IAM policy for Cloud Pub/Sub Schema. Each of these resources serves a different use case:
+ * 
+ * * `gcp.pubsub.SchemaIamPolicy`: Authoritative. Sets the IAM policy for the schema and replaces any existing policy already attached.
+ * * `gcp.pubsub.SchemaIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the schema are preserved.
+ * * `gcp.pubsub.SchemaIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the schema are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.pubsub.SchemaIamPolicy`: Retrieves the IAM policy for the schema
+ * 
+ * &gt; **Note:** `gcp.pubsub.SchemaIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.SchemaIamBinding` and `gcp.pubsub.SchemaIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.pubsub.SchemaIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SchemaIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## gcp.pubsub.SchemaIamPolicy
  * 
@@ -171,16 +190,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -190,8 +209,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -215,21 +234,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -253,21 +272,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -376,7 +395,7 @@ public class SchemaIamPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SchemaIamPolicy(String name) {
+    public SchemaIamPolicy(java.lang.String name) {
         this(name, SchemaIamPolicyArgs.Empty);
     }
     /**
@@ -384,7 +403,7 @@ public class SchemaIamPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SchemaIamPolicy(String name, SchemaIamPolicyArgs args) {
+    public SchemaIamPolicy(java.lang.String name, SchemaIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -393,12 +412,12 @@ public class SchemaIamPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SchemaIamPolicy(String name, SchemaIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/schemaIamPolicy:SchemaIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SchemaIamPolicy(java.lang.String name, SchemaIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/schemaIamPolicy:SchemaIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SchemaIamPolicy(String name, Output<String> id, @Nullable SchemaIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/schemaIamPolicy:SchemaIamPolicy", name, state, makeResourceOptions(options, id));
+    private SchemaIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable SchemaIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/schemaIamPolicy:SchemaIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SchemaIamPolicyArgs makeArgs(SchemaIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -408,7 +427,7 @@ public class SchemaIamPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? SchemaIamPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -424,7 +443,7 @@ public class SchemaIamPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SchemaIamPolicy get(String name, Output<String> id, @Nullable SchemaIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SchemaIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable SchemaIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SchemaIamPolicy(name, id, state, options);
     }
 }

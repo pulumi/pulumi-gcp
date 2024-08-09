@@ -209,7 +209,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PublicAdvertisedPrefix(String name) {
+    public PublicAdvertisedPrefix(java.lang.String name) {
         this(name, PublicAdvertisedPrefixArgs.Empty);
     }
     /**
@@ -217,7 +217,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PublicAdvertisedPrefix(String name, PublicAdvertisedPrefixArgs args) {
+    public PublicAdvertisedPrefix(java.lang.String name, PublicAdvertisedPrefixArgs args) {
         this(name, args, null);
     }
     /**
@@ -226,12 +226,12 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PublicAdvertisedPrefix(String name, PublicAdvertisedPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PublicAdvertisedPrefix(java.lang.String name, PublicAdvertisedPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PublicAdvertisedPrefix(String name, Output<String> id, @Nullable PublicAdvertisedPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", name, state, makeResourceOptions(options, id));
+    private PublicAdvertisedPrefix(java.lang.String name, Output<java.lang.String> id, @Nullable PublicAdvertisedPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PublicAdvertisedPrefixArgs makeArgs(PublicAdvertisedPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -241,7 +241,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
         return args == null ? PublicAdvertisedPrefixArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +257,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PublicAdvertisedPrefix get(String name, Output<String> id, @Nullable PublicAdvertisedPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PublicAdvertisedPrefix get(java.lang.String name, Output<java.lang.String> id, @Nullable PublicAdvertisedPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PublicAdvertisedPrefix(name, id, state, options);
     }
 }

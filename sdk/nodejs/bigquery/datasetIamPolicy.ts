@@ -70,25 +70,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.bigquery.DatasetIamPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const owner = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/bigquery.dataOwner",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const datasetDataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
- * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
- *     datasetId: datasetDataset.datasetId,
- *     policyData: owner.then(owner => owner.policyData),
- * });
- * ```
- *
  * ## gcp.bigquery.DatasetIamBinding
  *
  * ```typescript

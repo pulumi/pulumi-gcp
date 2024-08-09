@@ -17,14 +17,14 @@ public final class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs ex
     public static final ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs Empty = new ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs();
 
     /**
-     * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     @Import(name="userTokenSecretVersion", required=true)
     private Output<String> userTokenSecretVersion;
 
     /**
-     * @return Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Output<String> userTokenSecretVersion() {
@@ -74,7 +74,7 @@ public final class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs ex
         }
 
         /**
-         * @param userTokenSecretVersion Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param userTokenSecretVersion Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs ex
         }
 
         /**
-         * @param userTokenSecretVersion Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param userTokenSecretVersion Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 

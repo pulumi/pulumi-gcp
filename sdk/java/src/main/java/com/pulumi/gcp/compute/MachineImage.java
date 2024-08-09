@@ -315,7 +315,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MachineImage(String name) {
+    public MachineImage(java.lang.String name) {
         this(name, MachineImageArgs.Empty);
     }
     /**
@@ -323,7 +323,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MachineImage(String name, MachineImageArgs args) {
+    public MachineImage(java.lang.String name, MachineImageArgs args) {
         this(name, args, null);
     }
     /**
@@ -332,12 +332,12 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MachineImage(String name, MachineImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/machineImage:MachineImage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MachineImage(java.lang.String name, MachineImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/machineImage:MachineImage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MachineImage(String name, Output<String> id, @Nullable MachineImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/machineImage:MachineImage", name, state, makeResourceOptions(options, id));
+    private MachineImage(java.lang.String name, Output<java.lang.String> id, @Nullable MachineImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/machineImage:MachineImage", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MachineImageArgs makeArgs(MachineImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -347,7 +347,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
         return args == null ? MachineImageArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -363,7 +363,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MachineImage get(String name, Output<String> id, @Nullable MachineImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MachineImage get(java.lang.String name, Output<java.lang.String> id, @Nullable MachineImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MachineImage(name, id, state, options);
     }
 }

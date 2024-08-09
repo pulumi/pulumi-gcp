@@ -199,7 +199,7 @@ import (
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
+//				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				secret,
 //			}))
@@ -371,7 +371,7 @@ import (
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
+//				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				secret,
 //			}))

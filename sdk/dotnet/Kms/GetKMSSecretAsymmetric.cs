@@ -55,7 +55,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// ```bash
         /// ## get the public key to encrypt the secret with
-        /// 
         /// $ gcloud kms keys versions get-public-key 1 \
         ///   --project my-project \
         ///   --location us-central1 \
@@ -64,7 +63,6 @@ namespace Pulumi.Gcp.Kms
         ///   --output-file public-key.pem
         /// 
         /// ## encrypt secret with the public key
-        /// 
         /// $ echo -n my-secret-password | \
         ///   openssl pkeyutl -in - \
         ///     -encrypt \
@@ -76,7 +74,6 @@ namespace Pulumi.Gcp.Kms
         ///   my-secret-password.enc
         ///   
         /// ## base64 encode the ciphertext  
-        /// 
         /// $ openssl base64 -in my-secret-password.enc
         /// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
         /// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
@@ -91,7 +88,6 @@ namespace Pulumi.Gcp.Kms
         /// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
         /// 
         /// ## optionally calculate the CRC32 of the ciphertext
-        /// 
         /// $ go get github.com/binxio/crc32 
         /// $ $GOPATH/bin/crc32 -polynomial castagnoli &lt; my-secret-password.enc
         /// 12c59e54
@@ -201,7 +197,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// ```bash
         /// ## get the public key to encrypt the secret with
-        /// 
         /// $ gcloud kms keys versions get-public-key 1 \
         ///   --project my-project \
         ///   --location us-central1 \
@@ -210,7 +205,6 @@ namespace Pulumi.Gcp.Kms
         ///   --output-file public-key.pem
         /// 
         /// ## encrypt secret with the public key
-        /// 
         /// $ echo -n my-secret-password | \
         ///   openssl pkeyutl -in - \
         ///     -encrypt \
@@ -222,7 +216,6 @@ namespace Pulumi.Gcp.Kms
         ///   my-secret-password.enc
         ///   
         /// ## base64 encode the ciphertext  
-        /// 
         /// $ openssl base64 -in my-secret-password.enc
         /// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
         /// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
@@ -237,7 +230,6 @@ namespace Pulumi.Gcp.Kms
         /// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
         /// 
         /// ## optionally calculate the CRC32 of the ciphertext
-        /// 
         /// $ go get github.com/binxio/crc32 
         /// $ $GOPATH/bin/crc32 -polynomial castagnoli &lt; my-secret-password.enc
         /// 12c59e54

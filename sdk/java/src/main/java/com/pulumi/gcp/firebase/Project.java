@@ -145,7 +145,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Project(String name) {
+    public Project(java.lang.String name) {
         this(name, ProjectArgs.Empty);
     }
     /**
@@ -153,7 +153,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Project(String name, @Nullable ProjectArgs args) {
+    public Project(java.lang.String name, @Nullable ProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -162,12 +162,12 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Project(String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/project:Project", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Project(java.lang.String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/project:Project", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Project(String name, Output<String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/project:Project", name, state, makeResourceOptions(options, id));
+    private Project(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/project:Project", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ProjectArgs makeArgs(@Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -177,7 +177,7 @@ public class Project extends com.pulumi.resources.CustomResource {
         return args == null ? ProjectArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -193,7 +193,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Project get(String name, Output<String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Project get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Project(name, id, state, options);
     }
 }

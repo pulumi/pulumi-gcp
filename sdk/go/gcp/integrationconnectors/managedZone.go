@@ -58,7 +58,7 @@ import (
 //			dnsPeerBinding, err := projects.NewIAMMember(ctx, "dns_peer_binding", &projects.IAMMemberArgs{
 //				Project: targetProject.ProjectId,
 //				Role:    pulumi.String("roles/dns.peer"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-connectors.iam.gserviceaccount.com", testProject.Number)),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-connectors.iam.gserviceaccount.com", testProject.Number),
 //			})
 //			if err != nil {
 //				return err

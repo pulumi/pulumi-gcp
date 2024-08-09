@@ -65,12 +65,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var versions = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
  *             .project("my-project-name")
  *             .location("us-west1")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
- *                     .username("mmv2{@literal @}google.com")
+ *                     .username("mmv2}{@literal @}{@code google.com")
  *                     .build())
  *                 .build())
  *             .azureRegion("westus2")
@@ -148,8 +148,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -454,7 +454,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AzureNodePool(String name) {
+    public AzureNodePool(java.lang.String name) {
         this(name, AzureNodePoolArgs.Empty);
     }
     /**
@@ -462,7 +462,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AzureNodePool(String name, AzureNodePoolArgs args) {
+    public AzureNodePool(java.lang.String name, AzureNodePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -471,12 +471,12 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AzureNodePool(String name, AzureNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/azureNodePool:AzureNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AzureNodePool(java.lang.String name, AzureNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/azureNodePool:AzureNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AzureNodePool(String name, Output<String> id, @Nullable AzureNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/azureNodePool:AzureNodePool", name, state, makeResourceOptions(options, id));
+    private AzureNodePool(java.lang.String name, Output<java.lang.String> id, @Nullable AzureNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/azureNodePool:AzureNodePool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AzureNodePoolArgs makeArgs(AzureNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -486,7 +486,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
         return args == null ? AzureNodePoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -502,7 +502,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AzureNodePool get(String name, Output<String> id, @Nullable AzureNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AzureNodePool get(java.lang.String name, Output<java.lang.String> id, @Nullable AzureNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AzureNodePool(name, id, state, options);
     }
 }

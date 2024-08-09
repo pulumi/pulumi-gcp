@@ -60,7 +60,7 @@ import (
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //			})
 //			if err != nil {
@@ -124,7 +124,7 @@ import (
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //			})
 //			if err != nil {
@@ -147,7 +147,7 @@ import (
 //			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKeyCryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-edgecontainer.iam.gserviceaccount.com", project.Number)),
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-edgecontainer.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -210,7 +210,7 @@ import (
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //				ExternalLoadBalancerIpv4AddressPools: pulumi.StringArray{
 //					pulumi.String("10.100.0.0-10.100.0.10"),

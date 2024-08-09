@@ -16,14 +16,14 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
     public static final GoogleChannelConfigState Empty = new GoogleChannelConfigState();
 
     /**
-     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
+     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     @Import(name="cryptoKeyName")
     private @Nullable Output<String> cryptoKeyName;
 
     /**
-     * @return Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
+     * @return Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     public Optional<Output<String>> cryptoKeyName() {
@@ -123,7 +123,7 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
+         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class GoogleChannelConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
+         * @param cryptoKeyName Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 

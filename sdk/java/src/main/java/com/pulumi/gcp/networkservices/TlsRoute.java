@@ -294,7 +294,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
      * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
@@ -303,7 +303,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
     /**
      * @return Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
      * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     public Output<Optional<List<String>>> gateways() {
@@ -311,7 +311,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
     }
     /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
      * Mesh should be of a type SIDECAR
      * 
      */
@@ -320,7 +320,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
      * Mesh should be of a type SIDECAR
      * 
      */
@@ -396,7 +396,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TlsRoute(String name) {
+    public TlsRoute(java.lang.String name) {
         this(name, TlsRouteArgs.Empty);
     }
     /**
@@ -404,7 +404,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TlsRoute(String name, TlsRouteArgs args) {
+    public TlsRoute(java.lang.String name, TlsRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -413,12 +413,12 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TlsRoute(String name, TlsRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/tlsRoute:TlsRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TlsRoute(java.lang.String name, TlsRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/tlsRoute:TlsRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TlsRoute(String name, Output<String> id, @Nullable TlsRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/tlsRoute:TlsRoute", name, state, makeResourceOptions(options, id));
+    private TlsRoute(java.lang.String name, Output<java.lang.String> id, @Nullable TlsRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/tlsRoute:TlsRoute", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TlsRouteArgs makeArgs(TlsRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -428,7 +428,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
         return args == null ? TlsRouteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -444,7 +444,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TlsRoute get(String name, Output<String> id, @Nullable TlsRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TlsRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable TlsRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TlsRoute(name, id, state, options);
     }
 }

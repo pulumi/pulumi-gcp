@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var myRegistration = new Registration("myRegistration", RegistrationArgs.builder()
  *             .domainName("example-domain.com")
  *             .location("global")
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *                 .privacy("REDACTED_CONTACT_DATA")
  *                 .registrantContact(RegistrationContactSettingsRegistrantContactArgs.builder()
  *                     .phoneNumber("+12345000000")
- *                     .email("user{@literal @}example.com")
+ *                     .email("user}{@literal @}{@code example.com")
  *                     .postalAddress(RegistrationContactSettingsRegistrantContactPostalAddressArgs.builder()
  *                         .regionCode("US")
  *                         .postalCode("95050")
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .adminContact(RegistrationContactSettingsAdminContactArgs.builder()
  *                     .phoneNumber("+12345000000")
- *                     .email("user{@literal @}example.com")
+ *                     .email("user}{@literal @}{@code example.com")
  *                     .postalAddress(RegistrationContactSettingsAdminContactPostalAddressArgs.builder()
  *                         .regionCode("US")
  *                         .postalCode("95050")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .technicalContact(RegistrationContactSettingsTechnicalContactArgs.builder()
  *                     .phoneNumber("+12345000000")
- *                     .email("user{@literal @}example.com")
+ *                     .email("user}{@literal @}{@code example.com")
  *                     .postalAddress(RegistrationContactSettingsTechnicalContactPostalAddressArgs.builder()
  *                         .regionCode("US")
  *                         .postalCode("95050")
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -324,14 +324,14 @@ public class Registration extends com.pulumi.resources.CustomResource {
         return this.managementSettings;
     }
     /**
-     * Output only. Name of the Registration resource, in the format projects/*{@literal /}locations/*{@literal /}registrations/&lt;domain_name&gt;.
+     * Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/&lt;domain_name&gt;.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Output only. Name of the Registration resource, in the format projects/*{@literal /}locations/*{@literal /}registrations/&lt;domain_name&gt;.
+     * @return Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/&lt;domain_name&gt;.
      * 
      */
     public Output<String> name() {
@@ -424,7 +424,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Registration(String name) {
+    public Registration(java.lang.String name) {
         this(name, RegistrationArgs.Empty);
     }
     /**
@@ -432,7 +432,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Registration(String name, RegistrationArgs args) {
+    public Registration(java.lang.String name, RegistrationArgs args) {
         this(name, args, null);
     }
     /**
@@ -441,12 +441,12 @@ public class Registration extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Registration(String name, RegistrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddomains/registration:Registration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Registration(java.lang.String name, RegistrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddomains/registration:Registration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Registration(String name, Output<String> id, @Nullable RegistrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddomains/registration:Registration", name, state, makeResourceOptions(options, id));
+    private Registration(java.lang.String name, Output<java.lang.String> id, @Nullable RegistrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddomains/registration:Registration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RegistrationArgs makeArgs(RegistrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -456,7 +456,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
         return args == null ? RegistrationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -476,7 +476,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Registration get(String name, Output<String> id, @Nullable RegistrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Registration get(java.lang.String name, Output<java.lang.String> id, @Nullable RegistrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Registration(name, id, state, options);
     }
 }

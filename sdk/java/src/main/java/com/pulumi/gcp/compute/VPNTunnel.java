@@ -574,7 +574,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VPNTunnel(String name) {
+    public VPNTunnel(java.lang.String name) {
         this(name, VPNTunnelArgs.Empty);
     }
     /**
@@ -582,7 +582,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VPNTunnel(String name, VPNTunnelArgs args) {
+    public VPNTunnel(java.lang.String name, VPNTunnelArgs args) {
         this(name, args, null);
     }
     /**
@@ -591,12 +591,12 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VPNTunnel(String name, VPNTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/vPNTunnel:VPNTunnel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public VPNTunnel(java.lang.String name, VPNTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/vPNTunnel:VPNTunnel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VPNTunnel(String name, Output<String> id, @Nullable VPNTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/vPNTunnel:VPNTunnel", name, state, makeResourceOptions(options, id));
+    private VPNTunnel(java.lang.String name, Output<java.lang.String> id, @Nullable VPNTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/vPNTunnel:VPNTunnel", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VPNTunnelArgs makeArgs(VPNTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -606,7 +606,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return args == null ? VPNTunnelArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -627,7 +627,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VPNTunnel get(String name, Output<String> id, @Nullable VPNTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VPNTunnel get(java.lang.String name, Output<java.lang.String> id, @Nullable VPNTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VPNTunnel(name, id, state, options);
     }
 }

@@ -280,14 +280,14 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maximumLifetime);
     }
     /**
-     * The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
+     * The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
+     * @return The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      * 
      */
     public Output<String> name() {
@@ -376,7 +376,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CertificateTemplate(String name) {
+    public CertificateTemplate(java.lang.String name) {
         this(name, CertificateTemplateArgs.Empty);
     }
     /**
@@ -384,7 +384,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CertificateTemplate(String name, CertificateTemplateArgs args) {
+    public CertificateTemplate(java.lang.String name, CertificateTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -393,12 +393,12 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CertificateTemplate(String name, CertificateTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/certificateTemplate:CertificateTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CertificateTemplate(java.lang.String name, CertificateTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificateauthority/certificateTemplate:CertificateTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CertificateTemplate(String name, Output<String> id, @Nullable CertificateTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/certificateTemplate:CertificateTemplate", name, state, makeResourceOptions(options, id));
+    private CertificateTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable CertificateTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificateauthority/certificateTemplate:CertificateTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CertificateTemplateArgs makeArgs(CertificateTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -408,7 +408,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return args == null ? CertificateTemplateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -428,7 +428,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CertificateTemplate get(String name, Output<String> id, @Nullable CertificateTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CertificateTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable CertificateTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CertificateTemplate(name, id, state, options);
     }
 }

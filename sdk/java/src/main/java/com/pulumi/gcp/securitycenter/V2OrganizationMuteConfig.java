@@ -262,7 +262,7 @@ public class V2OrganizationMuteConfig extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public V2OrganizationMuteConfig(String name) {
+    public V2OrganizationMuteConfig(java.lang.String name) {
         this(name, V2OrganizationMuteConfigArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class V2OrganizationMuteConfig extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public V2OrganizationMuteConfig(String name, V2OrganizationMuteConfigArgs args) {
+    public V2OrganizationMuteConfig(java.lang.String name, V2OrganizationMuteConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,12 +279,12 @@ public class V2OrganizationMuteConfig extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public V2OrganizationMuteConfig(String name, V2OrganizationMuteConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public V2OrganizationMuteConfig(java.lang.String name, V2OrganizationMuteConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private V2OrganizationMuteConfig(String name, Output<String> id, @Nullable V2OrganizationMuteConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig", name, state, makeResourceOptions(options, id));
+    private V2OrganizationMuteConfig(java.lang.String name, Output<java.lang.String> id, @Nullable V2OrganizationMuteConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static V2OrganizationMuteConfigArgs makeArgs(V2OrganizationMuteConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -294,7 +294,7 @@ public class V2OrganizationMuteConfig extends com.pulumi.resources.CustomResourc
         return args == null ? V2OrganizationMuteConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -310,7 +310,7 @@ public class V2OrganizationMuteConfig extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static V2OrganizationMuteConfig get(String name, Output<String> id, @Nullable V2OrganizationMuteConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static V2OrganizationMuteConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable V2OrganizationMuteConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new V2OrganizationMuteConfig(name, id, state, options);
     }
 }

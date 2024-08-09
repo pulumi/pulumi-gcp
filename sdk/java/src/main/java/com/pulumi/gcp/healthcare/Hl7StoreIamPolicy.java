@@ -45,16 +45,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -88,20 +88,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var hl7V2Store = new Hl7StoreIamBinding("hl7V2Store", Hl7StoreIamBindingArgs.builder()
  *             .hl7V2StoreId("your-hl7-v2-store-id")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -125,65 +125,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var hl7V2Store = new Hl7StoreIamMember("hl7V2Store", Hl7StoreIamMemberArgs.builder()
  *             .hl7V2StoreId("your-hl7-v2-store-id")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## gcp.healthcare.Hl7StoreIamPolicy
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.healthcare.Hl7StoreIamPolicy;
- * import com.pulumi.gcp.healthcare.Hl7StoreIamPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
- *                 .build())
- *             .build());
- * 
- *         var hl7V2Store = new Hl7StoreIamPolicy("hl7V2Store", Hl7StoreIamPolicyArgs.builder()
- *             .hl7V2StoreId("your-hl7-v2-store-id")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -207,20 +162,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var hl7V2Store = new Hl7StoreIamBinding("hl7V2Store", Hl7StoreIamBindingArgs.builder()
  *             .hl7V2StoreId("your-hl7-v2-store-id")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -244,20 +199,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var hl7V2Store = new Hl7StoreIamMember("hl7V2Store", Hl7StoreIamMemberArgs.builder()
  *             .hl7V2StoreId("your-hl7-v2-store-id")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -346,7 +301,7 @@ public class Hl7StoreIamPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Hl7StoreIamPolicy(String name) {
+    public Hl7StoreIamPolicy(java.lang.String name) {
         this(name, Hl7StoreIamPolicyArgs.Empty);
     }
     /**
@@ -354,7 +309,7 @@ public class Hl7StoreIamPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Hl7StoreIamPolicy(String name, Hl7StoreIamPolicyArgs args) {
+    public Hl7StoreIamPolicy(java.lang.String name, Hl7StoreIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -363,12 +318,12 @@ public class Hl7StoreIamPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Hl7StoreIamPolicy(String name, Hl7StoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Hl7StoreIamPolicy(java.lang.String name, Hl7StoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Hl7StoreIamPolicy(String name, Output<String> id, @Nullable Hl7StoreIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", name, state, makeResourceOptions(options, id));
+    private Hl7StoreIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable Hl7StoreIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static Hl7StoreIamPolicyArgs makeArgs(Hl7StoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -378,7 +333,7 @@ public class Hl7StoreIamPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? Hl7StoreIamPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -394,7 +349,7 @@ public class Hl7StoreIamPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Hl7StoreIamPolicy get(String name, Output<String> id, @Nullable Hl7StoreIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Hl7StoreIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable Hl7StoreIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Hl7StoreIamPolicy(name, id, state, options);
     }
 }

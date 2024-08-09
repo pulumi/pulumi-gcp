@@ -51,16 +51,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -96,22 +96,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -135,25 +135,44 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Dataplex Datascan
+ * Three different resources help you manage your IAM policy for Dataplex Datascan. Each of these resources serves a different use case:
+ * 
+ * * `gcp.dataplex.DatascanIamPolicy`: Authoritative. Sets the IAM policy for the datascan and replaces any existing policy already attached.
+ * * `gcp.dataplex.DatascanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the datascan are preserved.
+ * * `gcp.dataplex.DatascanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the datascan are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.dataplex.DatascanIamPolicy`: Retrieves the IAM policy for the datascan
+ * 
+ * &gt; **Note:** `gcp.dataplex.DatascanIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.DatascanIamBinding` and `gcp.dataplex.DatascanIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.dataplex.DatascanIamBinding` resources **can be** used in conjunction with `gcp.dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## gcp.dataplex.DatascanIamPolicy
  * 
@@ -176,16 +195,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -196,8 +215,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -221,22 +240,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -260,22 +279,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -440,7 +459,7 @@ public class DatascanIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatascanIamMember(String name) {
+    public DatascanIamMember(java.lang.String name) {
         this(name, DatascanIamMemberArgs.Empty);
     }
     /**
@@ -448,7 +467,7 @@ public class DatascanIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatascanIamMember(String name, DatascanIamMemberArgs args) {
+    public DatascanIamMember(java.lang.String name, DatascanIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -457,12 +476,12 @@ public class DatascanIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatascanIamMember(String name, DatascanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/datascanIamMember:DatascanIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatascanIamMember(java.lang.String name, DatascanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/datascanIamMember:DatascanIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatascanIamMember(String name, Output<String> id, @Nullable DatascanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/datascanIamMember:DatascanIamMember", name, state, makeResourceOptions(options, id));
+    private DatascanIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable DatascanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/datascanIamMember:DatascanIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatascanIamMemberArgs makeArgs(DatascanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -472,7 +491,7 @@ public class DatascanIamMember extends com.pulumi.resources.CustomResource {
         return args == null ? DatascanIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -488,7 +507,7 @@ public class DatascanIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatascanIamMember get(String name, Output<String> id, @Nullable DatascanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatascanIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable DatascanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatascanIamMember(name, id, state, options);
     }
 }

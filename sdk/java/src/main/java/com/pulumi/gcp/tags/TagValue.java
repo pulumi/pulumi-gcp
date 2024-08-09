@@ -204,7 +204,7 @@ public class TagValue extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TagValue(String name) {
+    public TagValue(java.lang.String name) {
         this(name, TagValueArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class TagValue extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TagValue(String name, TagValueArgs args) {
+    public TagValue(java.lang.String name, TagValueArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,12 +221,12 @@ public class TagValue extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TagValue(String name, TagValueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/tagValue:TagValue", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TagValue(java.lang.String name, TagValueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tags/tagValue:TagValue", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TagValue(String name, Output<String> id, @Nullable TagValueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/tagValue:TagValue", name, state, makeResourceOptions(options, id));
+    private TagValue(java.lang.String name, Output<java.lang.String> id, @Nullable TagValueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tags/tagValue:TagValue", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TagValueArgs makeArgs(TagValueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -236,7 +236,7 @@ public class TagValue extends com.pulumi.resources.CustomResource {
         return args == null ? TagValueArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -252,7 +252,7 @@ public class TagValue extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TagValue get(String name, Output<String> id, @Nullable TagValueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TagValue get(java.lang.String name, Output<java.lang.String> id, @Nullable TagValueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TagValue(name, id, state, options);
     }
 }

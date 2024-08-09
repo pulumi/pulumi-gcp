@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class BackupPlanBackupConfigEncryptionKey {
     /**
-     * @return Google Cloud KMS encryption key. Format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*
+     * @return Google Cloud KMS encryption key. Format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
      * 
      */
     private String gcpKmsEncryptionKey;
 
     private BackupPlanBackupConfigEncryptionKey() {}
     /**
-     * @return Google Cloud KMS encryption key. Format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*
+     * @return Google Cloud KMS encryption key. Format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
      * 
      */
     public String gcpKmsEncryptionKey() {

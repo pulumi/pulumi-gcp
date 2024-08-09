@@ -40,7 +40,7 @@ public final class AuthorityKeySpecArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-     * `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
      * 
      */
     @Import(name="cloudKmsKeyVersion")
@@ -48,7 +48,7 @@ public final class AuthorityKeySpecArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-     * `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
      * 
      */
     public Optional<Output<String>> cloudKmsKeyVersion() {
@@ -111,7 +111,7 @@ public final class AuthorityKeySpecArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param cloudKmsKeyVersion The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-         * `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`.
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class AuthorityKeySpecArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param cloudKmsKeyVersion The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-         * `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`.
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
          * 
          * @return builder
          * 

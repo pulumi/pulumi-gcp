@@ -517,7 +517,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnterpriseKey(String name) {
+    public EnterpriseKey(java.lang.String name) {
         this(name, EnterpriseKeyArgs.Empty);
     }
     /**
@@ -525,7 +525,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnterpriseKey(String name, EnterpriseKeyArgs args) {
+    public EnterpriseKey(java.lang.String name, EnterpriseKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -534,12 +534,12 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnterpriseKey(String name, EnterpriseKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public EnterpriseKey(java.lang.String name, EnterpriseKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnterpriseKey(String name, Output<String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, state, makeResourceOptions(options, id));
+    private EnterpriseKey(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, state, makeResourceOptions(options, id), false);
     }
 
     private static EnterpriseKeyArgs makeArgs(EnterpriseKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -549,7 +549,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
         return args == null ? EnterpriseKeyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -569,7 +569,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnterpriseKey get(String name, Output<String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnterpriseKey get(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnterpriseKey(name, id, state, options);
     }
 }

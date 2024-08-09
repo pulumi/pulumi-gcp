@@ -61,7 +61,7 @@ import (
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //			})
 //			if err != nil {

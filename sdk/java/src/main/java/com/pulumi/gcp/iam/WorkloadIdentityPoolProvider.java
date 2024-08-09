@@ -738,7 +738,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkloadIdentityPoolProvider(String name) {
+    public WorkloadIdentityPoolProvider(java.lang.String name) {
         this(name, WorkloadIdentityPoolProviderArgs.Empty);
     }
     /**
@@ -746,7 +746,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkloadIdentityPoolProvider(String name, WorkloadIdentityPoolProviderArgs args) {
+    public WorkloadIdentityPoolProvider(java.lang.String name, WorkloadIdentityPoolProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -755,12 +755,12 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkloadIdentityPoolProvider(String name, WorkloadIdentityPoolProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public WorkloadIdentityPoolProvider(java.lang.String name, WorkloadIdentityPoolProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkloadIdentityPoolProvider(String name, Output<String> id, @Nullable WorkloadIdentityPoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider", name, state, makeResourceOptions(options, id));
+    private WorkloadIdentityPoolProvider(java.lang.String name, Output<java.lang.String> id, @Nullable WorkloadIdentityPoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WorkloadIdentityPoolProviderArgs makeArgs(WorkloadIdentityPoolProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -770,7 +770,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
         return args == null ? WorkloadIdentityPoolProviderArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -786,7 +786,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkloadIdentityPoolProvider get(String name, Output<String> id, @Nullable WorkloadIdentityPoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkloadIdentityPoolProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkloadIdentityPoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkloadIdentityPoolProvider(name, id, state, options);
     }
 }

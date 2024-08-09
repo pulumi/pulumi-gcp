@@ -35,7 +35,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
@@ -44,7 +44,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> targetHttpsProxy;
 
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
@@ -54,7 +54,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
@@ -63,7 +63,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> targetSslProxy;
 
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
@@ -133,7 +133,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param targetHttpsProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+         * @param targetHttpsProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
          * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 
@@ -146,7 +146,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param targetHttpsProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+         * @param targetHttpsProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
          * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 
@@ -158,7 +158,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param targetSslProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+         * @param targetSslProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
          * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 
@@ -171,7 +171,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param targetSslProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+         * @param targetSslProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
          * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 

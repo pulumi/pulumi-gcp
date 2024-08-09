@@ -290,7 +290,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * A Workspace resource name in the format
-     * `projects/*{@literal /}locations/*{@literal /}scopes/*`.
+     * `projects/*&#47;locations/*&#47;scopes/*`.
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
@@ -298,7 +298,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A Workspace resource name in the format
-     * `projects/*{@literal /}locations/*{@literal /}scopes/*`.
+     * `projects/*&#47;locations/*&#47;scopes/*`.
      * 
      */
     public Output<String> scope() {
@@ -353,7 +353,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MembershipBinding(String name) {
+    public MembershipBinding(java.lang.String name) {
         this(name, MembershipBindingArgs.Empty);
     }
     /**
@@ -361,7 +361,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MembershipBinding(String name, MembershipBindingArgs args) {
+    public MembershipBinding(java.lang.String name, MembershipBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -370,12 +370,12 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MembershipBinding(String name, MembershipBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/membershipBinding:MembershipBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MembershipBinding(java.lang.String name, MembershipBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkehub/membershipBinding:MembershipBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MembershipBinding(String name, Output<String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/membershipBinding:MembershipBinding", name, state, makeResourceOptions(options, id));
+    private MembershipBinding(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkehub/membershipBinding:MembershipBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MembershipBindingArgs makeArgs(MembershipBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -385,7 +385,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
         return args == null ? MembershipBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -405,7 +405,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MembershipBinding get(String name, Output<String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MembershipBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MembershipBinding(name, id, state, options);
     }
 }

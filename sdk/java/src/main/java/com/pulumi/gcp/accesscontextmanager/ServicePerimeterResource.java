@@ -149,7 +149,7 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServicePerimeterResource(String name) {
+    public ServicePerimeterResource(java.lang.String name) {
         this(name, ServicePerimeterResourceArgs.Empty);
     }
     /**
@@ -157,7 +157,7 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePerimeterResource(String name, ServicePerimeterResourceArgs args) {
+    public ServicePerimeterResource(java.lang.String name, ServicePerimeterResourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -166,12 +166,12 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePerimeterResource(String name, ServicePerimeterResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServicePerimeterResource(java.lang.String name, ServicePerimeterResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServicePerimeterResource(String name, Output<String> id, @Nullable ServicePerimeterResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource", name, state, makeResourceOptions(options, id));
+    private ServicePerimeterResource(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePerimeterResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServicePerimeterResourceArgs makeArgs(ServicePerimeterResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -181,7 +181,7 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
         return args == null ? ServicePerimeterResourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -197,7 +197,7 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServicePerimeterResource get(String name, Output<String> id, @Nullable ServicePerimeterResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServicePerimeterResource get(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePerimeterResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServicePerimeterResource(name, id, state, options);
     }
 }

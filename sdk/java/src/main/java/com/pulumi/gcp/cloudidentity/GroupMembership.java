@@ -58,17 +58,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var group = new Group("group", GroupArgs.builder()
  *             .displayName("my-identity-group")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id("my-identity-group{@literal @}example.com")
+ *                 .id("my-identity-group}{@literal @}{@code example.com")
  *                 .build())
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .displayName("my-identity-group-child")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id("my-identity-group-child{@literal @}example.com")
+ *                 .id("my-identity-group-child}{@literal @}{@code example.com")
  *                 .build())
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -121,17 +121,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var group = new Group("group", GroupArgs.builder()
  *             .displayName("my-identity-group")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id("my-identity-group{@literal @}example.com")
+ *                 .id("my-identity-group}{@literal @}{@code example.com")
  *                 .build())
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()
  *             .group(group.id())
  *             .preferredMemberKey(GroupMembershipPreferredMemberKeyArgs.builder()
- *                 .id("cloud_identity_user{@literal @}example.com")
+ *                 .id("cloud_identity_user}{@literal @}{@code example.com")
  *                 .build())
  *             .roles(            
  *                 GroupMembershipRoleArgs.builder()
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -292,7 +292,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupMembership(String name) {
+    public GroupMembership(java.lang.String name) {
         this(name, GroupMembershipArgs.Empty);
     }
     /**
@@ -300,7 +300,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupMembership(String name, GroupMembershipArgs args) {
+    public GroupMembership(java.lang.String name, GroupMembershipArgs args) {
         this(name, args, null);
     }
     /**
@@ -309,12 +309,12 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupMembership(String name, GroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudidentity/groupMembership:GroupMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GroupMembership(java.lang.String name, GroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudidentity/groupMembership:GroupMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GroupMembership(String name, Output<String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudidentity/groupMembership:GroupMembership", name, state, makeResourceOptions(options, id));
+    private GroupMembership(java.lang.String name, Output<java.lang.String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudidentity/groupMembership:GroupMembership", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GroupMembershipArgs makeArgs(GroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -324,7 +324,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
         return args == null ? GroupMembershipArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -340,7 +340,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupMembership get(String name, Output<String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupMembership get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupMembership(name, id, state, options);
     }
 }

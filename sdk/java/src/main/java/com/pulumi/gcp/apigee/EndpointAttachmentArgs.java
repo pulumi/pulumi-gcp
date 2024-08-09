@@ -66,14 +66,14 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+     * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      * 
      */
     @Import(name="serviceAttachment", required=true)
     private Output<String> serviceAttachment;
 
     /**
-     * @return Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+     * @return Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      * 
      */
     public Output<String> serviceAttachment() {
@@ -177,7 +177,7 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAttachment Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAttachment Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
+         * @param serviceAttachment Format: projects/*&#47;regions/*&#47;serviceAttachments/*
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
  * 
  * &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
- * default &#39;root&#39;{@literal @}&#39;%&#39; user with no password. This user will be deleted by the provider on
+ * default &#39;root&#39;{@literal @}'%&#39; user with no password. This user will be deleted by the provider on
  * instance creation. You should use `gcp.sql.User` to define a custom user with
  * a restricted host and strong password.
  * 
@@ -698,7 +698,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabaseInstance(String name) {
+    public DatabaseInstance(java.lang.String name) {
         this(name, DatabaseInstanceArgs.Empty);
     }
     /**
@@ -706,7 +706,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabaseInstance(String name, DatabaseInstanceArgs args) {
+    public DatabaseInstance(java.lang.String name, DatabaseInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -715,12 +715,12 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabaseInstance(String name, DatabaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:sql/databaseInstance:DatabaseInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatabaseInstance(java.lang.String name, DatabaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:sql/databaseInstance:DatabaseInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatabaseInstance(String name, Output<String> id, @Nullable DatabaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:sql/databaseInstance:DatabaseInstance", name, state, makeResourceOptions(options, id));
+    private DatabaseInstance(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:sql/databaseInstance:DatabaseInstance", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatabaseInstanceArgs makeArgs(DatabaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -730,7 +730,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return args == null ? DatabaseInstanceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -751,7 +751,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabaseInstance get(String name, Output<String> id, @Nullable DatabaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatabaseInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatabaseInstance(name, id, state, options);
     }
 }

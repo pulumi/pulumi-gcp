@@ -63,21 +63,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var basic = new NotificationChannel("basic", NotificationChannelArgs.builder()
  *             .displayName("Test Notification Channel")
  *             .type("email")
- *             .labels(Map.of("email_address", "fake_email{@literal @}blahblah.com"))
+ *             .labels(Map.of("email_address", "fake_email}{@literal @}{@code blahblah.com"))
  *             .forceDelete(false)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -336,7 +336,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NotificationChannel(String name) {
+    public NotificationChannel(java.lang.String name) {
         this(name, NotificationChannelArgs.Empty);
     }
     /**
@@ -344,7 +344,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NotificationChannel(String name, NotificationChannelArgs args) {
+    public NotificationChannel(java.lang.String name, NotificationChannelArgs args) {
         this(name, args, null);
     }
     /**
@@ -353,12 +353,12 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NotificationChannel(String name, NotificationChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/notificationChannel:NotificationChannel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NotificationChannel(java.lang.String name, NotificationChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/notificationChannel:NotificationChannel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NotificationChannel(String name, Output<String> id, @Nullable NotificationChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/notificationChannel:NotificationChannel", name, state, makeResourceOptions(options, id));
+    private NotificationChannel(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/notificationChannel:NotificationChannel", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NotificationChannelArgs makeArgs(NotificationChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -368,7 +368,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
         return args == null ? NotificationChannelArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -384,7 +384,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NotificationChannel get(String name, Output<String> id, @Nullable NotificationChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NotificationChannel get(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NotificationChannel(name, id, state, options);
     }
 }

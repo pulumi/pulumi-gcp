@@ -319,6 +319,25 @@ class SchemaIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Pub/Sub Schema
+        Three different resources help you manage your IAM policy for Cloud Pub/Sub Schema. Each of these resources serves a different use case:
+
+        * `pubsub.SchemaIamPolicy`: Authoritative. Sets the IAM policy for the schema and replaces any existing policy already attached.
+        * `pubsub.SchemaIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the schema are preserved.
+        * `pubsub.SchemaIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the schema are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `pubsub.SchemaIamPolicy`: Retrieves the IAM policy for the schema
+
+        > **Note:** `pubsub.SchemaIamPolicy` **cannot** be used in conjunction with `pubsub.SchemaIamBinding` and `pubsub.SchemaIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `pubsub.SchemaIamBinding` resources **can be** used in conjunction with `pubsub.SchemaIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## pubsub.SchemaIamPolicy
 
         ```python
@@ -479,6 +498,25 @@ class SchemaIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Pub/Sub Schema
+        Three different resources help you manage your IAM policy for Cloud Pub/Sub Schema. Each of these resources serves a different use case:
+
+        * `pubsub.SchemaIamPolicy`: Authoritative. Sets the IAM policy for the schema and replaces any existing policy already attached.
+        * `pubsub.SchemaIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the schema are preserved.
+        * `pubsub.SchemaIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the schema are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `pubsub.SchemaIamPolicy`: Retrieves the IAM policy for the schema
+
+        > **Note:** `pubsub.SchemaIamPolicy` **cannot** be used in conjunction with `pubsub.SchemaIamBinding` and `pubsub.SchemaIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `pubsub.SchemaIamBinding` resources **can be** used in conjunction with `pubsub.SchemaIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## pubsub.SchemaIamPolicy
 

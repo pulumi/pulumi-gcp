@@ -31,8 +31,8 @@ public final class AttestorAttestationAuthorityNote {
     /**
      * @return The resource name of a ATTESTATION_AUTHORITY Note, created by the
      * user. If the Note is in a different project from the Attestor, it
-     * should be specified in the format `projects/*{@literal /}notes/*` (or the legacy
-     * `providers/*{@literal /}notes/*`). This field may not be updated.
+     * should be specified in the format `projects/*&#47;notes/*` (or the legacy
+     * `providers/*&#47;notes/*`). This field may not be updated.
      * An attestation by this attestor is stored as a Container Analysis
      * ATTESTATION_AUTHORITY Occurrence that names a container image
      * and that links to this Note.
@@ -72,8 +72,8 @@ public final class AttestorAttestationAuthorityNote {
     /**
      * @return The resource name of a ATTESTATION_AUTHORITY Note, created by the
      * user. If the Note is in a different project from the Attestor, it
-     * should be specified in the format `projects/*{@literal /}notes/*` (or the legacy
-     * `providers/*{@literal /}notes/*`). This field may not be updated.
+     * should be specified in the format `projects/*&#47;notes/*` (or the legacy
+     * `providers/*&#47;notes/*`). This field may not be updated.
      * An attestation by this attestor is stored as a Container Analysis
      * ATTESTATION_AUTHORITY Occurrence that names a container image
      * and that links to this Note.

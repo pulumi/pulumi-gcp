@@ -131,6 +131,25 @@ import (
 //
 // ```
 //
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Dataplex AspectType
+// Three different resources help you manage your IAM policy for Dataplex AspectType. Each of these resources serves a different use case:
+//
+// * `dataplex.AspectTypeIamPolicy`: Authoritative. Sets the IAM policy for the aspecttype and replaces any existing policy already attached.
+// * `dataplex.AspectTypeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the aspecttype are preserved.
+// * `dataplex.AspectTypeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the aspecttype are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `dataplex.AspectTypeIamPolicy`: Retrieves the IAM policy for the aspecttype
+//
+// > **Note:** `dataplex.AspectTypeIamPolicy` **cannot** be used in conjunction with `dataplex.AspectTypeIamBinding` and `dataplex.AspectTypeIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `dataplex.AspectTypeIamBinding` resources **can be** used in conjunction with `dataplex.AspectTypeIamMember` resources **only if** they do not grant privilege to the same role.
+//
 // ## dataplex.AspectTypeIamPolicy
 //
 // ```go

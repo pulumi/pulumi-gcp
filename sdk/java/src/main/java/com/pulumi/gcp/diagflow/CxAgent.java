@@ -426,7 +426,7 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CxAgent(String name) {
+    public CxAgent(java.lang.String name) {
         this(name, CxAgentArgs.Empty);
     }
     /**
@@ -434,7 +434,7 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CxAgent(String name, CxAgentArgs args) {
+    public CxAgent(java.lang.String name, CxAgentArgs args) {
         this(name, args, null);
     }
     /**
@@ -443,12 +443,12 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CxAgent(String name, CxAgentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxAgent:CxAgent", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CxAgent(java.lang.String name, CxAgentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/cxAgent:CxAgent", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CxAgent(String name, Output<String> id, @Nullable CxAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxAgent:CxAgent", name, state, makeResourceOptions(options, id));
+    private CxAgent(java.lang.String name, Output<java.lang.String> id, @Nullable CxAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/cxAgent:CxAgent", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CxAgentArgs makeArgs(CxAgentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -458,7 +458,7 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
         return args == null ? CxAgentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -474,7 +474,7 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CxAgent get(String name, Output<String> id, @Nullable CxAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CxAgent get(java.lang.String name, Output<java.lang.String> id, @Nullable CxAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CxAgent(name, id, state, options);
     }
 }

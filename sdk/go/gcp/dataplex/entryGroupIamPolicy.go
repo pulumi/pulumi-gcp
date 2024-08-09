@@ -131,6 +131,25 @@ import (
 //
 // ```
 //
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Dataplex EntryGroup
+// Three different resources help you manage your IAM policy for Dataplex EntryGroup. Each of these resources serves a different use case:
+//
+// * `dataplex.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
+// * `dataplex.EntryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the entrygroup are preserved.
+// * `dataplex.EntryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the entrygroup are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `dataplex.EntryGroupIamPolicy`: Retrieves the IAM policy for the entrygroup
+//
+// > **Note:** `dataplex.EntryGroupIamPolicy` **cannot** be used in conjunction with `dataplex.EntryGroupIamBinding` and `dataplex.EntryGroupIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `dataplex.EntryGroupIamBinding` resources **can be** used in conjunction with `dataplex.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+//
 // ## dataplex.EntryGroupIamPolicy
 //
 // ```go

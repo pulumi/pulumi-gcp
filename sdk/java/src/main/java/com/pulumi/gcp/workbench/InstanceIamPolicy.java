@@ -50,7 +50,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceIamPolicy(String name) {
+    public InstanceIamPolicy(java.lang.String name) {
         this(name, InstanceIamPolicyArgs.Empty);
     }
     /**
@@ -58,7 +58,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceIamPolicy(String name, InstanceIamPolicyArgs args) {
+    public InstanceIamPolicy(java.lang.String name, InstanceIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -67,12 +67,12 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceIamPolicy(String name, InstanceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workbench/instanceIamPolicy:InstanceIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstanceIamPolicy(java.lang.String name, InstanceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workbench/instanceIamPolicy:InstanceIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceIamPolicy(String name, Output<String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workbench/instanceIamPolicy:InstanceIamPolicy", name, state, makeResourceOptions(options, id));
+    private InstanceIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workbench/instanceIamPolicy:InstanceIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstanceIamPolicyArgs makeArgs(InstanceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -82,7 +82,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? InstanceIamPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -98,7 +98,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceIamPolicy get(String name, Output<String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceIamPolicy(name, id, state, options);
     }
 }

@@ -119,7 +119,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -128,7 +128,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -193,7 +193,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * For example: `projects/*&#47;global/networks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -202,7 +202,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * For example: `projects/*&#47;global/networks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -318,7 +318,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
      * 
      */
@@ -327,7 +327,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
      * 
      */
@@ -569,7 +569,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gatewaySecurityPolicy A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-         * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+         * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
          * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -582,7 +582,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gatewaySecurityPolicy A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-         * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+         * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
          * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -667,7 +667,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The relative resource name identifying the VPC network that is using this configuration.
-         * For example: `projects/*{@literal /}global/networks/network-1`.
+         * For example: `projects/*&#47;global/networks/network-1`.
          * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -680,7 +680,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The relative resource name identifying the VPC network that is using this configuration.
-         * For example: `projects/*{@literal /}global/networks/network-1`.
+         * For example: `projects/*&#47;global/networks/network-1`.
          * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
          * 
          * @return builder
@@ -846,7 +846,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetwork The relative resource name identifying the subnetwork in which this SWG is allocated.
-         * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+         * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
          * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
          * 
          * @return builder
@@ -859,7 +859,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetwork The relative resource name identifying the subnetwork in which this SWG is allocated.
-         * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+         * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
          * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
          * 
          * @return builder

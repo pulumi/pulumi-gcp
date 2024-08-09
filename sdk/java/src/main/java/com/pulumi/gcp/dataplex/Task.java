@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example = new Lake("example", LakeArgs.builder()
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .schedule("1 * * * *")
  *                 .build())
  *             .executionSpec(TaskExecutionSpecArgs.builder()
- *                 .serviceAccount(String.format("%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .project("my-project-name")
  *                 .maxJobExecutionLifetime("100s")
  *                 .kmsKey("234jn2kjn42k3n423")
@@ -98,8 +98,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -135,12 +135,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // VPC network
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("tf-test-workstation-cluster_89605")
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .description("task-spark-terraform")
  *             .executionSpec(TaskExecutionSpecArgs.builder()
- *                 .serviceAccount(String.format("%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .args(Map.of("TASK_ARGS", "--output_location,gs://spark-job/task-result, --output_format, json"))
  *                 .build())
  *             .spark(TaskSparkArgs.builder()
@@ -195,8 +195,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -232,12 +232,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // VPC network
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("tf-test-workstation-cluster_64336")
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  *                 .schedule("1 * * * *")
  *                 .build())
  *             .executionSpec(TaskExecutionSpecArgs.builder()
- *                 .serviceAccount(String.format("%s-compute{@literal @}developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                 .args(Map.of("TASK_ARGS", "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json"))
  *                 .build())
  *             .notebook(TaskNotebookArgs.builder()
@@ -292,8 +292,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -610,7 +610,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Task(String name) {
+    public Task(java.lang.String name) {
         this(name, TaskArgs.Empty);
     }
     /**
@@ -618,7 +618,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Task(String name, TaskArgs args) {
+    public Task(java.lang.String name, TaskArgs args) {
         this(name, args, null);
     }
     /**
@@ -627,12 +627,12 @@ public class Task extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Task(String name, TaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/task:Task", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Task(java.lang.String name, TaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/task:Task", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Task(String name, Output<String> id, @Nullable TaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/task:Task", name, state, makeResourceOptions(options, id));
+    private Task(java.lang.String name, Output<java.lang.String> id, @Nullable TaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/task:Task", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TaskArgs makeArgs(TaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -642,7 +642,7 @@ public class Task extends com.pulumi.resources.CustomResource {
         return args == null ? TaskArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -662,7 +662,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Task get(String name, Output<String> id, @Nullable TaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Task get(java.lang.String name, Output<java.lang.String> id, @Nullable TaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Task(name, id, state, options);
     }
 }

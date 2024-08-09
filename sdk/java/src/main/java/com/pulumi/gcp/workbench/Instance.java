@@ -172,12 +172,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-central1-a")
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *                     .enableIntegrityMonitoring(false)
  *                     .build())
  *                 .serviceAccounts(InstanceGceSetupServiceAccountArgs.builder()
- *                     .email("my{@literal @}service-account.com")
+ *                     .email("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .metadata(Map.of("terraform", "true"))
  *                 .build())
@@ -197,8 +197,8 @@ import javax.annotation.Nullable;
  *             .desiredState("STOPPED")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -233,12 +233,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
  *             .name("wbi-test-default")
  *             .autoCreateSubnetworks(false)
@@ -256,9 +256,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var actAsPermission = new IAMBinding("actAsPermission", IAMBindingArgs.builder()
- *             .serviceAccountId("projects/my-project-name/serviceAccounts/my{@literal @}service-account.com")
+ *             .serviceAccountId("projects/my-project-name/serviceAccounts/my}{@literal @}{@code service-account.com")
  *             .role("roles/iam.serviceAccountUser")
- *             .members("user:example{@literal @}example.com")
+ *             .members("user:example}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
@@ -277,7 +277,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .disablePublicIp(false)
  *                 .serviceAccounts(InstanceGceSetupServiceAccountArgs.builder()
- *                     .email("my{@literal @}service-account.com")
+ *                     .email("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
  *                     .diskSizeGb(310)
@@ -306,13 +306,13 @@ import javax.annotation.Nullable;
  *                     "def")
  *                 .build())
  *             .disableProxyAccess("true")
- *             .instanceOwners("example{@literal @}example.com")
+ *             .instanceOwners("example}{@literal @}{@code example.com")
  *             .labels(Map.of("k", "val"))
  *             .desiredState("ACTIVE")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -649,7 +649,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Instance(String name) {
+    public Instance(java.lang.String name) {
         this(name, InstanceArgs.Empty);
     }
     /**
@@ -657,7 +657,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Instance(String name, InstanceArgs args) {
+    public Instance(java.lang.String name, InstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -666,12 +666,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Instance(String name, InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workbench/instance:Instance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Instance(java.lang.String name, InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workbench/instance:Instance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Instance(String name, Output<String> id, @Nullable InstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workbench/instance:Instance", name, state, makeResourceOptions(options, id));
+    private Instance(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workbench/instance:Instance", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstanceArgs makeArgs(InstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -681,7 +681,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return args == null ? InstanceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -701,7 +701,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Instance get(String name, Output<String> id, @Nullable InstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Instance get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Instance(name, id, state, options);
     }
 }

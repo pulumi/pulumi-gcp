@@ -13,7 +13,7 @@ public final class ResponsePolicyGkeCluster {
     /**
      * @return The resource name of the cluster to bind this ManagedZone to.
      * This should be specified in the format like
-     * `projects/*{@literal /}locations/*{@literal /}clusters/*`
+     * `projects/*&#47;locations/*&#47;clusters/*`
      * 
      */
     private String gkeClusterName;
@@ -22,7 +22,7 @@ public final class ResponsePolicyGkeCluster {
     /**
      * @return The resource name of the cluster to bind this ManagedZone to.
      * This should be specified in the format like
-     * `projects/*{@literal /}locations/*{@literal /}clusters/*`
+     * `projects/*&#47;locations/*&#47;clusters/*`
      * 
      */
     public String gkeClusterName() {

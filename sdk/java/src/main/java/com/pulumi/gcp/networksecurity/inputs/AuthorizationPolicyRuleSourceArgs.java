@@ -34,7 +34,7 @@ public final class AuthorizationPolicyRuleSourceArgs extends com.pulumi.resource
     }
 
     /**
-     * List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*{@literal /}service-account&#34;) or a presence match &#34;*&#34;.
+     * List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*&#47;service-account&#34;) or a presence match &#34;*&#34;.
      * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
      * 
      */
@@ -42,7 +42,7 @@ public final class AuthorizationPolicyRuleSourceArgs extends com.pulumi.resource
     private @Nullable Output<List<String>> principals;
 
     /**
-     * @return List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*{@literal /}service-account&#34;) or a presence match &#34;*&#34;.
+     * @return List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*&#47;service-account&#34;) or a presence match &#34;*&#34;.
      * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
      * 
      */
@@ -110,7 +110,7 @@ public final class AuthorizationPolicyRuleSourceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param principals List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*{@literal /}service-account&#34;) or a presence match &#34;*&#34;.
+         * @param principals List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*&#47;service-account&#34;) or a presence match &#34;*&#34;.
          * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
          * 
          * @return builder
@@ -122,7 +122,7 @@ public final class AuthorizationPolicyRuleSourceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param principals List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*{@literal /}service-account&#34;) or a presence match &#34;*&#34;.
+         * @param principals List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*&#47;service-account&#34;) or a presence match &#34;*&#34;.
          * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
          * 
          * @return builder
@@ -133,7 +133,7 @@ public final class AuthorizationPolicyRuleSourceArgs extends com.pulumi.resource
         }
 
         /**
-         * @param principals List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*{@literal /}service-account&#34;) or a presence match &#34;*&#34;.
+         * @param principals List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*&#47;service-account&#34;) or a presence match &#34;*&#34;.
          * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
          * 
          * @return builder

@@ -740,7 +740,7 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InterconnectAttachment(String name) {
+    public InterconnectAttachment(java.lang.String name) {
         this(name, InterconnectAttachmentArgs.Empty);
     }
     /**
@@ -748,7 +748,7 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InterconnectAttachment(String name, InterconnectAttachmentArgs args) {
+    public InterconnectAttachment(java.lang.String name, InterconnectAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -757,12 +757,12 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InterconnectAttachment(String name, InterconnectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/interconnectAttachment:InterconnectAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InterconnectAttachment(java.lang.String name, InterconnectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/interconnectAttachment:InterconnectAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InterconnectAttachment(String name, Output<String> id, @Nullable InterconnectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/interconnectAttachment:InterconnectAttachment", name, state, makeResourceOptions(options, id));
+    private InterconnectAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable InterconnectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/interconnectAttachment:InterconnectAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InterconnectAttachmentArgs makeArgs(InterconnectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -772,7 +772,7 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return args == null ? InterconnectAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -788,7 +788,7 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InterconnectAttachment get(String name, Output<String> id, @Nullable InterconnectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InterconnectAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable InterconnectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InterconnectAttachment(name, id, state, options);
     }
 }

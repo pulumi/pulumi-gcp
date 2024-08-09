@@ -280,6 +280,25 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Dataproc AutoscalingPolicy
+        Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
+
+        * `dataproc.AutoscalingPolicyIamPolicy`: Authoritative. Sets the IAM policy for the autoscalingpolicy and replaces any existing policy already attached.
+        * `dataproc.AutoscalingPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the autoscalingpolicy are preserved.
+        * `dataproc.AutoscalingPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the autoscalingpolicy are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `dataproc.AutoscalingPolicyIamPolicy`: Retrieves the IAM policy for the autoscalingpolicy
+
+        > **Note:** `dataproc.AutoscalingPolicyIamPolicy` **cannot** be used in conjunction with `dataproc.AutoscalingPolicyIamBinding` and `dataproc.AutoscalingPolicyIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## dataproc.AutoscalingPolicyIamPolicy
 
         ```python
@@ -444,6 +463,25 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Dataproc AutoscalingPolicy
+        Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
+
+        * `dataproc.AutoscalingPolicyIamPolicy`: Authoritative. Sets the IAM policy for the autoscalingpolicy and replaces any existing policy already attached.
+        * `dataproc.AutoscalingPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the autoscalingpolicy are preserved.
+        * `dataproc.AutoscalingPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the autoscalingpolicy are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `dataproc.AutoscalingPolicyIamPolicy`: Retrieves the IAM policy for the autoscalingpolicy
+
+        > **Note:** `dataproc.AutoscalingPolicyIamPolicy` **cannot** be used in conjunction with `dataproc.AutoscalingPolicyIamBinding` and `dataproc.AutoscalingPolicyIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## dataproc.AutoscalingPolicyIamPolicy
 

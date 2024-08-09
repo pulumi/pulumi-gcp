@@ -38,23 +38,23 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var config = new IamAuditConfig("config", IamAuditConfigArgs.builder()
  *             .orgId("your-organization-id")
  *             .service("allServices")
  *             .auditLogConfigs(IamAuditConfigAuditLogConfigArgs.builder()
  *                 .logType("DATA_READ")
- *                 .exemptedMembers("user:joebloggs{@literal @}example.com")
+ *                 .exemptedMembers("user:joebloggs}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -131,7 +131,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IamAuditConfig(String name) {
+    public IamAuditConfig(java.lang.String name) {
         this(name, IamAuditConfigArgs.Empty);
     }
     /**
@@ -139,7 +139,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IamAuditConfig(String name, IamAuditConfigArgs args) {
+    public IamAuditConfig(java.lang.String name, IamAuditConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -148,12 +148,12 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IamAuditConfig(String name, IamAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/iamAuditConfig:IamAuditConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IamAuditConfig(java.lang.String name, IamAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/iamAuditConfig:IamAuditConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IamAuditConfig(String name, Output<String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/iamAuditConfig:IamAuditConfig", name, state, makeResourceOptions(options, id));
+    private IamAuditConfig(java.lang.String name, Output<java.lang.String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/iamAuditConfig:IamAuditConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IamAuditConfigArgs makeArgs(IamAuditConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -163,7 +163,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
         return args == null ? IamAuditConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -179,7 +179,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IamAuditConfig get(String name, Output<String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IamAuditConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable IamAuditConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IamAuditConfig(name, id, state, options);
     }
 }

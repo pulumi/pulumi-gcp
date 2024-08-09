@@ -48,16 +48,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -91,20 +91,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -128,65 +128,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## gcp.healthcare.DatasetIamPolicy
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.healthcare.DatasetIamPolicy;
- * import com.pulumi.gcp.healthcare.DatasetIamPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
- *                 .build())
- *             .build());
- * 
- *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
- *             .datasetId("your-dataset-id")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -210,20 +165,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dataset = new DatasetIamBinding("dataset", DatasetIamBindingArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -247,20 +202,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dataset = new DatasetIamMember("dataset", DatasetIamMemberArgs.builder()
  *             .datasetId("your-dataset-id")
  *             .role("roles/editor")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -385,7 +340,7 @@ public class DatasetIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatasetIamBinding(String name) {
+    public DatasetIamBinding(java.lang.String name) {
         this(name, DatasetIamBindingArgs.Empty);
     }
     /**
@@ -393,7 +348,7 @@ public class DatasetIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatasetIamBinding(String name, DatasetIamBindingArgs args) {
+    public DatasetIamBinding(java.lang.String name, DatasetIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -402,12 +357,12 @@ public class DatasetIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatasetIamBinding(String name, DatasetIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/datasetIamBinding:DatasetIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatasetIamBinding(java.lang.String name, DatasetIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/datasetIamBinding:DatasetIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatasetIamBinding(String name, Output<String> id, @Nullable DatasetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/datasetIamBinding:DatasetIamBinding", name, state, makeResourceOptions(options, id));
+    private DatasetIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable DatasetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/datasetIamBinding:DatasetIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatasetIamBindingArgs makeArgs(DatasetIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -417,7 +372,7 @@ public class DatasetIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? DatasetIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -433,7 +388,7 @@ public class DatasetIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatasetIamBinding get(String name, Output<String> id, @Nullable DatasetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatasetIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable DatasetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatasetIamBinding(name, id, state, options);
     }
 }

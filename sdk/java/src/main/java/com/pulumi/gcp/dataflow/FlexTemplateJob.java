@@ -563,7 +563,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FlexTemplateJob(String name) {
+    public FlexTemplateJob(java.lang.String name) {
         this(name, FlexTemplateJobArgs.Empty);
     }
     /**
@@ -571,7 +571,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FlexTemplateJob(String name, FlexTemplateJobArgs args) {
+    public FlexTemplateJob(java.lang.String name, FlexTemplateJobArgs args) {
         this(name, args, null);
     }
     /**
@@ -580,12 +580,12 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FlexTemplateJob(String name, FlexTemplateJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FlexTemplateJob(java.lang.String name, FlexTemplateJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FlexTemplateJob(String name, Output<String> id, @Nullable FlexTemplateJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, state, makeResourceOptions(options, id));
+    private FlexTemplateJob(java.lang.String name, Output<java.lang.String> id, @Nullable FlexTemplateJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FlexTemplateJobArgs makeArgs(FlexTemplateJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -595,7 +595,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return args == null ? FlexTemplateJobArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -615,7 +615,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FlexTemplateJob get(String name, Output<String> id, @Nullable FlexTemplateJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FlexTemplateJob get(java.lang.String name, Output<java.lang.String> id, @Nullable FlexTemplateJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FlexTemplateJob(name, id, state, options);
     }
 }

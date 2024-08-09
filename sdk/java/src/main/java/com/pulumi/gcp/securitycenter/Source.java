@@ -163,7 +163,7 @@ public class Source extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Source(String name) {
+    public Source(java.lang.String name) {
         this(name, SourceArgs.Empty);
     }
     /**
@@ -171,7 +171,7 @@ public class Source extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Source(String name, SourceArgs args) {
+    public Source(java.lang.String name, SourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -180,12 +180,12 @@ public class Source extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Source(String name, SourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/source:Source", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Source(java.lang.String name, SourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/source:Source", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Source(String name, Output<String> id, @Nullable SourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/source:Source", name, state, makeResourceOptions(options, id));
+    private Source(java.lang.String name, Output<java.lang.String> id, @Nullable SourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/source:Source", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SourceArgs makeArgs(SourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -195,7 +195,7 @@ public class Source extends com.pulumi.resources.CustomResource {
         return args == null ? SourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -211,7 +211,7 @@ public class Source extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Source get(String name, Output<String> id, @Nullable SourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Source get(java.lang.String name, Output<java.lang.String> id, @Nullable SourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Source(name, id, state, options);
     }
 }

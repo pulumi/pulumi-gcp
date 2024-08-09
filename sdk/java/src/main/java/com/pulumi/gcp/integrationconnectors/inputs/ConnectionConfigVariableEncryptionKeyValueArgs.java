@@ -18,7 +18,7 @@ public final class ConnectionConfigVariableEncryptionKeyValueArgs extends com.pu
 
     /**
      * The [KMS key name] with which the content of the Operation is encrypted. The
-     * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -27,7 +27,7 @@ public final class ConnectionConfigVariableEncryptionKeyValueArgs extends com.pu
 
     /**
      * @return The [KMS key name] with which the content of the Operation is encrypted. The
-     * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -79,7 +79,7 @@ public final class ConnectionConfigVariableEncryptionKeyValueArgs extends com.pu
 
         /**
          * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The
-         * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          * 
          * @return builder
@@ -92,7 +92,7 @@ public final class ConnectionConfigVariableEncryptionKeyValueArgs extends com.pu
 
         /**
          * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The
-         * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          * 
          * @return builder

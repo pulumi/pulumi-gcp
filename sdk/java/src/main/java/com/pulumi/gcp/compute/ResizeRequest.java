@@ -329,7 +329,7 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ResizeRequest(String name) {
+    public ResizeRequest(java.lang.String name) {
         this(name, ResizeRequestArgs.Empty);
     }
     /**
@@ -337,7 +337,7 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ResizeRequest(String name, ResizeRequestArgs args) {
+    public ResizeRequest(java.lang.String name, ResizeRequestArgs args) {
         this(name, args, null);
     }
     /**
@@ -346,12 +346,12 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ResizeRequest(String name, ResizeRequestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/resizeRequest:ResizeRequest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ResizeRequest(java.lang.String name, ResizeRequestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/resizeRequest:ResizeRequest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ResizeRequest(String name, Output<String> id, @Nullable ResizeRequestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/resizeRequest:ResizeRequest", name, state, makeResourceOptions(options, id));
+    private ResizeRequest(java.lang.String name, Output<java.lang.String> id, @Nullable ResizeRequestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/resizeRequest:ResizeRequest", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ResizeRequestArgs makeArgs(ResizeRequestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -361,7 +361,7 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
         return args == null ? ResizeRequestArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -377,7 +377,7 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ResizeRequest get(String name, Output<String> id, @Nullable ResizeRequestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ResizeRequest get(java.lang.String name, Output<java.lang.String> id, @Nullable ResizeRequestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ResizeRequest(name, id, state, options);
     }
 }

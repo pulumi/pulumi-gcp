@@ -23,7 +23,7 @@ public final class EntryGcsFilesetSpec {
      * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
      * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
      * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-     * * gs://bucket_name/a/*{@literal /}b: matches all files in bucket_name that match a/*{@literal /}b pattern, such as a/c/b, a/d/b
+     * * gs://bucket_name/a/*&#47;b: matches all files in bucket_name that match a/*&#47;b pattern, such as a/c/b, a/d/b
      * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
      * 
      */
@@ -49,7 +49,7 @@ public final class EntryGcsFilesetSpec {
      * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
      * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
      * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-     * * gs://bucket_name/a/*{@literal /}b: matches all files in bucket_name that match a/*{@literal /}b pattern, such as a/c/b, a/d/b
+     * * gs://bucket_name/a/*&#47;b: matches all files in bucket_name that match a/*&#47;b pattern, such as a/c/b, a/d/b
      * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
      * 
      */

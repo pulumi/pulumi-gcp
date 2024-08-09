@@ -331,7 +331,7 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceLbPolicies(String name) {
+    public ServiceLbPolicies(java.lang.String name) {
         this(name, ServiceLbPoliciesArgs.Empty);
     }
     /**
@@ -339,7 +339,7 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceLbPolicies(String name, ServiceLbPoliciesArgs args) {
+    public ServiceLbPolicies(java.lang.String name, ServiceLbPoliciesArgs args) {
         this(name, args, null);
     }
     /**
@@ -348,12 +348,12 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceLbPolicies(String name, ServiceLbPoliciesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/serviceLbPolicies:ServiceLbPolicies", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServiceLbPolicies(java.lang.String name, ServiceLbPoliciesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/serviceLbPolicies:ServiceLbPolicies", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceLbPolicies(String name, Output<String> id, @Nullable ServiceLbPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/serviceLbPolicies:ServiceLbPolicies", name, state, makeResourceOptions(options, id));
+    private ServiceLbPolicies(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceLbPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/serviceLbPolicies:ServiceLbPolicies", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServiceLbPoliciesArgs makeArgs(ServiceLbPoliciesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -363,7 +363,7 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
         return args == null ? ServiceLbPoliciesArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -383,7 +383,7 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceLbPolicies get(String name, Output<String> id, @Nullable ServiceLbPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceLbPolicies get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceLbPoliciesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceLbPolicies(name, id, state, options);
     }
 }

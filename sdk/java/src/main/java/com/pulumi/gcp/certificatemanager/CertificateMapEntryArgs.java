@@ -21,7 +21,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
     /**
      * A set of Certificates defines for the given hostname.
      * There can be defined up to fifteen certificates in each Certificate Map Entry.
-     * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
+     * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
      * 
      */
     @Import(name="certificates", required=true)
@@ -30,7 +30,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
     /**
      * @return A set of Certificates defines for the given hostname.
      * There can be defined up to fifteen certificates in each Certificate Map Entry.
-     * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
+     * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
      * 
      */
     public Output<List<String>> certificates() {
@@ -133,7 +133,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
     /**
      * A user-defined name of the Certificate Map Entry. Certificate Map Entry
      * names must be unique globally and match pattern
-     * &#39;projects/*{@literal /}locations/*{@literal /}certificateMaps/*{@literal /}certificateMapEntries/*&#39;
+     * &#39;projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*&#39;
      * 
      */
     @Import(name="name")
@@ -142,7 +142,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
     /**
      * @return A user-defined name of the Certificate Map Entry. Certificate Map Entry
      * names must be unique globally and match pattern
-     * &#39;projects/*{@literal /}locations/*{@literal /}certificateMaps/*{@literal /}certificateMapEntries/*&#39;
+     * &#39;projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*&#39;
      * 
      */
     public Optional<Output<String>> name() {
@@ -200,7 +200,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         /**
          * @param certificates A set of Certificates defines for the given hostname.
          * There can be defined up to fifteen certificates in each Certificate Map Entry.
-         * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
+         * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         /**
          * @param certificates A set of Certificates defines for the given hostname.
          * There can be defined up to fifteen certificates in each Certificate Map Entry.
-         * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
+         * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         /**
          * @param certificates A set of Certificates defines for the given hostname.
          * There can be defined up to fifteen certificates in each Certificate Map Entry.
-         * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
+         * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         /**
          * @param name A user-defined name of the Certificate Map Entry. Certificate Map Entry
          * names must be unique globally and match pattern
-         * &#39;projects/*{@literal /}locations/*{@literal /}certificateMaps/*{@literal /}certificateMapEntries/*&#39;
+         * &#39;projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*&#39;
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         /**
          * @param name A user-defined name of the Certificate Map Entry. Certificate Map Entry
          * names must be unique globally and match pattern
-         * &#39;projects/*{@literal /}locations/*{@literal /}certificateMaps/*{@literal /}certificateMapEntries/*&#39;
+         * &#39;projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*&#39;
          * 
          * @return builder
          * 

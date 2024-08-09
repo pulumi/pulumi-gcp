@@ -324,7 +324,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthorizationPolicy(String name) {
+    public AuthorizationPolicy(java.lang.String name) {
         this(name, AuthorizationPolicyArgs.Empty);
     }
     /**
@@ -332,7 +332,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthorizationPolicy(String name, AuthorizationPolicyArgs args) {
+    public AuthorizationPolicy(java.lang.String name, AuthorizationPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -341,12 +341,12 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthorizationPolicy(String name, AuthorizationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/authorizationPolicy:AuthorizationPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AuthorizationPolicy(java.lang.String name, AuthorizationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/authorizationPolicy:AuthorizationPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthorizationPolicy(String name, Output<String> id, @Nullable AuthorizationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/authorizationPolicy:AuthorizationPolicy", name, state, makeResourceOptions(options, id));
+    private AuthorizationPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorizationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/authorizationPolicy:AuthorizationPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AuthorizationPolicyArgs makeArgs(AuthorizationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -356,7 +356,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? AuthorizationPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -376,7 +376,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthorizationPolicy get(String name, Output<String> id, @Nullable AuthorizationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthorizationPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorizationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthorizationPolicy(name, id, state, options);
     }
 }

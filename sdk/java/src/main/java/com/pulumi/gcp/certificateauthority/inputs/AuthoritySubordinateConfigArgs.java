@@ -20,7 +20,7 @@ public final class AuthoritySubordinateConfigArgs extends com.pulumi.resources.R
      * This can refer to a CertificateAuthority that was used to create a
      * subordinate CertificateAuthority. This field is used for information
      * and usability purposes only. The resource name is in the format
-     * `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
+     * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      * 
      */
     @Import(name="certificateAuthority")
@@ -30,7 +30,7 @@ public final class AuthoritySubordinateConfigArgs extends com.pulumi.resources.R
      * @return This can refer to a CertificateAuthority that was used to create a
      * subordinate CertificateAuthority. This field is used for information
      * and usability purposes only. The resource name is in the format
-     * `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
+     * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -85,7 +85,7 @@ public final class AuthoritySubordinateConfigArgs extends com.pulumi.resources.R
          * @param certificateAuthority This can refer to a CertificateAuthority that was used to create a
          * subordinate CertificateAuthority. This field is used for information
          * and usability purposes only. The resource name is in the format
-         * `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
+         * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AuthoritySubordinateConfigArgs extends com.pulumi.resources.R
          * @param certificateAuthority This can refer to a CertificateAuthority that was used to create a
          * subordinate CertificateAuthority. This field is used for information
          * and usability purposes only. The resource name is in the format
-         * `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
+         * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
          * 
          * @return builder
          * 

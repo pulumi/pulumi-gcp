@@ -15,7 +15,7 @@ public final class ConnectionAuthConfigOauth2JwtBearer {
     /**
      * @return Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
      * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
-     * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * Specified in the form as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     private @Nullable ConnectionAuthConfigOauth2JwtBearerClientKey clientKey;
@@ -29,7 +29,7 @@ public final class ConnectionAuthConfigOauth2JwtBearer {
     /**
      * @return Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
      * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
-     * Specified in the form as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * Specified in the form as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public Optional<ConnectionAuthConfigOauth2JwtBearerClientKey> clientKey() {

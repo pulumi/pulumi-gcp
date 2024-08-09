@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionNetworkFirewallPolicyRuleTargetSecureTag {
     /**
-     * @return Name of the secure tag, created with TagManager&#39;s TagValue API.{@literal @}pattern tagValues/[0-9]+
+     * @return Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
      * 
      */
     private String name;
@@ -25,7 +25,7 @@ public final class RegionNetworkFirewallPolicyRuleTargetSecureTag {
 
     private RegionNetworkFirewallPolicyRuleTargetSecureTag() {}
     /**
-     * @return Name of the secure tag, created with TagManager&#39;s TagValue API.{@literal @}pattern tagValues/[0-9]+
+     * @return Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
      * 
      */
     public String name() {

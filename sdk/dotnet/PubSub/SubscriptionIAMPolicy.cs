@@ -97,40 +97,6 @@ namespace Pulumi.Gcp.PubSub
     /// });
     /// ```
     /// 
-    /// ## gcp.pubsub.SubscriptionIAMPolicy
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
-    ///     {
-    ///         Bindings = new[]
-    ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
-    ///             {
-    ///                 Role = "roles/editor",
-    ///                 Members = new[]
-    ///                 {
-    ///                     "user:jane@example.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var editor = new Gcp.PubSub.SubscriptionIAMPolicy("editor", new()
-    ///     {
-    ///         Subscription = "your-subscription-name",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## gcp.pubsub.SubscriptionIAMBinding
     /// 
     /// ```csharp

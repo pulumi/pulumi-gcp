@@ -205,8 +205,8 @@ import (
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewServicePerimeter(ctx, "test-access", &accesscontextmanager.ServicePerimeterArgs{
-//				Parent:        pulumi.String(fmt.Sprintf("accessPolicies/%v", test_accessGoogleAccessContextManagerAccessPolicy.Name)),
-//				Name:          pulumi.String(fmt.Sprintf("accessPolicies/%v%v", test_accessGoogleAccessContextManagerAccessPolicy.Name, "/servicePerimeters/%s")),
+//				Parent:        pulumi.Sprintf("accessPolicies/%v", test_accessGoogleAccessContextManagerAccessPolicy.Name),
+//				Name:          pulumi.Sprintf("accessPolicies/%v%v", test_accessGoogleAccessContextManagerAccessPolicy.Name, "/servicePerimeters/%s"),
 //				Title:         pulumi.String("%s"),
 //				PerimeterType: pulumi.String("PERIMETER_TYPE_REGULAR"),
 //				Status: &accesscontextmanager.ServicePerimeterStatusArgs{

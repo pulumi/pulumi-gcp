@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .projectId("my-project-name")
  *             .build());
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var key1Member = new CryptoKeyIAMMember("key1Member", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(key1.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-eventarc.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-eventarc.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var primary = new Channel("primary", ChannelArgs.builder()
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(key1Member)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -143,14 +143,14 @@ public class Channel extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
+     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     @Export(name="cryptoKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cryptoKeyName;
 
     /**
-     * @return Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
+     * @return Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     public Output<Optional<String>> cryptoKeyName() {
@@ -277,7 +277,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Channel(String name) {
+    public Channel(java.lang.String name) {
         this(name, ChannelArgs.Empty);
     }
     /**
@@ -285,7 +285,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Channel(String name, ChannelArgs args) {
+    public Channel(java.lang.String name, ChannelArgs args) {
         this(name, args, null);
     }
     /**
@@ -294,12 +294,12 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Channel(String name, ChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:eventarc/channel:Channel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Channel(java.lang.String name, ChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:eventarc/channel:Channel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Channel(String name, Output<String> id, @Nullable ChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:eventarc/channel:Channel", name, state, makeResourceOptions(options, id));
+    private Channel(java.lang.String name, Output<java.lang.String> id, @Nullable ChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:eventarc/channel:Channel", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ChannelArgs makeArgs(ChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -309,7 +309,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
         return args == null ? ChannelArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -325,7 +325,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Channel get(String name, Output<String> id, @Nullable ChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Channel get(java.lang.String name, Output<java.lang.String> id, @Nullable ChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Channel(name, id, state, options);
     }
 }

@@ -135,18 +135,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -159,8 +159,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(cryptoKey)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -484,12 +484,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
@@ -507,7 +507,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -531,8 +531,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -570,12 +570,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
@@ -593,7 +593,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -619,8 +619,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -658,12 +658,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
@@ -681,7 +681,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -707,8 +707,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -746,12 +746,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
@@ -769,7 +769,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -795,8 +795,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -834,12 +834,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
@@ -857,7 +857,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -883,8 +883,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -1257,7 +1257,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Repository(String name) {
+    public Repository(java.lang.String name) {
         this(name, RepositoryArgs.Empty);
     }
     /**
@@ -1265,7 +1265,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Repository(String name, RepositoryArgs args) {
+    public Repository(java.lang.String name, RepositoryArgs args) {
         this(name, args, null);
     }
     /**
@@ -1274,12 +1274,12 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Repository(String name, RepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:artifactregistry/repository:Repository", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Repository(java.lang.String name, RepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:artifactregistry/repository:Repository", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Repository(String name, Output<String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:artifactregistry/repository:Repository", name, state, makeResourceOptions(options, id));
+    private Repository(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:artifactregistry/repository:Repository", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RepositoryArgs makeArgs(RepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1289,7 +1289,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return args == null ? RepositoryArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -1309,7 +1309,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Repository get(String name, Output<String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Repository get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Repository(name, id, state, options);
     }
 }

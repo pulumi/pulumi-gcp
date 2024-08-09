@@ -294,7 +294,7 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionAutoscaler(String name) {
+    public RegionAutoscaler(java.lang.String name) {
         this(name, RegionAutoscalerArgs.Empty);
     }
     /**
@@ -302,7 +302,7 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionAutoscaler(String name, RegionAutoscalerArgs args) {
+    public RegionAutoscaler(java.lang.String name, RegionAutoscalerArgs args) {
         this(name, args, null);
     }
     /**
@@ -311,12 +311,12 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionAutoscaler(String name, RegionAutoscalerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RegionAutoscaler(java.lang.String name, RegionAutoscalerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionAutoscaler(String name, Output<String> id, @Nullable RegionAutoscalerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, state, makeResourceOptions(options, id));
+    private RegionAutoscaler(java.lang.String name, Output<java.lang.String> id, @Nullable RegionAutoscalerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RegionAutoscalerArgs makeArgs(RegionAutoscalerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -326,7 +326,7 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
         return args == null ? RegionAutoscalerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -342,7 +342,7 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionAutoscaler get(String name, Output<String> id, @Nullable RegionAutoscalerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionAutoscaler get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionAutoscalerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionAutoscaler(name, id, state, options);
     }
 }

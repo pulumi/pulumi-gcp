@@ -106,7 +106,7 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * A Workspace resource name in the format
-     * `projects/*{@literal /}locations/*{@literal /}scopes/*`.
+     * `projects/*&#47;locations/*&#47;scopes/*`.
      * 
      */
     @Import(name="scope", required=true)
@@ -114,7 +114,7 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return A Workspace resource name in the format
-     * `projects/*{@literal /}locations/*{@literal /}scopes/*`.
+     * `projects/*&#47;locations/*&#47;scopes/*`.
      * 
      */
     public Output<String> scope() {
@@ -269,7 +269,7 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param scope A Workspace resource name in the format
-         * `projects/*{@literal /}locations/*{@literal /}scopes/*`.
+         * `projects/*&#47;locations/*&#47;scopes/*`.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param scope A Workspace resource name in the format
-         * `projects/*{@literal /}locations/*{@literal /}scopes/*`.
+         * `projects/*&#47;locations/*&#47;scopes/*`.
          * 
          * @return builder
          * 

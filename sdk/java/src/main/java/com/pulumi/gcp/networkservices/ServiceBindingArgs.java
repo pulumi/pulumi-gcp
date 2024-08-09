@@ -89,7 +89,7 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The full Service Directory Service name of the format
-     * projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     @Import(name="service", required=true)
@@ -97,7 +97,7 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The full Service Directory Service name of the format
-     * projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+     * projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      * 
      */
     public Output<String> service() {
@@ -228,7 +228,7 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param service The full Service Directory Service name of the format
-         * projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+         * projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param service The full Service Directory Service name of the format
-         * projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*
+         * projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
          * 
          * @return builder
          * 

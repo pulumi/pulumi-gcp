@@ -222,12 +222,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
@@ -237,13 +237,13 @@ import javax.annotation.Nullable;
  *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.metadataViewer")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.dataEditor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var test = new Dataset("test", DatasetArgs.builder()
@@ -256,12 +256,12 @@ import javax.annotation.Nullable;
  *             .datasetId(test.datasetId())
  *             .schema("""
  * [
- *   {
+ *   }{{@code
  *     "name": "data",
  *     "type": "STRING",
  *     "mode": "NULLABLE",
  *     "description": "The data"
- *   }
+ *   }}{@code
  * ]
  *             """)
  *             .build());
@@ -270,12 +270,12 @@ import javax.annotation.Nullable;
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> }{{@code
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
  *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
@@ -283,8 +283,8 @@ import javax.annotation.Nullable;
  *                     editor)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -319,12 +319,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
@@ -334,13 +334,13 @@ import javax.annotation.Nullable;
  *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.metadataViewer")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.dataEditor")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var test = new Dataset("test", DatasetArgs.builder()
@@ -353,12 +353,12 @@ import javax.annotation.Nullable;
  *             .datasetId(test.datasetId())
  *             .schema("""
  * [
- *   {
+ *   }{{@code
  *     "name": "data",
  *     "type": "STRING",
  *     "mode": "NULLABLE",
  *     "description": "The data"
- *   }
+ *   }}{@code
  * ]
  *             """)
  *             .build());
@@ -367,12 +367,12 @@ import javax.annotation.Nullable;
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> }{{@code
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
  *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .useTableSchema(true)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
@@ -381,8 +381,8 @@ import javax.annotation.Nullable;
  *                     editor)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -521,12 +521,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Bucket("example", BucketArgs.builder()
  *             .name("example-bucket")
  *             .location("US")
@@ -542,7 +542,7 @@ import javax.annotation.Nullable;
  *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(example.name())
  *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
@@ -562,8 +562,8 @@ import javax.annotation.Nullable;
  *                     admin)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -597,12 +597,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Bucket("example", BucketArgs.builder()
  *             .name("example-bucket")
  *             .location("US")
@@ -618,7 +618,7 @@ import javax.annotation.Nullable;
  *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(example.name())
  *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
@@ -641,8 +641,8 @@ import javax.annotation.Nullable;
  *                     admin)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -1153,7 +1153,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Subscription(String name) {
+    public Subscription(java.lang.String name) {
         this(name, SubscriptionArgs.Empty);
     }
     /**
@@ -1161,7 +1161,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Subscription(String name, SubscriptionArgs args) {
+    public Subscription(java.lang.String name, SubscriptionArgs args) {
         this(name, args, null);
     }
     /**
@@ -1170,12 +1170,12 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Subscription(String name, SubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/subscription:Subscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Subscription(java.lang.String name, SubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/subscription:Subscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Subscription(String name, Output<String> id, @Nullable SubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/subscription:Subscription", name, state, makeResourceOptions(options, id));
+    private Subscription(java.lang.String name, Output<java.lang.String> id, @Nullable SubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/subscription:Subscription", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SubscriptionArgs makeArgs(SubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1185,7 +1185,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
         return args == null ? SubscriptionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -1205,7 +1205,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Subscription get(String name, Output<String> id, @Nullable SubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Subscription get(java.lang.String name, Output<java.lang.String> id, @Nullable SubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Subscription(name, id, state, options);
     }
 }

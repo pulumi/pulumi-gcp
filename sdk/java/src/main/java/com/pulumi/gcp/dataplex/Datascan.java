@@ -667,7 +667,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Datascan(String name) {
+    public Datascan(java.lang.String name) {
         this(name, DatascanArgs.Empty);
     }
     /**
@@ -675,7 +675,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Datascan(String name, DatascanArgs args) {
+    public Datascan(java.lang.String name, DatascanArgs args) {
         this(name, args, null);
     }
     /**
@@ -684,12 +684,12 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Datascan(String name, DatascanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/datascan:Datascan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Datascan(java.lang.String name, DatascanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/datascan:Datascan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Datascan(String name, Output<String> id, @Nullable DatascanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/datascan:Datascan", name, state, makeResourceOptions(options, id));
+    private Datascan(java.lang.String name, Output<java.lang.String> id, @Nullable DatascanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/datascan:Datascan", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatascanArgs makeArgs(DatascanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -699,7 +699,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return args == null ? DatascanArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -719,7 +719,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Datascan get(String name, Output<String> id, @Nullable DatascanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Datascan get(java.lang.String name, Output<java.lang.String> id, @Nullable DatascanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Datascan(name, id, state, options);
     }
 }

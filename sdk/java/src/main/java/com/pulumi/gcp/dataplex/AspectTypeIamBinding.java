@@ -52,16 +52,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -72,8 +72,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -97,22 +97,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new AspectTypeIamBinding("binding", AspectTypeIamBindingArgs.builder()
  *             .project(testAspectTypeBasic.project())
  *             .location(testAspectTypeBasic.location())
  *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -136,25 +136,44 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new AspectTypeIamMember("member", AspectTypeIamMemberArgs.builder()
  *             .project(testAspectTypeBasic.project())
  *             .location(testAspectTypeBasic.location())
  *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Dataplex AspectType
+ * Three different resources help you manage your IAM policy for Dataplex AspectType. Each of these resources serves a different use case:
+ * 
+ * * `gcp.dataplex.AspectTypeIamPolicy`: Authoritative. Sets the IAM policy for the aspecttype and replaces any existing policy already attached.
+ * * `gcp.dataplex.AspectTypeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the aspecttype are preserved.
+ * * `gcp.dataplex.AspectTypeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the aspecttype are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.dataplex.AspectTypeIamPolicy`: Retrieves the IAM policy for the aspecttype
+ * 
+ * &gt; **Note:** `gcp.dataplex.AspectTypeIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.AspectTypeIamBinding` and `gcp.dataplex.AspectTypeIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.dataplex.AspectTypeIamBinding` resources **can be** used in conjunction with `gcp.dataplex.AspectTypeIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## gcp.dataplex.AspectTypeIamPolicy
  * 
@@ -177,16 +196,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -197,8 +216,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -222,22 +241,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new AspectTypeIamBinding("binding", AspectTypeIamBindingArgs.builder()
  *             .project(testAspectTypeBasic.project())
  *             .location(testAspectTypeBasic.location())
  *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -261,22 +280,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new AspectTypeIamMember("member", AspectTypeIamMemberArgs.builder()
  *             .project(testAspectTypeBasic.project())
  *             .location(testAspectTypeBasic.location())
  *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -441,7 +460,7 @@ public class AspectTypeIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AspectTypeIamBinding(String name) {
+    public AspectTypeIamBinding(java.lang.String name) {
         this(name, AspectTypeIamBindingArgs.Empty);
     }
     /**
@@ -449,7 +468,7 @@ public class AspectTypeIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AspectTypeIamBinding(String name, AspectTypeIamBindingArgs args) {
+    public AspectTypeIamBinding(java.lang.String name, AspectTypeIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -458,12 +477,12 @@ public class AspectTypeIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AspectTypeIamBinding(String name, AspectTypeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AspectTypeIamBinding(java.lang.String name, AspectTypeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AspectTypeIamBinding(String name, Output<String> id, @Nullable AspectTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding", name, state, makeResourceOptions(options, id));
+    private AspectTypeIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable AspectTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AspectTypeIamBindingArgs makeArgs(AspectTypeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -473,7 +492,7 @@ public class AspectTypeIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? AspectTypeIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -489,7 +508,7 @@ public class AspectTypeIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AspectTypeIamBinding get(String name, Output<String> id, @Nullable AspectTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AspectTypeIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable AspectTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AspectTypeIamBinding(name, id, state, options);
     }
 }

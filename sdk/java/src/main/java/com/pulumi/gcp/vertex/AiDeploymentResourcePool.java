@@ -192,7 +192,7 @@ public class AiDeploymentResourcePool extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiDeploymentResourcePool(String name) {
+    public AiDeploymentResourcePool(java.lang.String name) {
         this(name, AiDeploymentResourcePoolArgs.Empty);
     }
     /**
@@ -200,7 +200,7 @@ public class AiDeploymentResourcePool extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiDeploymentResourcePool(String name, @Nullable AiDeploymentResourcePoolArgs args) {
+    public AiDeploymentResourcePool(java.lang.String name, @Nullable AiDeploymentResourcePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -209,12 +209,12 @@ public class AiDeploymentResourcePool extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiDeploymentResourcePool(String name, @Nullable AiDeploymentResourcePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiDeploymentResourcePool(java.lang.String name, @Nullable AiDeploymentResourcePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiDeploymentResourcePool(String name, Output<String> id, @Nullable AiDeploymentResourcePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool", name, state, makeResourceOptions(options, id));
+    private AiDeploymentResourcePool(java.lang.String name, Output<java.lang.String> id, @Nullable AiDeploymentResourcePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiDeploymentResourcePoolArgs makeArgs(@Nullable AiDeploymentResourcePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -224,7 +224,7 @@ public class AiDeploymentResourcePool extends com.pulumi.resources.CustomResourc
         return args == null ? AiDeploymentResourcePoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -240,7 +240,7 @@ public class AiDeploymentResourcePool extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiDeploymentResourcePool get(String name, Output<String> id, @Nullable AiDeploymentResourcePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiDeploymentResourcePool get(java.lang.String name, Output<java.lang.String> id, @Nullable AiDeploymentResourcePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiDeploymentResourcePool(name, id, state, options);
     }
 }

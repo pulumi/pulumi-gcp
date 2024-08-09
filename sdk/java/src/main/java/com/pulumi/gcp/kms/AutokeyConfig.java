@@ -49,12 +49,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create Folder in GCP Organization
  *         var autokmsFolder = new Folder("autokmsFolder", FolderArgs.builder()
  *             .displayName("my-folder")
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *         var autokeyProjectAdmin = new IAMMember("autokeyProjectAdmin", IAMMemberArgs.builder()
  *             .project(keyProject.projectId())
  *             .role("roles/cloudkms.admin")
- *             .member(keyProject.number().applyValue(number -> String.format("serviceAccount:service-%s{@literal @}gcp-sa-cloudkms.iam.gserviceaccount.com", number)))
+ *             .member(keyProject.number().applyValue(number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-cloudkms.iam.gserviceaccount.com", number)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(waitServiceAgent)
  *                 .build());
@@ -126,8 +126,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(waitSrvAccPermissions)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -194,7 +194,7 @@ public class AutokeyConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AutokeyConfig(String name) {
+    public AutokeyConfig(java.lang.String name) {
         this(name, AutokeyConfigArgs.Empty);
     }
     /**
@@ -202,7 +202,7 @@ public class AutokeyConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AutokeyConfig(String name, AutokeyConfigArgs args) {
+    public AutokeyConfig(java.lang.String name, AutokeyConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,12 +211,12 @@ public class AutokeyConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AutokeyConfig(String name, AutokeyConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/autokeyConfig:AutokeyConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AutokeyConfig(java.lang.String name, AutokeyConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/autokeyConfig:AutokeyConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AutokeyConfig(String name, Output<String> id, @Nullable AutokeyConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/autokeyConfig:AutokeyConfig", name, state, makeResourceOptions(options, id));
+    private AutokeyConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AutokeyConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/autokeyConfig:AutokeyConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AutokeyConfigArgs makeArgs(AutokeyConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -226,7 +226,7 @@ public class AutokeyConfig extends com.pulumi.resources.CustomResource {
         return args == null ? AutokeyConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -242,7 +242,7 @@ public class AutokeyConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AutokeyConfig get(String name, Output<String> id, @Nullable AutokeyConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AutokeyConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AutokeyConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AutokeyConfig(name, id, state, options);
     }
 }

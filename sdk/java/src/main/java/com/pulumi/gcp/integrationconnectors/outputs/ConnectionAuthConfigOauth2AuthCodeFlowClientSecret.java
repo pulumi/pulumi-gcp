@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
     /**
      * @return The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     private String secretVersion;
@@ -20,7 +20,7 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
     private ConnectionAuthConfigOauth2AuthCodeFlowClientSecret() {}
     /**
      * @return The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public String secretVersion() {

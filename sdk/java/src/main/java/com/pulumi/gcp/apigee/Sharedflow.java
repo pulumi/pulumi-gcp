@@ -161,7 +161,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Sharedflow(String name) {
+    public Sharedflow(java.lang.String name) {
         this(name, SharedflowArgs.Empty);
     }
     /**
@@ -169,7 +169,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Sharedflow(String name, SharedflowArgs args) {
+    public Sharedflow(java.lang.String name, SharedflowArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,12 +178,12 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Sharedflow(String name, SharedflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/sharedflow:Sharedflow", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Sharedflow(java.lang.String name, SharedflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/sharedflow:Sharedflow", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Sharedflow(String name, Output<String> id, @Nullable SharedflowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/sharedflow:Sharedflow", name, state, makeResourceOptions(options, id));
+    private Sharedflow(java.lang.String name, Output<java.lang.String> id, @Nullable SharedflowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/sharedflow:Sharedflow", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SharedflowArgs makeArgs(SharedflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -193,7 +193,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
         return args == null ? SharedflowArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -209,7 +209,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Sharedflow get(String name, Output<String> id, @Nullable SharedflowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Sharedflow get(java.lang.String name, Output<java.lang.String> id, @Nullable SharedflowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Sharedflow(name, id, state, options);
     }
 }

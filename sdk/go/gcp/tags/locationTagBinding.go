@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
-//				Parent: pulumi.String(fmt.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", projectGoogleProject.Number, _default.Location, _default.Name)),
+//				Parent: pulumi.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", projectGoogleProject.Number, _default.Location, _default.Name),
 //				TagValue: value.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagValues/%v", name), nil
 //				}).(pulumi.StringOutput),

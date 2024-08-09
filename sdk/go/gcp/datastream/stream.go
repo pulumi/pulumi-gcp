@@ -129,7 +129,7 @@ import (
 //			_, err = storage.NewBucketIAMMember(ctx, "viewer", &storage.BucketIAMMemberArgs{
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("roles/storage.objectViewer"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -137,7 +137,7 @@ import (
 //			_, err = storage.NewBucketIAMMember(ctx, "creator", &storage.BucketIAMMemberArgs{
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("roles/storage.objectCreator"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -145,7 +145,7 @@ import (
 //			_, err = storage.NewBucketIAMMember(ctx, "reader", &storage.BucketIAMMemberArgs{
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("roles/storage.legacyBucketReader"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -153,7 +153,7 @@ import (
 //			keyUser, err := kms.NewCryptoKeyIAMMember(ctx, "key_user", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -893,7 +893,7 @@ import (
 //			bigqueryKeyUser, err := kms.NewCryptoKeyIAMMember(ctx, "bigquery_key_user", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("bigquery-kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", bqSa.Email)),
+//				Member:      pulumi.Sprintf("serviceAccount:%v", bqSa.Email),
 //			})
 //			if err != nil {
 //				return err

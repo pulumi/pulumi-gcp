@@ -286,7 +286,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecurityScanConfig(String name) {
+    public SecurityScanConfig(java.lang.String name) {
         this(name, SecurityScanConfigArgs.Empty);
     }
     /**
@@ -294,7 +294,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecurityScanConfig(String name, SecurityScanConfigArgs args) {
+    public SecurityScanConfig(java.lang.String name, SecurityScanConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -303,12 +303,12 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecurityScanConfig(String name, SecurityScanConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/securityScanConfig:SecurityScanConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SecurityScanConfig(java.lang.String name, SecurityScanConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/securityScanConfig:SecurityScanConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecurityScanConfig(String name, Output<String> id, @Nullable SecurityScanConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/securityScanConfig:SecurityScanConfig", name, state, makeResourceOptions(options, id));
+    private SecurityScanConfig(java.lang.String name, Output<java.lang.String> id, @Nullable SecurityScanConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/securityScanConfig:SecurityScanConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SecurityScanConfigArgs makeArgs(SecurityScanConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -318,7 +318,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
         return args == null ? SecurityScanConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -334,7 +334,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecurityScanConfig get(String name, Output<String> id, @Nullable SecurityScanConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecurityScanConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable SecurityScanConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecurityScanConfig(name, id, state, options);
     }
 }

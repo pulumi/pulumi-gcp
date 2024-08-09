@@ -361,7 +361,7 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkPolicy(String name) {
+    public NetworkPolicy(java.lang.String name) {
         this(name, NetworkPolicyArgs.Empty);
     }
     /**
@@ -369,7 +369,7 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkPolicy(String name, NetworkPolicyArgs args) {
+    public NetworkPolicy(java.lang.String name, NetworkPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -378,12 +378,12 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkPolicy(String name, NetworkPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vmwareengine/networkPolicy:NetworkPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkPolicy(java.lang.String name, NetworkPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vmwareengine/networkPolicy:NetworkPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkPolicy(String name, Output<String> id, @Nullable NetworkPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vmwareengine/networkPolicy:NetworkPolicy", name, state, makeResourceOptions(options, id));
+    private NetworkPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vmwareengine/networkPolicy:NetworkPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkPolicyArgs makeArgs(NetworkPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -393,7 +393,7 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? NetworkPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -409,7 +409,7 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkPolicy get(String name, Output<String> id, @Nullable NetworkPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkPolicy(name, id, state, options);
     }
 }

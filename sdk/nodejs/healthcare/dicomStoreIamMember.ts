@@ -61,24 +61,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.healthcare.DicomStoreIamPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const dicomStore = new gcp.healthcare.DicomStoreIamPolicy("dicom_store", {
- *     dicomStoreId: "your-dicom-store-id",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## gcp.healthcare.DicomStoreIamBinding
  *
  * ```typescript

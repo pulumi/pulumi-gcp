@@ -86,14 +86,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * @return Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -386,7 +386,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKey Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param kmsKey Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKey Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param kmsKey Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * 
          * @return builder
          * 

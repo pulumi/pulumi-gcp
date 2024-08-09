@@ -288,6 +288,25 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for BigQuery Connection Connection
+        Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
+
+        * `bigquery.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+        * `bigquery.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+        * `bigquery.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `bigquery.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
+
+        > **Note:** `bigquery.ConnectionIamPolicy` **cannot** be used in conjunction with `bigquery.ConnectionIamBinding` and `bigquery.ConnectionIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## bigquery.ConnectionIamPolicy
 
         ```python
@@ -454,6 +473,25 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for BigQuery Connection Connection
+        Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
+
+        * `bigquery.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+        * `bigquery.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+        * `bigquery.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `bigquery.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
+
+        > **Note:** `bigquery.ConnectionIamPolicy` **cannot** be used in conjunction with `bigquery.ConnectionIamBinding` and `bigquery.ConnectionIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## bigquery.ConnectionIamPolicy
 

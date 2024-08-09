@@ -197,7 +197,7 @@ public class RegionBackendServiceIamBinding extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionBackendServiceIamBinding(String name) {
+    public RegionBackendServiceIamBinding(java.lang.String name) {
         this(name, RegionBackendServiceIamBindingArgs.Empty);
     }
     /**
@@ -205,7 +205,7 @@ public class RegionBackendServiceIamBinding extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionBackendServiceIamBinding(String name, RegionBackendServiceIamBindingArgs args) {
+    public RegionBackendServiceIamBinding(java.lang.String name, RegionBackendServiceIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -214,12 +214,12 @@ public class RegionBackendServiceIamBinding extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionBackendServiceIamBinding(String name, RegionBackendServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RegionBackendServiceIamBinding(java.lang.String name, RegionBackendServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionBackendServiceIamBinding(String name, Output<String> id, @Nullable RegionBackendServiceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding", name, state, makeResourceOptions(options, id));
+    private RegionBackendServiceIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable RegionBackendServiceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RegionBackendServiceIamBindingArgs makeArgs(RegionBackendServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -229,7 +229,7 @@ public class RegionBackendServiceIamBinding extends com.pulumi.resources.CustomR
         return args == null ? RegionBackendServiceIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -245,7 +245,7 @@ public class RegionBackendServiceIamBinding extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionBackendServiceIamBinding get(String name, Output<String> id, @Nullable RegionBackendServiceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionBackendServiceIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionBackendServiceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionBackendServiceIamBinding(name, id, state, options);
     }
 }

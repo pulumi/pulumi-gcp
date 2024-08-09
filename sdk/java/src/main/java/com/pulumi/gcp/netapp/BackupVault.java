@@ -238,7 +238,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BackupVault(String name) {
+    public BackupVault(java.lang.String name) {
         this(name, BackupVaultArgs.Empty);
     }
     /**
@@ -246,7 +246,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BackupVault(String name, BackupVaultArgs args) {
+    public BackupVault(java.lang.String name, BackupVaultArgs args) {
         this(name, args, null);
     }
     /**
@@ -255,12 +255,12 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BackupVault(String name, BackupVaultArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/backupVault:BackupVault", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BackupVault(java.lang.String name, BackupVaultArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/backupVault:BackupVault", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BackupVault(String name, Output<String> id, @Nullable BackupVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/backupVault:BackupVault", name, state, makeResourceOptions(options, id));
+    private BackupVault(java.lang.String name, Output<java.lang.String> id, @Nullable BackupVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/backupVault:BackupVault", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BackupVaultArgs makeArgs(BackupVaultArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -270,7 +270,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
         return args == null ? BackupVaultArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -290,7 +290,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BackupVault get(String name, Output<String> id, @Nullable BackupVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BackupVault get(java.lang.String name, Output<java.lang.String> id, @Nullable BackupVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BackupVault(name, id, state, options);
     }
 }

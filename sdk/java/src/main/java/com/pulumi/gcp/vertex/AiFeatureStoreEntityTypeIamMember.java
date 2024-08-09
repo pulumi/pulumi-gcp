@@ -158,7 +158,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiFeatureStoreEntityTypeIamMember(String name) {
+    public AiFeatureStoreEntityTypeIamMember(java.lang.String name) {
         this(name, AiFeatureStoreEntityTypeIamMemberArgs.Empty);
     }
     /**
@@ -166,7 +166,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiFeatureStoreEntityTypeIamMember(String name, AiFeatureStoreEntityTypeIamMemberArgs args) {
+    public AiFeatureStoreEntityTypeIamMember(java.lang.String name, AiFeatureStoreEntityTypeIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -175,12 +175,12 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiFeatureStoreEntityTypeIamMember(String name, AiFeatureStoreEntityTypeIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiFeatureStoreEntityTypeIamMember(java.lang.String name, AiFeatureStoreEntityTypeIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiFeatureStoreEntityTypeIamMember(String name, Output<String> id, @Nullable AiFeatureStoreEntityTypeIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember", name, state, makeResourceOptions(options, id));
+    private AiFeatureStoreEntityTypeIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreEntityTypeIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiFeatureStoreEntityTypeIamMemberArgs makeArgs(AiFeatureStoreEntityTypeIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -190,7 +190,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
         return args == null ? AiFeatureStoreEntityTypeIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -206,7 +206,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiFeatureStoreEntityTypeIamMember get(String name, Output<String> id, @Nullable AiFeatureStoreEntityTypeIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiFeatureStoreEntityTypeIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreEntityTypeIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiFeatureStoreEntityTypeIamMember(name, id, state, options);
     }
 }

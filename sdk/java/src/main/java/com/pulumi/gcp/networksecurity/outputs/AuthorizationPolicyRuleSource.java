@@ -18,7 +18,7 @@ public final class AuthorizationPolicyRuleSource {
      */
     private @Nullable List<String> ipBlocks;
     /**
-     * @return List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*{@literal /}service-account&#34;) or a presence match &#34;*&#34;.
+     * @return List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*&#47;service-account&#34;) or a presence match &#34;*&#34;.
      * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
      * 
      */
@@ -34,7 +34,7 @@ public final class AuthorizationPolicyRuleSource {
         return this.ipBlocks == null ? List.of() : this.ipBlocks;
     }
     /**
-     * @return List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*{@literal /}service-account&#34;) or a presence match &#34;*&#34;.
+     * @return List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, &#34;namespace/*&#34;) or a suffix match (example, &#34;*&#47;service-account&#34;) or a presence match &#34;*&#34;.
      * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
      * 
      */

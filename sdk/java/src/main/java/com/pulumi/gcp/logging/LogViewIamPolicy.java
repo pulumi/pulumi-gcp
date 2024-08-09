@@ -146,7 +146,7 @@ public class LogViewIamPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogViewIamPolicy(String name) {
+    public LogViewIamPolicy(java.lang.String name) {
         this(name, LogViewIamPolicyArgs.Empty);
     }
     /**
@@ -154,7 +154,7 @@ public class LogViewIamPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogViewIamPolicy(String name, LogViewIamPolicyArgs args) {
+    public LogViewIamPolicy(java.lang.String name, LogViewIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -163,12 +163,12 @@ public class LogViewIamPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogViewIamPolicy(String name, LogViewIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/logViewIamPolicy:LogViewIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LogViewIamPolicy(java.lang.String name, LogViewIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/logViewIamPolicy:LogViewIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogViewIamPolicy(String name, Output<String> id, @Nullable LogViewIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/logViewIamPolicy:LogViewIamPolicy", name, state, makeResourceOptions(options, id));
+    private LogViewIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable LogViewIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/logViewIamPolicy:LogViewIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LogViewIamPolicyArgs makeArgs(LogViewIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -178,7 +178,7 @@ public class LogViewIamPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? LogViewIamPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -194,7 +194,7 @@ public class LogViewIamPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogViewIamPolicy get(String name, Output<String> id, @Nullable LogViewIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogViewIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable LogViewIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogViewIamPolicy(name, id, state, options);
     }
 }

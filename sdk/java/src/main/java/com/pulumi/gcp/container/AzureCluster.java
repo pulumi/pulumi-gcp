@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var versions = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
  *             .project("my-project-name")
  *             .location("us-west1")
@@ -82,10 +82,10 @@ import javax.annotation.Nullable;
  *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
- *                     .username("mmv2{@literal @}google.com")
+ *                     .username("mmv2}{@literal @}{@code google.com")
  *                     .build())
  *                 .adminGroups(AzureClusterAuthorizationAdminGroupArgs.builder()
- *                     .group("group{@literal @}domain.com")
+ *                     .group("group}{@literal @}{@code domain.com")
  *                     .build())
  *                 .build())
  *             .azureRegion("westus2")
@@ -111,8 +111,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -146,12 +146,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var versions = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
  *             .project("my-project-name")
  *             .location("us-west1")
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *         var primary = new AzureCluster("primary", AzureClusterArgs.builder()
  *             .authorization(AzureClusterAuthorizationArgs.builder()
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
- *                     .username("mmv2{@literal @}google.com")
+ *                     .username("mmv2}{@literal @}{@code google.com")
  *                     .build())
  *                 .build())
  *             .azureRegion("westus2")
@@ -201,8 +201,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -495,14 +495,14 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
         return this.reconciling;
     }
     /**
-     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
+     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
+     * @return The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      * 
      */
     public Output<String> resourceGroupId() {
@@ -569,7 +569,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AzureCluster(String name) {
+    public AzureCluster(java.lang.String name) {
         this(name, AzureClusterArgs.Empty);
     }
     /**
@@ -577,7 +577,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AzureCluster(String name, AzureClusterArgs args) {
+    public AzureCluster(java.lang.String name, AzureClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -586,12 +586,12 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AzureCluster(String name, AzureClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/azureCluster:AzureCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AzureCluster(java.lang.String name, AzureClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/azureCluster:AzureCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AzureCluster(String name, Output<String> id, @Nullable AzureClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/azureCluster:AzureCluster", name, state, makeResourceOptions(options, id));
+    private AzureCluster(java.lang.String name, Output<java.lang.String> id, @Nullable AzureClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/azureCluster:AzureCluster", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AzureClusterArgs makeArgs(AzureClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -601,7 +601,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
         return args == null ? AzureClusterArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -617,7 +617,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AzureCluster get(String name, Output<String> id, @Nullable AzureClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AzureCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable AzureClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AzureCluster(name, id, state, options);
     }
 }

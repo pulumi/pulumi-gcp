@@ -106,7 +106,7 @@ import (
 //			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -410,7 +410,7 @@ import (
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
+//				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -484,7 +484,7 @@ import (
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
+//				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -560,7 +560,7 @@ import (
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
+//				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -636,7 +636,7 @@ import (
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
+//				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -712,7 +712,7 @@ import (
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
+//				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

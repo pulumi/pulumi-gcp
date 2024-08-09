@@ -266,7 +266,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationSecurityPolicyRule(String name) {
+    public OrganizationSecurityPolicyRule(java.lang.String name) {
         this(name, OrganizationSecurityPolicyRuleArgs.Empty);
     }
     /**
@@ -274,7 +274,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationSecurityPolicyRule(String name, OrganizationSecurityPolicyRuleArgs args) {
+    public OrganizationSecurityPolicyRule(java.lang.String name, OrganizationSecurityPolicyRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -283,12 +283,12 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationSecurityPolicyRule(String name, OrganizationSecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OrganizationSecurityPolicyRule(java.lang.String name, OrganizationSecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationSecurityPolicyRule(String name, Output<String> id, @Nullable OrganizationSecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule", name, state, makeResourceOptions(options, id));
+    private OrganizationSecurityPolicyRule(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationSecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OrganizationSecurityPolicyRuleArgs makeArgs(OrganizationSecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -298,7 +298,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return args == null ? OrganizationSecurityPolicyRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -314,7 +314,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationSecurityPolicyRule get(String name, Output<String> id, @Nullable OrganizationSecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationSecurityPolicyRule get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationSecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationSecurityPolicyRule(name, id, state, options);
     }
 }

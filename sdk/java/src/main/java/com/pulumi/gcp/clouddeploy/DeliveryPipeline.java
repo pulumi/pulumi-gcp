@@ -607,7 +607,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DeliveryPipeline(String name) {
+    public DeliveryPipeline(java.lang.String name) {
         this(name, DeliveryPipelineArgs.Empty);
     }
     /**
@@ -615,7 +615,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DeliveryPipeline(String name, DeliveryPipelineArgs args) {
+    public DeliveryPipeline(java.lang.String name, DeliveryPipelineArgs args) {
         this(name, args, null);
     }
     /**
@@ -624,12 +624,12 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DeliveryPipeline(String name, DeliveryPipelineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DeliveryPipeline(java.lang.String name, DeliveryPipelineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DeliveryPipeline(String name, Output<String> id, @Nullable DeliveryPipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline", name, state, makeResourceOptions(options, id));
+    private DeliveryPipeline(java.lang.String name, Output<java.lang.String> id, @Nullable DeliveryPipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DeliveryPipelineArgs makeArgs(DeliveryPipelineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -639,7 +639,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
         return args == null ? DeliveryPipelineArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -659,7 +659,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DeliveryPipeline get(String name, Output<String> id, @Nullable DeliveryPipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DeliveryPipeline get(java.lang.String name, Output<java.lang.String> id, @Nullable DeliveryPipelineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DeliveryPipeline(name, id, state, options);
     }
 }

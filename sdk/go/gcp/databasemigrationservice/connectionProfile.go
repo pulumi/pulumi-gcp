@@ -127,7 +127,7 @@ import (
 //						DataDiskType:        pulumi.String("PD_HDD"),
 //						DataDiskSizeGb:      pulumi.String("11"),
 //						Zone:                pulumi.String("us-central1-b"),
-//						SourceId:            pulumi.String(fmt.Sprintf("projects/%v/locations/us-central1/connectionProfiles/my-fromprofileid", project.ProjectId)),
+//						SourceId:            pulumi.Sprintf("projects/%v/locations/us-central1/connectionProfiles/my-fromprofileid", project.ProjectId),
 //						RootPassword:        pulumi.String("testpasscloudsql"),
 //					},
 //				},

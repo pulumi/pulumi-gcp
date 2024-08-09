@@ -97,40 +97,6 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## gcp.healthcare.DicomStoreIamPolicy
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
-    ///     {
-    ///         Bindings = new[]
-    ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
-    ///             {
-    ///                 Role = "roles/editor",
-    ///                 Members = new[]
-    ///                 {
-    ///                     "user:jane@example.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamPolicy("dicom_store", new()
-    ///     {
-    ///         DicomStoreId = "your-dicom-store-id",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## gcp.healthcare.DicomStoreIamBinding
     /// 
     /// ```csharp

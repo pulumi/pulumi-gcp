@@ -213,7 +213,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessLevel(String name) {
+    public AccessLevel(java.lang.String name) {
         this(name, AccessLevelArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessLevel(String name, AccessLevelArgs args) {
+    public AccessLevel(java.lang.String name, AccessLevelArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,12 +230,12 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessLevel(String name, AccessLevelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/accessLevel:AccessLevel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccessLevel(java.lang.String name, AccessLevelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/accessLevel:AccessLevel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessLevel(String name, Output<String> id, @Nullable AccessLevelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/accessLevel:AccessLevel", name, state, makeResourceOptions(options, id));
+    private AccessLevel(java.lang.String name, Output<java.lang.String> id, @Nullable AccessLevelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/accessLevel:AccessLevel", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccessLevelArgs makeArgs(AccessLevelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -245,7 +245,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
         return args == null ? AccessLevelArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -261,7 +261,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessLevel get(String name, Output<String> id, @Nullable AccessLevelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessLevel get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessLevelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessLevel(name, id, state, options);
     }
 }

@@ -222,7 +222,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IAMCustomRole(String name) {
+    public IAMCustomRole(java.lang.String name) {
         this(name, IAMCustomRoleArgs.Empty);
     }
     /**
@@ -230,7 +230,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IAMCustomRole(String name, IAMCustomRoleArgs args) {
+    public IAMCustomRole(java.lang.String name, IAMCustomRoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -239,12 +239,12 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IAMCustomRole(String name, IAMCustomRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/iAMCustomRole:IAMCustomRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IAMCustomRole(java.lang.String name, IAMCustomRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/iAMCustomRole:IAMCustomRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IAMCustomRole(String name, Output<String> id, @Nullable IAMCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/iAMCustomRole:IAMCustomRole", name, state, makeResourceOptions(options, id));
+    private IAMCustomRole(java.lang.String name, Output<java.lang.String> id, @Nullable IAMCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/iAMCustomRole:IAMCustomRole", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IAMCustomRoleArgs makeArgs(IAMCustomRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -254,7 +254,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
         return args == null ? IAMCustomRoleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -270,7 +270,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IAMCustomRole get(String name, Output<String> id, @Nullable IAMCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IAMCustomRole get(java.lang.String name, Output<java.lang.String> id, @Nullable IAMCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IAMCustomRole(name, id, state, options);
     }
 }

@@ -110,14 +110,14 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The resource name for this ImportJob in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}importJobs/*.
+     * The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name for this ImportJob in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}importJobs/*.
+     * @return The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
      * 
      */
     public Optional<Output<String>> name() {
@@ -342,7 +342,7 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The resource name for this ImportJob in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}importJobs/*.
+         * @param name The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The resource name for this ImportJob in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}importJobs/*.
+         * @param name The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
          * 
          * @return builder
          * 

@@ -52,16 +52,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -96,21 +96,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -134,24 +134,44 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## &gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * 
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * ---
+ * 
+ * # IAM policy for Apigee Environment
+ * Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
+ * 
+ * * `gcp.apigee.EnvironmentIamPolicy`: Authoritative. Sets the IAM policy for the environment and replaces any existing policy already attached.
+ * * `gcp.apigee.EnvironmentIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the environment are preserved.
+ * * `gcp.apigee.EnvironmentIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the environment are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.apigee.EnvironmentIamPolicy`: Retrieves the IAM policy for the environment
+ * 
+ * &gt; **Note:** `gcp.apigee.EnvironmentIamPolicy` **cannot** be used in conjunction with `gcp.apigee.EnvironmentIamBinding` and `gcp.apigee.EnvironmentIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `gcp.apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## gcp.apigee.EnvironmentIamPolicy
  * 
@@ -174,16 +194,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/viewer")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -193,8 +213,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -218,21 +238,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -256,21 +276,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
  *             .role("roles/viewer")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -409,7 +429,7 @@ public class EnvironmentIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnvironmentIamBinding(String name) {
+    public EnvironmentIamBinding(java.lang.String name) {
         this(name, EnvironmentIamBindingArgs.Empty);
     }
     /**
@@ -417,7 +437,7 @@ public class EnvironmentIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnvironmentIamBinding(String name, EnvironmentIamBindingArgs args) {
+    public EnvironmentIamBinding(java.lang.String name, EnvironmentIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -426,12 +446,12 @@ public class EnvironmentIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnvironmentIamBinding(String name, EnvironmentIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public EnvironmentIamBinding(java.lang.String name, EnvironmentIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnvironmentIamBinding(String name, Output<String> id, @Nullable EnvironmentIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", name, state, makeResourceOptions(options, id));
+    private EnvironmentIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable EnvironmentIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static EnvironmentIamBindingArgs makeArgs(EnvironmentIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -441,7 +461,7 @@ public class EnvironmentIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? EnvironmentIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -457,7 +477,7 @@ public class EnvironmentIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnvironmentIamBinding get(String name, Output<String> id, @Nullable EnvironmentIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnvironmentIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable EnvironmentIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnvironmentIamBinding(name, id, state, options);
     }
 }

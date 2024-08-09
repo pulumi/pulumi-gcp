@@ -47,7 +47,7 @@ import (
 //			pubsubEditorRole, err := projects.NewIAMMember(ctx, "pubsub_editor_role", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/pubsub.editor"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
+//				Member:  pulumi.Sprintf("serviceAccount:%v", _default.Email),
 //			})
 //			if err != nil {
 //				return err

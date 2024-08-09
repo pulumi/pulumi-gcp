@@ -101,7 +101,7 @@ import (
 //			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
+//				Member:      pulumi.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail),
 //			})
 //			if err != nil {
 //				return err

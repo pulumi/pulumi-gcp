@@ -384,7 +384,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HostingVersion(String name) {
+    public HostingVersion(java.lang.String name) {
         this(name, HostingVersionArgs.Empty);
     }
     /**
@@ -392,7 +392,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HostingVersion(String name, HostingVersionArgs args) {
+    public HostingVersion(java.lang.String name, HostingVersionArgs args) {
         this(name, args, null);
     }
     /**
@@ -401,12 +401,12 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HostingVersion(String name, HostingVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/hostingVersion:HostingVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public HostingVersion(java.lang.String name, HostingVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/hostingVersion:HostingVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HostingVersion(String name, Output<String> id, @Nullable HostingVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/hostingVersion:HostingVersion", name, state, makeResourceOptions(options, id));
+    private HostingVersion(java.lang.String name, Output<java.lang.String> id, @Nullable HostingVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/hostingVersion:HostingVersion", name, state, makeResourceOptions(options, id), false);
     }
 
     private static HostingVersionArgs makeArgs(HostingVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -416,7 +416,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
         return args == null ? HostingVersionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -432,7 +432,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HostingVersion get(String name, Output<String> id, @Nullable HostingVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HostingVersion get(java.lang.String name, Output<java.lang.String> id, @Nullable HostingVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HostingVersion(name, id, state, options);
     }
 }

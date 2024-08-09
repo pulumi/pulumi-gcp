@@ -130,7 +130,7 @@ import (
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
+//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number),
 //				},
 //			})
 //			if err != nil {
@@ -262,7 +262,7 @@ import (
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
+//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number),
 //				},
 //			})
 //			if err != nil {

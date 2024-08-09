@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username("admin{@literal @}hashicorptest.com")
+ *                     .username("admin}{@literal @}{@code hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -134,12 +134,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username("admin{@literal @}hashicorptest.com")
+ *                     .username("admin}{@literal @}{@code hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKeyCryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-edgecontainer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-edgecontainer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var default_ = new NodePool("default", NodePoolArgs.builder()
@@ -188,8 +188,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(cryptoKey)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -222,12 +222,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
- *                     .username("admin{@literal @}hashicorptest.com")
+ *                     .username("admin}{@literal @}{@code hashicorptest.com")
  *                     .build())
  *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  *             .nodeCount(3)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -532,7 +532,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NodePool(String name) {
+    public NodePool(java.lang.String name) {
         this(name, NodePoolArgs.Empty);
     }
     /**
@@ -540,7 +540,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NodePool(String name, NodePoolArgs args) {
+    public NodePool(java.lang.String name, NodePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -549,12 +549,12 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NodePool(String name, NodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:edgecontainer/nodePool:NodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NodePool(java.lang.String name, NodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:edgecontainer/nodePool:NodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NodePool(String name, Output<String> id, @Nullable NodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:edgecontainer/nodePool:NodePool", name, state, makeResourceOptions(options, id));
+    private NodePool(java.lang.String name, Output<java.lang.String> id, @Nullable NodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:edgecontainer/nodePool:NodePool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NodePoolArgs makeArgs(NodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -564,7 +564,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return args == null ? NodePoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -584,7 +584,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NodePool get(String name, Output<String> id, @Nullable NodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NodePool get(java.lang.String name, Output<java.lang.String> id, @Nullable NodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NodePool(name, id, state, options);
     }
 }

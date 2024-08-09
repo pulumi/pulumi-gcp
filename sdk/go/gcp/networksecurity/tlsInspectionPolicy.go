@@ -111,7 +111,7 @@ import (
 //			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
 //				CaPool: _default.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

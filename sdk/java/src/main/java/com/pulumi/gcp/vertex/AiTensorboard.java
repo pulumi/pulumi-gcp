@@ -93,18 +93,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(cryptoKey)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -364,7 +364,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiTensorboard(String name) {
+    public AiTensorboard(java.lang.String name) {
         this(name, AiTensorboardArgs.Empty);
     }
     /**
@@ -372,7 +372,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiTensorboard(String name, AiTensorboardArgs args) {
+    public AiTensorboard(java.lang.String name, AiTensorboardArgs args) {
         this(name, args, null);
     }
     /**
@@ -381,12 +381,12 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiTensorboard(String name, AiTensorboardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiTensorboard:AiTensorboard", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiTensorboard(java.lang.String name, AiTensorboardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiTensorboard:AiTensorboard", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiTensorboard(String name, Output<String> id, @Nullable AiTensorboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiTensorboard:AiTensorboard", name, state, makeResourceOptions(options, id));
+    private AiTensorboard(java.lang.String name, Output<java.lang.String> id, @Nullable AiTensorboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiTensorboard:AiTensorboard", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiTensorboardArgs makeArgs(AiTensorboardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -396,7 +396,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
         return args == null ? AiTensorboardArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -416,7 +416,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiTensorboard get(String name, Output<String> id, @Nullable AiTensorboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiTensorboard get(java.lang.String name, Output<java.lang.String> id, @Nullable AiTensorboardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiTensorboard(name, id, state, options);
     }
 }

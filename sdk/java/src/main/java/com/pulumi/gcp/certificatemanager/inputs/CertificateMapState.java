@@ -107,7 +107,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
     /**
      * A user-defined name of the Certificate Map. Certificate Map names must be unique
-     * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+     * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
      * 
      * ***
      * 
@@ -117,7 +117,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A user-defined name of the Certificate Map. Certificate Map names must be unique
-     * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+     * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
      * 
      * ***
      * 
@@ -341,7 +341,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name A user-defined name of the Certificate Map. Certificate Map names must be unique
-         * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+         * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
          * 
          * ***
          * 
@@ -355,7 +355,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name A user-defined name of the Certificate Map. Certificate Map names must be unique
-         * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+         * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
          * 
          * ***
          * 

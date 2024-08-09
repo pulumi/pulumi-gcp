@@ -361,7 +361,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetastoreFederation(String name) {
+    public MetastoreFederation(java.lang.String name) {
         this(name, MetastoreFederationArgs.Empty);
     }
     /**
@@ -369,7 +369,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetastoreFederation(String name, MetastoreFederationArgs args) {
+    public MetastoreFederation(java.lang.String name, MetastoreFederationArgs args) {
         this(name, args, null);
     }
     /**
@@ -378,12 +378,12 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetastoreFederation(String name, MetastoreFederationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreFederation:MetastoreFederation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MetastoreFederation(java.lang.String name, MetastoreFederationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/metastoreFederation:MetastoreFederation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetastoreFederation(String name, Output<String> id, @Nullable MetastoreFederationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreFederation:MetastoreFederation", name, state, makeResourceOptions(options, id));
+    private MetastoreFederation(java.lang.String name, Output<java.lang.String> id, @Nullable MetastoreFederationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/metastoreFederation:MetastoreFederation", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MetastoreFederationArgs makeArgs(MetastoreFederationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -393,7 +393,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
         return args == null ? MetastoreFederationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -413,7 +413,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetastoreFederation get(String name, Output<String> id, @Nullable MetastoreFederationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetastoreFederation get(java.lang.String name, Output<java.lang.String> id, @Nullable MetastoreFederationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetastoreFederation(name, id, state, options);
     }
 }

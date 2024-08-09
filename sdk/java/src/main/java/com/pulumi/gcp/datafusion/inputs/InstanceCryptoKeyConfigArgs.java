@@ -15,14 +15,14 @@ public final class InstanceCryptoKeyConfigArgs extends com.pulumi.resources.Reso
     public static final InstanceCryptoKeyConfigArgs Empty = new InstanceCryptoKeyConfigArgs();
 
     /**
-     * The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * 
      */
     @Import(name="keyReference", required=true)
     private Output<String> keyReference;
 
     /**
-     * @return The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * @return The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * 
      */
     public Output<String> keyReference() {
@@ -54,7 +54,7 @@ public final class InstanceCryptoKeyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param keyReference The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param keyReference The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class InstanceCryptoKeyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param keyReference The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param keyReference The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * 
          * @return builder
          * 

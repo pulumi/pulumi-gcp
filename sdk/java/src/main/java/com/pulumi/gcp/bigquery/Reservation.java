@@ -258,7 +258,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Reservation(String name) {
+    public Reservation(java.lang.String name) {
         this(name, ReservationArgs.Empty);
     }
     /**
@@ -266,7 +266,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Reservation(String name, ReservationArgs args) {
+    public Reservation(java.lang.String name, ReservationArgs args) {
         this(name, args, null);
     }
     /**
@@ -275,12 +275,12 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Reservation(String name, ReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/reservation:Reservation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Reservation(java.lang.String name, ReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/reservation:Reservation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Reservation(String name, Output<String> id, @Nullable ReservationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/reservation:Reservation", name, state, makeResourceOptions(options, id));
+    private Reservation(java.lang.String name, Output<java.lang.String> id, @Nullable ReservationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/reservation:Reservation", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ReservationArgs makeArgs(ReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -290,7 +290,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return args == null ? ReservationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -306,7 +306,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Reservation get(String name, Output<String> id, @Nullable ReservationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Reservation get(java.lang.String name, Output<java.lang.String> id, @Nullable ReservationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Reservation(name, id, state, options);
     }
 }

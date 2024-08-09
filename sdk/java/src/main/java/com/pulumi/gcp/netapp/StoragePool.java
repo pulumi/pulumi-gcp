@@ -414,7 +414,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StoragePool(String name) {
+    public StoragePool(java.lang.String name) {
         this(name, StoragePoolArgs.Empty);
     }
     /**
@@ -422,7 +422,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StoragePool(String name, StoragePoolArgs args) {
+    public StoragePool(java.lang.String name, StoragePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -431,12 +431,12 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StoragePool(String name, StoragePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/storagePool:StoragePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public StoragePool(java.lang.String name, StoragePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/storagePool:StoragePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StoragePool(String name, Output<String> id, @Nullable StoragePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/storagePool:StoragePool", name, state, makeResourceOptions(options, id));
+    private StoragePool(java.lang.String name, Output<java.lang.String> id, @Nullable StoragePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/storagePool:StoragePool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static StoragePoolArgs makeArgs(StoragePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -446,7 +446,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return args == null ? StoragePoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -466,7 +466,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StoragePool get(String name, Output<String> id, @Nullable StoragePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StoragePool get(java.lang.String name, Output<java.lang.String> id, @Nullable StoragePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StoragePool(name, id, state, options);
     }
 }

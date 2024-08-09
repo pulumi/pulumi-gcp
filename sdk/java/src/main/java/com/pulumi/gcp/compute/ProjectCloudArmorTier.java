@@ -175,7 +175,7 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectCloudArmorTier(String name) {
+    public ProjectCloudArmorTier(java.lang.String name) {
         this(name, ProjectCloudArmorTierArgs.Empty);
     }
     /**
@@ -183,7 +183,7 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectCloudArmorTier(String name, ProjectCloudArmorTierArgs args) {
+    public ProjectCloudArmorTier(java.lang.String name, ProjectCloudArmorTierArgs args) {
         this(name, args, null);
     }
     /**
@@ -192,12 +192,12 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectCloudArmorTier(String name, ProjectCloudArmorTierArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ProjectCloudArmorTier(java.lang.String name, ProjectCloudArmorTierArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectCloudArmorTier(String name, Output<String> id, @Nullable ProjectCloudArmorTierState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier", name, state, makeResourceOptions(options, id));
+    private ProjectCloudArmorTier(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectCloudArmorTierState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ProjectCloudArmorTierArgs makeArgs(ProjectCloudArmorTierArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -207,7 +207,7 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
         return args == null ? ProjectCloudArmorTierArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -223,7 +223,7 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectCloudArmorTier get(String name, Output<String> id, @Nullable ProjectCloudArmorTierState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectCloudArmorTier get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectCloudArmorTierState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectCloudArmorTier(name, id, state, options);
     }
 }

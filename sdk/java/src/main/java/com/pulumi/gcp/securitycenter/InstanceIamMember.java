@@ -239,12 +239,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("my-instance")
  *             .location("us-central1")
@@ -260,7 +260,7 @@ import javax.annotation.Nullable;
  *         var cryptoKeyMember = new CryptoKeyIAMMember("cryptoKeyMember", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-datafusion.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datafusion.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var cmek = new Instance("cmek", InstanceArgs.builder()
@@ -274,8 +274,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(cryptoKeyMember)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -507,7 +507,7 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceIamMember(String name) {
+    public InstanceIamMember(java.lang.String name) {
         this(name, InstanceIamMemberArgs.Empty);
     }
     /**
@@ -515,7 +515,7 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceIamMember(String name, InstanceIamMemberArgs args) {
+    public InstanceIamMember(java.lang.String name, InstanceIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -524,12 +524,12 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceIamMember(String name, InstanceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/instanceIamMember:InstanceIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstanceIamMember(java.lang.String name, InstanceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/instanceIamMember:InstanceIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceIamMember(String name, Output<String> id, @Nullable InstanceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/instanceIamMember:InstanceIamMember", name, state, makeResourceOptions(options, id));
+    private InstanceIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/instanceIamMember:InstanceIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstanceIamMemberArgs makeArgs(InstanceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -539,7 +539,7 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
         return args == null ? InstanceIamMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -555,7 +555,7 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceIamMember get(String name, Output<String> id, @Nullable InstanceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceIamMember(name, id, state, options);
     }
 }

@@ -36,7 +36,7 @@ public final class CertificateManaged {
      */
     private @Nullable List<String> domains;
     /**
-     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
      * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
      * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 
@@ -85,7 +85,7 @@ public final class CertificateManaged {
         return this.domains == null ? List.of() : this.domains;
     }
     /**
-     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
      * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
      * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 

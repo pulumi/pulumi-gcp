@@ -275,21 +275,6 @@ class DatasetIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## healthcare.DatasetIamPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        dataset = gcp.healthcare.DatasetIamPolicy("dataset",
-            dataset_id="your-dataset-id",
-            policy_data=admin.policy_data)
-        ```
-
         ## healthcare.DatasetIamBinding
 
         ```python
@@ -412,21 +397,6 @@ class DatasetIamBinding(pulumi.CustomResource):
             dataset_id="your-dataset-id",
             role="roles/editor",
             member="user:jane@example.com")
-        ```
-
-        ## healthcare.DatasetIamPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        dataset = gcp.healthcare.DatasetIamPolicy("dataset",
-            dataset_id="your-dataset-id",
-            policy_data=admin.policy_data)
         ```
 
         ## healthcare.DatasetIamBinding

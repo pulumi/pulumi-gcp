@@ -159,7 +159,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiFeatureStoreEntityTypeIamBinding(String name) {
+    public AiFeatureStoreEntityTypeIamBinding(java.lang.String name) {
         this(name, AiFeatureStoreEntityTypeIamBindingArgs.Empty);
     }
     /**
@@ -167,7 +167,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiFeatureStoreEntityTypeIamBinding(String name, AiFeatureStoreEntityTypeIamBindingArgs args) {
+    public AiFeatureStoreEntityTypeIamBinding(java.lang.String name, AiFeatureStoreEntityTypeIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -176,12 +176,12 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiFeatureStoreEntityTypeIamBinding(String name, AiFeatureStoreEntityTypeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AiFeatureStoreEntityTypeIamBinding(java.lang.String name, AiFeatureStoreEntityTypeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiFeatureStoreEntityTypeIamBinding(String name, Output<String> id, @Nullable AiFeatureStoreEntityTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding", name, state, makeResourceOptions(options, id));
+    private AiFeatureStoreEntityTypeIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreEntityTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AiFeatureStoreEntityTypeIamBindingArgs makeArgs(AiFeatureStoreEntityTypeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -191,7 +191,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
         return args == null ? AiFeatureStoreEntityTypeIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +207,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiFeatureStoreEntityTypeIamBinding get(String name, Output<String> id, @Nullable AiFeatureStoreEntityTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiFeatureStoreEntityTypeIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureStoreEntityTypeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiFeatureStoreEntityTypeIamBinding(name, id, state, options);
     }
 }

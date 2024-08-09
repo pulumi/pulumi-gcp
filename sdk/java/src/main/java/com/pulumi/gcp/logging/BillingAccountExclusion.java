@@ -150,7 +150,7 @@ public class BillingAccountExclusion extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BillingAccountExclusion(String name) {
+    public BillingAccountExclusion(java.lang.String name) {
         this(name, BillingAccountExclusionArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class BillingAccountExclusion extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BillingAccountExclusion(String name, BillingAccountExclusionArgs args) {
+    public BillingAccountExclusion(java.lang.String name, BillingAccountExclusionArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,12 +167,12 @@ public class BillingAccountExclusion extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BillingAccountExclusion(String name, BillingAccountExclusionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BillingAccountExclusion(java.lang.String name, BillingAccountExclusionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BillingAccountExclusion(String name, Output<String> id, @Nullable BillingAccountExclusionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, state, makeResourceOptions(options, id));
+    private BillingAccountExclusion(java.lang.String name, Output<java.lang.String> id, @Nullable BillingAccountExclusionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BillingAccountExclusionArgs makeArgs(BillingAccountExclusionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -182,7 +182,7 @@ public class BillingAccountExclusion extends com.pulumi.resources.CustomResource
         return args == null ? BillingAccountExclusionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -198,7 +198,7 @@ public class BillingAccountExclusion extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BillingAccountExclusion get(String name, Output<String> id, @Nullable BillingAccountExclusionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BillingAccountExclusion get(java.lang.String name, Output<java.lang.String> id, @Nullable BillingAccountExclusionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BillingAccountExclusion(name, id, state, options);
     }
 }

@@ -241,7 +241,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name for this CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      * 
      */
     @Import(name="name")
@@ -249,7 +249,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name for this CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      * 
      */
     public Optional<Output<String>> name() {
@@ -771,7 +771,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name for this CertificateAuthority in the format
-         * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+         * projects/*&#47;locations/*&#47;certificateAuthorities/*.
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name for this CertificateAuthority in the format
-         * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+         * projects/*&#47;locations/*&#47;certificateAuthorities/*.
          * 
          * @return builder
          * 

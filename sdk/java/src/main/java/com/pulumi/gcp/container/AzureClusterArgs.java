@@ -235,14 +235,14 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
+     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      * 
      */
     @Import(name="resourceGroupId", required=true)
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
+     * @return The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      * 
      */
     public Output<String> resourceGroupId() {
@@ -576,7 +576,7 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
+         * @param resourceGroupId The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
+         * @param resourceGroupId The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
          * 
          * @return builder
          * 

@@ -194,7 +194,7 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ManagedFolder(String name) {
+    public ManagedFolder(java.lang.String name) {
         this(name, ManagedFolderArgs.Empty);
     }
     /**
@@ -202,7 +202,7 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ManagedFolder(String name, ManagedFolderArgs args) {
+    public ManagedFolder(java.lang.String name, ManagedFolderArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,12 +211,12 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ManagedFolder(String name, ManagedFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/managedFolder:ManagedFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ManagedFolder(java.lang.String name, ManagedFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/managedFolder:ManagedFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ManagedFolder(String name, Output<String> id, @Nullable ManagedFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/managedFolder:ManagedFolder", name, state, makeResourceOptions(options, id));
+    private ManagedFolder(java.lang.String name, Output<java.lang.String> id, @Nullable ManagedFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/managedFolder:ManagedFolder", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ManagedFolderArgs makeArgs(ManagedFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -226,7 +226,7 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
         return args == null ? ManagedFolderArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -242,7 +242,7 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ManagedFolder get(String name, Output<String> id, @Nullable ManagedFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ManagedFolder get(java.lang.String name, Output<java.lang.String> id, @Nullable ManagedFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ManagedFolder(name, id, state, options);
     }
 }

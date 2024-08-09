@@ -16,14 +16,14 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
     public static final ConnectionGithubConfigAuthorizerCredentialArgs Empty = new ConnectionGithubConfigAuthorizerCredentialArgs();
 
     /**
-     * A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     @Import(name="oauthTokenSecretVersion")
     private @Nullable Output<String> oauthTokenSecretVersion;
 
     /**
-     * @return A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Optional<Output<String>> oauthTokenSecretVersion() {
@@ -73,7 +73,7 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
         }
 
         /**
-         * @param oauthTokenSecretVersion A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param oauthTokenSecretVersion A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
         }
 
         /**
-         * @param oauthTokenSecretVersion A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+         * @param oauthTokenSecretVersion A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 

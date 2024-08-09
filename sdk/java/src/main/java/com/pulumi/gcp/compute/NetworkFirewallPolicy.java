@@ -220,7 +220,7 @@ public class NetworkFirewallPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkFirewallPolicy(String name) {
+    public NetworkFirewallPolicy(java.lang.String name) {
         this(name, NetworkFirewallPolicyArgs.Empty);
     }
     /**
@@ -228,7 +228,7 @@ public class NetworkFirewallPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkFirewallPolicy(String name, @Nullable NetworkFirewallPolicyArgs args) {
+    public NetworkFirewallPolicy(java.lang.String name, @Nullable NetworkFirewallPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -237,12 +237,12 @@ public class NetworkFirewallPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkFirewallPolicy(String name, @Nullable NetworkFirewallPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkFirewallPolicy(java.lang.String name, @Nullable NetworkFirewallPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkFirewallPolicy(String name, Output<String> id, @Nullable NetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy", name, state, makeResourceOptions(options, id));
+    private NetworkFirewallPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkFirewallPolicyArgs makeArgs(@Nullable NetworkFirewallPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -252,7 +252,7 @@ public class NetworkFirewallPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? NetworkFirewallPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -268,7 +268,7 @@ public class NetworkFirewallPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkFirewallPolicy get(String name, Output<String> id, @Nullable NetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkFirewallPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkFirewallPolicy(name, id, state, options);
     }
 }

@@ -215,7 +215,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ManagementServer(String name) {
+    public ManagementServer(java.lang.String name) {
         this(name, ManagementServerArgs.Empty);
     }
     /**
@@ -223,7 +223,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ManagementServer(String name, ManagementServerArgs args) {
+    public ManagementServer(java.lang.String name, ManagementServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -232,12 +232,12 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ManagementServer(String name, ManagementServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:backupdisasterrecovery/managementServer:ManagementServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ManagementServer(java.lang.String name, ManagementServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:backupdisasterrecovery/managementServer:ManagementServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ManagementServer(String name, Output<String> id, @Nullable ManagementServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:backupdisasterrecovery/managementServer:ManagementServer", name, state, makeResourceOptions(options, id));
+    private ManagementServer(java.lang.String name, Output<java.lang.String> id, @Nullable ManagementServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:backupdisasterrecovery/managementServer:ManagementServer", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ManagementServerArgs makeArgs(ManagementServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -247,7 +247,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
         return args == null ? ManagementServerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -263,7 +263,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ManagementServer get(String name, Output<String> id, @Nullable ManagementServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ManagementServer get(java.lang.String name, Output<java.lang.String> id, @Nullable ManagementServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ManagementServer(name, id, state, options);
     }
 }

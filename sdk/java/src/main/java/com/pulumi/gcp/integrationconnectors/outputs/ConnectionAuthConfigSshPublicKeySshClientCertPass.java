@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class ConnectionAuthConfigSshPublicKeySshClientCertPass {
     /**
      * @return The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      * &lt;a name=&#34;nested_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
      * 
@@ -22,7 +22,7 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPass {
     private ConnectionAuthConfigSshPublicKeySshClientCertPass() {}
     /**
      * @return The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      * &lt;a name=&#34;nested_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
      * 

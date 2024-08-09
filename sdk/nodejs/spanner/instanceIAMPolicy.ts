@@ -62,24 +62,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.spanner.InstanceIAMPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
- *     instance: "your-instance-name",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## gcp.spanner.InstanceIAMBinding
  *
  * ```typescript

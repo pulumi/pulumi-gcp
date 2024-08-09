@@ -179,7 +179,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DefaultServiceAccounts(String name) {
+    public DefaultServiceAccounts(java.lang.String name) {
         this(name, DefaultServiceAccountsArgs.Empty);
     }
     /**
@@ -187,7 +187,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DefaultServiceAccounts(String name, DefaultServiceAccountsArgs args) {
+    public DefaultServiceAccounts(java.lang.String name, DefaultServiceAccountsArgs args) {
         this(name, args, null);
     }
     /**
@@ -196,12 +196,12 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DefaultServiceAccounts(String name, DefaultServiceAccountsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DefaultServiceAccounts(java.lang.String name, DefaultServiceAccountsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DefaultServiceAccounts(String name, Output<String> id, @Nullable DefaultServiceAccountsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts", name, state, makeResourceOptions(options, id));
+    private DefaultServiceAccounts(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultServiceAccountsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DefaultServiceAccountsArgs makeArgs(DefaultServiceAccountsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -211,7 +211,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
         return args == null ? DefaultServiceAccountsArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -227,7 +227,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DefaultServiceAccounts get(String name, Output<String> id, @Nullable DefaultServiceAccountsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DefaultServiceAccounts get(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultServiceAccountsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DefaultServiceAccounts(name, id, state, options);
     }
 }

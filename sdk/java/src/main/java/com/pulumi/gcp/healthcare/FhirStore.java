@@ -609,7 +609,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FhirStore(String name) {
+    public FhirStore(java.lang.String name) {
         this(name, FhirStoreArgs.Empty);
     }
     /**
@@ -617,7 +617,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FhirStore(String name, FhirStoreArgs args) {
+    public FhirStore(java.lang.String name, FhirStoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -626,12 +626,12 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FhirStore(String name, FhirStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/fhirStore:FhirStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FhirStore(java.lang.String name, FhirStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/fhirStore:FhirStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FhirStore(String name, Output<String> id, @Nullable FhirStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/fhirStore:FhirStore", name, state, makeResourceOptions(options, id));
+    private FhirStore(java.lang.String name, Output<java.lang.String> id, @Nullable FhirStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/fhirStore:FhirStore", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FhirStoreArgs makeArgs(FhirStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -641,7 +641,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
         return args == null ? FhirStoreArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -661,7 +661,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FhirStore get(String name, Output<String> id, @Nullable FhirStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FhirStore get(java.lang.String name, Output<java.lang.String> id, @Nullable FhirStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FhirStore(name, id, state, options);
     }
 }

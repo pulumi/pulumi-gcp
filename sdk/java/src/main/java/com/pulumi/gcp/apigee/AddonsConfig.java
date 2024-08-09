@@ -251,7 +251,7 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AddonsConfig(String name) {
+    public AddonsConfig(java.lang.String name) {
         this(name, AddonsConfigArgs.Empty);
     }
     /**
@@ -259,7 +259,7 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AddonsConfig(String name, AddonsConfigArgs args) {
+    public AddonsConfig(java.lang.String name, AddonsConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -268,12 +268,12 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AddonsConfig(String name, AddonsConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/addonsConfig:AddonsConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AddonsConfig(java.lang.String name, AddonsConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/addonsConfig:AddonsConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AddonsConfig(String name, Output<String> id, @Nullable AddonsConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/addonsConfig:AddonsConfig", name, state, makeResourceOptions(options, id));
+    private AddonsConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AddonsConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/addonsConfig:AddonsConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AddonsConfigArgs makeArgs(AddonsConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -283,7 +283,7 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
         return args == null ? AddonsConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -299,7 +299,7 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AddonsConfig get(String name, Output<String> id, @Nullable AddonsConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AddonsConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AddonsConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AddonsConfig(name, id, state, options);
     }
 }

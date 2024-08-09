@@ -298,7 +298,7 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FirewallEndpoint(String name) {
+    public FirewallEndpoint(java.lang.String name) {
         this(name, FirewallEndpointArgs.Empty);
     }
     /**
@@ -306,7 +306,7 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallEndpoint(String name, FirewallEndpointArgs args) {
+    public FirewallEndpoint(java.lang.String name, FirewallEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -315,12 +315,12 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallEndpoint(String name, FirewallEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/firewallEndpoint:FirewallEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FirewallEndpoint(java.lang.String name, FirewallEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/firewallEndpoint:FirewallEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FirewallEndpoint(String name, Output<String> id, @Nullable FirewallEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/firewallEndpoint:FirewallEndpoint", name, state, makeResourceOptions(options, id));
+    private FirewallEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/firewallEndpoint:FirewallEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FirewallEndpointArgs makeArgs(FirewallEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -330,7 +330,7 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
         return args == null ? FirewallEndpointArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -350,7 +350,7 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FirewallEndpoint get(String name, Output<String> id, @Nullable FirewallEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FirewallEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FirewallEndpoint(name, id, state, options);
     }
 }
