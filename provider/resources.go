@@ -461,20 +461,7 @@ func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
 		shimv2.NewProvider(gcpProvider.Provider(),
-			shimv2.WithDiffStrategy(shimv2.PlanState),
-			shimv2.WithPlanResourceChange(func(s string) bool {
-				switch s {
-				case "google_datastream_connection_profile",
-					"google_firestore_backup_schedule",
-					"google_cloud_run_service",
-					"google_cloud_run_domain_mapping",
-					"google_privileged_access_manager_entitlement",
-					"google_firestore_field":
-					return true
-				default:
-					return false
-				}
-			}),
+			shimv2.WithPlanResourceChange(func(_ string) bool { return true }),
 		),
 		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
 
