@@ -309,6 +309,16 @@ func TestLabelsCombinationsGo(t *testing.T) {
 				Labels:        map[string]string{"x": ""},
 			},
 		},
+		{
+			"label kept if default is empty",
+			labelsState{
+				Labels: 	  map[string]string{"x": "s"},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"x": ""},
+			},
+
+		},
 	}
 
 	for _, tc := range testCases {
@@ -444,6 +454,11 @@ func expectedLabelValue(arg expectedLabelValueArg) string {
 		if defaults.value != "" {
 			return defaults.value
 		}
+
+		if prevLabels.present {
+			return prevLabels.value
+		}
+
 		return prevDefaults.value
 	}
 
