@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()
  *             .name("cd-pipeline")
  *             .location("us-central1")
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .project(pipeline.project())
  *             .location(pipeline.location())
  *             .deliveryPipeline(pipeline.name())
- *             .serviceAccount("my{@literal @}service-account.com")
+ *             .serviceAccount("my}{@literal @}{@code service-account.com")
  *             .selector(AutomationSelectorArgs.builder()
  *                 .targets(AutomationSelectorTargetArgs.builder()
  *                     .id("*")
@@ -91,8 +91,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -122,12 +122,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pipeline = new DeliveryPipeline("pipeline", DeliveryPipelineArgs.builder()
  *             .name("cd-pipeline")
  *             .location("us-central1")
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  *             .name("cd-automation")
  *             .location("us-central1")
  *             .deliveryPipeline(pipeline.name())
- *             .serviceAccount("my{@literal @}service-account.com")
+ *             .serviceAccount("my}{@literal @}{@code service-account.com")
  *             .annotations(Map.ofEntries(
  *                 Map.entry("my_first_annotation", "example-annotation-1"),
  *                 Map.entry("my_second_annotation", "example-annotation-2")
@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  *                     .promoteReleaseRule(AutomationRulePromoteReleaseRuleArgs.builder()
  *                         .id("promote-release")
  *                         .wait("200s")
- *                         .destinationTargetId("{@literal @}next")
+ *                         .destinationTargetId("}{@literal @}{@code next")
  *                         .destinationPhase("stable")
  *                         .build())
  *                     .build(),
@@ -178,8 +178,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -486,7 +486,7 @@ public class Automation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Automation(String name) {
+    public Automation(java.lang.String name) {
         this(name, AutomationArgs.Empty);
     }
     /**
@@ -494,7 +494,7 @@ public class Automation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Automation(String name, AutomationArgs args) {
+    public Automation(java.lang.String name, AutomationArgs args) {
         this(name, args, null);
     }
     /**
@@ -503,12 +503,12 @@ public class Automation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Automation(String name, AutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/automation:Automation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Automation(java.lang.String name, AutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/automation:Automation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Automation(String name, Output<String> id, @Nullable AutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/automation:Automation", name, state, makeResourceOptions(options, id));
+    private Automation(java.lang.String name, Output<java.lang.String> id, @Nullable AutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/automation:Automation", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AutomationArgs makeArgs(AutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -518,7 +518,7 @@ public class Automation extends com.pulumi.resources.CustomResource {
         return args == null ? AutomationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -538,7 +538,7 @@ public class Automation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Automation get(String name, Output<String> id, @Nullable AutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Automation get(java.lang.String name, Output<java.lang.String> id, @Nullable AutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Automation(name, id, state, options);
     }
 }

@@ -465,7 +465,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AlertPolicy(String name) {
+    public AlertPolicy(java.lang.String name) {
         this(name, AlertPolicyArgs.Empty);
     }
     /**
@@ -473,7 +473,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AlertPolicy(String name, AlertPolicyArgs args) {
+    public AlertPolicy(java.lang.String name, AlertPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -482,12 +482,12 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AlertPolicy(String name, AlertPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/alertPolicy:AlertPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AlertPolicy(java.lang.String name, AlertPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/alertPolicy:AlertPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AlertPolicy(String name, Output<String> id, @Nullable AlertPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/alertPolicy:AlertPolicy", name, state, makeResourceOptions(options, id));
+    private AlertPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AlertPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/alertPolicy:AlertPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AlertPolicyArgs makeArgs(AlertPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -497,7 +497,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? AlertPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -513,7 +513,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AlertPolicy get(String name, Output<String> id, @Nullable AlertPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AlertPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AlertPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AlertPolicy(name, id, state, options);
     }
 }

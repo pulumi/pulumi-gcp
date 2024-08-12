@@ -22,7 +22,7 @@ public final class AzureClusterNetworking {
      */
     private List<String> serviceAddressCidrBlocks;
     /**
-     * @return The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*{@literal /}resourceGroups/*{@literal /}providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+     * @return The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*&#47;resourceGroups/*&#47;providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
      * 
      * ***
      * 
@@ -45,7 +45,7 @@ public final class AzureClusterNetworking {
         return this.serviceAddressCidrBlocks;
     }
     /**
-     * @return The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*{@literal /}resourceGroups/*{@literal /}providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+     * @return The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*&#47;resourceGroups/*&#47;providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
      * 
      * ***
      * 

@@ -39,7 +39,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name for the service in the
-     * format `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*`.
+     * format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      * 
      */
     @Import(name="name")
@@ -47,7 +47,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name for the service in the
-     * format `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*`.
+     * format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -146,7 +146,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name for the service in the
-         * format `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*`.
+         * format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name for the service in the
-         * format `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*`.
+         * format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
          * 
          * @return builder
          * 

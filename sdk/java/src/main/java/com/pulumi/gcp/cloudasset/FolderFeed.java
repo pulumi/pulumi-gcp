@@ -305,7 +305,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FolderFeed(String name) {
+    public FolderFeed(java.lang.String name) {
         this(name, FolderFeedArgs.Empty);
     }
     /**
@@ -313,7 +313,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FolderFeed(String name, FolderFeedArgs args) {
+    public FolderFeed(java.lang.String name, FolderFeedArgs args) {
         this(name, args, null);
     }
     /**
@@ -322,12 +322,12 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FolderFeed(String name, FolderFeedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudasset/folderFeed:FolderFeed", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FolderFeed(java.lang.String name, FolderFeedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudasset/folderFeed:FolderFeed", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FolderFeed(String name, Output<String> id, @Nullable FolderFeedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudasset/folderFeed:FolderFeed", name, state, makeResourceOptions(options, id));
+    private FolderFeed(java.lang.String name, Output<java.lang.String> id, @Nullable FolderFeedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudasset/folderFeed:FolderFeed", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FolderFeedArgs makeArgs(FolderFeedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -337,7 +337,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
         return args == null ? FolderFeedArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -353,7 +353,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FolderFeed get(String name, Output<String> id, @Nullable FolderFeedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FolderFeed get(java.lang.String name, Output<java.lang.String> id, @Nullable FolderFeedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FolderFeed(name, id, state, options);
     }
 }

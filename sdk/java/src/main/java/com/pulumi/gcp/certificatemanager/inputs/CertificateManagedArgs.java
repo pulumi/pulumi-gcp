@@ -76,7 +76,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
      * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
      * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 
@@ -85,7 +85,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> issuanceConfig;
 
     /**
-     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
      * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
      * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 
@@ -271,7 +271,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param issuanceConfig The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+         * @param issuanceConfig The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
          * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
          * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
          * 
@@ -284,7 +284,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param issuanceConfig The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+         * @param issuanceConfig The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
          * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
          * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
          * 

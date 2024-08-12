@@ -46,7 +46,7 @@ import (
 //					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: pulumi.String(fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number)),
+//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 //							},
 //						},
 //					},
@@ -114,7 +114,7 @@ import (
 //					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: pulumi.String(fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number)),
+//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 //							},
 //						},
 //					},
@@ -135,7 +135,7 @@ import (
 //				CryptoKeyId: key.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-managedkafka.iam.gserviceaccount.com", project.Number)),
+//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-managedkafka.iam.gserviceaccount.com", project.Number),
 //				},
 //			})
 //			if err != nil {

@@ -22,7 +22,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
-     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * The resource name is in the format &#34;projects/*&#47;locations/*&#47;ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
      * 
      */
     @Import(name="cryptoKeyBackend")
@@ -30,7 +30,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
-     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * The resource name is in the format &#34;projects/*&#47;locations/*&#47;ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
      * 
      */
     public Optional<Output<String>> cryptoKeyBackend() {
@@ -271,7 +271,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cryptoKeyBackend The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
-         * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+         * The resource name is in the format &#34;projects/*&#47;locations/*&#47;ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cryptoKeyBackend The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
-         * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+         * The resource name is in the format &#34;projects/*&#47;locations/*&#47;ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
          * 
          * @return builder
          * 

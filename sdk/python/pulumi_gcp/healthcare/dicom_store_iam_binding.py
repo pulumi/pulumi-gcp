@@ -275,21 +275,6 @@ class DicomStoreIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## healthcare.DicomStoreIamPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicom_store",
-            dicom_store_id="your-dicom-store-id",
-            policy_data=admin.policy_data)
-        ```
-
         ## healthcare.DicomStoreIamBinding
 
         ```python
@@ -412,21 +397,6 @@ class DicomStoreIamBinding(pulumi.CustomResource):
             dicom_store_id="your-dicom-store-id",
             role="roles/editor",
             member="user:jane@example.com")
-        ```
-
-        ## healthcare.DicomStoreIamPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicom_store",
-            dicom_store_id="your-dicom-store-id",
-            policy_data=admin.policy_data)
         ```
 
         ## healthcare.DicomStoreIamBinding

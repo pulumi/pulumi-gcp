@@ -63,6 +63,26 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * ---
+ *
+ * # IAM policy for Data catalog PolicyTag
+ * Three different resources help you manage your IAM policy for Data catalog PolicyTag. Each of these resources serves a different use case:
+ *
+ * * `gcp.datacatalog.PolicyTagIamPolicy`: Authoritative. Sets the IAM policy for the policytag and replaces any existing policy already attached.
+ * * `gcp.datacatalog.PolicyTagIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the policytag are preserved.
+ * * `gcp.datacatalog.PolicyTagIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the policytag are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.datacatalog.PolicyTagIamPolicy`: Retrieves the IAM policy for the policytag
+ *
+ * > **Note:** `gcp.datacatalog.PolicyTagIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.PolicyTagIamBinding` and `gcp.datacatalog.PolicyTagIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.datacatalog.PolicyTagIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.PolicyTagIamMember` resources **only if** they do not grant privilege to the same role.
+ *
  * ## gcp.datacatalog.PolicyTagIamPolicy
  *
  * ```typescript

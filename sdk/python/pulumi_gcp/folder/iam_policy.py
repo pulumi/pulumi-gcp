@@ -282,49 +282,6 @@ class IAMPolicy(pulumi.CustomResource):
             ])
         ```
 
-        ## folder.IAMPolicy
-
-        !> **Be careful!** You can accidentally lock yourself out of your folder
-           using this resource. Deleting a `folder.IAMPolicy` removes access
-           from anyone without permissions on its parent folder/organization. Proceed with caution.
-           It's not recommended to use `folder.IAMPolicy` with your provider folder
-           to avoid locking yourself out, and it should generally only be used with folders
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
-           applying the change.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        folder = gcp.folder.IAMPolicy("folder",
-            folder="folders/1234567",
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/compute.admin",
-            "members": ["user:jane@example.com"],
-            "condition": {
-                "title": "expires_after_2019_12_31",
-                "description": "Expiring at midnight of 2019-12-31",
-                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            },
-        }])
-        folder = gcp.folder.IAMPolicy("folder",
-            folder="folders/1234567",
-            policy_data=admin.policy_data)
-        ```
-
         ## folder.IAMBinding
 
         ```python
@@ -581,49 +538,6 @@ class IAMPolicy(pulumi.CustomResource):
                     "exempted_members": ["user:joebloggs@example.com"],
                 },
             ])
-        ```
-
-        ## folder.IAMPolicy
-
-        !> **Be careful!** You can accidentally lock yourself out of your folder
-           using this resource. Deleting a `folder.IAMPolicy` removes access
-           from anyone without permissions on its parent folder/organization. Proceed with caution.
-           It's not recommended to use `folder.IAMPolicy` with your provider folder
-           to avoid locking yourself out, and it should generally only be used with folders
-           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
-           applying the change.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        folder = gcp.folder.IAMPolicy("folder",
-            folder="folders/1234567",
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/compute.admin",
-            "members": ["user:jane@example.com"],
-            "condition": {
-                "title": "expires_after_2019_12_31",
-                "description": "Expiring at midnight of 2019-12-31",
-                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            },
-        }])
-        folder = gcp.folder.IAMPolicy("folder",
-            folder="folders/1234567",
-            policy_data=admin.policy_data)
         ```
 
         ## folder.IAMBinding

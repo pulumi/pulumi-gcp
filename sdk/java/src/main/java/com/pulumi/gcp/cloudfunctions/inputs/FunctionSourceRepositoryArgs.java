@@ -34,9 +34,9 @@ public final class FunctionSourceRepositoryArgs extends com.pulumi.resources.Res
     /**
      * The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
      * 
-     * * To refer to a specific commit: `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}revisions/*{@literal /}paths/*`
-     * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}moveable-aliases/*{@literal /}paths/*`. To refer to HEAD, use the `master` moveable alias.
-     * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}fixed-aliases/*{@literal /}paths/*`
+     * * To refer to a specific commit: `https://source.developers.google.com/projects/*&#47;repos/*&#47;revisions/*&#47;paths/*`
+     * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*&#47;repos/*&#47;moveable-aliases/*&#47;paths/*`. To refer to HEAD, use the `master` moveable alias.
+     * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*&#47;repos/*&#47;fixed-aliases/*&#47;paths/*`
      * 
      */
     @Import(name="url", required=true)
@@ -45,9 +45,9 @@ public final class FunctionSourceRepositoryArgs extends com.pulumi.resources.Res
     /**
      * @return The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
      * 
-     * * To refer to a specific commit: `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}revisions/*{@literal /}paths/*`
-     * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}moveable-aliases/*{@literal /}paths/*`. To refer to HEAD, use the `master` moveable alias.
-     * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}fixed-aliases/*{@literal /}paths/*`
+     * * To refer to a specific commit: `https://source.developers.google.com/projects/*&#47;repos/*&#47;revisions/*&#47;paths/*`
+     * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*&#47;repos/*&#47;moveable-aliases/*&#47;paths/*`. To refer to HEAD, use the `master` moveable alias.
+     * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*&#47;repos/*&#47;fixed-aliases/*&#47;paths/*`
      * 
      */
     public Output<String> url() {
@@ -103,9 +103,9 @@ public final class FunctionSourceRepositoryArgs extends com.pulumi.resources.Res
         /**
          * @param url The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
          * 
-         * * To refer to a specific commit: `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}revisions/*{@literal /}paths/*`
-         * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}moveable-aliases/*{@literal /}paths/*`. To refer to HEAD, use the `master` moveable alias.
-         * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}fixed-aliases/*{@literal /}paths/*`
+         * * To refer to a specific commit: `https://source.developers.google.com/projects/*&#47;repos/*&#47;revisions/*&#47;paths/*`
+         * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*&#47;repos/*&#47;moveable-aliases/*&#47;paths/*`. To refer to HEAD, use the `master` moveable alias.
+         * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*&#47;repos/*&#47;fixed-aliases/*&#47;paths/*`
          * 
          * @return builder
          * 
@@ -118,9 +118,9 @@ public final class FunctionSourceRepositoryArgs extends com.pulumi.resources.Res
         /**
          * @param url The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
          * 
-         * * To refer to a specific commit: `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}revisions/*{@literal /}paths/*`
-         * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}moveable-aliases/*{@literal /}paths/*`. To refer to HEAD, use the `master` moveable alias.
-         * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*{@literal /}repos/*{@literal /}fixed-aliases/*{@literal /}paths/*`
+         * * To refer to a specific commit: `https://source.developers.google.com/projects/*&#47;repos/*&#47;revisions/*&#47;paths/*`
+         * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*&#47;repos/*&#47;moveable-aliases/*&#47;paths/*`. To refer to HEAD, use the `master` moveable alias.
+         * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*&#47;repos/*&#47;fixed-aliases/*&#47;paths/*`
          * 
          * @return builder
          * 

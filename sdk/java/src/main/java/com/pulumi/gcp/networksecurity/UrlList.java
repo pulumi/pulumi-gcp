@@ -249,7 +249,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UrlList(String name) {
+    public UrlList(java.lang.String name) {
         this(name, UrlListArgs.Empty);
     }
     /**
@@ -257,7 +257,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UrlList(String name, UrlListArgs args) {
+    public UrlList(java.lang.String name, UrlListArgs args) {
         this(name, args, null);
     }
     /**
@@ -266,12 +266,12 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UrlList(String name, UrlListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/urlList:UrlList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public UrlList(java.lang.String name, UrlListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/urlList:UrlList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UrlList(String name, Output<String> id, @Nullable UrlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/urlList:UrlList", name, state, makeResourceOptions(options, id));
+    private UrlList(java.lang.String name, Output<java.lang.String> id, @Nullable UrlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/urlList:UrlList", name, state, makeResourceOptions(options, id), false);
     }
 
     private static UrlListArgs makeArgs(UrlListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -281,7 +281,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
         return args == null ? UrlListArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -297,7 +297,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UrlList get(String name, Output<String> id, @Nullable UrlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UrlList get(java.lang.String name, Output<java.lang.String> id, @Nullable UrlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UrlList(name, id, state, options);
     }
 }

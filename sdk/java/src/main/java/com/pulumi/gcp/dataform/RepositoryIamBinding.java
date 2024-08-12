@@ -65,7 +65,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RepositoryIamBinding(String name) {
+    public RepositoryIamBinding(java.lang.String name) {
         this(name, RepositoryIamBindingArgs.Empty);
     }
     /**
@@ -73,7 +73,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RepositoryIamBinding(String name, RepositoryIamBindingArgs args) {
+    public RepositoryIamBinding(java.lang.String name, RepositoryIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -82,12 +82,12 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RepositoryIamBinding(String name, RepositoryIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryIamBinding:RepositoryIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RepositoryIamBinding(java.lang.String name, RepositoryIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryIamBinding:RepositoryIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RepositoryIamBinding(String name, Output<String> id, @Nullable RepositoryIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryIamBinding:RepositoryIamBinding", name, state, makeResourceOptions(options, id));
+    private RepositoryIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryIamBinding:RepositoryIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RepositoryIamBindingArgs makeArgs(RepositoryIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -97,7 +97,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? RepositoryIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -113,7 +113,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RepositoryIamBinding get(String name, Output<String> id, @Nullable RepositoryIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RepositoryIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RepositoryIamBinding(name, id, state, options);
     }
 }

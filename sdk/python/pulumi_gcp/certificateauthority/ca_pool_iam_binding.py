@@ -431,6 +431,27 @@ class CaPoolIamBinding(pulumi.CustomResource):
             })
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Certificate Authority Service CaPool
+        Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
+
+        * `certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
+        * `certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
+        * `certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `certificateauthority.CaPoolIamPolicy`: Retrieves the IAM policy for the capool
+
+        > **Note:** `certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `certificateauthority.CaPoolIamBinding` and `certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## certificateauthority.CaPoolIamPolicy
 
         ```python
@@ -698,6 +719,27 @@ class CaPoolIamBinding(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Certificate Authority Service CaPool
+        Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
+
+        * `certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
+        * `certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
+        * `certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `certificateauthority.CaPoolIamPolicy`: Retrieves the IAM policy for the capool
+
+        > **Note:** `certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `certificateauthority.CaPoolIamBinding` and `certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
         ## certificateauthority.CaPoolIamPolicy
 

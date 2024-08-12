@@ -50,7 +50,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
      * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     @Import(name="gateways")
@@ -59,7 +59,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
      * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     public Optional<Output<List<String>>> gateways() {
@@ -68,7 +68,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
      * Mesh should be of a type SIDECAR
      * 
      */
@@ -77,7 +77,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
      * Mesh should be of a type SIDECAR
      * 
      */
@@ -231,7 +231,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param gateways Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
          * served by the gateway. Each gateway reference should match the pattern:
-         * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+         * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param gateways Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
          * served by the gateway. Each gateway reference should match the pattern:
-         * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+         * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param gateways Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
          * served by the gateway. Each gateway reference should match the pattern:
-         * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+         * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param meshes Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-         * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+         * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
          * Mesh should be of a type SIDECAR
          * 
          * @return builder
@@ -280,7 +280,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param meshes Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-         * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+         * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
          * Mesh should be of a type SIDECAR
          * 
          * @return builder
@@ -292,7 +292,7 @@ public final class TlsRouteState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param meshes Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-         * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+         * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
          * Mesh should be of a type SIDECAR
          * 
          * @return builder

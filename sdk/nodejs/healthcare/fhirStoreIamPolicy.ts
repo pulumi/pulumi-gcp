@@ -59,24 +59,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.healthcare.FhirStoreIamPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const fhirStore = new gcp.healthcare.FhirStoreIamPolicy("fhir_store", {
- *     fhirStoreId: "your-fhir-store-id",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## gcp.healthcare.FhirStoreIamBinding
  *
  * ```typescript

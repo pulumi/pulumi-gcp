@@ -321,7 +321,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Note(String name) {
+    public Note(java.lang.String name) {
         this(name, NoteArgs.Empty);
     }
     /**
@@ -329,7 +329,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Note(String name, NoteArgs args) {
+    public Note(java.lang.String name, NoteArgs args) {
         this(name, args, null);
     }
     /**
@@ -338,12 +338,12 @@ public class Note extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Note(String name, NoteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:containeranalysis/note:Note", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Note(java.lang.String name, NoteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:containeranalysis/note:Note", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Note(String name, Output<String> id, @Nullable NoteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:containeranalysis/note:Note", name, state, makeResourceOptions(options, id));
+    private Note(java.lang.String name, Output<java.lang.String> id, @Nullable NoteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:containeranalysis/note:Note", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NoteArgs makeArgs(NoteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -353,7 +353,7 @@ public class Note extends com.pulumi.resources.CustomResource {
         return args == null ? NoteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -369,7 +369,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Note get(String name, Output<String> id, @Nullable NoteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Note get(java.lang.String name, Output<java.lang.String> id, @Nullable NoteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Note(name, id, state, options);
     }
 }

@@ -223,7 +223,7 @@ import (
 //			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("looker-kms-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-looker.iam.gserviceaccount.com", project.Number)),
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-looker.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

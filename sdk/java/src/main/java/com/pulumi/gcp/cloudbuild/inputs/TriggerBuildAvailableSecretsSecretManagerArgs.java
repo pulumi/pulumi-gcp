@@ -34,14 +34,14 @@ public final class TriggerBuildAvailableSecretsSecretManagerArgs extends com.pul
     }
 
     /**
-     * Resource name of the SecretVersion. In format: projects/*{@literal /}secrets/*{@literal /}versions/*
+     * Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
      * 
      */
     @Import(name="versionName", required=true)
     private Output<String> versionName;
 
     /**
-     * @return Resource name of the SecretVersion. In format: projects/*{@literal /}secrets/*{@literal /}versions/*
+     * @return Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
      * 
      */
     public Output<String> versionName() {
@@ -99,7 +99,7 @@ public final class TriggerBuildAvailableSecretsSecretManagerArgs extends com.pul
         }
 
         /**
-         * @param versionName Resource name of the SecretVersion. In format: projects/*{@literal /}secrets/*{@literal /}versions/*
+         * @param versionName Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class TriggerBuildAvailableSecretsSecretManagerArgs extends com.pul
         }
 
         /**
-         * @param versionName Resource name of the SecretVersion. In format: projects/*{@literal /}secrets/*{@literal /}versions/*
+         * @param versionName Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
          * 
          * @return builder
          * 

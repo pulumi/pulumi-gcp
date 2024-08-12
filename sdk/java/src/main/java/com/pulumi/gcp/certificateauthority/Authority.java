@@ -687,7 +687,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource name for this CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -695,7 +695,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name for this CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      * 
      */
     public Output<String> name() {
@@ -860,7 +860,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Authority(String name) {
+    public Authority(java.lang.String name) {
         this(name, AuthorityArgs.Empty);
     }
     /**
@@ -868,7 +868,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Authority(String name, AuthorityArgs args) {
+    public Authority(java.lang.String name, AuthorityArgs args) {
         this(name, args, null);
     }
     /**
@@ -877,12 +877,12 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Authority(String name, AuthorityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/authority:Authority", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Authority(java.lang.String name, AuthorityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificateauthority/authority:Authority", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Authority(String name, Output<String> id, @Nullable AuthorityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/authority:Authority", name, state, makeResourceOptions(options, id));
+    private Authority(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificateauthority/authority:Authority", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AuthorityArgs makeArgs(AuthorityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -892,7 +892,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return args == null ? AuthorityArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -912,7 +912,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Authority get(String name, Output<String> id, @Nullable AuthorityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Authority get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Authority(name, id, state, options);
     }
 }

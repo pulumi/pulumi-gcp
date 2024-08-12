@@ -19,7 +19,7 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs exten
 
     /**
      * (Output)
-     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}compilationResults/*.
+     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*.
      * 
      */
     @Import(name="compilationResult")
@@ -27,7 +27,7 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs exten
 
     /**
      * @return (Output)
-     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}compilationResults/*.
+     * The name of the created compilation result, if one was successfully created. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*.
      * 
      */
     public Optional<Output<String>> compilationResult() {
@@ -98,7 +98,7 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs exten
 
         /**
          * @param compilationResult (Output)
-         * The name of the created compilation result, if one was successfully created. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}compilationResults/*.
+         * The name of the created compilation result, if one was successfully created. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs exten
 
         /**
          * @param compilationResult (Output)
-         * The name of the created compilation result, if one was successfully created. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}compilationResults/*.
+         * The name of the created compilation result, if one was successfully created. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*.
          * 
          * @return builder
          * 

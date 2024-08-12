@@ -72,7 +72,7 @@ public class IngressPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IngressPolicy(String name) {
+    public IngressPolicy(java.lang.String name) {
         this(name, IngressPolicyArgs.Empty);
     }
     /**
@@ -80,7 +80,7 @@ public class IngressPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IngressPolicy(String name, IngressPolicyArgs args) {
+    public IngressPolicy(java.lang.String name, IngressPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -89,12 +89,12 @@ public class IngressPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IngressPolicy(String name, IngressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/ingressPolicy:IngressPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IngressPolicy(java.lang.String name, IngressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/ingressPolicy:IngressPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IngressPolicy(String name, Output<String> id, @Nullable IngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/ingressPolicy:IngressPolicy", name, state, makeResourceOptions(options, id));
+    private IngressPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable IngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/ingressPolicy:IngressPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IngressPolicyArgs makeArgs(IngressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -104,7 +104,7 @@ public class IngressPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? IngressPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -120,7 +120,7 @@ public class IngressPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IngressPolicy get(String name, Output<String> id, @Nullable IngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IngressPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable IngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IngressPolicy(name, id, state, options);
     }
 }

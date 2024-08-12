@@ -216,6 +216,25 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Source Repositories Repository
+        Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
+
+        * `sourcerepo.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+        * `sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+        * `sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `sourcerepo.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
+
+        > **Note:** `sourcerepo.RepositoryIamPolicy` **cannot** be used in conjunction with `sourcerepo.RepositoryIamBinding` and `sourcerepo.RepositoryIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `sourcerepo.RepositoryIamBinding` resources **can be** used in conjunction with `sourcerepo.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## sourcerepo.RepositoryIamPolicy
 
         ```python
@@ -362,6 +381,25 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Source Repositories Repository
+        Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
+
+        * `sourcerepo.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+        * `sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+        * `sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `sourcerepo.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
+
+        > **Note:** `sourcerepo.RepositoryIamPolicy` **cannot** be used in conjunction with `sourcerepo.RepositoryIamBinding` and `sourcerepo.RepositoryIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `sourcerepo.RepositoryIamBinding` resources **can be** used in conjunction with `sourcerepo.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## sourcerepo.RepositoryIamPolicy
 

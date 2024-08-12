@@ -65,7 +65,7 @@ import (
 //			_, err = gkehub.NewMembershipRbacRoleBinding(ctx, "membership_rbac_role_binding", &gkehub.MembershipRbacRoleBindingArgs{
 //				MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_9106"),
 //				MembershipId:                membership.MembershipId,
-//				User:                        pulumi.String(fmt.Sprintf("service-%v@gcp-sa-anthossupport.iam.gserviceaccount.com", project.Number)),
+//				User:                        pulumi.Sprintf("service-%v@gcp-sa-anthossupport.iam.gserviceaccount.com", project.Number),
 //				Role: &gkehub.MembershipRbacRoleBindingRoleArgs{
 //					PredefinedRole: pulumi.String("ANTHOS_SUPPORT"),
 //				},

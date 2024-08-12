@@ -61,24 +61,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.pubsub.SubscriptionIAMPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const editor = new gcp.pubsub.SubscriptionIAMPolicy("editor", {
- *     subscription: "your-subscription-name",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## gcp.pubsub.SubscriptionIAMBinding
  *
  * ```typescript

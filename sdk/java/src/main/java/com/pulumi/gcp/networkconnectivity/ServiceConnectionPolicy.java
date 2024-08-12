@@ -351,7 +351,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceConnectionPolicy(String name) {
+    public ServiceConnectionPolicy(java.lang.String name) {
         this(name, ServiceConnectionPolicyArgs.Empty);
     }
     /**
@@ -359,7 +359,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceConnectionPolicy(String name, ServiceConnectionPolicyArgs args) {
+    public ServiceConnectionPolicy(java.lang.String name, ServiceConnectionPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -368,12 +368,12 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceConnectionPolicy(String name, ServiceConnectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServiceConnectionPolicy(java.lang.String name, ServiceConnectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceConnectionPolicy(String name, Output<String> id, @Nullable ServiceConnectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, state, makeResourceOptions(options, id));
+    private ServiceConnectionPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceConnectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServiceConnectionPolicyArgs makeArgs(ServiceConnectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -383,7 +383,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
         return args == null ? ServiceConnectionPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -403,7 +403,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceConnectionPolicy get(String name, Output<String> id, @Nullable ServiceConnectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceConnectionPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceConnectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceConnectionPolicy(name, id, state, options);
     }
 }

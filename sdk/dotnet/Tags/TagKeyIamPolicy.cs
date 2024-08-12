@@ -101,6 +101,26 @@ namespace Pulumi.Gcp.Tags
     /// });
     /// ```
     /// 
+    /// ## &gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// ---
+    /// 
+    /// # IAM policy for Tags TagKey
+    /// Three different resources help you manage your IAM policy for Tags TagKey. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.tags.TagKeyIamPolicy`: Authoritative. Sets the IAM policy for the tagkey and replaces any existing policy already attached.
+    /// * `gcp.tags.TagKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagkey are preserved.
+    /// * `gcp.tags.TagKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagkey are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.tags.TagKeyIamPolicy`: Retrieves the IAM policy for the tagkey
+    /// 
+    /// &gt; **Note:** `gcp.tags.TagKeyIamPolicy` **cannot** be used in conjunction with `gcp.tags.TagKeyIamBinding` and `gcp.tags.TagKeyIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.tags.TagKeyIamBinding` resources **can be** used in conjunction with `gcp.tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
     /// ## gcp.tags.TagKeyIamPolicy
     /// 
     /// ```csharp

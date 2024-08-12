@@ -59,18 +59,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var runtime = new Runtime("runtime", RuntimeArgs.builder()
  *             .name("notebooks-runtime")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
  *                 .accessType("SINGLE_USER")
- *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
+ *                 .runtimeOwner("admin}{@literal @}{@code hashicorptest.com")
  *                 .build())
  *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
  *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -116,18 +116,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var runtimeGpu = new Runtime("runtimeGpu", RuntimeArgs.builder()
  *             .name("notebooks-runtime-gpu")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
  *                 .accessType("SINGLE_USER")
- *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
+ *                 .runtimeOwner("admin}{@literal @}{@code hashicorptest.com")
  *                 .build())
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
  *                 .installGpuDriver(true)
@@ -149,8 +149,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -178,18 +178,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()
  *             .name("notebooks-runtime-container")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
  *                 .accessType("SINGLE_USER")
- *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
+ *                 .runtimeOwner("admin}{@literal @}{@code hashicorptest.com")
  *                 .build())
  *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
  *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
@@ -213,8 +213,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -243,18 +243,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()
  *             .name("notebooks-runtime-kernel")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
  *                 .accessType("SINGLE_USER")
- *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
+ *                 .runtimeOwner("admin}{@literal @}{@code hashicorptest.com")
  *                 .build())
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
  *                 .kernels(RuntimeSoftwareConfigKernelArgs.builder()
@@ -276,8 +276,8 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("k", "val"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -306,18 +306,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var runtimeContainer = new Runtime("runtimeContainer", RuntimeArgs.builder()
  *             .name("notebooks-runtime-script")
  *             .location("us-central1")
  *             .accessConfig(RuntimeAccessConfigArgs.builder()
  *                 .accessType("SINGLE_USER")
- *                 .runtimeOwner("admin{@literal @}hashicorptest.com")
+ *                 .runtimeOwner("admin}{@literal @}{@code hashicorptest.com")
  *                 .build())
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
  *                 .postStartupScriptBehavior("RUN_EVERY_START")
@@ -336,8 +336,8 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("k", "val"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -580,7 +580,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Runtime(String name) {
+    public Runtime(java.lang.String name) {
         this(name, RuntimeArgs.Empty);
     }
     /**
@@ -588,7 +588,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Runtime(String name, RuntimeArgs args) {
+    public Runtime(java.lang.String name, RuntimeArgs args) {
         this(name, args, null);
     }
     /**
@@ -597,12 +597,12 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Runtime(String name, RuntimeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:notebooks/runtime:Runtime", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Runtime(java.lang.String name, RuntimeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:notebooks/runtime:Runtime", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Runtime(String name, Output<String> id, @Nullable RuntimeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:notebooks/runtime:Runtime", name, state, makeResourceOptions(options, id));
+    private Runtime(java.lang.String name, Output<java.lang.String> id, @Nullable RuntimeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:notebooks/runtime:Runtime", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RuntimeArgs makeArgs(RuntimeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -612,7 +612,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
         return args == null ? RuntimeArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -632,7 +632,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Runtime get(String name, Output<String> id, @Nullable RuntimeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Runtime get(java.lang.String name, Output<java.lang.String> id, @Nullable RuntimeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Runtime(name, id, state, options);
     }
 }

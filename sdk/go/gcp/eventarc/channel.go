@@ -56,7 +56,7 @@ import (
 //			key1Member, err := kms.NewCryptoKeyIAMMember(ctx, "key1_member", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.Any(key1.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number)),
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -66,7 +66,7 @@ import (
 //				Name:               pulumi.String("channel"),
 //				Project:            pulumi.String(testProject.ProjectId),
 //				CryptoKeyName:      pulumi.Any(key1.Id),
-//				ThirdPartyProvider: pulumi.String(fmt.Sprintf("projects/%v/locations/us-west1/providers/datadog", testProject.ProjectId)),
+//				ThirdPartyProvider: pulumi.Sprintf("projects/%v/locations/us-west1/providers/datadog", testProject.ProjectId),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				key1Member,
 //			}))
