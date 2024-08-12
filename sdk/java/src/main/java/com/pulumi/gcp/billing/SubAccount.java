@@ -164,7 +164,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SubAccount(String name) {
+    public SubAccount(java.lang.String name) {
         this(name, SubAccountArgs.Empty);
     }
     /**
@@ -172,7 +172,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SubAccount(String name, SubAccountArgs args) {
+    public SubAccount(java.lang.String name, SubAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -181,12 +181,12 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SubAccount(String name, SubAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:billing/subAccount:SubAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SubAccount(java.lang.String name, SubAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:billing/subAccount:SubAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SubAccount(String name, Output<String> id, @Nullable SubAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:billing/subAccount:SubAccount", name, state, makeResourceOptions(options, id));
+    private SubAccount(java.lang.String name, Output<java.lang.String> id, @Nullable SubAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:billing/subAccount:SubAccount", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SubAccountArgs makeArgs(SubAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -196,7 +196,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
         return args == null ? SubAccountArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -212,7 +212,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SubAccount get(String name, Output<String> id, @Nullable SubAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SubAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable SubAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SubAccount(name, id, state, options);
     }
 }

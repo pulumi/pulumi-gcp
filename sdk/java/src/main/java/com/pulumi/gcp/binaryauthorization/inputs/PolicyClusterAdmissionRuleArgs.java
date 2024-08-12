@@ -69,7 +69,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
     /**
      * The resource names of the attestors that must attest to a
      * container image. If the attestor is in a different project from the
-     * policy, it should be specified in the format `projects/*{@literal /}attestors/*`.
+     * policy, it should be specified in the format `projects/*&#47;attestors/*`.
      * Each attestor must exist before a policy can reference it. To add an
      * attestor to a policy the principal issuing the policy change
      * request must be able to read the attestor resource.
@@ -83,7 +83,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
     /**
      * @return The resource names of the attestors that must attest to a
      * container image. If the attestor is in a different project from the
-     * policy, it should be specified in the format `projects/*{@literal /}attestors/*`.
+     * policy, it should be specified in the format `projects/*&#47;attestors/*`.
      * Each attestor must exist before a policy can reference it. To add an
      * attestor to a policy the principal issuing the policy change
      * request must be able to read the attestor resource.
@@ -192,7 +192,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
         /**
          * @param requireAttestationsBies The resource names of the attestors that must attest to a
          * container image. If the attestor is in a different project from the
-         * policy, it should be specified in the format `projects/*{@literal /}attestors/*`.
+         * policy, it should be specified in the format `projects/*&#47;attestors/*`.
          * Each attestor must exist before a policy can reference it. To add an
          * attestor to a policy the principal issuing the policy change
          * request must be able to read the attestor resource.
@@ -210,7 +210,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
         /**
          * @param requireAttestationsBies The resource names of the attestors that must attest to a
          * container image. If the attestor is in a different project from the
-         * policy, it should be specified in the format `projects/*{@literal /}attestors/*`.
+         * policy, it should be specified in the format `projects/*&#47;attestors/*`.
          * Each attestor must exist before a policy can reference it. To add an
          * attestor to a policy the principal issuing the policy change
          * request must be able to read the attestor resource.
@@ -227,7 +227,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
         /**
          * @param requireAttestationsBies The resource names of the attestors that must attest to a
          * container image. If the attestor is in a different project from the
-         * policy, it should be specified in the format `projects/*{@literal /}attestors/*`.
+         * policy, it should be specified in the format `projects/*&#47;attestors/*`.
          * Each attestor must exist before a policy can reference it. To add an
          * attestor to a policy the principal issuing the policy change
          * request must be able to read the attestor resource.

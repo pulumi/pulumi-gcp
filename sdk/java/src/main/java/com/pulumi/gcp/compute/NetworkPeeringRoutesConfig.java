@@ -290,7 +290,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkPeeringRoutesConfig(String name) {
+    public NetworkPeeringRoutesConfig(java.lang.String name) {
         this(name, NetworkPeeringRoutesConfigArgs.Empty);
     }
     /**
@@ -298,7 +298,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkPeeringRoutesConfig(String name, NetworkPeeringRoutesConfigArgs args) {
+    public NetworkPeeringRoutesConfig(java.lang.String name, NetworkPeeringRoutesConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -307,12 +307,12 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkPeeringRoutesConfig(String name, NetworkPeeringRoutesConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkPeeringRoutesConfig(java.lang.String name, NetworkPeeringRoutesConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkPeeringRoutesConfig(String name, Output<String> id, @Nullable NetworkPeeringRoutesConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, state, makeResourceOptions(options, id));
+    private NetworkPeeringRoutesConfig(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPeeringRoutesConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkPeeringRoutesConfigArgs makeArgs(NetworkPeeringRoutesConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -322,7 +322,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
         return args == null ? NetworkPeeringRoutesConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -338,7 +338,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkPeeringRoutesConfig get(String name, Output<String> id, @Nullable NetworkPeeringRoutesConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkPeeringRoutesConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPeeringRoutesConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkPeeringRoutesConfig(name, id, state, options);
     }
 }

@@ -272,7 +272,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VolumeSnapshot(String name) {
+    public VolumeSnapshot(java.lang.String name) {
         this(name, VolumeSnapshotArgs.Empty);
     }
     /**
@@ -280,7 +280,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VolumeSnapshot(String name, VolumeSnapshotArgs args) {
+    public VolumeSnapshot(java.lang.String name, VolumeSnapshotArgs args) {
         this(name, args, null);
     }
     /**
@@ -289,12 +289,12 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VolumeSnapshot(String name, VolumeSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/volumeSnapshot:VolumeSnapshot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public VolumeSnapshot(java.lang.String name, VolumeSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/volumeSnapshot:VolumeSnapshot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VolumeSnapshot(String name, Output<String> id, @Nullable VolumeSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/volumeSnapshot:VolumeSnapshot", name, state, makeResourceOptions(options, id));
+    private VolumeSnapshot(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/volumeSnapshot:VolumeSnapshot", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VolumeSnapshotArgs makeArgs(VolumeSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -304,7 +304,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
         return args == null ? VolumeSnapshotArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -324,7 +324,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VolumeSnapshot get(String name, Output<String> id, @Nullable VolumeSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VolumeSnapshot get(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VolumeSnapshot(name, id, state, options);
     }
 }

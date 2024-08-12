@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var private_key_secret = new Secret("private-key-secret", SecretArgs.builder()
  *             .secretId("ghe-pk-secret")
  *             .replication(SecretReplicationArgs.builder()
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/secretmanager.secretAccessor")
- *                 .members("serviceAccount:service-123456789{@literal @}gcp-sa-cloudbuild.iam.gserviceaccount.com")
+ *                 .members("serviceAccount:service-123456789}{@literal @}{@code gcp-sa-cloudbuild.iam.gserviceaccount.com")
  *                 .build())
  *             .build());
  * 
@@ -132,8 +132,8 @@ import javax.annotation.Nullable;
  *             .remoteUri("https://ghe.com/hashicorp/terraform-provider-google.git")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -170,12 +170,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/secretmanager.secretAccessor")
- *                 .members("serviceAccount:service-123456789{@literal @}gcp-sa-cloudbuild.iam.gserviceaccount.com")
+ *                 .members("serviceAccount:service-123456789}{@literal @}{@code gcp-sa-cloudbuild.iam.gserviceaccount.com")
  *                 .build())
  *             .build());
  * 
@@ -220,8 +220,8 @@ import javax.annotation.Nullable;
  *             .remoteUri("https://github.com/myuser/myrepo.git")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -400,7 +400,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Repository(String name) {
+    public Repository(java.lang.String name) {
         this(name, RepositoryArgs.Empty);
     }
     /**
@@ -408,7 +408,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Repository(String name, RepositoryArgs args) {
+    public Repository(java.lang.String name, RepositoryArgs args) {
         this(name, args, null);
     }
     /**
@@ -417,12 +417,12 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Repository(String name, RepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuildv2/repository:Repository", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Repository(java.lang.String name, RepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudbuildv2/repository:Repository", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Repository(String name, Output<String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuildv2/repository:Repository", name, state, makeResourceOptions(options, id));
+    private Repository(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudbuildv2/repository:Repository", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RepositoryArgs makeArgs(RepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -432,7 +432,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return args == null ? RepositoryArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -448,7 +448,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Repository get(String name, Output<String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Repository get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Repository(name, id, state, options);
     }
 }

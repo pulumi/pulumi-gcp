@@ -16,7 +16,7 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs extends
 
     /**
      * The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      * &lt;a name=&#34;nested_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
      * 
@@ -26,7 +26,7 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs extends
 
     /**
      * @return The resource name of the secret version in the format,
-     * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
      * &lt;a name=&#34;nested_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
      * 
@@ -61,7 +61,7 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs extends
 
         /**
          * @param secretVersion The resource name of the secret version in the format,
-         * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
          * 
          * &lt;a name=&#34;nested_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
          * 
@@ -75,7 +75,7 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs extends
 
         /**
          * @param secretVersion The resource name of the secret version in the format,
-         * format as: projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
          * 
          * &lt;a name=&#34;nested_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
          * 

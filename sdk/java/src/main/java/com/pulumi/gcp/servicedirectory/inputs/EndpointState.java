@@ -76,7 +76,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name for the endpoint in the format
-     * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
+     * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      * 
      */
     @Import(name="name")
@@ -84,7 +84,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name for the endpoint in the format
-     * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
+     * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -245,7 +245,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name for the endpoint in the format
-         * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
+         * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name for the endpoint in the format
-         * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
+         * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
          * 
          * @return builder
          * 

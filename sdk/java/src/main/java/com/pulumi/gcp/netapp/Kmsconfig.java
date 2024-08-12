@@ -269,7 +269,7 @@ public class Kmsconfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Kmsconfig(String name) {
+    public Kmsconfig(java.lang.String name) {
         this(name, KmsconfigArgs.Empty);
     }
     /**
@@ -277,7 +277,7 @@ public class Kmsconfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Kmsconfig(String name, KmsconfigArgs args) {
+    public Kmsconfig(java.lang.String name, KmsconfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -286,12 +286,12 @@ public class Kmsconfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Kmsconfig(String name, KmsconfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/kmsconfig:Kmsconfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Kmsconfig(java.lang.String name, KmsconfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/kmsconfig:Kmsconfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Kmsconfig(String name, Output<String> id, @Nullable KmsconfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/kmsconfig:Kmsconfig", name, state, makeResourceOptions(options, id));
+    private Kmsconfig(java.lang.String name, Output<java.lang.String> id, @Nullable KmsconfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/kmsconfig:Kmsconfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KmsconfigArgs makeArgs(KmsconfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -301,7 +301,7 @@ public class Kmsconfig extends com.pulumi.resources.CustomResource {
         return args == null ? KmsconfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -321,7 +321,7 @@ public class Kmsconfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Kmsconfig get(String name, Output<String> id, @Nullable KmsconfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Kmsconfig get(java.lang.String name, Output<java.lang.String> id, @Nullable KmsconfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Kmsconfig(name, id, state, options);
     }
 }

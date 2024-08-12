@@ -65,7 +65,7 @@ public class TargetIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TargetIamBinding(String name) {
+    public TargetIamBinding(java.lang.String name) {
         this(name, TargetIamBindingArgs.Empty);
     }
     /**
@@ -73,7 +73,7 @@ public class TargetIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TargetIamBinding(String name, TargetIamBindingArgs args) {
+    public TargetIamBinding(java.lang.String name, TargetIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -82,12 +82,12 @@ public class TargetIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TargetIamBinding(String name, TargetIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/targetIamBinding:TargetIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TargetIamBinding(java.lang.String name, TargetIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/targetIamBinding:TargetIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TargetIamBinding(String name, Output<String> id, @Nullable TargetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/targetIamBinding:TargetIamBinding", name, state, makeResourceOptions(options, id));
+    private TargetIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable TargetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:clouddeploy/targetIamBinding:TargetIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TargetIamBindingArgs makeArgs(TargetIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -97,7 +97,7 @@ public class TargetIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? TargetIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -113,7 +113,7 @@ public class TargetIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TargetIamBinding get(String name, Output<String> id, @Nullable TargetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TargetIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable TargetIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TargetIamBinding(name, id, state, options);
     }
 }

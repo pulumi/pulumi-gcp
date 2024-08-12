@@ -207,7 +207,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransferAgentPool(String name) {
+    public TransferAgentPool(java.lang.String name) {
         this(name, TransferAgentPoolArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransferAgentPool(String name, @Nullable TransferAgentPoolArgs args) {
+    public TransferAgentPool(java.lang.String name, @Nullable TransferAgentPoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,12 +224,12 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransferAgentPool(String name, @Nullable TransferAgentPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/transferAgentPool:TransferAgentPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TransferAgentPool(java.lang.String name, @Nullable TransferAgentPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/transferAgentPool:TransferAgentPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransferAgentPool(String name, Output<String> id, @Nullable TransferAgentPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/transferAgentPool:TransferAgentPool", name, state, makeResourceOptions(options, id));
+    private TransferAgentPool(java.lang.String name, Output<java.lang.String> id, @Nullable TransferAgentPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/transferAgentPool:TransferAgentPool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TransferAgentPoolArgs makeArgs(@Nullable TransferAgentPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -239,7 +239,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
         return args == null ? TransferAgentPoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -255,7 +255,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransferAgentPool get(String name, Output<String> id, @Nullable TransferAgentPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransferAgentPool get(java.lang.String name, Output<java.lang.String> id, @Nullable TransferAgentPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransferAgentPool(name, id, state, options);
     }
 }

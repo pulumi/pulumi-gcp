@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = storage.NewBucket(ctx, "s3-backup-bucket", &storage.BucketArgs{
-//				Name:         pulumi.String(fmt.Sprintf("%v-backup", awsS3Bucket)),
+//				Name:         pulumi.Sprintf("%v-backup", awsS3Bucket),
 //				StorageClass: pulumi.String("NEARLINE"),
 //				Project:      pulumi.Any(project),
 //				Location:     pulumi.String("US"),
@@ -58,7 +58,7 @@ import (
 //			_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucket", &storage.BucketIAMMemberArgs{
 //				Bucket: s3_backup_bucket.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
+//				Member: pulumi.Sprintf("serviceAccount:%v", _default.Email),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				s3_backup_bucket,
 //			}))
@@ -74,7 +74,7 @@ import (
 //			notificationConfig, err := pubsub.NewTopicIAMMember(ctx, "notification_config", &pubsub.TopicIAMMemberArgs{
 //				Topic:  topic.ID(),
 //				Role:   pulumi.String("roles/pubsub.publisher"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
+//				Member: pulumi.Sprintf("serviceAccount:%v", _default.Email),
 //			})
 //			if err != nil {
 //				return err

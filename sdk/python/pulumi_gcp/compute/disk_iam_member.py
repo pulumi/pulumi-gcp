@@ -364,6 +364,25 @@ class DiskIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine Disk
+        Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
+
+        * `compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
+        * `compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
+        * `compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.DiskIamPolicy`: Retrieves the IAM policy for the disk
+
+        > **Note:** `compute.DiskIamPolicy` **cannot** be used in conjunction with `compute.DiskIamBinding` and `compute.DiskIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## compute.DiskIamPolicy
 
         ```python
@@ -535,6 +554,25 @@ class DiskIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine Disk
+        Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
+
+        * `compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
+        * `compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
+        * `compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.DiskIamPolicy`: Retrieves the IAM policy for the disk
+
+        > **Note:** `compute.DiskIamPolicy` **cannot** be used in conjunction with `compute.DiskIamBinding` and `compute.DiskIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## compute.DiskIamPolicy
 

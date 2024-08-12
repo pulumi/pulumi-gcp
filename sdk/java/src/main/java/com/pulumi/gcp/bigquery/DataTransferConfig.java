@@ -58,18 +58,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/iam.serviceAccountTokenCreator")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
@@ -96,8 +96,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(permissions)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -460,7 +460,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DataTransferConfig(String name) {
+    public DataTransferConfig(java.lang.String name) {
         this(name, DataTransferConfigArgs.Empty);
     }
     /**
@@ -468,7 +468,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DataTransferConfig(String name, DataTransferConfigArgs args) {
+    public DataTransferConfig(java.lang.String name, DataTransferConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -477,12 +477,12 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DataTransferConfig(String name, DataTransferConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DataTransferConfig(java.lang.String name, DataTransferConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DataTransferConfig(String name, Output<String> id, @Nullable DataTransferConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, state, makeResourceOptions(options, id));
+    private DataTransferConfig(java.lang.String name, Output<java.lang.String> id, @Nullable DataTransferConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DataTransferConfigArgs makeArgs(DataTransferConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -492,7 +492,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
         return args == null ? DataTransferConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -508,7 +508,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DataTransferConfig get(String name, Output<String> id, @Nullable DataTransferConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DataTransferConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable DataTransferConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DataTransferConfig(name, id, state, options);
     }
 }

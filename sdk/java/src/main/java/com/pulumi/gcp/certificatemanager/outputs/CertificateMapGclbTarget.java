@@ -20,14 +20,14 @@ public final class CertificateMapGclbTarget {
      */
     private @Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs;
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
     private @Nullable String targetHttpsProxy;
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
@@ -44,7 +44,7 @@ public final class CertificateMapGclbTarget {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
     }
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
@@ -53,7 +53,7 @@ public final class CertificateMapGclbTarget {
         return Optional.ofNullable(this.targetHttpsProxy);
     }
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
      * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 

@@ -49,17 +49,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var group = new Group("group", GroupArgs.builder()
  *             .displayName("my-identity-group")
  *             .parent("customers/A01b123xz")
  *             .groupKey(GroupGroupKeyArgs.builder()
- *                 .id("my-identity-group{@literal @}example.com")
+ *                 .id("my-identity-group}{@literal @}{@code example.com")
  *                 .build())
  *             .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
  *             .build());
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  *             .accessLevels(accessLevelIdForUserAccessBinding.name())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -178,7 +178,7 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GcpUserAccessBinding(String name) {
+    public GcpUserAccessBinding(java.lang.String name) {
         this(name, GcpUserAccessBindingArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GcpUserAccessBinding(String name, GcpUserAccessBindingArgs args) {
+    public GcpUserAccessBinding(java.lang.String name, GcpUserAccessBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,12 +195,12 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GcpUserAccessBinding(String name, GcpUserAccessBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GcpUserAccessBinding(java.lang.String name, GcpUserAccessBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GcpUserAccessBinding(String name, Output<String> id, @Nullable GcpUserAccessBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding", name, state, makeResourceOptions(options, id));
+    private GcpUserAccessBinding(java.lang.String name, Output<java.lang.String> id, @Nullable GcpUserAccessBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GcpUserAccessBindingArgs makeArgs(GcpUserAccessBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -210,7 +210,7 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
         return args == null ? GcpUserAccessBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -226,7 +226,7 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GcpUserAccessBinding get(String name, Output<String> id, @Nullable GcpUserAccessBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GcpUserAccessBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable GcpUserAccessBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GcpUserAccessBinding(name, id, state, options);
     }
 }

@@ -201,7 +201,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DomainMapping(String name) {
+    public DomainMapping(java.lang.String name) {
         this(name, DomainMappingArgs.Empty);
     }
     /**
@@ -209,7 +209,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DomainMapping(String name, DomainMappingArgs args) {
+    public DomainMapping(java.lang.String name, DomainMappingArgs args) {
         this(name, args, null);
     }
     /**
@@ -218,12 +218,12 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DomainMapping(String name, DomainMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:appengine/domainMapping:DomainMapping", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DomainMapping(java.lang.String name, DomainMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:appengine/domainMapping:DomainMapping", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DomainMapping(String name, Output<String> id, @Nullable DomainMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:appengine/domainMapping:DomainMapping", name, state, makeResourceOptions(options, id));
+    private DomainMapping(java.lang.String name, Output<java.lang.String> id, @Nullable DomainMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:appengine/domainMapping:DomainMapping", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DomainMappingArgs makeArgs(DomainMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -233,7 +233,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
         return args == null ? DomainMappingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -249,7 +249,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DomainMapping get(String name, Output<String> id, @Nullable DomainMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DomainMapping get(java.lang.String name, Output<java.lang.String> id, @Nullable DomainMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DomainMapping(name, id, state, options);
     }
 }

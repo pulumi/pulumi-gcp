@@ -208,7 +208,7 @@ public class LogView extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogView(String name) {
+    public LogView(java.lang.String name) {
         this(name, LogViewArgs.Empty);
     }
     /**
@@ -216,7 +216,7 @@ public class LogView extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogView(String name, LogViewArgs args) {
+    public LogView(java.lang.String name, LogViewArgs args) {
         this(name, args, null);
     }
     /**
@@ -225,12 +225,12 @@ public class LogView extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogView(String name, LogViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/logView:LogView", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LogView(java.lang.String name, LogViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/logView:LogView", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogView(String name, Output<String> id, @Nullable LogViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/logView:LogView", name, state, makeResourceOptions(options, id));
+    private LogView(java.lang.String name, Output<java.lang.String> id, @Nullable LogViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/logView:LogView", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LogViewArgs makeArgs(LogViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -240,7 +240,7 @@ public class LogView extends com.pulumi.resources.CustomResource {
         return args == null ? LogViewArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -256,7 +256,7 @@ public class LogView extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogView get(String name, Output<String> id, @Nullable LogViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogView get(java.lang.String name, Output<java.lang.String> id, @Nullable LogViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogView(name, id, state, options);
     }
 }

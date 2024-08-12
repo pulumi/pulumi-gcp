@@ -303,21 +303,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## spanner.InstanceIAMPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        instance = gcp.spanner.InstanceIAMPolicy("instance",
-            instance="your-instance-name",
-            policy_data=admin.policy_data)
-        ```
-
         ## spanner.InstanceIAMBinding
 
         ```python
@@ -442,21 +427,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
             instance="your-instance-name",
             role="roles/spanner.databaseAdmin",
             member="user:jane@example.com")
-        ```
-
-        ## spanner.InstanceIAMPolicy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/editor",
-            "members": ["user:jane@example.com"],
-        }])
-        instance = gcp.spanner.InstanceIAMPolicy("instance",
-            instance="your-instance-name",
-            policy_data=admin.policy_data)
         ```
 
         ## spanner.InstanceIAMBinding

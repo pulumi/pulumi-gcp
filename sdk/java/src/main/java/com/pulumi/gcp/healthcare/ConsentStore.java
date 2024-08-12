@@ -324,7 +324,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConsentStore(String name) {
+    public ConsentStore(java.lang.String name) {
         this(name, ConsentStoreArgs.Empty);
     }
     /**
@@ -332,7 +332,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConsentStore(String name, ConsentStoreArgs args) {
+    public ConsentStore(java.lang.String name, ConsentStoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -341,12 +341,12 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConsentStore(String name, ConsentStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/consentStore:ConsentStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConsentStore(java.lang.String name, ConsentStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/consentStore:ConsentStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConsentStore(String name, Output<String> id, @Nullable ConsentStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/consentStore:ConsentStore", name, state, makeResourceOptions(options, id));
+    private ConsentStore(java.lang.String name, Output<java.lang.String> id, @Nullable ConsentStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/consentStore:ConsentStore", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConsentStoreArgs makeArgs(ConsentStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -356,7 +356,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
         return args == null ? ConsentStoreArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -376,7 +376,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConsentStore get(String name, Output<String> id, @Nullable ConsentStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConsentStore get(java.lang.String name, Output<java.lang.String> id, @Nullable ConsentStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConsentStore(name, id, state, options);
     }
 }

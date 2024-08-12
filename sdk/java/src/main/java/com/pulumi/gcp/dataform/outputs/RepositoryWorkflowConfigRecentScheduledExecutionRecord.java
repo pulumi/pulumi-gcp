@@ -28,7 +28,7 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
     private @Nullable String executionTime;
     /**
      * @return (Output)
-     * The name of the created workflow invocation, if one was successfully created. In the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}workflowInvocations/*.
+     * The name of the created workflow invocation, if one was successfully created. In the format projects/*&#47;locations/*&#47;repositories/*&#47;workflowInvocations/*.
      * 
      */
     private @Nullable String workflowInvocation;
@@ -53,7 +53,7 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
     }
     /**
      * @return (Output)
-     * The name of the created workflow invocation, if one was successfully created. In the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}workflowInvocations/*.
+     * The name of the created workflow invocation, if one was successfully created. In the format projects/*&#47;locations/*&#47;repositories/*&#47;workflowInvocations/*.
      * 
      */
     public Optional<String> workflowInvocation() {

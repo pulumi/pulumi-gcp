@@ -347,6 +347,25 @@ class ApiConfigIamMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for API Gateway ApiConfig
+        Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
+
+        * `apigateway.ApiConfigIamPolicy`: Authoritative. Sets the IAM policy for the apiconfig and replaces any existing policy already attached.
+        * `apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved.
+        * `apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `apigateway.ApiConfigIamPolicy`: Retrieves the IAM policy for the apiconfig
+
+        > **Note:** `apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `apigateway.ApiConfigIamBinding` and `apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
         ```python
@@ -510,6 +529,25 @@ class ApiConfigIamMember(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for API Gateway ApiConfig
+        Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
+
+        * `apigateway.ApiConfigIamPolicy`: Authoritative. Sets the IAM policy for the apiconfig and replaces any existing policy already attached.
+        * `apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved.
+        * `apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `apigateway.ApiConfigIamPolicy`: Retrieves the IAM policy for the apiconfig
+
+        > **Note:** `apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `apigateway.ApiConfigIamBinding` and `apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
