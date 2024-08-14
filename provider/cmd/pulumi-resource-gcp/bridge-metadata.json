@@ -493,6 +493,87 @@
                     }
                 }
             },
+            "google_access_context_manager_service_perimeter_dry_run_egress_policy": {
+                "current": "gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy",
+                "majorVersion": 7,
+                "fields": {
+                    "egress_from": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "identities": {
+                                    "maxItemsOne": false
+                                },
+                                "sources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "egress_to": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "external_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "operations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "method_selectors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_access_context_manager_service_perimeter_dry_run_ingress_policy": {
+                "current": "gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy",
+                "majorVersion": 7,
+                "fields": {
+                    "ingress_from": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "identities": {
+                                    "maxItemsOne": false
+                                },
+                                "sources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ingress_to": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "operations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "method_selectors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_access_context_manager_service_perimeter_dry_run_resource": {
                 "current": "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource",
                 "majorVersion": 7
@@ -9671,6 +9752,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "auto_provisioning_locations": {
+                                    "maxItemsOne": false
                                 },
                                 "resource_limits": {
                                     "maxItemsOne": false
@@ -24244,12 +24328,58 @@
                 "current": "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy",
                 "majorVersion": 7
             },
+            "google_scc_v2_folder_mute_config": {
+                "current": "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig",
+                "majorVersion": 7
+            },
             "google_scc_v2_organization_mute_config": {
                 "current": "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig",
                 "majorVersion": 7
             },
             "google_scc_v2_organization_notification_config": {
                 "current": "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_scc_v2_organization_source": {
+                "current": "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource",
+                "majorVersion": 7
+            },
+            "google_scc_v2_organization_source_iam_binding": {
+                "current": "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_scc_v2_organization_source_iam_member": {
+                "current": "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_scc_v2_organization_source_iam_policy": {
+                "current": "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy",
+                "majorVersion": 7
+            },
+            "google_scc_v2_project_mute_config": {
+                "current": "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig",
+                "majorVersion": 7
+            },
+            "google_scc_v2_project_notification_config": {
+                "current": "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig",
                 "majorVersion": 7,
                 "fields": {
                     "streaming_config": {
@@ -29343,6 +29473,9 @@
                                         }
                                     }
                                 },
+                                "auto_provisioning_locations": {
+                                    "maxItemsOne": false
+                                },
                                 "resource_limits": {
                                     "maxItemsOne": false
                                 }
@@ -31096,6 +31229,10 @@
             },
             "google_scc_source_iam_policy": {
                 "current": "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy",
+                "majorVersion": 7
+            },
+            "google_scc_v2_organization_source_iam_policy": {
+                "current": "gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy",
                 "majorVersion": 7
             },
             "google_secret_manager_secret": {
@@ -32904,6 +33041,8 @@
             "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding": 0,
             "gcp:accesscontextmanager/ingressPolicy:IngressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter": 0,
+            "gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy": 0,
+            "gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource": 0,
             "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy": 0,
@@ -33733,8 +33872,15 @@
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
+            "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig": 0,
             "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig": 0,
             "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": 0,
+            "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource": 0,
+            "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding": 0,
+            "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember": 0,
+            "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy": 0,
+            "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig": 0,
+            "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig": 0,
             "gcp:securityposture/posture:Posture": 0,
             "gcp:securityposture/postureDeployment:PostureDeployment": 0,
             "gcp:serviceaccount/account:Account": 0,
@@ -34103,6 +34249,7 @@
             "gcp:securesourcemanager/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy": 0,
+            "gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy": 0,
             "gcp:serviceaccount/getAccount:getAccount": 0,
             "gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken": 0,
             "gcp:serviceaccount/getAccountIdToken:getAccountIdToken": 0,
