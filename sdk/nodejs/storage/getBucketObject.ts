@@ -88,6 +88,10 @@ export interface GetBucketObjectResult {
      */
     readonly eventBasedHold: boolean;
     /**
+     * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+     */
+    readonly generation: number;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

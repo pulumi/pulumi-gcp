@@ -20,6 +20,11 @@ export const getSourceIamPolicy: typeof import("./getSourceIamPolicy").getSource
 export const getSourceIamPolicyOutput: typeof import("./getSourceIamPolicy").getSourceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSourceIamPolicy","getSourceIamPolicyOutput"], () => require("./getSourceIamPolicy"));
 
+export { GetV2OrganizationSourceIamPolicyArgs, GetV2OrganizationSourceIamPolicyResult, GetV2OrganizationSourceIamPolicyOutputArgs } from "./getV2OrganizationSourceIamPolicy";
+export const getV2OrganizationSourceIamPolicy: typeof import("./getV2OrganizationSourceIamPolicy").getV2OrganizationSourceIamPolicy = null as any;
+export const getV2OrganizationSourceIamPolicyOutput: typeof import("./getV2OrganizationSourceIamPolicy").getV2OrganizationSourceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getV2OrganizationSourceIamPolicy","getV2OrganizationSourceIamPolicyOutput"], () => require("./getV2OrganizationSourceIamPolicy"));
+
 export { InstanceIamBindingArgs, InstanceIamBindingState } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
 export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
@@ -100,6 +105,11 @@ export type SourceIamPolicy = import("./sourceIamPolicy").SourceIamPolicy;
 export const SourceIamPolicy: typeof import("./sourceIamPolicy").SourceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["SourceIamPolicy"], () => require("./sourceIamPolicy"));
 
+export { V2FolderMuteConfigArgs, V2FolderMuteConfigState } from "./v2folderMuteConfig";
+export type V2FolderMuteConfig = import("./v2folderMuteConfig").V2FolderMuteConfig;
+export const V2FolderMuteConfig: typeof import("./v2folderMuteConfig").V2FolderMuteConfig = null as any;
+utilities.lazyLoad(exports, ["V2FolderMuteConfig"], () => require("./v2folderMuteConfig"));
+
 export { V2OrganizationMuteConfigArgs, V2OrganizationMuteConfigState } from "./v2organizationMuteConfig";
 export type V2OrganizationMuteConfig = import("./v2organizationMuteConfig").V2OrganizationMuteConfig;
 export const V2OrganizationMuteConfig: typeof import("./v2organizationMuteConfig").V2OrganizationMuteConfig = null as any;
@@ -109,6 +119,36 @@ export { V2OrganizationNotificationConfigArgs, V2OrganizationNotificationConfigS
 export type V2OrganizationNotificationConfig = import("./v2organizationNotificationConfig").V2OrganizationNotificationConfig;
 export const V2OrganizationNotificationConfig: typeof import("./v2organizationNotificationConfig").V2OrganizationNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["V2OrganizationNotificationConfig"], () => require("./v2organizationNotificationConfig"));
+
+export { V2OrganizationSourceArgs, V2OrganizationSourceState } from "./v2organizationSource";
+export type V2OrganizationSource = import("./v2organizationSource").V2OrganizationSource;
+export const V2OrganizationSource: typeof import("./v2organizationSource").V2OrganizationSource = null as any;
+utilities.lazyLoad(exports, ["V2OrganizationSource"], () => require("./v2organizationSource"));
+
+export { V2OrganizationSourceIamBindingArgs, V2OrganizationSourceIamBindingState } from "./v2organizationSourceIamBinding";
+export type V2OrganizationSourceIamBinding = import("./v2organizationSourceIamBinding").V2OrganizationSourceIamBinding;
+export const V2OrganizationSourceIamBinding: typeof import("./v2organizationSourceIamBinding").V2OrganizationSourceIamBinding = null as any;
+utilities.lazyLoad(exports, ["V2OrganizationSourceIamBinding"], () => require("./v2organizationSourceIamBinding"));
+
+export { V2OrganizationSourceIamMemberArgs, V2OrganizationSourceIamMemberState } from "./v2organizationSourceIamMember";
+export type V2OrganizationSourceIamMember = import("./v2organizationSourceIamMember").V2OrganizationSourceIamMember;
+export const V2OrganizationSourceIamMember: typeof import("./v2organizationSourceIamMember").V2OrganizationSourceIamMember = null as any;
+utilities.lazyLoad(exports, ["V2OrganizationSourceIamMember"], () => require("./v2organizationSourceIamMember"));
+
+export { V2OrganizationSourceIamPolicyArgs, V2OrganizationSourceIamPolicyState } from "./v2organizationSourceIamPolicy";
+export type V2OrganizationSourceIamPolicy = import("./v2organizationSourceIamPolicy").V2OrganizationSourceIamPolicy;
+export const V2OrganizationSourceIamPolicy: typeof import("./v2organizationSourceIamPolicy").V2OrganizationSourceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["V2OrganizationSourceIamPolicy"], () => require("./v2organizationSourceIamPolicy"));
+
+export { V2ProjectMuteConfigArgs, V2ProjectMuteConfigState } from "./v2projectMuteConfig";
+export type V2ProjectMuteConfig = import("./v2projectMuteConfig").V2ProjectMuteConfig;
+export const V2ProjectMuteConfig: typeof import("./v2projectMuteConfig").V2ProjectMuteConfig = null as any;
+utilities.lazyLoad(exports, ["V2ProjectMuteConfig"], () => require("./v2projectMuteConfig"));
+
+export { V2ProjectNotificationConfigArgs, V2ProjectNotificationConfigState } from "./v2projectNotificationConfig";
+export type V2ProjectNotificationConfig = import("./v2projectNotificationConfig").V2ProjectNotificationConfig;
+export const V2ProjectNotificationConfig: typeof import("./v2projectNotificationConfig").V2ProjectNotificationConfig = null as any;
+utilities.lazyLoad(exports, ["V2ProjectNotificationConfig"], () => require("./v2projectNotificationConfig"));
 
 
 const _module = {
@@ -151,10 +191,24 @@ const _module = {
                 return new SourceIamMember(name, <any>undefined, { urn })
             case "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy":
                 return new SourceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig":
+                return new V2FolderMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
                 return new V2OrganizationMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
                 return new V2OrganizationNotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource":
+                return new V2OrganizationSource(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding":
+                return new V2OrganizationSourceIamBinding(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember":
+                return new V2OrganizationSourceIamMember(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy":
+                return new V2OrganizationSourceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig":
+                return new V2ProjectMuteConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig":
+                return new V2ProjectNotificationConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -178,5 +232,12 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationNotificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSource", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2ProjectMuteConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2ProjectNotificationConfig", _module)

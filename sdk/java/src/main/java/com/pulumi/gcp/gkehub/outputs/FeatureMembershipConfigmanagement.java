@@ -31,6 +31,11 @@ public final class FeatureMembershipConfigmanagement {
      */
     private @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
     /**
+     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * 
+     */
+    private @Nullable String management;
+    /**
      * @return Policy Controller configuration for the cluster. Structure is documented below.
      * 
      */
@@ -64,6 +69,13 @@ public final class FeatureMembershipConfigmanagement {
         return Optional.ofNullable(this.hierarchyController);
     }
     /**
+     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * 
+     */
+    public Optional<String> management() {
+        return Optional.ofNullable(this.management);
+    }
+    /**
      * @return Policy Controller configuration for the cluster. Structure is documented below.
      * 
      */
@@ -90,6 +102,7 @@ public final class FeatureMembershipConfigmanagement {
         private @Nullable FeatureMembershipConfigmanagementBinauthz binauthz;
         private @Nullable FeatureMembershipConfigmanagementConfigSync configSync;
         private @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
+        private @Nullable String management;
         private @Nullable FeatureMembershipConfigmanagementPolicyController policyController;
         private @Nullable String version;
         public Builder() {}
@@ -98,6 +111,7 @@ public final class FeatureMembershipConfigmanagement {
     	      this.binauthz = defaults.binauthz;
     	      this.configSync = defaults.configSync;
     	      this.hierarchyController = defaults.hierarchyController;
+    	      this.management = defaults.management;
     	      this.policyController = defaults.policyController;
     	      this.version = defaults.version;
         }
@@ -121,6 +135,12 @@ public final class FeatureMembershipConfigmanagement {
             return this;
         }
         @CustomType.Setter
+        public Builder management(@Nullable String management) {
+
+            this.management = management;
+            return this;
+        }
+        @CustomType.Setter
         public Builder policyController(@Nullable FeatureMembershipConfigmanagementPolicyController policyController) {
 
             this.policyController = policyController;
@@ -137,6 +157,7 @@ public final class FeatureMembershipConfigmanagement {
             _resultValue.binauthz = binauthz;
             _resultValue.configSync = configSync;
             _resultValue.hierarchyController = hierarchyController;
+            _resultValue.management = management;
             _resultValue.policyController = policyController;
             _resultValue.version = version;
             return _resultValue;

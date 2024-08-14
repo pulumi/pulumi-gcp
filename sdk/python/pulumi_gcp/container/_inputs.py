@@ -5424,6 +5424,12 @@ if not MYPY:
         GKE Autopilot clusters.
         Structure is documented below.
         """
+        auto_provisioning_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of Google Compute Engine 
+        [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        NodePool's nodes can be created by NAP.
+        """
         autoscaling_profile: NotRequired[pulumi.Input[str]]
         """
         Configuration
@@ -5450,6 +5456,7 @@ elif False:
 class ClusterClusterAutoscalingArgs:
     def __init__(__self__, *,
                  auto_provisioning_defaults: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs']] = None,
+                 auto_provisioning_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autoscaling_profile: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]]] = None):
@@ -5457,6 +5464,9 @@ class ClusterClusterAutoscalingArgs:
         :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs'] auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
                GKE Autopilot clusters.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auto_provisioning_locations: The list of Google Compute Engine 
+               [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+               NodePool's nodes can be created by NAP.
         :param pulumi.Input[str] autoscaling_profile: Configuration
                options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
                feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -5470,6 +5480,8 @@ class ClusterClusterAutoscalingArgs:
         """
         if auto_provisioning_defaults is not None:
             pulumi.set(__self__, "auto_provisioning_defaults", auto_provisioning_defaults)
+        if auto_provisioning_locations is not None:
+            pulumi.set(__self__, "auto_provisioning_locations", auto_provisioning_locations)
         if autoscaling_profile is not None:
             pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
         if enabled is not None:
@@ -5490,6 +5502,20 @@ class ClusterClusterAutoscalingArgs:
     @auto_provisioning_defaults.setter
     def auto_provisioning_defaults(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs']]):
         pulumi.set(self, "auto_provisioning_defaults", value)
+
+    @property
+    @pulumi.getter(name="autoProvisioningLocations")
+    def auto_provisioning_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of Google Compute Engine 
+        [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        NodePool's nodes can be created by NAP.
+        """
+        return pulumi.get(self, "auto_provisioning_locations")
+
+    @auto_provisioning_locations.setter
+    def auto_provisioning_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "auto_provisioning_locations", value)
 
     @property
     @pulumi.getter(name="autoscalingProfile")

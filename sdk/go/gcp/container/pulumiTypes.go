@@ -13509,6 +13509,10 @@ type ClusterClusterAutoscaling struct {
 	// GKE Autopilot clusters.
 	// Structure is documented below.
 	AutoProvisioningDefaults *ClusterClusterAutoscalingAutoProvisioningDefaults `pulumi:"autoProvisioningDefaults"`
+	// The list of Google Compute Engine
+	// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+	// NodePool's nodes can be created by NAP.
+	AutoProvisioningLocations []string `pulumi:"autoProvisioningLocations"`
 	// Configuration
 	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -13540,6 +13544,10 @@ type ClusterClusterAutoscalingArgs struct {
 	// GKE Autopilot clusters.
 	// Structure is documented below.
 	AutoProvisioningDefaults ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput `pulumi:"autoProvisioningDefaults"`
+	// The list of Google Compute Engine
+	// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+	// NodePool's nodes can be created by NAP.
+	AutoProvisioningLocations pulumi.StringArrayInput `pulumi:"autoProvisioningLocations"`
 	// Configuration
 	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -13641,6 +13649,13 @@ func (o ClusterClusterAutoscalingOutput) AutoProvisioningDefaults() ClusterClust
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
+// The list of Google Compute Engine
+// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+// NodePool's nodes can be created by NAP.
+func (o ClusterClusterAutoscalingOutput) AutoProvisioningLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscaling) []string { return v.AutoProvisioningLocations }).(pulumi.StringArrayOutput)
+}
+
 // Configuration
 // options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 // feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -13697,6 +13712,18 @@ func (o ClusterClusterAutoscalingPtrOutput) AutoProvisioningDefaults() ClusterCl
 		}
 		return v.AutoProvisioningDefaults
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
+}
+
+// The list of Google Compute Engine
+// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+// NodePool's nodes can be created by NAP.
+func (o ClusterClusterAutoscalingPtrOutput) AutoProvisioningLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscaling) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoProvisioningLocations
+	}).(pulumi.StringArrayOutput)
 }
 
 // Configuration
@@ -44661,6 +44688,8 @@ func (o GetClusterBinaryAuthorizationArrayOutput) Index(i pulumi.IntInput) GetCl
 type GetClusterClusterAutoscaling struct {
 	// Contains defaults for a node pool created by NAP.
 	AutoProvisioningDefaults []GetClusterClusterAutoscalingAutoProvisioningDefault `pulumi:"autoProvisioningDefaults"`
+	// The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
+	AutoProvisioningLocations []string `pulumi:"autoProvisioningLocations"`
 	// Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
 	AutoscalingProfile string `pulumi:"autoscalingProfile"`
 	// Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
@@ -44683,6 +44712,8 @@ type GetClusterClusterAutoscalingInput interface {
 type GetClusterClusterAutoscalingArgs struct {
 	// Contains defaults for a node pool created by NAP.
 	AutoProvisioningDefaults GetClusterClusterAutoscalingAutoProvisioningDefaultArrayInput `pulumi:"autoProvisioningDefaults"`
+	// The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
+	AutoProvisioningLocations pulumi.StringArrayInput `pulumi:"autoProvisioningLocations"`
 	// Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
 	AutoscalingProfile pulumi.StringInput `pulumi:"autoscalingProfile"`
 	// Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
@@ -44747,6 +44778,11 @@ func (o GetClusterClusterAutoscalingOutput) AutoProvisioningDefaults() GetCluste
 	return o.ApplyT(func(v GetClusterClusterAutoscaling) []GetClusterClusterAutoscalingAutoProvisioningDefault {
 		return v.AutoProvisioningDefaults
 	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput)
+}
+
+// The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
+func (o GetClusterClusterAutoscalingOutput) AutoProvisioningLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscaling) []string { return v.AutoProvisioningLocations }).(pulumi.StringArrayOutput)
 }
 
 // Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.

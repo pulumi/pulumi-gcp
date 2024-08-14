@@ -14,6 +14,7 @@ import com.pulumi.gcp.storage.inputs.BucketObjectState;
 import com.pulumi.gcp.storage.outputs.BucketObjectCustomerEncryption;
 import com.pulumi.gcp.storage.outputs.BucketObjectRetention;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -261,6 +262,20 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> eventBasedHold() {
         return Codegen.optional(this.eventBasedHold);
+    }
+    /**
+     * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+     * 
+     */
+    @Export(name="generation", refs={Integer.class}, tree="[0]")
+    private Output<Integer> generation;
+
+    /**
+     * @return (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+     * 
+     */
+    public Output<Integer> generation() {
+        return this.generation;
     }
     /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.

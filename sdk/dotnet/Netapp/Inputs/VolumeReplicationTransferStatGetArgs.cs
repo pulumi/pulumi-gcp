@@ -51,14 +51,14 @@ namespace Pulumi.Gcp.Netapp.Inputs
 
         /// <summary>
         /// (Output)
-        /// Total time taken so far during current transfer.
+        /// Cumulative time taken across all transfers for the replication relationship.
         /// </summary>
         [Input("totalTransferDuration")]
         public Input<string>? TotalTransferDuration { get; set; }
 
         /// <summary>
         /// (Output)
-        /// Number of bytes transferred so far in current transfer.
+        /// Cumulative bytes transferred so far for the replication relationship.
         /// </summary>
         [Input("transferBytes")]
         public Input<string>? TransferBytes { get; set; }

@@ -18,6 +18,11 @@ public final class ServiceBinaryAuthorization {
      */
     private @Nullable String breakglassJustification;
     /**
+     * @return The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+     * 
+     */
+    private @Nullable String policy;
+    /**
      * @return If True, indicates to use the default project&#39;s binary authorization policy. If False, binary authorization will be disabled.
      * 
      */
@@ -30,6 +35,13 @@ public final class ServiceBinaryAuthorization {
      */
     public Optional<String> breakglassJustification() {
         return Optional.ofNullable(this.breakglassJustification);
+    }
+    /**
+     * @return The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+     * 
+     */
+    public Optional<String> policy() {
+        return Optional.ofNullable(this.policy);
     }
     /**
      * @return If True, indicates to use the default project&#39;s binary authorization policy. If False, binary authorization will be disabled.
@@ -49,11 +61,13 @@ public final class ServiceBinaryAuthorization {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String breakglassJustification;
+        private @Nullable String policy;
         private @Nullable Boolean useDefault;
         public Builder() {}
         public Builder(ServiceBinaryAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.breakglassJustification = defaults.breakglassJustification;
+    	      this.policy = defaults.policy;
     	      this.useDefault = defaults.useDefault;
         }
 
@@ -61,6 +75,12 @@ public final class ServiceBinaryAuthorization {
         public Builder breakglassJustification(@Nullable String breakglassJustification) {
 
             this.breakglassJustification = breakglassJustification;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder policy(@Nullable String policy) {
+
+            this.policy = policy;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +92,7 @@ public final class ServiceBinaryAuthorization {
         public ServiceBinaryAuthorization build() {
             final var _resultValue = new ServiceBinaryAuthorization();
             _resultValue.breakglassJustification = breakglassJustification;
+            _resultValue.policy = policy;
             _resultValue.useDefault = useDefault;
             return _resultValue;
         }

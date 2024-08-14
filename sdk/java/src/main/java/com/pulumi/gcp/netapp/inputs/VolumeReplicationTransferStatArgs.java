@@ -106,7 +106,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
     /**
      * (Output)
-     * Total time taken so far during current transfer.
+     * Cumulative time taken across all transfers for the replication relationship.
      * 
      */
     @Import(name="totalTransferDuration")
@@ -114,7 +114,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
     /**
      * @return (Output)
-     * Total time taken so far during current transfer.
+     * Cumulative time taken across all transfers for the replication relationship.
      * 
      */
     public Optional<Output<String>> totalTransferDuration() {
@@ -123,7 +123,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
     /**
      * (Output)
-     * Number of bytes transferred so far in current transfer.
+     * Cumulative bytes transferred so far for the replication relationship.
      * 
      */
     @Import(name="transferBytes")
@@ -131,7 +131,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
     /**
      * @return (Output)
-     * Number of bytes transferred so far in current transfer.
+     * Cumulative bytes transferred so far for the replication relationship.
      * 
      */
     public Optional<Output<String>> transferBytes() {
@@ -307,7 +307,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
         /**
          * @param totalTransferDuration (Output)
-         * Total time taken so far during current transfer.
+         * Cumulative time taken across all transfers for the replication relationship.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
         /**
          * @param totalTransferDuration (Output)
-         * Total time taken so far during current transfer.
+         * Cumulative time taken across all transfers for the replication relationship.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
         /**
          * @param transferBytes (Output)
-         * Number of bytes transferred so far in current transfer.
+         * Cumulative bytes transferred so far for the replication relationship.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class VolumeReplicationTransferStatArgs extends com.pulumi.resource
 
         /**
          * @param transferBytes (Output)
-         * Number of bytes transferred so far in current transfer.
+         * Cumulative bytes transferred so far for the replication relationship.
          * 
          * @return builder
          * 

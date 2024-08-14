@@ -116,7 +116,20 @@ def get_log_view_iam_policy(bucket: Optional[str] = None,
                             parent: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogViewIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for logview
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.logging.get_log_view_iam_policy(parent=logging_log_view["parent"],
+        location=logging_log_view["location"],
+        bucket=logging_log_view["bucket"],
+        name=logging_log_view["name"])
+    ```
+
 
     :param str bucket: The bucket of the resource Used to find the parent resource to bind the IAM policy to
     :param str location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -150,7 +163,20 @@ def get_log_view_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                    parent: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogViewIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for logview
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.logging.get_log_view_iam_policy(parent=logging_log_view["parent"],
+        location=logging_log_view["location"],
+        bucket=logging_log_view["bucket"],
+        name=logging_log_view["name"])
+    ```
+
 
     :param str bucket: The bucket of the resource Used to find the parent resource to bind the IAM policy to
     :param str location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1. Used to find the parent resource to bind the IAM policy to. If not specified,

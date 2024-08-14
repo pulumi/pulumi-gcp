@@ -461,6 +461,188 @@ export namespace accesscontextmanager {
         title: string;
     }
 
+    export interface ServicePerimeterDryRunEgressPolicyEgressFrom {
+        /**
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
+         */
+        identities?: string[];
+        /**
+         * Specifies the type of identities that are allowed access to outside the
+         * perimeter. If left unspecified, then members of `identities` field will
+         * be allowed access.
+         * Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: string;
+        /**
+         * Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         */
+        sourceRestriction?: string;
+        /**
+         * Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: outputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressFromSource[];
+    }
+
+    export interface ServicePerimeterDryRunEgressPolicyEgressFromSource {
+        /**
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+         */
+        accessLevel?: string;
+    }
+
+    export interface ServicePerimeterDryRunEgressPolicyEgressTo {
+        /**
+         * A list of external resources that are allowed to be accessed. A request
+         * matches if it contains an external resource in this list (Example:
+         * s3://bucket/path). Currently '*' is not allowed.
+         */
+        externalResources?: string[];
+        /**
+         * A list of `ApiOperations` that this egress rule applies to. A request matches
+         * if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: outputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressToOperation[];
+        /**
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, that match this to stanza. A request matches
+         * if it contains a resource in this list. If * is specified for resources,
+         * then this `EgressTo` rule will authorize access to all resources outside
+         * the perimeter.
+         */
+        resources?: string[];
+    }
+
+    export interface ServicePerimeterDryRunEgressPolicyEgressToOperation {
+        /**
+         * API methods or permissions to allow. Method or permission must belong
+         * to the service specified by `serviceName` field. A single MethodSelector
+         * entry with `*` specified for the `method` field will allow all methods
+         * AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: outputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressToOperationMethodSelector[];
+        /**
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+         * field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: string;
+    }
+
+    export interface ServicePerimeterDryRunEgressPolicyEgressToOperationMethodSelector {
+        /**
+         * Value for `method` should be a valid method name for the corresponding
+         * `serviceName` in `ApiOperation`. If `*` used as value for method,
+         * then ALL methods and permissions are allowed.
+         */
+        method?: string;
+        /**
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: string;
+    }
+
+    export interface ServicePerimeterDryRunIngressPolicyIngressFrom {
+        /**
+         * A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
+         */
+        identities?: string[];
+        /**
+         * Specifies the type of identities that are allowed access from outside the
+         * perimeter. If left unspecified, then members of `identities` field will be
+         * allowed access.
+         * Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: string;
+        /**
+         * Sources that this `IngressPolicy` authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: outputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressFromSource[];
+    }
+
+    export interface ServicePerimeterDryRunIngressPolicyIngressFromSource {
+        /**
+         * An `AccessLevel` resource name that allow resources within the
+         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+         * resources within the perimeter can only be accessed via Google Cloud calls
+         * with request origins within the perimeter.
+         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+         * If * is specified, then all IngressSources will be allowed.
+         */
+        accessLevel?: string;
+        /**
+         * A Google Cloud resource that is allowed to ingress the perimeter.
+         * Requests from these resources will be allowed to access perimeter data.
+         * Currently only projects are allowed. Format `projects/{project_number}`
+         * The project may be in any Google Cloud organization, not just the
+         * organization that the perimeter is defined in. `*` is not allowed, the case
+         * of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: string;
+    }
+
+    export interface ServicePerimeterDryRunIngressPolicyIngressTo {
+        /**
+         * A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+         * are allowed to perform in this `ServicePerimeter`.
+         * Structure is documented below.
+         */
+        operations?: outputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressToOperation[];
+        /**
+         * A list of resources, currently only projects in the form
+         * `projects/<projectnumber>`, protected by this `ServicePerimeter`
+         * that are allowed to be accessed by sources defined in the
+         * corresponding `IngressFrom`. A request matches if it contains
+         * a resource in this list. If `*` is specified for resources,
+         * then this `IngressTo` rule will authorize access to all
+         * resources inside the perimeter, provided that the request
+         * also matches the `operations` field.
+         */
+        resources?: string[];
+    }
+
+    export interface ServicePerimeterDryRunIngressPolicyIngressToOperation {
+        /**
+         * API methods or permissions to allow. Method or permission must belong to
+         * the service specified by serviceName field. A single `MethodSelector` entry
+         * with `*` specified for the method field will allow all methods AND
+         * permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: outputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector[];
+        /**
+         * The name of the API whose methods or permissions the `IngressPolicy` or
+         * `EgressPolicy` want to allow. A single `ApiOperation` with `serviceName`
+         * field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: string;
+    }
+
+    export interface ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector {
+        /**
+         * Value for method should be a valid method name for the corresponding
+         * serviceName in `ApiOperation`. If `*` used as value for `method`, then
+         * ALL methods and permissions are allowed.
+         */
+        method?: string;
+        /**
+         * Value for permission should be a valid Cloud IAM permission for the
+         * corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: string;
+    }
+
     export interface ServicePerimeterEgressPolicyEgressFrom {
         /**
          * A list of identities that are allowed access through this `EgressPolicy`.
@@ -13172,6 +13354,10 @@ export namespace clouddeploy {
          * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
          */
         internalIp?: boolean;
+        /**
+         * Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+         */
+        proxyUrl?: string;
     }
 
     export interface TargetIamBindingCondition {
@@ -16605,6 +16791,10 @@ export namespace cloudrunv2 {
          */
         breakglassJustification: string;
         /**
+         * The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+         */
+        policy: string;
+        /**
          * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
          */
         useDefault: boolean;
@@ -17016,6 +17206,10 @@ export namespace cloudrunv2 {
          * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
          */
         breakglassJustification: string;
+        /**
+         * The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+         */
+        policy: string;
         /**
          * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
          */
@@ -17647,6 +17841,10 @@ export namespace cloudrunv2 {
          */
         breakglassJustification?: string;
         /**
+         * The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+         */
+        policy?: string;
+        /**
          * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
          */
         useDefault?: boolean;
@@ -18102,6 +18300,10 @@ export namespace cloudrunv2 {
          * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
          */
         breakglassJustification?: string;
+        /**
+         * The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+         */
+        policy?: string;
         /**
          * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
          */
@@ -38082,6 +38284,12 @@ export namespace container {
          */
         autoProvisioningDefaults: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults;
         /**
+         * The list of Google Compute Engine 
+         * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+         * NodePool's nodes can be created by NAP.
+         */
+        autoProvisioningLocations: string[];
+        /**
          * Configuration
          * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
          * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -40477,6 +40685,10 @@ export namespace container {
          * Contains defaults for a node pool created by NAP.
          */
         autoProvisioningDefaults: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefault[];
+        /**
+         * The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
+         */
+        autoProvisioningLocations: string[];
         /**
          * Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
          */
@@ -60590,6 +60802,11 @@ export namespace gkehub {
          */
         configSync?: outputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync;
         /**
+         * Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+         */
+        management?: string;
+        /**
          * Version of ACM installed
          */
         version?: string;
@@ -60900,6 +61117,10 @@ export namespace gkehub {
          */
         hierarchyController?: outputs.gkehub.FeatureMembershipConfigmanagementHierarchyController;
         /**
+         * Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         */
+        management: string;
+        /**
          * Policy Controller configuration for the cluster. Structure is documented below.
          */
         policyController?: outputs.gkehub.FeatureMembershipConfigmanagementPolicyController;
@@ -60917,6 +61138,10 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipConfigmanagementConfigSync {
+        /**
+         * Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+         */
+        enabled?: boolean;
         /**
          * (Optional) Structure is documented below.
          */
@@ -68838,12 +69063,12 @@ export namespace netapp {
         lastTransferError: string;
         /**
          * (Output)
-         * Total time taken so far during current transfer.
+         * Cumulative time taken across all transfers for the replication relationship.
          */
         totalTransferDuration: string;
         /**
          * (Output)
-         * Number of bytes transferred so far in current transfer.
+         * Cumulative bytes transferred so far for the replication relationship.
          */
         transferBytes: string;
         /**
@@ -76638,6 +76863,45 @@ export namespace securitycenter {
         filter: string;
     }
 
+    export interface V2OrganizationSourceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface V2OrganizationSourceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface V2ProjectNotificationConfigStreamingConfig {
+        /**
+         * Expression that defines the filter to apply across create/update
+         * events of assets or findings as specified by the event type. The
+         * expression is a list of zero or more restrictions combined via
+         * logical operators AND and OR. Parentheses are supported, and OR
+         * has higher precedence than AND.
+         * Restrictions have the form <field> <operator> <value> and may have
+         * a - character in front of them to indicate negation. The fields
+         * map to those defined in the corresponding resource.
+         * The supported operators are:
+         * * = for all value types.
+         * * >, <, >=, <= for integer values.
+         * * :, meaning substring matching, for strings.
+         * The supported value types are:
+         * * string literals in quotes.
+         * * integer literals without quotes.
+         * * boolean literals true and false without quotes.
+         * See
+         * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+         * for information on how to write a filter.
+         *
+         * - - -
+         */
+        filter: string;
+    }
+
 }
 
 export namespace securityposture {
@@ -77495,7 +77759,7 @@ export namespace sql {
          */
         collation?: string;
         /**
-         * Specifies if connections must use Cloud SQL connectors.
+         * Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          */
         connectorEnforcement: string;
         /**
@@ -77994,7 +78258,7 @@ export namespace sql {
          */
         collation: string;
         /**
-         * Specifies if connections must use Cloud SQL connectors.
+         * Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          */
         connectorEnforcement: string;
         /**
@@ -78514,7 +78778,7 @@ export namespace sql {
          */
         collation: string;
         /**
-         * Specifies if connections must use Cloud SQL connectors.
+         * Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          */
         connectorEnforcement: string;
         /**

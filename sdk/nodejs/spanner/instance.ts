@@ -186,7 +186,6 @@ export class Instance extends pulumi.CustomResource {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
-     *
      * If not provided, a random string starting with `tf-` will be selected.
      */
     public readonly name!: pulumi.Output<string>;
@@ -310,7 +309,6 @@ export interface InstanceState {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
-     *
      * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;
@@ -378,7 +376,6 @@ export interface InstanceArgs {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
-     *
      * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;

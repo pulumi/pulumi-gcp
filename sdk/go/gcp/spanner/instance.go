@@ -211,7 +211,6 @@ type Instance struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
-	//
 	// If not provided, a random string starting with `tf-` will be selected.
 	Name            pulumi.StringOutput `pulumi:"name"`
 	NumNodes        pulumi.IntOutput    `pulumi:"numNodes"`
@@ -299,7 +298,6 @@ type instanceState struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
-	//
 	// If not provided, a random string starting with `tf-` will be selected.
 	Name            *string `pulumi:"name"`
 	NumNodes        *int    `pulumi:"numNodes"`
@@ -347,7 +345,6 @@ type InstanceState struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
-	//
 	// If not provided, a random string starting with `tf-` will be selected.
 	Name            pulumi.StringPtrInput
 	NumNodes        pulumi.IntPtrInput
@@ -397,7 +394,6 @@ type instanceArgs struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
-	//
 	// If not provided, a random string starting with `tf-` will be selected.
 	Name            *string `pulumi:"name"`
 	NumNodes        *int    `pulumi:"numNodes"`
@@ -439,7 +435,6 @@ type InstanceArgs struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
-	//
 	// If not provided, a random string starting with `tf-` will be selected.
 	Name            pulumi.StringPtrInput
 	NumNodes        pulumi.IntPtrInput
@@ -586,7 +581,6 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 // A unique identifier for the instance, which cannot be changed after
 // the instance is created. The name must be between 6 and 30 characters
 // in length.
-//
 // If not provided, a random string starting with `tf-` will be selected.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

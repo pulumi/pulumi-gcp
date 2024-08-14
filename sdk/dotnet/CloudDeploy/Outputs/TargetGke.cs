@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         /// </summary>
         public readonly bool? InternalIp;
+        /// <summary>
+        /// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        /// </summary>
+        public readonly string? ProxyUrl;
 
         [OutputConstructor]
         private TargetGke(
             string? cluster,
 
-            bool? internalIp)
+            bool? internalIp,
+
+            string? proxyUrl)
         {
             Cluster = cluster;
             InternalIp = internalIp;
+            ProxyUrl = proxyUrl;
         }
     }
 }

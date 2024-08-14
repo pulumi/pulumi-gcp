@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaults? AutoProvisioningDefaults;
         /// <summary>
+        /// The list of Google Compute Engine 
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// NodePool's nodes can be created by NAP.
+        /// </summary>
+        public readonly ImmutableArray<string> AutoProvisioningLocations;
+        /// <summary>
         /// Configuration
         /// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
         /// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -43,6 +49,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterClusterAutoscaling(
             Outputs.ClusterClusterAutoscalingAutoProvisioningDefaults? autoProvisioningDefaults,
 
+            ImmutableArray<string> autoProvisioningLocations,
+
             string? autoscalingProfile,
 
             bool? enabled,
@@ -50,6 +58,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableArray<Outputs.ClusterClusterAutoscalingResourceLimit> resourceLimits)
         {
             AutoProvisioningDefaults = autoProvisioningDefaults;
+            AutoProvisioningLocations = autoProvisioningLocations;
             AutoscalingProfile = autoscalingProfile;
             Enabled = enabled;
             ResourceLimits = resourceLimits;

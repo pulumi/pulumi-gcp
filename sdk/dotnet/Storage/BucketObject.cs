@@ -132,6 +132,12 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> EventBasedHold { get; private set; } = null!;
 
         /// <summary>
+        /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+        /// </summary>
+        [Output("generation")]
+        public Output<int> Generation { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         /// </summary>
         [Output("kmsKeyName")]
@@ -482,6 +488,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("eventBasedHold")]
         public Input<bool>? EventBasedHold { get; set; }
+
+        /// <summary>
+        /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+        /// </summary>
+        [Input("generation")]
+        public Input<int>? Generation { get; set; }
 
         /// <summary>
         /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.

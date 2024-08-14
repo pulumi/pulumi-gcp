@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementConfigSync {
     /**
+     * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    /**
      * @return (Optional) Structure is documented below.
      * 
      */
@@ -43,6 +48,13 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     private @Nullable String sourceFormat;
 
     private FeatureMembershipConfigmanagementConfigSync() {}
+    /**
+     * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
     /**
      * @return (Optional) Structure is documented below.
      * 
@@ -90,6 +102,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enabled;
         private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
         private @Nullable String metricsGcpServiceAccountEmail;
         private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
@@ -98,6 +111,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         public Builder() {}
         public Builder(FeatureMembershipConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.git = defaults.git;
     	      this.metricsGcpServiceAccountEmail = defaults.metricsGcpServiceAccountEmail;
     	      this.oci = defaults.oci;
@@ -105,6 +119,12 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     	      this.sourceFormat = defaults.sourceFormat;
         }
 
+        @CustomType.Setter
+        public Builder enabled(@Nullable Boolean enabled) {
+
+            this.enabled = enabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder git(@Nullable FeatureMembershipConfigmanagementConfigSyncGit git) {
 
@@ -137,6 +157,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         }
         public FeatureMembershipConfigmanagementConfigSync build() {
             final var _resultValue = new FeatureMembershipConfigmanagementConfigSync();
+            _resultValue.enabled = enabled;
             _resultValue.git = git;
             _resultValue.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             _resultValue.oci = oci;

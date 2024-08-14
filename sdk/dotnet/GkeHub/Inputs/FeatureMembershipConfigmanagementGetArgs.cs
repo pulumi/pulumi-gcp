@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FeatureMembershipConfigmanagementHierarchyControllerGetArgs>? HierarchyController { get; set; }
 
         /// <summary>
+        /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        /// </summary>
+        [Input("management")]
+        public Input<string>? Management { get; set; }
+
+        /// <summary>
         /// Policy Controller configuration for the cluster. Structure is documented below.
         /// </summary>
         [Input("policyController")]

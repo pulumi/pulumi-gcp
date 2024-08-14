@@ -26,13 +26,16 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, auto_create_network=None, billing_account=None, effective_labels=None, folder_id=None, id=None, labels=None, name=None, number=None, org_id=None, project_id=None, pulumi_labels=None, skip_delete=None):
+    def __init__(__self__, auto_create_network=None, billing_account=None, deletion_policy=None, effective_labels=None, folder_id=None, id=None, labels=None, name=None, number=None, org_id=None, project_id=None, pulumi_labels=None, skip_delete=None):
         if auto_create_network and not isinstance(auto_create_network, bool):
             raise TypeError("Expected argument 'auto_create_network' to be a bool")
         pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -73,6 +76,11 @@ class GetProjectResult:
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> str:
         return pulumi.get(self, "billing_account")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> str:
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -139,6 +147,7 @@ class AwaitableGetProjectResult(GetProjectResult):
         return GetProjectResult(
             auto_create_network=self.auto_create_network,
             billing_account=self.billing_account,
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             folder_id=self.folder_id,
             id=self.id,
@@ -179,6 +188,7 @@ def get_project(project_id: Optional[str] = None,
     return AwaitableGetProjectResult(
         auto_create_network=pulumi.get(__ret__, 'auto_create_network'),
         billing_account=pulumi.get(__ret__, 'billing_account'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         folder_id=pulumi.get(__ret__, 'folder_id'),
         id=pulumi.get(__ret__, 'id'),

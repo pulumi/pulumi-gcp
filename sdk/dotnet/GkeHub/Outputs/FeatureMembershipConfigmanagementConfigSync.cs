@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagementConfigSync
     {
         /// <summary>
+        /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
         /// (Optional) Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
@@ -38,6 +42,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
         [OutputConstructor]
         private FeatureMembershipConfigmanagementConfigSync(
+            bool? enabled,
+
             Outputs.FeatureMembershipConfigmanagementConfigSyncGit? git,
 
             string? metricsGcpServiceAccountEmail,
@@ -48,6 +54,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             string? sourceFormat)
         {
+            Enabled = enabled;
             Git = git;
             MetricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             Oci = oci;

@@ -47,7 +47,8 @@ import (
 //				SolutionTypes: pulumi.StringArray{
 //					pulumi.String("SOLUTION_TYPE_SEARCH"),
 //				},
-//				CreateAdvancedSiteSearch: pulumi.Bool(false),
+//				CreateAdvancedSiteSearch:  pulumi.Bool(false),
+//				SkipDefaultSchemaCreation: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -165,6 +166,14 @@ type DataStore struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// A boolean flag indicating whether to skip the default schema creation for
+	// the data store. Only enable this flag if you are certain that the default
+	// schema is incompatible with your use case.
+	// If set to true, you must manually create a schema for the data store
+	// before any documents can be ingested.
+	// This flag cannot be specified if `data_store.starting_schema` is
+	// specified.
+	SkipDefaultSchemaCreation pulumi.BoolPtrOutput `pulumi:"skipDefaultSchemaCreation"`
 	// The solutions that the data store enrolls.
 	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
 	SolutionTypes pulumi.StringArrayOutput `pulumi:"solutionTypes"`
@@ -250,6 +259,14 @@ type dataStoreState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A boolean flag indicating whether to skip the default schema creation for
+	// the data store. Only enable this flag if you are certain that the default
+	// schema is incompatible with your use case.
+	// If set to true, you must manually create a schema for the data store
+	// before any documents can be ingested.
+	// This flag cannot be specified if `data_store.starting_schema` is
+	// specified.
+	SkipDefaultSchemaCreation *bool `pulumi:"skipDefaultSchemaCreation"`
 	// The solutions that the data store enrolls.
 	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
 	SolutionTypes []string `pulumi:"solutionTypes"`
@@ -291,6 +308,14 @@ type DataStoreState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A boolean flag indicating whether to skip the default schema creation for
+	// the data store. Only enable this flag if you are certain that the default
+	// schema is incompatible with your use case.
+	// If set to true, you must manually create a schema for the data store
+	// before any documents can be ingested.
+	// This flag cannot be specified if `data_store.starting_schema` is
+	// specified.
+	SkipDefaultSchemaCreation pulumi.BoolPtrInput
 	// The solutions that the data store enrolls.
 	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
 	SolutionTypes pulumi.StringArrayInput
@@ -327,6 +352,14 @@ type dataStoreArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A boolean flag indicating whether to skip the default schema creation for
+	// the data store. Only enable this flag if you are certain that the default
+	// schema is incompatible with your use case.
+	// If set to true, you must manually create a schema for the data store
+	// before any documents can be ingested.
+	// This flag cannot be specified if `data_store.starting_schema` is
+	// specified.
+	SkipDefaultSchemaCreation *bool `pulumi:"skipDefaultSchemaCreation"`
 	// The solutions that the data store enrolls.
 	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
 	SolutionTypes []string `pulumi:"solutionTypes"`
@@ -360,6 +393,14 @@ type DataStoreArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A boolean flag indicating whether to skip the default schema creation for
+	// the data store. Only enable this flag if you are certain that the default
+	// schema is incompatible with your use case.
+	// If set to true, you must manually create a schema for the data store
+	// before any documents can be ingested.
+	// This flag cannot be specified if `data_store.starting_schema` is
+	// specified.
+	SkipDefaultSchemaCreation pulumi.BoolPtrInput
 	// The solutions that the data store enrolls.
 	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
 	SolutionTypes pulumi.StringArrayInput
@@ -518,6 +559,17 @@ func (o DataStoreOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o DataStoreOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A boolean flag indicating whether to skip the default schema creation for
+// the data store. Only enable this flag if you are certain that the default
+// schema is incompatible with your use case.
+// If set to true, you must manually create a schema for the data store
+// before any documents can be ingested.
+// This flag cannot be specified if `data_store.starting_schema` is
+// specified.
+func (o DataStoreOutput) SkipDefaultSchemaCreation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStore) pulumi.BoolPtrOutput { return v.SkipDefaultSchemaCreation }).(pulumi.BoolPtrOutput)
 }
 
 // The solutions that the data store enrolls.

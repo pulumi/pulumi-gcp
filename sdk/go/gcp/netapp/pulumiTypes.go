@@ -878,10 +878,10 @@ type VolumeReplicationTransferStat struct {
 	// A message describing the cause of the last transfer failure.
 	LastTransferError *string `pulumi:"lastTransferError"`
 	// (Output)
-	// Total time taken so far during current transfer.
+	// Cumulative time taken across all transfers for the replication relationship.
 	TotalTransferDuration *string `pulumi:"totalTransferDuration"`
 	// (Output)
-	// Number of bytes transferred so far in current transfer.
+	// Cumulative bytes transferred so far for the replication relationship.
 	TransferBytes *string `pulumi:"transferBytes"`
 	// (Output)
 	// Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -918,10 +918,10 @@ type VolumeReplicationTransferStatArgs struct {
 	// A message describing the cause of the last transfer failure.
 	LastTransferError pulumi.StringPtrInput `pulumi:"lastTransferError"`
 	// (Output)
-	// Total time taken so far during current transfer.
+	// Cumulative time taken across all transfers for the replication relationship.
 	TotalTransferDuration pulumi.StringPtrInput `pulumi:"totalTransferDuration"`
 	// (Output)
-	// Number of bytes transferred so far in current transfer.
+	// Cumulative bytes transferred so far for the replication relationship.
 	TransferBytes pulumi.StringPtrInput `pulumi:"transferBytes"`
 	// (Output)
 	// Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -1012,13 +1012,13 @@ func (o VolumeReplicationTransferStatOutput) LastTransferError() pulumi.StringPt
 }
 
 // (Output)
-// Total time taken so far during current transfer.
+// Cumulative time taken across all transfers for the replication relationship.
 func (o VolumeReplicationTransferStatOutput) TotalTransferDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.TotalTransferDuration }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
-// Number of bytes transferred so far in current transfer.
+// Cumulative bytes transferred so far for the replication relationship.
 func (o VolumeReplicationTransferStatOutput) TransferBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.TransferBytes }).(pulumi.StringPtrOutput)
 }

@@ -34,12 +34,12 @@ import * as utilities from "../utilities";
  * const _default = new gcp.networkconnectivity.RegionalEndpoint("default", {
  *     name: "my-rep",
  *     location: "us-central1",
- *     targetGoogleApi: "boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com",
+ *     targetGoogleApi: "storage.us-central1.p.rep.googleapis.com",
  *     accessType: "REGIONAL",
  *     address: "192.168.0.5",
  *     network: myNetwork.id,
  *     subnetwork: mySubnetwork.id,
- *     description: "My RegionalEndpoint targeting Google API boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com",
+ *     description: "My RegionalEndpoint targeting Google API storage.us-central1.p.rep.googleapis.com",
  *     labels: {
  *         env: "default",
  *     },
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.networkconnectivity.RegionalEndpoint("default", {
  *     name: "my-rep",
  *     location: "us-central1",
- *     targetGoogleApi: "boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com",
+ *     targetGoogleApi: "storage.us-central1.p.rep.googleapis.com",
  *     accessType: "GLOBAL",
  *     address: "192.168.0.4",
  *     network: myNetwork.id,

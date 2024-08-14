@@ -101,6 +101,7 @@ namespace Pulumi.Gcp.Organizations
     {
         public readonly bool AutoCreateNetwork;
         public readonly string BillingAccount;
+        public readonly string DeletionPolicy;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string FolderId;
         /// <summary>
@@ -124,6 +125,8 @@ namespace Pulumi.Gcp.Organizations
 
             string billingAccount,
 
+            string deletionPolicy,
+
             ImmutableDictionary<string, string> effectiveLabels,
 
             string folderId,
@@ -146,6 +149,7 @@ namespace Pulumi.Gcp.Organizations
         {
             AutoCreateNetwork = autoCreateNetwork;
             BillingAccount = billingAccount;
+            DeletionPolicy = deletionPolicy;
             EffectiveLabels = effectiveLabels;
             FolderId = folderId;
             Id = id;

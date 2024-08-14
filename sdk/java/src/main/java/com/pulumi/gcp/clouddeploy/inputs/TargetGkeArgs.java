@@ -46,11 +46,27 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.internalIp);
     }
 
+    /**
+     * Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+     * 
+     */
+    @Import(name="proxyUrl")
+    private @Nullable Output<String> proxyUrl;
+
+    /**
+     * @return Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+     * 
+     */
+    public Optional<Output<String>> proxyUrl() {
+        return Optional.ofNullable(this.proxyUrl);
+    }
+
     private TargetGkeArgs() {}
 
     private TargetGkeArgs(TargetGkeArgs $) {
         this.cluster = $.cluster;
         this.internalIp = $.internalIp;
+        this.proxyUrl = $.proxyUrl;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder internalIp(Boolean internalIp) {
             return internalIp(Output.of(internalIp));
+        }
+
+        /**
+         * @param proxyUrl Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyUrl(@Nullable Output<String> proxyUrl) {
+            $.proxyUrl = proxyUrl;
+            return this;
+        }
+
+        /**
+         * @param proxyUrl Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyUrl(String proxyUrl) {
+            return proxyUrl(Output.of(proxyUrl));
         }
 
         public TargetGkeArgs build() {

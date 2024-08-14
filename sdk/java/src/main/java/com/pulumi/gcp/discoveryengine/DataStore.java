@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  *             .contentConfig("NO_CONTENT")
  *             .solutionTypes("SOLUTION_TYPE_SEARCH")
  *             .createAdvancedSiteSearch(false)
+ *             .skipDefaultSchemaCreation(false)
  *             .build());
  * 
  *     }
@@ -331,6 +332,32 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     * 
+     */
+    @Export(name="skipDefaultSchemaCreation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipDefaultSchemaCreation;
+
+    /**
+     * @return A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     * 
+     */
+    public Output<Optional<Boolean>> skipDefaultSchemaCreation() {
+        return Codegen.optional(this.skipDefaultSchemaCreation);
     }
     /**
      * The solutions that the data store enrolls.

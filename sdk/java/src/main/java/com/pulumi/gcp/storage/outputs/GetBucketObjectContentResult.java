@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentCustomerEncryption;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentRetention;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,7 @@ public final class GetBucketObjectContentResult {
     private List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
     private String detectMd5hash;
     private Boolean eventBasedHold;
+    private Integer generation;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -86,6 +88,9 @@ public final class GetBucketObjectContentResult {
     }
     public Boolean eventBasedHold() {
         return this.eventBasedHold;
+    }
+    public Integer generation() {
+        return this.generation;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -148,6 +153,7 @@ public final class GetBucketObjectContentResult {
         private List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
         private String detectMd5hash;
         private Boolean eventBasedHold;
+        private Integer generation;
         private String id;
         private String kmsKeyName;
         private String md5hash;
@@ -174,6 +180,7 @@ public final class GetBucketObjectContentResult {
     	      this.customerEncryptions = defaults.customerEncryptions;
     	      this.detectMd5hash = defaults.detectMd5hash;
     	      this.eventBasedHold = defaults.eventBasedHold;
+    	      this.generation = defaults.generation;
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.md5hash = defaults.md5hash;
@@ -275,6 +282,14 @@ public final class GetBucketObjectContentResult {
               throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "eventBasedHold");
             }
             this.eventBasedHold = eventBasedHold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder generation(Integer generation) {
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
@@ -389,6 +404,7 @@ public final class GetBucketObjectContentResult {
             _resultValue.customerEncryptions = customerEncryptions;
             _resultValue.detectMd5hash = detectMd5hash;
             _resultValue.eventBasedHold = eventBasedHold;
+            _resultValue.generation = generation;
             _resultValue.id = id;
             _resultValue.kmsKeyName = kmsKeyName;
             _resultValue.md5hash = md5hash;

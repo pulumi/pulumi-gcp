@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  * const folder = new gcp.storage.ManagedFolder("folder", {
  *     bucket: bucket.name,
  *     name: "managed/folder/name/",
+ *     forceDestroy: true,
  * });
  * ```
  *
@@ -97,6 +98,13 @@ export class ManagedFolder extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Allows the deletion of a managed folder even if contains
+     * objects. If a non-empty managed folder is deleted, any objects
+     * within the folder will remain in a simulated folder with the
+     * same name.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * The metadata generation of the managed folder.
      */
     public /*out*/ readonly metageneration!: pulumi.Output<string>;
@@ -132,6 +140,7 @@ export class ManagedFolder extends pulumi.CustomResource {
             const state = argsOrState as ManagedFolderState | undefined;
             resourceInputs["bucket"] = state ? state.bucket : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["metageneration"] = state ? state.metageneration : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -142,6 +151,7 @@ export class ManagedFolder extends pulumi.CustomResource {
                 throw new Error("Missing required property 'bucket'");
             }
             resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["metageneration"] = undefined /*out*/;
@@ -165,6 +175,13 @@ export interface ManagedFolderState {
      * The timestamp at which this managed folder was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Allows the deletion of a managed folder even if contains
+     * objects. If a non-empty managed folder is deleted, any objects
+     * within the folder will remain in a simulated folder with the
+     * same name.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * The metadata generation of the managed folder.
      */
@@ -195,6 +212,13 @@ export interface ManagedFolderArgs {
      * The name of the bucket that contains the managed folder.
      */
     bucket: pulumi.Input<string>;
+    /**
+     * Allows the deletion of a managed folder even if contains
+     * objects. If a non-empty managed folder is deleted, any objects
+     * within the folder will remain in a simulated folder with the
+     * same name.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.

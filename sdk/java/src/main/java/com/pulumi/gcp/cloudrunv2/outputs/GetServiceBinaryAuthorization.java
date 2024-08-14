@@ -17,6 +17,11 @@ public final class GetServiceBinaryAuthorization {
      */
     private String breakglassJustification;
     /**
+     * @return The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+     * 
+     */
+    private String policy;
+    /**
      * @return If True, indicates to use the default project&#39;s binary authorization policy. If False, binary authorization will be disabled.
      * 
      */
@@ -29,6 +34,13 @@ public final class GetServiceBinaryAuthorization {
      */
     public String breakglassJustification() {
         return this.breakglassJustification;
+    }
+    /**
+     * @return The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+     * 
+     */
+    public String policy() {
+        return this.policy;
     }
     /**
      * @return If True, indicates to use the default project&#39;s binary authorization policy. If False, binary authorization will be disabled.
@@ -48,11 +60,13 @@ public final class GetServiceBinaryAuthorization {
     @CustomType.Builder
     public static final class Builder {
         private String breakglassJustification;
+        private String policy;
         private Boolean useDefault;
         public Builder() {}
         public Builder(GetServiceBinaryAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.breakglassJustification = defaults.breakglassJustification;
+    	      this.policy = defaults.policy;
     	      this.useDefault = defaults.useDefault;
         }
 
@@ -62,6 +76,14 @@ public final class GetServiceBinaryAuthorization {
               throw new MissingRequiredPropertyException("GetServiceBinaryAuthorization", "breakglassJustification");
             }
             this.breakglassJustification = breakglassJustification;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder policy(String policy) {
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetServiceBinaryAuthorization", "policy");
+            }
+            this.policy = policy;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +97,7 @@ public final class GetServiceBinaryAuthorization {
         public GetServiceBinaryAuthorization build() {
             final var _resultValue = new GetServiceBinaryAuthorization();
             _resultValue.breakglassJustification = breakglassJustification;
+            _resultValue.policy = policy;
             _resultValue.useDefault = useDefault;
             return _resultValue;
         }

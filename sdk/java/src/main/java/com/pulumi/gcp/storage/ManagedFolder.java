@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.ManagedFolderArgs;
 import com.pulumi.gcp.storage.inputs.ManagedFolderState;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -70,6 +72,7 @@ import javax.annotation.Nullable;
  *         var folder = new ManagedFolder("folder", ManagedFolderArgs.builder()
  *             .bucket(bucket.name())
  *             .name("managed/folder/name/")
+ *             .forceDestroy(true)
  *             .build());
  * 
  *     }
@@ -126,6 +129,26 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Allows the deletion of a managed folder even if contains
+     * objects. If a non-empty managed folder is deleted, any objects
+     * within the folder will remain in a simulated folder with the
+     * same name.
+     * 
+     */
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return Allows the deletion of a managed folder even if contains
+     * objects. If a non-empty managed folder is deleted, any objects
+     * within the folder will remain in a simulated folder with the
+     * same name.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
     }
     /**
      * The metadata generation of the managed folder.

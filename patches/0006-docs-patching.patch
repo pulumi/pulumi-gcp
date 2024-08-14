@@ -522,12 +522,12 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 77abc0296..46bd484a8 100644
+index bc7b99b97..2e32cd9b9 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
-@@ -32,24 +32,21 @@ To get more information about Environments, see:
+@@ -31,24 +31,21 @@ To get more information about Environments, see:
+   of Airflow, bugfixes, and security updates. We recommend using
    Cloud Composer 2 or Cloud Composer 3 instead.
- </Note>
  
 -Several special considerations apply to managing Cloud Composer environments 
 -with Terraform:
@@ -1611,7 +1611,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 411ac707c..117c575f2 100644
+index 73120a1c1..93f2c3d03 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1702,7 +1702,7 @@ index 411ac707c..117c575f2 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -870,8 +888,6 @@ gvnic {
+@@ -874,8 +892,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1711,7 +1711,7 @@ index 411ac707c..117c575f2 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -892,7 +908,7 @@ gvnic {
+@@ -896,7 +912,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1720,7 +1720,7 @@ index 411ac707c..117c575f2 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -917,10 +933,7 @@ gvnic {
+@@ -921,10 +937,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1732,7 +1732,7 @@ index 411ac707c..117c575f2 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -932,13 +945,14 @@ gvnic {
+@@ -936,13 +949,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1754,7 +1754,7 @@ index 411ac707c..117c575f2 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -991,6 +1005,20 @@ sole_tenant_config {
+@@ -995,6 +1009,20 @@ sole_tenant_config {
  
  * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
@@ -1775,7 +1775,7 @@ index 411ac707c..117c575f2 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1151,7 +1179,7 @@ for more details. This field only applies to private clusters, when
+@@ -1155,7 +1183,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1784,7 +1784,7 @@ index 411ac707c..117c575f2 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1252,9 +1280,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1256,9 +1284,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2707,7 +2707,7 @@ index 1e419d9e4..16c9465d2 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project.html.markdown b/website/docs/r/google_project.html.markdown
-index 00ee09dc4..304699bf9 100644
+index fff53a4a8..f9dc5f497 100644
 --- a/website/docs/r/google_project.html.markdown
 +++ b/website/docs/r/google_project.html.markdown
 @@ -11,15 +11,13 @@ Allows creation and management of a Google Cloud Platform project.
@@ -2738,11 +2738,11 @@ index 00ee09dc4..304699bf9 100644
      See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
      for more details.
  
--* `skip_delete` - (Optional) If true, the Terraform resource can be deleted
-+* `skip_delete` - (Optional) If true, the resource can be deleted
-     without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
- 
- * `labels` - (Optional) A set of key/value label pairs to assign to the project.
+-* `skip_delete` - (Optional) If true, the Terraform resource can be deleted without
++* `skip_delete` - (Optional) If true, the resource can be deleted without
+     deleting the Project via the Google API. `skip_delete` is deprecated and will be
+     removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+     can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
 diff --git a/website/docs/r/google_project_iam.html.markdown b/website/docs/r/google_project_iam.html.markdown
 index 46cae09f8..69b15c96e 100644
 --- a/website/docs/r/google_project_iam.html.markdown
@@ -3599,7 +3599,7 @@ index 2ac02739f..da87bdaae 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 429b84d0d..195b61f47 100644
+index da7cc31cf..56e5111f0 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3790,7 +3790,7 @@ index 762e52b5f..e0fd45e24 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/storage_bucket_object.html.markdown b/website/docs/r/storage_bucket_object.html.markdown
-index 92eec523d..2ecef695c 100644
+index c58c1c856..4278b76f6 100644
 --- a/website/docs/r/storage_bucket_object.html.markdown
 +++ b/website/docs/r/storage_bucket_object.html.markdown
 @@ -48,7 +48,7 @@ The following arguments are supported:

@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGetArgs>? ConfigSync { get; set; }
 
         /// <summary>
+        /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        /// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        /// </summary>
+        [Input("management")]
+        public Input<string>? Management { get; set; }
+
+        /// <summary>
         /// Version of ACM installed
         /// </summary>
         [Input("version")]

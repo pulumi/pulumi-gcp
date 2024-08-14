@@ -75,6 +75,7 @@ export interface GetBucketObjectContentResult {
     readonly customerEncryptions: outputs.storage.GetBucketObjectContentCustomerEncryption[];
     readonly detectMd5hash: string;
     readonly eventBasedHold: boolean;
+    readonly generation: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

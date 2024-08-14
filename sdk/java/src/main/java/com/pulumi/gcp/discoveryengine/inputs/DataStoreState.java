@@ -210,6 +210,33 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     * 
+     */
+    @Import(name="skipDefaultSchemaCreation")
+    private @Nullable Output<Boolean> skipDefaultSchemaCreation;
+
+    /**
+     * @return A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     * 
+     */
+    public Optional<Output<Boolean>> skipDefaultSchemaCreation() {
+        return Optional.ofNullable(this.skipDefaultSchemaCreation);
+    }
+
+    /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
      * 
@@ -240,6 +267,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.skipDefaultSchemaCreation = $.skipDefaultSchemaCreation;
         this.solutionTypes = $.solutionTypes;
     }
 
@@ -516,6 +544,39 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param skipDefaultSchemaCreation A boolean flag indicating whether to skip the default schema creation for
+         * the data store. Only enable this flag if you are certain that the default
+         * schema is incompatible with your use case.
+         * If set to true, you must manually create a schema for the data store
+         * before any documents can be ingested.
+         * This flag cannot be specified if `data_store.starting_schema` is
+         * specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipDefaultSchemaCreation(@Nullable Output<Boolean> skipDefaultSchemaCreation) {
+            $.skipDefaultSchemaCreation = skipDefaultSchemaCreation;
+            return this;
+        }
+
+        /**
+         * @param skipDefaultSchemaCreation A boolean flag indicating whether to skip the default schema creation for
+         * the data store. Only enable this flag if you are certain that the default
+         * schema is incompatible with your use case.
+         * If set to true, you must manually create a schema for the data store
+         * before any documents can be ingested.
+         * This flag cannot be specified if `data_store.starting_schema` is
+         * specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipDefaultSchemaCreation(Boolean skipDefaultSchemaCreation) {
+            return skipDefaultSchemaCreation(Output.of(skipDefaultSchemaCreation));
         }
 
         /**

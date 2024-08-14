@@ -20,6 +20,20 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("autoProvisioningDefaults")]
         public Input<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs>? AutoProvisioningDefaults { get; set; }
 
+        [Input("autoProvisioningLocations")]
+        private InputList<string>? _autoProvisioningLocations;
+
+        /// <summary>
+        /// The list of Google Compute Engine 
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// NodePool's nodes can be created by NAP.
+        /// </summary>
+        public InputList<string> AutoProvisioningLocations
+        {
+            get => _autoProvisioningLocations ?? (_autoProvisioningLocations = new InputList<string>());
+            set => _autoProvisioningLocations = value;
+        }
+
         /// <summary>
         /// Configuration
         /// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)

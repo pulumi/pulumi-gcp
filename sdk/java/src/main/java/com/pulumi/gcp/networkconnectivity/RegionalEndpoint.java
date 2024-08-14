@@ -71,12 +71,12 @@ import javax.annotation.Nullable;
  *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()
  *             .name("my-rep")
  *             .location("us-central1")
- *             .targetGoogleApi("boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com")
+ *             .targetGoogleApi("storage.us-central1.p.rep.googleapis.com")
  *             .accessType("REGIONAL")
  *             .address("192.168.0.5")
  *             .network(myNetwork.id())
  *             .subnetwork(mySubnetwork.id())
- *             .description("My RegionalEndpoint targeting Google API boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com")
+ *             .description("My RegionalEndpoint targeting Google API storage.us-central1.p.rep.googleapis.com")
  *             .labels(Map.of("env", "default"))
  *             .build());
  * 
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()
  *             .name("my-rep")
  *             .location("us-central1")
- *             .targetGoogleApi("boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com")
+ *             .targetGoogleApi("storage.us-central1.p.rep.googleapis.com")
  *             .accessType("GLOBAL")
  *             .address("192.168.0.4")
  *             .network(myNetwork.id())

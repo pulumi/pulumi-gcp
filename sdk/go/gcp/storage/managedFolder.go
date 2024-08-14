@@ -55,8 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = storage.NewManagedFolder(ctx, "folder", &storage.ManagedFolderArgs{
-//				Bucket: bucket.Name,
-//				Name:   pulumi.String("managed/folder/name/"),
+//				Bucket:       bucket.Name,
+//				Name:         pulumi.String("managed/folder/name/"),
+//				ForceDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -91,6 +92,11 @@ type ManagedFolder struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The timestamp at which this managed folder was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Allows the deletion of a managed folder even if contains
+	// objects. If a non-empty managed folder is deleted, any objects
+	// within the folder will remain in a simulated folder with the
+	// same name.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The metadata generation of the managed folder.
 	Metageneration pulumi.StringOutput `pulumi:"metageneration"`
 	// The name of the managed folder expressed as a path. Must include
@@ -141,6 +147,11 @@ type managedFolderState struct {
 	Bucket *string `pulumi:"bucket"`
 	// The timestamp at which this managed folder was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Allows the deletion of a managed folder even if contains
+	// objects. If a non-empty managed folder is deleted, any objects
+	// within the folder will remain in a simulated folder with the
+	// same name.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The metadata generation of the managed folder.
 	Metageneration *string `pulumi:"metageneration"`
 	// The name of the managed folder expressed as a path. Must include
@@ -159,6 +170,11 @@ type ManagedFolderState struct {
 	Bucket pulumi.StringPtrInput
 	// The timestamp at which this managed folder was created.
 	CreateTime pulumi.StringPtrInput
+	// Allows the deletion of a managed folder even if contains
+	// objects. If a non-empty managed folder is deleted, any objects
+	// within the folder will remain in a simulated folder with the
+	// same name.
+	ForceDestroy pulumi.BoolPtrInput
 	// The metadata generation of the managed folder.
 	Metageneration pulumi.StringPtrInput
 	// The name of the managed folder expressed as a path. Must include
@@ -179,6 +195,11 @@ func (ManagedFolderState) ElementType() reflect.Type {
 type managedFolderArgs struct {
 	// The name of the bucket that contains the managed folder.
 	Bucket string `pulumi:"bucket"`
+	// Allows the deletion of a managed folder even if contains
+	// objects. If a non-empty managed folder is deleted, any objects
+	// within the folder will remain in a simulated folder with the
+	// same name.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
 	//
@@ -190,6 +211,11 @@ type managedFolderArgs struct {
 type ManagedFolderArgs struct {
 	// The name of the bucket that contains the managed folder.
 	Bucket pulumi.StringInput
+	// Allows the deletion of a managed folder even if contains
+	// objects. If a non-empty managed folder is deleted, any objects
+	// within the folder will remain in a simulated folder with the
+	// same name.
+	ForceDestroy pulumi.BoolPtrInput
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
 	//
@@ -292,6 +318,14 @@ func (o ManagedFolderOutput) Bucket() pulumi.StringOutput {
 // The timestamp at which this managed folder was created.
 func (o ManagedFolderOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedFolder) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Allows the deletion of a managed folder even if contains
+// objects. If a non-empty managed folder is deleted, any objects
+// within the folder will remain in a simulated folder with the
+// same name.
+func (o ManagedFolderOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedFolder) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // The metadata generation of the managed folder.

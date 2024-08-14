@@ -153,6 +153,10 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public readonly bool EventBasedHold;
         /// <summary>
+        /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+        /// </summary>
+        public readonly int Generation;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -209,6 +213,8 @@ namespace Pulumi.Gcp.Storage
 
             bool eventBasedHold,
 
+            int generation,
+
             string id,
 
             string kmsKeyName,
@@ -244,6 +250,7 @@ namespace Pulumi.Gcp.Storage
             CustomerEncryptions = customerEncryptions;
             DetectMd5hash = detectMd5hash;
             EventBasedHold = eventBasedHold;
+            Generation = generation;
             Id = id;
             KmsKeyName = kmsKeyName;
             Md5hash = md5hash;

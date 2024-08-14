@@ -45,13 +45,13 @@ public final class VolumeReplicationTransferStat {
     private @Nullable String lastTransferError;
     /**
      * @return (Output)
-     * Total time taken so far during current transfer.
+     * Cumulative time taken across all transfers for the replication relationship.
      * 
      */
     private @Nullable String totalTransferDuration;
     /**
      * @return (Output)
-     * Number of bytes transferred so far in current transfer.
+     * Cumulative bytes transferred so far for the replication relationship.
      * 
      */
     private @Nullable String transferBytes;
@@ -107,7 +107,7 @@ public final class VolumeReplicationTransferStat {
     }
     /**
      * @return (Output)
-     * Total time taken so far during current transfer.
+     * Cumulative time taken across all transfers for the replication relationship.
      * 
      */
     public Optional<String> totalTransferDuration() {
@@ -115,7 +115,7 @@ public final class VolumeReplicationTransferStat {
     }
     /**
      * @return (Output)
-     * Number of bytes transferred so far in current transfer.
+     * Cumulative bytes transferred so far for the replication relationship.
      * 
      */
     public Optional<String> transferBytes() {

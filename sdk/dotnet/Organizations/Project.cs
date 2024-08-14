@@ -107,6 +107,9 @@ namespace Pulumi.Gcp.Organizations
         [Output("billingAccount")]
         public Output<string?> BillingAccount { get; private set; } = null!;
 
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
@@ -167,8 +170,11 @@ namespace Pulumi.Gcp.Organizations
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        /// If true, the resource can be deleted without
+        /// deleting the Project via the Google API. `skip_delete` is deprecated and will be
+        /// removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+        /// can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+        /// to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         /// </summary>
         [Output("skipDelete")]
         public Output<bool> SkipDelete { get; private set; } = null!;
@@ -242,6 +248,9 @@ namespace Pulumi.Gcp.Organizations
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }
 
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// The numeric ID of the folder this project should be
         /// created under. Only one of `org_id` or `folder_id` may be
@@ -290,8 +299,11 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        /// If true, the resource can be deleted without
+        /// deleting the Project via the Google API. `skip_delete` is deprecated and will be
+        /// removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+        /// can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+        /// to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         /// </summary>
         [Input("skipDelete")]
         public Input<bool>? SkipDelete { get; set; }
@@ -321,6 +333,9 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }
+
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
@@ -408,8 +423,11 @@ namespace Pulumi.Gcp.Organizations
         }
 
         /// <summary>
-        /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        /// If true, the resource can be deleted without
+        /// deleting the Project via the Google API. `skip_delete` is deprecated and will be
+        /// removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+        /// can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+        /// to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         /// </summary>
         [Input("skipDelete")]
         public Input<bool>? SkipDelete { get; set; }

@@ -25,10 +25,24 @@ import * as utilities from "../utilities";
  *     secret: secret.id,
  *     secretData: "secret-data",
  * });
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "example-key-ring",
+ *     location: "us-central1",
+ * });
+ * const exampleKey = new gcp.kms.CryptoKey("example_key", {
+ *     name: "example-crypto-key-name",
+ *     keyRing: keyring.id,
+ * });
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("crypto_key_binding", {
+ *     cryptoKeyId: exampleKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [`serviceAccount:service-${project.number}@gcp-sa-dataform.iam.gserviceaccount.com`],
+ * });
  * const dataformRepository = new gcp.dataform.Repository("dataform_repository", {
  *     name: "dataform_repository",
  *     displayName: "dataform_repository",
  *     npmrcEnvironmentVariablesSecretVersion: secretVersion.id,
+ *     kmsKeyName: exampleKey.id,
  *     labels: {
  *         label_foo1: "label-bar1",
  *     },
@@ -42,6 +56,8 @@ import * as utilities from "../utilities";
  *         schemaSuffix: "_suffix",
  *         tablePrefix: "prefix_",
  *     },
+ * }, {
+ *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
  *
@@ -117,6 +133,11 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly gitRemoteSettings!: pulumi.Output<outputs.dataform.RepositoryGitRemoteSettings | undefined>;
     /**
+     * Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+     * It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+     */
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    /**
      * Optional. Repository user labels.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
@@ -175,6 +196,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gitRemoteSettings"] = state ? state.gitRemoteSettings : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = state ? state.npmrcEnvironmentVariablesSecretVersion : undefined;
@@ -187,6 +209,7 @@ export class Repository extends pulumi.CustomResource {
             const args = argsOrState as RepositoryArgs | undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["gitRemoteSettings"] = args ? args.gitRemoteSettings : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = args ? args.npmrcEnvironmentVariablesSecretVersion : undefined;
@@ -221,6 +244,11 @@ export interface RepositoryState {
      * Structure is documented below.
      */
     gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
+    /**
+     * Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+     * It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Optional. Repository user labels.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -278,6 +306,11 @@ export interface RepositoryArgs {
      * Structure is documented below.
      */
     gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
+    /**
+     * Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+     * It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Optional. Repository user labels.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

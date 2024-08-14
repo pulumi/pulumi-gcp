@@ -19,6 +19,12 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
      */
     private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSync configSync;
     /**
+     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+     * 
+     */
+    private @Nullable String management;
+    /**
      * @return Version of ACM installed
      * 
      */
@@ -32,6 +38,14 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
      */
     public Optional<FeatureFleetDefaultMemberConfigConfigmanagementConfigSync> configSync() {
         return Optional.ofNullable(this.configSync);
+    }
+    /**
+     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+     * 
+     */
+    public Optional<String> management() {
+        return Optional.ofNullable(this.management);
     }
     /**
      * @return Version of ACM installed
@@ -51,11 +65,13 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSync configSync;
+        private @Nullable String management;
         private @Nullable String version;
         public Builder() {}
         public Builder(FeatureFleetDefaultMemberConfigConfigmanagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configSync = defaults.configSync;
+    	      this.management = defaults.management;
     	      this.version = defaults.version;
         }
 
@@ -63,6 +79,12 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
         public Builder configSync(@Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSync configSync) {
 
             this.configSync = configSync;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder management(@Nullable String management) {
+
+            this.management = management;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +96,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
         public FeatureFleetDefaultMemberConfigConfigmanagement build() {
             final var _resultValue = new FeatureFleetDefaultMemberConfigConfigmanagement();
             _resultValue.configSync = configSync;
+            _resultValue.management = management;
             _resultValue.version = version;
             return _resultValue;
         }

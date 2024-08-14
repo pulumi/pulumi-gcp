@@ -27,7 +27,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -61,6 +61,9 @@ class GetBucketObjectResult:
         if event_based_hold and not isinstance(event_based_hold, bool):
             raise TypeError("Expected argument 'event_based_hold' to be a bool")
         pulumi.set(__self__, "event_based_hold", event_based_hold)
+        if generation and not isinstance(generation, int):
+            raise TypeError("Expected argument 'generation' to be a int")
+        pulumi.set(__self__, "generation", generation)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -177,6 +180,14 @@ class GetBucketObjectResult:
 
     @property
     @pulumi.getter
+    def generation(self) -> int:
+        """
+        (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+        """
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
     def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
@@ -273,6 +284,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             customer_encryptions=self.customer_encryptions,
             detect_md5hash=self.detect_md5hash,
             event_based_hold=self.event_based_hold,
+            generation=self.generation,
             id=self.id,
             kms_key_name=self.kms_key_name,
             md5hash=self.md5hash,
@@ -330,6 +342,7 @@ def get_bucket_object(bucket: Optional[str] = None,
         customer_encryptions=pulumi.get(__ret__, 'customer_encryptions'),
         detect_md5hash=pulumi.get(__ret__, 'detect_md5hash'),
         event_based_hold=pulumi.get(__ret__, 'event_based_hold'),
+        generation=pulumi.get(__ret__, 'generation'),
         id=pulumi.get(__ret__, 'id'),
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         md5hash=pulumi.get(__ret__, 'md5hash'),

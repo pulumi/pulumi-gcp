@@ -37,10 +37,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
  * import com.pulumi.gcp.dataform.Repository;
  * import com.pulumi.gcp.dataform.RepositoryArgs;
  * import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
  * import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,12 +55,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("my-secret")
  *             .replication(SecretReplicationArgs.builder()
@@ -66,10 +73,27 @@ import javax.annotation.Nullable;
  *             .secretData("secret-data")
  *             .build());
  * 
+ *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
+ *             .name("example-key-ring")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var exampleKey = new CryptoKey("exampleKey", CryptoKeyArgs.builder()
+ *             .name("example-crypto-key-name")
+ *             .keyRing(keyring.id())
+ *             .build());
+ * 
+ *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
+ *             .cryptoKeyId(exampleKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-dataform.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
  *         var dataformRepository = new Repository("dataformRepository", RepositoryArgs.builder()
  *             .name("dataform_repository")
  *             .displayName("dataform_repository")
  *             .npmrcEnvironmentVariablesSecretVersion(secretVersion.id())
+ *             .kmsKeyName(exampleKey.id())
  *             .labels(Map.of("label_foo1", "label-bar1"))
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
  *                 .url("https://github.com/OWNER/REPOSITORY.git")
@@ -81,10 +105,12 @@ import javax.annotation.Nullable;
  *                 .schemaSuffix("_suffix")
  *                 .tablePrefix("prefix_")
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyBinding)
+ *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -165,6 +191,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RepositoryGitRemoteSettings>> gitRemoteSettings() {
         return Codegen.optional(this.gitRemoteSettings);
+    }
+    /**
+     * Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+     * It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyName;
+
+    /**
+     * @return Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+     * It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    public Output<Optional<String>> kmsKeyName() {
+        return Codegen.optional(this.kmsKeyName);
     }
     /**
      * Optional. Repository user labels.

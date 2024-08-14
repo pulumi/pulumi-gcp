@@ -111,14 +111,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Specifies if connections must use Cloud SQL connectors.
+     * Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     @Import(name="connectorEnforcement")
     private @Nullable Output<String> connectorEnforcement;
 
     /**
-     * @return Specifies if connections must use Cloud SQL connectors.
+     * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     public Optional<Output<String>> connectorEnforcement() {
@@ -568,7 +568,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param connectorEnforcement Specifies if connections must use Cloud SQL connectors.
+         * @param connectorEnforcement Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param connectorEnforcement Specifies if connections must use Cloud SQL connectors.
+         * @param connectorEnforcement Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          * 
          * @return builder
          * 
