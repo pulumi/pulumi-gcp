@@ -356,7 +356,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeystoresAliasesSelfSignedCert(String name) {
+    public KeystoresAliasesSelfSignedCert(java.lang.String name) {
         this(name, KeystoresAliasesSelfSignedCertArgs.Empty);
     }
     /**
@@ -364,7 +364,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeystoresAliasesSelfSignedCert(String name, KeystoresAliasesSelfSignedCertArgs args) {
+    public KeystoresAliasesSelfSignedCert(java.lang.String name, KeystoresAliasesSelfSignedCertArgs args) {
         this(name, args, null);
     }
     /**
@@ -373,12 +373,12 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeystoresAliasesSelfSignedCert(String name, KeystoresAliasesSelfSignedCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KeystoresAliasesSelfSignedCert(java.lang.String name, KeystoresAliasesSelfSignedCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KeystoresAliasesSelfSignedCert(String name, Output<String> id, @Nullable KeystoresAliasesSelfSignedCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert", name, state, makeResourceOptions(options, id));
+    private KeystoresAliasesSelfSignedCert(java.lang.String name, Output<java.lang.String> id, @Nullable KeystoresAliasesSelfSignedCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KeystoresAliasesSelfSignedCertArgs makeArgs(KeystoresAliasesSelfSignedCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -388,7 +388,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
         return args == null ? KeystoresAliasesSelfSignedCertArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -404,7 +404,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeystoresAliasesSelfSignedCert get(String name, Output<String> id, @Nullable KeystoresAliasesSelfSignedCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KeystoresAliasesSelfSignedCert get(java.lang.String name, Output<java.lang.String> id, @Nullable KeystoresAliasesSelfSignedCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KeystoresAliasesSelfSignedCert(name, id, state, options);
     }
 }

@@ -55,16 +55,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/iam.serviceAccountUser")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -78,8 +78,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -105,12 +105,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
@@ -119,11 +119,11 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -150,12 +150,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMBindingConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -172,8 +172,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -201,12 +201,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
  *         // Allow SA service account use the default GCE account
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  *             .member(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -255,12 +255,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that Jane can use")
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMMemberConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -277,8 +277,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -308,16 +308,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/iam.serviceAccountUser")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -331,8 +331,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -358,12 +358,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
@@ -372,11 +372,11 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -403,12 +403,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that only Jane can use")
@@ -417,7 +417,7 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMBinding("admin-account-iam", IAMBindingArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMBindingConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -425,8 +425,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -454,12 +454,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
@@ -470,7 +470,7 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
  *         // Allow SA service account use the default GCE account
@@ -480,8 +480,8 @@ import javax.annotation.Nullable;
  *             .member(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -508,12 +508,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
  *             .displayName("A service account that Jane can use")
@@ -522,7 +522,7 @@ import javax.annotation.Nullable;
  *         var admin_account_iam = new IAMMember("admin-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(sa.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(IAMMemberConditionArgs.builder()
  *                 .title("expires_after_2019_12_31")
  *                 .description("Expiring at midnight of 2019-12-31")
@@ -530,8 +530,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -648,7 +648,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IAMMember(String name) {
+    public IAMMember(java.lang.String name) {
         this(name, IAMMemberArgs.Empty);
     }
     /**
@@ -656,7 +656,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IAMMember(String name, IAMMemberArgs args) {
+    public IAMMember(java.lang.String name, IAMMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -665,12 +665,12 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IAMMember(String name, IAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceaccount/iAMMember:IAMMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IAMMember(java.lang.String name, IAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceaccount/iAMMember:IAMMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IAMMember(String name, Output<String> id, @Nullable IAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceaccount/iAMMember:IAMMember", name, state, makeResourceOptions(options, id));
+    private IAMMember(java.lang.String name, Output<java.lang.String> id, @Nullable IAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceaccount/iAMMember:IAMMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IAMMemberArgs makeArgs(IAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -680,7 +680,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
         return args == null ? IAMMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
@@ -699,7 +699,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IAMMember get(String name, Output<String> id, @Nullable IAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IAMMember get(java.lang.String name, Output<java.lang.String> id, @Nullable IAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IAMMember(name, id, state, options);
     }
 }

@@ -268,6 +268,25 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Secure Source Manager Repository
+        Three different resources help you manage your IAM policy for Secure Source Manager Repository. Each of these resources serves a different use case:
+
+        * `securesourcemanager.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+        * `securesourcemanager.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+        * `securesourcemanager.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `securesourcemanager.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
+
+        > **Note:** `securesourcemanager.RepositoryIamPolicy` **cannot** be used in conjunction with `securesourcemanager.RepositoryIamBinding` and `securesourcemanager.RepositoryIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `securesourcemanager.RepositoryIamBinding` resources **can be** used in conjunction with `securesourcemanager.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## securesourcemanager.RepositoryIamPolicy
 
         ```python
@@ -429,6 +448,25 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             role="roles/securesourcemanager.repoAdmin",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Secure Source Manager Repository
+        Three different resources help you manage your IAM policy for Secure Source Manager Repository. Each of these resources serves a different use case:
+
+        * `securesourcemanager.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+        * `securesourcemanager.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+        * `securesourcemanager.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `securesourcemanager.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
+
+        > **Note:** `securesourcemanager.RepositoryIamPolicy` **cannot** be used in conjunction with `securesourcemanager.RepositoryIamBinding` and `securesourcemanager.RepositoryIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `securesourcemanager.RepositoryIamBinding` resources **can be** used in conjunction with `securesourcemanager.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## securesourcemanager.RepositoryIamPolicy
 

@@ -65,7 +65,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceIamBinding(String name) {
+    public InstanceIamBinding(java.lang.String name) {
         this(name, InstanceIamBindingArgs.Empty);
     }
     /**
@@ -73,7 +73,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceIamBinding(String name, InstanceIamBindingArgs args) {
+    public InstanceIamBinding(java.lang.String name, InstanceIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -82,12 +82,12 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceIamBinding(String name, InstanceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workbench/instanceIamBinding:InstanceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstanceIamBinding(java.lang.String name, InstanceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workbench/instanceIamBinding:InstanceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceIamBinding(String name, Output<String> id, @Nullable InstanceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workbench/instanceIamBinding:InstanceIamBinding", name, state, makeResourceOptions(options, id));
+    private InstanceIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workbench/instanceIamBinding:InstanceIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstanceIamBindingArgs makeArgs(InstanceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -97,7 +97,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
         return args == null ? InstanceIamBindingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -113,7 +113,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceIamBinding get(String name, Output<String> id, @Nullable InstanceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceIamBinding(name, id, state, options);
     }
 }

@@ -48,16 +48,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
  * 
@@ -67,8 +67,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -94,16 +94,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
+ *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("My Role")
  *                     .description("Grant permissions on my_role")
@@ -118,8 +118,8 @@ import javax.annotation.Nullable;
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -143,21 +143,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -182,17 +182,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(DatabaseIAMBindingConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
@@ -200,8 +200,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -225,21 +225,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -264,17 +264,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(DatabaseIAMMemberConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
@@ -282,105 +282,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## gcp.spanner.DatabaseIAMPolicy
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
- * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
- *                 .build())
- *             .build());
- * 
- *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
- *             .instance("your-instance-name")
- *             .database("your-database-name")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * With IAM Conditions:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
- * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/editor")
- *                 .members("user:jane{@literal @}example.com")
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
- *                     .title("My Role")
- *                     .description("Grant permissions on my_role")
- *                     .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
- *             .instance("your-instance-name")
- *             .database("your-database-name")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
- *             .build());
- * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -404,21 +307,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -443,17 +346,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMBinding("database", DatabaseIAMBindingArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .members("user:jane{@literal @}example.com")
+ *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(DatabaseIAMBindingConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
@@ -461,8 +364,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -486,21 +389,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -525,17 +428,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var database = new DatabaseIAMMember("database", DatabaseIAMMemberArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
  *             .role("roles/compute.networkUser")
- *             .member("user:jane{@literal @}example.com")
+ *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(DatabaseIAMMemberConditionArgs.builder()
  *                 .title("My Role")
  *                 .description("Grant permissions on my_role")
@@ -543,8 +446,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -657,7 +560,7 @@ public class DatabaseIAMPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabaseIAMPolicy(String name) {
+    public DatabaseIAMPolicy(java.lang.String name) {
         this(name, DatabaseIAMPolicyArgs.Empty);
     }
     /**
@@ -665,7 +568,7 @@ public class DatabaseIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabaseIAMPolicy(String name, DatabaseIAMPolicyArgs args) {
+    public DatabaseIAMPolicy(java.lang.String name, DatabaseIAMPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -674,12 +577,12 @@ public class DatabaseIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabaseIAMPolicy(String name, DatabaseIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatabaseIAMPolicy(java.lang.String name, DatabaseIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatabaseIAMPolicy(String name, Output<String> id, @Nullable DatabaseIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, state, makeResourceOptions(options, id));
+    private DatabaseIAMPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatabaseIAMPolicyArgs makeArgs(DatabaseIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -689,7 +592,7 @@ public class DatabaseIAMPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? DatabaseIAMPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -705,7 +608,7 @@ public class DatabaseIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabaseIAMPolicy get(String name, Output<String> id, @Nullable DatabaseIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatabaseIAMPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatabaseIAMPolicy(name, id, state, options);
     }
 }

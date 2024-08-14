@@ -151,7 +151,7 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceIdentity(String name) {
+    public ServiceIdentity(java.lang.String name) {
         this(name, ServiceIdentityArgs.Empty);
     }
     /**
@@ -159,7 +159,7 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceIdentity(String name, ServiceIdentityArgs args) {
+    public ServiceIdentity(java.lang.String name, ServiceIdentityArgs args) {
         this(name, args, null);
     }
     /**
@@ -168,12 +168,12 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceIdentity(String name, ServiceIdentityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/serviceIdentity:ServiceIdentity", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServiceIdentity(java.lang.String name, ServiceIdentityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/serviceIdentity:ServiceIdentity", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceIdentity(String name, Output<String> id, @Nullable ServiceIdentityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/serviceIdentity:ServiceIdentity", name, state, makeResourceOptions(options, id));
+    private ServiceIdentity(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceIdentityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/serviceIdentity:ServiceIdentity", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServiceIdentityArgs makeArgs(ServiceIdentityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -183,7 +183,7 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
         return args == null ? ServiceIdentityArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -199,7 +199,7 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceIdentity get(String name, Output<String> id, @Nullable ServiceIdentityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceIdentity get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceIdentityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceIdentity(name, id, state, options);
     }
 }

@@ -500,7 +500,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ActiveDirectory(String name) {
+    public ActiveDirectory(java.lang.String name) {
         this(name, ActiveDirectoryArgs.Empty);
     }
     /**
@@ -508,7 +508,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ActiveDirectory(String name, ActiveDirectoryArgs args) {
+    public ActiveDirectory(java.lang.String name, ActiveDirectoryArgs args) {
         this(name, args, null);
     }
     /**
@@ -517,12 +517,12 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ActiveDirectory(String name, ActiveDirectoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/activeDirectory:ActiveDirectory", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ActiveDirectory(java.lang.String name, ActiveDirectoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/activeDirectory:ActiveDirectory", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ActiveDirectory(String name, Output<String> id, @Nullable ActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/activeDirectory:ActiveDirectory", name, state, makeResourceOptions(options, id));
+    private ActiveDirectory(java.lang.String name, Output<java.lang.String> id, @Nullable ActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/activeDirectory:ActiveDirectory", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ActiveDirectoryArgs makeArgs(ActiveDirectoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -532,7 +532,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
         return args == null ? ActiveDirectoryArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -553,7 +553,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ActiveDirectory get(String name, Output<String> id, @Nullable ActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ActiveDirectory get(java.lang.String name, Output<java.lang.String> id, @Nullable ActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ActiveDirectory(name, id, state, options);
     }
 }

@@ -221,7 +221,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-bq-geojson", project)),
+//				Name:                     pulumi.Sprintf("%v-bq-geojson", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -401,7 +401,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := bigquery.NewDataset(ctx, fmt.Sprintf("source-%v", key0), &bigquery.DatasetArgs{
-//					DatasetId:    pulumi.String(fmt.Sprintf("job_copy_%v_dataset", val0)),
+//					DatasetId:    pulumi.Sprintf("job_copy_%v_dataset", val0),
 //					FriendlyName: pulumi.String("test"),
 //					Description:  pulumi.String("This is a test description"),
 //					Location:     pulumi.String("US"),
@@ -418,7 +418,7 @@ import (
 //				__res, err := bigquery.NewTable(ctx, fmt.Sprintf("source-%v", key0), &bigquery.TableArgs{
 //					DeletionProtection: pulumi.Bool(false),
 //					DatasetId:          sourceDataset[val0].DatasetId,
-//					TableId:            pulumi.String(fmt.Sprintf("job_copy_%v_table", val0)),
+//					TableId:            pulumi.Sprintf("job_copy_%v_table", val0),
 //					Schema: pulumi.String(`[
 //	  {
 //	    "name": "name",
@@ -477,7 +477,7 @@ import (
 //			encryptRole, err := projects.NewIAMMember(ctx, "encrypt_role", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number)),
+//				Member:  pulumi.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

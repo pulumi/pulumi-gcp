@@ -269,7 +269,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthorizedOrgsDesc(String name) {
+    public AuthorizedOrgsDesc(java.lang.String name) {
         this(name, AuthorizedOrgsDescArgs.Empty);
     }
     /**
@@ -277,7 +277,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthorizedOrgsDesc(String name, AuthorizedOrgsDescArgs args) {
+    public AuthorizedOrgsDesc(java.lang.String name, AuthorizedOrgsDescArgs args) {
         this(name, args, null);
     }
     /**
@@ -286,12 +286,12 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthorizedOrgsDesc(String name, AuthorizedOrgsDescArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AuthorizedOrgsDesc(java.lang.String name, AuthorizedOrgsDescArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthorizedOrgsDesc(String name, Output<String> id, @Nullable AuthorizedOrgsDescState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, state, makeResourceOptions(options, id));
+    private AuthorizedOrgsDesc(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorizedOrgsDescState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AuthorizedOrgsDescArgs makeArgs(AuthorizedOrgsDescArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -301,7 +301,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
         return args == null ? AuthorizedOrgsDescArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -317,7 +317,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthorizedOrgsDesc get(String name, Output<String> id, @Nullable AuthorizedOrgsDescState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthorizedOrgsDesc get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorizedOrgsDescState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthorizedOrgsDesc(name, id, state, options);
     }
 }

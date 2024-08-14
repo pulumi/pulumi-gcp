@@ -49,7 +49,7 @@ import (
 //				CustomerName:       pulumi.String("example_customer"),
 //				InterconnectType:   pulumi.String("DEDICATED"),
 //				LinkType:           pulumi.String("LINK_TYPE_ETHERNET_10G_LR"),
-//				Location:           pulumi.String(fmt.Sprintf("https://www.googleapis.com/compute/v1/projects/%v/global/interconnectLocations/iad-zone1-1", project.Name)),
+//				Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/projects/%v/global/interconnectLocations/iad-zone1-1", project.Name),
 //				RequestedLinkCount: pulumi.Int(1),
 //			})
 //			if err != nil {

@@ -133,12 +133,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("test-bucket")
  *             .location("US")
@@ -171,11 +171,11 @@ import javax.annotation.Nullable;
  *             .region(function.region())
  *             .cloudFunction(function.name())
  *             .role("roles/cloudfunctions.invoker")
- *             .member("user:myFunctionInvoker{@literal @}example.com")
+ *             .member("user:myFunctionInvoker}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -688,14 +688,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.versionId;
     }
     /**
-     * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
+     * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      * 
      */
     @Export(name="vpcConnector", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcConnector;
 
     /**
-     * @return The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
+     * @return The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      * 
      */
     public Output<Optional<String>> vpcConnector() {
@@ -720,7 +720,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Function(String name) {
+    public Function(java.lang.String name) {
         this(name, FunctionArgs.Empty);
     }
     /**
@@ -728,7 +728,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Function(String name, FunctionArgs args) {
+    public Function(java.lang.String name, FunctionArgs args) {
         this(name, args, null);
     }
     /**
@@ -737,12 +737,12 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Function(String name, FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudfunctions/function:Function", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Function(java.lang.String name, FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudfunctions/function:Function", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Function(String name, Output<String> id, @Nullable FunctionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudfunctions/function:Function", name, state, makeResourceOptions(options, id));
+    private Function(java.lang.String name, Output<java.lang.String> id, @Nullable FunctionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudfunctions/function:Function", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FunctionArgs makeArgs(FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -752,7 +752,7 @@ public class Function extends com.pulumi.resources.CustomResource {
         return args == null ? FunctionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -772,7 +772,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Function get(String name, Output<String> id, @Nullable FunctionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Function get(java.lang.String name, Output<java.lang.String> id, @Nullable FunctionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Function(name, id, state, options);
     }
 }

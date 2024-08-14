@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
  *             .project("my-project-name")
  *             .location("us-west1")
@@ -78,10 +78,10 @@ import javax.annotation.Nullable;
  *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
- *                     .username("my{@literal @}service-account.com")
+ *                     .username("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .adminGroups(AwsClusterAuthorizationAdminGroupArgs.builder()
- *                     .group("group{@literal @}domain.com")
+ *                     .group("group}{@literal @}{@code domain.com")
  *                     .build())
  *                 .build())
  *             .awsRegion("my-aws-region")
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
  *                     .ec2KeyPair("my--1p-dev-ssh")
  *                     .build())
- *                 .tags(Map.of("owner", "my{@literal @}service-account.com"))
+ *                 .tags(Map.of("owner", "my}{@literal @}{@code service-account.com"))
  *                 .build())
  *             .fleet(AwsClusterFleetArgs.builder()
  *                 .project("my-project-number")
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -174,12 +174,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
  *             .project("my-project-name")
  *             .location("us-west1")
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
- *                     .username("my{@literal @}service-account.com")
+ *                     .username("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .build())
  *             .awsRegion("my-aws-region")
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
  *                     .ec2KeyPair("my--1p-dev-ssh")
  *                     .build())
- *                 .tags(Map.of("owner", "my{@literal @}service-account.com"))
+ *                 .tags(Map.of("owner", "my}{@literal @}{@code service-account.com"))
  *                 .build())
  *             .fleet(AwsClusterFleetArgs.builder()
  *                 .project("my-project-number")
@@ -244,8 +244,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -284,12 +284,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
  *             .project("my-project-name")
  *             .location("us-west1")
@@ -298,7 +298,7 @@ import javax.annotation.Nullable;
  *         var primary = new AwsCluster("primary", AwsClusterArgs.builder()
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
- *                     .username("my{@literal @}service-account.com")
+ *                     .username("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .build())
  *             .awsRegion("my-aws-region")
@@ -337,7 +337,7 @@ import javax.annotation.Nullable;
  *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
  *                     .ec2KeyPair("my--1p-dev-ssh")
  *                     .build())
- *                 .tags(Map.of("owner", "my{@literal @}service-account.com"))
+ *                 .tags(Map.of("owner", "my}{@literal @}{@code service-account.com"))
  *                 .instancePlacement(AwsClusterControlPlaneInstancePlacementArgs.builder()
  *                     .tenancy("dedicated")
  *                     .build())
@@ -364,8 +364,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -698,7 +698,7 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AwsCluster(String name) {
+    public AwsCluster(java.lang.String name) {
         this(name, AwsClusterArgs.Empty);
     }
     /**
@@ -706,7 +706,7 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AwsCluster(String name, AwsClusterArgs args) {
+    public AwsCluster(java.lang.String name, AwsClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -715,12 +715,12 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AwsCluster(String name, AwsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/awsCluster:AwsCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AwsCluster(java.lang.String name, AwsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/awsCluster:AwsCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AwsCluster(String name, Output<String> id, @Nullable AwsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/awsCluster:AwsCluster", name, state, makeResourceOptions(options, id));
+    private AwsCluster(java.lang.String name, Output<java.lang.String> id, @Nullable AwsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/awsCluster:AwsCluster", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AwsClusterArgs makeArgs(AwsClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -730,7 +730,7 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
         return args == null ? AwsClusterArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -746,7 +746,7 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AwsCluster get(String name, Output<String> id, @Nullable AwsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AwsCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable AwsClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AwsCluster(name, id, state, options);
     }
 }

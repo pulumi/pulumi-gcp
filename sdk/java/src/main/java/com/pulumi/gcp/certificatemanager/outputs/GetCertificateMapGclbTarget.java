@@ -18,14 +18,14 @@ public final class GetCertificateMapGclbTarget {
      */
     private List<GetCertificateMapGclbTargetIpConfig> ipConfigs;
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
      * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
      * &#39;targetSslProxy&#39; may be set.
      * 
      */
     private String targetHttpsProxy;
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
      * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
      * &#39;targetSslProxy&#39; may be set.
      * 
@@ -41,7 +41,7 @@ public final class GetCertificateMapGclbTarget {
         return this.ipConfigs;
     }
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
      * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
      * &#39;targetSslProxy&#39; may be set.
      * 
@@ -50,7 +50,7 @@ public final class GetCertificateMapGclbTarget {
         return this.targetHttpsProxy;
     }
     /**
-     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
      * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
      * &#39;targetSslProxy&#39; may be set.
      * 

@@ -464,7 +464,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -473,7 +473,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
-     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -534,7 +534,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * For example: `projects/*&#47;global/networks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -543,7 +543,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The relative resource name identifying the VPC network that is using this configuration.
-     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * For example: `projects/*&#47;global/networks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
@@ -652,7 +652,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
      * 
      */
@@ -661,7 +661,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The relative resource name identifying the subnetwork in which this SWG is allocated.
-     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
      * 
      */
@@ -703,7 +703,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Gateway(String name) {
+    public Gateway(java.lang.String name) {
         this(name, GatewayArgs.Empty);
     }
     /**
@@ -711,7 +711,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Gateway(String name, GatewayArgs args) {
+    public Gateway(java.lang.String name, GatewayArgs args) {
         this(name, args, null);
     }
     /**
@@ -720,12 +720,12 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Gateway(String name, GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/gateway:Gateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Gateway(java.lang.String name, GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/gateway:Gateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Gateway(String name, Output<String> id, @Nullable GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/gateway:Gateway", name, state, makeResourceOptions(options, id));
+    private Gateway(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/gateway:Gateway", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GatewayArgs makeArgs(GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -735,7 +735,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return args == null ? GatewayArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -755,7 +755,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Gateway get(String name, Output<String> id, @Nullable GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Gateway get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Gateway(name, id, state, options);
     }
 }

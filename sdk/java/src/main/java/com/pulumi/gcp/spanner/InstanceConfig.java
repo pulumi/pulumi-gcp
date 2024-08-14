@@ -193,7 +193,7 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceConfig(String name) {
+    public InstanceConfig(java.lang.String name) {
         this(name, InstanceConfigArgs.Empty);
     }
     /**
@@ -201,7 +201,7 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceConfig(String name, InstanceConfigArgs args) {
+    public InstanceConfig(java.lang.String name, InstanceConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -210,12 +210,12 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceConfig(String name, InstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/instanceConfig:InstanceConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstanceConfig(java.lang.String name, InstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/instanceConfig:InstanceConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceConfig(String name, Output<String> id, @Nullable InstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/instanceConfig:InstanceConfig", name, state, makeResourceOptions(options, id));
+    private InstanceConfig(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/instanceConfig:InstanceConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstanceConfigArgs makeArgs(InstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -225,7 +225,7 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
         return args == null ? InstanceConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -245,7 +245,7 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceConfig get(String name, Output<String> id, @Nullable InstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceConfig(name, id, state, options);
     }
 }

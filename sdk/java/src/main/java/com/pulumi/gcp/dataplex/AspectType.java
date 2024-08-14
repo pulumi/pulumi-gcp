@@ -493,7 +493,7 @@ public class AspectType extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AspectType(String name) {
+    public AspectType(java.lang.String name) {
         this(name, AspectTypeArgs.Empty);
     }
     /**
@@ -501,7 +501,7 @@ public class AspectType extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AspectType(String name, @Nullable AspectTypeArgs args) {
+    public AspectType(java.lang.String name, @Nullable AspectTypeArgs args) {
         this(name, args, null);
     }
     /**
@@ -510,12 +510,12 @@ public class AspectType extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AspectType(String name, @Nullable AspectTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/aspectType:AspectType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AspectType(java.lang.String name, @Nullable AspectTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/aspectType:AspectType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AspectType(String name, Output<String> id, @Nullable AspectTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/aspectType:AspectType", name, state, makeResourceOptions(options, id));
+    private AspectType(java.lang.String name, Output<java.lang.String> id, @Nullable AspectTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataplex/aspectType:AspectType", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AspectTypeArgs makeArgs(@Nullable AspectTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -525,7 +525,7 @@ public class AspectType extends com.pulumi.resources.CustomResource {
         return args == null ? AspectTypeArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -545,7 +545,7 @@ public class AspectType extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AspectType get(String name, Output<String> id, @Nullable AspectTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AspectType get(java.lang.String name, Output<java.lang.String> id, @Nullable AspectTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AspectType(name, id, state, options);
     }
 }

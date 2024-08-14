@@ -231,7 +231,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TagKey(String name) {
+    public TagKey(java.lang.String name) {
         this(name, TagKeyArgs.Empty);
     }
     /**
@@ -239,7 +239,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TagKey(String name, TagKeyArgs args) {
+    public TagKey(java.lang.String name, TagKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -248,12 +248,12 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TagKey(String name, TagKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/tagKey:TagKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TagKey(java.lang.String name, TagKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tags/tagKey:TagKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TagKey(String name, Output<String> id, @Nullable TagKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/tagKey:TagKey", name, state, makeResourceOptions(options, id));
+    private TagKey(java.lang.String name, Output<java.lang.String> id, @Nullable TagKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tags/tagKey:TagKey", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TagKeyArgs makeArgs(TagKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -263,7 +263,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
         return args == null ? TagKeyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -279,7 +279,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TagKey get(String name, Output<String> id, @Nullable TagKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TagKey get(java.lang.String name, Output<java.lang.String> id, @Nullable TagKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TagKey(name, id, state, options);
     }
 }

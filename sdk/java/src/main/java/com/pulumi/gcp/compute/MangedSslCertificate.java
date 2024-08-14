@@ -343,7 +343,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MangedSslCertificate(String name) {
+    public MangedSslCertificate(java.lang.String name) {
         this(name, MangedSslCertificateArgs.Empty);
     }
     /**
@@ -351,7 +351,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MangedSslCertificate(String name, @Nullable MangedSslCertificateArgs args) {
+    public MangedSslCertificate(java.lang.String name, @Nullable MangedSslCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -360,12 +360,12 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MangedSslCertificate(String name, @Nullable MangedSslCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MangedSslCertificate(java.lang.String name, @Nullable MangedSslCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MangedSslCertificate(String name, Output<String> id, @Nullable MangedSslCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, state, makeResourceOptions(options, id));
+    private MangedSslCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable MangedSslCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MangedSslCertificateArgs makeArgs(@Nullable MangedSslCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -375,7 +375,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
         return args == null ? MangedSslCertificateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -391,7 +391,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MangedSslCertificate get(String name, Output<String> id, @Nullable MangedSslCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MangedSslCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable MangedSslCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MangedSslCertificate(name, id, state, options);
     }
 }

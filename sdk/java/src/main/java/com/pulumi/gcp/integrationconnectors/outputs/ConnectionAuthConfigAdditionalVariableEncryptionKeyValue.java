@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
     /**
      * @return The [KMS key name] with which the content of the Operation is encrypted. The
-     * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -29,7 +29,7 @@ public final class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
     private ConnectionAuthConfigAdditionalVariableEncryptionKeyValue() {}
     /**
      * @return The [KMS key name] with which the content of the Operation is encrypted. The
-     * expected format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */

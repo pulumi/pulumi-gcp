@@ -1071,7 +1071,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RouterPeer(String name) {
+    public RouterPeer(java.lang.String name) {
         this(name, RouterPeerArgs.Empty);
     }
     /**
@@ -1079,7 +1079,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RouterPeer(String name, RouterPeerArgs args) {
+    public RouterPeer(java.lang.String name, RouterPeerArgs args) {
         this(name, args, null);
     }
     /**
@@ -1088,12 +1088,12 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RouterPeer(String name, RouterPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/routerPeer:RouterPeer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RouterPeer(java.lang.String name, RouterPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/routerPeer:RouterPeer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RouterPeer(String name, Output<String> id, @Nullable RouterPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/routerPeer:RouterPeer", name, state, makeResourceOptions(options, id));
+    private RouterPeer(java.lang.String name, Output<java.lang.String> id, @Nullable RouterPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/routerPeer:RouterPeer", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RouterPeerArgs makeArgs(RouterPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -1103,7 +1103,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return args == null ? RouterPeerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1119,7 +1119,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RouterPeer get(String name, Output<String> id, @Nullable RouterPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RouterPeer get(java.lang.String name, Output<java.lang.String> id, @Nullable RouterPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RouterPeer(name, id, state, options);
     }
 }

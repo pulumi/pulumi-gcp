@@ -121,47 +121,6 @@ import (
 //
 // ```
 //
-// ## healthcare.DatasetIamPolicy
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					{
-//						Role: "roles/editor",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = healthcare.NewDatasetIamPolicy(ctx, "dataset", &healthcare.DatasetIamPolicyArgs{
-//				DatasetId:  pulumi.String("your-dataset-id"),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## healthcare.DatasetIamBinding
 //
 // ```go

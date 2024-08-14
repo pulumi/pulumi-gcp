@@ -68,7 +68,7 @@ import (
 //					Schedule:   pulumi.String("1 * * * *"),
 //				},
 //				ExecutionSpec: &dataplex.TaskExecutionSpecArgs{
-//					ServiceAccount:          pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number)),
+//					ServiceAccount:          pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
 //					Project:                 pulumi.String("my-project-name"),
 //					MaxJobExecutionLifetime: pulumi.String("100s"),
 //					KmsKey:                  pulumi.String("234jn2kjn42k3n423"),
@@ -133,7 +133,7 @@ import (
 //				},
 //				Description: pulumi.String("task-spark-terraform"),
 //				ExecutionSpec: &dataplex.TaskExecutionSpecArgs{
-//					ServiceAccount: pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number)),
+//					ServiceAccount: pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
 //					Args: pulumi.StringMap{
 //						"TASK_ARGS": pulumi.String("--output_location,gs://spark-job/task-result, --output_format, json"),
 //					},
@@ -230,7 +230,7 @@ import (
 //					Schedule: pulumi.String("1 * * * *"),
 //				},
 //				ExecutionSpec: &dataplex.TaskExecutionSpecArgs{
-//					ServiceAccount: pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number)),
+//					ServiceAccount: pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
 //					Args: pulumi.StringMap{
 //						"TASK_ARGS": pulumi.String("--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json"),
 //					},

@@ -364,6 +364,25 @@ class ConnectionIAMMember(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Build v2 Connection
+        Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
+
+        * `cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+        * `cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+        * `cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+
+        > **Note:** `cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIAMBinding` and `cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+
         ## cloudbuildv2.ConnectionIAMPolicy
 
         ```python
@@ -535,6 +554,25 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud Build v2 Connection
+        Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
+
+        * `cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+        * `cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+        * `cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+
+        > **Note:** `cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIAMBinding` and `cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
 
         ## cloudbuildv2.ConnectionIAMPolicy
 
