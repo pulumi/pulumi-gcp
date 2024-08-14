@@ -48,12 +48,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///     {
     ///         Name = "my-rep",
     ///         Location = "us-central1",
-    ///         TargetGoogleApi = "boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com",
+    ///         TargetGoogleApi = "storage.us-central1.p.rep.googleapis.com",
     ///         AccessType = "REGIONAL",
     ///         Address = "192.168.0.5",
     ///         Network = myNetwork.Id,
     ///         Subnetwork = mySubnetwork.Id,
-    ///         Description = "My RegionalEndpoint targeting Google API boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com",
+    ///         Description = "My RegionalEndpoint targeting Google API storage.us-central1.p.rep.googleapis.com",
     ///         Labels = 
     ///         {
     ///             { "env", "default" },
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///     {
     ///         Name = "my-rep",
     ///         Location = "us-central1",
-    ///         TargetGoogleApi = "boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com",
+    ///         TargetGoogleApi = "storage.us-central1.p.rep.googleapis.com",
     ///         AccessType = "GLOBAL",
     ///         Address = "192.168.0.4",
     ///         Network = myNetwork.Id,

@@ -225,15 +225,183 @@ public final class LoggingFunctions {
     public static CompletableFuture<GetFolderSettingsResult> getFolderSettingsPlain(GetFolderSettingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getFolderSettings:getFolderSettings", TypeShape.of(GetFolderSettingsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current IAM policy data for logview
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
+     *             .parent(loggingLogView.parent())
+     *             .location(loggingLogView.location())
+     *             .bucket(loggingLogView.bucket())
+     *             .name(loggingLogView.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetLogViewIamPolicyResult> getLogViewIamPolicy(GetLogViewIamPolicyArgs args) {
         return getLogViewIamPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for logview
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
+     *             .parent(loggingLogView.parent())
+     *             .location(loggingLogView.location())
+     *             .bucket(loggingLogView.bucket())
+     *             .name(loggingLogView.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogViewIamPolicyResult> getLogViewIamPolicyPlain(GetLogViewIamPolicyPlainArgs args) {
         return getLogViewIamPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for logview
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
+     *             .parent(loggingLogView.parent())
+     *             .location(loggingLogView.location())
+     *             .bucket(loggingLogView.bucket())
+     *             .name(loggingLogView.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetLogViewIamPolicyResult> getLogViewIamPolicy(GetLogViewIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", TypeShape.of(GetLogViewIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current IAM policy data for logview
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
+     *             .parent(loggingLogView.parent())
+     *             .location(loggingLogView.location())
+     *             .bucket(loggingLogView.bucket())
+     *             .name(loggingLogView.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogViewIamPolicyResult> getLogViewIamPolicyPlain(GetLogViewIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", TypeShape.of(GetLogViewIamPolicyResult.class), args, Utilities.withVersion(options));
     }

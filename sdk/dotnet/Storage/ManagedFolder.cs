@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         Bucket = bucket.Name,
     ///         Name = "managed/folder/name/",
+    ///         ForceDestroy = true,
     ///     });
     /// 
     /// });
@@ -88,6 +89,15 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Allows the deletion of a managed folder even if contains
+        /// objects. If a non-empty managed folder is deleted, any objects
+        /// within the folder will remain in a simulated folder with the
+        /// same name.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
         /// The metadata generation of the managed folder.
@@ -170,6 +180,15 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
+        /// Allows the deletion of a managed folder even if contains
+        /// objects. If a non-empty managed folder is deleted, any objects
+        /// within the folder will remain in a simulated folder with the
+        /// same name.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
         /// The name of the managed folder expressed as a path. Must include
         /// trailing '/'. For example, `example_dir/example_dir2/`.
         /// 
@@ -198,6 +217,15 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Allows the deletion of a managed folder even if contains
+        /// objects. If a non-empty managed folder is deleted, any objects
+        /// within the folder will remain in a simulated folder with the
+        /// same name.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
         /// The metadata generation of the managed folder.

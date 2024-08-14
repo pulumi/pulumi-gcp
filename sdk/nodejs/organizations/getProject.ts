@@ -44,6 +44,7 @@ export interface GetProjectArgs {
 export interface GetProjectResult {
     readonly autoCreateNetwork: boolean;
     readonly billingAccount: string;
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly folderId: string;
     /**

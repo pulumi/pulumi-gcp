@@ -341,7 +341,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
-     * 
      * If not provided, a random string starting with `tf-` will be selected.
      * 
      */
@@ -352,7 +351,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
-     * 
      * If not provided, a random string starting with `tf-` will be selected.
      * 
      */

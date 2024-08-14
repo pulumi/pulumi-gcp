@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementHierarchyController? HierarchyController;
         /// <summary>
+        /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        /// </summary>
+        public readonly string? Management;
+        /// <summary>
         /// Policy Controller configuration for the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementPolicyController? PolicyController;
@@ -42,6 +46,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             Outputs.FeatureMembershipConfigmanagementHierarchyController? hierarchyController,
 
+            string? management,
+
             Outputs.FeatureMembershipConfigmanagementPolicyController? policyController,
 
             string? version)
@@ -49,6 +55,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
             Binauthz = binauthz;
             ConfigSync = configSync;
             HierarchyController = hierarchyController;
+            Management = management;
             PolicyController = policyController;
             Version = version;
         }

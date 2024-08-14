@@ -57,10 +57,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SourceIamMember{}
 	case "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy":
 		r = &SourceIamPolicy{}
+	case "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig":
+		r = &V2FolderMuteConfig{}
 	case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
 		r = &V2OrganizationMuteConfig{}
 	case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
 		r = &V2OrganizationNotificationConfig{}
+	case "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource":
+		r = &V2OrganizationSource{}
+	case "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding":
+		r = &V2OrganizationSourceIamBinding{}
+	case "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember":
+		r = &V2OrganizationSourceIamMember{}
+	case "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy":
+		r = &V2OrganizationSourceIamPolicy{}
+	case "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig":
+		r = &V2ProjectMuteConfig{}
+	case "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig":
+		r = &V2ProjectNotificationConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -166,12 +180,47 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"securitycenter/v2FolderMuteConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"securitycenter/v2OrganizationMuteConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/v2OrganizationNotificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationSourceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationSourceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationSourceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2ProjectMuteConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2ProjectNotificationConfig",
 		&module{version},
 	)
 }

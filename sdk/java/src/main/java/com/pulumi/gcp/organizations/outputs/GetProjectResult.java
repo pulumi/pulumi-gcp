@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetProjectResult {
     private Boolean autoCreateNetwork;
     private String billingAccount;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private String folderId;
     /**
@@ -41,6 +42,9 @@ public final class GetProjectResult {
     }
     public String billingAccount() {
         return this.billingAccount;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -92,6 +96,7 @@ public final class GetProjectResult {
     public static final class Builder {
         private Boolean autoCreateNetwork;
         private String billingAccount;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private String folderId;
         private String id;
@@ -107,6 +112,7 @@ public final class GetProjectResult {
     	      Objects.requireNonNull(defaults);
     	      this.autoCreateNetwork = defaults.autoCreateNetwork;
     	      this.billingAccount = defaults.billingAccount;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.folderId = defaults.folderId;
     	      this.id = defaults.id;
@@ -133,6 +139,14 @@ public final class GetProjectResult {
               throw new MissingRequiredPropertyException("GetProjectResult", "billingAccount");
             }
             this.billingAccount = billingAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -217,6 +231,7 @@ public final class GetProjectResult {
             final var _resultValue = new GetProjectResult();
             _resultValue.autoCreateNetwork = autoCreateNetwork;
             _resultValue.billingAccount = billingAccount;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.folderId = folderId;
             _resultValue.id = id;

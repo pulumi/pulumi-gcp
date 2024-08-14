@@ -32,6 +32,21 @@ public final class ServiceBinaryAuthorizationArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+     * 
+     */
+    @Import(name="policy")
+    private @Nullable Output<String> policy;
+
+    /**
+     * @return The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+     * 
+     */
+    public Optional<Output<String>> policy() {
+        return Optional.ofNullable(this.policy);
+    }
+
+    /**
      * If True, indicates to use the default project&#39;s binary authorization policy. If False, binary authorization will be disabled.
      * 
      */
@@ -50,6 +65,7 @@ public final class ServiceBinaryAuthorizationArgs extends com.pulumi.resources.R
 
     private ServiceBinaryAuthorizationArgs(ServiceBinaryAuthorizationArgs $) {
         this.breakglassJustification = $.breakglassJustification;
+        this.policy = $.policy;
         this.useDefault = $.useDefault;
     }
 
@@ -90,6 +106,27 @@ public final class ServiceBinaryAuthorizationArgs extends com.pulumi.resources.R
          */
         public Builder breakglassJustification(String breakglassJustification) {
             return breakglassJustification(Output.of(breakglassJustification));
+        }
+
+        /**
+         * @param policy The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(@Nullable Output<String> policy) {
+            $.policy = policy;
+            return this;
+        }
+
+        /**
+         * @param policy The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(String policy) {
+            return policy(Output.of(policy));
         }
 
         /**

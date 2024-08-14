@@ -208,6 +208,9 @@ type FeatureFleetDefaultMemberConfigConfigmanagement struct {
 	// ConfigSync configuration for the cluster
 	// Structure is documented below.
 	ConfigSync *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync `pulumi:"configSync"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+	Management *string `pulumi:"management"`
 	// Version of ACM installed
 	Version *string `pulumi:"version"`
 }
@@ -227,6 +230,9 @@ type FeatureFleetDefaultMemberConfigConfigmanagementArgs struct {
 	// ConfigSync configuration for the cluster
 	// Structure is documented below.
 	ConfigSync FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+	Management pulumi.StringPtrInput `pulumi:"management"`
 	// Version of ACM installed
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -316,6 +322,12 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ConfigSync() Feat
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
 }
 
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *string { return v.Management }).(pulumi.StringPtrOutput)
+}
+
 // Version of ACM installed
 func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -354,6 +366,17 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ConfigSync() F
 		}
 		return v.ConfigSync
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
+}
+
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(pulumi.StringPtrOutput)
 }
 
 // Version of ACM installed
@@ -3433,6 +3456,8 @@ type FeatureMembershipConfigmanagement struct {
 	ConfigSync *FeatureMembershipConfigmanagementConfigSync `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster. Structure is documented below.
 	HierarchyController *FeatureMembershipConfigmanagementHierarchyController `pulumi:"hierarchyController"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	Management *string `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
 	PolicyController *FeatureMembershipConfigmanagementPolicyController `pulumi:"policyController"`
 	// Version of ACM installed.
@@ -3457,6 +3482,8 @@ type FeatureMembershipConfigmanagementArgs struct {
 	ConfigSync FeatureMembershipConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster. Structure is documented below.
 	HierarchyController FeatureMembershipConfigmanagementHierarchyControllerPtrInput `pulumi:"hierarchyController"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	Management pulumi.StringPtrInput `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
 	PolicyController FeatureMembershipConfigmanagementPolicyControllerPtrInput `pulumi:"policyController"`
 	// Version of ACM installed.
@@ -3561,6 +3588,11 @@ func (o FeatureMembershipConfigmanagementOutput) HierarchyController() FeatureMe
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+func (o FeatureMembershipConfigmanagementOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *string { return v.Management }).(pulumi.StringPtrOutput)
+}
+
 // Policy Controller configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
@@ -3625,6 +3657,16 @@ func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() Featur
 		}
 		return v.HierarchyController
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
+}
+
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+func (o FeatureMembershipConfigmanagementPtrOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(pulumi.StringPtrOutput)
 }
 
 // Policy Controller configuration for the cluster. Structure is documented below.
@@ -3785,6 +3827,8 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 }
 
 type FeatureMembershipConfigmanagementConfigSync struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled *bool `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
 	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
@@ -3811,6 +3855,8 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
 	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
@@ -3902,6 +3948,11 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 // (Optional) Structure is documented below.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
@@ -3955,6 +4006,16 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMemb
 		var ret FeatureMembershipConfigmanagementConfigSync
 		return ret
 	}).(FeatureMembershipConfigmanagementConfigSyncOutput)
+}
+
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // (Optional) Structure is documented below.

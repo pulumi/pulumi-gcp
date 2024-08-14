@@ -34,6 +34,23 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
     }
 
     /**
+     * Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+     * 
+     */
+    @Import(name="management")
+    private @Nullable Output<String> management;
+
+    /**
+     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+     * 
+     */
+    public Optional<Output<String>> management() {
+        return Optional.ofNullable(this.management);
+    }
+
+    /**
      * Version of ACM installed
      * 
      */
@@ -52,6 +69,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
 
     private FeatureFleetDefaultMemberConfigConfigmanagementArgs(FeatureFleetDefaultMemberConfigConfigmanagementArgs $) {
         this.configSync = $.configSync;
+        this.management = $.management;
         this.version = $.version;
     }
 
@@ -94,6 +112,29 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
          */
         public Builder configSync(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs configSync) {
             return configSync(Output.of(configSync));
+        }
+
+        /**
+         * @param management Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(@Nullable Output<String> management) {
+            $.management = management;
+            return this;
+        }
+
+        /**
+         * @param management Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(String management) {
+            return management(Output.of(management));
         }
 
         /**

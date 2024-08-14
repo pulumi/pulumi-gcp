@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manage a single EgressPolicy in the status (enforced) configuration for a service perimeter.
 // EgressPolicies match requests based on egressFrom and egressTo stanzas.
 // For an EgressPolicy to match, both egressFrom and egressTo stanzas must be matched.
 // If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter
@@ -29,18 +30,6 @@ import (
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
 //
 // ## Example Usage
-//
-// ## Import
-//
-// ServicePerimeterEgressPolicy can be imported using any of these accepted formats:
-//
-// * `{{perimeter}}`
-//
-// When using the `pulumi import` command, ServicePerimeterEgressPolicy can be imported using one of the formats above. For example:
-//
-// ```sh
-// $ pulumi import gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy default {{perimeter}}
-// ```
 type ServicePerimeterEgressPolicy struct {
 	pulumi.CustomResourceState
 

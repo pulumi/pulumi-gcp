@@ -1954,6 +1954,8 @@ class TargetGke(dict):
         suggest = None
         if key == "internalIp":
             suggest = "internal_ip"
+        elif key == "proxyUrl":
+            suggest = "proxy_url"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TargetGke. Access the value via the '{suggest}' property getter instead.")
@@ -1968,15 +1970,19 @@ class TargetGke(dict):
 
     def __init__(__self__, *,
                  cluster: Optional[str] = None,
-                 internal_ip: Optional[bool] = None):
+                 internal_ip: Optional[bool] = None,
+                 proxy_url: Optional[str] = None):
         """
         :param str cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
         :param bool internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        :param str proxy_url: Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
         if internal_ip is not None:
             pulumi.set(__self__, "internal_ip", internal_ip)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
 
     @property
     @pulumi.getter
@@ -1993,6 +1999,14 @@ class TargetGke(dict):
         Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
         return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[str]:
+        """
+        Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        """
+        return pulumi.get(self, "proxy_url")
 
 
 @pulumi.output_type

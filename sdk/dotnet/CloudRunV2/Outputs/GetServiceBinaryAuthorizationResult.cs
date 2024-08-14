@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string BreakglassJustification;
         /// <summary>
+        /// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        /// </summary>
+        public readonly string Policy;
+        /// <summary>
         /// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         /// </summary>
         public readonly bool UseDefault;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private GetServiceBinaryAuthorizationResult(
             string breakglassJustification,
 
+            string policy,
+
             bool useDefault)
         {
             BreakglassJustification = breakglassJustification;
+            Policy = policy;
             UseDefault = useDefault;
         }
     }

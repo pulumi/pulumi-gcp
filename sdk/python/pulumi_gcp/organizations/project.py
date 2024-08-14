@@ -21,6 +21,7 @@ class ProjectArgs:
     def __init__(__self__, *,
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -53,13 +54,18 @@ class ProjectArgs:
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
-        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
-               without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted without
+               deleting the Project via the Google API. `skip_delete` is deprecated and will be
+               removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+               can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+               to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         """
         if auto_create_network is not None:
             pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
@@ -71,8 +77,8 @@ class ProjectArgs:
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if skip_delete is not None:
-            warnings.warn("""skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.""", DeprecationWarning)
-            pulumi.log.warn("""skip_delete is deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.""")
+            warnings.warn("""skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.""", DeprecationWarning)
+            pulumi.log.warn("""skip_delete is deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.""")
         if skip_delete is not None:
             pulumi.set(__self__, "skip_delete", skip_delete)
 
@@ -105,6 +111,15 @@ class ProjectArgs:
     @billing_account.setter
     def billing_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "billing_account", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="folderId")
@@ -179,11 +194,14 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="skipDelete")
-    @_utilities.deprecated("""skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.""")
+    @_utilities.deprecated("""skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.""")
     def skip_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the resource can be deleted
-        without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        If true, the resource can be deleted without
+        deleting the Project via the Google API. `skip_delete` is deprecated and will be
+        removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+        can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+        to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         """
         return pulumi.get(self, "skip_delete")
 
@@ -197,6 +215,7 @@ class _ProjectState:
     def __init__(__self__, *,
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -235,13 +254,18 @@ class _ProjectState:
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
-               without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted without
+               deleting the Project via the Google API. `skip_delete` is deprecated and will be
+               removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+               can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+               to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         """
         if auto_create_network is not None:
             pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if folder_id is not None:
@@ -259,8 +283,8 @@ class _ProjectState:
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if skip_delete is not None:
-            warnings.warn("""skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.""", DeprecationWarning)
-            pulumi.log.warn("""skip_delete is deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.""")
+            warnings.warn("""skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.""", DeprecationWarning)
+            pulumi.log.warn("""skip_delete is deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.""")
         if skip_delete is not None:
             pulumi.set(__self__, "skip_delete", skip_delete)
 
@@ -293,6 +317,15 @@ class _ProjectState:
     @billing_account.setter
     def billing_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "billing_account", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -403,11 +436,14 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="skipDelete")
-    @_utilities.deprecated("""skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.""")
+    @_utilities.deprecated("""skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.""")
     def skip_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the resource can be deleted
-        without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        If true, the resource can be deleted without
+        deleting the Project via the Google API. `skip_delete` is deprecated and will be
+        removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+        can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+        to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         """
         return pulumi.get(self, "skip_delete")
 
@@ -423,6 +459,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -514,8 +551,11 @@ class Project(pulumi.CustomResource):
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
-        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
-               without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted without
+               deleting the Project via the Google API. `skip_delete` is deprecated and will be
+               removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+               can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+               to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         """
         ...
     @overload
@@ -598,6 +638,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -615,6 +656,7 @@ class Project(pulumi.CustomResource):
 
             __props__.__dict__["auto_create_network"] = auto_create_network
             __props__.__dict__["billing_account"] = billing_account
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -638,6 +680,7 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_create_network: Optional[pulumi.Input[bool]] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -681,8 +724,11 @@ class Project(pulumi.CustomResource):
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
-               without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted without
+               deleting the Project via the Google API. `skip_delete` is deprecated and will be
+               removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+               can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+               to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -690,6 +736,7 @@ class Project(pulumi.CustomResource):
 
         __props__.__dict__["auto_create_network"] = auto_create_network
         __props__.__dict__["billing_account"] = billing_account
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["labels"] = labels
@@ -722,6 +769,11 @@ class Project(pulumi.CustomResource):
         for more details.
         """
         return pulumi.get(self, "billing_account")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -800,11 +852,14 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipDelete")
-    @_utilities.deprecated("""skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletion_policy instead.""")
+    @_utilities.deprecated("""skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.""")
     def skip_delete(self) -> pulumi.Output[bool]:
         """
-        If true, the resource can be deleted
-        without deleting the Project via the Google API. `skip_delete` is deprecated and will be removed in a future major release. The new release adds support for `deletion_policy` instead.
+        If true, the resource can be deleted without
+        deleting the Project via the Google API. `skip_delete` is deprecated and will be
+        removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+        can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+        to a `deletion_policy` value of `ABANDON` for equivalent behavior.
         """
         return pulumi.get(self, "skip_delete")
 

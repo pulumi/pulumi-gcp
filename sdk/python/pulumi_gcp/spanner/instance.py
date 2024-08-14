@@ -58,7 +58,6 @@ class InstanceArgs:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -165,7 +164,6 @@ class InstanceArgs:
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
-
         If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")
@@ -250,7 +248,6 @@ class _InstanceState:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -380,7 +377,6 @@ class _InstanceState:
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
-
         If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")
@@ -591,7 +587,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -811,7 +806,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -910,7 +904,6 @@ class Instance(pulumi.CustomResource):
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
-
         If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")

@@ -620,12 +620,12 @@ if not MYPY:
         total_transfer_duration: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Total time taken so far during current transfer.
+        Cumulative time taken across all transfers for the replication relationship.
         """
         transfer_bytes: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Number of bytes transferred so far in current transfer.
+        Cumulative bytes transferred so far for the replication relationship.
         """
         update_time: NotRequired[pulumi.Input[str]]
         """
@@ -660,9 +660,9 @@ class VolumeReplicationTransferStatArgs:
         :param pulumi.Input[str] last_transfer_error: (Output)
                A message describing the cause of the last transfer failure.
         :param pulumi.Input[str] total_transfer_duration: (Output)
-               Total time taken so far during current transfer.
+               Cumulative time taken across all transfers for the replication relationship.
         :param pulumi.Input[str] transfer_bytes: (Output)
-               Number of bytes transferred so far in current transfer.
+               Cumulative bytes transferred so far for the replication relationship.
         :param pulumi.Input[str] update_time: (Output)
                Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         """
@@ -755,7 +755,7 @@ class VolumeReplicationTransferStatArgs:
     def total_transfer_duration(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Total time taken so far during current transfer.
+        Cumulative time taken across all transfers for the replication relationship.
         """
         return pulumi.get(self, "total_transfer_duration")
 
@@ -768,7 +768,7 @@ class VolumeReplicationTransferStatArgs:
     def transfer_bytes(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Number of bytes transferred so far in current transfer.
+        Cumulative bytes transferred so far for the replication relationship.
         """
         return pulumi.get(self, "transfer_bytes")
 

@@ -116,6 +116,7 @@ type Project struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The numeric ID of the folder this project should be
@@ -143,10 +144,13 @@ type Project struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+	// If true, the resource can be deleted without
+	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
+	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
 	//
-	// Deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
+	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
 	SkipDelete pulumi.BoolOutput `pulumi:"skipDelete"`
 }
 
@@ -195,6 +199,7 @@ type projectState struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The numeric ID of the folder this project should be
@@ -222,10 +227,13 @@ type projectState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+	// If true, the resource can be deleted without
+	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
+	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
 	//
-	// Deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
+	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
 	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
@@ -240,6 +248,7 @@ type ProjectState struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The numeric ID of the folder this project should be
@@ -267,10 +276,13 @@ type ProjectState struct {
 	ProjectId pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+	// If true, the resource can be deleted without
+	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
+	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
 	//
-	// Deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
+	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
 	SkipDelete pulumi.BoolPtrInput
 }
 
@@ -289,6 +301,7 @@ type projectArgs struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
 	// specified. If the `folderId` is specified, then the project is
@@ -310,10 +323,13 @@ type projectArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId *string `pulumi:"projectId"`
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+	// If true, the resource can be deleted without
+	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
+	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
 	//
-	// Deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
+	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
 	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
@@ -329,6 +345,7 @@ type ProjectArgs struct {
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
+	DeletionPolicy pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
 	// specified. If the `folderId` is specified, then the project is
@@ -350,10 +367,13 @@ type ProjectArgs struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringPtrInput
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+	// If true, the resource can be deleted without
+	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
+	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
 	//
-	// Deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
+	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
 	SkipDelete pulumi.BoolPtrInput
 }
 
@@ -460,6 +480,10 @@ func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BillingAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o ProjectOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+}
+
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ProjectOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
@@ -511,10 +535,13 @@ func (o ProjectOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// If true, the resource can be deleted
-// without deleting the Project via the Google API. `skipDelete` is deprecated and will be removed in a future major release. The new release adds support for `deletionPolicy` instead.
+// If true, the resource can be deleted without
+// deleting the Project via the Google API. `skipDelete` is deprecated and will be
+// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
 //
-// Deprecated: skip_delete is deprecated and will be removed in a future major release. The new release adds support for deletionPolicy instead.
+// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
 func (o ProjectOutput) SkipDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SkipDelete }).(pulumi.BoolOutput)
 }

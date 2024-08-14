@@ -59,6 +59,7 @@ type LookupProjectArgs struct {
 type LookupProjectResult struct {
 	AutoCreateNetwork bool              `pulumi:"autoCreateNetwork"`
 	BillingAccount    string            `pulumi:"billingAccount"`
+	DeletionPolicy    string            `pulumi:"deletionPolicy"`
 	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
 	FolderId          string            `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.
@@ -117,6 +118,10 @@ func (o LookupProjectResultOutput) AutoCreateNetwork() pulumi.BoolOutput {
 
 func (o LookupProjectResultOutput) BillingAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingAccount }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupProjectResultOutput) EffectiveLabels() pulumi.StringMapOutput {

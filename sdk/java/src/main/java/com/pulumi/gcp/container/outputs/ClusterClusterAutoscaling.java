@@ -23,6 +23,13 @@ public final class ClusterClusterAutoscaling {
      */
     private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
     /**
+     * @return The list of Google Compute Engine
+     * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+     * NodePool&#39;s nodes can be created by NAP.
+     * 
+     */
+    private @Nullable List<String> autoProvisioningLocations;
+    /**
      * @return Configuration
      * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
      * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -54,6 +61,15 @@ public final class ClusterClusterAutoscaling {
      */
     public Optional<ClusterClusterAutoscalingAutoProvisioningDefaults> autoProvisioningDefaults() {
         return Optional.ofNullable(this.autoProvisioningDefaults);
+    }
+    /**
+     * @return The list of Google Compute Engine
+     * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+     * NodePool&#39;s nodes can be created by NAP.
+     * 
+     */
+    public List<String> autoProvisioningLocations() {
+        return this.autoProvisioningLocations == null ? List.of() : this.autoProvisioningLocations;
     }
     /**
      * @return Configuration
@@ -94,6 +110,7 @@ public final class ClusterClusterAutoscaling {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
+        private @Nullable List<String> autoProvisioningLocations;
         private @Nullable String autoscalingProfile;
         private @Nullable Boolean enabled;
         private @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits;
@@ -101,6 +118,7 @@ public final class ClusterClusterAutoscaling {
         public Builder(ClusterClusterAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoProvisioningDefaults = defaults.autoProvisioningDefaults;
+    	      this.autoProvisioningLocations = defaults.autoProvisioningLocations;
     	      this.autoscalingProfile = defaults.autoscalingProfile;
     	      this.enabled = defaults.enabled;
     	      this.resourceLimits = defaults.resourceLimits;
@@ -111,6 +129,15 @@ public final class ClusterClusterAutoscaling {
 
             this.autoProvisioningDefaults = autoProvisioningDefaults;
             return this;
+        }
+        @CustomType.Setter
+        public Builder autoProvisioningLocations(@Nullable List<String> autoProvisioningLocations) {
+
+            this.autoProvisioningLocations = autoProvisioningLocations;
+            return this;
+        }
+        public Builder autoProvisioningLocations(String... autoProvisioningLocations) {
+            return autoProvisioningLocations(List.of(autoProvisioningLocations));
         }
         @CustomType.Setter
         public Builder autoscalingProfile(@Nullable String autoscalingProfile) {
@@ -136,6 +163,7 @@ public final class ClusterClusterAutoscaling {
         public ClusterClusterAutoscaling build() {
             final var _resultValue = new ClusterClusterAutoscaling();
             _resultValue.autoProvisioningDefaults = autoProvisioningDefaults;
+            _resultValue.autoProvisioningLocations = autoProvisioningLocations;
             _resultValue.autoscalingProfile = autoscalingProfile;
             _resultValue.enabled = enabled;
             _resultValue.resourceLimits = resourceLimits;

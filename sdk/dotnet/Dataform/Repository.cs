@@ -37,11 +37,34 @@ namespace Pulumi.Gcp.Dataform
     ///         SecretData = "secret-data",
     ///     });
     /// 
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Name = "example-key-ring",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var exampleKey = new Gcp.Kms.CryptoKey("example_key", new()
+    ///     {
+    ///         Name = "example-crypto-key-name",
+    ///         KeyRing = keyring.Id,
+    ///     });
+    /// 
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("crypto_key_binding", new()
+    ///     {
+    ///         CryptoKeyId = exampleKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Number}@gcp-sa-dataform.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
     ///     var dataformRepository = new Gcp.Dataform.Repository("dataform_repository", new()
     ///     {
     ///         Name = "dataform_repository",
     ///         DisplayName = "dataform_repository",
     ///         NpmrcEnvironmentVariablesSecretVersion = secretVersion.Id,
+    ///         KmsKeyName = exampleKey.Id,
     ///         Labels = 
     ///         {
     ///             { "label_foo1", "label-bar1" },
@@ -57,6 +80,12 @@ namespace Pulumi.Gcp.Dataform
     ///             DefaultDatabase = "database",
     ///             SchemaSuffix = "_suffix",
     ///             TablePrefix = "prefix_",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKeyBinding,
     ///         },
     ///     });
     /// 
@@ -114,6 +143,13 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Output("gitRemoteSettings")]
         public Output<Outputs.RepositoryGitRemoteSettings?> GitRemoteSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Repository user labels.
@@ -237,6 +273,13 @@ namespace Pulumi.Gcp.Dataform
         [Input("gitRemoteSettings")]
         public Input<Inputs.RepositoryGitRemoteSettingsArgs>? GitRemoteSettings { get; set; }
 
+        /// <summary>
+        /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -330,6 +373,13 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Input("gitRemoteSettings")]
         public Input<Inputs.RepositoryGitRemoteSettingsGetArgs>? GitRemoteSettings { get; set; }
+
+        /// <summary>
+        /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

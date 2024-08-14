@@ -2627,6 +2627,10 @@ if not MYPY:
         """
         Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
+        proxy_url: NotRequired[pulumi.Input[str]]
+        """
+        Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        """
 elif False:
     TargetGkeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2634,15 +2638,19 @@ elif False:
 class TargetGkeArgs:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 internal_ip: Optional[pulumi.Input[bool]] = None):
+                 internal_ip: Optional[pulumi.Input[bool]] = None,
+                 proxy_url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
         :param pulumi.Input[bool] internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        :param pulumi.Input[str] proxy_url: Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
         if internal_ip is not None:
             pulumi.set(__self__, "internal_ip", internal_ip)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
 
     @property
     @pulumi.getter
@@ -2667,6 +2675,18 @@ class TargetGkeArgs:
     @internal_ip.setter
     def internal_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "internal_ip", value)
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        """
+        return pulumi.get(self, "proxy_url")
+
+    @proxy_url.setter
+    def proxy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_url", value)
 
 
 if not MYPY:

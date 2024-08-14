@@ -313,6 +313,10 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
      * loadBalancingScheme consult ServerTlsPolicy documentation.
      * If left blank, communications are not encrypted.
+     * If you remove this field from your configuration at the same time as
+     * deleting or recreating a referenced ServerTlsPolicy resource, you will
+     * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+     * within the ServerTlsPolicy resource to avoid this.
      */
     public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -440,6 +444,10 @@ export interface RegionTargetHttpsProxyState {
      * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
      * loadBalancingScheme consult ServerTlsPolicy documentation.
      * If left blank, communications are not encrypted.
+     * If you remove this field from your configuration at the same time as
+     * deleting or recreating a referenced ServerTlsPolicy resource, you will
+     * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+     * within the ServerTlsPolicy resource to avoid this.
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**
@@ -508,6 +516,10 @@ export interface RegionTargetHttpsProxyArgs {
      * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
      * loadBalancingScheme consult ServerTlsPolicy documentation.
      * If left blank, communications are not encrypted.
+     * If you remove this field from your configuration at the same time as
+     * deleting or recreating a referenced ServerTlsPolicy resource, you will
+     * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+     * within the ServerTlsPolicy resource to avoid this.
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**

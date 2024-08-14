@@ -6244,6 +6244,8 @@ type TargetGke struct {
 	Cluster *string `pulumi:"cluster"`
 	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 	InternalIp *bool `pulumi:"internalIp"`
+	// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+	ProxyUrl *string `pulumi:"proxyUrl"`
 }
 
 // TargetGkeInput is an input type that accepts TargetGkeArgs and TargetGkeOutput values.
@@ -6262,6 +6264,8 @@ type TargetGkeArgs struct {
 	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
 	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 	InternalIp pulumi.BoolPtrInput `pulumi:"internalIp"`
+	// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
 }
 
 func (TargetGkeArgs) ElementType() reflect.Type {
@@ -6351,6 +6355,11 @@ func (o TargetGkeOutput) InternalIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TargetGke) *bool { return v.InternalIp }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+func (o TargetGkeOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetGke) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
 type TargetGkePtrOutput struct{ *pulumi.OutputState }
 
 func (TargetGkePtrOutput) ElementType() reflect.Type {
@@ -6393,6 +6402,16 @@ func (o TargetGkePtrOutput) InternalIp() pulumi.BoolPtrOutput {
 		}
 		return v.InternalIp
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+func (o TargetGkePtrOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type TargetIamBindingCondition struct {

@@ -65,6 +65,21 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
     }
 
     /**
+     * Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * 
+     */
+    @Import(name="management")
+    private @Nullable Output<String> management;
+
+    /**
+     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * 
+     */
+    public Optional<Output<String>> management() {
+        return Optional.ofNullable(this.management);
+    }
+
+    /**
      * Policy Controller configuration for the cluster. Structure is documented below.
      * 
      */
@@ -100,6 +115,7 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
         this.binauthz = $.binauthz;
         this.configSync = $.configSync;
         this.hierarchyController = $.hierarchyController;
+        this.management = $.management;
         this.policyController = $.policyController;
         this.version = $.version;
     }
@@ -183,6 +199,27 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
          */
         public Builder hierarchyController(FeatureMembershipConfigmanagementHierarchyControllerArgs hierarchyController) {
             return hierarchyController(Output.of(hierarchyController));
+        }
+
+        /**
+         * @param management Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(@Nullable Output<String> management) {
+            $.management = management;
+            return this;
+        }
+
+        /**
+         * @param management Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(String management) {
+            return management(Output.of(management));
         }
 
         /**

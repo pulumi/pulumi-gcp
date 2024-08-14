@@ -1051,7 +1051,7 @@ type DatabaseInstanceSettings struct {
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation *string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement *string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfig *DatabaseInstanceSettingsDataCacheConfig `pulumi:"dataCacheConfig"`
@@ -1123,7 +1123,7 @@ type DatabaseInstanceSettingsArgs struct {
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringPtrInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfig DatabaseInstanceSettingsDataCacheConfigPtrInput `pulumi:"dataCacheConfig"`
@@ -1284,7 +1284,7 @@ func (o DatabaseInstanceSettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o DatabaseInstanceSettingsOutput) ConnectorEnforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ConnectorEnforcement }).(pulumi.StringPtrOutput)
 }
@@ -1493,7 +1493,7 @@ func (o DatabaseInstanceSettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o DatabaseInstanceSettingsPtrOutput) ConnectorEnforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {
@@ -5608,7 +5608,7 @@ type GetDatabaseInstanceSetting struct {
 	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
@@ -5676,7 +5676,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation pulumi.StringInput `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
@@ -5807,7 +5807,7 @@ func (o GetDatabaseInstanceSettingOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
@@ -8703,7 +8703,7 @@ type GetDatabaseInstancesInstanceSetting struct {
 	BackupConfigurations []GetDatabaseInstancesInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstancesInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
@@ -8771,7 +8771,7 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	BackupConfigurations GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation pulumi.StringInput `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
@@ -8902,7 +8902,7 @@ func (o GetDatabaseInstancesInstanceSettingOutput) Collation() pulumi.StringOutp
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstancesInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }

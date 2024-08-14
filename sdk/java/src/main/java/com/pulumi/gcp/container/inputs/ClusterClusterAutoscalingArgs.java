@@ -39,6 +39,25 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The list of Google Compute Engine
+     * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+     * NodePool&#39;s nodes can be created by NAP.
+     * 
+     */
+    @Import(name="autoProvisioningLocations")
+    private @Nullable Output<List<String>> autoProvisioningLocations;
+
+    /**
+     * @return The list of Google Compute Engine
+     * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+     * NodePool&#39;s nodes can be created by NAP.
+     * 
+     */
+    public Optional<Output<List<String>>> autoProvisioningLocations() {
+        return Optional.ofNullable(this.autoProvisioningLocations);
+    }
+
+    /**
      * Configuration
      * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
      * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -101,6 +120,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
 
     private ClusterClusterAutoscalingArgs(ClusterClusterAutoscalingArgs $) {
         this.autoProvisioningDefaults = $.autoProvisioningDefaults;
+        this.autoProvisioningLocations = $.autoProvisioningLocations;
         this.autoscalingProfile = $.autoscalingProfile;
         this.enabled = $.enabled;
         this.resourceLimits = $.resourceLimits;
@@ -147,6 +167,43 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
          */
         public Builder autoProvisioningDefaults(ClusterClusterAutoscalingAutoProvisioningDefaultsArgs autoProvisioningDefaults) {
             return autoProvisioningDefaults(Output.of(autoProvisioningDefaults));
+        }
+
+        /**
+         * @param autoProvisioningLocations The list of Google Compute Engine
+         * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+         * NodePool&#39;s nodes can be created by NAP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoProvisioningLocations(@Nullable Output<List<String>> autoProvisioningLocations) {
+            $.autoProvisioningLocations = autoProvisioningLocations;
+            return this;
+        }
+
+        /**
+         * @param autoProvisioningLocations The list of Google Compute Engine
+         * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+         * NodePool&#39;s nodes can be created by NAP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoProvisioningLocations(List<String> autoProvisioningLocations) {
+            return autoProvisioningLocations(Output.of(autoProvisioningLocations));
+        }
+
+        /**
+         * @param autoProvisioningLocations The list of Google Compute Engine
+         * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+         * NodePool&#39;s nodes can be created by NAP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoProvisioningLocations(String... autoProvisioningLocations) {
+            return autoProvisioningLocations(List.of(autoProvisioningLocations));
         }
 
         /**

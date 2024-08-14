@@ -29,6 +29,7 @@ class DataStoreArgs:
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
                  document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_default_schema_creation: Optional[pulumi.Input[bool]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DataStore resource.
@@ -51,6 +52,13 @@ class DataStoreArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_default_schema_creation: A boolean flag indicating whether to skip the default schema creation for
+               the data store. Only enable this flag if you are certain that the default
+               schema is incompatible with your use case.
+               If set to true, you must manually create a schema for the data store
+               before any documents can be ingested.
+               This flag cannot be specified if `data_store.starting_schema` is
+               specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
                Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
         """
@@ -65,6 +73,8 @@ class DataStoreArgs:
             pulumi.set(__self__, "document_processing_config", document_processing_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_default_schema_creation is not None:
+            pulumi.set(__self__, "skip_default_schema_creation", skip_default_schema_creation)
         if solution_types is not None:
             pulumi.set(__self__, "solution_types", solution_types)
 
@@ -176,6 +186,24 @@ class DataStoreArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="skipDefaultSchemaCreation")
+    def skip_default_schema_creation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean flag indicating whether to skip the default schema creation for
+        the data store. Only enable this flag if you are certain that the default
+        schema is incompatible with your use case.
+        If set to true, you must manually create a schema for the data store
+        before any documents can be ingested.
+        This flag cannot be specified if `data_store.starting_schema` is
+        specified.
+        """
+        return pulumi.get(self, "skip_default_schema_creation")
+
+    @skip_default_schema_creation.setter
+    def skip_default_schema_creation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_default_schema_creation", value)
+
+    @property
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -203,6 +231,7 @@ class _DataStoreState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_default_schema_creation: Optional[pulumi.Input[bool]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DataStore resources.
@@ -231,6 +260,13 @@ class _DataStoreState:
                characters.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_default_schema_creation: A boolean flag indicating whether to skip the default schema creation for
+               the data store. Only enable this flag if you are certain that the default
+               schema is incompatible with your use case.
+               If set to true, you must manually create a schema for the data store
+               before any documents can be ingested.
+               This flag cannot be specified if `data_store.starting_schema` is
+               specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
                Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
         """
@@ -256,6 +292,8 @@ class _DataStoreState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_default_schema_creation is not None:
+            pulumi.set(__self__, "skip_default_schema_creation", skip_default_schema_creation)
         if solution_types is not None:
             pulumi.set(__self__, "solution_types", solution_types)
 
@@ -406,6 +444,24 @@ class _DataStoreState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="skipDefaultSchemaCreation")
+    def skip_default_schema_creation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean flag indicating whether to skip the default schema creation for
+        the data store. Only enable this flag if you are certain that the default
+        schema is incompatible with your use case.
+        If set to true, you must manually create a schema for the data store
+        before any documents can be ingested.
+        This flag cannot be specified if `data_store.starting_schema` is
+        specified.
+        """
+        return pulumi.get(self, "skip_default_schema_creation")
+
+    @skip_default_schema_creation.setter
+    def skip_default_schema_creation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_default_schema_creation", value)
+
+    @property
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -432,6 +488,7 @@ class DataStore(pulumi.CustomResource):
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_default_schema_creation: Optional[pulumi.Input[bool]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -460,7 +517,8 @@ class DataStore(pulumi.CustomResource):
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
-            create_advanced_site_search=False)
+            create_advanced_site_search=False,
+            skip_default_schema_creation=False)
         ```
         ### Discoveryengine Datastore Document Processing Config
 
@@ -534,6 +592,13 @@ class DataStore(pulumi.CustomResource):
                only be one of "global", "us" and "eu".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_default_schema_creation: A boolean flag indicating whether to skip the default schema creation for
+               the data store. Only enable this flag if you are certain that the default
+               schema is incompatible with your use case.
+               If set to true, you must manually create a schema for the data store
+               before any documents can be ingested.
+               This flag cannot be specified if `data_store.starting_schema` is
+               specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
                Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
         """
@@ -569,7 +634,8 @@ class DataStore(pulumi.CustomResource):
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
-            create_advanced_site_search=False)
+            create_advanced_site_search=False,
+            skip_default_schema_creation=False)
         ```
         ### Discoveryengine Datastore Document Processing Config
 
@@ -645,6 +711,7 @@ class DataStore(pulumi.CustomResource):
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_default_schema_creation: Optional[pulumi.Input[bool]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -673,6 +740,7 @@ class DataStore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["skip_default_schema_creation"] = skip_default_schema_creation
             __props__.__dict__["solution_types"] = solution_types
             __props__.__dict__["create_time"] = None
             __props__.__dict__["default_schema_id"] = None
@@ -698,6 +766,7 @@ class DataStore(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            skip_default_schema_creation: Optional[pulumi.Input[bool]] = None,
             solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'DataStore':
         """
         Get an existing DataStore resource's state with the given name, id, and optional extra
@@ -731,6 +800,13 @@ class DataStore(pulumi.CustomResource):
                characters.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_default_schema_creation: A boolean flag indicating whether to skip the default schema creation for
+               the data store. Only enable this flag if you are certain that the default
+               schema is incompatible with your use case.
+               If set to true, you must manually create a schema for the data store
+               before any documents can be ingested.
+               This flag cannot be specified if `data_store.starting_schema` is
+               specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
                Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
         """
@@ -749,6 +825,7 @@ class DataStore(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["skip_default_schema_creation"] = skip_default_schema_creation
         __props__.__dict__["solution_types"] = solution_types
         return DataStore(resource_name, opts=opts, __props__=__props__)
 
@@ -853,6 +930,20 @@ class DataStore(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="skipDefaultSchemaCreation")
+    def skip_default_schema_creation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean flag indicating whether to skip the default schema creation for
+        the data store. Only enable this flag if you are certain that the default
+        schema is incompatible with your use case.
+        If set to true, you must manually create a schema for the data store
+        before any documents can be ingested.
+        This flag cannot be specified if `data_store.starting_schema` is
+        specified.
+        """
+        return pulumi.get(self, "skip_default_schema_creation")
 
     @property
     @pulumi.getter(name="solutionTypes")

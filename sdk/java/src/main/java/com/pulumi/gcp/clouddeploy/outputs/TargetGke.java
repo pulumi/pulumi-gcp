@@ -22,6 +22,11 @@ public final class TargetGke {
      * 
      */
     private @Nullable Boolean internalIp;
+    /**
+     * @return Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+     * 
+     */
+    private @Nullable String proxyUrl;
 
     private TargetGke() {}
     /**
@@ -38,6 +43,13 @@ public final class TargetGke {
     public Optional<Boolean> internalIp() {
         return Optional.ofNullable(this.internalIp);
     }
+    /**
+     * @return Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+     * 
+     */
+    public Optional<String> proxyUrl() {
+        return Optional.ofNullable(this.proxyUrl);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +62,13 @@ public final class TargetGke {
     public static final class Builder {
         private @Nullable String cluster;
         private @Nullable Boolean internalIp;
+        private @Nullable String proxyUrl;
         public Builder() {}
         public Builder(TargetGke defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
     	      this.internalIp = defaults.internalIp;
+    	      this.proxyUrl = defaults.proxyUrl;
         }
 
         @CustomType.Setter
@@ -69,10 +83,17 @@ public final class TargetGke {
             this.internalIp = internalIp;
             return this;
         }
+        @CustomType.Setter
+        public Builder proxyUrl(@Nullable String proxyUrl) {
+
+            this.proxyUrl = proxyUrl;
+            return this;
+        }
         public TargetGke build() {
             final var _resultValue = new TargetGke();
             _resultValue.cluster = cluster;
             _resultValue.internalIp = internalIp;
+            _resultValue.proxyUrl = proxyUrl;
             return _resultValue;
         }
     }

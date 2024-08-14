@@ -23,6 +23,7 @@ class RepositoryArgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,8 @@ class RepositoryArgs:
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key_name: Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+               It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -56,6 +59,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "display_name", display_name)
         if git_remote_settings is not None:
             pulumi.set(__self__, "git_remote_settings", git_remote_settings)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -95,6 +100,19 @@ class RepositoryArgs:
     @git_remote_settings.setter
     def git_remote_settings(self, value: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']]):
         pulumi.set(self, "git_remote_settings", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+        It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
     @property
     @pulumi.getter
@@ -196,6 +214,7 @@ class _RepositoryState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  git_remote_settings: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -210,6 +229,8 @@ class _RepositoryState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key_name: Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+               It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -235,6 +256,8 @@ class _RepositoryState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if git_remote_settings is not None:
             pulumi.set(__self__, "git_remote_settings", git_remote_settings)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -288,6 +311,19 @@ class _RepositoryState:
     @git_remote_settings.setter
     def git_remote_settings(self, value: Optional[pulumi.Input['RepositoryGitRemoteSettingsArgs']]):
         pulumi.set(self, "git_remote_settings", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+        It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
     @property
     @pulumi.getter
@@ -403,6 +439,7 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -428,10 +465,21 @@ class Repository(pulumi.CustomResource):
         secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
             secret_data="secret-data")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="example-key-ring",
+            location="us-central1")
+        example_key = gcp.kms.CryptoKey("example_key",
+            name="example-crypto-key-name",
+            key_ring=keyring.id)
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("crypto_key_binding",
+            crypto_key_id=example_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project['number']}@gcp-sa-dataform.iam.gserviceaccount.com"])
         dataform_repository = gcp.dataform.Repository("dataform_repository",
             name="dataform_repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
+            kms_key_name=example_key.id,
             labels={
                 "label_foo1": "label-bar1",
             },
@@ -444,7 +492,8 @@ class Repository(pulumi.CustomResource):
                 "default_database": "database",
                 "schema_suffix": "_suffix",
                 "table_prefix": "prefix_",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
         ## Import
@@ -482,6 +531,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key_name: Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+               It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -522,10 +573,21 @@ class Repository(pulumi.CustomResource):
         secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
             secret_data="secret-data")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="example-key-ring",
+            location="us-central1")
+        example_key = gcp.kms.CryptoKey("example_key",
+            name="example-crypto-key-name",
+            key_ring=keyring.id)
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("crypto_key_binding",
+            crypto_key_id=example_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project['number']}@gcp-sa-dataform.iam.gserviceaccount.com"])
         dataform_repository = gcp.dataform.Repository("dataform_repository",
             name="dataform_repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
+            kms_key_name=example_key.id,
             labels={
                 "label_foo1": "label-bar1",
             },
@@ -538,7 +600,8 @@ class Repository(pulumi.CustomResource):
                 "default_database": "database",
                 "schema_suffix": "_suffix",
                 "table_prefix": "prefix_",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
         ## Import
@@ -588,6 +651,7 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -606,6 +670,7 @@ class Repository(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["git_remote_settings"] = git_remote_settings
+            __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["npmrc_environment_variables_secret_version"] = npmrc_environment_variables_secret_version
@@ -630,6 +695,7 @@ class Repository(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
+            kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -649,6 +715,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key_name: Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+               It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -675,6 +743,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["git_remote_settings"] = git_remote_settings
+        __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["npmrc_environment_variables_secret_version"] = npmrc_environment_variables_secret_version
@@ -709,6 +778,15 @@ class Repository(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "git_remote_settings")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+        It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter

@@ -344,6 +344,262 @@ class LogViewIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
+
+        * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
+        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `logging.LogViewIamPolicy`: Retrieves the IAM policy for the logview
+
+        > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## logging.LogViewIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## logging.LogViewIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## logging.LogViewIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud (Stackdriver) Logging LogView
+        Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
+
+        * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
+        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `logging.LogViewIamPolicy`: Retrieves the IAM policy for the logview
+
+        > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## logging.LogViewIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## logging.LogViewIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## logging.LogViewIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -410,6 +666,262 @@ class LogViewIamMember(pulumi.CustomResource):
                  args: LogViewIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
+
+        * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
+        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `logging.LogViewIamPolicy`: Retrieves the IAM policy for the logview
+
+        > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## logging.LogViewIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## logging.LogViewIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## logging.LogViewIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        ---
+
+        # IAM policy for Cloud (Stackdriver) Logging LogView
+        Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
+
+        * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
+        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `logging.LogViewIamPolicy`: Retrieves the IAM policy for the logview
+
+        > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## logging.LogViewIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/logging.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.logging.LogViewIamPolicy("policy",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## logging.LogViewIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.logging.LogViewIamBinding("binding",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## logging.LogViewIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.logging.LogViewIamMember("member",
+            parent=logging_log_view["parent"],
+            location=logging_log_view["location"],
+            bucket=logging_log_view["bucket"],
+            name=logging_log_view["name"],
+            role="roles/logging.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:

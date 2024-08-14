@@ -19,6 +19,21 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     public static final FeatureMembershipConfigmanagementConfigSyncArgs Empty = new FeatureMembershipConfigmanagementConfigSyncArgs();
 
     /**
+     * Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
      * (Optional) Structure is documented below.
      * 
      */
@@ -100,6 +115,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     private FeatureMembershipConfigmanagementConfigSyncArgs() {}
 
     private FeatureMembershipConfigmanagementConfigSyncArgs(FeatureMembershipConfigmanagementConfigSyncArgs $) {
+        this.enabled = $.enabled;
         this.git = $.git;
         this.metricsGcpServiceAccountEmail = $.metricsGcpServiceAccountEmail;
         this.oci = $.oci;
@@ -123,6 +139,27 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
 
         public Builder(FeatureMembershipConfigmanagementConfigSyncArgs defaults) {
             $ = new FeatureMembershipConfigmanagementConfigSyncArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enabled Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

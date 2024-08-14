@@ -20,10 +20,15 @@ __all__ = ['ManagedFolderArgs', 'ManagedFolder']
 class ManagedFolderArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ManagedFolder resource.
         :param pulumi.Input[str] bucket: The name of the bucket that contains the managed folder.
+        :param pulumi.Input[bool] force_destroy: Allows the deletion of a managed folder even if contains
+               objects. If a non-empty managed folder is deleted, any objects
+               within the folder will remain in a simulated folder with the
+               same name.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
                
@@ -31,6 +36,8 @@ class ManagedFolderArgs:
                - - -
         """
         pulumi.set(__self__, "bucket", bucket)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -45,6 +52,21 @@ class ManagedFolderArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows the deletion of a managed folder even if contains
+        objects. If a non-empty managed folder is deleted, any objects
+        within the folder will remain in a simulated folder with the
+        same name.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter
@@ -68,6 +90,7 @@ class _ManagedFolderState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -76,6 +99,10 @@ class _ManagedFolderState:
         Input properties used for looking up and filtering ManagedFolder resources.
         :param pulumi.Input[str] bucket: The name of the bucket that contains the managed folder.
         :param pulumi.Input[str] create_time: The timestamp at which this managed folder was created.
+        :param pulumi.Input[bool] force_destroy: Allows the deletion of a managed folder even if contains
+               objects. If a non-empty managed folder is deleted, any objects
+               within the folder will remain in a simulated folder with the
+               same name.
         :param pulumi.Input[str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
@@ -89,6 +116,8 @@ class _ManagedFolderState:
             pulumi.set(__self__, "bucket", bucket)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metageneration is not None:
             pulumi.set(__self__, "metageneration", metageneration)
         if name is not None:
@@ -121,6 +150,21 @@ class _ManagedFolderState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows the deletion of a managed folder even if contains
+        objects. If a non-empty managed folder is deleted, any objects
+        within the folder will remain in a simulated folder with the
+        same name.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter
@@ -181,6 +225,7 @@ class ManagedFolder(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -216,7 +261,8 @@ class ManagedFolder(pulumi.CustomResource):
             uniform_bucket_level_access=True)
         folder = gcp.storage.ManagedFolder("folder",
             bucket=bucket.name,
-            name="managed/folder/name/")
+            name="managed/folder/name/",
+            force_destroy=True)
         ```
 
         ## Import
@@ -240,6 +286,10 @@ class ManagedFolder(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket that contains the managed folder.
+        :param pulumi.Input[bool] force_destroy: Allows the deletion of a managed folder even if contains
+               objects. If a non-empty managed folder is deleted, any objects
+               within the folder will remain in a simulated folder with the
+               same name.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
                
@@ -285,7 +335,8 @@ class ManagedFolder(pulumi.CustomResource):
             uniform_bucket_level_access=True)
         folder = gcp.storage.ManagedFolder("folder",
             bucket=bucket.name,
-            name="managed/folder/name/")
+            name="managed/folder/name/",
+            force_destroy=True)
         ```
 
         ## Import
@@ -322,6 +373,7 @@ class ManagedFolder(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -335,6 +387,7 @@ class ManagedFolder(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["metageneration"] = None
@@ -352,6 +405,7 @@ class ManagedFolder(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             metageneration: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -365,6 +419,10 @@ class ManagedFolder(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket that contains the managed folder.
         :param pulumi.Input[str] create_time: The timestamp at which this managed folder was created.
+        :param pulumi.Input[bool] force_destroy: Allows the deletion of a managed folder even if contains
+               objects. If a non-empty managed folder is deleted, any objects
+               within the folder will remain in a simulated folder with the
+               same name.
         :param pulumi.Input[str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
@@ -380,6 +438,7 @@ class ManagedFolder(pulumi.CustomResource):
 
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["metageneration"] = metageneration
         __props__.__dict__["name"] = name
         __props__.__dict__["self_link"] = self_link
@@ -401,6 +460,17 @@ class ManagedFolder(pulumi.CustomResource):
         The timestamp at which this managed folder was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Allows the deletion of a managed folder even if contains
+        objects. If a non-empty managed folder is deleted, any objects
+        within the folder will remain in a simulated folder with the
+        same name.
+        """
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter

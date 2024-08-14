@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,6 +44,27 @@ public final class ManagedFolderState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Allows the deletion of a managed folder even if contains
+     * objects. If a non-empty managed folder is deleted, any objects
+     * within the folder will remain in a simulated folder with the
+     * same name.
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return Allows the deletion of a managed folder even if contains
+     * objects. If a non-empty managed folder is deleted, any objects
+     * within the folder will remain in a simulated folder with the
+     * same name.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
     }
 
     /**
@@ -116,6 +138,7 @@ public final class ManagedFolderState extends com.pulumi.resources.ResourceArgs 
     private ManagedFolderState(ManagedFolderState $) {
         this.bucket = $.bucket;
         this.createTime = $.createTime;
+        this.forceDestroy = $.forceDestroy;
         this.metageneration = $.metageneration;
         this.name = $.name;
         this.selfLink = $.selfLink;
@@ -180,6 +203,33 @@ public final class ManagedFolderState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param forceDestroy Allows the deletion of a managed folder even if contains
+         * objects. If a non-empty managed folder is deleted, any objects
+         * within the folder will remain in a simulated folder with the
+         * same name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy Allows the deletion of a managed folder even if contains
+         * objects. If a non-empty managed folder is deleted, any objects
+         * within the folder will remain in a simulated folder with the
+         * same name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         /**

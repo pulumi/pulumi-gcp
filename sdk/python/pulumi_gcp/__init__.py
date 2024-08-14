@@ -476,6 +476,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "accesscontextmanager/servicePerimeterDryRunEgressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy": "ServicePerimeterDryRunEgressPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/servicePerimeterDryRunIngressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy": "ServicePerimeterDryRunIngressPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "accesscontextmanager/servicePerimeterDryRunResource",
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {
@@ -7108,6 +7124,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/v2FolderMuteConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig": "V2FolderMuteConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/v2OrganizationMuteConfig",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7120,6 +7144,54 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": "V2OrganizationNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSource",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource": "V2OrganizationSource"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSourceIamBinding",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding": "V2OrganizationSourceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSourceIamMember",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember": "V2OrganizationSourceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSourceIamPolicy",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy": "V2OrganizationSourceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2ProjectMuteConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig": "V2ProjectMuteConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2ProjectNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig": "V2ProjectNotificationConfig"
   }
  },
  {
