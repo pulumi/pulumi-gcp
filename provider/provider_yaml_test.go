@@ -386,64 +386,7 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 			"preview": true
 		},
 		"response": {
-			"properties": {
-				"id": "",
-				"initialNodeCount": 1,
-				"name": "gpu-node-pool-c90bfc0",
-				"nodeConfig": {
-				  "advancedMachineFeatures": null,
-				  "bootDiskKmsKey": "",
-				  "containerdConfig": null,
-				  "confidentialNodes": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "diskSizeGb": 50,
-				  "diskType": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "effectiveTaints": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "enableConfidentialStorage": false,
-				  "ephemeralStorageConfig": null,
-				  "ephemeralStorageLocalSsdConfig": null,
-				  "fastSocket": null,
-				  "gcfsConfig": null,
-				  "guestAccelerators": [
-					{
-					  "count": 1,
-					  "gpuDriverInstallationConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-					  "gpuPartitionSize": "",
-					  "gpuSharingConfig": null,
-					  "type": "nvidia-tesla-t4"
-					}
-				  ],
-				  "gvnic": null,
-				  "hostMaintenancePolicy": null,
-				  "imageType": "",
-				  "kubeletConfig": null,
-				  "labels": {},
-				  "linuxNodeConfig": null,
-				  "localNvmeSsdBlockConfig": null,
-				  "localSsdCount": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "loggingVariant": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "machineType": "n1-highmem-8",
-				  "metadata": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "minCpuPlatform": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "nodeGroup": "",
-				  "oauthScopes": [
-					"https://www.googleapis.com/auth/cloud-platform"
-				  ],
-				  "preemptible": false,
-				  "reservationAffinity": null,
-				  "resourceLabels": {},
-				  "resourceManagerTags": {},
-				  "sandboxConfig": null,
-				  "serviceAccount": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "secondaryBootDisks": [],
-				  "shieldedInstanceConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "soleTenantConfig": null,
-				  "spot": false,
-				  "tags": [],
-				  "taints": [],
-				  "workloadMetadataConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9"
-				},
-				"project": "pulumi-development"
-			  }
+			"properties": "*"
 		},
 		"metadata": {
 			"kind": "resource",
