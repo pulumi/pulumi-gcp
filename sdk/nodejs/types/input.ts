@@ -17035,7 +17035,7 @@ export namespace compute {
          * A set of key/value label pairs assigned to the disk. This
          * field is only applicable for persistent disks.
          */
-        labels?: pulumi.Input<{[key: string]: any}>;
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Indicates how many IOPS to provision for the disk.
          * This sets the number of I/O operations per second that the disk can handle.
@@ -17059,7 +17059,7 @@ export namespace compute {
         /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The size of the image in gigabytes. If not specified, it
          * will inherit the size of its base image.
@@ -17178,7 +17178,7 @@ export namespace compute {
         /**
          * A set of key/value label pairs assigned to the disk.
          */
-        labels?: pulumi.Input<{[key: string]: any}>;
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
@@ -17190,7 +17190,7 @@ export namespace compute {
         /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The size of the image in gigabytes.
          */
@@ -17366,7 +17366,7 @@ export namespace compute {
         /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface InstanceFromMachineImageReservationAffinity {
@@ -17611,7 +17611,7 @@ export namespace compute {
         /**
          * A set of key/value label pairs assigned to the disk.
          */
-        labels?: pulumi.Input<{[key: string]: any}>;
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
@@ -17623,7 +17623,7 @@ export namespace compute {
         /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The size of the image in gigabytes.
          */
@@ -17799,7 +17799,7 @@ export namespace compute {
         /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface InstanceFromTemplateReservationAffinity {
@@ -18008,7 +18008,7 @@ export namespace compute {
         /**
          * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface InstanceGroupManagerStandbyPolicy {
@@ -18407,7 +18407,7 @@ export namespace compute {
         /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface InstanceReservationAffinity {
@@ -21026,7 +21026,7 @@ export namespace compute {
         /**
          * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface RegionInstanceGroupManagerStandbyPolicy {
@@ -29409,7 +29409,7 @@ export namespace container {
         /**
          * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Sandbox configuration for this node.
          */
@@ -29877,7 +29877,7 @@ export namespace container {
         /**
          * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface ClusterNodePoolAutoConfigNetworkTags {
@@ -30239,7 +30239,7 @@ export namespace container {
         /**
          * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Sandbox configuration for this node.
          */
@@ -31146,7 +31146,7 @@ export namespace container {
         /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
-        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Sandbox configuration for this node.
          */
@@ -31881,7 +31881,7 @@ export namespace databasemigrationservice {
          * (Output)
          * A list of messages that carry the error details.
          */
-        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * (Output)
          * Human readable message indicating details about the current status.
@@ -36364,7 +36364,7 @@ export namespace dataloss {
         /**
          * A list of messages that carry the error details.
          */
-        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
          */
@@ -39888,7 +39888,7 @@ export namespace dataproc {
          * The map of port descriptions to URLs. Will only be populated if
          * `enableHttpPortAccess` is true.
          */
-        httpPorts?: pulumi.Input<{[key: string]: any}>;
+        httpPorts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface ClusterClusterConfigGceClusterConfig {
@@ -40333,7 +40333,7 @@ export namespace dataproc {
          * A list of the properties used to set the daemon config files.
          * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
          */
-        properties?: pulumi.Input<{[key: string]: any}>;
+        properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface ClusterClusterConfigWorkerConfig {
@@ -47415,7 +47415,7 @@ export namespace firebase {
         /**
          * A list of messages that carry the error details.
          */
-        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * A developer-facing error message, which should be in English.
          */
@@ -56843,7 +56843,7 @@ export namespace networkconnectivity {
          * (Output)
          * A list of messages that carry the error details.
          */
-        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * A developer-facing error message.
          */
@@ -67007,7 +67007,7 @@ export namespace workstations {
          * (Output)
          * A list of messages that carry the error details.
          */
-        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * (Output)
          * Human readable message indicating details about the current status.
@@ -67058,7 +67058,7 @@ export namespace workstations {
          * (Output)
          * A list of messages that carry the error details.
          */
-        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
         /**
          * (Output)
          * Human readable message indicating details about the current status.

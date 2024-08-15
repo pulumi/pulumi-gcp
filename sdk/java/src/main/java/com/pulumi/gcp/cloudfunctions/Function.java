@@ -16,7 +16,6 @@ import com.pulumi.gcp.cloudfunctions.outputs.FunctionSecretVolume;
 import com.pulumi.gcp.cloudfunctions.outputs.FunctionSourceRepository;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -219,14 +218,14 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A set of key/value environment variable pairs available during build time.
      * 
      */
-    @Export(name="buildEnvironmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> buildEnvironmentVariables;
+    @Export(name="buildEnvironmentVariables", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> buildEnvironmentVariables;
 
     /**
      * @return A set of key/value environment variable pairs available during build time.
      * 
      */
-    public Output<Optional<Map<String,Object>>> buildEnvironmentVariables() {
+    public Output<Optional<Map<String,String>>> buildEnvironmentVariables() {
         return Codegen.optional(this.buildEnvironmentVariables);
     }
     /**
@@ -331,14 +330,14 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A set of key/value environment variable pairs to assign to the function.
      * 
      */
-    @Export(name="environmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> environmentVariables;
+    @Export(name="environmentVariables", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> environmentVariables;
 
     /**
      * @return A set of key/value environment variable pairs to assign to the function.
      * 
      */
-    public Output<Optional<Map<String,Object>>> environmentVariables() {
+    public Output<Optional<Map<String,String>>> environmentVariables() {
         return Codegen.optional(this.environmentVariables);
     }
     /**
@@ -426,8 +425,8 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
@@ -436,7 +435,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
-    public Output<Optional<Map<String,Object>>> labels() {
+    public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**

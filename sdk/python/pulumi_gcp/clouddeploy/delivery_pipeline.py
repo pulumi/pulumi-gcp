@@ -178,14 +178,14 @@ class _DeliveryPipelineState:
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -199,7 +199,7 @@ class _DeliveryPipelineState:
         :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
                following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
@@ -211,7 +211,7 @@ class _DeliveryPipelineState:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
@@ -303,23 +303,23 @@ class _DeliveryPipelineState:
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @property
@@ -390,14 +390,14 @@ class _DeliveryPipelineState:
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @property
@@ -1025,14 +1025,14 @@ class DeliveryPipeline(pulumi.CustomResource):
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             serial_pipeline: Optional[pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -1051,7 +1051,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
                following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
@@ -1063,7 +1063,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
@@ -1128,12 +1128,12 @@ class DeliveryPipeline(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
@@ -1187,7 +1187,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """

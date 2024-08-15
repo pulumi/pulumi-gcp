@@ -295,7 +295,11 @@ class Database(pulumi.CustomResource):
             catalog=catalog.id,
             type="HIVE",
             hive_options={
-                "location_uri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "location_uri": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    metadataFolderName=metadata_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['metadataFolderName']}")
+        ,
                 "parameters": {
                     "owner": "John Doe",
                 },
@@ -362,7 +366,11 @@ class Database(pulumi.CustomResource):
             catalog=catalog.id,
             type="HIVE",
             hive_options={
-                "location_uri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "location_uri": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    metadataFolderName=metadata_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['metadataFolderName']}")
+        ,
                 "parameters": {
                     "owner": "John Doe",
                 },

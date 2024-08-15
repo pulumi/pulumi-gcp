@@ -181,8 +181,8 @@ type AzureNodePool struct {
 	// The node configuration of the node pool.
 	Config AzureNodePoolConfigOutput `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
-	CreateTime           pulumi.StringOutput `pulumi:"createTime"`
-	EffectiveAnnotations pulumi.MapOutput    `pulumi:"effectiveAnnotations"`
+	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
@@ -276,8 +276,8 @@ type azureNodePoolState struct {
 	// The node configuration of the node pool.
 	Config *AzureNodePoolConfig `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
-	CreateTime           *string                `pulumi:"createTime"`
-	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	CreateTime           *string           `pulumi:"createTime"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// The location for the resource
@@ -322,7 +322,7 @@ type AzureNodePoolState struct {
 	Config AzureNodePoolConfigPtrInput
 	// Output only. The time at which this node pool was created.
 	CreateTime           pulumi.StringPtrInput
-	EffectiveAnnotations pulumi.MapInput
+	EffectiveAnnotations pulumi.StringMapInput
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// The location for the resource
@@ -540,8 +540,8 @@ func (o AzureNodePoolOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-func (o AzureNodePoolOutput) EffectiveAnnotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AzureNodePool) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+func (o AzureNodePoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureNodePool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

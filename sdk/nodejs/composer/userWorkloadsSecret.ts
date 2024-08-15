@@ -93,7 +93,7 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
     /**
      * A map of the secret data.
      */
-    public readonly data!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly data!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Environment where the Kubernetes Secret will be stored and used.
      */
@@ -155,7 +155,7 @@ export interface UserWorkloadsSecretState {
     /**
      * A map of the secret data.
      */
-    data?: pulumi.Input<{[key: string]: any}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment where the Kubernetes Secret will be stored and used.
      */
@@ -182,7 +182,7 @@ export interface UserWorkloadsSecretArgs {
     /**
      * A map of the secret data.
      */
-    data?: pulumi.Input<{[key: string]: any}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment where the Kubernetes Secret will be stored and used.
      */

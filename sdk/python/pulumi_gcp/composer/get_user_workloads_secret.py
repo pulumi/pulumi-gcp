@@ -48,7 +48,7 @@ class GetUserWorkloadsSecretResult:
 
     @property
     @pulumi.getter
-    def data(self) -> Mapping[str, Any]:
+    def data(self) -> Mapping[str, str]:
         return pulumi.get(self, "data")
 
     @property

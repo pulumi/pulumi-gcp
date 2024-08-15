@@ -25,14 +25,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Image { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// A set of key/value label pairs assigned to the disk.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -49,14 +49,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? ProvisionedThroughput { get; set; }
 
         [Input("resourceManagerTags")]
-        private InputMap<object>? _resourceManagerTags;
+        private InputMap<string>? _resourceManagerTags;
 
         /// <summary>
         /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
-        public InputMap<object> ResourceManagerTags
+        public InputMap<string> ResourceManagerTags
         {
-            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<object>());
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
             set => _resourceManagerTags = value;
         }
 

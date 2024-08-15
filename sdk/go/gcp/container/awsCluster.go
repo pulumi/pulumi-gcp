@@ -383,7 +383,7 @@ type AwsCluster struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description          pulumi.StringPtrOutput `pulumi:"description"`
-	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -478,8 +478,8 @@ type awsClusterState struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description          *string                `pulumi:"description"`
-	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	Description          *string           `pulumi:"description"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -528,7 +528,7 @@ type AwsClusterState struct {
 	CreateTime pulumi.StringPtrInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description          pulumi.StringPtrInput
-	EffectiveAnnotations pulumi.MapInput
+	EffectiveAnnotations pulumi.StringMapInput
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringPtrInput
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -753,8 +753,8 @@ func (o AwsClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o AwsClusterOutput) EffectiveAnnotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AwsCluster) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+func (o AwsClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // Output only. The endpoint of the cluster's API server.

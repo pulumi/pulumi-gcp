@@ -20,14 +20,14 @@ __all__ = ['UserWorkloadsSecretArgs', 'UserWorkloadsSecret']
 class UserWorkloadsSecretArgs:
     def __init__(__self__, *,
                  environment: pulumi.Input[str],
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a UserWorkloadsSecret resource.
         :param pulumi.Input[str] environment: Environment where the Kubernetes Secret will be stored and used.
-        :param pulumi.Input[Mapping[str, Any]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: A map of the secret data.
         :param pulumi.Input[str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -57,14 +57,14 @@ class UserWorkloadsSecretArgs:
 
     @property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of the secret data.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "data", value)
 
     @property
@@ -108,14 +108,14 @@ class UserWorkloadsSecretArgs:
 @pulumi.input_type
 class _UserWorkloadsSecretState:
     def __init__(__self__, *,
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UserWorkloadsSecret resources.
-        :param pulumi.Input[Mapping[str, Any]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: A map of the secret data.
         :param pulumi.Input[str] environment: Environment where the Kubernetes Secret will be stored and used.
         :param pulumi.Input[str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -135,14 +135,14 @@ class _UserWorkloadsSecretState:
 
     @property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of the secret data.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "data", value)
 
     @property
@@ -200,7 +200,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -260,7 +260,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: A map of the secret data.
         :param pulumi.Input[str] environment: Environment where the Kubernetes Secret will be stored and used.
         :param pulumi.Input[str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -340,7 +340,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -373,7 +373,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -385,7 +385,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: A map of the secret data.
         :param pulumi.Input[str] environment: Environment where the Kubernetes Secret will be stored and used.
         :param pulumi.Input[str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -405,7 +405,7 @@ class UserWorkloadsSecret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def data(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of the secret data.
         """

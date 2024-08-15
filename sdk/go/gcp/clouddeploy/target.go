@@ -204,9 +204,9 @@ type Target struct {
 	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description          pulumi.StringPtrOutput `pulumi:"description"`
-	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -229,7 +229,7 @@ type Target struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrOutput `pulumi:"requireApproval"`
 	// Information specifying a Cloud Run deployment target.
@@ -294,10 +294,10 @@ type targetState struct {
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description          *string                `pulumi:"description"`
-	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	Description          *string           `pulumi:"description"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -320,7 +320,7 @@ type targetState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
 	// Information specifying a Cloud Run deployment target.
@@ -349,9 +349,9 @@ type TargetState struct {
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description          pulumi.StringPtrInput
-	EffectiveAnnotations pulumi.MapInput
+	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -374,7 +374,7 @@ type TargetState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
 	// Information specifying a Cloud Run deployment target.
@@ -590,13 +590,13 @@ func (o TargetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o TargetOutput) EffectiveAnnotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+func (o TargetOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o TargetOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o TargetOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -645,8 +645,8 @@ func (o TargetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o TargetOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o TargetOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Optional. Whether or not the `Target` requires approval.

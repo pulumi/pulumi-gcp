@@ -19,14 +19,14 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<int>? Code { get; set; }
 
         [Input("details")]
-        private InputList<ImmutableDictionary<string, object>>? _details;
+        private InputList<ImmutableDictionary<string, string>>? _details;
 
         /// <summary>
         /// A list of messages that carry the error details.
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> Details
+        public InputList<ImmutableDictionary<string, string>> Details
         {
-            get => _details ?? (_details = new InputList<ImmutableDictionary<string, object>>());
+            get => _details ?? (_details = new InputList<ImmutableDictionary<string, string>>());
             set => _details = value;
         }
 

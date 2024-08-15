@@ -95,7 +95,7 @@ export class DefaultServiceAccounts extends pulumi.CustomResource {
     /**
      * The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
      */
-    public /*out*/ readonly serviceAccounts!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly serviceAccounts!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a DefaultServiceAccounts resource with the given unique name, arguments, and options.
@@ -154,7 +154,7 @@ export interface DefaultServiceAccountsState {
     /**
      * The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
      */
-    serviceAccounts?: pulumi.Input<{[key: string]: any}>;
+    serviceAccounts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

@@ -173,12 +173,12 @@ class _EnterpriseKeyState:
                  android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
                  waf_settings: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']] = None,
                  web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
@@ -191,7 +191,7 @@ class _EnterpriseKeyState:
                
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -199,7 +199,7 @@ class _EnterpriseKeyState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource id for the Key, which is the same as the Site Key itself.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
         :param pulumi.Input['EnterpriseKeyWafSettingsArgs'] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
@@ -271,14 +271,14 @@ class _EnterpriseKeyState:
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @property
@@ -334,14 +334,14 @@ class _EnterpriseKeyState:
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @property
@@ -794,12 +794,12 @@ class EnterpriseKey(pulumi.CustomResource):
             android_settings: Optional[pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ios_settings: Optional[pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             testing_options: Optional[pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
             waf_settings: Optional[pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
             web_settings: Optional[pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None) -> 'EnterpriseKey':
@@ -817,7 +817,7 @@ class EnterpriseKey(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -825,7 +825,7 @@ class EnterpriseKey(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource id for the Key, which is the same as the Site Key itself.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']] testing_options: Options for user acceptance testing.
         :param pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']] web_settings: Settings for keys that can be used by websites.
@@ -878,7 +878,7 @@ class EnterpriseKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
@@ -921,7 +921,7 @@ class EnterpriseKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """

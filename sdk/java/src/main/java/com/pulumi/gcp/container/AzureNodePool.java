@@ -15,7 +15,6 @@ import com.pulumi.gcp.container.outputs.AzureNodePoolConfig;
 import com.pulumi.gcp.container.outputs.AzureNodePoolManagement;
 import com.pulumi.gcp.container.outputs.AzureNodePoolMaxPodsConstraint;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -275,10 +274,10 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
-    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveAnnotations;
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
 
-    public Output<Map<String,Object>> effectiveAnnotations() {
+    public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
     /**

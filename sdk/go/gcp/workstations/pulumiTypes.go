@@ -19,7 +19,7 @@ type WorkstationClusterCondition struct {
 	Code *int `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details []map[string]interface{} `pulumi:"details"`
+	Details []map[string]string `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
@@ -42,7 +42,7 @@ type WorkstationClusterConditionArgs struct {
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details pulumi.MapArrayInput `pulumi:"details"`
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
@@ -107,8 +107,8 @@ func (o WorkstationClusterConditionOutput) Code() pulumi.IntPtrOutput {
 
 // (Output)
 // A list of messages that carry the error details.
-func (o WorkstationClusterConditionOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v WorkstationClusterCondition) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+func (o WorkstationClusterConditionOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v WorkstationClusterCondition) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
 
 // (Output)
@@ -502,7 +502,7 @@ type WorkstationConfigCondition struct {
 	Code *int `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details []map[string]interface{} `pulumi:"details"`
+	Details []map[string]string `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
@@ -525,7 +525,7 @@ type WorkstationConfigConditionArgs struct {
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details pulumi.MapArrayInput `pulumi:"details"`
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
@@ -590,8 +590,8 @@ func (o WorkstationConfigConditionOutput) Code() pulumi.IntPtrOutput {
 
 // (Output)
 // A list of messages that carry the error details.
-func (o WorkstationConfigConditionOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v WorkstationConfigCondition) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+func (o WorkstationConfigConditionOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigCondition) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
 
 // (Output)

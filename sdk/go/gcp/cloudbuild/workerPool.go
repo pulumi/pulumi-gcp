@@ -161,7 +161,7 @@ type WorkerPool struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
-	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
@@ -224,8 +224,8 @@ type workerPoolState struct {
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName          *string                `pulumi:"displayName"`
-	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	DisplayName          *string           `pulumi:"displayName"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
@@ -257,7 +257,7 @@ type WorkerPoolState struct {
 	DeleteTime pulumi.StringPtrInput
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName          pulumi.StringPtrInput
-	EffectiveAnnotations pulumi.MapInput
+	EffectiveAnnotations pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// User-defined name of the `WorkerPool`.
@@ -434,8 +434,8 @@ func (o WorkerPoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-func (o WorkerPoolOutput) EffectiveAnnotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *WorkerPool) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+func (o WorkerPoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // The location for the resource

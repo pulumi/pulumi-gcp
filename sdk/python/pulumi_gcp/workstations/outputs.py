@@ -44,12 +44,12 @@ __all__ = [
 class WorkstationClusterCondition(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
-                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
                  message: Optional[str] = None):
         """
         :param int code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, Any]] details: (Output)
+        :param Sequence[Mapping[str, str]] details: (Output)
                A list of messages that carry the error details.
         :param str message: (Output)
                Human readable message indicating details about the current status.
@@ -72,7 +72,7 @@ class WorkstationClusterCondition(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -202,12 +202,12 @@ class WorkstationClusterPrivateClusterConfig(dict):
 class WorkstationConfigCondition(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
-                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
                  message: Optional[str] = None):
         """
         :param int code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, Any]] details: (Output)
+        :param Sequence[Mapping[str, str]] details: (Output)
                A list of messages that carry the error details.
         :param str message: (Output)
                Human readable message indicating details about the current status.
@@ -230,7 +230,7 @@ class WorkstationConfigCondition(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         (Output)
         A list of messages that carry the error details.

@@ -11,7 +11,6 @@ import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSecretVolume;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSourceRepository;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,7 @@ public final class GetFunctionResult {
      * 
      */
     private Integer availableMemoryMb;
-    private Map<String,Object> buildEnvironmentVariables;
+    private Map<String,String> buildEnvironmentVariables;
     private String buildServiceAccount;
     private String buildWorkerPool;
     /**
@@ -42,7 +41,7 @@ public final class GetFunctionResult {
      * 
      */
     private String entryPoint;
-    private Map<String,Object> environmentVariables;
+    private Map<String,String> environmentVariables;
     /**
      * @return A source that fires events in response to a condition in another service. Structure is documented below.
      * 
@@ -69,7 +68,7 @@ public final class GetFunctionResult {
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
      * 
@@ -142,7 +141,7 @@ public final class GetFunctionResult {
     public Integer availableMemoryMb() {
         return this.availableMemoryMb;
     }
-    public Map<String,Object> buildEnvironmentVariables() {
+    public Map<String,String> buildEnvironmentVariables() {
         return this.buildEnvironmentVariables;
     }
     public String buildServiceAccount() {
@@ -174,7 +173,7 @@ public final class GetFunctionResult {
     public String entryPoint() {
         return this.entryPoint;
     }
-    public Map<String,Object> environmentVariables() {
+    public Map<String,String> environmentVariables() {
         return this.environmentVariables;
     }
     /**
@@ -215,7 +214,7 @@ public final class GetFunctionResult {
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -330,7 +329,7 @@ public final class GetFunctionResult {
     @CustomType.Builder
     public static final class Builder {
         private Integer availableMemoryMb;
-        private Map<String,Object> buildEnvironmentVariables;
+        private Map<String,String> buildEnvironmentVariables;
         private String buildServiceAccount;
         private String buildWorkerPool;
         private String description;
@@ -338,14 +337,14 @@ public final class GetFunctionResult {
         private String dockerRepository;
         private Map<String,String> effectiveLabels;
         private String entryPoint;
-        private Map<String,Object> environmentVariables;
+        private Map<String,String> environmentVariables;
         private List<GetFunctionEventTrigger> eventTriggers;
         private String httpsTriggerSecurityLevel;
         private String httpsTriggerUrl;
         private String id;
         private String ingressSettings;
         private String kmsKeyName;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private Integer maxInstances;
         private Integer minInstances;
         private String name;
@@ -415,7 +414,7 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder buildEnvironmentVariables(Map<String,Object> buildEnvironmentVariables) {
+        public Builder buildEnvironmentVariables(Map<String,String> buildEnvironmentVariables) {
             if (buildEnvironmentVariables == null) {
               throw new MissingRequiredPropertyException("GetFunctionResult", "buildEnvironmentVariables");
             }
@@ -479,7 +478,7 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder environmentVariables(Map<String,Object> environmentVariables) {
+        public Builder environmentVariables(Map<String,String> environmentVariables) {
             if (environmentVariables == null) {
               throw new MissingRequiredPropertyException("GetFunctionResult", "environmentVariables");
             }
@@ -538,7 +537,7 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetFunctionResult", "labels");
             }

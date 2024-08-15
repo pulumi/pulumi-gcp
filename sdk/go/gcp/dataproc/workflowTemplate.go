@@ -130,7 +130,7 @@ type WorkflowTemplate struct {
 	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
 	// the cluster is deleted.
 	DagTimeout      pulumi.StringPtrOutput `pulumi:"dagTimeout"`
-	EffectiveLabels pulumi.MapOutput       `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayOutput `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -152,7 +152,7 @@ type WorkflowTemplate struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Output only. The current version of this workflow template.
@@ -214,8 +214,8 @@ type workflowTemplateState struct {
 	// on a [managed
 	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
 	// the cluster is deleted.
-	DagTimeout      *string                `pulumi:"dagTimeout"`
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	DagTimeout      *string           `pulumi:"dagTimeout"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []WorkflowTemplateJob `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -237,7 +237,7 @@ type workflowTemplateState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. The time template was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Output only. The current version of this workflow template.
@@ -257,7 +257,7 @@ type WorkflowTemplateState struct {
 	// cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
 	// the cluster is deleted.
 	DagTimeout      pulumi.StringPtrInput
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
@@ -279,7 +279,7 @@ type WorkflowTemplateState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Output only. The current version of this workflow template.
@@ -466,8 +466,8 @@ func (o WorkflowTemplateOutput) DagTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringPtrOutput { return v.DagTimeout }).(pulumi.StringPtrOutput)
 }
 
-func (o WorkflowTemplateOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *WorkflowTemplate) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o WorkflowTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Required. The Directed Acyclic Graph of Jobs to submit.
@@ -512,8 +512,8 @@ func (o WorkflowTemplateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o WorkflowTemplateOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *WorkflowTemplate) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o WorkflowTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Output only. The time template was last updated.

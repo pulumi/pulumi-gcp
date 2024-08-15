@@ -18,7 +18,6 @@ import com.pulumi.gcp.container.outputs.AzureClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.AzureClusterNetworking;
 import com.pulumi.gcp.container.outputs.AzureClusterWorkloadIdentityConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -362,10 +361,10 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveAnnotations;
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
 
-    public Output<Map<String,Object>> effectiveAnnotations() {
+    public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
     /**

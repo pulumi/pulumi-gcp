@@ -344,7 +344,11 @@ class Table(pulumi.CustomResource):
             catalog=catalog.id,
             type="HIVE",
             hive_options={
-                "location_uri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "location_uri": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    metadataFolderName=metadata_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['metadataFolderName']}")
+        ,
                 "parameters": {
                     "owner": "Alex",
                 },
@@ -356,7 +360,11 @@ class Table(pulumi.CustomResource):
             hive_options={
                 "table_type": "MANAGED_TABLE",
                 "storage_descriptor": {
-                    "location_uri": pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
+                    "location_uri": pulumi.Output.all(
+                        bucketName=bucket.name,
+                        dataFolderName=data_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['dataFolderName']}")
+        ,
                     "input_format": "org.apache.hadoop.mapred.SequenceFileInputFormat",
                     "output_format": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
                 },
@@ -442,7 +450,11 @@ class Table(pulumi.CustomResource):
             catalog=catalog.id,
             type="HIVE",
             hive_options={
-                "location_uri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "location_uri": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    metadataFolderName=metadata_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['metadataFolderName']}")
+        ,
                 "parameters": {
                     "owner": "Alex",
                 },
@@ -454,7 +466,11 @@ class Table(pulumi.CustomResource):
             hive_options={
                 "table_type": "MANAGED_TABLE",
                 "storage_descriptor": {
-                    "location_uri": pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
+                    "location_uri": pulumi.Output.all(
+                        bucketName=bucket.name,
+                        dataFolderName=data_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['dataFolderName']}")
+        ,
                     "input_format": "org.apache.hadoop.mapred.SequenceFileInputFormat",
                     "output_format": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
                 },

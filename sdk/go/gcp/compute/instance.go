@@ -58,8 +58,8 @@ import (
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: pulumi.String("debian-cloud/debian-11"),
-//						Labels: pulumi.Map{
-//							"my_label": pulumi.Any("value"),
+//						Labels: pulumi.StringMap{
+//							"my_label": pulumi.String("value"),
 //						},
 //					},
 //				},

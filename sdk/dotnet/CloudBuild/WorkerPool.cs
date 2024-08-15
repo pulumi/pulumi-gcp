@@ -170,7 +170,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string?> DisplayName { get; private set; } = null!;
 
         [Output("effectiveAnnotations")]
-        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource
@@ -363,10 +363,10 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? DisplayName { get; set; }
 
         [Input("effectiveAnnotations")]
-        private InputMap<object>? _effectiveAnnotations;
-        public InputMap<object> EffectiveAnnotations
+        private InputMap<string>? _effectiveAnnotations;
+        public InputMap<string> EffectiveAnnotations
         {
-            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
             set => _effectiveAnnotations = value;
         }
 

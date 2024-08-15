@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -73,14 +72,14 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs assigned to the disk. This
      * field is only applicable for persistent disks.
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -143,13 +142,13 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
      * 
      */
     @Import(name="resourceManagerTags")
-    private @Nullable Output<Map<String,Object>> resourceManagerTags;
+    private @Nullable Output<Map<String,String>> resourceManagerTags;
 
     /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    public Optional<Output<Map<String,Object>>> resourceManagerTags() {
+    public Optional<Output<Map<String,String>>> resourceManagerTags() {
         return Optional.ofNullable(this.resourceManagerTags);
     }
 
@@ -305,7 +304,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -317,7 +316,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
@@ -393,7 +392,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Output<Map<String,String>> resourceManagerTags) {
             $.resourceManagerTags = resourceManagerTags;
             return this;
         }
@@ -404,7 +403,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             return resourceManagerTags(Output.of(resourceManagerTags));
         }
 

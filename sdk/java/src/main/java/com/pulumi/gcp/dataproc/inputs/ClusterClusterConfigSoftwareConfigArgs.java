@@ -5,7 +5,6 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -87,14 +86,14 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
      * 
      */
     @Import(name="properties")
-    private @Nullable Output<Map<String,Object>> properties;
+    private @Nullable Output<Map<String,String>> properties;
 
     /**
      * @return A list of the properties used to set the daemon config files.
      * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
      * 
      */
-    public Optional<Output<Map<String,Object>>> properties() {
+    public Optional<Output<Map<String,String>>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -225,7 +224,7 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder properties(@Nullable Output<Map<String,Object>> properties) {
+        public Builder properties(@Nullable Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
@@ -237,7 +236,7 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder properties(Map<String,Object> properties) {
+        public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }
 

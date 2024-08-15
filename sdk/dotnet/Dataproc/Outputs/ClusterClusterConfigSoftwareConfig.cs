@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// A list of the properties used to set the daemon config files.
         /// This will include any values supplied by the user via `cluster_config.software_config.override_properties`
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Properties;
+        public readonly ImmutableDictionary<string, string>? Properties;
 
         [OutputConstructor]
         private ClusterClusterConfigSoftwareConfig(
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             ImmutableDictionary<string, string>? overrideProperties,
 
-            ImmutableDictionary<string, object>? properties)
+            ImmutableDictionary<string, string>? properties)
         {
             ImageVersion = imageVersion;
             OptionalComponents = optionalComponents;

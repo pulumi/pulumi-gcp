@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// <summary>
         /// A list of messages that carry the error details.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> Details;
         /// <summary>
         /// A developer-facing error message, which should be in English.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
         private ExtensionsInstanceErrorStatus(
             int? code,
 
-            ImmutableArray<ImmutableDictionary<string, object>> details,
+            ImmutableArray<ImmutableDictionary<string, string>> details,
 
             string? message)
         {

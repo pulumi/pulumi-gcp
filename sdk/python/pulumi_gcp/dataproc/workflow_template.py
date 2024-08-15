@@ -200,7 +200,7 @@ class _WorkflowTemplateState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -208,7 +208,7 @@ class _WorkflowTemplateState:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
                  placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
@@ -234,7 +234,7 @@ class _WorkflowTemplateState:
                when the template is instantiated.
         :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
         :param pulumi.Input[int] version: Output only. The current version of this workflow template.
         """
@@ -300,11 +300,11 @@ class _WorkflowTemplateState:
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @property
@@ -399,14 +399,14 @@ class _WorkflowTemplateState:
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @property
@@ -724,7 +724,7 @@ class WorkflowTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             dag_timeout: Optional[pulumi.Input[str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -732,7 +732,7 @@ class WorkflowTemplate(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
             placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'WorkflowTemplate':
         """
@@ -763,7 +763,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                when the template is instantiated.
         :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
         :param pulumi.Input[int] version: Output only. The current version of this workflow template.
         """
@@ -810,7 +810,7 @@ class WorkflowTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "effective_labels")
 
     @property
@@ -877,7 +877,7 @@ class WorkflowTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """

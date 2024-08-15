@@ -14,7 +14,6 @@ import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateJob;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateParameter;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacement;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -189,10 +188,10 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dagTimeout() {
         return Codegen.optional(this.dagTimeout);
     }
-    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveLabels;
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
 
-    public Output<Map<String,Object>> effectiveLabels() {
+    public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
@@ -309,14 +308,14 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> pulumiLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> pulumiLabels() {
+    public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
     /**

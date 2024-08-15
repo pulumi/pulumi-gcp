@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.DataPlex
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
-        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
         /// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.DataPlex
         /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
-        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
@@ -355,17 +355,17 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? DisplayName { get; set; }
 
         [Input("effectiveLabels")]
-        private InputMap<object>? _effectiveLabels;
+        private InputMap<string>? _effectiveLabels;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
-        public InputMap<object> EffectiveLabels
+        public InputMap<string> EffectiveLabels
         {
-            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -409,17 +409,17 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Project { get; set; }
 
         [Input("pulumiLabels")]
-        private InputMap<object>? _pulumiLabels;
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
         /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
-        public InputMap<object> PulumiLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

@@ -1928,7 +1928,7 @@ if not MYPY:
         The flag to enable http access to specific ports
         on the cluster from external sources (aka Component Gateway). Defaults to false.
         """
-        http_ports: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        http_ports: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The map of port descriptions to URLs. Will only be populated if
         `enable_http_port_access` is true.
@@ -1940,11 +1940,11 @@ elif False:
 class ClusterClusterConfigEndpointConfigArgs:
     def __init__(__self__, *,
                  enable_http_port_access: pulumi.Input[bool],
-                 http_ports: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 http_ports: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] enable_http_port_access: The flag to enable http access to specific ports
                on the cluster from external sources (aka Component Gateway). Defaults to false.
-        :param pulumi.Input[Mapping[str, Any]] http_ports: The map of port descriptions to URLs. Will only be populated if
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_ports: The map of port descriptions to URLs. Will only be populated if
                `enable_http_port_access` is true.
         """
         pulumi.set(__self__, "enable_http_port_access", enable_http_port_access)
@@ -1966,7 +1966,7 @@ class ClusterClusterConfigEndpointConfigArgs:
 
     @property
     @pulumi.getter(name="httpPorts")
-    def http_ports(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def http_ports(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The map of port descriptions to URLs. Will only be populated if
         `enable_http_port_access` is true.
@@ -1974,7 +1974,7 @@ class ClusterClusterConfigEndpointConfigArgs:
         return pulumi.get(self, "http_ports")
 
     @http_ports.setter
-    def http_ports(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def http_ports(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "http_ports", value)
 
 
@@ -3836,7 +3836,7 @@ if not MYPY:
         a cluster. For a list of valid properties please see
         [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
         """
-        properties: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A list of the properties used to set the daemon config files.
         This will include any values supplied by the user via `cluster_config.software_config.override_properties`
@@ -3850,7 +3850,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
                  image_version: Optional[pulumi.Input[str]] = None,
                  optional_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  override_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] image_version: The Cloud Dataproc image version to use
                for the cluster - this controls the sets of software versions
@@ -3864,7 +3864,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
                used to modify various aspects of the common configuration files used when creating
                a cluster. For a list of valid properties please see
                [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-        :param pulumi.Input[Mapping[str, Any]] properties: A list of the properties used to set the daemon config files.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A list of the properties used to set the daemon config files.
                This will include any values supplied by the user via `cluster_config.software_config.override_properties`
         """
         if image_version is not None:
@@ -3923,7 +3923,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A list of the properties used to set the daemon config files.
         This will include any values supplied by the user via `cluster_config.software_config.override_properties`
@@ -3931,7 +3931,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
 

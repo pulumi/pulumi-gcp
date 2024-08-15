@@ -57,9 +57,9 @@ import (
 //				Project:     pulumi.String("example-project"),
 //				Region:      pulumi.String("us-central1"),
 //				Environment: example.Name,
-//				Data: pulumi.Map{
-//					"email":    invokeBase64encode.Result,
-//					"password": invokeBase64encode1.Result,
+//				Data: pulumi.StringMap{
+//					"email":    pulumi.String(invokeBase64encode.Result),
+//					"password": pulumi.String(invokeBase64encode1.Result),
 //				},
 //			})
 //			if err != nil {
@@ -98,7 +98,7 @@ type UserWorkloadsSecret struct {
 	pulumi.CustomResourceState
 
 	// A map of the secret data.
-	Data pulumi.MapOutput `pulumi:"data"`
+	Data pulumi.StringMapOutput `pulumi:"data"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Name of the Kubernetes Secret.
@@ -121,7 +121,7 @@ func NewUserWorkloadsSecret(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Environment'")
 	}
 	if args.Data != nil {
-		args.Data = pulumi.ToSecret(args.Data).(pulumi.MapInput)
+		args.Data = pulumi.ToSecret(args.Data).(pulumi.StringMapInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"data",
@@ -151,7 +151,7 @@ func GetUserWorkloadsSecret(ctx *pulumi.Context,
 // Input properties used for looking up and filtering UserWorkloadsSecret resources.
 type userWorkloadsSecretState struct {
 	// A map of the secret data.
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment *string `pulumi:"environment"`
 	// Name of the Kubernetes Secret.
@@ -165,7 +165,7 @@ type userWorkloadsSecretState struct {
 
 type UserWorkloadsSecretState struct {
 	// A map of the secret data.
-	Data pulumi.MapInput
+	Data pulumi.StringMapInput
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringPtrInput
 	// Name of the Kubernetes Secret.
@@ -183,7 +183,7 @@ func (UserWorkloadsSecretState) ElementType() reflect.Type {
 
 type userWorkloadsSecretArgs struct {
 	// A map of the secret data.
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment string `pulumi:"environment"`
 	// Name of the Kubernetes Secret.
@@ -198,7 +198,7 @@ type userWorkloadsSecretArgs struct {
 // The set of arguments for constructing a UserWorkloadsSecret resource.
 type UserWorkloadsSecretArgs struct {
 	// A map of the secret data.
-	Data pulumi.MapInput
+	Data pulumi.StringMapInput
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringInput
 	// Name of the Kubernetes Secret.
@@ -298,8 +298,8 @@ func (o UserWorkloadsSecretOutput) ToUserWorkloadsSecretOutputWithContext(ctx co
 }
 
 // A map of the secret data.
-func (o UserWorkloadsSecretOutput) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v *UserWorkloadsSecret) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+func (o UserWorkloadsSecretOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *UserWorkloadsSecret) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // Environment where the Kubernetes Secret will be stored and used.

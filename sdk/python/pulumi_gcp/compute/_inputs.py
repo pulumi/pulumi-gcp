@@ -8754,7 +8754,7 @@ if not MYPY:
         For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
         These images can be referred by family name here.
         """
-        labels: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A set of key/value label pairs assigned to the disk. This
         field is only applicable for persistent disks.
@@ -8779,7 +8779,7 @@ if not MYPY:
         for an update of throughput every 4 hours. To update your hyperdisk more
         frequently, you'll need to manually delete and recreate it.
         """
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -8807,10 +8807,10 @@ class InstanceBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
                  provisioned_throughput: Optional[pulumi.Input[int]] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -8826,7 +8826,7 @@ class InstanceBootDiskInitializeParamsArgs:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk. This
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk. This
                field is only applicable for persistent disks.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS to provision for the disk.
                This sets the number of I/O operations per second that the disk can handle.
@@ -8842,7 +8842,7 @@ class InstanceBootDiskInitializeParamsArgs:
                api/gcloud without the need to delete and recreate the disk, hyperdisk allows
                for an update of throughput every 4 hours. To update your hyperdisk more
                frequently, you'll need to manually delete and recreate it.
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
@@ -8905,7 +8905,7 @@ class InstanceBootDiskInitializeParamsArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs assigned to the disk. This
         field is only applicable for persistent disks.
@@ -8913,7 +8913,7 @@ class InstanceBootDiskInitializeParamsArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -8954,14 +8954,14 @@ class InstanceBootDiskInitializeParamsArgs:
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
     @property
@@ -9442,7 +9442,7 @@ if not MYPY:
         """
         The image from which this disk was initialised.
         """
-        labels: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A set of key/value label pairs assigned to the disk.
         """
@@ -9454,7 +9454,7 @@ if not MYPY:
         """
         Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         """
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -9478,20 +9478,20 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
                  provisioned_throughput: Optional[pulumi.Input[int]] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable_confidential_compute: A flag to enable confidential compute mode on boot disk
         :param pulumi.Input[str] image: The image from which this disk was initialised.
-        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[int] size: The size of the image in gigabytes.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created
         :param pulumi.Input[str] type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
@@ -9541,14 +9541,14 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs assigned to the disk.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -9577,14 +9577,14 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
     @property
@@ -10377,7 +10377,7 @@ class InstanceFromMachineImageNetworkPerformanceConfigArgs:
 
 if not MYPY:
     class InstanceFromMachineImageParamsArgsDict(TypedDict):
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -10387,23 +10387,23 @@ elif False:
 @pulumi.input_type
 class InstanceFromMachineImageParamsArgs:
     def __init__(__self__, *,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
 
@@ -11525,7 +11525,7 @@ if not MYPY:
         """
         The image from which this disk was initialised.
         """
-        labels: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A set of key/value label pairs assigned to the disk.
         """
@@ -11537,7 +11537,7 @@ if not MYPY:
         """
         Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         """
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -11561,20 +11561,20 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
                  provisioned_throughput: Optional[pulumi.Input[int]] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable_confidential_compute: A flag to enable confidential compute mode on boot disk
         :param pulumi.Input[str] image: The image from which this disk was initialised.
-        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[int] size: The size of the image in gigabytes.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created
         :param pulumi.Input[str] type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
@@ -11624,14 +11624,14 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs assigned to the disk.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -11660,14 +11660,14 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
     @property
@@ -12460,7 +12460,7 @@ class InstanceFromTemplateNetworkPerformanceConfigArgs:
 
 if not MYPY:
     class InstanceFromTemplateParamsArgsDict(TypedDict):
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -12470,23 +12470,23 @@ elif False:
 @pulumi.input_type
 class InstanceFromTemplateParamsArgs:
     def __init__(__self__, *,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
 
@@ -13444,7 +13444,7 @@ class InstanceGroupManagerNamedPortArgs:
 
 if not MYPY:
     class InstanceGroupManagerParamsArgsDict(TypedDict):
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
@@ -13454,23 +13454,23 @@ elif False:
 @pulumi.input_type
 class InstanceGroupManagerParamsArgs:
     def __init__(__self__, *,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
 
@@ -15268,7 +15268,7 @@ class InstanceNetworkPerformanceConfigArgs:
 
 if not MYPY:
     class InstanceParamsArgsDict(TypedDict):
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -15278,23 +15278,23 @@ elif False:
 @pulumi.input_type
 class InstanceParamsArgs:
     def __init__(__self__, *,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
 
@@ -26568,7 +26568,7 @@ class RegionInstanceGroupManagerNamedPortArgs:
 
 if not MYPY:
     class RegionInstanceGroupManagerParamsArgsDict(TypedDict):
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
@@ -26578,23 +26578,23 @@ elif False:
 @pulumi.input_type
 class RegionInstanceGroupManagerParamsArgs:
     def __init__(__self__, *,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
 

@@ -147,7 +147,7 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter(name="buildEnvironmentVariables")
-    def build_environment_variables(self) -> Mapping[str, Any]:
+    def build_environment_variables(self) -> Mapping[str, str]:
         return pulumi.get(self, "build_environment_variables")
 
     @property
@@ -193,7 +193,7 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Mapping[str, Any]:
+    def environment_variables(self) -> Mapping[str, str]:
         return pulumi.get(self, "environment_variables")
 
     @property
@@ -240,7 +240,7 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """

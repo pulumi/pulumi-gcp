@@ -105,7 +105,7 @@ type Zone struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
 	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
@@ -119,7 +119,7 @@ type Zone struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec ZoneResourceSpecOutput `pulumi:"resourceSpec"`
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -193,7 +193,7 @@ type zoneState struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
 	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
@@ -207,7 +207,7 @@ type zoneState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec *ZoneResourceSpec `pulumi:"resourceSpec"`
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -232,7 +232,7 @@ type ZoneState struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
 	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
@@ -246,7 +246,7 @@ type ZoneState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec ZoneResourceSpecPtrInput
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -427,8 +427,8 @@ func (o ZoneOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o ZoneOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o ZoneOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
@@ -459,8 +459,8 @@ func (o ZoneOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o ZoneOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o ZoneOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Required. Immutable. Specification of the resources that are referenced by the assets within this zone.

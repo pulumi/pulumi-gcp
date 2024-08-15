@@ -78,7 +78,7 @@ type LookupInstanceTemplateResult struct {
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint string `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -260,8 +260,8 @@ func (o LookupInstanceTemplateResultOutput) MachineType() pulumi.StringOutput {
 
 // Metadata key/value pairs to make available from
 // within instances created from this template.
-func (o LookupInstanceTemplateResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupInstanceTemplateResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The unique fingerprint of the metadata.

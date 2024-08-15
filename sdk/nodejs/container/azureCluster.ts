@@ -209,7 +209,7 @@ export class AzureCluster extends pulumi.CustomResource {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */
@@ -399,7 +399,7 @@ export interface AzureClusterState {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     description?: pulumi.Input<string>;
-    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */

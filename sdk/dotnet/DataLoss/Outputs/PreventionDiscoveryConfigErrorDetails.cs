@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// <summary>
         /// A list of messages that carry the error details.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> Details;
         /// <summary>
         /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionDiscoveryConfigErrorDetails(
             int? code,
 
-            ImmutableArray<ImmutableDictionary<string, object>> details,
+            ImmutableArray<ImmutableDictionary<string, string>> details,
 
             string? message)
         {

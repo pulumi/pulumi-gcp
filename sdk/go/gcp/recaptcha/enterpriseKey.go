@@ -275,7 +275,7 @@ type EnterpriseKey struct {
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrOutput `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -288,7 +288,7 @@ type EnterpriseKey struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrOutput `pulumi:"testingOptions"`
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
@@ -344,7 +344,7 @@ type enterpriseKeyState struct {
 	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -357,7 +357,7 @@ type enterpriseKeyState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions *EnterpriseKeyTestingOptions `pulumi:"testingOptions"`
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
@@ -376,7 +376,7 @@ type EnterpriseKeyState struct {
 	// ***
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
 	// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -389,7 +389,7 @@ type EnterpriseKeyState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrInput
 	// Settings specific to keys that can be used for WAF (Web Application Firewall).
@@ -556,8 +556,8 @@ func (o EnterpriseKeyOutput) DisplayName() pulumi.StringOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o EnterpriseKeyOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *EnterpriseKey) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o EnterpriseKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Settings for keys that can be used by iOS apps.
@@ -584,8 +584,8 @@ func (o EnterpriseKeyOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o EnterpriseKeyOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *EnterpriseKey) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o EnterpriseKeyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Options for user acceptance testing.

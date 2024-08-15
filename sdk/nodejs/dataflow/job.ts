@@ -164,7 +164,7 @@ export class Job extends pulumi.CustomResource {
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The machine type to use for the job.
      */
@@ -190,7 +190,7 @@ export class Job extends pulumi.CustomResource {
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
@@ -232,7 +232,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */
-    public readonly transformNameMapping!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly transformNameMapping!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
      */
@@ -354,7 +354,7 @@ export interface JobState {
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The machine type to use for the job.
      */
@@ -380,7 +380,7 @@ export interface JobState {
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
@@ -422,7 +422,7 @@ export interface JobState {
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */
-    transformNameMapping?: pulumi.Input<{[key: string]: any}>;
+    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
      */
@@ -458,7 +458,7 @@ export interface JobArgs {
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The machine type to use for the job.
      */
@@ -484,7 +484,7 @@ export interface JobArgs {
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
@@ -518,7 +518,7 @@ export interface JobArgs {
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */
-    transformNameMapping?: pulumi.Input<{[key: string]: any}>;
+    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The zone in which the created job should run. If it is not provided, the provider zone is used.
      */

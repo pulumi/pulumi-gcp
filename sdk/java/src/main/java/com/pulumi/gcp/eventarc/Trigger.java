@@ -13,7 +13,6 @@ import com.pulumi.gcp.eventarc.inputs.TriggerState;
 import com.pulumi.gcp.eventarc.outputs.TriggerDestination;
 import com.pulumi.gcp.eventarc.outputs.TriggerMatchingCriteria;
 import com.pulumi.gcp.eventarc.outputs.TriggerTransport;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -201,14 +200,14 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveLabels;
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Output<Map<String,Object>> effectiveLabels() {
+    public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
@@ -319,14 +318,14 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> pulumiLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> pulumiLabels() {
+    public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
     /**
