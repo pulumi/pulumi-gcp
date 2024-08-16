@@ -98,7 +98,7 @@ type DefaultServiceAccounts struct {
 	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy pulumi.StringPtrOutput `pulumi:"restorePolicy"`
 	// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
-	ServiceAccounts pulumi.MapOutput `pulumi:"serviceAccounts"`
+	ServiceAccounts pulumi.StringMapOutput `pulumi:"serviceAccounts"`
 }
 
 // NewDefaultServiceAccounts registers a new resource with the given unique name, arguments, and options.
@@ -147,7 +147,7 @@ type defaultServiceAccountsState struct {
 	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy *string `pulumi:"restorePolicy"`
 	// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
-	ServiceAccounts map[string]interface{} `pulumi:"serviceAccounts"`
+	ServiceAccounts map[string]string `pulumi:"serviceAccounts"`
 }
 
 type DefaultServiceAccountsState struct {
@@ -161,7 +161,7 @@ type DefaultServiceAccountsState struct {
 	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy pulumi.StringPtrInput
 	// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
-	ServiceAccounts pulumi.MapInput
+	ServiceAccounts pulumi.StringMapInput
 }
 
 func (DefaultServiceAccountsState) ElementType() reflect.Type {
@@ -299,8 +299,8 @@ func (o DefaultServiceAccountsOutput) RestorePolicy() pulumi.StringPtrOutput {
 }
 
 // The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
-func (o DefaultServiceAccountsOutput) ServiceAccounts() pulumi.MapOutput {
-	return o.ApplyT(func(v *DefaultServiceAccounts) pulumi.MapOutput { return v.ServiceAccounts }).(pulumi.MapOutput)
+func (o DefaultServiceAccountsOutput) ServiceAccounts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DefaultServiceAccounts) pulumi.StringMapOutput { return v.ServiceAccounts }).(pulumi.StringMapOutput)
 }
 
 type DefaultServiceAccountsArrayOutput struct{ *pulumi.OutputState }

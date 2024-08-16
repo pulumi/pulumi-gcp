@@ -10,7 +10,6 @@ import com.pulumi.gcp.dataplex.inputs.AssetDiscoveryStatusArgs;
 import com.pulumi.gcp.dataplex.inputs.AssetResourceSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.AssetResourceStatusArgs;
 import com.pulumi.gcp.dataplex.inputs.AssetSecurityStatusArgs;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -118,13 +117,13 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="effectiveLabels")
-    private @Nullable Output<Map<String,Object>> effectiveLabels;
+    private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
 
@@ -212,13 +211,13 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="pulumiLabels")
-    private @Nullable Output<Map<String,Object>> pulumiLabels;
+    private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
         return Optional.ofNullable(this.pulumiLabels);
     }
 
@@ -496,7 +495,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
@@ -507,7 +506,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }
 
@@ -626,7 +625,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
             $.pulumiLabels = pulumiLabels;
             return this;
         }
@@ -637,7 +636,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
         }
 

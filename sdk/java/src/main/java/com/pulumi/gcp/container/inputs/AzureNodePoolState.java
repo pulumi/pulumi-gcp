@@ -10,7 +10,6 @@ import com.pulumi.gcp.container.inputs.AzureNodePoolConfigArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolMaxPodsConstraintArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -123,9 +122,9 @@ public final class AzureNodePoolState extends com.pulumi.resources.ResourceArgs 
     }
 
     @Import(name="effectiveAnnotations")
-    private @Nullable Output<Map<String,Object>> effectiveAnnotations;
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
-    public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
 
@@ -487,12 +486,12 @@ public final class AzureNodePoolState extends com.pulumi.resources.ResourceArgs 
             return createTime(Output.of(createTime));
         }
 
-        public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
-        public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 

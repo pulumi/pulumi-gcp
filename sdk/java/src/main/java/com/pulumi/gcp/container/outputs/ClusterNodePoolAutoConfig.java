@@ -5,7 +5,6 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfigNetworkTags;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,7 +22,7 @@ public final class ClusterNodePoolAutoConfig {
      * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
      * 
      */
-    private @Nullable Map<String,Object> resourceManagerTags;
+    private @Nullable Map<String,String> resourceManagerTags;
 
     private ClusterNodePoolAutoConfig() {}
     /**
@@ -37,7 +36,7 @@ public final class ClusterNodePoolAutoConfig {
      * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
 
@@ -51,7 +50,7 @@ public final class ClusterNodePoolAutoConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolAutoConfigNetworkTags networkTags;
-        private @Nullable Map<String,Object> resourceManagerTags;
+        private @Nullable Map<String,String> resourceManagerTags;
         public Builder() {}
         public Builder(ClusterNodePoolAutoConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -66,7 +65,7 @@ public final class ClusterNodePoolAutoConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
 
             this.resourceManagerTags = resourceManagerTags;
             return this;

@@ -65,8 +65,8 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//				Metadata: pulumi.Map{
-//					"foo": pulumi.Any("bar"),
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 //					Scopes: pulumi.StringArray{
@@ -166,8 +166,8 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//				Metadata: pulumi.Map{
-//					"foo": pulumi.Any("bar"),
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 //					Scopes: pulumi.StringArray{

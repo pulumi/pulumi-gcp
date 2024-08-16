@@ -4,7 +4,6 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +42,7 @@ public final class ClusterClusterConfigSoftwareConfig {
      * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
      * 
      */
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
 
     private ClusterClusterConfigSoftwareConfig() {}
     /**
@@ -81,7 +80,7 @@ public final class ClusterClusterConfigSoftwareConfig {
      * This will include any values supplied by the user via `cluster_config.software_config.override_properties`
      * 
      */
-    public Map<String,Object> properties() {
+    public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
 
@@ -97,7 +96,7 @@ public final class ClusterClusterConfigSoftwareConfig {
         private @Nullable String imageVersion;
         private @Nullable List<String> optionalComponents;
         private @Nullable Map<String,String> overrideProperties;
-        private @Nullable Map<String,Object> properties;
+        private @Nullable Map<String,String> properties;
         public Builder() {}
         public Builder(ClusterClusterConfigSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -129,7 +128,7 @@ public final class ClusterClusterConfigSoftwareConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
 
             this.properties = properties;
             return this;

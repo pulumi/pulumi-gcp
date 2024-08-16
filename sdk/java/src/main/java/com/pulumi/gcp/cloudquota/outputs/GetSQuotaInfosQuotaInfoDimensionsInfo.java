@@ -6,7 +6,6 @@ package com.pulumi.gcp.cloudquota.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudquota.outputs.GetSQuotaInfosQuotaInfoDimensionsInfoDetail;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ public final class GetSQuotaInfosQuotaInfoDimensionsInfo {
      * @return The map of dimensions for this dimensions info. The key of a map entry is &#34;region&#34;, &#34;zone&#34; or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {&#34;provider&#34; : &#34;Foo Inc&#34;} where &#34;provider&#34; is a service specific dimension of a quota.
      * 
      */
-    private Map<String,Object> dimensions;
+    private Map<String,String> dimensions;
 
     private GetSQuotaInfosQuotaInfoDimensionsInfo() {}
     /**
@@ -49,7 +48,7 @@ public final class GetSQuotaInfosQuotaInfoDimensionsInfo {
      * @return The map of dimensions for this dimensions info. The key of a map entry is &#34;region&#34;, &#34;zone&#34; or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {&#34;provider&#34; : &#34;Foo Inc&#34;} where &#34;provider&#34; is a service specific dimension of a quota.
      * 
      */
-    public Map<String,Object> dimensions() {
+    public Map<String,String> dimensions() {
         return this.dimensions;
     }
 
@@ -64,7 +63,7 @@ public final class GetSQuotaInfosQuotaInfoDimensionsInfo {
     public static final class Builder {
         private List<String> applicableLocations;
         private List<GetSQuotaInfosQuotaInfoDimensionsInfoDetail> details;
-        private Map<String,Object> dimensions;
+        private Map<String,String> dimensions;
         public Builder() {}
         public Builder(GetSQuotaInfosQuotaInfoDimensionsInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,7 +95,7 @@ public final class GetSQuotaInfosQuotaInfoDimensionsInfo {
             return details(List.of(details));
         }
         @CustomType.Setter
-        public Builder dimensions(Map<String,Object> dimensions) {
+        public Builder dimensions(Map<String,String> dimensions) {
             if (dimensions == null) {
               throw new MissingRequiredPropertyException("GetSQuotaInfosQuotaInfoDimensionsInfo", "dimensions");
             }

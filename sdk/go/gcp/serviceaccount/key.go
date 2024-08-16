@@ -79,7 +79,7 @@ import (
 //			}
 //			_, err = serviceaccount.NewKey(ctx, "mykey", &serviceaccount.KeyArgs{
 //				ServiceAccountId: myaccount.Name,
-//				Keepers: pulumi.Map{
+//				Keepers: pulumi.StringMap{
 //					"rotation_time": mykeyRotation.RotationRfc3339,
 //				},
 //			})
@@ -152,7 +152,7 @@ type Key struct {
 	pulumi.CustomResourceState
 
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
-	Keepers pulumi.MapOutput `pulumi:"keepers"`
+	Keepers pulumi.StringMapOutput `pulumi:"keepers"`
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
 	// Valid values are listed at
 	// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -229,7 +229,7 @@ func GetKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
-	Keepers map[string]interface{} `pulumi:"keepers"`
+	Keepers map[string]string `pulumi:"keepers"`
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
 	// Valid values are listed at
 	// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -264,7 +264,7 @@ type keyState struct {
 
 type KeyState struct {
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
-	Keepers pulumi.MapInput
+	Keepers pulumi.StringMapInput
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
 	// Valid values are listed at
 	// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -303,7 +303,7 @@ func (KeyState) ElementType() reflect.Type {
 
 type keyArgs struct {
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
-	Keepers map[string]interface{} `pulumi:"keepers"`
+	Keepers map[string]string `pulumi:"keepers"`
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
 	// Valid values are listed at
 	// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -327,7 +327,7 @@ type keyArgs struct {
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
-	Keepers pulumi.MapInput
+	Keepers pulumi.StringMapInput
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
 	// Valid values are listed at
 	// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -436,8 +436,8 @@ func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 }
 
 // Arbitrary map of values that, when changed, will trigger a new key to be generated.
-func (o KeyOutput) Keepers() pulumi.MapOutput {
-	return o.ApplyT(func(v *Key) pulumi.MapOutput { return v.Keepers }).(pulumi.MapOutput)
+func (o KeyOutput) Keepers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringMapOutput { return v.Keepers }).(pulumi.StringMapOutput)
 }
 
 // The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.

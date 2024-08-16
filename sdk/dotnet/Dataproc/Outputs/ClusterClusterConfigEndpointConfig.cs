@@ -22,13 +22,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// The map of port descriptions to URLs. Will only be populated if
         /// `enable_http_port_access` is true.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? HttpPorts;
+        public readonly ImmutableDictionary<string, string>? HttpPorts;
 
         [OutputConstructor]
         private ClusterClusterConfigEndpointConfig(
             bool enableHttpPortAccess,
 
-            ImmutableDictionary<string, object>? httpPorts)
+            ImmutableDictionary<string, string>? httpPorts)
         {
             EnableHttpPortAccess = enableHttpPortAccess;
             HttpPorts = httpPorts;

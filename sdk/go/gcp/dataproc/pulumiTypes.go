@@ -3224,7 +3224,7 @@ type ClusterClusterConfigEndpointConfig struct {
 	EnableHttpPortAccess bool `pulumi:"enableHttpPortAccess"`
 	// The map of port descriptions to URLs. Will only be populated if
 	// `enableHttpPortAccess` is true.
-	HttpPorts map[string]interface{} `pulumi:"httpPorts"`
+	HttpPorts map[string]string `pulumi:"httpPorts"`
 }
 
 // ClusterClusterConfigEndpointConfigInput is an input type that accepts ClusterClusterConfigEndpointConfigArgs and ClusterClusterConfigEndpointConfigOutput values.
@@ -3244,7 +3244,7 @@ type ClusterClusterConfigEndpointConfigArgs struct {
 	EnableHttpPortAccess pulumi.BoolInput `pulumi:"enableHttpPortAccess"`
 	// The map of port descriptions to URLs. Will only be populated if
 	// `enableHttpPortAccess` is true.
-	HttpPorts pulumi.MapInput `pulumi:"httpPorts"`
+	HttpPorts pulumi.StringMapInput `pulumi:"httpPorts"`
 }
 
 func (ClusterClusterConfigEndpointConfigArgs) ElementType() reflect.Type {
@@ -3332,8 +3332,8 @@ func (o ClusterClusterConfigEndpointConfigOutput) EnableHttpPortAccess() pulumi.
 
 // The map of port descriptions to URLs. Will only be populated if
 // `enableHttpPortAccess` is true.
-func (o ClusterClusterConfigEndpointConfigOutput) HttpPorts() pulumi.MapOutput {
-	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) map[string]interface{} { return v.HttpPorts }).(pulumi.MapOutput)
+func (o ClusterClusterConfigEndpointConfigOutput) HttpPorts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) map[string]string { return v.HttpPorts }).(pulumi.StringMapOutput)
 }
 
 type ClusterClusterConfigEndpointConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3373,13 +3373,13 @@ func (o ClusterClusterConfigEndpointConfigPtrOutput) EnableHttpPortAccess() pulu
 
 // The map of port descriptions to URLs. Will only be populated if
 // `enableHttpPortAccess` is true.
-func (o ClusterClusterConfigEndpointConfigPtrOutput) HttpPorts() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) map[string]interface{} {
+func (o ClusterClusterConfigEndpointConfigPtrOutput) HttpPorts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.HttpPorts
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type ClusterClusterConfigGceClusterConfig struct {
@@ -6891,7 +6891,7 @@ type ClusterClusterConfigSoftwareConfig struct {
 	OverrideProperties map[string]string `pulumi:"overrideProperties"`
 	// A list of the properties used to set the daemon config files.
 	// This will include any values supplied by the user via `cluster_config.software_config.override_properties`
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 }
 
 // ClusterClusterConfigSoftwareConfigInput is an input type that accepts ClusterClusterConfigSoftwareConfigArgs and ClusterClusterConfigSoftwareConfigOutput values.
@@ -6923,7 +6923,7 @@ type ClusterClusterConfigSoftwareConfigArgs struct {
 	OverrideProperties pulumi.StringMapInput `pulumi:"overrideProperties"`
 	// A list of the properties used to set the daemon config files.
 	// This will include any values supplied by the user via `cluster_config.software_config.override_properties`
-	Properties pulumi.MapInput `pulumi:"properties"`
+	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
 func (ClusterClusterConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -7029,8 +7029,8 @@ func (o ClusterClusterConfigSoftwareConfigOutput) OverrideProperties() pulumi.St
 
 // A list of the properties used to set the daemon config files.
 // This will include any values supplied by the user via `cluster_config.software_config.override_properties`
-func (o ClusterClusterConfigSoftwareConfigOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+func (o ClusterClusterConfigSoftwareConfigOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 type ClusterClusterConfigSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
@@ -7098,13 +7098,13 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) OverrideProperties() pulumi
 
 // A list of the properties used to set the daemon config files.
 // This will include any values supplied by the user via `cluster_config.software_config.override_properties`
-func (o ClusterClusterConfigSoftwareConfigPtrOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigSoftwareConfig) map[string]interface{} {
+func (o ClusterClusterConfigSoftwareConfigPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSoftwareConfig) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Properties
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type ClusterClusterConfigWorkerConfig struct {

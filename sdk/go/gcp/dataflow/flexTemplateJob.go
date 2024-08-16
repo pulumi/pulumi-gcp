@@ -29,8 +29,8 @@ import (
 //			_, err := dataflow.NewFlexTemplateJob(ctx, "big_data_job", &dataflow.FlexTemplateJobArgs{
 //				Name:                 pulumi.String("dataflow-flextemplates-job"),
 //				ContainerSpecGcsPath: pulumi.String("gs://my-bucket/templates/template.json"),
-//				Parameters: pulumi.Map{
-//					"inputSubscription": pulumi.Any("messages"),
+//				Parameters: pulumi.StringMap{
+//					"inputSubscription": pulumi.String("messages"),
 //				},
 //			})
 //			if err != nil {
@@ -109,7 +109,7 @@ import (
 //				Region:                   pulumi.Any(region),
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),
-//				Parameters: pulumi.Map{
+//				Parameters: pulumi.StringMap{
 //					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
 //				},
 //			})
@@ -153,7 +153,7 @@ type FlexTemplateJob struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringOutput `pulumi:"launcherMachineType"`
 	// The machine type to use for the job.
@@ -172,7 +172,7 @@ type FlexTemplateJob struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters pulumi.MapOutput `pulumi:"parameters"`
+	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -194,7 +194,7 @@ type FlexTemplateJob struct {
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringOutput `pulumi:"tempLocation"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-	TransformNameMapping pulumi.MapOutput `pulumi:"transformNameMapping"`
+	TransformNameMapping pulumi.StringMapOutput `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the JobType enum.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -262,7 +262,7 @@ type flexTemplateJobState struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType *string `pulumi:"launcherMachineType"`
 	// The machine type to use for the job.
@@ -281,7 +281,7 @@ type flexTemplateJobState struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -303,7 +303,7 @@ type flexTemplateJobState struct {
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation *string `pulumi:"tempLocation"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
+	TransformNameMapping map[string]string `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the JobType enum.
 	Type *string `pulumi:"type"`
 }
@@ -334,7 +334,7 @@ type FlexTemplateJobState struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringPtrInput
 	// The machine type to use for the job.
@@ -353,7 +353,7 @@ type FlexTemplateJobState struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -375,7 +375,7 @@ type FlexTemplateJobState struct {
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringPtrInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-	TransformNameMapping pulumi.MapInput
+	TransformNameMapping pulumi.StringMapInput
 	// The type of this job, selected from the JobType enum.
 	Type pulumi.StringPtrInput
 }
@@ -407,7 +407,7 @@ type flexTemplateJobArgs struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType *string `pulumi:"launcherMachineType"`
 	// The machine type to use for the job.
@@ -426,7 +426,7 @@ type flexTemplateJobArgs struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -444,7 +444,7 @@ type flexTemplateJobArgs struct {
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation *string `pulumi:"tempLocation"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
+	TransformNameMapping map[string]string `pulumi:"transformNameMapping"`
 }
 
 // The set of arguments for constructing a FlexTemplateJob resource.
@@ -471,7 +471,7 @@ type FlexTemplateJobArgs struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringPtrInput
 	// The machine type to use for the job.
@@ -490,7 +490,7 @@ type FlexTemplateJobArgs struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -508,7 +508,7 @@ type FlexTemplateJobArgs struct {
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringPtrInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-	TransformNameMapping pulumi.MapInput
+	TransformNameMapping pulumi.StringMapInput
 }
 
 func (FlexTemplateJobArgs) ElementType() reflect.Type {
@@ -647,8 +647,8 @@ func (o FlexTemplateJobOutput) KmsKeyName() pulumi.StringOutput {
 // **NOTE**: Google-provided Dataflow templates often provide default labels
 // that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 // labels will be ignored to prevent diffs on re-apply.
-func (o FlexTemplateJobOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *FlexTemplateJob) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o FlexTemplateJobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The machine type to use for launching the job. The default is n1-standard-1.
@@ -690,8 +690,8 @@ func (o FlexTemplateJobOutput) OnDelete() pulumi.StringPtrOutput {
 // **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 // case-sensitive based on the language on which the pipeline is coded, mostly Java.
 // **Note**: do not configure Dataflow options here in parameters.
-func (o FlexTemplateJobOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *FlexTemplateJob) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+func (o FlexTemplateJobOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // The project in which the resource belongs. If it is not
@@ -745,8 +745,8 @@ func (o FlexTemplateJobOutput) TempLocation() pulumi.StringOutput {
 }
 
 // Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-func (o FlexTemplateJobOutput) TransformNameMapping() pulumi.MapOutput {
-	return o.ApplyT(func(v *FlexTemplateJob) pulumi.MapOutput { return v.TransformNameMapping }).(pulumi.MapOutput)
+func (o FlexTemplateJobOutput) TransformNameMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.TransformNameMapping }).(pulumi.StringMapOutput)
 }
 
 // The type of this job, selected from the JobType enum.

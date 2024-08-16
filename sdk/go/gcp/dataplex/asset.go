@@ -131,7 +131,7 @@ type Asset struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
 	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
@@ -145,7 +145,7 @@ type Asset struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec AssetResourceSpecOutput `pulumi:"resourceSpec"`
 	// Output only. Status of the resource referenced by this asset.
@@ -223,7 +223,7 @@ type assetState struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
 	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
@@ -237,7 +237,7 @@ type assetState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec *AssetResourceSpec `pulumi:"resourceSpec"`
 	// Output only. Status of the resource referenced by this asset.
@@ -266,7 +266,7 @@ type AssetState struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
 	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
 	// resource.
@@ -280,7 +280,7 @@ type AssetState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec AssetResourceSpecPtrInput
 	// Output only. Status of the resource referenced by this asset.
@@ -468,8 +468,8 @@ func (o AssetOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o AssetOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o AssetOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
@@ -500,8 +500,8 @@ func (o AssetOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o AssetOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o AssetOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Required. Immutable. Specification of the resource that is referenced by this asset.

@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,13 +21,13 @@ public final class InstanceGroupManagerParamsArgs extends com.pulumi.resources.R
      * 
      */
     @Import(name="resourceManagerTags")
-    private @Nullable Output<Map<String,Object>> resourceManagerTags;
+    private @Nullable Output<Map<String,String>> resourceManagerTags;
 
     /**
      * @return Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
      * 
      */
-    public Optional<Output<Map<String,Object>>> resourceManagerTags() {
+    public Optional<Output<Map<String,String>>> resourceManagerTags() {
         return Optional.ofNullable(this.resourceManagerTags);
     }
 
@@ -62,7 +61,7 @@ public final class InstanceGroupManagerParamsArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Output<Map<String,String>> resourceManagerTags) {
             $.resourceManagerTags = resourceManagerTags;
             return this;
         }
@@ -73,7 +72,7 @@ public final class InstanceGroupManagerParamsArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             return resourceManagerTags(Output.of(resourceManagerTags));
         }
 

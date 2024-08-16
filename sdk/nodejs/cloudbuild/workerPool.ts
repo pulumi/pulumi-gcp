@@ -143,7 +143,7 @@ export class WorkerPool extends pulumi.CustomResource {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The location for the resource
      */
@@ -252,7 +252,7 @@ export interface WorkerPoolState {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     displayName?: pulumi.Input<string>;
-    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
      */

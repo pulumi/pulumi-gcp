@@ -27,7 +27,6 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -194,7 +193,7 @@ public final class NodePoolNodeConfig {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    private @Nullable Map<String,Object> resourceManagerTags;
+    private @Nullable Map<String,String> resourceManagerTags;
     /**
      * @return Sandbox configuration for this node.
      * 
@@ -459,7 +458,7 @@ public final class NodePoolNodeConfig {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
@@ -565,7 +564,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Boolean preemptible;
         private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
         private @Nullable Map<String,String> resourceLabels;
-        private @Nullable Map<String,Object> resourceManagerTags;
+        private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
         private @Nullable List<NodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private @Nullable String serviceAccount;
@@ -810,7 +809,7 @@ public final class NodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
 
             this.resourceManagerTags = resourceManagerTags;
             return this;

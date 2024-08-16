@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,14 +15,14 @@ public final class GetInstanceGroupManagerParam {
      * @return Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
      * 
      */
-    private Map<String,Object> resourceManagerTags;
+    private Map<String,String> resourceManagerTags;
 
     private GetInstanceGroupManagerParam() {}
     /**
      * @return Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags;
     }
 
@@ -36,7 +35,7 @@ public final class GetInstanceGroupManagerParam {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> resourceManagerTags;
+        private Map<String,String> resourceManagerTags;
         public Builder() {}
         public Builder(GetInstanceGroupManagerParam defaults) {
     	      Objects.requireNonNull(defaults);
@@ -44,7 +43,7 @@ public final class GetInstanceGroupManagerParam {
         }
 
         @CustomType.Setter
-        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             if (resourceManagerTags == null) {
               throw new MissingRequiredPropertyException("GetInstanceGroupManagerParam", "resourceManagerTags");
             }

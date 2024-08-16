@@ -221,13 +221,13 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("effectiveAnnotations")]
-        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
-        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
         /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -288,7 +288,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
-        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Whether or not the `Target` requires approval.
@@ -549,25 +549,25 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string>? Description { get; set; }
 
         [Input("effectiveAnnotations")]
-        private InputMap<object>? _effectiveAnnotations;
-        public InputMap<object> EffectiveAnnotations
+        private InputMap<string>? _effectiveAnnotations;
+        public InputMap<string> EffectiveAnnotations
         {
-            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
             set => _effectiveAnnotations = value;
         }
 
         [Input("effectiveLabels")]
-        private InputMap<object>? _effectiveLabels;
+        private InputMap<string>? _effectiveLabels;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
-        public InputMap<object> EffectiveLabels
+        public InputMap<string> EffectiveLabels
         {
-            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -640,17 +640,17 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string>? Project { get; set; }
 
         [Input("pulumiLabels")]
-        private InputMap<object>? _pulumiLabels;
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
         /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
-        public InputMap<object> PulumiLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

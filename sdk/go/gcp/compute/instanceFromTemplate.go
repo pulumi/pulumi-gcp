@@ -51,8 +51,8 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//				Metadata: pulumi.Map{
-//					"foo": pulumi.Any("bar"),
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
 //				},
 //				CanIpForward: pulumi.Bool(true),
 //			})

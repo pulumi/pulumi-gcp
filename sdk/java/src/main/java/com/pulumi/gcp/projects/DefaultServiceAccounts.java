@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.projects.DefaultServiceAccountsArgs;
 import com.pulumi.gcp.projects.inputs.DefaultServiceAccountsState;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -164,14 +163,14 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
      * 
      */
-    @Export(name="serviceAccounts", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> serviceAccounts;
+    @Export(name="serviceAccounts", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> serviceAccounts;
 
     /**
      * @return The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
      * 
      */
-    public Output<Map<String,Object>> serviceAccounts() {
+    public Output<Map<String,String>> serviceAccounts() {
         return this.serviceAccounts;
     }
 

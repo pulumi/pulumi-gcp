@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Compute
         /// Metadata key/value pairs to make available from
         /// within instances created from this template.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
         /// The unique fingerprint of the metadata.
         /// </summary>
@@ -328,7 +328,7 @@ namespace Pulumi.Gcp.Compute
 
             string machineType,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             string metadataFingerprint,
 

@@ -77,7 +77,7 @@ export interface GetUserWorkloadsSecretArgs {
  * A collection of values returned by getUserWorkloadsSecret.
  */
 export interface GetUserWorkloadsSecretResult {
-    readonly data: {[key: string]: any};
+    readonly data: {[key: string]: string};
     readonly environment: string;
     /**
      * The provider-assigned unique ID for this managed resource.

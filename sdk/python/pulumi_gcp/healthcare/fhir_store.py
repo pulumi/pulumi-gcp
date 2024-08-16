@@ -835,7 +835,11 @@ class FhirStore(pulumi.CustomResource):
             stream_configs=[{
                 "resource_types": ["Observation"],
                 "bigquery_destination": {
-                    "dataset_uri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
+                    "dataset_uri": pulumi.Output.all(
+                        project=bq_dataset.project,
+                        dataset_id=bq_dataset.dataset_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}")
+        ,
                     "schema_config": {
                         "recursive_structure_depth": 3,
                         "last_updated_partition_config": {
@@ -1036,7 +1040,11 @@ class FhirStore(pulumi.CustomResource):
             stream_configs=[{
                 "resource_types": ["Observation"],
                 "bigquery_destination": {
-                    "dataset_uri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
+                    "dataset_uri": pulumi.Output.all(
+                        project=bq_dataset.project,
+                        dataset_id=bq_dataset.dataset_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}")
+        ,
                     "schema_config": {
                         "recursive_structure_depth": 3,
                         "last_updated_partition_config": {

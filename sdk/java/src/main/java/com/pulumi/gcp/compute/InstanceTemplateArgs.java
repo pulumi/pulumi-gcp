@@ -17,7 +17,6 @@ import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateShieldedInstanceConfigArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -212,14 +211,14 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="metadata")
-    private @Nullable Output<Map<String,Object>> metadata;
+    private @Nullable Output<Map<String,String>> metadata;
 
     /**
      * @return Metadata key/value pairs to make available from
      * within instances created from this template.
      * 
      */
-    public Optional<Output<Map<String,Object>>> metadata() {
+    public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -822,7 +821,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Output<Map<String,Object>> metadata) {
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -834,7 +833,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
         }
 

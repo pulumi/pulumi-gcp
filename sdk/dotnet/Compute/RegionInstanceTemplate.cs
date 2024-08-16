@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Compute
         /// within instances created from this template.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The unique fingerprint of the metadata.
@@ -400,15 +400,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string> MachineType { get; set; } = null!;
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within instances created from this template.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -662,15 +662,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? MachineType { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within instances created from this template.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 

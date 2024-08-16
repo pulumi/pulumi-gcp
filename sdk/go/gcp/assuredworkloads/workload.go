@@ -150,7 +150,7 @@ type Workload struct {
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. Represents the Ekm Provisioning State of the given workload.
 	EkmProvisioningResponses WorkloadEkmProvisioningResponseArrayOutput `pulumi:"ekmProvisioningResponses"`
 	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
@@ -179,7 +179,7 @@ type Workload struct {
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringPtrOutput `pulumi:"provisionedResourcesParent"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings WorkloadResourceSettingArrayOutput `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
@@ -250,7 +250,7 @@ type workloadState struct {
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. Represents the Ekm Provisioning State of the given workload.
 	EkmProvisioningResponses []WorkloadEkmProvisioningResponse `pulumi:"ekmProvisioningResponses"`
 	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
@@ -279,7 +279,7 @@ type workloadState struct {
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []WorkloadResourceSetting `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
@@ -304,7 +304,7 @@ type WorkloadState struct {
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. Represents the Ekm Provisioning State of the given workload.
 	EkmProvisioningResponses WorkloadEkmProvisioningResponseArrayInput
 	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
@@ -333,7 +333,7 @@ type WorkloadState struct {
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings WorkloadResourceSettingArrayInput
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
@@ -535,8 +535,8 @@ func (o WorkloadOutput) DisplayName() pulumi.StringOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o WorkloadOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Workload) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o WorkloadOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Optional. Represents the Ekm Provisioning State of the given workload.
@@ -600,8 +600,8 @@ func (o WorkloadOutput) ProvisionedResourcesParent() pulumi.StringPtrOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o WorkloadOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Workload) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o WorkloadOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.

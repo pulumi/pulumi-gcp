@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,14 +15,14 @@ public final class InstanceGroupManagerParams {
      * @return Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
      * 
      */
-    private @Nullable Map<String,Object> resourceManagerTags;
+    private @Nullable Map<String,String> resourceManagerTags;
 
     private InstanceGroupManagerParams() {}
     /**
      * @return Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
 
@@ -36,7 +35,7 @@ public final class InstanceGroupManagerParams {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> resourceManagerTags;
+        private @Nullable Map<String,String> resourceManagerTags;
         public Builder() {}
         public Builder(InstanceGroupManagerParams defaults) {
     	      Objects.requireNonNull(defaults);
@@ -44,7 +43,7 @@ public final class InstanceGroupManagerParams {
         }
 
         @CustomType.Setter
-        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
 
             this.resourceManagerTags = resourceManagerTags;
             return this;

@@ -16,7 +16,6 @@ import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateServiceAccount;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateShieldedInstanceConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +89,7 @@ public final class GetRegionInstanceTemplateResult {
      * within instances created from this template.
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     /**
      * @return The unique fingerprint of the metadata.
      * 
@@ -271,7 +270,7 @@ public final class GetRegionInstanceTemplateResult {
      * within instances created from this template.
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     /**
@@ -427,7 +426,7 @@ public final class GetRegionInstanceTemplateResult {
         private String instanceDescription;
         private Map<String,String> labels;
         private String machineType;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private String metadataFingerprint;
         private String metadataStartupScript;
         private String minCpuPlatform;
@@ -604,7 +603,7 @@ public final class GetRegionInstanceTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "metadata");
             }

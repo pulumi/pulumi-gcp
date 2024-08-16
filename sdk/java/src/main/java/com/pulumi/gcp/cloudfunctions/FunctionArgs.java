@@ -12,7 +12,6 @@ import com.pulumi.gcp.cloudfunctions.inputs.FunctionSecretVolumeArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionSourceRepositoryArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -45,13 +44,13 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="buildEnvironmentVariables")
-    private @Nullable Output<Map<String,Object>> buildEnvironmentVariables;
+    private @Nullable Output<Map<String,String>> buildEnvironmentVariables;
 
     /**
      * @return A set of key/value environment variable pairs available during build time.
      * 
      */
-    public Optional<Output<Map<String,Object>>> buildEnvironmentVariables() {
+    public Optional<Output<Map<String,String>>> buildEnvironmentVariables() {
         return Optional.ofNullable(this.buildEnvironmentVariables);
     }
 
@@ -150,13 +149,13 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="environmentVariables")
-    private @Nullable Output<Map<String,Object>> environmentVariables;
+    private @Nullable Output<Map<String,String>> environmentVariables;
 
     /**
      * @return A set of key/value environment variable pairs to assign to the function.
      * 
      */
-    public Optional<Output<Map<String,Object>>> environmentVariables() {
+    public Optional<Output<Map<String,String>>> environmentVariables() {
         return Optional.ofNullable(this.environmentVariables);
     }
 
@@ -251,7 +250,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
@@ -260,7 +259,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -593,7 +592,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder buildEnvironmentVariables(@Nullable Output<Map<String,Object>> buildEnvironmentVariables) {
+        public Builder buildEnvironmentVariables(@Nullable Output<Map<String,String>> buildEnvironmentVariables) {
             $.buildEnvironmentVariables = buildEnvironmentVariables;
             return this;
         }
@@ -604,7 +603,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder buildEnvironmentVariables(Map<String,Object> buildEnvironmentVariables) {
+        public Builder buildEnvironmentVariables(Map<String,String> buildEnvironmentVariables) {
             return buildEnvironmentVariables(Output.of(buildEnvironmentVariables));
         }
 
@@ -740,7 +739,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder environmentVariables(@Nullable Output<Map<String,Object>> environmentVariables) {
+        public Builder environmentVariables(@Nullable Output<Map<String,String>> environmentVariables) {
             $.environmentVariables = environmentVariables;
             return this;
         }
@@ -751,7 +750,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder environmentVariables(Map<String,Object> environmentVariables) {
+        public Builder environmentVariables(Map<String,String> environmentVariables) {
             return environmentVariables(Output.of(environmentVariables));
         }
 
@@ -877,7 +876,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -891,7 +890,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 

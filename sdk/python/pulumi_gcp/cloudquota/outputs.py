@@ -148,11 +148,11 @@ class GetSQuotaInfoDimensionsInfoResult(dict):
     def __init__(__self__, *,
                  applicable_locations: Sequence[str],
                  details: Sequence['outputs.GetSQuotaInfoDimensionsInfoDetailResult'],
-                 dimensions: Mapping[str, Any]):
+                 dimensions: Mapping[str, str]):
         """
         :param Sequence[str] applicable_locations: The applicable regions or zones of this dimensions info. The field will be set to `['global']` for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.
         :param Sequence['GetSQuotaInfoDimensionsInfoDetailArgs'] details: The quota details for a map of dimensions.
-        :param Mapping[str, Any] dimensions: The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+        :param Mapping[str, str] dimensions: The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
         """
         pulumi.set(__self__, "applicable_locations", applicable_locations)
         pulumi.set(__self__, "details", details)
@@ -176,7 +176,7 @@ class GetSQuotaInfoDimensionsInfoResult(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Mapping[str, Any]:
+    def dimensions(self) -> Mapping[str, str]:
         """
         The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
         """
@@ -414,11 +414,11 @@ class GetSQuotaInfosQuotaInfoDimensionsInfoResult(dict):
     def __init__(__self__, *,
                  applicable_locations: Sequence[str],
                  details: Sequence['outputs.GetSQuotaInfosQuotaInfoDimensionsInfoDetailResult'],
-                 dimensions: Mapping[str, Any]):
+                 dimensions: Mapping[str, str]):
         """
         :param Sequence[str] applicable_locations: The applicable regions or zones of this dimensions info. The field will be set to `['global']` for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.
         :param Sequence['GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs'] details: The quota details for a map of dimensions.
-        :param Mapping[str, Any] dimensions: The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+        :param Mapping[str, str] dimensions: The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
         """
         pulumi.set(__self__, "applicable_locations", applicable_locations)
         pulumi.set(__self__, "details", details)
@@ -442,7 +442,7 @@ class GetSQuotaInfosQuotaInfoDimensionsInfoResult(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Mapping[str, Any]:
+    def dimensions(self) -> Mapping[str, str]:
         """
         The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
         """

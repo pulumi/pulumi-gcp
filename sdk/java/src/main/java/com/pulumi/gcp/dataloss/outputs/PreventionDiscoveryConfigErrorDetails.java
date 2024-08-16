@@ -5,7 +5,6 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public final class PreventionDiscoveryConfigErrorDetails {
      * @return A list of messages that carry the error details.
      * 
      */
-    private @Nullable List<Map<String,Object>> details;
+    private @Nullable List<Map<String,String>> details;
     /**
      * @return A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
      * 
@@ -43,7 +42,7 @@ public final class PreventionDiscoveryConfigErrorDetails {
      * @return A list of messages that carry the error details.
      * 
      */
-    public List<Map<String,Object>> details() {
+    public List<Map<String,String>> details() {
         return this.details == null ? List.of() : this.details;
     }
     /**
@@ -64,7 +63,7 @@ public final class PreventionDiscoveryConfigErrorDetails {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer code;
-        private @Nullable List<Map<String,Object>> details;
+        private @Nullable List<Map<String,String>> details;
         private @Nullable String message;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigErrorDetails defaults) {
@@ -81,7 +80,7 @@ public final class PreventionDiscoveryConfigErrorDetails {
             return this;
         }
         @CustomType.Setter
-        public Builder details(@Nullable List<Map<String,Object>> details) {
+        public Builder details(@Nullable List<Map<String,String>> details) {
 
             this.details = details;
             return this;

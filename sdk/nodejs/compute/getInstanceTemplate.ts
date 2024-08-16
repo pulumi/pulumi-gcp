@@ -114,7 +114,7 @@ export interface GetInstanceTemplateResult {
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * The unique fingerprint of the metadata.
      */

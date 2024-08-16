@@ -229,7 +229,7 @@ class _AwsNodePoolState:
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['AwsNodePoolConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
@@ -375,11 +375,11 @@ class _AwsNodePoolState:
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @property
@@ -1459,7 +1459,7 @@ class AwsNodePool(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             management: Optional[pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
@@ -1576,7 +1576,7 @@ class AwsNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "effective_annotations")
 
     @property

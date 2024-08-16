@@ -575,7 +575,11 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "source_uris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "source_uris": [pulumi.Output.all(
+                    bucket=object.bucket,
+                    name=object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
+        ],
                 "destination_table": {
                     "project_id": foo.project,
                     "dataset_id": foo.dataset_id,
@@ -617,7 +621,11 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "source_uris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "source_uris": [pulumi.Output.all(
+                    bucket=test_bucket_object.bucket,
+                    name=test_bucket_object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
+        ],
                 "destination_table": {
                     "project_id": test_table.project,
                     "dataset_id": test_table.dataset_id,
@@ -1003,7 +1011,11 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "source_uris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "source_uris": [pulumi.Output.all(
+                    bucket=object.bucket,
+                    name=object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
+        ],
                 "destination_table": {
                     "project_id": foo.project,
                     "dataset_id": foo.dataset_id,
@@ -1045,7 +1057,11 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "source_uris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "source_uris": [pulumi.Output.all(
+                    bucket=test_bucket_object.bucket,
+                    name=test_bucket_object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
+        ],
                 "destination_table": {
                     "project_id": test_table.project,
                     "dataset_id": test_table.dataset_id,

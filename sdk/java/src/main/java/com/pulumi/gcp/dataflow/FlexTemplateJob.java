@@ -12,7 +12,6 @@ import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
 import com.pulumi.gcp.dataflow.inputs.FlexTemplateJobState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -262,8 +261,8 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * labels will be ignored to prevent diffs on re-apply.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return User labels to be specified for the job. Keys and values
@@ -275,7 +274,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * labels will be ignored to prevent diffs on re-apply.
      * 
      */
-    public Output<Optional<Map<String,Object>>> labels() {
+    public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
@@ -384,8 +383,8 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
-    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> parameters;
+    @Export(name="parameters", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> parameters;
 
     /**
      * @return **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
@@ -393,7 +392,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
-    public Output<Optional<Map<String,Object>>> parameters() {
+    public Output<Optional<Map<String,String>>> parameters() {
         return Codegen.optional(this.parameters);
     }
     /**
@@ -534,14 +533,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      * 
      */
-    @Export(name="transformNameMapping", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> transformNameMapping;
+    @Export(name="transformNameMapping", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> transformNameMapping;
 
     /**
      * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      * 
      */
-    public Output<Optional<Map<String,Object>>> transformNameMapping() {
+    public Output<Optional<Map<String,String>>> transformNameMapping() {
         return Codegen.optional(this.transformNameMapping);
     }
     /**

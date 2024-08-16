@@ -230,7 +230,7 @@ class _AzureNodePoolState:
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['AzureNodePoolConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['AzureNodePoolManagementArgs']] = None,
@@ -387,11 +387,11 @@ class _AzureNodePoolState:
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @property
@@ -894,7 +894,7 @@ class AzureNodePool(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[Union['AzureNodePoolConfigArgs', 'AzureNodePoolConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             management: Optional[pulumi.Input[Union['AzureNodePoolManagementArgs', 'AzureNodePoolManagementArgsDict']]] = None,
@@ -1018,7 +1018,7 @@ class AzureNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "effective_annotations")
 
     @property

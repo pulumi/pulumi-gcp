@@ -240,7 +240,7 @@ class GetInstanceTemplateResult:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.

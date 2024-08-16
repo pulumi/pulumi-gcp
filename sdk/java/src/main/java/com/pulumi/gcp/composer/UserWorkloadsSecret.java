@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
 import com.pulumi.gcp.composer.inputs.UserWorkloadsSecretState;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -110,14 +109,14 @@ public class UserWorkloadsSecret extends com.pulumi.resources.CustomResource {
      * A map of the secret data.
      * 
      */
-    @Export(name="data", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> data;
+    @Export(name="data", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> data;
 
     /**
      * @return A map of the secret data.
      * 
      */
-    public Output<Optional<Map<String,Object>>> data() {
+    public Output<Optional<Map<String,String>>> data() {
         return Codegen.optional(this.data);
     }
     /**

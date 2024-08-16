@@ -629,7 +629,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> CreateTime { get; private set; } = null!;
 
         [Output("effectiveAnnotations")]
-        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -888,10 +888,10 @@ namespace Pulumi.Gcp.Container
         public Input<string>? CreateTime { get; set; }
 
         [Input("effectiveAnnotations")]
-        private InputMap<object>? _effectiveAnnotations;
-        public InputMap<object> EffectiveAnnotations
+        private InputMap<string>? _effectiveAnnotations;
+        public InputMap<string> EffectiveAnnotations
         {
-            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
             set => _effectiveAnnotations = value;
         }
 

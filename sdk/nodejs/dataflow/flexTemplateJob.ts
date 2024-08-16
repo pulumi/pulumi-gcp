@@ -147,7 +147,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The machine type to use for launching the job. The default is n1-standard-1.
      */
@@ -182,7 +182,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used.
@@ -224,7 +224,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      */
-    public readonly transformNameMapping!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly transformNameMapping!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of this job, selected from the JobType enum.
      */
@@ -359,7 +359,7 @@ export interface FlexTemplateJobState {
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The machine type to use for launching the job. The default is n1-standard-1.
      */
@@ -394,7 +394,7 @@ export interface FlexTemplateJobState {
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used.
@@ -436,7 +436,7 @@ export interface FlexTemplateJobState {
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      */
-    transformNameMapping?: pulumi.Input<{[key: string]: any}>;
+    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of this job, selected from the JobType enum.
      */
@@ -483,7 +483,7 @@ export interface FlexTemplateJobArgs {
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The machine type to use for launching the job. The default is n1-standard-1.
      */
@@ -518,7 +518,7 @@ export interface FlexTemplateJobArgs {
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used.
@@ -552,5 +552,5 @@ export interface FlexTemplateJobArgs {
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      */
-    transformNameMapping?: pulumi.Input<{[key: string]: any}>;
+    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

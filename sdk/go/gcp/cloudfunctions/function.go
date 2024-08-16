@@ -127,11 +127,11 @@ import (
 //				HttpsTriggerSecurityLevel: pulumi.String("SECURE_ALWAYS"),
 //				Timeout:                   pulumi.Int(60),
 //				EntryPoint:                pulumi.String("helloGET"),
-//				Labels: pulumi.Map{
-//					"my-label": pulumi.Any("my-label-value"),
+//				Labels: pulumi.StringMap{
+//					"my-label": pulumi.String("my-label-value"),
 //				},
-//				EnvironmentVariables: pulumi.Map{
-//					"MY_ENV_VAR": pulumi.Any("my-env-var-value"),
+//				EnvironmentVariables: pulumi.StringMap{
+//					"MY_ENV_VAR": pulumi.String("my-env-var-value"),
 //				},
 //			})
 //			if err != nil {
@@ -177,7 +177,7 @@ type Function struct {
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrOutput `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
-	BuildEnvironmentVariables pulumi.MapOutput `pulumi:"buildEnvironmentVariables"`
+	BuildEnvironmentVariables pulumi.StringMapOutput `pulumi:"buildEnvironmentVariables"`
 	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
 	BuildServiceAccount pulumi.StringOutput `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -193,7 +193,7 @@ type Function struct {
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrOutput `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
-	EnvironmentVariables pulumi.MapOutput `pulumi:"environmentVariables"`
+	EnvironmentVariables pulumi.StringMapOutput `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerOutput `pulumi:"eventTrigger"`
 	// The security level for the function. The following options are available:
@@ -212,7 +212,7 @@ type Function struct {
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntOutput `pulumi:"maxInstances"`
 	// The limit on the minimum number of function instances that may coexist at a given time.
@@ -299,7 +299,7 @@ type functionState struct {
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
-	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
+	BuildEnvironmentVariables map[string]string `pulumi:"buildEnvironmentVariables"`
 	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
 	BuildServiceAccount *string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -315,7 +315,7 @@ type functionState struct {
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// The security level for the function. The following options are available:
@@ -334,7 +334,7 @@ type functionState struct {
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
 	// The limit on the minimum number of function instances that may coexist at a given time.
@@ -384,7 +384,7 @@ type FunctionState struct {
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
-	BuildEnvironmentVariables pulumi.MapInput
+	BuildEnvironmentVariables pulumi.StringMapInput
 	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
 	BuildServiceAccount pulumi.StringPtrInput
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -400,7 +400,7 @@ type FunctionState struct {
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrInput
 	// A set of key/value environment variable pairs to assign to the function.
-	EnvironmentVariables pulumi.MapInput
+	EnvironmentVariables pulumi.StringMapInput
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
 	// The security level for the function. The following options are available:
@@ -419,7 +419,7 @@ type FunctionState struct {
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput
 	// The limit on the minimum number of function instances that may coexist at a given time.
@@ -473,7 +473,7 @@ type functionArgs struct {
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
-	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
+	BuildEnvironmentVariables map[string]string `pulumi:"buildEnvironmentVariables"`
 	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
 	BuildServiceAccount *string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -487,7 +487,7 @@ type functionArgs struct {
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// The security level for the function. The following options are available:
@@ -506,7 +506,7 @@ type functionArgs struct {
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
 	// The limit on the minimum number of function instances that may coexist at a given time.
@@ -550,7 +550,7 @@ type FunctionArgs struct {
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
-	BuildEnvironmentVariables pulumi.MapInput
+	BuildEnvironmentVariables pulumi.StringMapInput
 	// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
 	BuildServiceAccount pulumi.StringPtrInput
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -564,7 +564,7 @@ type FunctionArgs struct {
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrInput
 	// A set of key/value environment variable pairs to assign to the function.
-	EnvironmentVariables pulumi.MapInput
+	EnvironmentVariables pulumi.StringMapInput
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
 	// The security level for the function. The following options are available:
@@ -583,7 +583,7 @@ type FunctionArgs struct {
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput
 	// The limit on the minimum number of function instances that may coexist at a given time.
@@ -715,8 +715,8 @@ func (o FunctionOutput) AvailableMemoryMb() pulumi.IntPtrOutput {
 }
 
 // A set of key/value environment variable pairs available during build time.
-func (o FunctionOutput) BuildEnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.BuildEnvironmentVariables }).(pulumi.MapOutput)
+func (o FunctionOutput) BuildEnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.BuildEnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
@@ -755,8 +755,8 @@ func (o FunctionOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // A set of key/value environment variable pairs to assign to the function.
-func (o FunctionOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o FunctionOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
@@ -792,8 +792,8 @@ func (o FunctionOutput) KmsKeyName() pulumi.StringPtrOutput {
 //
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field 'effective_labels' for all of the labels present on the resource.
-func (o FunctionOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o FunctionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The limit on the maximum number of function instances that may coexist at a given time.

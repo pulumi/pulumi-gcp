@@ -349,9 +349,9 @@ type DeliveryPipeline struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description          pulumi.StringPtrOutput `pulumi:"description"`
-	EffectiveAnnotations pulumi.MapOutput       `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
@@ -369,7 +369,7 @@ type DeliveryPipeline struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrOutput `pulumi:"serialPipeline"`
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -428,10 +428,10 @@ type deliveryPipelineState struct {
 	// Output only. Time at which the pipeline was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description          *string                `pulumi:"description"`
-	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	Description          *string           `pulumi:"description"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
@@ -449,7 +449,7 @@ type deliveryPipelineState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline *DeliveryPipelineSerialPipeline `pulumi:"serialPipeline"`
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -472,9 +472,9 @@ type DeliveryPipelineState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description          pulumi.StringPtrInput
-	EffectiveAnnotations pulumi.MapInput
+	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
@@ -492,7 +492,7 @@ type DeliveryPipelineState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrInput
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -674,13 +674,13 @@ func (o DeliveryPipelineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o DeliveryPipelineOutput) EffectiveAnnotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+func (o DeliveryPipelineOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o DeliveryPipelineOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o DeliveryPipelineOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -715,8 +715,8 @@ func (o DeliveryPipelineOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o DeliveryPipelineOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o DeliveryPipelineOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.

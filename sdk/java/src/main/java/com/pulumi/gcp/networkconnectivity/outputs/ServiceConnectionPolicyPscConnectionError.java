@@ -5,7 +5,6 @@ package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,7 @@ public final class ServiceConnectionPolicyPscConnectionError {
      * A list of messages that carry the error details.
      * 
      */
-    private @Nullable List<Map<String,Object>> details;
+    private @Nullable List<Map<String,String>> details;
     /**
      * @return A developer-facing error message.
      * 
@@ -45,7 +44,7 @@ public final class ServiceConnectionPolicyPscConnectionError {
      * A list of messages that carry the error details.
      * 
      */
-    public List<Map<String,Object>> details() {
+    public List<Map<String,String>> details() {
         return this.details == null ? List.of() : this.details;
     }
     /**
@@ -66,7 +65,7 @@ public final class ServiceConnectionPolicyPscConnectionError {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer code;
-        private @Nullable List<Map<String,Object>> details;
+        private @Nullable List<Map<String,String>> details;
         private @Nullable String message;
         public Builder() {}
         public Builder(ServiceConnectionPolicyPscConnectionError defaults) {
@@ -83,7 +82,7 @@ public final class ServiceConnectionPolicyPscConnectionError {
             return this;
         }
         @CustomType.Setter
-        public Builder details(@Nullable List<Map<String,Object>> details) {
+        public Builder details(@Nullable List<Map<String,String>> details) {
 
             this.details = details;
             return this;
