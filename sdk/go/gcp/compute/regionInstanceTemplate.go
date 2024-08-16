@@ -75,7 +75,7 @@ type RegionInstanceTemplate struct {
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringOutput `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -212,7 +212,7 @@ type regionInstanceTemplateState struct {
 	MachineType *string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint *string `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -309,7 +309,7 @@ type RegionInstanceTemplateState struct {
 	MachineType pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringPtrInput
 	// An alternative to using the
@@ -408,7 +408,7 @@ type regionInstanceTemplateArgs struct {
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// An alternative to using the
 	// startup-script metadata key, mostly to match the computeInstance resource.
 	// This replaces the startup-script metadata key on the created instance and
@@ -496,7 +496,7 @@ type RegionInstanceTemplateArgs struct {
 	MachineType pulumi.StringInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// An alternative to using the
 	// startup-script metadata key, mostly to match the computeInstance resource.
 	// This replaces the startup-script metadata key on the created instance and
@@ -710,8 +710,8 @@ func (o RegionInstanceTemplateOutput) MachineType() pulumi.StringOutput {
 
 // Metadata key/value pairs to make available from
 // within instances created from this template.
-func (o RegionInstanceTemplateOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o RegionInstanceTemplateOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The unique fingerprint of the metadata.

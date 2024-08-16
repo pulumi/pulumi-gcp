@@ -84,7 +84,7 @@ type Lake struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. User-defined labels for the lake.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -103,7 +103,7 @@ type Lake struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -161,7 +161,7 @@ type lakeState struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. User-defined labels for the lake.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -180,7 +180,7 @@ type lakeState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -201,7 +201,7 @@ type LakeState struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. User-defined labels for the lake.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -220,7 +220,7 @@ type LakeState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount pulumi.StringPtrInput
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -388,8 +388,8 @@ func (o LakeOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o LakeOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Lake) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o LakeOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Optional. User-defined labels for the lake.
@@ -428,8 +428,8 @@ func (o LakeOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o LakeOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Lake) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o LakeOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.

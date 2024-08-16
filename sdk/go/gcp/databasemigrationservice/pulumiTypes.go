@@ -1951,7 +1951,7 @@ type ConnectionProfileError struct {
 	Code *int `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details []map[string]interface{} `pulumi:"details"`
+	Details []map[string]string `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
@@ -1974,7 +1974,7 @@ type ConnectionProfileErrorArgs struct {
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details pulumi.MapArrayInput `pulumi:"details"`
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
@@ -2039,8 +2039,8 @@ func (o ConnectionProfileErrorOutput) Code() pulumi.IntPtrOutput {
 
 // (Output)
 // A list of messages that carry the error details.
-func (o ConnectionProfileErrorOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v ConnectionProfileError) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+func (o ConnectionProfileErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
 
 // (Output)

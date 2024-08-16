@@ -106,7 +106,7 @@ export class Key extends pulumi.CustomResource {
     /**
      * Arbitrary map of values that, when changed, will trigger a new key to be generated.
      */
-    public readonly keepers!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly keepers!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at
@@ -215,7 +215,7 @@ export interface KeyState {
     /**
      * Arbitrary map of values that, when changed, will trigger a new key to be generated.
      */
-    keepers?: pulumi.Input<{[key: string]: any}>;
+    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at
@@ -275,7 +275,7 @@ export interface KeyArgs {
     /**
      * Arbitrary map of values that, when changed, will trigger a new key to be generated.
      */
-    keepers?: pulumi.Input<{[key: string]: any}>;
+    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at

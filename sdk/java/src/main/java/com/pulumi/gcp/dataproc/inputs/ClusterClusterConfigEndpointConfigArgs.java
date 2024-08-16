@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -42,14 +41,14 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
      * 
      */
     @Import(name="httpPorts")
-    private @Nullable Output<Map<String,Object>> httpPorts;
+    private @Nullable Output<Map<String,String>> httpPorts;
 
     /**
      * @return The map of port descriptions to URLs. Will only be populated if
      * `enable_http_port_access` is true.
      * 
      */
-    public Optional<Output<Map<String,Object>>> httpPorts() {
+    public Optional<Output<Map<String,String>>> httpPorts() {
         return Optional.ofNullable(this.httpPorts);
     }
 
@@ -108,7 +107,7 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder httpPorts(@Nullable Output<Map<String,Object>> httpPorts) {
+        public Builder httpPorts(@Nullable Output<Map<String,String>> httpPorts) {
             $.httpPorts = httpPorts;
             return this;
         }
@@ -120,7 +119,7 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder httpPorts(Map<String,Object> httpPorts) {
+        public Builder httpPorts(Map<String,String> httpPorts) {
             return httpPorts(Output.of(httpPorts));
         }
 

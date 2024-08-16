@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Available memory (in MB) to the function.
         /// </summary>
         public readonly int AvailableMemoryMb;
-        public readonly ImmutableDictionary<string, object> BuildEnvironmentVariables;
+        public readonly ImmutableDictionary<string, string> BuildEnvironmentVariables;
         public readonly string BuildServiceAccount;
         public readonly string BuildWorkerPool;
         /// <summary>
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
         /// </summary>
         public readonly string EntryPoint;
-        public readonly ImmutableDictionary<string, object> EnvironmentVariables;
+        public readonly ImmutableDictionary<string, string> EnvironmentVariables;
         /// <summary>
         /// A source that fires events in response to a condition in another service. Structure is documented below.
         /// </summary>
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
         /// </summary>
@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.CloudFunctions
         private GetFunctionResult(
             int availableMemoryMb,
 
-            ImmutableDictionary<string, object> buildEnvironmentVariables,
+            ImmutableDictionary<string, string> buildEnvironmentVariables,
 
             string buildServiceAccount,
 
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string entryPoint,
 
-            ImmutableDictionary<string, object> environmentVariables,
+            ImmutableDictionary<string, string> environmentVariables,
 
             ImmutableArray<Outputs.GetFunctionEventTriggerResult> eventTriggers,
 
@@ -257,7 +257,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string kmsKeyName,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             int maxInstances,
 

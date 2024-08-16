@@ -384,7 +384,12 @@ class AiFeatureGroup(pulumi.CustomResource):
             },
             big_query={
                 "big_query_source": {
-                    "input_uri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                    "input_uri": pulumi.Output.all(
+                        project=sample_table.project,
+                        dataset_id=sample_table.dataset_id,
+                        table_id=sample_table.table_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
                 },
                 "entity_id_columns": ["feature_id"],
             })
@@ -487,7 +492,12 @@ class AiFeatureGroup(pulumi.CustomResource):
             },
             big_query={
                 "big_query_source": {
-                    "input_uri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                    "input_uri": pulumi.Output.all(
+                        project=sample_table.project,
+                        dataset_id=sample_table.dataset_id,
+                        table_id=sample_table.table_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
                 },
                 "entity_id_columns": ["feature_id"],
             })

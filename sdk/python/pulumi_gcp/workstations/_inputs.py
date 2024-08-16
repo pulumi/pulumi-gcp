@@ -70,7 +70,7 @@ if not MYPY:
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
         """
-        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
         """
         (Output)
         A list of messages that carry the error details.
@@ -87,12 +87,12 @@ elif False:
 class WorkstationClusterConditionArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: (Output)
                A list of messages that carry the error details.
         :param pulumi.Input[str] message: (Output)
                Human readable message indicating details about the current status.
@@ -119,7 +119,7 @@ class WorkstationClusterConditionArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -127,7 +127,7 @@ class WorkstationClusterConditionArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "details", value)
 
     @property
@@ -294,7 +294,7 @@ if not MYPY:
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
         """
-        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
         """
         (Output)
         A list of messages that carry the error details.
@@ -311,12 +311,12 @@ elif False:
 class WorkstationConfigConditionArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: (Output)
                A list of messages that carry the error details.
         :param pulumi.Input[str] message: (Output)
                Human readable message indicating details about the current status.
@@ -343,7 +343,7 @@ class WorkstationConfigConditionArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -351,7 +351,7 @@ class WorkstationConfigConditionArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "details", value)
 
     @property

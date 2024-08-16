@@ -154,7 +154,7 @@ class _WorkerPoolState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
@@ -262,11 +262,11 @@ class _WorkerPoolState:
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @property
@@ -627,7 +627,7 @@ class WorkerPool(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
@@ -716,7 +716,7 @@ class WorkerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "effective_annotations")
 
     @property

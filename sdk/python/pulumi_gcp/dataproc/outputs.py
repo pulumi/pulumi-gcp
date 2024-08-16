@@ -1464,11 +1464,11 @@ class ClusterClusterConfigEndpointConfig(dict):
 
     def __init__(__self__, *,
                  enable_http_port_access: bool,
-                 http_ports: Optional[Mapping[str, Any]] = None):
+                 http_ports: Optional[Mapping[str, str]] = None):
         """
         :param bool enable_http_port_access: The flag to enable http access to specific ports
                on the cluster from external sources (aka Component Gateway). Defaults to false.
-        :param Mapping[str, Any] http_ports: The map of port descriptions to URLs. Will only be populated if
+        :param Mapping[str, str] http_ports: The map of port descriptions to URLs. Will only be populated if
                `enable_http_port_access` is true.
         """
         pulumi.set(__self__, "enable_http_port_access", enable_http_port_access)
@@ -1486,7 +1486,7 @@ class ClusterClusterConfigEndpointConfig(dict):
 
     @property
     @pulumi.getter(name="httpPorts")
-    def http_ports(self) -> Optional[Mapping[str, Any]]:
+    def http_ports(self) -> Optional[Mapping[str, str]]:
         """
         The map of port descriptions to URLs. Will only be populated if
         `enable_http_port_access` is true.
@@ -3001,7 +3001,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
                  image_version: Optional[str] = None,
                  optional_components: Optional[Sequence[str]] = None,
                  override_properties: Optional[Mapping[str, str]] = None,
-                 properties: Optional[Mapping[str, Any]] = None):
+                 properties: Optional[Mapping[str, str]] = None):
         """
         :param str image_version: The Cloud Dataproc image version to use
                for the cluster - this controls the sets of software versions
@@ -3015,7 +3015,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
                used to modify various aspects of the common configuration files used when creating
                a cluster. For a list of valid properties please see
                [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-        :param Mapping[str, Any] properties: A list of the properties used to set the daemon config files.
+        :param Mapping[str, str] properties: A list of the properties used to set the daemon config files.
                This will include any values supplied by the user via `cluster_config.software_config.override_properties`
         """
         if image_version is not None:
@@ -3062,7 +3062,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[Mapping[str, Any]]:
+    def properties(self) -> Optional[Mapping[str, str]]:
         """
         A list of the properties used to set the daemon config files.
         This will include any values supplied by the user via `cluster_config.software_config.override_properties`

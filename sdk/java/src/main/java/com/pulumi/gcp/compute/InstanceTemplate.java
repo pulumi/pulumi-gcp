@@ -21,7 +21,6 @@ import com.pulumi.gcp.compute.outputs.InstanceTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateServiceAccount;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateShieldedInstanceConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -488,15 +487,15 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * within instances created from this template.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
      * @return Metadata key/value pairs to make available from
      * within instances created from this template.
      * 
      */
-    public Output<Optional<Map<String,Object>>> metadata() {
+    public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
     }
     /**

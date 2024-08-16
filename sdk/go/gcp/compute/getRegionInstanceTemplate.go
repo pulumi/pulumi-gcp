@@ -111,7 +111,7 @@ type LookupRegionInstanceTemplateResult struct {
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint string `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -286,8 +286,8 @@ func (o LookupRegionInstanceTemplateResultOutput) MachineType() pulumi.StringOut
 
 // Metadata key/value pairs to make available from
 // within instances created from this template.
-func (o LookupRegionInstanceTemplateResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupRegionInstanceTemplateResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The unique fingerprint of the metadata.

@@ -52,9 +52,9 @@ import (
 //			_, err = composer.NewUserWorkloadsSecret(ctx, "example", &composer.UserWorkloadsSecretArgs{
 //				Environment: exampleEnvironment.Name,
 //				Name:        pulumi.String("example-secret"),
-//				Data: pulumi.Map{
-//					"username": invokeBase64encode.Result,
-//					"password": invokeBase64encode1.Result,
+//				Data: pulumi.StringMap{
+//					"username": pulumi.String(invokeBase64encode.Result),
+//					"password": pulumi.String(invokeBase64encode1.Result),
 //				},
 //			})
 //			if err != nil {
@@ -97,8 +97,8 @@ type LookupUserWorkloadsSecretArgs struct {
 
 // A collection of values returned by getUserWorkloadsSecret.
 type LookupUserWorkloadsSecretResult struct {
-	Data        map[string]interface{} `pulumi:"data"`
-	Environment string                 `pulumi:"environment"`
+	Data        map[string]string `pulumi:"data"`
+	Environment string            `pulumi:"environment"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	Name    string  `pulumi:"name"`
@@ -151,8 +151,8 @@ func (o LookupUserWorkloadsSecretResultOutput) ToLookupUserWorkloadsSecretResult
 	return o
 }
 
-func (o LookupUserWorkloadsSecretResultOutput) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupUserWorkloadsSecretResult) map[string]interface{} { return v.Data }).(pulumi.MapOutput)
+func (o LookupUserWorkloadsSecretResultOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupUserWorkloadsSecretResult) map[string]string { return v.Data }).(pulumi.StringMapOutput)
 }
 
 func (o LookupUserWorkloadsSecretResultOutput) Environment() pulumi.StringOutput {

@@ -197,7 +197,7 @@ namespace Pulumi.Gcp.Composer
     [OutputType]
     public sealed class GetUserWorkloadsSecretResult
     {
-        public readonly ImmutableDictionary<string, object> Data;
+        public readonly ImmutableDictionary<string, string> Data;
         public readonly string Environment;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.Composer
 
         [OutputConstructor]
         private GetUserWorkloadsSecretResult(
-            ImmutableDictionary<string, object> data,
+            ImmutableDictionary<string, string> data,
 
             string environment,
 

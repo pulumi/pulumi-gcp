@@ -6,7 +6,6 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -40,14 +39,14 @@ public final class ServiceConnectionPolicyPscConnectionErrorArgs extends com.pul
      * 
      */
     @Import(name="details")
-    private @Nullable Output<List<Map<String,Object>>> details;
+    private @Nullable Output<List<Map<String,String>>> details;
 
     /**
      * @return (Output)
      * A list of messages that carry the error details.
      * 
      */
-    public Optional<Output<List<Map<String,Object>>>> details() {
+    public Optional<Output<List<Map<String,String>>>> details() {
         return Optional.ofNullable(this.details);
     }
 
@@ -120,7 +119,7 @@ public final class ServiceConnectionPolicyPscConnectionErrorArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder details(@Nullable Output<List<Map<String,Object>>> details) {
+        public Builder details(@Nullable Output<List<Map<String,String>>> details) {
             $.details = details;
             return this;
         }
@@ -132,7 +131,7 @@ public final class ServiceConnectionPolicyPscConnectionErrorArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder details(List<Map<String,Object>> details) {
+        public Builder details(List<Map<String,String>> details) {
             return details(Output.of(details));
         }
 
@@ -143,7 +142,7 @@ public final class ServiceConnectionPolicyPscConnectionErrorArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder details(Map<String,Object>... details) {
+        public Builder details(Map<String,String>... details) {
             return details(List.of(details));
         }
 

@@ -6,7 +6,6 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfigNetworkTag;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class GetClusterNodePoolAutoConfig {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    private Map<String,Object> resourceManagerTags;
+    private Map<String,String> resourceManagerTags;
 
     private GetClusterNodePoolAutoConfig() {}
     /**
@@ -37,7 +36,7 @@ public final class GetClusterNodePoolAutoConfig {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags;
     }
 
@@ -51,7 +50,7 @@ public final class GetClusterNodePoolAutoConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodePoolAutoConfigNetworkTag> networkTags;
-        private Map<String,Object> resourceManagerTags;
+        private Map<String,String> resourceManagerTags;
         public Builder() {}
         public Builder(GetClusterNodePoolAutoConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,7 +70,7 @@ public final class GetClusterNodePoolAutoConfig {
             return networkTags(List.of(networkTags));
         }
         @CustomType.Setter
-        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             if (resourceManagerTags == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolAutoConfig", "resourceManagerTags");
             }

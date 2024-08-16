@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// (Output)
         /// A list of messages that carry the error details.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> Details;
         /// <summary>
         /// (Output)
         /// Human readable message indicating details about the current status.
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         private WorkstationClusterCondition(
             int? code,
 
-            ImmutableArray<ImmutableDictionary<string, object>> details,
+            ImmutableArray<ImmutableDictionary<string, string>> details,
 
             string? message)
         {

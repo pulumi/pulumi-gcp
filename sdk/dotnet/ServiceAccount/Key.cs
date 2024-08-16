@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
         /// </summary>
         [Output("keepers")]
-        public Output<ImmutableDictionary<string, object>?> Keepers { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Keepers { get; private set; } = null!;
 
         /// <summary>
         /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -253,14 +253,14 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("keepers")]
-        private InputMap<object>? _keepers;
+        private InputMap<string>? _keepers;
 
         /// <summary>
         /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
         /// </summary>
-        public InputMap<object> Keepers
+        public InputMap<string> Keepers
         {
-            get => _keepers ?? (_keepers = new InputMap<object>());
+            get => _keepers ?? (_keepers = new InputMap<string>());
             set => _keepers = value;
         }
 
@@ -311,14 +311,14 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class KeyState : global::Pulumi.ResourceArgs
     {
         [Input("keepers")]
-        private InputMap<object>? _keepers;
+        private InputMap<string>? _keepers;
 
         /// <summary>
         /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
         /// </summary>
-        public InputMap<object> Keepers
+        public InputMap<string> Keepers
         {
-            get => _keepers ?? (_keepers = new InputMap<object>());
+            get => _keepers ?? (_keepers = new InputMap<string>());
             set => _keepers = value;
         }
 

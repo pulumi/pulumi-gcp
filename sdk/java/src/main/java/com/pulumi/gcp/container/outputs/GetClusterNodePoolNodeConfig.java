@@ -28,7 +28,6 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -190,7 +189,7 @@ public final class GetClusterNodePoolNodeConfig {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    private Map<String,Object> resourceManagerTags;
+    private Map<String,String> resourceManagerTags;
     /**
      * @return Sandbox configuration for this node.
      * 
@@ -452,7 +451,7 @@ public final class GetClusterNodePoolNodeConfig {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags;
     }
     /**
@@ -558,7 +557,7 @@ public final class GetClusterNodePoolNodeConfig {
         private Boolean preemptible;
         private List<GetClusterNodePoolNodeConfigReservationAffinity> reservationAffinities;
         private Map<String,String> resourceLabels;
-        private Map<String,Object> resourceManagerTags;
+        private Map<String,String> resourceManagerTags;
         private List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs;
         private List<GetClusterNodePoolNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private String serviceAccount;
@@ -902,7 +901,7 @@ public final class GetClusterNodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             if (resourceManagerTags == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "resourceManagerTags");
             }

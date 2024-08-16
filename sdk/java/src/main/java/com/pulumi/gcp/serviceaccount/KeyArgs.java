@@ -6,7 +6,6 @@ package com.pulumi.gcp.serviceaccount;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,13 +22,13 @@ public final class KeyArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="keepers")
-    private @Nullable Output<Map<String,Object>> keepers;
+    private @Nullable Output<Map<String,String>> keepers;
 
     /**
      * @return Arbitrary map of values that, when changed, will trigger a new key to be generated.
      * 
      */
-    public Optional<Output<Map<String,Object>>> keepers() {
+    public Optional<Output<Map<String,String>>> keepers() {
         return Optional.ofNullable(this.keepers);
     }
 
@@ -159,7 +158,7 @@ public final class KeyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder keepers(@Nullable Output<Map<String,Object>> keepers) {
+        public Builder keepers(@Nullable Output<Map<String,String>> keepers) {
             $.keepers = keepers;
             return this;
         }
@@ -170,7 +169,7 @@ public final class KeyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder keepers(Map<String,Object> keepers) {
+        public Builder keepers(Map<String,String> keepers) {
             return keepers(Output.of(keepers));
         }
 

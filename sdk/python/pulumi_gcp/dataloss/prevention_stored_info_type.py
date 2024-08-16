@@ -399,7 +399,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             display_name="Displayname",
             large_custom_dictionary={
                 "cloud_storage_file_set": {
-                    "url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
+                    "url": pulumi.Output.all(
+                        bucketName=bucket.name,
+                        objectName=object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
+        ,
                 },
                 "output_path": {
                     "path": bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
@@ -534,7 +538,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             display_name="Displayname",
             large_custom_dictionary={
                 "cloud_storage_file_set": {
-                    "url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
+                    "url": pulumi.Output.all(
+                        bucketName=bucket.name,
+                        objectName=object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
+        ,
                 },
                 "output_path": {
                     "path": bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),

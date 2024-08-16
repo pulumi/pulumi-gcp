@@ -913,9 +913,13 @@ class WorkstationConfig(pulumi.CustomResource):
                     "boot_disk_size_gb": 35,
                     "disable_public_ip_addresses": True,
                     "disable_ssh": False,
-                    "vm_tags": pulumi.Output.all(tag_key1.name, tag_value1.name).apply(lambda tagKey1Name, tagValue1Name: {
-                        "": f"tagValues/{tag_value1_name}",
-                    }),
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Name=tag_key1.name,
+                        tagValue1Name=tag_value1.name
+        ).apply(lambda resolved_outputs: {
+                        "": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                    })
+        ,
                 },
             })
         ```
@@ -1372,9 +1376,13 @@ class WorkstationConfig(pulumi.CustomResource):
                     "boot_disk_size_gb": 35,
                     "disable_public_ip_addresses": True,
                     "disable_ssh": False,
-                    "vm_tags": pulumi.Output.all(tag_key1.name, tag_value1.name).apply(lambda tagKey1Name, tagValue1Name: {
-                        "": f"tagValues/{tag_value1_name}",
-                    }),
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Name=tag_key1.name,
+                        tagValue1Name=tag_value1.name
+        ).apply(lambda resolved_outputs: {
+                        "": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                    })
+        ,
                 },
             })
         ```

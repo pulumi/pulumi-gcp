@@ -11,7 +11,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.serviceaccount.KeyArgs;
 import com.pulumi.gcp.serviceaccount.inputs.KeyState;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -179,14 +178,14 @@ public class Key extends com.pulumi.resources.CustomResource {
      * Arbitrary map of values that, when changed, will trigger a new key to be generated.
      * 
      */
-    @Export(name="keepers", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> keepers;
+    @Export(name="keepers", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> keepers;
 
     /**
      * @return Arbitrary map of values that, when changed, will trigger a new key to be generated.
      * 
      */
-    public Output<Optional<Map<String,Object>>> keepers() {
+    public Output<Optional<Map<String,String>>> keepers() {
         return Codegen.optional(this.keepers);
     }
     /**

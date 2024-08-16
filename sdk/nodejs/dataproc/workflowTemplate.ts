@@ -138,7 +138,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      * the cluster is deleted.
      */
     public readonly dagTimeout!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
@@ -176,7 +176,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The time template was last updated.
      */
@@ -264,7 +264,7 @@ export interface WorkflowTemplateState {
      * the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
-    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
@@ -302,7 +302,7 @@ export interface WorkflowTemplateState {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Output only. The time template was last updated.
      */

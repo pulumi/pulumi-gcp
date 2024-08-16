@@ -6690,7 +6690,7 @@ class ClusterNodeConfig(dict):
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodeConfigReservationAffinity'] = None,
                  resource_labels: Optional[Mapping[str, str]] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.ClusterNodeConfigSandboxConfig'] = None,
                  secondary_boot_disks: Optional[Sequence['outputs.ClusterNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
@@ -6777,7 +6777,7 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
         :param Sequence['ClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
@@ -7169,7 +7169,7 @@ class ClusterNodeConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
@@ -8739,10 +8739,10 @@ class ClusterNodePoolAutoConfig(dict):
 
     def __init__(__self__, *,
                  network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
+                 resource_manager_tags: Optional[Mapping[str, str]] = None):
         """
         :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: The network tag config for the cluster's automatically provisioned node pools.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
@@ -8759,7 +8759,7 @@ class ClusterNodePoolAutoConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
@@ -9619,7 +9619,7 @@ class ClusterNodePoolNodeConfig(dict):
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodePoolNodeConfigReservationAffinity'] = None,
                  resource_labels: Optional[Mapping[str, str]] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig'] = None,
                  secondary_boot_disks: Optional[Sequence['outputs.ClusterNodePoolNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
@@ -9706,7 +9706,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
         :param Sequence['ClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
@@ -10098,7 +10098,7 @@ class ClusterNodePoolNodeConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
@@ -12959,7 +12959,7 @@ class NodePoolNodeConfig(dict):
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.NodePoolNodeConfigReservationAffinity'] = None,
                  resource_labels: Optional[Mapping[str, str]] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.NodePoolNodeConfigSandboxConfig'] = None,
                  secondary_boot_disks: Optional[Sequence['outputs.NodePoolNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
@@ -13003,7 +13003,7 @@ class NodePoolNodeConfig(dict):
                
                <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param 'NodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
         :param Sequence['NodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
@@ -13340,7 +13340,7 @@ class NodePoolNodeConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -16553,7 +16553,7 @@ class GetClusterNodeConfigResult(dict):
                  preemptible: bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodeConfigReservationAffinityResult'],
                  resource_labels: Mapping[str, str],
-                 resource_manager_tags: Mapping[str, Any],
+                 resource_manager_tags: Mapping[str, str],
                  sandbox_configs: Sequence['outputs.GetClusterNodeConfigSandboxConfigResult'],
                  secondary_boot_disks: Sequence['outputs.GetClusterNodeConfigSecondaryBootDiskResult'],
                  service_account: str,
@@ -16594,7 +16594,7 @@ class GetClusterNodeConfigResult(dict):
         :param bool preemptible: Whether the nodes are created as preemptible VM instances.
         :param Sequence['GetClusterNodeConfigReservationAffinityArgs'] reservation_affinities: The reservation affinity configuration for the node pool.
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence['GetClusterNodeConfigSandboxConfigArgs'] sandbox_configs: Sandbox configuration for this node.
         :param Sequence['GetClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
@@ -16888,7 +16888,7 @@ class GetClusterNodeConfigResult(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Mapping[str, Any]:
+    def resource_manager_tags(self) -> Mapping[str, str]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -17878,10 +17878,10 @@ class GetClusterNodePoolResult(dict):
 class GetClusterNodePoolAutoConfigResult(dict):
     def __init__(__self__, *,
                  network_tags: Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult'],
-                 resource_manager_tags: Mapping[str, Any]):
+                 resource_manager_tags: Mapping[str, str]):
         """
         :param Sequence['GetClusterNodePoolAutoConfigNetworkTagArgs'] network_tags: Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         pulumi.set(__self__, "network_tags", network_tags)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
@@ -17896,7 +17896,7 @@ class GetClusterNodePoolAutoConfigResult(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Mapping[str, Any]:
+    def resource_manager_tags(self) -> Mapping[str, str]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -18409,7 +18409,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  preemptible: bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigReservationAffinityResult'],
                  resource_labels: Mapping[str, str],
-                 resource_manager_tags: Mapping[str, Any],
+                 resource_manager_tags: Mapping[str, str],
                  sandbox_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSandboxConfigResult'],
                  secondary_boot_disks: Sequence['outputs.GetClusterNodePoolNodeConfigSecondaryBootDiskResult'],
                  service_account: str,
@@ -18450,7 +18450,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param bool preemptible: Whether the nodes are created as preemptible VM instances.
         :param Sequence['GetClusterNodePoolNodeConfigReservationAffinityArgs'] reservation_affinities: The reservation affinity configuration for the node pool.
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence['GetClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_configs: Sandbox configuration for this node.
         :param Sequence['GetClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
@@ -18744,7 +18744,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Mapping[str, Any]:
+    def resource_manager_tags(self) -> Mapping[str, str]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """

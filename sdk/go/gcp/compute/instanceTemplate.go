@@ -108,8 +108,8 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//				Metadata: pulumi.Map{
-//					"foo": pulumi.Any("bar"),
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 //					Email: _default.Email,
@@ -176,8 +176,8 @@ import (
 //					Preemptible:      pulumi.Bool(false),
 //					AutomaticRestart: pulumi.Bool(true),
 //				},
-//				Metadata: pulumi.Map{
-//					"gce-software-declaration": pulumi.Any(`{
+//				Metadata: pulumi.StringMap{
+//					"gce-software-declaration": pulumi.String(`{
 //	  "softwareRecipes": [{
 //	    "name": "install-gce-service-proxy-agent",
 //	    "desired_state": "INSTALLED",
@@ -191,7 +191,7 @@ import (
 //
 // `),
 //
-//					"gce-service-proxy": pulumi.Any(`{
+//					"gce-service-proxy": pulumi.String(`{
 //	  "api-version": "0.2",
 //	  "proxy-spec": {
 //	    "proxy-port": 15001,
@@ -210,8 +210,8 @@ import (
 //
 // `),
 //
-//					"enable-guest-attributes": pulumi.Any("true"),
-//					"enable-osconfig":         pulumi.Any("true"),
+//					"enable-guest-attributes": pulumi.String("true"),
+//					"enable-osconfig":         pulumi.String("true"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 //					Email: pulumi.String(_default.Email),
@@ -316,7 +316,7 @@ type InstanceTemplate struct {
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringOutput `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -462,7 +462,7 @@ type instanceTemplateState struct {
 	MachineType *string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint *string `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -568,7 +568,7 @@ type InstanceTemplateState struct {
 	MachineType pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringPtrInput
 	// An alternative to using the
@@ -676,7 +676,7 @@ type instanceTemplateArgs struct {
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// An alternative to using the
 	// startup-script metadata key, mostly to match the computeInstance resource.
 	// This replaces the startup-script metadata key on the created instance and
@@ -770,7 +770,7 @@ type InstanceTemplateArgs struct {
 	MachineType pulumi.StringInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// An alternative to using the
 	// startup-script metadata key, mostly to match the computeInstance resource.
 	// This replaces the startup-script metadata key on the created instance and
@@ -988,8 +988,8 @@ func (o InstanceTemplateOutput) MachineType() pulumi.StringOutput {
 
 // Metadata key/value pairs to make available from
 // within instances created from this template.
-func (o InstanceTemplateOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *InstanceTemplate) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o InstanceTemplateOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The unique fingerprint of the metadata.

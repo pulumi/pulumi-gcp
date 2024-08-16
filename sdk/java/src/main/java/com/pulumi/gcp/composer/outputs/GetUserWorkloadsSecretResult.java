@@ -5,7 +5,6 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -14,7 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserWorkloadsSecretResult {
-    private Map<String,Object> data;
+    private Map<String,String> data;
     private String environment;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,7 +25,7 @@ public final class GetUserWorkloadsSecretResult {
     private @Nullable String region;
 
     private GetUserWorkloadsSecretResult() {}
-    public Map<String,Object> data() {
+    public Map<String,String> data() {
         return this.data;
     }
     public String environment() {
@@ -58,7 +57,7 @@ public final class GetUserWorkloadsSecretResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> data;
+        private Map<String,String> data;
         private String environment;
         private String id;
         private String name;
@@ -76,7 +75,7 @@ public final class GetUserWorkloadsSecretResult {
         }
 
         @CustomType.Setter
-        public Builder data(Map<String,Object> data) {
+        public Builder data(Map<String,String> data) {
             if (data == null) {
               throw new MissingRequiredPropertyException("GetUserWorkloadsSecretResult", "data");
             }

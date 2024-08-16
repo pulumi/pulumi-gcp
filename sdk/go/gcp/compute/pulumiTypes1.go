@@ -21070,13 +21070,13 @@ type GetInstanceBootDiskInitializeParam struct {
 	// The image from which this disk was initialised.
 	Image string `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size int `pulumi:"size"`
 	// The URL of the storage pool in which the new disk is created
@@ -21102,13 +21102,13 @@ type GetInstanceBootDiskInitializeParamArgs struct {
 	// The image from which this disk was initialised.
 	Image pulumi.StringInput `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels pulumi.MapInput `pulumi:"labels"`
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The URL of the storage pool in which the new disk is created
@@ -21179,8 +21179,8 @@ func (o GetInstanceBootDiskInitializeParamOutput) Image() pulumi.StringOutput {
 }
 
 // A set of key/value label pairs assigned to the disk.
-func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -21194,8 +21194,8 @@ func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedThroughput() pulumi
 }
 
 // A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-func (o GetInstanceBootDiskInitializeParamOutput) ResourceManagerTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
+func (o GetInstanceBootDiskInitializeParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // The size of the image in gigabytes.
@@ -21772,7 +21772,7 @@ func (o GetInstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput) Ge
 
 type GetInstanceGroupManagerParam struct {
 	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
-	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 }
 
 // GetInstanceGroupManagerParamInput is an input type that accepts GetInstanceGroupManagerParamArgs and GetInstanceGroupManagerParamOutput values.
@@ -21788,7 +21788,7 @@ type GetInstanceGroupManagerParamInput interface {
 
 type GetInstanceGroupManagerParamArgs struct {
 	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
-	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 }
 
 func (GetInstanceGroupManagerParamArgs) ElementType() reflect.Type {
@@ -21843,8 +21843,8 @@ func (o GetInstanceGroupManagerParamOutput) ToGetInstanceGroupManagerParamOutput
 }
 
 // Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
-func (o GetInstanceGroupManagerParamOutput) ResourceManagerTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstanceGroupManagerParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
+func (o GetInstanceGroupManagerParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 type GetInstanceGroupManagerParamArrayOutput struct{ *pulumi.OutputState }
@@ -24142,7 +24142,7 @@ func (o GetInstanceNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput)
 
 type GetInstanceParam struct {
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 }
 
 // GetInstanceParamInput is an input type that accepts GetInstanceParamArgs and GetInstanceParamOutput values.
@@ -24158,7 +24158,7 @@ type GetInstanceParamInput interface {
 
 type GetInstanceParamArgs struct {
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 }
 
 func (GetInstanceParamArgs) ElementType() reflect.Type {
@@ -24213,8 +24213,8 @@ func (o GetInstanceParamOutput) ToGetInstanceParamOutputWithContext(ctx context.
 }
 
 // A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-func (o GetInstanceParamOutput) ResourceManagerTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstanceParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
+func (o GetInstanceParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 type GetInstanceParamArrayOutput struct{ *pulumi.OutputState }

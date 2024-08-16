@@ -5,7 +5,6 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -73,13 +72,13 @@ public final class DefaultServiceAccountsState extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="serviceAccounts")
-    private @Nullable Output<Map<String,Object>> serviceAccounts;
+    private @Nullable Output<Map<String,String>> serviceAccounts;
 
     /**
      * @return The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
      * 
      */
-    public Optional<Output<Map<String,Object>>> serviceAccounts() {
+    public Optional<Output<Map<String,String>>> serviceAccounts() {
         return Optional.ofNullable(this.serviceAccounts);
     }
 
@@ -185,7 +184,7 @@ public final class DefaultServiceAccountsState extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder serviceAccounts(@Nullable Output<Map<String,Object>> serviceAccounts) {
+        public Builder serviceAccounts(@Nullable Output<Map<String,String>> serviceAccounts) {
             $.serviceAccounts = serviceAccounts;
             return this;
         }
@@ -196,7 +195,7 @@ public final class DefaultServiceAccountsState extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder serviceAccounts(Map<String,Object> serviceAccounts) {
+        public Builder serviceAccounts(Map<String,String> serviceAccounts) {
             return serviceAccounts(Output.of(serviceAccounts));
         }
 

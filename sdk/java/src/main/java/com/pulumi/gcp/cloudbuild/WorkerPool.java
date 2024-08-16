@@ -12,7 +12,6 @@ import com.pulumi.gcp.cloudbuild.WorkerPoolArgs;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolState;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolNetworkConfig;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolWorkerConfig;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -236,10 +235,10 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
-    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveAnnotations;
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
 
-    public Output<Map<String,Object>> effectiveAnnotations() {
+    public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
     /**

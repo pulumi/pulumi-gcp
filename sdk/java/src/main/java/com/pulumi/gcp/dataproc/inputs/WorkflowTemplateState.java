@@ -9,7 +9,6 @@ import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateParameterArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -65,9 +64,9 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     @Import(name="effectiveLabels")
-    private @Nullable Output<Map<String,Object>> effectiveLabels;
+    private @Nullable Output<Map<String,String>> effectiveLabels;
 
-    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
 
@@ -193,13 +192,13 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="pulumiLabels")
-    private @Nullable Output<Map<String,Object>> pulumiLabels;
+    private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
         return Optional.ofNullable(this.pulumiLabels);
     }
 
@@ -331,12 +330,12 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
             return dagTimeout(Output.of(dagTimeout));
         }
 
-        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
 
-        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }
 
@@ -526,7 +525,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
             $.pulumiLabels = pulumiLabels;
             return this;
         }
@@ -537,7 +536,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
         }
 
