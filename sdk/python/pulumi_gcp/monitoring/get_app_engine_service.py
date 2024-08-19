@@ -165,11 +165,7 @@ def get_app_engine_service(module_id: Optional[str] = None,
         },
         deployment={
             "zip": {
-                "source_url": pulumi.Output.all(
-                    bucketName=bucket.name,
-                    objectName=object.name
-    ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
-    ,
+                "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
             },
         },
         env_variables={
@@ -250,11 +246,7 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
         },
         deployment={
             "zip": {
-                "source_url": pulumi.Output.all(
-                    bucketName=bucket.name,
-                    objectName=object.name
-    ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
-    ,
+                "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
             },
         },
         env_variables={

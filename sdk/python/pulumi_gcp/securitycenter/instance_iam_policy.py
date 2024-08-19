@@ -228,11 +228,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             },
             network_config={
                 "network": "default",
-                "ip_allocation": pulumi.Output.all(
-                    address=private_ip_alloc.address,
-                    prefix_length=private_ip_alloc.prefix_length
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['address']}/{resolved_outputs['prefix_length']}")
-        ,
+                "ip_allocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             },
             accelerators=[{
                 "accelerator_type": "CDC",
@@ -432,11 +428,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             },
             network_config={
                 "network": "default",
-                "ip_allocation": pulumi.Output.all(
-                    address=private_ip_alloc.address,
-                    prefix_length=private_ip_alloc.prefix_length
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['address']}/{resolved_outputs['prefix_length']}")
-        ,
+                "ip_allocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             },
             accelerators=[{
                 "accelerator_type": "CDC",

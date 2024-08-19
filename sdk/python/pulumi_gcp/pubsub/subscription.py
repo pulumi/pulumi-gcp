@@ -987,12 +987,7 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(
-                    project=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
@@ -1033,12 +1028,7 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(
-                    project=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 "use_table_schema": True,
             },
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1083,12 +1073,7 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(
-                    project=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 "service_account_email": bq_write_service_account.email,
             },
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1430,12 +1415,7 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(
-                    project=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
@@ -1476,12 +1456,7 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(
-                    project=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 "use_table_schema": True,
             },
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1526,12 +1501,7 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(
-                    project=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 "service_account_email": bq_write_service_account.email,
             },
             opts = pulumi.ResourceOptions(depends_on=[

@@ -198,11 +198,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "source_url": pulumi.Output.all(
-                        bucketName=bucket.name,
-                        objectName=object.name
-        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
-        ,
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -218,11 +214,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "source_url": pulumi.Output.all(
-                        bucketName=bucket.name,
-                        objectName=object.name
-        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
-        ,
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -233,14 +225,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
             migrate_traffic=False,
             split={
                 "shard_by": "IP",
-                "allocations": pulumi.Output.all(
-                    liveappV1Version_id=liveapp_v1.version_id,
-                    liveappV2Version_id=liveapp_v2.version_id
-        ).apply(lambda resolved_outputs: {
+                "allocations": pulumi.Output.all(liveapp_v1.version_id, liveapp_v2.version_id).apply(lambda liveappV1Version_id, liveappV2Version_id: {
                     "": 0.75,
                     "": 0.25,
-                })
-        ,
+                }),
             })
         ```
 
@@ -313,11 +301,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "source_url": pulumi.Output.all(
-                        bucketName=bucket.name,
-                        objectName=object.name
-        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
-        ,
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -333,11 +317,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "source_url": pulumi.Output.all(
-                        bucketName=bucket.name,
-                        objectName=object.name
-        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
-        ,
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -348,14 +328,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
             migrate_traffic=False,
             split={
                 "shard_by": "IP",
-                "allocations": pulumi.Output.all(
-                    liveappV1Version_id=liveapp_v1.version_id,
-                    liveappV2Version_id=liveapp_v2.version_id
-        ).apply(lambda resolved_outputs: {
+                "allocations": pulumi.Output.all(liveapp_v1.version_id, liveapp_v2.version_id).apply(lambda liveappV1Version_id, liveappV2Version_id: {
                     "": 0.75,
                     "": 0.25,
-                })
-        ,
+                }),
             })
         ```
 

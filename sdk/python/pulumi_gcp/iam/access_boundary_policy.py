@@ -242,11 +242,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                     "available_permissions": ["*"],
                     "availability_condition": {
                         "title": "Access level expr",
-                        "expression": pulumi.Output.all(
-                            org_id=project.org_id,
-                            name=test_access.name
-        ).apply(lambda resolved_outputs: f"request.matchAccessLevels('{resolved_outputs['org_id']}', ['{resolved_outputs['name']}'])")
-        ,
+                        "expression": pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
                     },
                 },
             }])
@@ -330,11 +326,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                     "available_permissions": ["*"],
                     "availability_condition": {
                         "title": "Access level expr",
-                        "expression": pulumi.Output.all(
-                            org_id=project.org_id,
-                            name=test_access.name
-        ).apply(lambda resolved_outputs: f"request.matchAccessLevels('{resolved_outputs['org_id']}', ['{resolved_outputs['name']}'])")
-        ,
+                        "expression": pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
                     },
                 },
             }])

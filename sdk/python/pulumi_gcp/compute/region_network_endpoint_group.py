@@ -651,11 +651,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "source_url": pulumi.Output.all(
-                        appengineNegBucketName=appengine_neg_bucket.name,
-                        appengineNegBucketObjectName=appengine_neg_bucket_object.name
-        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['appengineNegBucketName']}/{resolved_outputs['appengineNegBucketObjectName']}")
-        ,
+                    "source_url": pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
                 },
             },
             liveness_check={
@@ -991,11 +987,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "source_url": pulumi.Output.all(
-                        appengineNegBucketName=appengine_neg_bucket.name,
-                        appengineNegBucketObjectName=appengine_neg_bucket_object.name
-        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['appengineNegBucketName']}/{resolved_outputs['appengineNegBucketObjectName']}")
-        ,
+                    "source_url": pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
                 },
             },
             liveness_check={

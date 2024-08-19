@@ -390,12 +390,7 @@ class DicomStore(pulumi.CustomResource):
             },
             stream_configs=[{
                 "bigquery_destination": {
-                    "table_uri": pulumi.Output.all(
-                        project=bq_dataset.project,
-                        dataset_id=bq_dataset.dataset_id,
-                        table_id=bq_table.table_id
-        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                    "table_uri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 },
             }])
         ```
@@ -514,12 +509,7 @@ class DicomStore(pulumi.CustomResource):
             },
             stream_configs=[{
                 "bigquery_destination": {
-                    "table_uri": pulumi.Output.all(
-                        project=bq_dataset.project,
-                        dataset_id=bq_dataset.dataset_id,
-                        table_id=bq_table.table_id
-        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
-        ,
+                    "table_uri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 },
             }])
         ```
