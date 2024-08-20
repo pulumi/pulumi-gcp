@@ -120,45 +120,6 @@ namespace Pulumi.Gcp.BigQuery
     /// });
     /// ```
     /// 
-    /// ## gcp.bigquery.DatasetIamPolicy
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var owner = Gcp.Organizations.GetIAMPolicy.Invoke(new()
-    ///     {
-    ///         Bindings = new[]
-    ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
-    ///             {
-    ///                 Role = "roles/bigquery.dataOwner",
-    ///                 Members = new[]
-    ///                 {
-    ///                     "user:jane@example.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var datasetDataset = new Gcp.BigQuery.Dataset("dataset", new()
-    ///     {
-    ///         DatasetId = "example_dataset",
-    ///     });
-    /// 
-    ///     var dataset = new Gcp.BigQuery.DatasetIamPolicy("dataset", new()
-    ///     {
-    ///         DatasetId = datasetDataset.DatasetId,
-    ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## gcp.bigquery.DatasetIamBinding
     /// 
     /// ```csharp

@@ -462,6 +462,9 @@ func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
 func GetSecurityCenterManagementCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityCenterManagementCustomEndpoint")
 }
+func GetSecurityCenterV2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:securityCenterV2CustomEndpoint")
+}
 func GetSecurityScannerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityScannerCustomEndpoint")
 }
@@ -479,6 +482,9 @@ func GetServiceNetworkingCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetServiceUsageCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:serviceUsageCustomEndpoint")
+}
+func GetSiteVerificationCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:siteVerificationCustomEndpoint")
 }
 func GetSkipRegionValidation(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "gcp:skipRegionValidation")

@@ -7,16 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+ * Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
  *
- * For more information, see:
- * * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
- * * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
- * * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
+ * To get more information about Policy, see:
+ *
+ * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ *
  * ## Example Usage
  *
- * ### Enforce_policy
- * A test of an enforce orgpolicy policy for a project
+ * ### Org Policy Policy Enforce
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,8 +39,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Folder_policy
- * A test of an orgpolicy policy for a folder
+ * ### Org Policy Policy Folder
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,8 +60,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Organization_policy
- * A test of an orgpolicy policy for an organization
+ * ### Org Policy Policy Organization
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,8 +74,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Project_policy
- * A test of an orgpolicy policy for a project
+ * ### Org Policy Policy Project
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,7 +93,7 @@ import * as utilities from "../utilities";
  *             {
  *                 condition: {
  *                     description: "A sample condition for the policy",
- *                     expression: "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+ *                     expression: "resource.matchTagId('tagKeys/123', 'tagValues/345')",
  *                     location: "sample-location.log",
  *                     title: "sample-condition",
  *                 },
@@ -106,13 +109,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dry_run_spec
+ * ### Org Policy Policy Dry Run Spec
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
- *     name: "custom.disableGkeAutoUpgrade_40785",
+ *     name: "custom.disableGkeAutoUpgrade_37559",
  *     parent: "organizations/123456789",
  *     displayName: "Disable GKE auto upgrade",
  *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -142,6 +146,7 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * Policy can be imported using any of these accepted formats:
+ *
  * * `{{parent}}/policies/{{name}}`
  *
  * When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
@@ -180,6 +185,7 @@ export class Policy extends pulumi.CustomResource {
 
     /**
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     * Structure is documented below.
      */
     public readonly dryRunSpec!: pulumi.Output<outputs.orgpolicy.PolicyDryRunSpec | undefined>;
     /**
@@ -194,12 +200,12 @@ export class Policy extends pulumi.CustomResource {
      * The parent of the resource.
      *
      *
-     *
      * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
      * Basic information about the Organization Policy.
+     * Structure is documented below.
      */
     public readonly spec!: pulumi.Output<outputs.orgpolicy.PolicySpec | undefined>;
 
@@ -243,6 +249,7 @@ export class Policy extends pulumi.CustomResource {
 export interface PolicyState {
     /**
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     * Structure is documented below.
      */
     dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec>;
     /**
@@ -257,12 +264,12 @@ export interface PolicyState {
      * The parent of the resource.
      *
      *
-     *
      * - - -
      */
     parent?: pulumi.Input<string>;
     /**
      * Basic information about the Organization Policy.
+     * Structure is documented below.
      */
     spec?: pulumi.Input<inputs.orgpolicy.PolicySpec>;
 }
@@ -273,6 +280,7 @@ export interface PolicyState {
 export interface PolicyArgs {
     /**
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     * Structure is documented below.
      */
     dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec>;
     /**
@@ -283,12 +291,12 @@ export interface PolicyArgs {
      * The parent of the resource.
      *
      *
-     *
      * - - -
      */
     parent: pulumi.Input<string>;
     /**
      * Basic information about the Organization Policy.
+     * Structure is documented below.
      */
     spec?: pulumi.Input<inputs.orgpolicy.PolicySpec>;
 }

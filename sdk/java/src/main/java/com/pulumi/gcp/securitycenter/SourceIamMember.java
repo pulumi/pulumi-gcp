@@ -142,7 +142,7 @@ public class SourceIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SourceIamMember(String name) {
+    public SourceIamMember(java.lang.String name) {
         this(name, SourceIamMemberArgs.Empty);
     }
     /**
@@ -150,7 +150,7 @@ public class SourceIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SourceIamMember(String name, SourceIamMemberArgs args) {
+    public SourceIamMember(java.lang.String name, SourceIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -159,15 +159,22 @@ public class SourceIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SourceIamMember(String name, SourceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/sourceIamMember:SourceIamMember", name, args == null ? SourceIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SourceIamMember(java.lang.String name, SourceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/sourceIamMember:SourceIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SourceIamMember(String name, Output<String> id, @Nullable SourceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/sourceIamMember:SourceIamMember", name, state, makeResourceOptions(options, id));
+    private SourceIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable SourceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/sourceIamMember:SourceIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SourceIamMemberArgs makeArgs(SourceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SourceIamMemberArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -183,7 +190,7 @@ public class SourceIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SourceIamMember get(String name, Output<String> id, @Nullable SourceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SourceIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable SourceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SourceIamMember(name, id, state, options);
     }
 }

@@ -6,7 +6,6 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -39,7 +38,7 @@ public final class InstanceBootDiskInitializeParams {
      * field is only applicable for persistent disks.
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return Indicates how many IOPS to provision for the disk.
      * This sets the number of I/O operations per second that the disk can handle.
@@ -66,13 +65,21 @@ public final class InstanceBootDiskInitializeParams {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    private @Nullable Map<String,Object> resourceManagerTags;
+    private @Nullable Map<String,String> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes. If not specified, it
      * will inherit the size of its base image.
      * 
      */
     private @Nullable Integer size;
+    /**
+     * @return The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * 
+     */
+    private @Nullable String storagePool;
     /**
      * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
@@ -108,7 +115,7 @@ public final class InstanceBootDiskInitializeParams {
      * field is only applicable for persistent disks.
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -141,7 +148,7 @@ public final class InstanceBootDiskInitializeParams {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
@@ -151,6 +158,16 @@ public final class InstanceBootDiskInitializeParams {
      */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
+    }
+    /**
+     * @return The URL of the storage pool in which the new disk is created.
+     * For example:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * 
+     */
+    public Optional<String> storagePool() {
+        return Optional.ofNullable(this.storagePool);
     }
     /**
      * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
@@ -171,11 +188,12 @@ public final class InstanceBootDiskInitializeParams {
     public static final class Builder {
         private @Nullable Boolean enableConfidentialCompute;
         private @Nullable String image;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable Integer provisionedIops;
         private @Nullable Integer provisionedThroughput;
-        private @Nullable Map<String,Object> resourceManagerTags;
+        private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable Integer size;
+        private @Nullable String storagePool;
         private @Nullable String type;
         public Builder() {}
         public Builder(InstanceBootDiskInitializeParams defaults) {
@@ -187,6 +205,7 @@ public final class InstanceBootDiskInitializeParams {
     	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
 
@@ -203,7 +222,7 @@ public final class InstanceBootDiskInitializeParams {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;
@@ -221,7 +240,7 @@ public final class InstanceBootDiskInitializeParams {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
 
             this.resourceManagerTags = resourceManagerTags;
             return this;
@@ -230,6 +249,12 @@ public final class InstanceBootDiskInitializeParams {
         public Builder size(@Nullable Integer size) {
 
             this.size = size;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storagePool(@Nullable String storagePool) {
+
+            this.storagePool = storagePool;
             return this;
         }
         @CustomType.Setter
@@ -247,6 +272,7 @@ public final class InstanceBootDiskInitializeParams {
             _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.size = size;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;
         }

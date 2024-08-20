@@ -14,7 +14,6 @@ import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedInterconnectAttachm
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstances;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpnTunnels;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,9 +23,16 @@ import javax.annotation.Nullable;
 /**
  * The NetworkConnectivity Spoke resource
  * 
+ * To get more information about Spoke, see:
+ * 
+ * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+ * 
  * ## Example Usage
  * 
- * ### Linked_vpc_network
+ * ### Network Connectivity Spoke Linked Vpc Network Basic
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -56,20 +62,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("network")
+ *             .name("net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var basicHub = new Hub("basicHub", HubArgs.builder()
- *             .name("hub")
+ *             .name("hub1")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
  *         var primary = new Spoke("primary", SpokeArgs.builder()
- *             .name("name")
+ *             .name("spoke1")
  *             .location("global")
- *             .description("A sample spoke with a linked routher appliance instance")
+ *             .description("A sample spoke with a linked router appliance instance")
  *             .labels(Map.of("label-one", "value-one"))
  *             .hub(basicHub.id())
  *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
@@ -85,7 +91,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Router_appliance
+ * ### Network Connectivity Spoke Router Appliance Basic
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -122,22 +129,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("network")
+ *             .name("tf-test-network_2067")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("subnet")
+ *             .name("tf-test-subnet_40785")
  *             .ipCidrRange("10.0.0.0/28")
- *             .region("us-west1")
+ *             .region("us-central1")
  *             .network(network.selfLink())
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .name("instance")
+ *             .name("tf-test-instance_79169")
  *             .machineType("e2-medium")
  *             .canIpForward(true)
- *             .zone("us-west1-a")
+ *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image("projects/debian-cloud/global/images/debian-10-buster-v20210817")
@@ -153,14 +160,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicHub = new Hub("basicHub", HubArgs.builder()
- *             .name("hub")
+ *             .name("tf-test-hub_56529")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
  *         var primary = new Spoke("primary", SpokeArgs.builder()
- *             .name("name")
- *             .location("us-west1")
+ *             .name("tf-test-name_75413")
+ *             .location("us-central1")
  *             .description("A sample spoke with a linked routher appliance instance")
  *             .labels(Map.of("label-one", "value-one"))
  *             .hub(basicHub.id())
@@ -238,14 +245,14 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveLabels;
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Output<Map<String,Object>> effectiveLabels() {
+    public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
@@ -263,38 +270,34 @@ public class Spoke extends com.pulumi.resources.CustomResource {
         return this.hub;
     }
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for
-     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional labels in key:value format. For more information about labels, see [Requirements for
-     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-     * advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * Structure is documented below.
      * 
      */
     @Export(name="linkedInterconnectAttachments", refs={SpokeLinkedInterconnectAttachments.class}, tree="[0]")
     private Output</* @Nullable */ SpokeLinkedInterconnectAttachments> linkedInterconnectAttachments;
 
     /**
-     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-     * advertising the same prefixes.
+     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<SpokeLinkedInterconnectAttachments>> linkedInterconnectAttachments() {
@@ -302,6 +305,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
     }
     /**
      * The URIs of linked Router appliance resources
+     * Structure is documented below.
      * 
      */
     @Export(name="linkedRouterApplianceInstances", refs={SpokeLinkedRouterApplianceInstances.class}, tree="[0]")
@@ -309,6 +313,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The URIs of linked Router appliance resources
+     * Structure is documented below.
      * 
      */
     public Output<Optional<SpokeLinkedRouterApplianceInstances>> linkedRouterApplianceInstances() {
@@ -316,6 +321,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
     }
     /**
      * VPC network that is associated with the spoke.
+     * Structure is documented below.
      * 
      */
     @Export(name="linkedVpcNetwork", refs={SpokeLinkedVpcNetwork.class}, tree="[0]")
@@ -323,6 +329,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
 
     /**
      * @return VPC network that is associated with the spoke.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<SpokeLinkedVpcNetwork>> linkedVpcNetwork() {
@@ -330,6 +337,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
     }
     /**
      * The URIs of linked VPN tunnel resources
+     * Structure is documented below.
      * 
      */
     @Export(name="linkedVpnTunnels", refs={SpokeLinkedVpnTunnels.class}, tree="[0]")
@@ -337,6 +345,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The URIs of linked VPN tunnel resources
+     * Structure is documented below.
      * 
      */
     public Output<Optional<SpokeLinkedVpnTunnels>> linkedVpnTunnels() {
@@ -345,12 +354,16 @@ public class Spoke extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the resource
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -371,42 +384,46 @@ public class Spoke extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> pulumiLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> pulumiLabels() {
+    public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
     /**
-     * Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * Output only. The current lifecycle state of this spoke.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * @return Output only. The current lifecycle state of this spoke.
      * 
      */
     public Output<String> state() {
@@ -445,7 +462,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Spoke(String name) {
+    public Spoke(java.lang.String name) {
         this(name, SpokeArgs.Empty);
     }
     /**
@@ -453,7 +470,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Spoke(String name, SpokeArgs args) {
+    public Spoke(java.lang.String name, SpokeArgs args) {
         this(name, args, null);
     }
     /**
@@ -462,15 +479,22 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Spoke(String name, SpokeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/spoke:Spoke", name, args == null ? SpokeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Spoke(java.lang.String name, SpokeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/spoke:Spoke", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Spoke(String name, Output<String> id, @Nullable SpokeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/spoke:Spoke", name, state, makeResourceOptions(options, id));
+    private Spoke(java.lang.String name, Output<java.lang.String> id, @Nullable SpokeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/spoke:Spoke", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SpokeArgs makeArgs(SpokeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SpokeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -490,7 +514,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Spoke get(String name, Output<String> id, @Nullable SpokeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Spoke get(java.lang.String name, Output<java.lang.String> id, @Nullable SpokeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Spoke(name, id, state, options);
     }
 }

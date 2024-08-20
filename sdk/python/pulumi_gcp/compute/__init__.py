@@ -171,12 +171,14 @@ from .region_target_https_proxy import *
 from .region_target_tcp_proxy import *
 from .region_url_map import *
 from .reservation import *
+from .resize_request import *
 from .resource_policy import *
 from .route import *
 from .router import *
 from .router_interface import *
 from .router_nat import *
 from .router_peer import *
+from .router_route_policy import *
 from .router_status import *
 from .security_policy import *
 from .security_policy_rule import *

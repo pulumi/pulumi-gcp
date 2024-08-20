@@ -328,7 +328,7 @@ public class ManagementProjectSecurityHealthAnalyticsCustomModule extends com.pu
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ManagementProjectSecurityHealthAnalyticsCustomModule(String name) {
+    public ManagementProjectSecurityHealthAnalyticsCustomModule(java.lang.String name) {
         this(name, ManagementProjectSecurityHealthAnalyticsCustomModuleArgs.Empty);
     }
     /**
@@ -336,7 +336,7 @@ public class ManagementProjectSecurityHealthAnalyticsCustomModule extends com.pu
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ManagementProjectSecurityHealthAnalyticsCustomModule(String name, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleArgs args) {
+    public ManagementProjectSecurityHealthAnalyticsCustomModule(java.lang.String name, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -345,15 +345,22 @@ public class ManagementProjectSecurityHealthAnalyticsCustomModule extends com.pu
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ManagementProjectSecurityHealthAnalyticsCustomModule(String name, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule", name, args == null ? ManagementProjectSecurityHealthAnalyticsCustomModuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ManagementProjectSecurityHealthAnalyticsCustomModule(java.lang.String name, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ManagementProjectSecurityHealthAnalyticsCustomModule(String name, Output<String> id, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule", name, state, makeResourceOptions(options, id));
+    private ManagementProjectSecurityHealthAnalyticsCustomModule(java.lang.String name, Output<java.lang.String> id, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ManagementProjectSecurityHealthAnalyticsCustomModuleArgs makeArgs(@Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ManagementProjectSecurityHealthAnalyticsCustomModuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -369,7 +376,7 @@ public class ManagementProjectSecurityHealthAnalyticsCustomModule extends com.pu
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ManagementProjectSecurityHealthAnalyticsCustomModule get(String name, Output<String> id, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ManagementProjectSecurityHealthAnalyticsCustomModule get(java.lang.String name, Output<java.lang.String> id, @Nullable ManagementProjectSecurityHealthAnalyticsCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ManagementProjectSecurityHealthAnalyticsCustomModule(name, id, state, options);
     }
 }

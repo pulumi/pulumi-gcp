@@ -150,6 +150,7 @@ const (
 	gcpServiceDirectory         = "ServiceDirectory"         // Service Directory resources
 	gcpServiceNetworking        = "ServiceNetworking"        // Service Networking resources
 	gcpServiceUsage             = "ServiceUsage"             // Service Usage resources
+	gcpSiteVerification         = "SiteVerification"         // Site Verification
 	gcpSourceRepo               = "SourceRepo"               // Source Repo resources
 	gcpSpanner                  = "Spanner"                  // Spanner Resources
 	gcpStorage                  = "Storage"                  // Storage resources
@@ -276,6 +277,7 @@ var moduleMapping = map[string]string{
 	"service_directory":          gcpServiceDirectory,
 	"service_networking":         gcpServiceNetworking,
 	"service_usage":              gcpServiceUsage,
+	"site_verification":          gcpSiteVerification,
 	"sourcerepo":                 gcpSourceRepo,
 	"spanner":                    gcpSpanner,
 	"sql":                        gcpSQL,
@@ -459,19 +461,7 @@ func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
 		shimv2.NewProvider(gcpProvider.Provider(),
-			shimv2.WithDiffStrategy(shimv2.PlanState),
-			shimv2.WithPlanResourceChange(func(s string) bool {
-				switch s {
-				case "google_datastream_connection_profile",
-					"google_firestore_backup_schedule",
-					"google_cloud_run_service",
-					"google_cloud_run_domain_mapping",
-					"google_privileged_access_manager_entitlement":
-					return true
-				default:
-					return false
-				}
-			}),
+			shimv2.WithPlanResourceChange(func(_ string) bool { return true }),
 		),
 		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
 
@@ -2639,6 +2629,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "data_source_sourcerepo_repository.html.markdown",
 				},
 			},
+
+			"google_kms_key_rings":              {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_gke_hub_membership_binding": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -2692,18 +2685,14 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 			RespectSchemaVersion:           true,
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				RespectSchemaVersion: true,
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				},
-			}
-			i.PyProject.Enabled = true
-			i.InputTypes = tfbridge.PythonInputTypeClassesAndDicts
-			return i
-		})(),
-
+		Python: &tfbridge.PythonInfo{
+			RespectSchemaVersion: true,
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject:  struct{ Enabled bool }{true},
+			InputTypes: tfbridge.PythonInputTypeClassesAndDicts,
+		},
 		CSharp: &tfbridge.CSharpInfo{
 			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
@@ -2711,6 +2700,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			Namespaces: namespaceMap,
 		},
+		EnableZeroDefaultSchemaVersion: true,
 	}
 
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
@@ -2793,6 +2783,7 @@ func Provider() tfbridge.ProviderInfo {
 		"google_workbench_instance_iam_binding",
 		"google_workbench_instance_iam_member",
 		"google_workbench_instance_iam_policy",
+		"google_kms_key_ring",
 	}
 
 	for _, name := range allowMissingResourceDocs {

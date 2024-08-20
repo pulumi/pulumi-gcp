@@ -278,7 +278,7 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationSink(String name) {
+    public OrganizationSink(java.lang.String name) {
         this(name, OrganizationSinkArgs.Empty);
     }
     /**
@@ -286,7 +286,7 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationSink(String name, OrganizationSinkArgs args) {
+    public OrganizationSink(java.lang.String name, OrganizationSinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -295,15 +295,22 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationSink(String name, OrganizationSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationSink:OrganizationSink", name, args == null ? OrganizationSinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OrganizationSink(java.lang.String name, OrganizationSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/organizationSink:OrganizationSink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationSink(String name, Output<String> id, @Nullable OrganizationSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationSink:OrganizationSink", name, state, makeResourceOptions(options, id));
+    private OrganizationSink(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/organizationSink:OrganizationSink", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OrganizationSinkArgs makeArgs(OrganizationSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationSinkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -319,7 +326,7 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationSink get(String name, Output<String> id, @Nullable OrganizationSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationSink get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationSink(name, id, state, options);
     }
 }

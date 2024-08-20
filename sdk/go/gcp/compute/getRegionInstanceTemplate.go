@@ -63,7 +63,7 @@ func LookupRegionInstanceTemplate(ctx *pulumi.Context, args *LookupRegionInstanc
 // A collection of arguments for invoking getRegionInstanceTemplate.
 type LookupRegionInstanceTemplateArgs struct {
 	// A filter to retrieve the instance templates.
-	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+	// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
 	// If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
 	Filter *string `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
@@ -111,7 +111,7 @@ type LookupRegionInstanceTemplateResult struct {
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint string `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -176,7 +176,7 @@ func LookupRegionInstanceTemplateOutput(ctx *pulumi.Context, args LookupRegionIn
 // A collection of arguments for invoking getRegionInstanceTemplate.
 type LookupRegionInstanceTemplateOutputArgs struct {
 	// A filter to retrieve the instance templates.
-	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+	// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
 	// If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
@@ -286,8 +286,8 @@ func (o LookupRegionInstanceTemplateResultOutput) MachineType() pulumi.StringOut
 
 // Metadata key/value pairs to make available from
 // within instances created from this template.
-func (o LookupRegionInstanceTemplateResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupRegionInstanceTemplateResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The unique fingerprint of the metadata.

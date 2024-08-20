@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var basic = new PreventionInspectTemplate("basic", PreventionInspectTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("My description")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
  *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
  *                                 .regex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
- *                                     .pattern(".+{@literal @}example.com")
+ *                                     .pattern(".+}{@literal @}{@code example.com")
  *                                     .build())
  *                                 .matchingType("MATCHING_TYPE_FULL_MATCH")
  *                                 .build())
@@ -158,8 +158,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -184,12 +184,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var custom = new PreventionInspectTemplate("custom", PreventionInspectTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("My description")
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
  *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
  *                                 .regex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
- *                                     .pattern(".+{@literal @}example.com")
+ *                                     .pattern(".+}{@literal @}{@code example.com")
  *                                     .build())
  *                                 .matchingType("MATCHING_TYPE_FULL_MATCH")
  *                                 .build())
@@ -247,8 +247,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -273,12 +273,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customTypeSurrogate = new PreventionInspectTemplate("customTypeSurrogate", PreventionInspectTemplateArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("My description")
@@ -303,7 +303,7 @@ import javax.annotation.Nullable;
  *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
  *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
  *                                 .regex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
- *                                     .pattern(".+{@literal @}example.com")
+ *                                     .pattern(".+}{@literal @}{@code example.com")
  *                                     .build())
  *                                 .matchingType("MATCHING_TYPE_FULL_MATCH")
  *                                 .build())
@@ -334,8 +334,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -521,7 +521,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PreventionInspectTemplate(String name) {
+    public PreventionInspectTemplate(java.lang.String name) {
         this(name, PreventionInspectTemplateArgs.Empty);
     }
     /**
@@ -529,7 +529,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PreventionInspectTemplate(String name, PreventionInspectTemplateArgs args) {
+    public PreventionInspectTemplate(java.lang.String name, PreventionInspectTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -538,15 +538,22 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PreventionInspectTemplate(String name, PreventionInspectTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", name, args == null ? PreventionInspectTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PreventionInspectTemplate(java.lang.String name, PreventionInspectTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PreventionInspectTemplate(String name, Output<String> id, @Nullable PreventionInspectTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", name, state, makeResourceOptions(options, id));
+    private PreventionInspectTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionInspectTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PreventionInspectTemplateArgs makeArgs(PreventionInspectTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreventionInspectTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -562,7 +569,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PreventionInspectTemplate get(String name, Output<String> id, @Nullable PreventionInspectTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PreventionInspectTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionInspectTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PreventionInspectTemplate(name, id, state, options);
     }
 }

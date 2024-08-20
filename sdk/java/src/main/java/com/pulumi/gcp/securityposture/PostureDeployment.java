@@ -27,75 +27,6 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
  * 
- * ## Example Usage
- * 
- * ### Securityposture Posture Deployment Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.securityposture.Posture;
- * import com.pulumi.gcp.securityposture.PostureArgs;
- * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetArgs;
- * import com.pulumi.gcp.securityposture.PostureDeployment;
- * import com.pulumi.gcp.securityposture.PostureDeploymentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var posture1 = new Posture("posture1", PostureArgs.builder()
- *             .postureId("posture_1")
- *             .parent("organizations/123456789")
- *             .location("global")
- *             .state("ACTIVE")
- *             .description("a new posture")
- *             .policySets(PosturePolicySetArgs.builder()
- *                 .policySetId("org_policy_set")
- *                 .description("set of org policies")
- *                 .policies(PosturePolicySetPolicyArgs.builder()
- *                     .policyId("policy_1")
- *                     .constraint(PosturePolicySetPolicyConstraintArgs.builder()
- *                         .orgPolicyConstraint(PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs.builder()
- *                             .cannedConstraintId("storage.uniformBucketLevelAccess")
- *                             .policyRules(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs.builder()
- *                                 .enforce(true)
- *                                 .build())
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var postureDeployment = new PostureDeployment("postureDeployment", PostureDeploymentArgs.builder()
- *             .postureDeploymentId("posture_deployment_1")
- *             .parent("organizations/123456789")
- *             .location("global")
- *             .description("a new posture deployment")
- *             .targetResource("projects/1111111111111")
- *             .postureId(posture1.name())
- *             .postureRevisionId(posture1.revisionId())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * PostureDeployment can be imported using any of these accepted formats:
@@ -368,7 +299,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PostureDeployment(String name) {
+    public PostureDeployment(java.lang.String name) {
         this(name, PostureDeploymentArgs.Empty);
     }
     /**
@@ -376,7 +307,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PostureDeployment(String name, PostureDeploymentArgs args) {
+    public PostureDeployment(java.lang.String name, PostureDeploymentArgs args) {
         this(name, args, null);
     }
     /**
@@ -385,15 +316,22 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PostureDeployment(String name, PostureDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securityposture/postureDeployment:PostureDeployment", name, args == null ? PostureDeploymentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PostureDeployment(java.lang.String name, PostureDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securityposture/postureDeployment:PostureDeployment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PostureDeployment(String name, Output<String> id, @Nullable PostureDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securityposture/postureDeployment:PostureDeployment", name, state, makeResourceOptions(options, id));
+    private PostureDeployment(java.lang.String name, Output<java.lang.String> id, @Nullable PostureDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securityposture/postureDeployment:PostureDeployment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PostureDeploymentArgs makeArgs(PostureDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PostureDeploymentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -409,7 +347,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PostureDeployment get(String name, Output<String> id, @Nullable PostureDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PostureDeployment get(java.lang.String name, Output<java.lang.String> id, @Nullable PostureDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PostureDeployment(name, id, state, options);
     }
 }

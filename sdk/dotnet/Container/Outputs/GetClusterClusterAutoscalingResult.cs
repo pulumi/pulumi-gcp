@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultResult> AutoProvisioningDefaults;
         /// <summary>
+        /// The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
+        /// </summary>
+        public readonly ImmutableArray<string> AutoProvisioningLocations;
+        /// <summary>
         /// Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
         /// </summary>
         public readonly string AutoscalingProfile;
@@ -34,6 +38,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterClusterAutoscalingResult(
             ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultResult> autoProvisioningDefaults,
 
+            ImmutableArray<string> autoProvisioningLocations,
+
             string autoscalingProfile,
 
             bool enabled,
@@ -41,6 +47,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableArray<Outputs.GetClusterClusterAutoscalingResourceLimitResult> resourceLimits)
         {
             AutoProvisioningDefaults = autoProvisioningDefaults;
+            AutoProvisioningLocations = autoProvisioningLocations;
             AutoscalingProfile = autoscalingProfile;
             Enabled = enabled;
             ResourceLimits = resourceLimits;

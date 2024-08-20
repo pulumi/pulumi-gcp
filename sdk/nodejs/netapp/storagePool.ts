@@ -5,24 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
- * * Location
- * * Service level
- * * Virtual Private Cloud (VPC) network
- * * Active Directory policy
- * * LDAP use for NFS volumes, if applicable
- * * Customer-managed encryption key (CMEK) policy
- *
- * The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
- * component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
- * independent of consumption at the volume level.
- *
- * To get more information about storagePool, see:
- *
- * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
- * * How-to Guides
- *     * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
- *
  * ## Example Usage
  *
  * ### Storage Pool Create
@@ -159,11 +141,11 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public readonly ldapEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+     * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the storage pool. Needs to be unique per location.
+     * The resource name of the storage pool. Needs to be unique per location/region.
      *
      *
      * - - -
@@ -184,6 +166,11 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     */
+    public readonly replicaZone!: pulumi.Output<string | undefined>;
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
@@ -196,6 +183,12 @@ export class StoragePool extends pulumi.CustomResource {
      * Number of volume in the storage pool.
      */
     public /*out*/ readonly volumeCount!: pulumi.Output<number>;
+    /**
+     * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+     */
+    public readonly zone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a StoragePool resource with the given unique name, arguments, and options.
@@ -223,9 +216,11 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["replicaZone"] = state ? state.replicaZone : undefined;
             resourceInputs["serviceLevel"] = state ? state.serviceLevel : undefined;
             resourceInputs["volumeCapacityGib"] = state ? state.volumeCapacityGib : undefined;
             resourceInputs["volumeCount"] = state ? state.volumeCount : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as StoragePoolArgs | undefined;
             if ((!args || args.capacityGib === undefined) && !opts.urn) {
@@ -250,7 +245,9 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replicaZone"] = args ? args.replicaZone : undefined;
             resourceInputs["serviceLevel"] = args ? args.serviceLevel : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -307,11 +304,11 @@ export interface StoragePoolState {
      */
     ldapEnabled?: pulumi.Input<boolean>;
     /**
-     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+     * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the storage pool. Needs to be unique per location.
+     * The resource name of the storage pool. Needs to be unique per location/region.
      *
      *
      * - - -
@@ -332,6 +329,11 @@ export interface StoragePoolState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     */
+    replicaZone?: pulumi.Input<string>;
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
@@ -344,6 +346,12 @@ export interface StoragePoolState {
      * Number of volume in the storage pool.
      */
     volumeCount?: pulumi.Input<number>;
+    /**
+     * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+     */
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -381,11 +389,11 @@ export interface StoragePoolArgs {
      */
     ldapEnabled?: pulumi.Input<boolean>;
     /**
-     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+     * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      */
     location: pulumi.Input<string>;
     /**
-     * The resource name of the storage pool. Needs to be unique per location.
+     * The resource name of the storage pool. Needs to be unique per location/region.
      *
      *
      * - - -
@@ -401,8 +409,19 @@ export interface StoragePoolArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     */
+    replicaZone?: pulumi.Input<string>;
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
     serviceLevel: pulumi.Input<string>;
+    /**
+     * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+     */
+    zone?: pulumi.Input<string>;
 }

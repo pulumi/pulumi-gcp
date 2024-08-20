@@ -77,13 +77,14 @@ type GetKMSCryptoKeyResult struct {
 	DestroyScheduledDuration string            `pulumi:"destroyScheduledDuration"`
 	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                   `pulumi:"id"`
-	ImportOnly   bool                     `pulumi:"importOnly"`
-	KeyRing      string                   `pulumi:"keyRing"`
-	Labels       map[string]string        `pulumi:"labels"`
-	Name         string                   `pulumi:"name"`
-	Primaries    []GetKMSCryptoKeyPrimary `pulumi:"primaries"`
-	PulumiLabels map[string]string        `pulumi:"pulumiLabels"`
+	Id                              string                                         `pulumi:"id"`
+	ImportOnly                      bool                                           `pulumi:"importOnly"`
+	KeyAccessJustificationsPolicies []GetKMSCryptoKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicies"`
+	KeyRing                         string                                         `pulumi:"keyRing"`
+	Labels                          map[string]string                              `pulumi:"labels"`
+	Name                            string                                         `pulumi:"name"`
+	Primaries                       []GetKMSCryptoKeyPrimary                       `pulumi:"primaries"`
+	PulumiLabels                    map[string]string                              `pulumi:"pulumiLabels"`
 	// Defines the cryptographic capabilities of the key.
 	Purpose string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
@@ -154,6 +155,12 @@ func (o GetKMSCryptoKeyResultOutput) Id() pulumi.StringOutput {
 
 func (o GetKMSCryptoKeyResultOutput) ImportOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) bool { return v.ImportOnly }).(pulumi.BoolOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) KeyAccessJustificationsPolicies() GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) []GetKMSCryptoKeyKeyAccessJustificationsPolicy {
+		return v.KeyAccessJustificationsPolicies
+	}).(GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput)
 }
 
 func (o GetKMSCryptoKeyResultOutput) KeyRing() pulumi.StringOutput {

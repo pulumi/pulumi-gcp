@@ -170,6 +170,132 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Vertex Ai Featureonlinestore Featureview Cross Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const testProject = gcp.organizations.getProject({});
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "tf-test_13293",
+ *     name: "tf-test_40289",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const vertexai = new gcp.projects.Service("vertexai", {
+ *     service: "aiplatform.googleapis.com",
+ *     project: project.projectId,
+ *     disableOnDestroy: false,
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     name: "example_cross_project_featureview",
+ *     project: project.projectId,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     bigtable: {
+ *         autoScaling: {
+ *             minNodeCount: 1,
+ *             maxNodeCount: 2,
+ *             cpuUtilizationTarget: 80,
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [vertexai],
+ * });
+ * const sampleDataset = new gcp.bigquery.Dataset("sample_dataset", {
+ *     datasetId: "example_cross_project_featureview",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const viewer = new gcp.bigquery.DatasetIamMember("viewer", {
+ *     project: testProject.then(testProject => testProject.projectId),
+ *     datasetId: sampleDataset.datasetId,
+ *     role: "roles/bigquery.dataViewer",
+ *     member: pulumi.interpolate`serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`,
+ * }, {
+ *     dependsOn: [featureonlinestore],
+ * });
+ * const wait30Seconds = new time.index.Sleep("wait_30_seconds", {createDuration: "30s"}, {
+ *     dependsOn: [viewer],
+ * });
+ * const sampleTable = new gcp.bigquery.Table("sample_table", {
+ *     deletionProtection: false,
+ *     datasetId: sampleDataset.datasetId,
+ *     tableId: "example_cross_project_featureview",
+ *     schema: `[
+ *     {
+ *         "name": "feature_id",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     },
+ *     {
+ *         "name": "example_cross_project_featureview",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     },
+ *     {
+ *         "name": "feature_timestamp",
+ *         "type": "TIMESTAMP",
+ *         "mode": "NULLABLE"
+ *     }
+ * ]
+ * `,
+ * });
+ * const sampleFeatureGroup = new gcp.vertex.AiFeatureGroup("sample_feature_group", {
+ *     name: "example_cross_project_featureview",
+ *     description: "A sample feature group",
+ *     region: "us-central1",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     bigQuery: {
+ *         bigQuerySource: {
+ *             inputUri: pulumi.interpolate`bq://${sampleTable.project}.${sampleTable.datasetId}.${sampleTable.tableId}`,
+ *         },
+ *         entityIdColumns: ["feature_id"],
+ *     },
+ * });
+ * const sampleFeature = new gcp.vertex.AiFeatureGroupFeature("sample_feature", {
+ *     name: "example_cross_project_featureview",
+ *     region: "us-central1",
+ *     featureGroup: sampleFeatureGroup.name,
+ *     description: "A sample feature",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const crossProjectFeatureview = new gcp.vertex.AiFeatureOnlineStoreFeatureview("cross_project_featureview", {
+ *     name: "example_cross_project_featureview",
+ *     project: project.projectId,
+ *     region: "us-central1",
+ *     featureOnlineStore: featureonlinestore.name,
+ *     syncConfig: {
+ *         cron: "0 0 * * *",
+ *     },
+ *     featureRegistrySource: {
+ *         featureGroups: [{
+ *             featureGroupId: sampleFeatureGroup.name,
+ *             featureIds: [sampleFeature.name],
+ *         }],
+ *         projectNumber: testProject.then(testProject => testProject.number),
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         vertexai,
+ *         wait30Seconds,
+ *     ],
+ * });
+ * ```
  * ### Vertex Ai Featureonlinestore Featureview With Vector Search
  *
  * ```typescript

@@ -21,7 +21,6 @@ import com.pulumi.gcp.compute.outputs.InstanceTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateServiceAccount;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateShieldedInstanceConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -488,15 +487,15 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * within instances created from this template.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
      * @return Metadata key/value pairs to make available from
      * within instances created from this template.
      * 
      */
-    public Output<Optional<Map<String,Object>>> metadata() {
+    public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
     }
     /**
@@ -844,7 +843,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceTemplate(String name) {
+    public InstanceTemplate(java.lang.String name) {
         this(name, InstanceTemplateArgs.Empty);
     }
     /**
@@ -852,7 +851,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceTemplate(String name, InstanceTemplateArgs args) {
+    public InstanceTemplate(java.lang.String name, InstanceTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -861,15 +860,22 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceTemplate(String name, InstanceTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceTemplate:InstanceTemplate", name, args == null ? InstanceTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceTemplate(java.lang.String name, InstanceTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceTemplate:InstanceTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceTemplate(String name, Output<String> id, @Nullable InstanceTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceTemplate:InstanceTemplate", name, state, makeResourceOptions(options, id));
+    private InstanceTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceTemplate:InstanceTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstanceTemplateArgs makeArgs(InstanceTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -889,7 +895,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceTemplate get(String name, Output<String> id, @Nullable InstanceTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceTemplate(name, id, state, options);
     }
 }

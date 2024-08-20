@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var image_store = new Bucket("image-store", BucketArgs.builder()
  *             .name("image-store-bucket")
  *             .location("EU")
@@ -75,12 +75,12 @@ import javax.annotation.Nullable;
  *             .bucket(image_store.name())
  *             .object(image.outputName())
  *             .roleEntities(            
- *                 "OWNER:user-my.email{@literal @}gmail.com",
+ *                 "OWNER:user-my.email}{@literal @}{@code gmail.com",
  *                 "READER:group-mygroup")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -159,7 +159,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ObjectACL(String name) {
+    public ObjectACL(java.lang.String name) {
         this(name, ObjectACLArgs.Empty);
     }
     /**
@@ -167,7 +167,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ObjectACL(String name, ObjectACLArgs args) {
+    public ObjectACL(java.lang.String name, ObjectACLArgs args) {
         this(name, args, null);
     }
     /**
@@ -176,15 +176,22 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ObjectACL(String name, ObjectACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/objectACL:ObjectACL", name, args == null ? ObjectACLArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ObjectACL(java.lang.String name, ObjectACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/objectACL:ObjectACL", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ObjectACL(String name, Output<String> id, @Nullable ObjectACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/objectACL:ObjectACL", name, state, makeResourceOptions(options, id));
+    private ObjectACL(java.lang.String name, Output<java.lang.String> id, @Nullable ObjectACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/objectACL:ObjectACL", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ObjectACLArgs makeArgs(ObjectACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ObjectACLArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -200,7 +207,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ObjectACL get(String name, Output<String> id, @Nullable ObjectACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ObjectACL get(java.lang.String name, Output<java.lang.String> id, @Nullable ObjectACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ObjectACL(name, id, state, options);
     }
 }

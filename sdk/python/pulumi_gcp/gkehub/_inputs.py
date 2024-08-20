@@ -251,6 +251,11 @@ if not MYPY:
         ConfigSync configuration for the cluster
         Structure is documented below.
         """
+        management: NotRequired[pulumi.Input[str]]
+        """
+        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        """
         version: NotRequired[pulumi.Input[str]]
         """
         Version of ACM installed
@@ -262,14 +267,19 @@ elif False:
 class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
     def __init__(__self__, *,
                  config_sync: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']] = None,
+                 management: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs'] config_sync: ConfigSync configuration for the cluster
                Structure is documented below.
+        :param pulumi.Input[str] management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+               Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
         :param pulumi.Input[str] version: Version of ACM installed
         """
         if config_sync is not None:
             pulumi.set(__self__, "config_sync", config_sync)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -288,6 +298,19 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
 
     @property
     @pulumi.getter
+    def management(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "management", value)
+
+    @property
+    @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         Version of ACM installed
@@ -301,6 +324,10 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
 
 if not MYPY:
     class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
         git: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict']]
         """
         Git repo configuration for the cluster
@@ -325,11 +352,13 @@ elif False:
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  git: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']] = None,
                  oci: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']] = None,
                  prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] git: Git repo configuration for the cluster
                Structure is documented below.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs'] oci: OCI repo configuration for the cluster
@@ -337,6 +366,8 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
         :param pulumi.Input[bool] prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if git is not None:
             pulumi.set(__self__, "git", git)
         if oci is not None:
@@ -345,6 +376,18 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
             pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
@@ -1684,6 +1727,10 @@ if not MYPY:
         """
         Hierarchy Controller configuration for the cluster. Structure is documented below.
         """
+        management: NotRequired[pulumi.Input[str]]
+        """
+        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        """
         policy_controller: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgsDict']]
         """
         Policy Controller configuration for the cluster. Structure is documented below.
@@ -1701,12 +1748,14 @@ class FeatureMembershipConfigmanagementArgs:
                  binauthz: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']] = None,
                  config_sync: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']] = None,
                  hierarchy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']] = None,
+                 management: Optional[pulumi.Input[str]] = None,
                  policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs'] binauthz: Binauthz configuration for the cluster. Structure is documented below.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster. Structure is documented below.
         :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
+        :param pulumi.Input[str] management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
         :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param pulumi.Input[str] version: Version of ACM installed.
         """
@@ -1716,6 +1765,8 @@ class FeatureMembershipConfigmanagementArgs:
             pulumi.set(__self__, "config_sync", config_sync)
         if hierarchy_controller is not None:
             pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
         if policy_controller is not None:
             pulumi.set(__self__, "policy_controller", policy_controller)
         if version is not None:
@@ -1756,6 +1807,18 @@ class FeatureMembershipConfigmanagementArgs:
     @hierarchy_controller.setter
     def hierarchy_controller(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']]):
         pulumi.set(self, "hierarchy_controller", value)
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "management", value)
 
     @property
     @pulumi.getter(name="policyController")
@@ -1816,6 +1879,10 @@ class FeatureMembershipConfigmanagementBinauthzArgs:
 
 if not MYPY:
     class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
         git: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgsDict']]
         """
         (Optional) Structure is documented below.
@@ -1844,12 +1911,14 @@ elif False:
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  git: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']] = None,
                  metrics_gcp_service_account_email: Optional[pulumi.Input[str]] = None,
                  oci: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']] = None,
                  prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: (Optional) Structure is documented below.
         :param pulumi.Input[str] metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
@@ -1858,6 +1927,8 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         :param pulumi.Input[bool] prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if git is not None:
             pulumi.set(__self__, "git", git)
         if metrics_gcp_service_account_email is not None:
@@ -1868,6 +1939,18 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
             pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter

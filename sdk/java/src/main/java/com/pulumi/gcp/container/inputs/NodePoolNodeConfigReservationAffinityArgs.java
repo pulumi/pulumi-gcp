@@ -18,14 +18,26 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
     public static final NodePoolNodeConfigReservationAffinityArgs Empty = new NodePoolNodeConfigReservationAffinityArgs();
 
     /**
-     * Corresponds to the type of reservation consumption.
+     * The type of reservation consumption
+     * Accepted values are:
+     * 
+     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
      * 
      */
     @Import(name="consumeReservationType", required=true)
     private Output<String> consumeReservationType;
 
     /**
-     * @return Corresponds to the type of reservation consumption.
+     * @return The type of reservation consumption
+     * Accepted values are:
+     * 
+     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
      * 
      */
     public Output<String> consumeReservationType() {
@@ -33,14 +45,14 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
     }
 
     /**
-     * The label key of a reservation resource.
+     * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The label key of a reservation resource.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     public Optional<Output<String>> key() {
@@ -48,14 +60,14 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
     }
 
     /**
-     * The label values of the reservation resource.
+     * The list of label values of reservation resources. For example: the name of the specific reservation when using a key of &#34;compute.googleapis.com/reservation-name&#34;
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return The label values of the reservation resource.
+     * @return The list of label values of reservation resources. For example: the name of the specific reservation when using a key of &#34;compute.googleapis.com/reservation-name&#34;
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -89,7 +101,13 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         /**
-         * @param consumeReservationType Corresponds to the type of reservation consumption.
+         * @param consumeReservationType The type of reservation consumption
+         * Accepted values are:
+         * 
+         * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+         * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+         * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+         * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
          * 
          * @return builder
          * 
@@ -100,7 +118,13 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         /**
-         * @param consumeReservationType Corresponds to the type of reservation consumption.
+         * @param consumeReservationType The type of reservation consumption
+         * Accepted values are:
+         * 
+         * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+         * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+         * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+         * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
          * 
          * @return builder
          * 
@@ -110,7 +134,7 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         /**
-         * @param key The label key of a reservation resource.
+         * @param key The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
          * 
          * @return builder
          * 
@@ -121,7 +145,7 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         /**
-         * @param key The label key of a reservation resource.
+         * @param key The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
          * 
          * @return builder
          * 
@@ -131,7 +155,7 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         /**
-         * @param values The label values of the reservation resource.
+         * @param values The list of label values of reservation resources. For example: the name of the specific reservation when using a key of &#34;compute.googleapis.com/reservation-name&#34;
          * 
          * @return builder
          * 
@@ -142,7 +166,7 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         /**
-         * @param values The label values of the reservation resource.
+         * @param values The list of label values of reservation resources. For example: the name of the specific reservation when using a key of &#34;compute.googleapis.com/reservation-name&#34;
          * 
          * @return builder
          * 
@@ -152,7 +176,7 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         /**
-         * @param values The label values of the reservation resource.
+         * @param values The list of label values of reservation resources. For example: the name of the specific reservation when using a key of &#34;compute.googleapis.com/reservation-name&#34;
          * 
          * @return builder
          * 

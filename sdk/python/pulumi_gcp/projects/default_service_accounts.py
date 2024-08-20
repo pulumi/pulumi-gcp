@@ -82,7 +82,7 @@ class _DefaultServiceAccountsState:
                  action: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_policy: Optional[pulumi.Input[str]] = None,
-                 service_accounts: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 service_accounts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DefaultServiceAccounts resources.
         :param pulumi.Input[str] action: The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
@@ -91,7 +91,7 @@ class _DefaultServiceAccountsState:
                Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
                If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
                If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
-        :param pulumi.Input[Mapping[str, Any]] service_accounts: The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_accounts: The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -143,14 +143,14 @@ class _DefaultServiceAccountsState:
 
     @property
     @pulumi.getter(name="serviceAccounts")
-    def service_accounts(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def service_accounts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
         """
         return pulumi.get(self, "service_accounts")
 
     @service_accounts.setter
-    def service_accounts(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def service_accounts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "service_accounts", value)
 
 
@@ -312,7 +312,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
             action: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             restore_policy: Optional[pulumi.Input[str]] = None,
-            service_accounts: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'DefaultServiceAccounts':
+            service_accounts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DefaultServiceAccounts':
         """
         Get an existing DefaultServiceAccounts resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -326,7 +326,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
                Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
                If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
                If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
-        :param pulumi.Input[Mapping[str, Any]] service_accounts: The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_accounts: The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -367,7 +367,7 @@ class DefaultServiceAccounts(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccounts")
-    def service_accounts(self) -> pulumi.Output[Mapping[str, Any]]:
+    def service_accounts(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
         """

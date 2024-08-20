@@ -330,7 +330,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NodeTemplate(String name) {
+    public NodeTemplate(java.lang.String name) {
         this(name, NodeTemplateArgs.Empty);
     }
     /**
@@ -338,7 +338,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NodeTemplate(String name, @Nullable NodeTemplateArgs args) {
+    public NodeTemplate(java.lang.String name, @Nullable NodeTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -347,15 +347,22 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NodeTemplate(String name, @Nullable NodeTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/nodeTemplate:NodeTemplate", name, args == null ? NodeTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NodeTemplate(java.lang.String name, @Nullable NodeTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/nodeTemplate:NodeTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NodeTemplate(String name, Output<String> id, @Nullable NodeTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/nodeTemplate:NodeTemplate", name, state, makeResourceOptions(options, id));
+    private NodeTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable NodeTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/nodeTemplate:NodeTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NodeTemplateArgs makeArgs(@Nullable NodeTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NodeTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -371,7 +378,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NodeTemplate get(String name, Output<String> id, @Nullable NodeTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NodeTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable NodeTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NodeTemplate(name, id, state, options);
     }
 }

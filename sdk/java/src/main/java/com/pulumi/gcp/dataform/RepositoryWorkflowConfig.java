@@ -277,7 +277,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.region);
     }
     /**
-     * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}releaseConfigs/*.
+     * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      * 
      * ***
      * 
@@ -286,7 +286,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
     private Output<String> releaseConfig;
 
     /**
-     * @return The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}releaseConfigs/*.
+     * @return The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      * 
      * ***
      * 
@@ -327,7 +327,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RepositoryWorkflowConfig(String name) {
+    public RepositoryWorkflowConfig(java.lang.String name) {
         this(name, RepositoryWorkflowConfigArgs.Empty);
     }
     /**
@@ -335,7 +335,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RepositoryWorkflowConfig(String name, RepositoryWorkflowConfigArgs args) {
+    public RepositoryWorkflowConfig(java.lang.String name, RepositoryWorkflowConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -344,15 +344,22 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RepositoryWorkflowConfig(String name, RepositoryWorkflowConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig", name, args == null ? RepositoryWorkflowConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RepositoryWorkflowConfig(java.lang.String name, RepositoryWorkflowConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RepositoryWorkflowConfig(String name, Output<String> id, @Nullable RepositoryWorkflowConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig", name, state, makeResourceOptions(options, id));
+    private RepositoryWorkflowConfig(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryWorkflowConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RepositoryWorkflowConfigArgs makeArgs(RepositoryWorkflowConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RepositoryWorkflowConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -368,7 +375,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RepositoryWorkflowConfig get(String name, Output<String> id, @Nullable RepositoryWorkflowConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RepositoryWorkflowConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryWorkflowConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RepositoryWorkflowConfig(name, id, state, options);
     }
 }

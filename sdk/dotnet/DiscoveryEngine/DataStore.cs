@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///             "SOLUTION_TYPE_SEARCH",
     ///         },
     ///         CreateAdvancedSiteSearch = false,
+    ///         SkipDefaultSchemaCreation = false,
     ///     });
     /// 
     /// });
@@ -201,6 +202,18 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// A boolean flag indicating whether to skip the default schema creation for
+        /// the data store. Only enable this flag if you are certain that the default
+        /// schema is incompatible with your use case.
+        /// If set to true, you must manually create a schema for the data store
+        /// before any documents can be ingested.
+        /// This flag cannot be specified if `data_store.starting_schema` is
+        /// specified.
+        /// </summary>
+        [Output("skipDefaultSchemaCreation")]
+        public Output<bool?> SkipDefaultSchemaCreation { get; private set; } = null!;
+
+        /// <summary>
         /// The solutions that the data store enrolls.
         /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
         /// </summary>
@@ -312,6 +325,18 @@ namespace Pulumi.Gcp.DiscoveryEngine
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A boolean flag indicating whether to skip the default schema creation for
+        /// the data store. Only enable this flag if you are certain that the default
+        /// schema is incompatible with your use case.
+        /// If set to true, you must manually create a schema for the data store
+        /// before any documents can be ingested.
+        /// This flag cannot be specified if `data_store.starting_schema` is
+        /// specified.
+        /// </summary>
+        [Input("skipDefaultSchemaCreation")]
+        public Input<bool>? SkipDefaultSchemaCreation { get; set; }
+
         [Input("solutionTypes")]
         private InputList<string>? _solutionTypes;
 
@@ -412,6 +437,18 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// A boolean flag indicating whether to skip the default schema creation for
+        /// the data store. Only enable this flag if you are certain that the default
+        /// schema is incompatible with your use case.
+        /// If set to true, you must manually create a schema for the data store
+        /// before any documents can be ingested.
+        /// This flag cannot be specified if `data_store.starting_schema` is
+        /// specified.
+        /// </summary>
+        [Input("skipDefaultSchemaCreation")]
+        public Input<bool>? SkipDefaultSchemaCreation { get; set; }
 
         [Input("solutionTypes")]
         private InputList<string>? _solutionTypes;

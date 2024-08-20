@@ -298,7 +298,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EngineModel(String name) {
+    public EngineModel(java.lang.String name) {
         this(name, EngineModelArgs.Empty);
     }
     /**
@@ -306,7 +306,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EngineModel(String name, @Nullable EngineModelArgs args) {
+    public EngineModel(java.lang.String name, @Nullable EngineModelArgs args) {
         this(name, args, null);
     }
     /**
@@ -315,15 +315,22 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EngineModel(String name, @Nullable EngineModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:ml/engineModel:EngineModel", name, args == null ? EngineModelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EngineModel(java.lang.String name, @Nullable EngineModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:ml/engineModel:EngineModel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EngineModel(String name, Output<String> id, @Nullable EngineModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:ml/engineModel:EngineModel", name, state, makeResourceOptions(options, id));
+    private EngineModel(java.lang.String name, Output<java.lang.String> id, @Nullable EngineModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:ml/engineModel:EngineModel", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EngineModelArgs makeArgs(@Nullable EngineModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EngineModelArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -343,7 +350,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EngineModel get(String name, Output<String> id, @Nullable EngineModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EngineModel get(java.lang.String name, Output<java.lang.String> id, @Nullable EngineModelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EngineModel(name, id, state, options);
     }
 }

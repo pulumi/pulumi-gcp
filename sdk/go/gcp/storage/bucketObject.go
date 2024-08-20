@@ -108,6 +108,8 @@ type BucketObject struct {
 	DetectMd5hash      pulumi.StringPtrOutput                  `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrOutput `pulumi:"eventBasedHold"`
+	// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+	Generation pulumi.IntOutput `pulumi:"generation"`
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
@@ -207,6 +209,8 @@ type bucketObjectState struct {
 	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
+	// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+	Generation *int `pulumi:"generation"`
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
@@ -263,6 +267,8 @@ type BucketObjectState struct {
 	DetectMd5hash      pulumi.StringPtrInput
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrInput
+	// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+	Generation pulumi.IntPtrInput
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName pulumi.StringPtrInput
 	// (Computed) Base 64 MD5 hash of the uploaded data.
@@ -531,6 +537,11 @@ func (o BucketObjectOutput) DetectMd5hash() pulumi.StringPtrOutput {
 // Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 func (o BucketObjectOutput) EventBasedHold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.BoolPtrOutput { return v.EventBasedHold }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+func (o BucketObjectOutput) Generation() pulumi.IntOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.IntOutput { return v.Generation }).(pulumi.IntOutput)
 }
 
 // The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.

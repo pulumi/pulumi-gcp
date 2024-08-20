@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.storage.inputs.BucketObjectCustomerEncryptionArgs;
 import com.pulumi.gcp.storage.inputs.BucketObjectRetentionArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -179,6 +180,21 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> eventBasedHold() {
         return Optional.ofNullable(this.eventBasedHold);
+    }
+
+    /**
+     * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+     * 
+     */
+    @Import(name="generation")
+    private @Nullable Output<Integer> generation;
+
+    /**
+     * @return (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+     * 
+     */
+    public Optional<Output<Integer>> generation() {
+        return Optional.ofNullable(this.generation);
     }
 
     /**
@@ -376,6 +392,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         this.customerEncryption = $.customerEncryption;
         this.detectMd5hash = $.detectMd5hash;
         this.eventBasedHold = $.eventBasedHold;
+        this.generation = $.generation;
         this.kmsKeyName = $.kmsKeyName;
         this.md5hash = $.md5hash;
         this.mediaLink = $.mediaLink;
@@ -628,6 +645,27 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eventBasedHold(Boolean eventBasedHold) {
             return eventBasedHold(Output.of(eventBasedHold));
+        }
+
+        /**
+         * @param generation (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generation(@Nullable Output<Integer> generation) {
+            $.generation = generation;
+            return this;
+        }
+
+        /**
+         * @param generation (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generation(Integer generation) {
+            return generation(Output.of(generation));
         }
 
         /**

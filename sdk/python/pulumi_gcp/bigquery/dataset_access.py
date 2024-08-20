@@ -62,13 +62,9 @@ class DatasetAccessInitArgs:
                needs to be granted again via an update operation.
                Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
-               
                * `projectOwners`: Owners of the enclosing project.
-               
                * `projectReaders`: Readers of the enclosing project.
-               
                * `projectWriters`: Writers of the enclosing project.
-               
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -221,13 +217,9 @@ class DatasetAccessInitArgs:
     def special_group(self) -> Optional[pulumi.Input[str]]:
         """
         A special group to grant access to. Possible values include:
-
         * `projectOwners`: Owners of the enclosing project.
-
         * `projectReaders`: Readers of the enclosing project.
-
         * `projectWriters`: Writers of the enclosing project.
-
         * `allAuthenticatedUsers`: All authenticated BigQuery users.
         """
         return pulumi.get(self, "special_group")
@@ -314,13 +306,9 @@ class _DatasetAccessState:
                needs to be granted again via an update operation.
                Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
-               
                * `projectOwners`: Owners of the enclosing project.
-               
                * `projectReaders`: Readers of the enclosing project.
-               
                * `projectWriters`: Writers of the enclosing project.
-               
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -489,13 +477,9 @@ class _DatasetAccessState:
     def special_group(self) -> Optional[pulumi.Input[str]]:
         """
         A special group to grant access to. Possible values include:
-
         * `projectOwners`: Owners of the enclosing project.
-
         * `projectReaders`: Readers of the enclosing project.
-
         * `projectWriters`: Writers of the enclosing project.
-
         * `allAuthenticatedUsers`: All authenticated BigQuery users.
         """
         return pulumi.get(self, "special_group")
@@ -582,14 +566,14 @@ class DatasetAccess(pulumi.CustomResource):
             table_id="example_table",
             view={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "useLegacySql": False,
+                "use_legacy_sql": False,
             })
         access = gcp.bigquery.DatasetAccess("access",
             dataset_id=private.dataset_id,
             view={
-                "projectId": public_table.project,
-                "datasetId": public.dataset_id,
-                "tableId": public_table.table_id,
+                "project_id": public_table.project,
+                "dataset_id": public.dataset_id,
+                "table_id": public_table.table_id,
             })
         ```
         ### Bigquery Dataset Access Authorized Dataset
@@ -604,10 +588,10 @@ class DatasetAccess(pulumi.CustomResource):
             dataset_id=private.dataset_id,
             authorized_dataset={
                 "dataset": {
-                    "projectId": public.project,
-                    "datasetId": public.dataset_id,
+                    "project_id": public.project,
+                    "dataset_id": public.dataset_id,
                 },
-                "targetTypes": ["VIEWS"],
+                "target_types": ["VIEWS"],
             })
         ```
         ### Bigquery Dataset Access Authorized Routine
@@ -628,9 +612,9 @@ class DatasetAccess(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -647,9 +631,9 @@ class DatasetAccess(pulumi.CustomResource):
         authorized_routine = gcp.bigquery.DatasetAccess("authorized_routine",
             dataset_id=private.dataset_id,
             routine={
-                "projectId": public_routine.project,
-                "datasetId": public_routine.dataset_id,
-                "routineId": public_routine.routine_id,
+                "project_id": public_routine.project,
+                "dataset_id": public_routine.dataset_id,
+                "routine_id": public_routine.routine_id,
             })
         ```
 
@@ -687,13 +671,9 @@ class DatasetAccess(pulumi.CustomResource):
                needs to be granted again via an update operation.
                Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
-               
                * `projectOwners`: Owners of the enclosing project.
-               
                * `projectReaders`: Readers of the enclosing project.
-               
                * `projectWriters`: Writers of the enclosing project.
-               
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -740,14 +720,14 @@ class DatasetAccess(pulumi.CustomResource):
             table_id="example_table",
             view={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "useLegacySql": False,
+                "use_legacy_sql": False,
             })
         access = gcp.bigquery.DatasetAccess("access",
             dataset_id=private.dataset_id,
             view={
-                "projectId": public_table.project,
-                "datasetId": public.dataset_id,
-                "tableId": public_table.table_id,
+                "project_id": public_table.project,
+                "dataset_id": public.dataset_id,
+                "table_id": public_table.table_id,
             })
         ```
         ### Bigquery Dataset Access Authorized Dataset
@@ -762,10 +742,10 @@ class DatasetAccess(pulumi.CustomResource):
             dataset_id=private.dataset_id,
             authorized_dataset={
                 "dataset": {
-                    "projectId": public.project,
-                    "datasetId": public.dataset_id,
+                    "project_id": public.project,
+                    "dataset_id": public.dataset_id,
                 },
-                "targetTypes": ["VIEWS"],
+                "target_types": ["VIEWS"],
             })
         ```
         ### Bigquery Dataset Access Authorized Routine
@@ -786,9 +766,9 @@ class DatasetAccess(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -805,9 +785,9 @@ class DatasetAccess(pulumi.CustomResource):
         authorized_routine = gcp.bigquery.DatasetAccess("authorized_routine",
             dataset_id=private.dataset_id,
             routine={
-                "projectId": public_routine.project,
-                "datasetId": public_routine.dataset_id,
-                "routineId": public_routine.routine_id,
+                "project_id": public_routine.project,
+                "dataset_id": public_routine.dataset_id,
+                "routine_id": public_routine.routine_id,
             })
         ```
 
@@ -923,13 +903,9 @@ class DatasetAccess(pulumi.CustomResource):
                needs to be granted again via an update operation.
                Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
-               
                * `projectOwners`: Owners of the enclosing project.
-               
                * `projectReaders`: Readers of the enclosing project.
-               
                * `projectWriters`: Writers of the enclosing project.
-               
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -1055,13 +1031,9 @@ class DatasetAccess(pulumi.CustomResource):
     def special_group(self) -> pulumi.Output[Optional[str]]:
         """
         A special group to grant access to. Possible values include:
-
         * `projectOwners`: Owners of the enclosing project.
-
         * `projectReaders`: Readers of the enclosing project.
-
         * `projectWriters`: Writers of the enclosing project.
-
         * `allAuthenticatedUsers`: All authenticated BigQuery users.
         """
         return pulumi.get(self, "special_group")

@@ -128,7 +128,7 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SourceIamPolicy(String name) {
+    public SourceIamPolicy(java.lang.String name) {
         this(name, SourceIamPolicyArgs.Empty);
     }
     /**
@@ -136,7 +136,7 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SourceIamPolicy(String name, SourceIamPolicyArgs args) {
+    public SourceIamPolicy(java.lang.String name, SourceIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -145,15 +145,22 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SourceIamPolicy(String name, SourceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/sourceIamPolicy:SourceIamPolicy", name, args == null ? SourceIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SourceIamPolicy(java.lang.String name, SourceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/sourceIamPolicy:SourceIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SourceIamPolicy(String name, Output<String> id, @Nullable SourceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/sourceIamPolicy:SourceIamPolicy", name, state, makeResourceOptions(options, id));
+    private SourceIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable SourceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/sourceIamPolicy:SourceIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SourceIamPolicyArgs makeArgs(SourceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SourceIamPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -169,7 +176,7 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SourceIamPolicy get(String name, Output<String> id, @Nullable SourceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SourceIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable SourceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SourceIamPolicy(name, id, state, options);
     }
 }

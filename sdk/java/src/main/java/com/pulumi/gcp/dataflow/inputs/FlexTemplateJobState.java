@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -149,7 +148,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return User labels to be specified for the job. Keys and values
@@ -161,7 +160,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * labels will be ignored to prevent diffs on re-apply.
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -279,7 +278,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="parameters")
-    private @Nullable Output<Map<String,Object>> parameters;
+    private @Nullable Output<Map<String,String>> parameters;
 
     /**
      * @return **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
@@ -287,7 +286,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
-    public Optional<Output<Map<String,Object>>> parameters() {
+    public Optional<Output<Map<String,String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
@@ -440,13 +439,13 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="transformNameMapping")
-    private @Nullable Output<Map<String,Object>> transformNameMapping;
+    private @Nullable Output<Map<String,String>> transformNameMapping;
 
     /**
      * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      * 
      */
-    public Optional<Output<Map<String,Object>>> transformNameMapping() {
+    public Optional<Output<Map<String,String>>> transformNameMapping() {
         return Optional.ofNullable(this.transformNameMapping);
     }
 
@@ -701,7 +700,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -718,7 +717,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
@@ -879,7 +878,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
             $.parameters = parameters;
             return this;
         }
@@ -892,7 +891,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             return parameters(Output.of(parameters));
         }
 
@@ -1102,7 +1101,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder transformNameMapping(@Nullable Output<Map<String,Object>> transformNameMapping) {
+        public Builder transformNameMapping(@Nullable Output<Map<String,String>> transformNameMapping) {
             $.transformNameMapping = transformNameMapping;
             return this;
         }
@@ -1113,7 +1112,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder transformNameMapping(Map<String,Object> transformNameMapping) {
+        public Builder transformNameMapping(Map<String,String> transformNameMapping) {
             return transformNameMapping(Output.of(transformNameMapping));
         }
 

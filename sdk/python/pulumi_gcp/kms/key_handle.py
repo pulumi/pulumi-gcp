@@ -31,7 +31,7 @@ class KeyHandleArgs:
                
                - - -
         :param pulumi.Input[str] resource_type_selector: Selector of the resource type where we want to protect resources.
-               For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+               For example, `storage.googleapis.com/Bucket`.
         :param pulumi.Input[str] name: The resource name for the KeyHandle.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -64,7 +64,7 @@ class KeyHandleArgs:
     def resource_type_selector(self) -> pulumi.Input[str]:
         """
         Selector of the resource type where we want to protect resources.
-        For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+        For example, `storage.googleapis.com/Bucket`.
         """
         return pulumi.get(self, "resource_type_selector")
 
@@ -120,7 +120,7 @@ class _KeyHandleState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] resource_type_selector: Selector of the resource type where we want to protect resources.
-               For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+               For example, `storage.googleapis.com/Bucket`.
         """
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
@@ -193,7 +193,7 @@ class _KeyHandleState:
     def resource_type_selector(self) -> Optional[pulumi.Input[str]]:
         """
         Selector of the resource type where we want to protect resources.
-        For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+        For example, `storage.googleapis.com/Bucket`.
         """
         return pulumi.get(self, "resource_type_selector")
 
@@ -317,7 +317,7 @@ class KeyHandle(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] resource_type_selector: Selector of the resource type where we want to protect resources.
-               For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+               For example, `storage.googleapis.com/Bucket`.
         """
         ...
     @overload
@@ -490,7 +490,7 @@ class KeyHandle(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] resource_type_selector: Selector of the resource type where we want to protect resources.
-               For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+               For example, `storage.googleapis.com/Bucket`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -547,7 +547,7 @@ class KeyHandle(pulumi.CustomResource):
     def resource_type_selector(self) -> pulumi.Output[str]:
         """
         Selector of the resource type where we want to protect resources.
-        For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+        For example, `storage.googleapis.com/Bucket`.
         """
         return pulumi.get(self, "resource_type_selector")
 

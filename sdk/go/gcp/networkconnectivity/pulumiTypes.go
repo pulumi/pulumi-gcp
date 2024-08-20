@@ -1063,7 +1063,7 @@ type ServiceConnectionPolicyPscConnectionError struct {
 	Code *int `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details []map[string]interface{} `pulumi:"details"`
+	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message.
 	Message *string `pulumi:"message"`
 }
@@ -1084,7 +1084,7 @@ type ServiceConnectionPolicyPscConnectionErrorArgs struct {
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// (Output)
 	// A list of messages that carry the error details.
-	Details pulumi.MapArrayInput `pulumi:"details"`
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// A developer-facing error message.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -1173,8 +1173,8 @@ func (o ServiceConnectionPolicyPscConnectionErrorOutput) Code() pulumi.IntPtrOut
 
 // (Output)
 // A list of messages that carry the error details.
-func (o ServiceConnectionPolicyPscConnectionErrorOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
 
 // A developer-facing error message.
@@ -1218,13 +1218,13 @@ func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Code() pulumi.IntPtr
 
 // (Output)
 // A list of messages that carry the error details.
-func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionError) []map[string]interface{} {
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionError) []map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Details
-	}).(pulumi.MapArrayOutput)
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // A developer-facing error message.
@@ -1570,6 +1570,7 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Uris() pulumi.StringArrayOu
 
 type SpokeLinkedRouterApplianceInstances struct {
 	// The list of router appliance instances
+	// Structure is documented below.
 	Instances []SpokeLinkedRouterApplianceInstancesInstance `pulumi:"instances"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
@@ -1588,6 +1589,7 @@ type SpokeLinkedRouterApplianceInstancesInput interface {
 
 type SpokeLinkedRouterApplianceInstancesArgs struct {
 	// The list of router appliance instances
+	// Structure is documented below.
 	Instances SpokeLinkedRouterApplianceInstancesInstanceArrayInput `pulumi:"instances"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
@@ -1671,6 +1673,7 @@ func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceI
 }
 
 // The list of router appliance instances
+// Structure is documented below.
 func (o SpokeLinkedRouterApplianceInstancesOutput) Instances() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []SpokeLinkedRouterApplianceInstancesInstance {
 		return v.Instances
@@ -1707,6 +1710,7 @@ func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Elem() SpokeLinkedRouterAp
 }
 
 // The list of router appliance instances
+// Structure is documented below.
 func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Instances() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []SpokeLinkedRouterApplianceInstancesInstance {
 		if v == nil {
@@ -1730,8 +1734,6 @@ type SpokeLinkedRouterApplianceInstancesInstance struct {
 	// The IP address on the VM to use for peering.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
-	//
-	// ***
 	VirtualMachine *string `pulumi:"virtualMachine"`
 }
 
@@ -1750,8 +1752,6 @@ type SpokeLinkedRouterApplianceInstancesInstanceArgs struct {
 	// The IP address on the VM to use for peering.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
-	//
-	// ***
 	VirtualMachine pulumi.StringPtrInput `pulumi:"virtualMachine"`
 }
 
@@ -1812,8 +1812,6 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) IpAddress() pulumi.St
 }
 
 // The URI of the virtual machine resource
-//
-// ***
 func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) VirtualMachine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) *string { return v.VirtualMachine }).(pulumi.StringPtrOutput)
 }

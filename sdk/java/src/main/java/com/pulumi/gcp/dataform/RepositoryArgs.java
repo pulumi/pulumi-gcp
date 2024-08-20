@@ -51,6 +51,23 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+     * It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
+
+    /**
+     * @return Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+     * It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+
+    /**
      * Optional. Repository user labels.
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
@@ -93,14 +110,14 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
      * 
      */
     @Import(name="npmrcEnvironmentVariablesSecretVersion")
     private @Nullable Output<String> npmrcEnvironmentVariablesSecretVersion;
 
     /**
-     * @return Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * @return Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
      * 
      */
     public Optional<Output<String>> npmrcEnvironmentVariablesSecretVersion() {
@@ -176,6 +193,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     private RepositoryArgs(RepositoryArgs $) {
         this.displayName = $.displayName;
         this.gitRemoteSettings = $.gitRemoteSettings;
+        this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
         this.name = $.name;
         this.npmrcEnvironmentVariablesSecretVersion = $.npmrcEnvironmentVariablesSecretVersion;
@@ -248,6 +266,29 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param kmsKeyName Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+         * It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
+            $.kmsKeyName = kmsKeyName;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyName Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+         * It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
+        }
+
+        /**
          * @param labels Optional. Repository user labels.
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
@@ -302,7 +343,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
          * 
          * @return builder
          * 
@@ -313,7 +354,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
          * 
          * @return builder
          * 

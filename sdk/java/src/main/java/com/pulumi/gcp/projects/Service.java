@@ -79,6 +79,26 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:projects/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
+     * Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     * 
+     */
+    @Export(name="checkIfServiceHasUsageOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> checkIfServiceHasUsageOnDestroy;
+
+    /**
+     * @return Beta
+     * If `true`, the usage of the service to be disabled will be checked and an error
+     * will be returned if the service to be disabled has usage in last 30 days.
+     * Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> checkIfServiceHasUsageOnDestroy() {
+        return Codegen.optional(this.checkIfServiceHasUsageOnDestroy);
+    }
+    /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
@@ -139,7 +159,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Service(String name) {
+    public Service(java.lang.String name) {
         this(name, ServiceArgs.Empty);
     }
     /**
@@ -147,7 +167,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Service(String name, ServiceArgs args) {
+    public Service(java.lang.String name, ServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,15 +176,22 @@ public class Service extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Service(String name, ServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/service:Service", name, args == null ? ServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Service(java.lang.String name, ServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/service:Service", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Service(String name, Output<String> id, @Nullable ServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/service:Service", name, state, makeResourceOptions(options, id));
+    private Service(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/service:Service", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceArgs makeArgs(ServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -180,7 +207,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Service get(String name, Output<String> id, @Nullable ServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Service get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Service(name, id, state, options);
     }
 }

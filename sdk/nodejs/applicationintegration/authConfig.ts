@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
  *     * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+ *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
  *
  * ## Example Usage
  *

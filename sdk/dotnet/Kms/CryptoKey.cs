@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        /// If not specified at creation time, the default duration is 24 hours.
+        /// If not specified at creation time, the default duration is 30 days.
         /// </summary>
         [Output("destroyScheduledDuration")]
         public Output<string> DestroyScheduledDuration { get; private set; } = null!;
@@ -128,6 +128,20 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Output("importOnly")]
         public Output<bool> ImportOnly { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy used for Key Access Justifications Policy Enforcement. If this
+        /// field is present and this key is enrolled in Key Access Justifications
+        /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        /// sign operations, and the operation will fail if rejected by the policy. The
+        /// policy is defined by specifying zero or more allowed justification codes.
+        /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        /// By default, this field is absent, and all justification codes are allowed.
+        /// This field is currently in beta and is subject to change.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("keyAccessJustificationsPolicy")]
+        public Output<Outputs.CryptoKeyKeyAccessJustificationsPolicy> KeyAccessJustificationsPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The KeyRing that this key belongs to.
@@ -262,7 +276,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        /// If not specified at creation time, the default duration is 24 hours.
+        /// If not specified at creation time, the default duration is 30 days.
         /// </summary>
         [Input("destroyScheduledDuration")]
         public Input<string>? DestroyScheduledDuration { get; set; }
@@ -272,6 +286,20 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("importOnly")]
         public Input<bool>? ImportOnly { get; set; }
+
+        /// <summary>
+        /// The policy used for Key Access Justifications Policy Enforcement. If this
+        /// field is present and this key is enrolled in Key Access Justifications
+        /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        /// sign operations, and the operation will fail if rejected by the policy. The
+        /// policy is defined by specifying zero or more allowed justification codes.
+        /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        /// By default, this field is absent, and all justification codes are allowed.
+        /// This field is currently in beta and is subject to change.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("keyAccessJustificationsPolicy")]
+        public Input<Inputs.CryptoKeyKeyAccessJustificationsPolicyArgs>? KeyAccessJustificationsPolicy { get; set; }
 
         /// <summary>
         /// The KeyRing that this key belongs to.
@@ -354,7 +382,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        /// If not specified at creation time, the default duration is 24 hours.
+        /// If not specified at creation time, the default duration is 30 days.
         /// </summary>
         [Input("destroyScheduledDuration")]
         public Input<string>? DestroyScheduledDuration { get; set; }
@@ -380,6 +408,20 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("importOnly")]
         public Input<bool>? ImportOnly { get; set; }
+
+        /// <summary>
+        /// The policy used for Key Access Justifications Policy Enforcement. If this
+        /// field is present and this key is enrolled in Key Access Justifications
+        /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        /// sign operations, and the operation will fail if rejected by the policy. The
+        /// policy is defined by specifying zero or more allowed justification codes.
+        /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        /// By default, this field is absent, and all justification codes are allowed.
+        /// This field is currently in beta and is subject to change.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("keyAccessJustificationsPolicy")]
+        public Input<Inputs.CryptoKeyKeyAccessJustificationsPolicyGetArgs>? KeyAccessJustificationsPolicy { get; set; }
 
         /// <summary>
         /// The KeyRing that this key belongs to.

@@ -42,12 +42,12 @@ namespace Pulumi.Gcp.Netapp.Outputs
         public readonly string? LastTransferError;
         /// <summary>
         /// (Output)
-        /// Total time taken so far during current transfer.
+        /// Cumulative time taken across all transfers for the replication relationship.
         /// </summary>
         public readonly string? TotalTransferDuration;
         /// <summary>
         /// (Output)
-        /// Number of bytes transferred so far in current transfer.
+        /// Cumulative bytes transferred so far for the replication relationship.
         /// </summary>
         public readonly string? TransferBytes;
         /// <summary>

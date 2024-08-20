@@ -157,7 +157,7 @@ import (
 //				CryptoKeyId: key.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId)),
+//					pulumi.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId),
 //				},
 //			})
 //			if err != nil {
@@ -203,8 +203,10 @@ import (
 //				RetentionDays: pulumi.Int(30),
 //				BucketId:      pulumi.String("custom-bucket"),
 //				IndexConfigs: logging.ProjectBucketConfigIndexConfigArray{
-//					FilePath: "jsonPayload.request.status",
-//					Type:     "INDEX_TYPE_STRING",
+//					&logging.ProjectBucketConfigIndexConfigArgs{
+//						FieldPath: pulumi.String("jsonPayload.request.status"),
+//						Type:      pulumi.String("INDEX_TYPE_STRING"),
+//					},
 //				},
 //			})
 //			if err != nil {

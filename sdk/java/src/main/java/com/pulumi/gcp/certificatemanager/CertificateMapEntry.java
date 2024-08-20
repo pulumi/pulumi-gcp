@@ -137,7 +137,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
     /**
      * A set of Certificates defines for the given hostname.
      * There can be defined up to fifteen certificates in each Certificate Map Entry.
-     * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
+     * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
      * 
      */
     @Export(name="certificates", refs={List.class,String.class}, tree="[0,1]")
@@ -146,7 +146,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
     /**
      * @return A set of Certificates defines for the given hostname.
      * There can be defined up to fifteen certificates in each Certificate Map Entry.
-     * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
+     * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
      * 
      */
     public Output<List<String>> certificates() {
@@ -275,7 +275,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
     /**
      * A user-defined name of the Certificate Map Entry. Certificate Map Entry
      * names must be unique globally and match pattern
-     * &#39;projects/*{@literal /}locations/*{@literal /}certificateMaps/*{@literal /}certificateMapEntries/*&#39;
+     * &#39;projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*&#39;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -284,7 +284,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
     /**
      * @return A user-defined name of the Certificate Map Entry. Certificate Map Entry
      * names must be unique globally and match pattern
-     * &#39;projects/*{@literal /}locations/*{@literal /}certificateMaps/*{@literal /}certificateMapEntries/*&#39;
+     * &#39;projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*&#39;
      * 
      */
     public Output<String> name() {
@@ -359,7 +359,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CertificateMapEntry(String name) {
+    public CertificateMapEntry(java.lang.String name) {
         this(name, CertificateMapEntryArgs.Empty);
     }
     /**
@@ -367,7 +367,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CertificateMapEntry(String name, CertificateMapEntryArgs args) {
+    public CertificateMapEntry(java.lang.String name, CertificateMapEntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -376,15 +376,22 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CertificateMapEntry(String name, CertificateMapEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry", name, args == null ? CertificateMapEntryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CertificateMapEntry(java.lang.String name, CertificateMapEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CertificateMapEntry(String name, Output<String> id, @Nullable CertificateMapEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry", name, state, makeResourceOptions(options, id));
+    private CertificateMapEntry(java.lang.String name, Output<java.lang.String> id, @Nullable CertificateMapEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CertificateMapEntryArgs makeArgs(CertificateMapEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CertificateMapEntryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -404,7 +411,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CertificateMapEntry get(String name, Output<String> id, @Nullable CertificateMapEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CertificateMapEntry get(java.lang.String name, Output<java.lang.String> id, @Nullable CertificateMapEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CertificateMapEntry(name, id, state, options);
     }
 }

@@ -90,12 +90,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *         var healthcareCmekKeyuser = new CryptoKeyIAMBinding("healthcareCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-healthcare.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var default_ = new Dataset("default", DatasetArgs.builder()
@@ -126,8 +126,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(healthcareCmekKeyuser)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -260,7 +260,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Dataset(String name) {
+    public Dataset(java.lang.String name) {
         this(name, DatasetArgs.Empty);
     }
     /**
@@ -268,7 +268,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Dataset(String name, DatasetArgs args) {
+    public Dataset(java.lang.String name, DatasetArgs args) {
         this(name, args, null);
     }
     /**
@@ -277,15 +277,22 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Dataset(String name, DatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/dataset:Dataset", name, args == null ? DatasetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Dataset(java.lang.String name, DatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/dataset:Dataset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Dataset(String name, Output<String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/dataset:Dataset", name, state, makeResourceOptions(options, id));
+    private Dataset(java.lang.String name, Output<java.lang.String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/dataset:Dataset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DatasetArgs makeArgs(DatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatasetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -301,7 +308,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Dataset get(String name, Output<String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Dataset get(java.lang.String name, Output<java.lang.String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Dataset(name, id, state, options);
     }
 }

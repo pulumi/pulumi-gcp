@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_basic = new BareMetalCluster("default-basic", BareMetalClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username("admin{@literal @}hashicorptest.com")
+ *                         .username("admin}{@literal @}{@code hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -148,8 +148,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -190,12 +190,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_full = new BareMetalCluster("default-full", BareMetalClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username("admin{@literal @}hashicorptest.com")
+ *                         .username("admin}{@literal @}{@code hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -286,8 +286,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -556,7 +556,7 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BareMetalNodePool(String name) {
+    public BareMetalNodePool(java.lang.String name) {
         this(name, BareMetalNodePoolArgs.Empty);
     }
     /**
@@ -564,7 +564,7 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BareMetalNodePool(String name, BareMetalNodePoolArgs args) {
+    public BareMetalNodePool(java.lang.String name, BareMetalNodePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -573,15 +573,22 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BareMetalNodePool(String name, BareMetalNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, args == null ? BareMetalNodePoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BareMetalNodePool(java.lang.String name, BareMetalNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BareMetalNodePool(String name, Output<String> id, @Nullable BareMetalNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, state, makeResourceOptions(options, id));
+    private BareMetalNodePool(java.lang.String name, Output<java.lang.String> id, @Nullable BareMetalNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BareMetalNodePoolArgs makeArgs(BareMetalNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BareMetalNodePoolArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -597,7 +604,7 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BareMetalNodePool get(String name, Output<String> id, @Nullable BareMetalNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BareMetalNodePool get(java.lang.String name, Output<java.lang.String> id, @Nullable BareMetalNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BareMetalNodePool(name, id, state, options);
     }
 }

@@ -13,11 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreferences {
     /**
-     * @return License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-     * Possible values:
-     * LICENSE_TYPE_UNSPECIFIED
-     * LICENSE_TYPE_DEFAULT
-     * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+     * @return License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
      * 
      */
     private @Nullable String licenseType;
@@ -30,11 +26,7 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
 
     private PreferenceSetVirtualMachinePreferencesComputeEnginePreferences() {}
     /**
-     * @return License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-     * Possible values:
-     * LICENSE_TYPE_UNSPECIFIED
-     * LICENSE_TYPE_DEFAULT
-     * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+     * @return License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
      * 
      */
     public Optional<String> licenseType() {

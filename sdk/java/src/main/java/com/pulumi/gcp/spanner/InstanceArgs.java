@@ -133,7 +133,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
-     * 
      * If not provided, a random string starting with `tf-` will be selected.
      * 
      */
@@ -144,7 +143,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
-     * 
      * If not provided, a random string starting with `tf-` will be selected.
      * 
      */
@@ -358,7 +356,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param name A unique identifier for the instance, which cannot be changed after
          * the instance is created. The name must be between 6 and 30 characters
          * in length.
-         * 
          * If not provided, a random string starting with `tf-` will be selected.
          * 
          * @return builder
@@ -373,7 +370,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param name A unique identifier for the instance, which cannot be changed after
          * the instance is created. The name must be between 6 and 30 characters
          * in length.
-         * 
          * If not provided, a random string starting with `tf-` will be selected.
          * 
          * @return builder

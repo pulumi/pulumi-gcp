@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -117,7 +116,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return User labels to be specified for the job. Keys and values should follow the restrictions
@@ -125,7 +124,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -211,7 +210,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="parameters")
-    private @Nullable Output<Map<String,Object>> parameters;
+    private @Nullable Output<Map<String,String>> parameters;
 
     /**
      * @return **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
@@ -219,7 +218,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
-    public Optional<Output<Map<String,Object>>> parameters() {
+    public Optional<Output<Map<String,String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
@@ -367,13 +366,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="transformNameMapping")
-    private @Nullable Output<Map<String,Object>> transformNameMapping;
+    private @Nullable Output<Map<String,String>> transformNameMapping;
 
     /**
      * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      * 
      */
-    public Optional<Output<Map<String,Object>>> transformNameMapping() {
+    public Optional<Output<Map<String,String>>> transformNameMapping() {
         return Optional.ofNullable(this.transformNameMapping);
     }
 
@@ -599,7 +598,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -612,7 +611,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
@@ -729,7 +728,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
             $.parameters = parameters;
             return this;
         }
@@ -742,7 +741,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             return parameters(Output.of(parameters));
         }
 
@@ -945,7 +944,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder transformNameMapping(@Nullable Output<Map<String,Object>> transformNameMapping) {
+        public Builder transformNameMapping(@Nullable Output<Map<String,String>> transformNameMapping) {
             $.transformNameMapping = transformNameMapping;
             return this;
         }
@@ -956,7 +955,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder transformNameMapping(Map<String,Object> transformNameMapping) {
+        public Builder transformNameMapping(Map<String,String> transformNameMapping) {
             return transformNameMapping(Output.of(transformNameMapping));
         }
 

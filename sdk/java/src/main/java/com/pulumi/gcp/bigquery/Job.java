@@ -464,15 +464,15 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var count = 2;
  * 
- *         for (var i = 0; i < count; i++) {
+ *         for (var i = 0; i < count; i++) }{{@code
  *             new Dataset("sourceDataset-" + i, DatasetArgs.builder()
  *                 .datasetId(String.format("job_copy_%s_dataset", range.value()))
  *                 .friendlyName("test")
@@ -481,35 +481,35 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
- *         for (var i = 0; i < count; i++) {
+ * }}{@code
+ *         for (var i = 0; i < count; i++) }{{@code
  *             new Table("source-" + i, TableArgs.builder()
  *                 .deletionProtection(false)
  *                 .datasetId(sourceDataset[range.value()].datasetId())
  *                 .tableId(String.format("job_copy_%s_table", range.value()))
  *                 .schema("""
  * [
- *   {
+ *   }{{@code
  *     "name": "name",
  *     "type": "STRING",
  *     "mode": "NULLABLE"
- *   },
- *   {
+ *   }}{@code ,
+ *   }{{@code
  *     "name": "post_abbr",
  *     "type": "STRING",
  *     "mode": "NULLABLE"
- *   },
- *   {
+ *   }}{@code ,
+ *   }{{@code
  *     "name": "date",
  *     "type": "DATE",
  *     "mode": "NULLABLE"
- *   }
+ *   }}{@code
  * ]
  *                 """)
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         var destDataset = new Dataset("destDataset", DatasetArgs.builder()
  *             .datasetId("job_copy_dest_dataset")
  *             .friendlyName("test")
@@ -534,7 +534,7 @@ import javax.annotation.Nullable;
  *         var encryptRole = new IAMMember("encryptRole", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:bq-%s{@literal @}bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:bq-%s}{@literal @}{@code bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var dest = new Table("dest", TableArgs.builder()
@@ -543,21 +543,21 @@ import javax.annotation.Nullable;
  *             .tableId("job_copy_dest_table")
  *             .schema("""
  * [
- *   {
+ *   }{{@code
  *     "name": "name",
  *     "type": "STRING",
  *     "mode": "NULLABLE"
- *   },
- *   {
+ *   }}{@code ,
+ *   }{{@code
  *     "name": "post_abbr",
  *     "type": "STRING",
  *     "mode": "NULLABLE"
- *   },
- *   {
+ *   }}{@code ,
+ *   }{{@code
  *     "name": "date",
  *     "type": "DATE",
  *     "mode": "NULLABLE"
- *   }
+ *   }}{@code
  * ]
  *             """)
  *             .encryptionConfiguration(TableEncryptionConfigurationArgs.builder()
@@ -594,8 +594,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(encryptRole)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -942,7 +942,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Job(String name) {
+    public Job(java.lang.String name) {
         this(name, JobArgs.Empty);
     }
     /**
@@ -950,7 +950,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Job(String name, JobArgs args) {
+    public Job(java.lang.String name, JobArgs args) {
         this(name, args, null);
     }
     /**
@@ -959,15 +959,22 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Job(String name, JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/job:Job", name, args == null ? JobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Job(java.lang.String name, JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/job:Job", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Job(String name, Output<String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/job:Job", name, state, makeResourceOptions(options, id));
+    private Job(java.lang.String name, Output<java.lang.String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/job:Job", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static JobArgs makeArgs(JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? JobArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -987,7 +994,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Job get(String name, Output<String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Job get(java.lang.String name, Output<java.lang.String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Job(name, id, state, options);
     }
 }

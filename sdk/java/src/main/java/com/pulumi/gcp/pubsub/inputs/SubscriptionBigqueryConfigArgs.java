@@ -56,14 +56,14 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+     * The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
      * 
      */
     @Import(name="table", required=true)
     private Output<String> table;
 
     /**
-     * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+     * @return The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
      * 
      */
     public Output<String> table() {
@@ -201,7 +201,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param table The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+         * @param table The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param table The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+         * @param table The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
          * 
          * @return builder
          * 

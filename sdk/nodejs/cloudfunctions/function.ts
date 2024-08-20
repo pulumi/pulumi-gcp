@@ -152,7 +152,11 @@ export class Function extends pulumi.CustomResource {
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    public readonly buildEnvironmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly buildEnvironmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+     */
+    public readonly buildServiceAccount!: pulumi.Output<string>;
     /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
@@ -180,7 +184,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
@@ -211,7 +215,7 @@ export class Function extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
@@ -309,6 +313,7 @@ export class Function extends pulumi.CustomResource {
             const state = argsOrState as FunctionState | undefined;
             resourceInputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
+            resourceInputs["buildServiceAccount"] = state ? state.buildServiceAccount : undefined;
             resourceInputs["buildWorkerPool"] = state ? state.buildWorkerPool : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dockerRegistry"] = state ? state.dockerRegistry : undefined;
@@ -348,6 +353,7 @@ export class Function extends pulumi.CustomResource {
             }
             resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
+            resourceInputs["buildServiceAccount"] = args ? args.buildServiceAccount : undefined;
             resourceInputs["buildWorkerPool"] = args ? args.buildWorkerPool : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dockerRegistry"] = args ? args.dockerRegistry : undefined;
@@ -399,7 +405,11 @@ export interface FunctionState {
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
+    buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+     */
+    buildServiceAccount?: pulumi.Input<string>;
     /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
@@ -427,7 +437,7 @@ export interface FunctionState {
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
@@ -458,7 +468,7 @@ export interface FunctionState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
@@ -553,7 +563,11 @@ export interface FunctionArgs {
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
+    buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+     */
+    buildServiceAccount?: pulumi.Input<string>;
     /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
@@ -577,7 +591,7 @@ export interface FunctionArgs {
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
@@ -608,7 +622,7 @@ export interface FunctionArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */

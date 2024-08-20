@@ -99,17 +99,17 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Resource name of the AccessPolicy. Format: {policy_id}
+     * Resource name of the AccessPolicy. Format: '{{policy_id}}'
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: 'organizations/{{organization_id}}'
      */
     public readonly parent!: pulumi.Output<string>;
     /**
      * Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
      */
     public readonly scopes!: pulumi.Output<string | undefined>;
     /**
@@ -172,17 +172,17 @@ export interface AccessPolicyState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Resource name of the AccessPolicy. Format: {policy_id}
+     * Resource name of the AccessPolicy. Format: '{{policy_id}}'
      */
     name?: pulumi.Input<string>;
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: 'organizations/{{organization_id}}'
      */
     parent?: pulumi.Input<string>;
     /**
      * Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
      */
     scopes?: pulumi.Input<string>;
     /**
@@ -204,12 +204,12 @@ export interface AccessPolicyState {
 export interface AccessPolicyArgs {
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: 'organizations/{{organization_id}}'
      */
     parent: pulumi.Input<string>;
     /**
      * Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
      */
     scopes?: pulumi.Input<string>;
     /**

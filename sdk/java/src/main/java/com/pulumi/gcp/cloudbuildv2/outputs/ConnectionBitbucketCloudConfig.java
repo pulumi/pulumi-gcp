@@ -25,7 +25,7 @@ public final class ConnectionBitbucketCloudConfig {
      */
     private ConnectionBitbucketCloudConfigReadAuthorizerCredential readAuthorizerCredential;
     /**
-     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     private String webhookSecretSecretVersion;
@@ -53,7 +53,7 @@ public final class ConnectionBitbucketCloudConfig {
         return this.readAuthorizerCredential;
     }
     /**
-     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public String webhookSecretSecretVersion() {

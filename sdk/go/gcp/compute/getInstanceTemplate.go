@@ -30,7 +30,7 @@ func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArg
 // A collection of arguments for invoking getInstanceTemplate.
 type LookupInstanceTemplateArgs struct {
 	// A filter to retrieve the instance templates.
-	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+	// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
 	// If multiple instance templates match, either adjust the filter or specify `mostRecent`.
 	// One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Filter *string `pulumi:"filter"`
@@ -78,7 +78,7 @@ type LookupInstanceTemplateResult struct {
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint string `pulumi:"metadataFingerprint"`
 	// An alternative to using the
@@ -152,7 +152,7 @@ func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTempla
 // A collection of arguments for invoking getInstanceTemplate.
 type LookupInstanceTemplateOutputArgs struct {
 	// A filter to retrieve the instance templates.
-	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+	// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
 	// If multiple instance templates match, either adjust the filter or specify `mostRecent`.
 	// One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
@@ -260,8 +260,8 @@ func (o LookupInstanceTemplateResultOutput) MachineType() pulumi.StringOutput {
 
 // Metadata key/value pairs to make available from
 // within instances created from this template.
-func (o LookupInstanceTemplateResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupInstanceTemplateResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The unique fingerprint of the metadata.

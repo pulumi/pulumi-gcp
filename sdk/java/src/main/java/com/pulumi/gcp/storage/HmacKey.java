@@ -213,7 +213,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HmacKey(String name) {
+    public HmacKey(java.lang.String name) {
         this(name, HmacKeyArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HmacKey(String name, HmacKeyArgs args) {
+    public HmacKey(java.lang.String name, HmacKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,15 +230,22 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HmacKey(String name, HmacKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/hmacKey:HmacKey", name, args == null ? HmacKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HmacKey(java.lang.String name, HmacKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/hmacKey:HmacKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HmacKey(String name, Output<String> id, @Nullable HmacKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/hmacKey:HmacKey", name, state, makeResourceOptions(options, id));
+    private HmacKey(java.lang.String name, Output<java.lang.String> id, @Nullable HmacKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/hmacKey:HmacKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HmacKeyArgs makeArgs(HmacKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HmacKeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -257,7 +264,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HmacKey get(String name, Output<String> id, @Nullable HmacKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HmacKey get(java.lang.String name, Output<java.lang.String> id, @Nullable HmacKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HmacKey(name, id, state, options);
     }
 }

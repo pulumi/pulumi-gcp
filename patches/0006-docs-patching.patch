@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Venelin <venelin@pulumi.com>
-Date: Fri, 1 Mar 2024 17:59:26 +0000
+Date: Fri, 2 Aug 2024 15:32:30 +0300
 Subject: [PATCH] docs patching
 
 
@@ -95,7 +95,7 @@ index 02f68ce79..07ddfeefe 100644
  ```hcl
  data "google_iam_policy" "admin" {
 diff --git a/website/docs/r/apigee_instance.html.markdown b/website/docs/r/apigee_instance.html.markdown
-index e804a3c9b..a77e07ac1 100644
+index eea4d065c..a75990e47 100644
 --- a/website/docs/r/apigee_instance.html.markdown
 +++ b/website/docs/r/apigee_instance.html.markdown
 @@ -195,7 +195,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
@@ -117,7 +117,7 @@ index e804a3c9b..a77e07ac1 100644
    org_id                   = google_apigee_organization.apigee_org.id
    disk_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/apigee_organization.html.markdown b/website/docs/r/apigee_organization.html.markdown
-index 0a1fcf9ad..27f4108e5 100644
+index cb61548ea..34131f252 100644
 --- a/website/docs/r/apigee_organization.html.markdown
 +++ b/website/docs/r/apigee_organization.html.markdown
 @@ -126,7 +126,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
@@ -174,21 +174,8 @@ index e3f4654b4..5ebc3ee84 100644
    empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
    an empty value.
  
-diff --git a/website/docs/r/bigquery_reservation_assignment.html.markdown b/website/docs/r/bigquery_reservation_assignment.html.markdown
-index ff370dce5..423d163bb 100644
---- a/website/docs/r/bigquery_reservation_assignment.html.markdown
-+++ b/website/docs/r/bigquery_reservation_assignment.html.markdown
-@@ -25,7 +25,7 @@ The BigqueryReservation Assignment resource
- ## Example Usage - basic
- ```hcl
- resource "google_bigquery_reservation" "basic" {
--  name  = "tf-test-my-reservation%{random_suffix}"
-+  name  = "tf-test-my-reservation"
-   project = "my-project-name"
-   location = "us-central1"
-   slot_capacity = 0
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index 48109ed6a..e3bd7d19c 100644
+index e999cc72f..69103ae22 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -11,7 +11,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -213,7 +200,7 @@ index 48109ed6a..e3bd7d19c 100644
  
  * `table_constraints` - (Optional) Defines the primary key and foreign keys. 
      Structure is [documented below](#nested_table_constraints).
-@@ -278,8 +276,8 @@ The following arguments are supported:
+@@ -281,8 +279,8 @@ The following arguments are supported:
      CSV file. If your data does not contain quoted sections, set the
      property value to an empty string. If your data contains quoted newline
      characters, you must also set the `allow_quoted_newlines` property to true.
@@ -308,7 +295,7 @@ index 17a16b9f2..34943f39b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/bigtable_table.html.markdown b/website/docs/r/bigtable_table.html.markdown
-index b7253bb12..2d53f143b 100644
+index 5d6c24289..2f0aaa5b0 100644
 --- a/website/docs/r/bigtable_table.html.markdown
 +++ b/website/docs/r/bigtable_table.html.markdown
 @@ -10,12 +10,6 @@ Creates a Google Cloud Bigtable table inside an instance. For more information s
@@ -324,7 +311,7 @@ index b7253bb12..2d53f143b 100644
  ## Example Usage
  
  ```hcl
-@@ -64,7 +58,7 @@ The following arguments are supported:
+@@ -69,7 +63,7 @@ The following arguments are supported:
  * `instance_name` - (Required) The name of the Bigtable instance.
  
  * `split_keys` - (Optional) A list of predefined keys to split the table on.
@@ -403,12 +390,12 @@ index 81b3bf64f..21f87225b 100644
  * `pem_private_key` -
    (Optional)
 diff --git a/website/docs/r/cloud_run_domain_mapping.html.markdown b/website/docs/r/cloud_run_domain_mapping.html.markdown
-index 285a707b8..d2632266f 100644
+index a68f58813..650247567 100644
 --- a/website/docs/r/cloud_run_domain_mapping.html.markdown
 +++ b/website/docs/r/cloud_run_domain_mapping.html.markdown
 @@ -161,7 +161,7 @@ The following arguments are supported:
-   may be set by external tools to store and retrieve arbitrary metadata. More
-   info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+   may be set by external tools to store and retrieve arbitrary metadata.
+   More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 -  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
 +  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
@@ -416,7 +403,7 @@ index 285a707b8..d2632266f 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 64411b7c3..5fa1ea293 100644
+index 24fc2761d..5e9d1f68d 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -494,15 +481,15 @@ index 64411b7c3..5fa1ea293 100644
      }
    }
 @@ -343,7 +398,7 @@ The following arguments are supported:
-   may be set by external tools to store and retrieve arbitrary metadata. More
-   info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+   may be set by external tools to store and retrieve arbitrary metadata.
+   More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 -  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
 +  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
    or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Revision template:
-@@ -496,7 +551,8 @@ The following arguments are supported:
+@@ -493,7 +548,8 @@ The following arguments are supported:
  
  * `liveness_probe` -
    (Optional)
@@ -512,9 +499,9 @@ index 64411b7c3..5fa1ea293 100644
    Structure is [documented below](#nested_liveness_probe).
  
  
-@@ -1001,7 +1057,7 @@ this field is set to false, the revision name will still autogenerate.)
-   may be set by external tools to store and retrieve arbitrary metadata. More
-   info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+@@ -998,7 +1054,7 @@ this field is set to false, the revision name will still autogenerate.)
+   may be set by external tools to store and retrieve arbitrary metadata.
+   More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 -  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
 +  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
@@ -535,27 +522,45 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 330f9e76b..031459626 100644
+index bc7b99b97..2e32cd9b9 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
-@@ -27,18 +27,18 @@ To get more information about Environments, see:
- We **STRONGLY** recommend you read the [GCP
- guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
- deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
--cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Terraform
+@@ -31,24 +31,21 @@ To get more information about Environments, see:
+   of Airflow, bugfixes, and security updates. We recommend using
+   Cloud Composer 2 or Cloud Composer 3 instead.
+ 
+-Several special considerations apply to managing Cloud Composer environments 
+-with Terraform:
+-
+-* The Environment resource is based on several layers of GCP infrastructure. 
+-    Terraform does not manage these underlying resources. For example, in Cloud 
+-    Composer 2, this includes a Kubernetes Engine cluster, Cloud Storage, and 
+-    Compute networking resources.
+-* Creating or updating an environment usually takes around 25 minutes.
+-* In some cases errors in the configuration will be detected and reported only 
+-    during the process of the environment creation. If you encounter such 
+-    errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs for the Terraform provider.
+-* **Environments have Google Cloud Storage buckets that are not automatically 
+-    deleted** with the environment.
+-    See [Delete environments](https://cloud.google.com/composer/docs/composer-2/delete-environments)
+-    for more information.
+-* Please refer to
+-    [Troubleshooting pages](https://cloud.devsite.corp.google.com/composer/docs/composer-2/troubleshooting-environment-creation) if you encounter
+-    problems.
++We **STRONGLY** recommend you read the [GCP
++guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
++deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
 +cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
- will not be able to find or manage many of these underlying resources automatically. In particular:
- * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
-   detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
-   process), and is prone to limited error reporting. If you encounter confusing or uninformative
-   errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
--  against the Terraform provider.
++will not be able to find or manage many of these underlying resources automatically. In particular:
++* Creating or updating an environment resource can take up to one hour. In addition, GCP may only
++  detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
++  process), and is prone to limited error reporting. If you encounter confusing or uninformative
++  errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
 +  against the provider.
- * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
-   Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
- * Please review the [known
-   issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
--  problems.
++* **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
++  Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
++* Please review the [known
++  issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
 +  problems.***
  
  ## Example Usage
@@ -600,18 +605,14 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index d0c3e1249..30b3f0c3c 100644
+index 17585c4af..f4a2db580 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
-@@ -34,9 +34,8 @@ To get more information about BackendService, see:
- * How-to Guides
-     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+@@ -36,7 +36,6 @@ To get more information about BackendService, see:
  
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
+ ~> **Warning:** All arguments including the following potentially sensitive
+ values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-+state as plain-text.
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=backend_service_basic&open_in_editor=main.tf" target="_blank">
@@ -632,7 +633,7 @@ index a6bbbfa4b..92a6811de 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index d845a3cf1..6000ed89a 100644
+index 0d44ace83..2e715bdbd 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -43,9 +43,6 @@ To get more information about Disk, see:
@@ -696,7 +697,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 9f7553b52..b3ae4ddc6 100644
+index 555af1b50..565cc9842 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -87,7 +87,7 @@ The following arguments are supported:
@@ -825,7 +826,7 @@ index 5d846e846..8dda2ecb4 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index 7f59c534c..cf9f9c52d 100644
+index 49cb8ccb6..992998e68 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
 @@ -165,7 +165,7 @@ The following arguments are supported:
@@ -853,7 +854,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index e1030a25b..807ac4bb7 100644
+index 3a04965be..31dab61ff 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1158,7 +1159,7 @@ index db7f57628..dceb98ac2 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index 4a4e7be0e..3891cdef3 100644
+index e0074ea64..2448154fd 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
 @@ -166,7 +166,7 @@ The following arguments are supported:
@@ -1171,7 +1172,7 @@ index 4a4e7be0e..3891cdef3 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 6e1b39348..56623b409 100644
+index c5a5ddd00..57b634921 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -23,11 +23,6 @@ description: |-
@@ -1200,7 +1201,7 @@ index 5f6a81f91..712ade9ee 100644
  
    version {
 diff --git a/website/docs/r/compute_region_ssl_certificate.html.markdown b/website/docs/r/compute_region_ssl_certificate.html.markdown
-index 544d9eb18..b94301b67 100644
+index 652105688..f27e211f1 100644
 --- a/website/docs/r/compute_region_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_region_ssl_certificate.html.markdown
 @@ -30,9 +30,8 @@ To get more information about RegionSslCertificate, see:
@@ -1490,7 +1491,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 76bb154d9..f605d8c1b 100644
+index 194dcc798..199221c16 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -10,7 +10,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1519,7 +1520,7 @@ index d93e83d18..579bc9575 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=snapshot_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/compute_ssl_certificate.html.markdown b/website/docs/r/compute_ssl_certificate.html.markdown
-index fd6a946cb..6db265743 100644
+index db3205a65..88f367aec 100644
 --- a/website/docs/r/compute_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_ssl_certificate.html.markdown
 @@ -30,9 +30,8 @@ To get more information about SslCertificate, see:
@@ -1550,7 +1551,7 @@ index fd6a946cb..6db265743 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 3bf487bd0..42a547efd 100644
+index a45ba97b9..86dc8cfcd 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -298,11 +298,6 @@ The following arguments are supported:
@@ -1610,7 +1611,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 70dfa529b..384824f8d 100644
+index 73120a1c1..93f2c3d03 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1701,7 +1702,7 @@ index 70dfa529b..384824f8d 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -856,8 +874,6 @@ gvnic {
+@@ -874,8 +892,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1710,7 +1711,7 @@ index 70dfa529b..384824f8d 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -878,7 +894,7 @@ gvnic {
+@@ -896,7 +912,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1719,7 +1720,7 @@ index 70dfa529b..384824f8d 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -903,10 +919,7 @@ gvnic {
+@@ -921,10 +937,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1731,7 +1732,7 @@ index 70dfa529b..384824f8d 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -918,13 +931,14 @@ gvnic {
+@@ -936,13 +949,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1753,7 +1754,7 @@ index 70dfa529b..384824f8d 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -977,6 +991,20 @@ sole_tenant_config {
+@@ -995,6 +1009,20 @@ sole_tenant_config {
  
  * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
@@ -1774,7 +1775,7 @@ index 70dfa529b..384824f8d 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1137,7 +1165,7 @@ for more details. This field only applies to private clusters, when
+@@ -1155,7 +1183,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1783,7 +1784,7 @@ index 70dfa529b..384824f8d 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1238,9 +1266,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1256,9 +1284,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1797,7 +1798,7 @@ index 70dfa529b..384824f8d 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index 0eef08600..efb12c98b 100644
+index eaedb6f0f..2a0477581 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -6,14 +6,11 @@ description: |-
@@ -2162,7 +2163,7 @@ index c4477a93e..8ca08942a 100644
  * `enable_inbound_forwarding` -
    (Optional)
 diff --git a/website/docs/r/firebase_project.html.markdown b/website/docs/r/firebase_project.html.markdown
-index 05bad6930..ccab67a22 100644
+index 0c434dc17..15c09fe7c 100644
 --- a/website/docs/r/firebase_project.html.markdown
 +++ b/website/docs/r/firebase_project.html.markdown
 @@ -24,9 +24,6 @@ Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses u
@@ -2706,7 +2707,7 @@ index 1e419d9e4..16c9465d2 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project.html.markdown b/website/docs/r/google_project.html.markdown
-index 58ab9b193..875a3ec3c 100644
+index fff53a4a8..f9dc5f497 100644
 --- a/website/docs/r/google_project.html.markdown
 +++ b/website/docs/r/google_project.html.markdown
 @@ -11,15 +11,13 @@ Allows creation and management of a Google Cloud Platform project.
@@ -2737,11 +2738,11 @@ index 58ab9b193..875a3ec3c 100644
      See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
      for more details.
  
--* `skip_delete` - (Optional) If true, the Terraform resource can be deleted
-+* `skip_delete` - (Optional) If true, the resource can be deleted
-     without deleting the Project via the Google API.
- 
- * `labels` - (Optional) A set of key/value label pairs to assign to the project.
+-* `skip_delete` - (Optional) If true, the Terraform resource can be deleted without
++* `skip_delete` - (Optional) If true, the resource can be deleted without
+     deleting the Project via the Google API. `skip_delete` is deprecated and will be
+     removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+     can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
 diff --git a/website/docs/r/google_project_iam.html.markdown b/website/docs/r/google_project_iam.html.markdown
 index 46cae09f8..69b15c96e 100644
 --- a/website/docs/r/google_project_iam.html.markdown
@@ -2780,7 +2781,7 @@ index 9c18717b0..503377fca 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project_service.html.markdown b/website/docs/r/google_project_service.html.markdown
-index 35c9a5560..3dd6dd950 100644
+index 657f874cf..35faca7ff 100644
 --- a/website/docs/r/google_project_service.html.markdown
 +++ b/website/docs/r/google_project_service.html.markdown
 @@ -55,8 +55,8 @@ that manage the `google_project` resource itself.
@@ -2792,8 +2793,8 @@ index 35c9a5560..3dd6dd950 100644
 +destroyed. If `false` or unset, an error will be generated if any enabled
 +services depend on this service when destroying it.
  
- ## Attributes Reference
- 
+ * `check_if_service_has_usage_on_destroy` - (Optional)
+ [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)
 diff --git a/website/docs/r/google_service_account.html.markdown b/website/docs/r/google_service_account.html.markdown
 index c261555e7..58ee607b3 100644
 --- a/website/docs/r/google_service_account.html.markdown
@@ -2976,7 +2977,7 @@ index 09a958846..4c024397b 100644
  
  * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
 diff --git a/website/docs/r/iap_client.html.markdown b/website/docs/r/iap_client.html.markdown
-index 348332b2d..35a8e1a9d 100644
+index f2fa91014..f77c4f7bf 100644
 --- a/website/docs/r/iap_client.html.markdown
 +++ b/website/docs/r/iap_client.html.markdown
 @@ -32,9 +32,8 @@ To get more information about Client, see:
@@ -3081,7 +3082,7 @@ index 3eff57c07..662d642d1 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index a1ee8d077..a3d2e5e41 100644
+index 16d3b0dbf..bf5024ce0 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -23,9 +23,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -3138,7 +3139,7 @@ index 66490e21d..e4c2f7b24 100644
  ## Example Usage - Kms Secret Ciphertext Basic
  
 diff --git a/website/docs/r/logging_billing_account_bucket_config.html.markdown b/website/docs/r/logging_billing_account_bucket_config.html.markdown
-index 7f3e127e6..2ed426047 100644
+index 2f481874d..106aa2e36 100644
 --- a/website/docs/r/logging_billing_account_bucket_config.html.markdown
 +++ b/website/docs/r/logging_billing_account_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a billing account level logging bucket config. For more information see
@@ -3164,7 +3165,7 @@ index 97f1b3717..0cad9a7a7 100644
  
  ## Example Usage
 diff --git a/website/docs/r/logging_folder_bucket_config.html.markdown b/website/docs/r/logging_folder_bucket_config.html.markdown
-index e6dd1094a..313ca2cac 100644
+index e73a8ebd9..666d3000e 100644
 --- a/website/docs/r/logging_folder_bucket_config.html.markdown
 +++ b/website/docs/r/logging_folder_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a folder-level logging bucket config. For more information see
@@ -3190,7 +3191,7 @@ index 7a7f6411e..c8f1c7331 100644
  ## Example Usage
  
 diff --git a/website/docs/r/logging_organization_bucket_config.html.markdown b/website/docs/r/logging_organization_bucket_config.html.markdown
-index 6dcefaa42..d048a0186 100644
+index 9255da93e..fd98ec7ee 100644
 --- a/website/docs/r/logging_organization_bucket_config.html.markdown
 +++ b/website/docs/r/logging_organization_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a organization-level logging bucket config. For more information see
@@ -3216,7 +3217,7 @@ index 5e2936468..4ba77d567 100644
  ## Example Usage
  
 diff --git a/website/docs/r/logging_project_bucket_config.html.markdown b/website/docs/r/logging_project_bucket_config.html.markdown
-index a829b5c06..a3797de9d 100644
+index 2e57e1993..b4ee7bfaa 100644
 --- a/website/docs/r/logging_project_bucket_config.html.markdown
 +++ b/website/docs/r/logging_project_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a project-level logging bucket config. For more information see
@@ -3255,7 +3256,7 @@ index a883fa8c6..adadb44c6 100644
  ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
  
 diff --git a/website/docs/r/monitoring_notification_channel.html.markdown b/website/docs/r/monitoring_notification_channel.html.markdown
-index 1c81b91c9..46dc23462 100644
+index 9a3a1f78f..6f8ccd37e 100644
 --- a/website/docs/r/monitoring_notification_channel.html.markdown
 +++ b/website/docs/r/monitoring_notification_channel.html.markdown
 @@ -30,7 +30,7 @@ and labels to configure that channel. Each `type` has specific labels that need
@@ -3268,8 +3269,8 @@ index 1c81b91c9..46dc23462 100644
  
  A list of supported channels per project the `list` endpoint can be
 @@ -45,9 +45,8 @@ To get more information about NotificationChannel, see:
-     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
      * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  
 -~> **Warning:** All arguments including the following potentially sensitive
 -values will be stored in the raw state as plain text: `sensitive_labels.auth_token`, `sensitive_labels.password`, `sensitive_labels.service_key`.
@@ -3289,7 +3290,7 @@ index 1c81b91c9..46dc23462 100644
    the sensitive_labels block, but cannot be configured in both places.
  
 diff --git a/website/docs/r/monitoring_slo.html.markdown b/website/docs/r/monitoring_slo.html.markdown
-index 7967f8278..5ad114b4f 100644
+index b01ea138a..adde89f07 100644
 --- a/website/docs/r/monitoring_slo.html.markdown
 +++ b/website/docs/r/monitoring_slo.html.markdown
 @@ -53,7 +53,7 @@ resource "google_monitoring_slo" "appeng_slo" {
@@ -3389,7 +3390,7 @@ index 3879c6fd2..cf89daff6 100644
  
  * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
 diff --git a/website/docs/r/project_service_identity.html.markdown b/website/docs/r/project_service_identity.html.markdown
-index 327090b41..0b766cc2d 100644
+index fe9f8b04a..f1ca040b9 100644
 --- a/website/docs/r/project_service_identity.html.markdown
 +++ b/website/docs/r/project_service_identity.html.markdown
 @@ -6,9 +6,6 @@ description: |-
@@ -3598,7 +3599,7 @@ index 2ac02739f..da87bdaae 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 3fbc06d8f..4a03140f7 100644
+index da7cc31cf..56e5111f0 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3660,7 +3661,7 @@ index 3fbc06d8f..4a03140f7 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -500,7 +496,7 @@ The optional `clone` block supports:
+@@ -502,7 +498,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3669,7 +3670,7 @@ index 3fbc06d8f..4a03140f7 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -538,21 +534,13 @@ instance.
+@@ -540,21 +536,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3789,7 +3790,7 @@ index 762e52b5f..e0fd45e24 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/storage_bucket_object.html.markdown b/website/docs/r/storage_bucket_object.html.markdown
-index 92eec523d..2ecef695c 100644
+index c58c1c856..4278b76f6 100644
 --- a/website/docs/r/storage_bucket_object.html.markdown
 +++ b/website/docs/r/storage_bucket_object.html.markdown
 @@ -48,7 +48,7 @@ The following arguments are supported:

@@ -449,6 +449,8 @@ class Entitlement(pulumi.CustomResource):
                  requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
                  __props__=None):
         """
+        An Entitlement defines the eligibility of a set of users to obtain a predefined access for some time possibly after going through an approval workflow.
+
         ## Example Usage
 
         ### Privileged Access Manager Entitlement Basic
@@ -469,25 +471,25 @@ class Entitlement(pulumi.CustomResource):
                 "principals": ["group:test@google.com"],
             }],
             privileged_access={
-                "gcpIamAccess": {
-                    "roleBindings": [{
+                "gcp_iam_access": {
+                    "role_bindings": [{
                         "role": "roles/storage.admin",
-                        "conditionExpression": "request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
+                        "condition_expression": "request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
                     }],
                     "resource": "//cloudresourcemanager.googleapis.com/projects/my-project-name",
-                    "resourceType": "cloudresourcemanager.googleapis.com/Project",
+                    "resource_type": "cloudresourcemanager.googleapis.com/Project",
                 },
             },
             additional_notification_targets={
-                "adminEmailRecipients": ["user@example.com"],
-                "requesterEmailRecipients": ["user@example.com"],
+                "admin_email_recipients": ["user@example.com"],
+                "requester_email_recipients": ["user@example.com"],
             },
             approval_workflow={
-                "manualApprovals": {
-                    "requireApproverJustification": True,
+                "manual_approvals": {
+                    "require_approver_justification": True,
                     "steps": [{
-                        "approvalsNeeded": 1,
-                        "approverEmailRecipients": ["user@example.com"],
+                        "approvals_needed": 1,
+                        "approver_email_recipients": ["user@example.com"],
                         "approvers": {
                             "principals": ["group:test@google.com"],
                         },
@@ -535,6 +537,8 @@ class Entitlement(pulumi.CustomResource):
                  args: EntitlementArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An Entitlement defines the eligibility of a set of users to obtain a predefined access for some time possibly after going through an approval workflow.
+
         ## Example Usage
 
         ### Privileged Access Manager Entitlement Basic
@@ -555,25 +559,25 @@ class Entitlement(pulumi.CustomResource):
                 "principals": ["group:test@google.com"],
             }],
             privileged_access={
-                "gcpIamAccess": {
-                    "roleBindings": [{
+                "gcp_iam_access": {
+                    "role_bindings": [{
                         "role": "roles/storage.admin",
-                        "conditionExpression": "request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
+                        "condition_expression": "request.time < timestamp(\\"2024-04-23T18:30:00.000Z\\")",
                     }],
                     "resource": "//cloudresourcemanager.googleapis.com/projects/my-project-name",
-                    "resourceType": "cloudresourcemanager.googleapis.com/Project",
+                    "resource_type": "cloudresourcemanager.googleapis.com/Project",
                 },
             },
             additional_notification_targets={
-                "adminEmailRecipients": ["user@example.com"],
-                "requesterEmailRecipients": ["user@example.com"],
+                "admin_email_recipients": ["user@example.com"],
+                "requester_email_recipients": ["user@example.com"],
             },
             approval_workflow={
-                "manualApprovals": {
-                    "requireApproverJustification": True,
+                "manual_approvals": {
+                    "require_approver_justification": True,
                     "steps": [{
-                        "approvalsNeeded": 1,
-                        "approverEmailRecipients": ["user@example.com"],
+                        "approvals_needed": 1,
+                        "approver_email_recipients": ["user@example.com"],
                         "approvers": {
                             "principals": ["group:test@google.com"],
                         },

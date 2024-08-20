@@ -72,12 +72,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var cluster_basic = new BareMetalCluster("cluster-basic", BareMetalClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
@@ -143,14 +143,14 @@ import javax.annotation.Nullable;
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username("admin{@literal @}hashicorptest.com")
+ *                         .username("admin}{@literal @}{@code hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -190,12 +190,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var cluster_manuallb = new BareMetalCluster("cluster-manuallb", BareMetalClusterArgs.builder()
  *             .name("cluster-manuallb")
  *             .location("us-west1")
@@ -247,7 +247,7 @@ import javax.annotation.Nullable;
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username("admin{@literal @}hashicorptest.com")
+ *                         .username("admin}{@literal @}{@code hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -259,8 +259,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -309,12 +309,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var cluster_bgplb = new BareMetalCluster("cluster-bgplb", BareMetalClusterArgs.builder()
  *             .name("cluster-bgplb")
  *             .location("us-west1")
@@ -420,7 +420,7 @@ import javax.annotation.Nullable;
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username("admin{@literal @}hashicorptest.com")
+ *                         .username("admin}{@literal @}{@code hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -439,15 +439,15 @@ import javax.annotation.Nullable;
  *                 .containerRuntime("CONTAINERD")
  *                 .build())
  *             .nodeAccessConfig(BareMetalClusterNodeAccessConfigArgs.builder()
- *                 .loginUser("test{@literal @}example.com")
+ *                 .loginUser("test}{@literal @}{@code example.com")
  *                 .build())
  *             .osEnvironmentConfig(BareMetalClusterOsEnvironmentConfigArgs.builder()
  *                 .packageRepoExcluded(true)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -998,7 +998,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BareMetalCluster(String name) {
+    public BareMetalCluster(java.lang.String name) {
         this(name, BareMetalClusterArgs.Empty);
     }
     /**
@@ -1006,7 +1006,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BareMetalCluster(String name, BareMetalClusterArgs args) {
+    public BareMetalCluster(java.lang.String name, BareMetalClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -1015,15 +1015,22 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BareMetalCluster(String name, BareMetalClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, args == null ? BareMetalClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BareMetalCluster(java.lang.String name, BareMetalClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BareMetalCluster(String name, Output<String> id, @Nullable BareMetalClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, state, makeResourceOptions(options, id));
+    private BareMetalCluster(java.lang.String name, Output<java.lang.String> id, @Nullable BareMetalClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BareMetalClusterArgs makeArgs(BareMetalClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BareMetalClusterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1039,7 +1046,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BareMetalCluster get(String name, Output<String> id, @Nullable BareMetalClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BareMetalCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable BareMetalClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BareMetalCluster(name, id, state, options);
     }
 }

@@ -445,9 +445,9 @@ class CertificateTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
         * How-to Guides
+            * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
             * [Official Documentation](https://cloud.google.com/certificate-authority-service)
             * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
-            * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
 
         ## Example Usage
 
@@ -462,9 +462,9 @@ class CertificateTemplate(pulumi.CustomResource):
             location="us-central1",
             description="A sample certificate template",
             identity_constraints={
-                "allowSubjectAltNamesPassthrough": True,
-                "allowSubjectPassthrough": True,
-                "celExpression": {
+                "allow_subject_alt_names_passthrough": True,
+                "allow_subject_passthrough": True,
+                "cel_expression": {
                     "description": "Always true",
                     "expression": "true",
                     "location": "any.file.anywhere",
@@ -473,18 +473,18 @@ class CertificateTemplate(pulumi.CustomResource):
             },
             maximum_lifetime="86400s",
             passthrough_extensions={
-                "additionalExtensions": [{
-                    "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],
                 }],
-                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+                "known_extensions": ["EXTENDED_KEY_USAGE"],
             },
             predefined_values={
-                "additionalExtensions": [{
-                    "objectId": {
-                        "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id": {
+                        "object_id_paths": [
                             1,
                             6,
                         ],
@@ -492,40 +492,40 @@ class CertificateTemplate(pulumi.CustomResource):
                     "value": "c3RyaW5nCg==",
                     "critical": True,
                 }],
-                "aiaOcspServers": ["string"],
-                "caOptions": {
-                    "isCa": False,
-                    "maxIssuerPathLength": 6,
+                "aia_ocsp_servers": ["string"],
+                "ca_options": {
+                    "is_ca": False,
+                    "max_issuer_path_length": 6,
                 },
-                "keyUsage": {
-                    "baseKeyUsage": {
-                        "certSign": False,
-                        "contentCommitment": True,
-                        "crlSign": False,
-                        "dataEncipherment": True,
-                        "decipherOnly": True,
-                        "digitalSignature": True,
-                        "encipherOnly": True,
-                        "keyAgreement": True,
-                        "keyEncipherment": True,
+                "key_usage": {
+                    "base_key_usage": {
+                        "cert_sign": False,
+                        "content_commitment": True,
+                        "crl_sign": False,
+                        "data_encipherment": True,
+                        "decipher_only": True,
+                        "digital_signature": True,
+                        "encipher_only": True,
+                        "key_agreement": True,
+                        "key_encipherment": True,
                     },
-                    "extendedKeyUsage": {
-                        "clientAuth": True,
-                        "codeSigning": True,
-                        "emailProtection": True,
-                        "ocspSigning": True,
-                        "serverAuth": True,
-                        "timeStamping": True,
+                    "extended_key_usage": {
+                        "client_auth": True,
+                        "code_signing": True,
+                        "email_protection": True,
+                        "ocsp_signing": True,
+                        "server_auth": True,
+                        "time_stamping": True,
                     },
-                    "unknownExtendedKeyUsages": [{
-                        "objectIdPaths": [
+                    "unknown_extended_key_usages": [{
+                        "object_id_paths": [
                             1,
                             6,
                         ],
                     }],
                 },
-                "policyIds": [{
-                    "objectIdPaths": [
+                "policy_ids": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],
@@ -594,9 +594,9 @@ class CertificateTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
         * How-to Guides
+            * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
             * [Official Documentation](https://cloud.google.com/certificate-authority-service)
             * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
-            * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
 
         ## Example Usage
 
@@ -611,9 +611,9 @@ class CertificateTemplate(pulumi.CustomResource):
             location="us-central1",
             description="A sample certificate template",
             identity_constraints={
-                "allowSubjectAltNamesPassthrough": True,
-                "allowSubjectPassthrough": True,
-                "celExpression": {
+                "allow_subject_alt_names_passthrough": True,
+                "allow_subject_passthrough": True,
+                "cel_expression": {
                     "description": "Always true",
                     "expression": "true",
                     "location": "any.file.anywhere",
@@ -622,18 +622,18 @@ class CertificateTemplate(pulumi.CustomResource):
             },
             maximum_lifetime="86400s",
             passthrough_extensions={
-                "additionalExtensions": [{
-                    "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],
                 }],
-                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+                "known_extensions": ["EXTENDED_KEY_USAGE"],
             },
             predefined_values={
-                "additionalExtensions": [{
-                    "objectId": {
-                        "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id": {
+                        "object_id_paths": [
                             1,
                             6,
                         ],
@@ -641,40 +641,40 @@ class CertificateTemplate(pulumi.CustomResource):
                     "value": "c3RyaW5nCg==",
                     "critical": True,
                 }],
-                "aiaOcspServers": ["string"],
-                "caOptions": {
-                    "isCa": False,
-                    "maxIssuerPathLength": 6,
+                "aia_ocsp_servers": ["string"],
+                "ca_options": {
+                    "is_ca": False,
+                    "max_issuer_path_length": 6,
                 },
-                "keyUsage": {
-                    "baseKeyUsage": {
-                        "certSign": False,
-                        "contentCommitment": True,
-                        "crlSign": False,
-                        "dataEncipherment": True,
-                        "decipherOnly": True,
-                        "digitalSignature": True,
-                        "encipherOnly": True,
-                        "keyAgreement": True,
-                        "keyEncipherment": True,
+                "key_usage": {
+                    "base_key_usage": {
+                        "cert_sign": False,
+                        "content_commitment": True,
+                        "crl_sign": False,
+                        "data_encipherment": True,
+                        "decipher_only": True,
+                        "digital_signature": True,
+                        "encipher_only": True,
+                        "key_agreement": True,
+                        "key_encipherment": True,
                     },
-                    "extendedKeyUsage": {
-                        "clientAuth": True,
-                        "codeSigning": True,
-                        "emailProtection": True,
-                        "ocspSigning": True,
-                        "serverAuth": True,
-                        "timeStamping": True,
+                    "extended_key_usage": {
+                        "client_auth": True,
+                        "code_signing": True,
+                        "email_protection": True,
+                        "ocsp_signing": True,
+                        "server_auth": True,
+                        "time_stamping": True,
                     },
-                    "unknownExtendedKeyUsages": [{
-                        "objectIdPaths": [
+                    "unknown_extended_key_usages": [{
+                        "object_id_paths": [
                             1,
                             6,
                         ],
                     }],
                 },
-                "policyIds": [{
-                    "objectIdPaths": [
+                "policy_ids": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionGithubConfigAuthorizerCredential {
     /**
-     * @return A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     private @Nullable String oauthTokenSecretVersion;
@@ -25,7 +25,7 @@ public final class ConnectionGithubConfigAuthorizerCredential {
 
     private ConnectionGithubConfigAuthorizerCredential() {}
     /**
-     * @return A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Optional<String> oauthTokenSecretVersion() {

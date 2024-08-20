@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly string? Project;
         public readonly string SelfLink;
+        public readonly ImmutableArray<string> SourceRegions;
         public readonly ImmutableArray<Outputs.GetHealthCheckSslHealthCheckResult> SslHealthChecks;
         public readonly ImmutableArray<Outputs.GetHealthCheckTcpHealthCheckResult> TcpHealthChecks;
         public readonly int TimeoutSec;
@@ -141,6 +142,8 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            ImmutableArray<string> sourceRegions,
+
             ImmutableArray<Outputs.GetHealthCheckSslHealthCheckResult> sslHealthChecks,
 
             ImmutableArray<Outputs.GetHealthCheckTcpHealthCheckResult> tcpHealthChecks,
@@ -164,6 +167,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             Project = project;
             SelfLink = selfLink;
+            SourceRegions = sourceRegions;
             SslHealthChecks = sslHealthChecks;
             TcpHealthChecks = tcpHealthChecks;
             TimeoutSec = timeoutSec;

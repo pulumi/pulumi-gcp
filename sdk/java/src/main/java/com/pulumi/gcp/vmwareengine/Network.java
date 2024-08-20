@@ -286,7 +286,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Network(String name) {
+    public Network(java.lang.String name) {
         this(name, NetworkArgs.Empty);
     }
     /**
@@ -294,7 +294,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Network(String name, NetworkArgs args) {
+    public Network(java.lang.String name, NetworkArgs args) {
         this(name, args, null);
     }
     /**
@@ -303,15 +303,22 @@ public class Network extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Network(String name, NetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vmwareengine/network:Network", name, args == null ? NetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Network(java.lang.String name, NetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vmwareengine/network:Network", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Network(String name, Output<String> id, @Nullable NetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vmwareengine/network:Network", name, state, makeResourceOptions(options, id));
+    private Network(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vmwareengine/network:Network", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NetworkArgs makeArgs(NetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -327,7 +334,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Network get(String name, Output<String> id, @Nullable NetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Network get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Network(name, id, state, options);
     }
 }

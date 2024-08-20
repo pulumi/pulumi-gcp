@@ -485,6 +485,32 @@ __all__ = [
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs',
+    'PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict',
     'PreventionDiscoveryConfigTargetSecretsTargetArgs',
     'PreventionDiscoveryConfigTargetSecretsTargetArgsDict',
     'PreventionInspectTemplateInspectConfigArgs',
@@ -15803,7 +15829,7 @@ if not MYPY:
         """
         The status code, which should be an enum value of google.rpc.Code.
         """
-        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
         """
         A list of messages that carry the error details.
         """
@@ -15818,11 +15844,11 @@ elif False:
 class PreventionDiscoveryConfigErrorDetailsArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details.
         :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         if code is not None:
@@ -15846,14 +15872,14 @@ class PreventionDiscoveryConfigErrorDetailsArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "details", value)
 
     @property
@@ -15988,6 +16014,11 @@ if not MYPY:
         Cloud SQL target for Discovery. The first target to match a table will be the one applied.
         Structure is documented below.
         """
+        cloud_storage_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict']]
+        """
+        Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
+        Structure is documented below.
+        """
         secrets_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetSecretsTargetArgsDict']]
         """
         Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
@@ -16000,11 +16031,14 @@ class PreventionDiscoveryConfigTargetArgs:
     def __init__(__self__, *,
                  big_query_target: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgs']] = None,
                  cloud_sql_target: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgs']] = None,
+                 cloud_storage_target: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetArgs']] = None,
                  secrets_target: Optional[pulumi.Input['PreventionDiscoveryConfigTargetSecretsTargetArgs']] = None):
         """
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgs'] big_query_target: BigQuery target for Discovery. The first target to match a table will be the one applied.
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgs'] cloud_sql_target: Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetArgs'] cloud_storage_target: Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigTargetSecretsTargetArgs'] secrets_target: Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
         """
@@ -16012,6 +16046,8 @@ class PreventionDiscoveryConfigTargetArgs:
             pulumi.set(__self__, "big_query_target", big_query_target)
         if cloud_sql_target is not None:
             pulumi.set(__self__, "cloud_sql_target", cloud_sql_target)
+        if cloud_storage_target is not None:
+            pulumi.set(__self__, "cloud_storage_target", cloud_storage_target)
         if secrets_target is not None:
             pulumi.set(__self__, "secrets_target", secrets_target)
 
@@ -16040,6 +16076,19 @@ class PreventionDiscoveryConfigTargetArgs:
     @cloud_sql_target.setter
     def cloud_sql_target(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgs']]):
         pulumi.set(self, "cloud_sql_target", value)
+
+    @property
+    @pulumi.getter(name="cloudStorageTarget")
+    def cloud_storage_target(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetArgs']]:
+        """
+        Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_target")
+
+    @cloud_storage_target.setter
+    def cloud_storage_target(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetArgs']]):
+        pulumi.set(self, "cloud_storage_target", value)
 
     @property
     @pulumi.getter(name="secretsTarget")
@@ -16333,7 +16382,7 @@ if not MYPY:
     class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict(TypedDict):
         created_after: NotRequired[pulumi.Input[str]]
         """
-        A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
         """
         or_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgsDict']]
         """
@@ -16361,7 +16410,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs:
                  type_collection: Optional[pulumi.Input[str]] = None,
                  types: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs']] = None):
         """
-        :param pulumi.Input[str] created_after: A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        :param pulumi.Input[str] created_after: File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgs'] or_conditions: At least one of the conditions must be true for a table to be scanned.
                Structure is documented below.
         :param pulumi.Input[str] type_collection: Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
@@ -16382,7 +16431,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs:
     @pulumi.getter(name="createdAfter")
     def created_after(self) -> Optional[pulumi.Input[str]]:
         """
-        A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
         """
         return pulumi.get(self, "created_after")
 
@@ -16708,7 +16757,7 @@ if not MYPY:
     class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict(TypedDict):
         patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgsDict']]]]
         """
-        A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+        The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
         Structure is documented below.
         """
 elif False:
@@ -16719,7 +16768,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArg
     def __init__(__self__, *,
                  patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]] patterns: A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]] patterns: The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
                Structure is documented below.
         """
         if patterns is not None:
@@ -16729,7 +16778,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArg
     @pulumi.getter
     def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]]]:
         """
-        A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+        The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
         Structure is documented below.
         """
         return pulumi.get(self, "patterns")
@@ -16985,7 +17034,7 @@ if not MYPY:
     class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict(TypedDict):
         collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict']]
         """
-        A specific set of database resources for this filter to apply to.
+        A specific set of buckets for this filter to apply to.
         Structure is documented below.
         """
         database_resource_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgsDict']]
@@ -16995,7 +17044,7 @@ if not MYPY:
         """
         others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict']]
         """
-        Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        Match discovery resources not covered by any other filter.
         """
 elif False:
     PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -17007,11 +17056,11 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs:
                  database_resource_reference: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs']] = None,
                  others: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs']] = None):
         """
-        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs'] collection: A specific set of database resources for this filter to apply to.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs'] collection: A specific set of buckets for this filter to apply to.
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs'] database_resource_reference: The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
                Structure is documented below.
-        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs'] others: Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs'] others: Match discovery resources not covered by any other filter.
         """
         if collection is not None:
             pulumi.set(__self__, "collection", collection)
@@ -17024,7 +17073,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs:
     @pulumi.getter
     def collection(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs']]:
         """
-        A specific set of database resources for this filter to apply to.
+        A specific set of buckets for this filter to apply to.
         Structure is documented below.
         """
         return pulumi.get(self, "collection")
@@ -17050,7 +17099,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs:
     @pulumi.getter
     def others(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs']]:
         """
-        Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        Match discovery resources not covered by any other filter.
         """
         return pulumi.get(self, "others")
 
@@ -17063,7 +17112,7 @@ if not MYPY:
     class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict(TypedDict):
         include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict']]
         """
-        A collection of regular expressions to match a database resource against.
+        A collection of regular expressions to match a file store against.
         Structure is documented below.
         """
 elif False:
@@ -17074,7 +17123,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs:
     def __init__(__self__, *,
                  include_regexes: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs']] = None):
         """
-        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs'] include_regexes: A collection of regular expressions to match a database resource against.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs'] include_regexes: A collection of regular expressions to match a file store against.
                Structure is documented below.
         """
         if include_regexes is not None:
@@ -17084,7 +17133,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs:
     @pulumi.getter(name="includeRegexes")
     def include_regexes(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs']]:
         """
-        A collection of regular expressions to match a database resource against.
+        A collection of regular expressions to match a file store against.
         Structure is documented below.
         """
         return pulumi.get(self, "include_regexes")
@@ -17098,7 +17147,7 @@ if not MYPY:
     class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
         patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
         """
-        A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+        The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
         Structure is documented below.
         """
 elif False:
@@ -17109,7 +17158,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
     def __init__(__self__, *,
                  patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]] patterns: A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]] patterns: The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
                Structure is documented below.
         """
         if patterns is not None:
@@ -17119,7 +17168,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
     @pulumi.getter
     def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]]]:
         """
-        A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.
+        The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
         Structure is documented below.
         """
         return pulumi.get(self, "patterns")
@@ -17325,7 +17374,7 @@ if not MYPY:
     class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict(TypedDict):
         refresh_frequency: NotRequired[pulumi.Input[str]]
         """
-        Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+        Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
         Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         """
         schema_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict']]
@@ -17342,7 +17391,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs:
                  refresh_frequency: Optional[pulumi.Input[str]] = None,
                  schema_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs']] = None):
         """
-        :param pulumi.Input[str] refresh_frequency: Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+        :param pulumi.Input[str] refresh_frequency: Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
                Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs'] schema_modified_cadence: Governs when to update data profiles when a schema is modified
                Structure is documented below.
@@ -17356,7 +17405,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs:
     @pulumi.getter(name="refreshFrequency")
     def refresh_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never.
+        Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
         Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         """
         return pulumi.get(self, "refresh_frequency")
@@ -17435,6 +17484,643 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifi
     @types.setter
     def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "types", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict(TypedDict):
+        filter: pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict']
+        """
+        The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+        Structure is documented below.
+        """
+        conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict']]
+        """
+        In addition to matching the filter, these conditions must be true before a profile is generated.
+        Structure is documented below.
+        """
+        disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict']]
+        """
+        Disable profiling for buckets that match this filter.
+        """
+        generation_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict']]
+        """
+        How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+        Structure is documented below.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs'],
+                 conditions: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs']] = None,
+                 disabled: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs']] = None,
+                 generation_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs'] filter: The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs'] conditions: In addition to matching the filter, these conditions must be true before a profile is generated.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs'] disabled: Disable profiling for buckets that match this filter.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs'] generation_cadence: How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "filter", filter)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if generation_cadence is not None:
+            pulumi.set(__self__, "generation_cadence", generation_cadence)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs']:
+        """
+        The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs']):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs']]:
+        """
+        In addition to matching the filter, these conditions must be true before a profile is generated.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs']]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs']]:
+        """
+        Disable profiling for buckets that match this filter.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs']]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="generationCadence")
+    def generation_cadence(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs']]:
+        """
+        How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_cadence")
+
+    @generation_cadence.setter
+    def generation_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs']]):
+        pulumi.set(self, "generation_cadence", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict(TypedDict):
+        cloud_storage_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict']]
+        """
+        Cloud Storage conditions.
+        Structure is documented below.
+        """
+        created_after: NotRequired[pulumi.Input[str]]
+        """
+        File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        """
+        min_age: NotRequired[pulumi.Input[str]]
+        """
+        Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs:
+    def __init__(__self__, *,
+                 cloud_storage_conditions: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs']] = None,
+                 created_after: Optional[pulumi.Input[str]] = None,
+                 min_age: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs'] cloud_storage_conditions: Cloud Storage conditions.
+               Structure is documented below.
+        :param pulumi.Input[str] created_after: File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        :param pulumi.Input[str] min_age: Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+        """
+        if cloud_storage_conditions is not None:
+            pulumi.set(__self__, "cloud_storage_conditions", cloud_storage_conditions)
+        if created_after is not None:
+            pulumi.set(__self__, "created_after", created_after)
+        if min_age is not None:
+            pulumi.set(__self__, "min_age", min_age)
+
+    @property
+    @pulumi.getter(name="cloudStorageConditions")
+    def cloud_storage_conditions(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs']]:
+        """
+        Cloud Storage conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_conditions")
+
+    @cloud_storage_conditions.setter
+    def cloud_storage_conditions(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs']]):
+        pulumi.set(self, "cloud_storage_conditions", value)
+
+    @property
+    @pulumi.getter(name="createdAfter")
+    def created_after(self) -> Optional[pulumi.Input[str]]:
+        """
+        File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        """
+        return pulumi.get(self, "created_after")
+
+    @created_after.setter
+    def created_after(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_after", value)
+
+    @property
+    @pulumi.getter(name="minAge")
+    def min_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+        """
+        return pulumi.get(self, "min_age")
+
+    @min_age.setter
+    def min_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_age", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict(TypedDict):
+        included_bucket_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
+        Each value may be one of: `ALL_SUPPORTED_BUCKETS`, `AUTOCLASS_DISABLED`, `AUTOCLASS_ENABLED`.
+        """
+        included_object_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
+        Each value may be one of: `ALL_SUPPORTED_OBJECTS`, `STANDARD`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `REGIONAL`, `MULTI_REGIONAL`, `DURABLE_REDUCED_AVAILABILITY`.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs:
+    def __init__(__self__, *,
+                 included_bucket_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_object_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_bucket_attributes: Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
+               Each value may be one of: `ALL_SUPPORTED_BUCKETS`, `AUTOCLASS_DISABLED`, `AUTOCLASS_ENABLED`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_object_attributes: Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
+               Each value may be one of: `ALL_SUPPORTED_OBJECTS`, `STANDARD`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `REGIONAL`, `MULTI_REGIONAL`, `DURABLE_REDUCED_AVAILABILITY`.
+        """
+        if included_bucket_attributes is not None:
+            pulumi.set(__self__, "included_bucket_attributes", included_bucket_attributes)
+        if included_object_attributes is not None:
+            pulumi.set(__self__, "included_object_attributes", included_object_attributes)
+
+    @property
+    @pulumi.getter(name="includedBucketAttributes")
+    def included_bucket_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
+        Each value may be one of: `ALL_SUPPORTED_BUCKETS`, `AUTOCLASS_DISABLED`, `AUTOCLASS_ENABLED`.
+        """
+        return pulumi.get(self, "included_bucket_attributes")
+
+    @included_bucket_attributes.setter
+    def included_bucket_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_bucket_attributes", value)
+
+    @property
+    @pulumi.getter(name="includedObjectAttributes")
+    def included_object_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
+        Each value may be one of: `ALL_SUPPORTED_OBJECTS`, `STANDARD`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `REGIONAL`, `MULTI_REGIONAL`, `DURABLE_REDUCED_AVAILABILITY`.
+        """
+        return pulumi.get(self, "included_object_attributes")
+
+    @included_object_attributes.setter
+    def included_object_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_object_attributes", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict(TypedDict):
+        pass
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict(TypedDict):
+        cloud_storage_resource_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict']]
+        """
+        The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
+        Structure is documented below.
+        """
+        collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict']]
+        """
+        A specific set of buckets for this filter to apply to.
+        Structure is documented below.
+        """
+        others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict']]
+        """
+        Match discovery resources not covered by any other filter.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs:
+    def __init__(__self__, *,
+                 cloud_storage_resource_reference: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs']] = None,
+                 collection: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs']] = None,
+                 others: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs'] cloud_storage_resource_reference: The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs'] collection: A specific set of buckets for this filter to apply to.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs'] others: Match discovery resources not covered by any other filter.
+        """
+        if cloud_storage_resource_reference is not None:
+            pulumi.set(__self__, "cloud_storage_resource_reference", cloud_storage_resource_reference)
+        if collection is not None:
+            pulumi.set(__self__, "collection", collection)
+        if others is not None:
+            pulumi.set(__self__, "others", others)
+
+    @property
+    @pulumi.getter(name="cloudStorageResourceReference")
+    def cloud_storage_resource_reference(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs']]:
+        """
+        The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_resource_reference")
+
+    @cloud_storage_resource_reference.setter
+    def cloud_storage_resource_reference(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs']]):
+        pulumi.set(self, "cloud_storage_resource_reference", value)
+
+    @property
+    @pulumi.getter
+    def collection(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs']]:
+        """
+        A specific set of buckets for this filter to apply to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "collection")
+
+    @collection.setter
+    def collection(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs']]):
+        pulumi.set(self, "collection", value)
+
+    @property
+    @pulumi.getter
+    def others(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs']]:
+        """
+        Match discovery resources not covered by any other filter.
+        """
+        return pulumi.get(self, "others")
+
+    @others.setter
+    def others(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs']]):
+        pulumi.set(self, "others", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The bucket to scan.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        If within a project-level config, then this must match the config's project id.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs:
+    def __init__(__self__, *,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket_name: The bucket to scan.
+        :param pulumi.Input[str] project_id: If within a project-level config, then this must match the config's project id.
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bucket to scan.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        If within a project-level config, then this must match the config's project id.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict(TypedDict):
+        include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict']]
+        """
+        A collection of regular expressions to match a file store against.
+        Structure is documented below.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs:
+    def __init__(__self__, *,
+                 include_regexes: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs'] include_regexes: A collection of regular expressions to match a file store against.
+               Structure is documented below.
+        """
+        if include_regexes is not None:
+            pulumi.set(__self__, "include_regexes", include_regexes)
+
+    @property
+    @pulumi.getter(name="includeRegexes")
+    def include_regexes(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs']]:
+        """
+        A collection of regular expressions to match a file store against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_regexes")
+
+    @include_regexes.setter
+    def include_regexes(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs']]):
+        pulumi.set(self, "include_regexes", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
+        patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
+        """
+        The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+        Structure is documented below.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs:
+    def __init__(__self__, *,
+                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs']]] patterns: The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+               Structure is documented below.
+        """
+        if patterns is not None:
+            pulumi.set(__self__, "patterns", patterns)
+
+    @property
+    @pulumi.getter
+    def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs']]]]:
+        """
+        The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "patterns")
+
+    @patterns.setter
+    def patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs']]]]):
+        pulumi.set(self, "patterns", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
+        cloud_storage_regex: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict']]
+        """
+        Regex for Cloud Storage.
+        Structure is documented below.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs:
+    def __init__(__self__, *,
+                 cloud_storage_regex: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs'] cloud_storage_regex: Regex for Cloud Storage.
+               Structure is documented below.
+        """
+        if cloud_storage_regex is not None:
+            pulumi.set(__self__, "cloud_storage_regex", cloud_storage_regex)
+
+    @property
+    @pulumi.getter(name="cloudStorageRegex")
+    def cloud_storage_regex(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs']]:
+        """
+        Regex for Cloud Storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_regex")
+
+    @cloud_storage_regex.setter
+    def cloud_storage_regex(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs']]):
+        pulumi.set(self, "cloud_storage_regex", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict(TypedDict):
+        bucket_name_regex: NotRequired[pulumi.Input[str]]
+        """
+        Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\\d{4}" will both match the bucket gs://marketing2021
+        """
+        project_id_regex: NotRequired[pulumi.Input[str]]
+        """
+        For organizations, if unset, will match all projects.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs:
+    def __init__(__self__, *,
+                 bucket_name_regex: Optional[pulumi.Input[str]] = None,
+                 project_id_regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket_name_regex: Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\\d{4}" will both match the bucket gs://marketing2021
+        :param pulumi.Input[str] project_id_regex: For organizations, if unset, will match all projects.
+        """
+        if bucket_name_regex is not None:
+            pulumi.set(__self__, "bucket_name_regex", bucket_name_regex)
+        if project_id_regex is not None:
+            pulumi.set(__self__, "project_id_regex", project_id_regex)
+
+    @property
+    @pulumi.getter(name="bucketNameRegex")
+    def bucket_name_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\\d{4}" will both match the bucket gs://marketing2021
+        """
+        return pulumi.get(self, "bucket_name_regex")
+
+    @bucket_name_regex.setter
+    def bucket_name_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name_regex", value)
+
+    @property
+    @pulumi.getter(name="projectIdRegex")
+    def project_id_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        For organizations, if unset, will match all projects.
+        """
+        return pulumi.get(self, "project_id_regex")
+
+    @project_id_regex.setter
+    def project_id_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id_regex", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict(TypedDict):
+        pass
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict(TypedDict):
+        inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
+        """
+        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        Structure is documented below.
+        """
+        refresh_frequency: NotRequired[pulumi.Input[str]]
+        """
+        Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs:
+    def __init__(__self__, *,
+                 inspect_template_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']] = None,
+                 refresh_frequency: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs'] inspect_template_modified_cadence: Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+               Structure is documented below.
+        :param pulumi.Input[str] refresh_frequency: Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        if inspect_template_modified_cadence is not None:
+            pulumi.set(__self__, "inspect_template_modified_cadence", inspect_template_modified_cadence)
+        if refresh_frequency is not None:
+            pulumi.set(__self__, "refresh_frequency", refresh_frequency)
+
+    @property
+    @pulumi.getter(name="inspectTemplateModifiedCadence")
+    def inspect_template_modified_cadence(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']]:
+        """
+        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inspect_template_modified_cadence")
+
+    @inspect_template_modified_cadence.setter
+    def inspect_template_modified_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']]):
+        pulumi.set(self, "inspect_template_modified_cadence", value)
+
+    @property
+    @pulumi.getter(name="refreshFrequency")
+    def refresh_frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "refresh_frequency")
+
+    @refresh_frequency.setter
+    def refresh_frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "refresh_frequency", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
+        frequency: NotRequired[pulumi.Input[str]]
+        """
+        How frequently data profiles can be updated when the template is modified. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs:
+    def __init__(__self__, *,
+                 frequency: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] frequency: How frequently data profiles can be updated when the template is modified. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        How frequently data profiles can be updated when the template is modified. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
 
 
 if not MYPY:
@@ -22963,6 +23649,7 @@ if not MYPY:
         """
         How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
         rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+        If TimespanConfig is set, set this to an empty string to avoid using the default value.
         Default value is `TOP`.
         Possible values are: `TOP`, `RANDOM_START`.
         """
@@ -22998,6 +23685,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
                rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
         :param pulumi.Input[str] sample_method: How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
                rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+               If TimespanConfig is set, set this to an empty string to avoid using the default value.
                Default value is `TOP`.
                Possible values are: `TOP`, `RANDOM_START`.
         """
@@ -23103,6 +23791,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
         """
         How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
         rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+        If TimespanConfig is set, set this to an empty string to avoid using the default value.
         Default value is `TOP`.
         Possible values are: `TOP`, `RANDOM_START`.
         """

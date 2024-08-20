@@ -678,7 +678,7 @@ public class Address extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Address(String name) {
+    public Address(java.lang.String name) {
         this(name, AddressArgs.Empty);
     }
     /**
@@ -686,7 +686,7 @@ public class Address extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Address(String name, @Nullable AddressArgs args) {
+    public Address(java.lang.String name, @Nullable AddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -695,15 +695,22 @@ public class Address extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Address(String name, @Nullable AddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/address:Address", name, args == null ? AddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Address(java.lang.String name, @Nullable AddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/address:Address", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Address(String name, Output<String> id, @Nullable AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/address:Address", name, state, makeResourceOptions(options, id));
+    private Address(java.lang.String name, Output<java.lang.String> id, @Nullable AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/address:Address", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AddressArgs makeArgs(@Nullable AddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -723,7 +730,7 @@ public class Address extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Address get(String name, Output<String> id, @Nullable AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Address get(java.lang.String name, Output<java.lang.String> id, @Nullable AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Address(name, id, state, options);
     }
 }

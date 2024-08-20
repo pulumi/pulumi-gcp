@@ -264,6 +264,9 @@ type AppProfile struct {
 	//
 	// ***
 	AppProfileId pulumi.StringOutput `pulumi:"appProfileId"`
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	// Structure is documented below.
+	DataBoostIsolationReadOnly AppProfileDataBoostIsolationReadOnlyPtrOutput `pulumi:"dataBoostIsolationReadOnly"`
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -327,6 +330,9 @@ type appProfileState struct {
 	//
 	// ***
 	AppProfileId *string `pulumi:"appProfileId"`
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	// Structure is documented below.
+	DataBoostIsolationReadOnly *AppProfileDataBoostIsolationReadOnly `pulumi:"dataBoostIsolationReadOnly"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -358,6 +364,9 @@ type AppProfileState struct {
 	//
 	// ***
 	AppProfileId pulumi.StringPtrInput
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	// Structure is documented below.
+	DataBoostIsolationReadOnly AppProfileDataBoostIsolationReadOnlyPtrInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -393,6 +402,9 @@ type appProfileArgs struct {
 	//
 	// ***
 	AppProfileId string `pulumi:"appProfileId"`
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	// Structure is documented below.
+	DataBoostIsolationReadOnly *AppProfileDataBoostIsolationReadOnly `pulumi:"dataBoostIsolationReadOnly"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -423,6 +435,9 @@ type AppProfileArgs struct {
 	//
 	// ***
 	AppProfileId pulumi.StringInput
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	// Structure is documented below.
+	DataBoostIsolationReadOnly AppProfileDataBoostIsolationReadOnlyPtrInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -539,6 +554,12 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 // ***
 func (o AppProfileOutput) AppProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.AppProfileId }).(pulumi.StringOutput)
+}
+
+// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+// Structure is documented below.
+func (o AppProfileOutput) DataBoostIsolationReadOnly() AppProfileDataBoostIsolationReadOnlyPtrOutput {
+	return o.ApplyT(func(v *AppProfile) AppProfileDataBoostIsolationReadOnlyPtrOutput { return v.DataBoostIsolationReadOnly }).(AppProfileDataBoostIsolationReadOnlyPtrOutput)
 }
 
 // Long form description of the use case for this app profile.

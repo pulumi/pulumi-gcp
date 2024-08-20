@@ -243,6 +243,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionUrlMap{}
 	case "gcp:compute/reservation:Reservation":
 		r = &Reservation{}
+	case "gcp:compute/resizeRequest:ResizeRequest":
+		r = &ResizeRequest{}
 	case "gcp:compute/resourcePolicy:ResourcePolicy":
 		r = &ResourcePolicy{}
 	case "gcp:compute/route:Route":
@@ -255,6 +257,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouterNat{}
 	case "gcp:compute/routerPeer:RouterPeer":
 		r = &RouterPeer{}
+	case "gcp:compute/routerRoutePolicy:RouterRoutePolicy":
+		r = &RouterRoutePolicy{}
 	case "gcp:compute/sSLCertificate:SSLCertificate":
 		r = &SSLCertificate{}
 	case "gcp:compute/sSLPolicy:SSLPolicy":
@@ -877,6 +881,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/resizeRequest",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/resourcePolicy",
 		&module{version},
 	)
@@ -903,6 +912,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/routerPeer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/routerRoutePolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

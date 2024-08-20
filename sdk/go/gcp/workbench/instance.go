@@ -146,9 +146,6 @@ import (
 //						"terraform": pulumi.String("true"),
 //					},
 //				},
-//				InstanceOwners: pulumi.StringArray{
-//					pulumi.String("my@service-account.com"),
-//				},
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
 //				},
@@ -170,6 +167,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -189,6 +187,22 @@ import (
 //				Network:     myNetwork.ID(),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			static, err := compute.NewAddress(ctx, "static", &compute.AddressArgs{
+//				Name: pulumi.String("wbi-test-default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = serviceaccount.NewIAMBinding(ctx, "act_as_permission", &serviceaccount.IAMBindingArgs{
+//				ServiceAccountId: pulumi.String("projects/my-project-name/serviceAccounts/my@service-account.com"),
+//				Role:             pulumi.String("roles/iam.serviceAccountUser"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:example@example.com"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -232,6 +246,11 @@ import (
 //							Network: myNetwork.ID(),
 //							Subnet:  mySubnetwork.ID(),
 //							NicType: pulumi.String("GVNIC"),
+//							AccessConfigs: workbench.InstanceGceSetupNetworkInterfaceAccessConfigArray{
+//								&workbench.InstanceGceSetupNetworkInterfaceAccessConfigArgs{
+//									ExternalIp: static.Address,
+//								},
+//							},
 //						},
 //					},
 //					Metadata: pulumi.StringMap{
@@ -245,7 +264,7 @@ import (
 //				},
 //				DisableProxyAccess: pulumi.Bool(true),
 //				InstanceOwners: pulumi.StringArray{
-//					pulumi.String("my@service-account.com"),
+//					pulumi.String("example@example.com"),
 //				},
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),

@@ -18,6 +18,95 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigtable.Instance;
+ * import com.pulumi.gcp.bigtable.InstanceArgs;
+ * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
+ * import com.pulumi.gcp.bigtable.Table;
+ * import com.pulumi.gcp.bigtable.TableArgs;
+ * import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
+ * import com.pulumi.gcp.bigtable.AuthorizedView;
+ * import com.pulumi.gcp.bigtable.AuthorizedViewArgs;
+ * import com.pulumi.gcp.bigtable.inputs.AuthorizedViewSubsetViewArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .name("tf-instance")
+ *             .clusters(InstanceClusterArgs.builder()
+ *                 .clusterId("tf-instance-cluster")
+ *                 .zone("us-central1-b")
+ *                 .numNodes(3)
+ *                 .storageType("HDD")
+ *                 .build())
+ *             .build());
+ * 
+ *         var table = new Table("table", TableArgs.builder()
+ *             .name("tf-table")
+ *             .instanceName(instance.name())
+ *             .splitKeys(            
+ *                 "a",
+ *                 "b",
+ *                 "c")
+ *             .columnFamilies(            
+ *                 TableColumnFamilyArgs.builder()
+ *                     .family("family-first")
+ *                     .build(),
+ *                 TableColumnFamilyArgs.builder()
+ *                     .family("family-second")
+ *                     .build())
+ *             .changeStreamRetention("24h0m0s")
+ *             .build());
+ * 
+ *         var authorizedView = new AuthorizedView("authorizedView", AuthorizedViewArgs.builder()
+ *             .name("tf-authorized-view")
+ *             .instanceName(instance.name())
+ *             .tableName(table.name())
+ *             .subsetView(AuthorizedViewSubsetViewArgs.builder()
+ *                 .rowPrefixes(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("prefix#")
+ *                     .build()).result())
+ *                 .familySubsets(                
+ *                     AuthorizedViewSubsetViewFamilySubsetArgs.builder()
+ *                         .familyName("family-first")
+ *                         .qualifiers(                        
+ *                             StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                                 .input("qualifier")
+ *                                 .build()).result(),
+ *                             StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                                 .input("qualifier-second")
+ *                                 .build()).result())
+ *                         .build(),
+ *                     AuthorizedViewSubsetViewFamilySubsetArgs.builder()
+ *                         .familyName("family-second")
+ *                         .qualifierPrefixes("")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Bigtable Authorized Views can be imported using any of these accepted formats:
@@ -132,7 +221,7 @@ public class AuthorizedView extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthorizedView(String name) {
+    public AuthorizedView(java.lang.String name) {
         this(name, AuthorizedViewArgs.Empty);
     }
     /**
@@ -140,7 +229,7 @@ public class AuthorizedView extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthorizedView(String name, AuthorizedViewArgs args) {
+    public AuthorizedView(java.lang.String name, AuthorizedViewArgs args) {
         this(name, args, null);
     }
     /**
@@ -149,15 +238,22 @@ public class AuthorizedView extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthorizedView(String name, AuthorizedViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/authorizedView:AuthorizedView", name, args == null ? AuthorizedViewArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthorizedView(java.lang.String name, AuthorizedViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigtable/authorizedView:AuthorizedView", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthorizedView(String name, Output<String> id, @Nullable AuthorizedViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/authorizedView:AuthorizedView", name, state, makeResourceOptions(options, id));
+    private AuthorizedView(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorizedViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigtable/authorizedView:AuthorizedView", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthorizedViewArgs makeArgs(AuthorizedViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthorizedViewArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -173,7 +269,7 @@ public class AuthorizedView extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthorizedView get(String name, Output<String> id, @Nullable AuthorizedViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthorizedView get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthorizedViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthorizedView(name, id, state, options);
     }
 }

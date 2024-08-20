@@ -344,7 +344,11 @@ class Table(pulumi.CustomResource):
             catalog=catalog.id,
             type="HIVE",
             hive_options={
-                "locationUri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "location_uri": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    metadataFolderName=metadata_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['metadataFolderName']}")
+        ,
                 "parameters": {
                     "owner": "Alex",
                 },
@@ -354,20 +358,24 @@ class Table(pulumi.CustomResource):
             database=database.id,
             type="HIVE",
             hive_options={
-                "tableType": "MANAGED_TABLE",
-                "storageDescriptor": {
-                    "locationUri": pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
-                    "inputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
-                    "outputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+                "table_type": "MANAGED_TABLE",
+                "storage_descriptor": {
+                    "location_uri": pulumi.Output.all(
+                        bucketName=bucket.name,
+                        dataFolderName=data_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['dataFolderName']}")
+        ,
+                    "input_format": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+                    "output_format": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
                 },
                 "parameters": {
-                    "spark.sql.create.version": "3.1.3",
-                    "spark.sql.sources.schema.numParts": "1",
-                    "transient_lastDdlTime": "1680894197",
-                    "spark.sql.partitionProvider": "catalog",
+                    "spark_sql_create_version": "3.1.3",
+                    "spark_sql_sources_schema_num_parts": "1",
+                    "transient_last_ddl_time": "1680894197",
+                    "spark_sql_partition_provider": "catalog",
                     "owner": "John Doe",
-                    "spark.sql.sources.schema.part.0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
-                    "spark.sql.sources.provider": "iceberg",
+                    "spark_sql_sources_schema_part_0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
+                    "spark_sql_sources_provider": "iceberg",
                     "provider": "iceberg",
                 },
             })
@@ -442,7 +450,11 @@ class Table(pulumi.CustomResource):
             catalog=catalog.id,
             type="HIVE",
             hive_options={
-                "locationUri": pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                "location_uri": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    metadataFolderName=metadata_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['metadataFolderName']}")
+        ,
                 "parameters": {
                     "owner": "Alex",
                 },
@@ -452,20 +464,24 @@ class Table(pulumi.CustomResource):
             database=database.id,
             type="HIVE",
             hive_options={
-                "tableType": "MANAGED_TABLE",
-                "storageDescriptor": {
-                    "locationUri": pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
-                    "inputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
-                    "outputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+                "table_type": "MANAGED_TABLE",
+                "storage_descriptor": {
+                    "location_uri": pulumi.Output.all(
+                        bucketName=bucket.name,
+                        dataFolderName=data_folder.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['dataFolderName']}")
+        ,
+                    "input_format": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+                    "output_format": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
                 },
                 "parameters": {
-                    "spark.sql.create.version": "3.1.3",
-                    "spark.sql.sources.schema.numParts": "1",
-                    "transient_lastDdlTime": "1680894197",
-                    "spark.sql.partitionProvider": "catalog",
+                    "spark_sql_create_version": "3.1.3",
+                    "spark_sql_sources_schema_num_parts": "1",
+                    "transient_last_ddl_time": "1680894197",
+                    "spark_sql_partition_provider": "catalog",
                     "owner": "John Doe",
-                    "spark.sql.sources.schema.part.0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
-                    "spark.sql.sources.provider": "iceberg",
+                    "spark_sql_sources_schema_part_0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
+                    "spark_sql_sources_provider": "iceberg",
                     "provider": "iceberg",
                 },
             })

@@ -58,7 +58,6 @@ class InstanceArgs:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -165,7 +164,6 @@ class InstanceArgs:
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
-
         If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")
@@ -250,7 +248,6 @@ class _InstanceState:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -380,7 +377,6 @@ class _InstanceState:
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
-
         If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")
@@ -511,13 +507,13 @@ class Instance(pulumi.CustomResource):
             config="regional-us-central1",
             display_name="Test Spanner Instance",
             autoscaling_config={
-                "autoscalingLimits": {
-                    "maxProcessingUnits": 3000,
-                    "minProcessingUnits": 2000,
+                "autoscaling_limits": {
+                    "max_processing_units": 3000,
+                    "min_processing_units": 2000,
                 },
-                "autoscalingTargets": {
-                    "highPriorityCpuUtilizationPercent": 75,
-                    "storageUtilizationPercent": 90,
+                "autoscaling_targets": {
+                    "high_priority_cpu_utilization_percent": 75,
+                    "storage_utilization_percent": 90,
                 },
             },
             labels={
@@ -591,7 +587,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -652,13 +647,13 @@ class Instance(pulumi.CustomResource):
             config="regional-us-central1",
             display_name="Test Spanner Instance",
             autoscaling_config={
-                "autoscalingLimits": {
-                    "maxProcessingUnits": 3000,
-                    "minProcessingUnits": 2000,
+                "autoscaling_limits": {
+                    "max_processing_units": 3000,
+                    "min_processing_units": 2000,
                 },
-                "autoscalingTargets": {
-                    "highPriorityCpuUtilizationPercent": 75,
-                    "storageUtilizationPercent": 90,
+                "autoscaling_targets": {
+                    "high_priority_cpu_utilization_percent": 75,
+                    "storage_utilization_percent": 90,
                 },
             },
             labels={
@@ -811,7 +806,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-               
                If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -910,7 +904,6 @@ class Instance(pulumi.CustomResource):
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
-
         If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")

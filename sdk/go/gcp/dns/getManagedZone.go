@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewRecordSet(ctx, "dns", &dns.RecordSetArgs{
-//				Name:        pulumi.String(fmt.Sprintf("my-address.%v", envDnsZone.DnsName)),
+//				Name:        pulumi.Sprintf("my-address.%v", envDnsZone.DnsName),
 //				Type:        pulumi.String("TXT"),
 //				Ttl:         pulumi.Int(300),
 //				ManagedZone: pulumi.String(envDnsZone.Name),

@@ -62,7 +62,7 @@ import (
 //				},
 //				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //			})
 //			if err != nil {
@@ -129,11 +129,11 @@ import (
 //				},
 //				OidcConfig: &container.AttachedClusterOidcConfigArgs{
 //					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
-//					Jwks:      invokeBase64encode.Result,
+//					Jwks:      pulumi.String(invokeBase64encode.Result),
 //				},
 //				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //				LoggingConfig: &container.AttachedClusterLoggingConfigArgs{
 //					ComponentConfig: &container.AttachedClusterLoggingConfigComponentConfigArgs{
@@ -205,7 +205,7 @@ import (
 //				},
 //				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //				DeletionPolicy: pulumi.String("DELETE_IGNORE_ERRORS"),
 //			})

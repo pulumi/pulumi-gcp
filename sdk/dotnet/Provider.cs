@@ -435,6 +435,9 @@ namespace Pulumi.Gcp
         [Output("securityCenterManagementCustomEndpoint")]
         public Output<string?> SecurityCenterManagementCustomEndpoint { get; private set; } = null!;
 
+        [Output("securityCenterV2CustomEndpoint")]
+        public Output<string?> SecurityCenterV2CustomEndpoint { get; private set; } = null!;
+
         [Output("securityScannerCustomEndpoint")]
         public Output<string?> SecurityScannerCustomEndpoint { get; private set; } = null!;
 
@@ -452,6 +455,9 @@ namespace Pulumi.Gcp
 
         [Output("serviceUsageCustomEndpoint")]
         public Output<string?> ServiceUsageCustomEndpoint { get; private set; } = null!;
+
+        [Output("siteVerificationCustomEndpoint")]
+        public Output<string?> SiteVerificationCustomEndpoint { get; private set; } = null!;
 
         [Output("sourceRepoCustomEndpoint")]
         public Output<string?> SourceRepoCustomEndpoint { get; private set; } = null!;
@@ -1001,6 +1007,9 @@ namespace Pulumi.Gcp
         [Input("securityCenterManagementCustomEndpoint")]
         public Input<string>? SecurityCenterManagementCustomEndpoint { get; set; }
 
+        [Input("securityCenterV2CustomEndpoint")]
+        public Input<string>? SecurityCenterV2CustomEndpoint { get; set; }
+
         [Input("securityScannerCustomEndpoint")]
         public Input<string>? SecurityScannerCustomEndpoint { get; set; }
 
@@ -1018,6 +1027,9 @@ namespace Pulumi.Gcp
 
         [Input("serviceUsageCustomEndpoint")]
         public Input<string>? ServiceUsageCustomEndpoint { get; set; }
+
+        [Input("siteVerificationCustomEndpoint")]
+        public Input<string>? SiteVerificationCustomEndpoint { get; set; }
 
         [Input("sourceRepoCustomEndpoint")]
         public Input<string>? SourceRepoCustomEndpoint { get; set; }

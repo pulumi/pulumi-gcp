@@ -378,7 +378,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
     /**
      * Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
      * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
@@ -387,7 +387,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
     /**
      * @return Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
      * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
+     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     public Output<Optional<List<String>>> gateways() {
@@ -413,7 +413,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
     }
     /**
      * Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
      * Mesh should be of a type SIDECAR
      * 
      */
@@ -422,7 +422,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*{@literal /}locations/global/meshes/&lt;mesh_name&gt; The attached
+     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
      * Mesh should be of a type SIDECAR
      * 
      */
@@ -516,7 +516,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TcpRoute(String name) {
+    public TcpRoute(java.lang.String name) {
         this(name, TcpRouteArgs.Empty);
     }
     /**
@@ -524,7 +524,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TcpRoute(String name, TcpRouteArgs args) {
+    public TcpRoute(java.lang.String name, TcpRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -533,15 +533,22 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TcpRoute(String name, TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/tcpRoute:TcpRoute", name, args == null ? TcpRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TcpRoute(java.lang.String name, TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/tcpRoute:TcpRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TcpRoute(String name, Output<String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/tcpRoute:TcpRoute", name, state, makeResourceOptions(options, id));
+    private TcpRoute(java.lang.String name, Output<java.lang.String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/tcpRoute:TcpRoute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TcpRouteArgs makeArgs(TcpRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TcpRouteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -561,7 +568,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TcpRoute get(String name, Output<String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TcpRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable TcpRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TcpRoute(name, id, state, options);
     }
 }

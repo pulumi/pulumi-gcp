@@ -127,7 +127,7 @@ public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SharedVPCServiceProject(String name) {
+    public SharedVPCServiceProject(java.lang.String name) {
         this(name, SharedVPCServiceProjectArgs.Empty);
     }
     /**
@@ -135,7 +135,7 @@ public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SharedVPCServiceProject(String name, SharedVPCServiceProjectArgs args) {
+    public SharedVPCServiceProject(java.lang.String name, SharedVPCServiceProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -144,15 +144,22 @@ public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SharedVPCServiceProject(String name, SharedVPCServiceProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject", name, args == null ? SharedVPCServiceProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SharedVPCServiceProject(java.lang.String name, SharedVPCServiceProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SharedVPCServiceProject(String name, Output<String> id, @Nullable SharedVPCServiceProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject", name, state, makeResourceOptions(options, id));
+    private SharedVPCServiceProject(java.lang.String name, Output<java.lang.String> id, @Nullable SharedVPCServiceProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SharedVPCServiceProjectArgs makeArgs(SharedVPCServiceProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SharedVPCServiceProjectArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -168,7 +175,7 @@ public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SharedVPCServiceProject get(String name, Output<String> id, @Nullable SharedVPCServiceProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SharedVPCServiceProject get(java.lang.String name, Output<java.lang.String> id, @Nullable SharedVPCServiceProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SharedVPCServiceProject(name, id, state, options);
     }
 }

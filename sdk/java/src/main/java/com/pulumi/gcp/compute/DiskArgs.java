@@ -25,6 +25,29 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     public static final DiskArgs Empty = new DiskArgs();
 
     /**
+     * The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    @Import(name="accessMode")
+    private @Nullable Output<String> accessMode;
+
+    /**
+     * @return The accessMode of the disk.
+     * For example:
+     * * READ_WRITE_SINGLE
+     * * READ_WRITE_MANY
+     * * READ_ONLY_SINGLE
+     * 
+     */
+    public Optional<Output<String>> accessMode() {
+        return Optional.ofNullable(this.accessMode);
+    }
+
+    /**
      * A nested object resource
      * Structure is documented below.
      * 
@@ -557,6 +580,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     private DiskArgs() {}
 
     private DiskArgs(DiskArgs $) {
+        this.accessMode = $.accessMode;
         this.asyncPrimaryDisk = $.asyncPrimaryDisk;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
@@ -599,6 +623,35 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DiskArgs defaults) {
             $ = new DiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessMode The accessMode of the disk.
+         * For example:
+         * * READ_WRITE_SINGLE
+         * * READ_WRITE_MANY
+         * * READ_ONLY_SINGLE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(@Nullable Output<String> accessMode) {
+            $.accessMode = accessMode;
+            return this;
+        }
+
+        /**
+         * @param accessMode The accessMode of the disk.
+         * For example:
+         * * READ_WRITE_SINGLE
+         * * READ_WRITE_MANY
+         * * READ_ONLY_SINGLE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(String accessMode) {
+            return accessMode(Output.of(accessMode));
         }
 
         /**

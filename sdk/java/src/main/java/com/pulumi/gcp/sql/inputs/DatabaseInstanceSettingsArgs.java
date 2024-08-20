@@ -111,14 +111,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Specifies if connections must use Cloud SQL connectors.
+     * Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     @Import(name="connectorEnforcement")
     private @Nullable Output<String> connectorEnforcement;
 
     /**
-     * @return Specifies if connections must use Cloud SQL connectors.
+     * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     public Optional<Output<String>> connectorEnforcement() {
@@ -170,14 +170,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enables auto-resizing of the storage size. Defaults to `true`.
+     * Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
      * 
      */
     @Import(name="diskAutoresize")
     private @Nullable Output<Boolean> diskAutoresize;
 
     /**
-     * @return Enables auto-resizing of the storage size. Defaults to `true`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
      * 
      */
     public Optional<Output<Boolean>> diskAutoresize() {
@@ -200,14 +200,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<Integer> diskSize;
 
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     public Optional<Output<Integer>> diskSize() {
@@ -242,6 +242,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> edition() {
         return Optional.ofNullable(this.edition);
+    }
+
+    /**
+     * Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+     * 
+     */
+    @Import(name="enableDataplexIntegration")
+    private @Nullable Output<Boolean> enableDataplexIntegration;
+
+    /**
+     * @return Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDataplexIntegration() {
+        return Optional.ofNullable(this.enableDataplexIntegration);
     }
 
     /**
@@ -417,6 +432,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
         this.edition = $.edition;
+        this.enableDataplexIntegration = $.enableDataplexIntegration;
         this.enableGoogleMlIntegration = $.enableGoogleMlIntegration;
         this.insightsConfig = $.insightsConfig;
         this.ipConfiguration = $.ipConfiguration;
@@ -552,7 +568,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param connectorEnforcement Specifies if connections must use Cloud SQL connectors.
+         * @param connectorEnforcement Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          * 
          * @return builder
          * 
@@ -563,7 +579,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param connectorEnforcement Specifies if connections must use Cloud SQL connectors.
+         * @param connectorEnforcement Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          * 
          * @return builder
          * 
@@ -637,7 +653,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
          * 
          * @return builder
          * 
@@ -648,7 +664,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
          * 
          * @return builder
          * 
@@ -679,7 +695,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          * 
          * @return builder
          * 
@@ -690,7 +706,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          * 
          * @return builder
          * 
@@ -739,6 +755,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder edition(String edition) {
             return edition(Output.of(edition));
+        }
+
+        /**
+         * @param enableDataplexIntegration Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDataplexIntegration(@Nullable Output<Boolean> enableDataplexIntegration) {
+            $.enableDataplexIntegration = enableDataplexIntegration;
+            return this;
+        }
+
+        /**
+         * @param enableDataplexIntegration Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDataplexIntegration(Boolean enableDataplexIntegration) {
+            return enableDataplexIntegration(Output.of(enableDataplexIntegration));
         }
 
         /**

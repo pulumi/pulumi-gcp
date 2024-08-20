@@ -125,7 +125,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := compute.NewAddress(ctx, fmt.Sprintf("address-%v", key0), &compute.AddressArgs{
-//					Name:   pulumi.String(fmt.Sprintf("nat-manual-ip-%v", val0)),
+//					Name:   pulumi.Sprintf("nat-manual-ip-%v", val0),
 //					Region: subnet.Region,
 //				})
 //				if err != nil {

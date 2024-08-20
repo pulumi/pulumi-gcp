@@ -8,6 +8,7 @@ import typing
 from .event_threat_detection_custom_module import *
 from .folder_custom_module import *
 from .get_source_iam_policy import *
+from .get_v2_organization_source_iam_policy import *
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *
@@ -19,9 +20,19 @@ from .mute_config import *
 from .notification_config import *
 from .organization_custom_module import *
 from .project_custom_module import *
+from .project_notification_config import *
 from .source import *
 from .source_iam_binding import *
 from .source_iam_member import *
 from .source_iam_policy import *
+from .v2_folder_mute_config import *
+from .v2_organization_mute_config import *
+from .v2_organization_notification_config import *
+from .v2_organization_source import *
+from .v2_organization_source_iam_binding import *
+from .v2_organization_source_iam_member import *
+from .v2_organization_source_iam_policy import *
+from .v2_project_mute_config import *
+from .v2_project_notification_config import *
 from ._inputs import *
 from . import outputs

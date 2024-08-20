@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync? ConfigSync;
         /// <summary>
+        /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        /// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        /// </summary>
+        public readonly string? Management;
+        /// <summary>
         /// Version of ACM installed
         /// </summary>
         public readonly string? Version;
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         private FeatureFleetDefaultMemberConfigConfigmanagement(
             Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync? configSync,
 
+            string? management,
+
             string? version)
         {
             ConfigSync = configSync;
+            Management = management;
             Version = version;
         }
     }

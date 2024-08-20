@@ -219,8 +219,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
@@ -239,9 +237,7 @@ import (
 //			privatecaSaKeyuserSignerverifier, err := kms.NewCryptoKeyIAMMember(ctx, "privateca_sa_keyuser_signerverifier", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
-//				Member: privatecaSa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
+//				Member:      privatecaSa.Member,
 //			})
 //			if err != nil {
 //				return err
@@ -249,9 +245,7 @@ import (
 //			privatecaSaKeyuserViewer, err := kms.NewCryptoKeyIAMMember(ctx, "privateca_sa_keyuser_viewer", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				Role:        pulumi.String("roles/viewer"),
-//				Member: privatecaSa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
+//				Member:      privatecaSa.Member,
 //			})
 //			if err != nil {
 //				return err

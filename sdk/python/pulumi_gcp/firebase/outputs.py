@@ -213,11 +213,11 @@ class ExtensionsInstanceConfig(dict):
 class ExtensionsInstanceErrorStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
-                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
                  message: Optional[str] = None):
         """
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details.
+        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details.
         :param str message: A developer-facing error message, which should be in English.
         """
         if code is not None:
@@ -237,7 +237,7 @@ class ExtensionsInstanceErrorStatus(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         A list of messages that carry the error details.
         """

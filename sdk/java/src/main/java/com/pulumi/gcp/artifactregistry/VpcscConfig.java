@@ -147,7 +147,7 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VpcscConfig(String name) {
+    public VpcscConfig(java.lang.String name) {
         this(name, VpcscConfigArgs.Empty);
     }
     /**
@@ -155,7 +155,7 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VpcscConfig(String name, @Nullable VpcscConfigArgs args) {
+    public VpcscConfig(java.lang.String name, @Nullable VpcscConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -164,15 +164,22 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VpcscConfig(String name, @Nullable VpcscConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:artifactregistry/vpcscConfig:VpcscConfig", name, args == null ? VpcscConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VpcscConfig(java.lang.String name, @Nullable VpcscConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:artifactregistry/vpcscConfig:VpcscConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VpcscConfig(String name, Output<String> id, @Nullable VpcscConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:artifactregistry/vpcscConfig:VpcscConfig", name, state, makeResourceOptions(options, id));
+    private VpcscConfig(java.lang.String name, Output<java.lang.String> id, @Nullable VpcscConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:artifactregistry/vpcscConfig:VpcscConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VpcscConfigArgs makeArgs(@Nullable VpcscConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VpcscConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -188,7 +195,7 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VpcscConfig get(String name, Output<String> id, @Nullable VpcscConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VpcscConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable VpcscConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VpcscConfig(name, id, state, options);
     }
 }

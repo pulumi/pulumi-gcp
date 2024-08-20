@@ -39,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -116,7 +116,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -206,7 +206,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -348,7 +348,7 @@ import (
 //			_, err = projects.NewIAMMember(ctx, "gcs-pubsub-publishing", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/pubsub.publisher"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//				Member:  pulumi.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress),
 //			})
 //			if err != nil {
 //				return err
@@ -664,7 +664,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -741,7 +741,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -837,7 +837,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -932,7 +932,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -1015,7 +1015,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -1049,13 +1049,11 @@ import (
 //				CryptoKeyId: pulumi.String("cmek-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.Number)),
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", projectGetProject.Number)),
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gs-project-accounts.iam.gserviceaccount.com", projectGetProject.Number)),
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@serverless-robot-prod.iam.gserviceaccount.com", projectGetProject.Number)),
-//					eaSa.Email.ApplyT(func(email string) (string, error) {
-//						return fmt.Sprintf("serviceAccount:%v", email), nil
-//					}).(pulumi.StringOutput),
+//					pulumi.Sprintf("serviceAccount:service-%v@gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.Number),
+//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", projectGetProject.Number),
+//					pulumi.Sprintf("serviceAccount:service-%v@gs-project-accounts.iam.gserviceaccount.com", projectGetProject.Number),
+//					pulumi.Sprintf("serviceAccount:service-%v@serverless-robot-prod.iam.gserviceaccount.com", projectGetProject.Number),
+//					eaSa.Member,
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				eaSa,
@@ -1079,7 +1077,7 @@ import (
 //				Repository: encoded_ar_repo.Name,
 //				Role:       pulumi.String("roles/artifactregistry.admin"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.Number)),
+//					pulumi.Sprintf("serviceAccount:service-%v@gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.Number),
 //				},
 //			})
 //			if err != nil {
@@ -1151,7 +1149,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -1247,7 +1245,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})

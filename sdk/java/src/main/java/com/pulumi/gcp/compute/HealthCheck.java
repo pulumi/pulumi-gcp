@@ -19,6 +19,7 @@ import com.pulumi.gcp.compute.outputs.HealthCheckSslHealthCheck;
 import com.pulumi.gcp.compute.outputs.HealthCheckTcpHealthCheck;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -842,6 +843,42 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     *   instance group auto-healing.
+     * 
+     */
+    @Export(name="sourceRegions", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> sourceRegions;
+
+    /**
+     * @return The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     *   instance group auto-healing.
+     * 
+     */
+    public Output<Optional<List<String>>> sourceRegions() {
+        return Codegen.optional(this.sourceRegions);
+    }
+    /**
      * A nested object resource
      * Structure is documented below.
      * 
@@ -926,7 +963,7 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HealthCheck(String name) {
+    public HealthCheck(java.lang.String name) {
         this(name, HealthCheckArgs.Empty);
     }
     /**
@@ -934,7 +971,7 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HealthCheck(String name, @Nullable HealthCheckArgs args) {
+    public HealthCheck(java.lang.String name, @Nullable HealthCheckArgs args) {
         this(name, args, null);
     }
     /**
@@ -943,15 +980,22 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HealthCheck(String name, @Nullable HealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/healthCheck:HealthCheck", name, args == null ? HealthCheckArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HealthCheck(java.lang.String name, @Nullable HealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/healthCheck:HealthCheck", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HealthCheck(String name, Output<String> id, @Nullable HealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/healthCheck:HealthCheck", name, state, makeResourceOptions(options, id));
+    private HealthCheck(java.lang.String name, Output<java.lang.String> id, @Nullable HealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/healthCheck:HealthCheck", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HealthCheckArgs makeArgs(@Nullable HealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HealthCheckArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -967,7 +1011,7 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HealthCheck get(String name, Output<String> id, @Nullable HealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HealthCheck get(java.lang.String name, Output<java.lang.String> id, @Nullable HealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HealthCheck(name, id, state, options);
     }
 }

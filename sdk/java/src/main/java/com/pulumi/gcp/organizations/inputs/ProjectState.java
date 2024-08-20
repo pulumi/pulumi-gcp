@@ -59,6 +59,13 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.billingAccount);
     }
 
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
@@ -202,18 +209,32 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * If true, the resource can be deleted without
+     * deleting the Project via the Google API. `skip_delete` is deprecated and will be
+     * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+     * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+     * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
+     * 
+     * @deprecated
+     * skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.
      * 
      */
+    @Deprecated /* skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior. */
     @Import(name="skipDelete")
     private @Nullable Output<Boolean> skipDelete;
 
     /**
-     * @return If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * @return If true, the resource can be deleted without
+     * deleting the Project via the Google API. `skip_delete` is deprecated and will be
+     * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+     * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+     * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
+     * 
+     * @deprecated
+     * skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.
      * 
      */
+    @Deprecated /* skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior. */
     public Optional<Output<Boolean>> skipDelete() {
         return Optional.ofNullable(this.skipDelete);
     }
@@ -223,6 +244,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private ProjectState(ProjectState $) {
         this.autoCreateNetwork = $.autoCreateNetwork;
         this.billingAccount = $.billingAccount;
+        this.deletionPolicy = $.deletionPolicy;
         this.effectiveLabels = $.effectiveLabels;
         this.folderId = $.folderId;
         this.labels = $.labels;
@@ -304,6 +326,15 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder billingAccount(String billingAccount) {
             return billingAccount(Output.of(billingAccount));
+        }
+
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -497,24 +528,38 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipDelete If true, the resource can be deleted
-         * without deleting the Project via the Google API.
+         * @param skipDelete If true, the resource can be deleted without
+         * deleting the Project via the Google API. `skip_delete` is deprecated and will be
+         * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+         * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+         * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
          * 
          * @return builder
          * 
+         * @deprecated
+         * skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.
+         * 
          */
+        @Deprecated /* skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior. */
         public Builder skipDelete(@Nullable Output<Boolean> skipDelete) {
             $.skipDelete = skipDelete;
             return this;
         }
 
         /**
-         * @param skipDelete If true, the resource can be deleted
-         * without deleting the Project via the Google API.
+         * @param skipDelete If true, the resource can be deleted without
+         * deleting the Project via the Google API. `skip_delete` is deprecated and will be
+         * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+         * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+         * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
          * 
          * @return builder
          * 
+         * @deprecated
+         * skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.
+         * 
          */
+        @Deprecated /* skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior. */
         public Builder skipDelete(Boolean skipDelete) {
             return skipDelete(Output.of(skipDelete));
         }

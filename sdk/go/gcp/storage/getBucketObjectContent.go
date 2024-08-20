@@ -81,6 +81,7 @@ type GetBucketObjectContentResult struct {
 	CustomerEncryptions []GetBucketObjectContentCustomerEncryption `pulumi:"customerEncryptions"`
 	DetectMd5hash       string                                     `pulumi:"detectMd5hash"`
 	EventBasedHold      bool                                       `pulumi:"eventBasedHold"`
+	Generation          int                                        `pulumi:"generation"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                            `pulumi:"id"`
 	KmsKeyName    string                            `pulumi:"kmsKeyName"`
@@ -183,6 +184,10 @@ func (o GetBucketObjectContentResultOutput) DetectMd5hash() pulumi.StringOutput 
 
 func (o GetBucketObjectContentResultOutput) EventBasedHold() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) bool { return v.EventBasedHold }).(pulumi.BoolOutput)
+}
+
+func (o GetBucketObjectContentResultOutput) Generation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) int { return v.Generation }).(pulumi.IntOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

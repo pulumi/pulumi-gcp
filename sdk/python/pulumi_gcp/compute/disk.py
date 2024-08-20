@@ -21,6 +21,7 @@ __all__ = ['DiskArgs', 'Disk']
 @pulumi.input_type
 class DiskArgs:
     def __init__(__self__, *,
+                 access_mode: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
@@ -47,6 +48,11 @@ class DiskArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Disk resource.
+        :param pulumi.Input[str] access_mode: The accessMode of the disk.
+               For example:
+               * READ_WRITE_SINGLE
+               * READ_WRITE_MANY
+               * READ_ONLY_SINGLE
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -154,6 +160,8 @@ class DiskArgs:
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
         """
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if description is not None:
@@ -205,6 +213,22 @@ class DiskArgs:
             pulumi.set(__self__, "type", type)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The accessMode of the disk.
+        For example:
+        * READ_WRITE_SINGLE
+        * READ_WRITE_MANY
+        * READ_ONLY_SINGLE
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_mode", value)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -581,6 +605,7 @@ class DiskArgs:
 @pulumi.input_type
 class _DiskState:
     def __init__(__self__, *,
+                 access_mode: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -619,6 +644,11 @@ class _DiskState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
+        :param pulumi.Input[str] access_mode: The accessMode of the disk.
+               For example:
+               * READ_WRITE_SINGLE
+               * READ_WRITE_MANY
+               * READ_ONLY_SINGLE
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -752,6 +782,8 @@ class _DiskState:
                project/zones/zone/instances/instance
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
         """
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
         if async_primary_disk is not None:
             pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:
@@ -827,6 +859,22 @@ class _DiskState:
             pulumi.set(__self__, "users", users)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The accessMode of the disk.
+        For example:
+        * READ_WRITE_SINGLE
+        * READ_WRITE_MANY
+        * READ_ONLY_SINGLE
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_mode", value)
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
@@ -1363,6 +1411,7 @@ class Disk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
@@ -1509,6 +1558,11 @@ class Disk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_mode: The accessMode of the disk.
+               For example:
+               * READ_WRITE_SINGLE
+               * READ_WRITE_MANY
+               * READ_ONLY_SINGLE
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -1756,6 +1810,7 @@ class Disk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[str]] = None,
                  async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
@@ -1789,6 +1844,7 @@ class Disk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DiskArgs.__new__(DiskArgs)
 
+            __props__.__dict__["access_mode"] = access_mode
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
@@ -1837,6 +1893,7 @@ class Disk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: Optional[pulumi.Input[str]] = None,
             async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1880,6 +1937,11 @@ class Disk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_mode: The accessMode of the disk.
+               For example:
+               * READ_WRITE_SINGLE
+               * READ_WRITE_MANY
+               * READ_ONLY_SINGLE
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -2017,6 +2079,7 @@ class Disk(pulumi.CustomResource):
 
         __props__ = _DiskState.__new__(_DiskState)
 
+        __props__.__dict__["access_mode"] = access_mode
         __props__.__dict__["async_primary_disk"] = async_primary_disk
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
@@ -2054,6 +2117,18 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["users"] = users
         __props__.__dict__["zone"] = zone
         return Disk(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> pulumi.Output[str]:
+        """
+        The accessMode of the disk.
+        For example:
+        * READ_WRITE_SINGLE
+        * READ_WRITE_MANY
+        * READ_ONLY_SINGLE
+        """
+        return pulumi.get(self, "access_mode")
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")

@@ -640,7 +640,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public V2Vm(String name) {
+    public V2Vm(java.lang.String name) {
         this(name, V2VmArgs.Empty);
     }
     /**
@@ -648,7 +648,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public V2Vm(String name, V2VmArgs args) {
+    public V2Vm(java.lang.String name, V2VmArgs args) {
         this(name, args, null);
     }
     /**
@@ -657,15 +657,22 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public V2Vm(String name, V2VmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tpu/v2Vm:V2Vm", name, args == null ? V2VmArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public V2Vm(java.lang.String name, V2VmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tpu/v2Vm:V2Vm", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private V2Vm(String name, Output<String> id, @Nullable V2VmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tpu/v2Vm:V2Vm", name, state, makeResourceOptions(options, id));
+    private V2Vm(java.lang.String name, Output<java.lang.String> id, @Nullable V2VmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tpu/v2Vm:V2Vm", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static V2VmArgs makeArgs(V2VmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? V2VmArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -685,7 +692,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static V2Vm get(String name, Output<String> id, @Nullable V2VmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static V2Vm get(java.lang.String name, Output<java.lang.String> id, @Nullable V2VmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new V2Vm(name, id, state, options);
     }
 }

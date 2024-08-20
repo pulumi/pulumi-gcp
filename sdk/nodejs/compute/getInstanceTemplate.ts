@@ -33,7 +33,7 @@ export function getInstanceTemplate(args?: GetInstanceTemplateArgs, opts?: pulum
 export interface GetInstanceTemplateArgs {
     /**
      * A filter to retrieve the instance templates.
-     * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+     * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
      * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
      * One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
@@ -114,7 +114,7 @@ export interface GetInstanceTemplateResult {
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * The unique fingerprint of the metadata.
      */
@@ -223,7 +223,7 @@ export function getInstanceTemplateOutput(args?: GetInstanceTemplateOutputArgs, 
 export interface GetInstanceTemplateOutputArgs {
     /**
      * A filter to retrieve the instance templates.
-     * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+     * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
      * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
      * One of `name`, `filter` or `selfLinkUnique` must be provided.
      */

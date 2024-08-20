@@ -25,6 +25,7 @@ class CryptoKeyArgs:
                  crypto_key_backend: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
+                 key_access_justifications_policy: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
@@ -41,8 +42,17 @@ class CryptoKeyArgs:
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
+        :param pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs'] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+               field is present and this key is enrolled in Key Access Justifications
+               Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+               sign operations, and the operation will fail if rejected by the policy. The
+               policy is defined by specifying zero or more allowed justification codes.
+               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               By default, this field is absent, and all justification codes are allowed.
+               This field is currently in beta and is subject to change.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -69,6 +79,8 @@ class CryptoKeyArgs:
             pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if import_only is not None:
             pulumi.set(__self__, "import_only", import_only)
+        if key_access_justifications_policy is not None:
+            pulumi.set(__self__, "key_access_justifications_policy", key_access_justifications_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -116,7 +128,7 @@ class CryptoKeyArgs:
     def destroy_scheduled_duration(self) -> Optional[pulumi.Input[str]]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        If not specified at creation time, the default duration is 24 hours.
+        If not specified at creation time, the default duration is 30 days.
         """
         return pulumi.get(self, "destroy_scheduled_duration")
 
@@ -135,6 +147,26 @@ class CryptoKeyArgs:
     @import_only.setter
     def import_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "import_only", value)
+
+    @property
+    @pulumi.getter(name="keyAccessJustificationsPolicy")
+    def key_access_justifications_policy(self) -> Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
+        """
+        The policy used for Key Access Justifications Policy Enforcement. If this
+        field is present and this key is enrolled in Key Access Justifications
+        Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        sign operations, and the operation will fail if rejected by the policy. The
+        policy is defined by specifying zero or more allowed justification codes.
+        https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        By default, this field is absent, and all justification codes are allowed.
+        This field is currently in beta and is subject to change.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "key_access_justifications_policy")
+
+    @key_access_justifications_policy.setter
+    def key_access_justifications_policy(self, value: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]):
+        pulumi.set(self, "key_access_justifications_policy", value)
 
     @property
     @pulumi.getter
@@ -228,6 +260,7 @@ class _CryptoKeyState:
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
+                 key_access_justifications_policy: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -242,9 +275,18 @@ class _CryptoKeyState:
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
+        :param pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs'] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+               field is present and this key is enrolled in Key Access Justifications
+               Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+               sign operations, and the operation will fail if rejected by the policy. The
+               policy is defined by specifying zero or more allowed justification codes.
+               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               By default, this field is absent, and all justification codes are allowed.
+               This field is currently in beta and is subject to change.
+               Structure is documented below.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
                
@@ -282,6 +324,8 @@ class _CryptoKeyState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if import_only is not None:
             pulumi.set(__self__, "import_only", import_only)
+        if key_access_justifications_policy is not None:
+            pulumi.set(__self__, "key_access_justifications_policy", key_access_justifications_policy)
         if key_ring is not None:
             pulumi.set(__self__, "key_ring", key_ring)
         if labels is not None:
@@ -319,7 +363,7 @@ class _CryptoKeyState:
     def destroy_scheduled_duration(self) -> Optional[pulumi.Input[str]]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        If not specified at creation time, the default duration is 24 hours.
+        If not specified at creation time, the default duration is 30 days.
         """
         return pulumi.get(self, "destroy_scheduled_duration")
 
@@ -350,6 +394,26 @@ class _CryptoKeyState:
     @import_only.setter
     def import_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "import_only", value)
+
+    @property
+    @pulumi.getter(name="keyAccessJustificationsPolicy")
+    def key_access_justifications_policy(self) -> Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
+        """
+        The policy used for Key Access Justifications Policy Enforcement. If this
+        field is present and this key is enrolled in Key Access Justifications
+        Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        sign operations, and the operation will fail if rejected by the policy. The
+        policy is defined by specifying zero or more allowed justification codes.
+        https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        By default, this field is absent, and all justification codes are allowed.
+        This field is currently in beta and is subject to change.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "key_access_justifications_policy")
+
+    @key_access_justifications_policy.setter
+    def key_access_justifications_policy(self, value: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]):
+        pulumi.set(self, "key_access_justifications_policy", value)
 
     @property
     @pulumi.getter(name="keyRing")
@@ -487,6 +551,7 @@ class CryptoKey(pulumi.CustomResource):
                  crypto_key_backend: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
+                 key_access_justifications_policy: Optional[pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -568,8 +633,17 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
+        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+               field is present and this key is enrolled in Key Access Justifications
+               Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+               sign operations, and the operation will fail if rejected by the policy. The
+               policy is defined by specifying zero or more allowed justification codes.
+               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               By default, this field is absent, and all justification codes are allowed.
+               This field is currently in beta and is subject to change.
+               Structure is documented below.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
                
@@ -686,6 +760,7 @@ class CryptoKey(pulumi.CustomResource):
                  crypto_key_backend: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
+                 key_access_justifications_policy: Optional[pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -705,6 +780,7 @@ class CryptoKey(pulumi.CustomResource):
             __props__.__dict__["crypto_key_backend"] = crypto_key_backend
             __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
             __props__.__dict__["import_only"] = import_only
+            __props__.__dict__["key_access_justifications_policy"] = key_access_justifications_policy
             if key_ring is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring'")
             __props__.__dict__["key_ring"] = key_ring
@@ -733,6 +809,7 @@ class CryptoKey(pulumi.CustomResource):
             destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             import_only: Optional[pulumi.Input[bool]] = None,
+            key_access_justifications_policy: Optional[pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
             key_ring: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -752,9 +829,18 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
+        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+               field is present and this key is enrolled in Key Access Justifications
+               Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+               sign operations, and the operation will fail if rejected by the policy. The
+               policy is defined by specifying zero or more allowed justification codes.
+               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               By default, this field is absent, and all justification codes are allowed.
+               This field is currently in beta and is subject to change.
+               Structure is documented below.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
                
@@ -792,6 +878,7 @@ class CryptoKey(pulumi.CustomResource):
         __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["import_only"] = import_only
+        __props__.__dict__["key_access_justifications_policy"] = key_access_justifications_policy
         __props__.__dict__["key_ring"] = key_ring
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -817,7 +904,7 @@ class CryptoKey(pulumi.CustomResource):
     def destroy_scheduled_duration(self) -> pulumi.Output[str]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        If not specified at creation time, the default duration is 24 hours.
+        If not specified at creation time, the default duration is 30 days.
         """
         return pulumi.get(self, "destroy_scheduled_duration")
 
@@ -836,6 +923,22 @@ class CryptoKey(pulumi.CustomResource):
         Whether this key may contain imported versions only.
         """
         return pulumi.get(self, "import_only")
+
+    @property
+    @pulumi.getter(name="keyAccessJustificationsPolicy")
+    def key_access_justifications_policy(self) -> pulumi.Output['outputs.CryptoKeyKeyAccessJustificationsPolicy']:
+        """
+        The policy used for Key Access Justifications Policy Enforcement. If this
+        field is present and this key is enrolled in Key Access Justifications
+        Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        sign operations, and the operation will fail if rejected by the policy. The
+        policy is defined by specifying zero or more allowed justification codes.
+        https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        By default, this field is absent, and all justification codes are allowed.
+        This field is currently in beta and is subject to change.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "key_access_justifications_policy")
 
     @property
     @pulumi.getter(name="keyRing")

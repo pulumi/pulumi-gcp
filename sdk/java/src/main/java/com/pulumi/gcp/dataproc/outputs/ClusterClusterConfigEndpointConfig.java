@@ -6,7 +6,6 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -25,7 +24,7 @@ public final class ClusterClusterConfigEndpointConfig {
      * `enable_http_port_access` is true.
      * 
      */
-    private @Nullable Map<String,Object> httpPorts;
+    private @Nullable Map<String,String> httpPorts;
 
     private ClusterClusterConfigEndpointConfig() {}
     /**
@@ -41,7 +40,7 @@ public final class ClusterClusterConfigEndpointConfig {
      * `enable_http_port_access` is true.
      * 
      */
-    public Map<String,Object> httpPorts() {
+    public Map<String,String> httpPorts() {
         return this.httpPorts == null ? Map.of() : this.httpPorts;
     }
 
@@ -55,7 +54,7 @@ public final class ClusterClusterConfigEndpointConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enableHttpPortAccess;
-        private @Nullable Map<String,Object> httpPorts;
+        private @Nullable Map<String,String> httpPorts;
         public Builder() {}
         public Builder(ClusterClusterConfigEndpointConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,7 +71,7 @@ public final class ClusterClusterConfigEndpointConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder httpPorts(@Nullable Map<String,Object> httpPorts) {
+        public Builder httpPorts(@Nullable Map<String,String> httpPorts) {
 
             this.httpPorts = httpPorts;
             return this;

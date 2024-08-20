@@ -341,7 +341,7 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConsumerQuotaOverride(String name) {
+    public ConsumerQuotaOverride(java.lang.String name) {
         this(name, ConsumerQuotaOverrideArgs.Empty);
     }
     /**
@@ -349,7 +349,7 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConsumerQuotaOverride(String name, ConsumerQuotaOverrideArgs args) {
+    public ConsumerQuotaOverride(java.lang.String name, ConsumerQuotaOverrideArgs args) {
         this(name, args, null);
     }
     /**
@@ -358,15 +358,22 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConsumerQuotaOverride(String name, ConsumerQuotaOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride", name, args == null ? ConsumerQuotaOverrideArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConsumerQuotaOverride(java.lang.String name, ConsumerQuotaOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConsumerQuotaOverride(String name, Output<String> id, @Nullable ConsumerQuotaOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride", name, state, makeResourceOptions(options, id));
+    private ConsumerQuotaOverride(java.lang.String name, Output<java.lang.String> id, @Nullable ConsumerQuotaOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConsumerQuotaOverrideArgs makeArgs(ConsumerQuotaOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConsumerQuotaOverrideArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -382,7 +389,7 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConsumerQuotaOverride get(String name, Output<String> id, @Nullable ConsumerQuotaOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConsumerQuotaOverride get(java.lang.String name, Output<java.lang.String> id, @Nullable ConsumerQuotaOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConsumerQuotaOverride(name, id, state, options);
     }
 }

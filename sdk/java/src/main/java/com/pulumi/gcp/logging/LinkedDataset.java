@@ -285,7 +285,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LinkedDataset(String name) {
+    public LinkedDataset(java.lang.String name) {
         this(name, LinkedDatasetArgs.Empty);
     }
     /**
@@ -293,7 +293,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LinkedDataset(String name, LinkedDatasetArgs args) {
+    public LinkedDataset(java.lang.String name, LinkedDatasetArgs args) {
         this(name, args, null);
     }
     /**
@@ -302,15 +302,22 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LinkedDataset(String name, LinkedDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/linkedDataset:LinkedDataset", name, args == null ? LinkedDatasetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LinkedDataset(java.lang.String name, LinkedDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/linkedDataset:LinkedDataset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LinkedDataset(String name, Output<String> id, @Nullable LinkedDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/linkedDataset:LinkedDataset", name, state, makeResourceOptions(options, id));
+    private LinkedDataset(java.lang.String name, Output<java.lang.String> id, @Nullable LinkedDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/linkedDataset:LinkedDataset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LinkedDatasetArgs makeArgs(LinkedDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LinkedDatasetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -326,7 +333,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LinkedDataset get(String name, Output<String> id, @Nullable LinkedDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LinkedDataset get(java.lang.String name, Output<java.lang.String> id, @Nullable LinkedDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LinkedDataset(name, id, state, options);
     }
 }

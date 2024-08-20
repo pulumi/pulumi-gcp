@@ -105,12 +105,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("my-basic-ca-pool")
  *             .location("us-central1")
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-networksecurity.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-networksecurity.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()
@@ -199,8 +199,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(defaultTlsInspectionPolicy)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -367,7 +367,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewaySecurityPolicy(String name) {
+    public GatewaySecurityPolicy(java.lang.String name) {
         this(name, GatewaySecurityPolicyArgs.Empty);
     }
     /**
@@ -375,7 +375,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewaySecurityPolicy(String name, @Nullable GatewaySecurityPolicyArgs args) {
+    public GatewaySecurityPolicy(java.lang.String name, @Nullable GatewaySecurityPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -384,15 +384,22 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewaySecurityPolicy(String name, @Nullable GatewaySecurityPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy", name, args == null ? GatewaySecurityPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewaySecurityPolicy(java.lang.String name, @Nullable GatewaySecurityPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewaySecurityPolicy(String name, Output<String> id, @Nullable GatewaySecurityPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy", name, state, makeResourceOptions(options, id));
+    private GatewaySecurityPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable GatewaySecurityPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewaySecurityPolicyArgs makeArgs(@Nullable GatewaySecurityPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewaySecurityPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -408,7 +415,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewaySecurityPolicy get(String name, Output<String> id, @Nullable GatewaySecurityPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewaySecurityPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewaySecurityPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewaySecurityPolicy(name, id, state, options);
     }
 }

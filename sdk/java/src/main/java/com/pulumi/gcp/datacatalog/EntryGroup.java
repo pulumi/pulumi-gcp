@@ -208,7 +208,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EntryGroup(String name) {
+    public EntryGroup(java.lang.String name) {
         this(name, EntryGroupArgs.Empty);
     }
     /**
@@ -216,7 +216,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EntryGroup(String name, EntryGroupArgs args) {
+    public EntryGroup(java.lang.String name, EntryGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -225,15 +225,22 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EntryGroup(String name, EntryGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/entryGroup:EntryGroup", name, args == null ? EntryGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EntryGroup(java.lang.String name, EntryGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datacatalog/entryGroup:EntryGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EntryGroup(String name, Output<String> id, @Nullable EntryGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/entryGroup:EntryGroup", name, state, makeResourceOptions(options, id));
+    private EntryGroup(java.lang.String name, Output<java.lang.String> id, @Nullable EntryGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datacatalog/entryGroup:EntryGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EntryGroupArgs makeArgs(EntryGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EntryGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -249,7 +256,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EntryGroup get(String name, Output<String> id, @Nullable EntryGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EntryGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable EntryGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EntryGroup(name, id, state, options);
     }
 }

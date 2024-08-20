@@ -54,6 +54,7 @@ public final class ServiceTemplate {
     private @Nullable Map<String,String> labels;
     /**
      * @return Sets the maximum number of requests that each serving instance can receive.
+     * If not specified or 0, defaults to 80 when requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
      * 
      */
     private @Nullable Integer maxInstanceRequestConcurrency;
@@ -143,6 +144,7 @@ public final class ServiceTemplate {
     }
     /**
      * @return Sets the maximum number of requests that each serving instance can receive.
+     * If not specified or 0, defaults to 80 when requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
      * 
      */
     public Optional<Integer> maxInstanceRequestConcurrency() {

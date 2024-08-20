@@ -317,7 +317,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EdgeCacheKeyset(String name) {
+    public EdgeCacheKeyset(java.lang.String name) {
         this(name, EdgeCacheKeysetArgs.Empty);
     }
     /**
@@ -325,7 +325,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EdgeCacheKeyset(String name, @Nullable EdgeCacheKeysetArgs args) {
+    public EdgeCacheKeyset(java.lang.String name, @Nullable EdgeCacheKeysetArgs args) {
         this(name, args, null);
     }
     /**
@@ -334,15 +334,22 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EdgeCacheKeyset(String name, @Nullable EdgeCacheKeysetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, args == null ? EdgeCacheKeysetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EdgeCacheKeyset(java.lang.String name, @Nullable EdgeCacheKeysetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EdgeCacheKeyset(String name, Output<String> id, @Nullable EdgeCacheKeysetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, state, makeResourceOptions(options, id));
+    private EdgeCacheKeyset(java.lang.String name, Output<java.lang.String> id, @Nullable EdgeCacheKeysetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EdgeCacheKeysetArgs makeArgs(@Nullable EdgeCacheKeysetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EdgeCacheKeysetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -362,7 +369,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EdgeCacheKeyset get(String name, Output<String> id, @Nullable EdgeCacheKeysetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EdgeCacheKeyset get(java.lang.String name, Output<java.lang.String> id, @Nullable EdgeCacheKeysetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EdgeCacheKeyset(name, id, state, options);
     }
 }

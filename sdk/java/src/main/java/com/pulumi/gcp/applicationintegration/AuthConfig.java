@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
  *     * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+ *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
  * 
  * ## Example Usage
  * 
@@ -408,7 +408,7 @@ public class AuthConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthConfig(String name) {
+    public AuthConfig(java.lang.String name) {
         this(name, AuthConfigArgs.Empty);
     }
     /**
@@ -416,7 +416,7 @@ public class AuthConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthConfig(String name, AuthConfigArgs args) {
+    public AuthConfig(java.lang.String name, AuthConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -425,15 +425,22 @@ public class AuthConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthConfig(String name, AuthConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:applicationintegration/authConfig:AuthConfig", name, args == null ? AuthConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthConfig(java.lang.String name, AuthConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:applicationintegration/authConfig:AuthConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthConfig(String name, Output<String> id, @Nullable AuthConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:applicationintegration/authConfig:AuthConfig", name, state, makeResourceOptions(options, id));
+    private AuthConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:applicationintegration/authConfig:AuthConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthConfigArgs makeArgs(AuthConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -449,7 +456,7 @@ public class AuthConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthConfig get(String name, Output<String> id, @Nullable AuthConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthConfig(name, id, state, options);
     }
 }

@@ -145,6 +145,10 @@ if not MYPY:
         """
         If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         """
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        """
         use_default: NotRequired[pulumi.Input[bool]]
         """
         If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
@@ -156,13 +160,17 @@ elif False:
 class JobBinaryAuthorizationArgs:
     def __init__(__self__, *,
                  breakglass_justification: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  use_default: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param pulumi.Input[str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param pulumi.Input[bool] use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         if breakglass_justification is not None:
             pulumi.set(__self__, "breakglass_justification", breakglass_justification)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if use_default is not None:
             pulumi.set(__self__, "use_default", use_default)
 
@@ -177,6 +185,18 @@ class JobBinaryAuthorizationArgs:
     @breakglass_justification.setter
     def breakglass_justification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "breakglass_justification", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter(name="useDefault")
@@ -2264,6 +2284,10 @@ if not MYPY:
         """
         If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         """
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        """
         use_default: NotRequired[pulumi.Input[bool]]
         """
         If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
@@ -2275,13 +2299,17 @@ elif False:
 class ServiceBinaryAuthorizationArgs:
     def __init__(__self__, *,
                  breakglass_justification: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  use_default: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param pulumi.Input[str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param pulumi.Input[bool] use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         if breakglass_justification is not None:
             pulumi.set(__self__, "breakglass_justification", breakglass_justification)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if use_default is not None:
             pulumi.set(__self__, "use_default", use_default)
 
@@ -2296,6 +2324,18 @@ class ServiceBinaryAuthorizationArgs:
     @breakglass_justification.setter
     def breakglass_justification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "breakglass_justification", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter(name="useDefault")
@@ -2668,6 +2708,7 @@ if not MYPY:
         max_instance_request_concurrency: NotRequired[pulumi.Input[int]]
         """
         Sets the maximum number of requests that each serving instance can receive.
+        If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         revision: NotRequired[pulumi.Input[str]]
         """
@@ -2735,6 +2776,7 @@ class ServiceTemplateArgs:
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
+               If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param pulumi.Input['ServiceTemplateScalingArgs'] scaling: Scaling settings for this Revision.
                Structure is documented below.
@@ -2847,6 +2889,7 @@ class ServiceTemplateArgs:
     def max_instance_request_concurrency(self) -> Optional[pulumi.Input[int]]:
         """
         Sets the maximum number of requests that each serving instance can receive.
+        If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
         return pulumi.get(self, "max_instance_request_concurrency")
 

@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Dataflow
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The machine type to use for the job.
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.Dataflow
         /// **Note**: do not configure Dataflow options here in parameters.
         /// </summary>
         [Output("parameters")]
-        public Output<ImmutableDictionary<string, object>?> Parameters { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Parameters { get; private set; } = null!;
 
         /// <summary>
         /// The project in which the resource belongs. If it is not provided, the provider project is used.
@@ -293,7 +293,7 @@ namespace Pulumi.Gcp.Dataflow
         /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         /// </summary>
         [Output("transformNameMapping")]
-        public Output<ImmutableDictionary<string, object>?> TransformNameMapping { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> TransformNameMapping { get; private set; } = null!;
 
         /// <summary>
         /// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -389,16 +389,16 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -433,16 +433,16 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? OnDelete { get; set; }
 
         [Input("parameters")]
-        private InputMap<object>? _parameters;
+        private InputMap<string>? _parameters;
 
         /// <summary>
         /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
         /// **Note**: do not configure Dataflow options here in parameters.
         /// </summary>
-        public InputMap<object> Parameters
+        public InputMap<string> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<object>());
+            get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 
@@ -491,14 +491,14 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string> TemplateGcsPath { get; set; } = null!;
 
         [Input("transformNameMapping")]
-        private InputMap<object>? _transformNameMapping;
+        private InputMap<string>? _transformNameMapping;
 
         /// <summary>
         /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         /// </summary>
-        public InputMap<object> TransformNameMapping
+        public InputMap<string> TransformNameMapping
         {
-            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<object>());
+            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<string>());
             set => _transformNameMapping = value;
         }
 
@@ -569,16 +569,16 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -613,16 +613,16 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? OnDelete { get; set; }
 
         [Input("parameters")]
-        private InputMap<object>? _parameters;
+        private InputMap<string>? _parameters;
 
         /// <summary>
         /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
         /// **Note**: do not configure Dataflow options here in parameters.
         /// </summary>
-        public InputMap<object> Parameters
+        public InputMap<string> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<object>());
+            get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 
@@ -693,14 +693,14 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? TemplateGcsPath { get; set; }
 
         [Input("transformNameMapping")]
-        private InputMap<object>? _transformNameMapping;
+        private InputMap<string>? _transformNameMapping;
 
         /// <summary>
         /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         /// </summary>
-        public InputMap<object> TransformNameMapping
+        public InputMap<string> TransformNameMapping
         {
-            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<object>());
+            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<string>());
             set => _transformNameMapping = value;
         }
 

@@ -118,7 +118,7 @@ public class BackendBucketIamPolicy extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BackendBucketIamPolicy(String name) {
+    public BackendBucketIamPolicy(java.lang.String name) {
         this(name, BackendBucketIamPolicyArgs.Empty);
     }
     /**
@@ -126,7 +126,7 @@ public class BackendBucketIamPolicy extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BackendBucketIamPolicy(String name, BackendBucketIamPolicyArgs args) {
+    public BackendBucketIamPolicy(java.lang.String name, BackendBucketIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -135,15 +135,22 @@ public class BackendBucketIamPolicy extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BackendBucketIamPolicy(String name, BackendBucketIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy", name, args == null ? BackendBucketIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BackendBucketIamPolicy(java.lang.String name, BackendBucketIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BackendBucketIamPolicy(String name, Output<String> id, @Nullable BackendBucketIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy", name, state, makeResourceOptions(options, id));
+    private BackendBucketIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable BackendBucketIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BackendBucketIamPolicyArgs makeArgs(BackendBucketIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackendBucketIamPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -159,7 +166,7 @@ public class BackendBucketIamPolicy extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BackendBucketIamPolicy get(String name, Output<String> id, @Nullable BackendBucketIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BackendBucketIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable BackendBucketIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BackendBucketIamPolicy(name, id, state, options);
     }
 }

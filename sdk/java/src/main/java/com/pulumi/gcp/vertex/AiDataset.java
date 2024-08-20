@@ -248,7 +248,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiDataset(String name) {
+    public AiDataset(java.lang.String name) {
         this(name, AiDatasetArgs.Empty);
     }
     /**
@@ -256,7 +256,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiDataset(String name, AiDatasetArgs args) {
+    public AiDataset(java.lang.String name, AiDatasetArgs args) {
         this(name, args, null);
     }
     /**
@@ -265,15 +265,22 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiDataset(String name, AiDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiDataset:AiDataset", name, args == null ? AiDatasetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AiDataset(java.lang.String name, AiDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiDataset:AiDataset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiDataset(String name, Output<String> id, @Nullable AiDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiDataset:AiDataset", name, state, makeResourceOptions(options, id));
+    private AiDataset(java.lang.String name, Output<java.lang.String> id, @Nullable AiDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiDataset:AiDataset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AiDatasetArgs makeArgs(AiDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiDatasetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -293,7 +300,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiDataset get(String name, Output<String> id, @Nullable AiDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiDataset get(java.lang.String name, Output<java.lang.String> id, @Nullable AiDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiDataset(name, id, state, options);
     }
 }

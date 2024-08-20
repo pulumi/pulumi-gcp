@@ -240,7 +240,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionNetworkFirewallPolicy(String name) {
+    public RegionNetworkFirewallPolicy(java.lang.String name) {
         this(name, RegionNetworkFirewallPolicyArgs.Empty);
     }
     /**
@@ -248,7 +248,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionNetworkFirewallPolicy(String name, @Nullable RegionNetworkFirewallPolicyArgs args) {
+    public RegionNetworkFirewallPolicy(java.lang.String name, @Nullable RegionNetworkFirewallPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -257,15 +257,22 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionNetworkFirewallPolicy(String name, @Nullable RegionNetworkFirewallPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy", name, args == null ? RegionNetworkFirewallPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionNetworkFirewallPolicy(java.lang.String name, @Nullable RegionNetworkFirewallPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionNetworkFirewallPolicy(String name, Output<String> id, @Nullable RegionNetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy", name, state, makeResourceOptions(options, id));
+    private RegionNetworkFirewallPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable RegionNetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionNetworkFirewallPolicyArgs makeArgs(@Nullable RegionNetworkFirewallPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionNetworkFirewallPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -281,7 +288,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionNetworkFirewallPolicy get(String name, Output<String> id, @Nullable RegionNetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionNetworkFirewallPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionNetworkFirewallPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionNetworkFirewallPolicy(name, id, state, options);
     }
 }

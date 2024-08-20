@@ -34,9 +34,9 @@ import (
 //				Name:            pulumi.String("dataflow-job"),
 //				TemplateGcsPath: pulumi.String("gs://my-bucket/templates/template_file"),
 //				TempGcsLocation: pulumi.String("gs://my-bucket/tmp_dir"),
-//				Parameters: pulumi.Map{
-//					"foo": pulumi.Any("bar"),
-//					"baz": pulumi.Any("qux"),
+//				Parameters: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//					"baz": pulumi.String("qux"),
 //				},
 //			})
 //			if err != nil {
@@ -93,15 +93,15 @@ import (
 //				TemplateGcsPath:       pulumi.String("gs://my-bucket/templates/template_file"),
 //				TempGcsLocation:       pulumi.String("gs://my-bucket/tmp_dir"),
 //				EnableStreamingEngine: pulumi.Bool(true),
-//				Parameters: pulumi.Map{
+//				Parameters: pulumi.StringMap{
 //					"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
 //						return fmt.Sprintf("%v/*.json", url), nil
 //					}).(pulumi.StringOutput),
 //					"outputTopic": topic.ID(),
 //				},
-//				TransformNameMapping: pulumi.Map{
-//					"name": pulumi.Any("test_job"),
-//					"env":  pulumi.Any("test"),
+//				TransformNameMapping: pulumi.StringMap{
+//					"name": pulumi.String("test_job"),
+//					"env":  pulumi.String("test"),
 //				},
 //				OnDelete: pulumi.String("cancel"),
 //			})
@@ -162,7 +162,7 @@ import (
 //				Region:                   pulumi.Any(region),
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),
-//				Parameters: pulumi.Map{
+//				Parameters: pulumi.StringMap{
 //					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
 //				},
 //			})
@@ -204,7 +204,7 @@ type Job struct {
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrOutput `pulumi:"machineType"`
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -218,7 +218,7 @@ type Job struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters pulumi.MapOutput `pulumi:"parameters"`
+	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -240,7 +240,7 @@ type Job struct {
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringOutput `pulumi:"templateGcsPath"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-	TransformNameMapping pulumi.MapOutput `pulumi:"transformNameMapping"`
+	TransformNameMapping pulumi.StringMapOutput `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -303,7 +303,7 @@ type jobState struct {
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType *string `pulumi:"machineType"`
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -317,7 +317,7 @@ type jobState struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -339,7 +339,7 @@ type jobState struct {
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath *string `pulumi:"templateGcsPath"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
+	TransformNameMapping map[string]string `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type *string `pulumi:"type"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -362,7 +362,7 @@ type JobState struct {
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrInput
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -376,7 +376,7 @@ type JobState struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -398,7 +398,7 @@ type JobState struct {
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringPtrInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-	TransformNameMapping pulumi.MapInput
+	TransformNameMapping pulumi.StringMapInput
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type pulumi.StringPtrInput
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -421,7 +421,7 @@ type jobArgs struct {
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType *string `pulumi:"machineType"`
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -435,7 +435,7 @@ type jobArgs struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region in which the created job should run.
@@ -453,7 +453,7 @@ type jobArgs struct {
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath string `pulumi:"templateGcsPath"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
+	TransformNameMapping map[string]string `pulumi:"transformNameMapping"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
@@ -471,7 +471,7 @@ type JobArgs struct {
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrInput
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -485,7 +485,7 @@ type JobArgs struct {
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region in which the created job should run.
@@ -503,7 +503,7 @@ type JobArgs struct {
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-	TransformNameMapping pulumi.MapInput
+	TransformNameMapping pulumi.StringMapInput
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
@@ -628,8 +628,8 @@ func (o JobOutput) KmsKeyName() pulumi.StringPtrOutput {
 // User labels to be specified for the job. Keys and values should follow the restrictions
 // specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-func (o JobOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o JobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The machine type to use for the job.
@@ -660,8 +660,8 @@ func (o JobOutput) OnDelete() pulumi.StringPtrOutput {
 // **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 // case-sensitive based on the language on which the pipeline is coded, mostly Java.
 // **Note**: do not configure Dataflow options here in parameters.
-func (o JobOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+func (o JobOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // The project in which the resource belongs. If it is not provided, the provider project is used.
@@ -712,8 +712,8 @@ func (o JobOutput) TemplateGcsPath() pulumi.StringOutput {
 }
 
 // Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-func (o JobOutput) TransformNameMapping() pulumi.MapOutput {
-	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.TransformNameMapping }).(pulumi.MapOutput)
+func (o JobOutput) TransformNameMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TransformNameMapping }).(pulumi.StringMapOutput)
 }
 
 // The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)

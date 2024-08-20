@@ -226,6 +226,8 @@ if typing.TYPE_CHECKING:
     servicenetworking = __servicenetworking
     import pulumi_gcp.serviceusage as __serviceusage
     serviceusage = __serviceusage
+    import pulumi_gcp.siteverification as __siteverification
+    siteverification = __siteverification
     import pulumi_gcp.sourcerepo as __sourcerepo
     sourcerepo = __sourcerepo
     import pulumi_gcp.spanner as __spanner
@@ -359,6 +361,7 @@ else:
     servicedirectory = _utilities.lazy_import('pulumi_gcp.servicedirectory')
     servicenetworking = _utilities.lazy_import('pulumi_gcp.servicenetworking')
     serviceusage = _utilities.lazy_import('pulumi_gcp.serviceusage')
+    siteverification = _utilities.lazy_import('pulumi_gcp.siteverification')
     sourcerepo = _utilities.lazy_import('pulumi_gcp.sourcerepo')
     spanner = _utilities.lazy_import('pulumi_gcp.spanner')
     sql = _utilities.lazy_import('pulumi_gcp.sql')
@@ -469,6 +472,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {
    "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter": "ServicePerimeter"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/servicePerimeterDryRunEgressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy": "ServicePerimeterDryRunEgressPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/servicePerimeterDryRunIngressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy": "ServicePerimeterDryRunIngressPolicy"
   }
  },
  {
@@ -741,6 +760,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy": "EnvironmentIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/environmentKeyvaluemaps",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps": "EnvironmentKeyvaluemaps"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/environmentKeyvaluemapsEntries",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries": "EnvironmentKeyvaluemapsEntries"
   }
  },
  {
@@ -2977,6 +3012,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/resizeRequest",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/resizeRequest:ResizeRequest": "ResizeRequest"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/resourcePolicy",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3021,6 +3064,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/routerPeer:RouterPeer": "RouterPeer"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/routerRoutePolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/routerRoutePolicy:RouterRoutePolicy": "RouterRoutePolicy"
   }
  },
  {
@@ -6897,6 +6948,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securesourcemanager/repository",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repository:Repository": "Repository"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/repositoryIamBinding",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding": "RepositoryIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/repositoryIamMember",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember": "RepositoryIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/repositoryIamPolicy",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy": "RepositoryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/eventThreatDetectionCustomModule",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7001,6 +7084,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/projectNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig": "ProjectNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/source",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7029,6 +7120,78 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "SourceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2FolderMuteConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig": "V2FolderMuteConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationMuteConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig": "V2OrganizationMuteConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": "V2OrganizationNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSource",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource": "V2OrganizationSource"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSourceIamBinding",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding": "V2OrganizationSourceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSourceIamMember",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember": "V2OrganizationSourceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSourceIamPolicy",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy": "V2OrganizationSourceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2ProjectMuteConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig": "V2ProjectMuteConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2ProjectNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig": "V2ProjectNotificationConfig"
   }
  },
  {

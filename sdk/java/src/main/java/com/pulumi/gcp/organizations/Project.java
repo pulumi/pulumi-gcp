@@ -172,6 +172,12 @@ public class Project extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> billingAccount() {
         return Codegen.optional(this.billingAccount);
     }
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
+    }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
@@ -307,16 +313,26 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * If true, the resource can be deleted without
+     * deleting the Project via the Google API. `skip_delete` is deprecated and will be
+     * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+     * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+     * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
+     * 
+     * @deprecated
+     * skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.
      * 
      */
+    @Deprecated /* skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior. */
     @Export(name="skipDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> skipDelete;
 
     /**
-     * @return If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * @return If true, the resource can be deleted without
+     * deleting the Project via the Google API. `skip_delete` is deprecated and will be
+     * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
+     * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
+     * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
      * 
      */
     public Output<Boolean> skipDelete() {
@@ -327,7 +343,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Project(String name) {
+    public Project(java.lang.String name) {
         this(name, ProjectArgs.Empty);
     }
     /**
@@ -335,7 +351,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Project(String name, @Nullable ProjectArgs args) {
+    public Project(java.lang.String name, @Nullable ProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -344,15 +360,22 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Project(String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/project:Project", name, args == null ? ProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Project(java.lang.String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/project:Project", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Project(String name, Output<String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/project:Project", name, state, makeResourceOptions(options, id));
+    private Project(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/project:Project", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectArgs makeArgs(@Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -372,7 +395,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Project get(String name, Output<String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Project get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Project(name, id, state, options);
     }
 }

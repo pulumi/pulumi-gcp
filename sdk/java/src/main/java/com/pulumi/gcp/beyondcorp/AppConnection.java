@@ -367,7 +367,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppConnection(String name) {
+    public AppConnection(java.lang.String name) {
         this(name, AppConnectionArgs.Empty);
     }
     /**
@@ -375,7 +375,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppConnection(String name, AppConnectionArgs args) {
+    public AppConnection(java.lang.String name, AppConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -384,15 +384,22 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppConnection(String name, AppConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:beyondcorp/appConnection:AppConnection", name, args == null ? AppConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AppConnection(java.lang.String name, AppConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:beyondcorp/appConnection:AppConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppConnection(String name, Output<String> id, @Nullable AppConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:beyondcorp/appConnection:AppConnection", name, state, makeResourceOptions(options, id));
+    private AppConnection(java.lang.String name, Output<java.lang.String> id, @Nullable AppConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:beyondcorp/appConnection:AppConnection", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AppConnectionArgs makeArgs(AppConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppConnectionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -412,7 +419,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppConnection get(String name, Output<String> id, @Nullable AppConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppConnection get(java.lang.String name, Output<java.lang.String> id, @Nullable AppConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppConnection(name, id, state, options);
     }
 }

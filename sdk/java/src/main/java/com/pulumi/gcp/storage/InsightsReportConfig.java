@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var reportBucket = new Bucket("reportBucket", BucketArgs.builder()
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(reportBucket.name())
  *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-storageinsights.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-storageinsights.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(admin)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -254,7 +254,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InsightsReportConfig(String name) {
+    public InsightsReportConfig(java.lang.String name) {
         this(name, InsightsReportConfigArgs.Empty);
     }
     /**
@@ -262,7 +262,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InsightsReportConfig(String name, InsightsReportConfigArgs args) {
+    public InsightsReportConfig(java.lang.String name, InsightsReportConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -271,15 +271,22 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InsightsReportConfig(String name, InsightsReportConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/insightsReportConfig:InsightsReportConfig", name, args == null ? InsightsReportConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InsightsReportConfig(java.lang.String name, InsightsReportConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/insightsReportConfig:InsightsReportConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InsightsReportConfig(String name, Output<String> id, @Nullable InsightsReportConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/insightsReportConfig:InsightsReportConfig", name, state, makeResourceOptions(options, id));
+    private InsightsReportConfig(java.lang.String name, Output<java.lang.String> id, @Nullable InsightsReportConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/insightsReportConfig:InsightsReportConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InsightsReportConfigArgs makeArgs(InsightsReportConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InsightsReportConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -295,7 +302,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InsightsReportConfig get(String name, Output<String> id, @Nullable InsightsReportConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InsightsReportConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable InsightsReportConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InsightsReportConfig(name, id, state, options);
     }
 }

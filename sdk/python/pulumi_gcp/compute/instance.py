@@ -92,8 +92,8 @@ class InstanceArgs:
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance. A
-               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               Add them to your config in order to keep them attached to your instance.
+               A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
                
                > Depending on the OS you choose for your instance, some metadata keys have
                special functionality.  Most linux-based images will run the content of
@@ -412,8 +412,8 @@ class InstanceArgs:
         """
         Metadata key/value pairs to make available from
         within the instance. Ssh keys attached in the Cloud Console will be removed.
-        Add them to your config in order to keep them attached to your instance. A
-        list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        Add them to your config in order to keep them attached to your instance.
+        A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
 
         > Depending on the OS you choose for your instance, some metadata keys have
         special functionality.  Most linux-based images will run the content of
@@ -721,8 +721,8 @@ class _InstanceState:
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance. A
-               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               Add them to your config in order to keep them attached to your instance.
+               A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
                
                > Depending on the OS you choose for your instance, some metadata keys have
                special functionality.  Most linux-based images will run the content of
@@ -1115,8 +1115,8 @@ class _InstanceState:
         """
         Metadata key/value pairs to make available from
         within the instance. Ssh keys attached in the Cloud Console will be removed.
-        Add them to your config in order to keep them attached to your instance. A
-        list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        Add them to your config in order to keep them attached to your instance.
+        A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
 
         > Depending on the OS you choose for your instance, some metadata keys have
         special functionality.  Most linux-based images will run the content of
@@ -1457,7 +1457,7 @@ class Instance(pulumi.CustomResource):
             display_name="Custom SA for VM Instance")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="my-instance",
@@ -1468,7 +1468,7 @@ class Instance(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                     "labels": {
                         "my_label": "value",
@@ -1548,8 +1548,8 @@ class Instance(pulumi.CustomResource):
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance. A
-               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               Add them to your config in order to keep them attached to your instance.
+               A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
                
                > Depending on the OS you choose for your instance, some metadata keys have
                special functionality.  Most linux-based images will run the content of
@@ -1628,7 +1628,7 @@ class Instance(pulumi.CustomResource):
             display_name="Custom SA for VM Instance")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="my-instance",
@@ -1639,7 +1639,7 @@ class Instance(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                     "labels": {
                         "my_label": "value",
@@ -1882,8 +1882,8 @@ class Instance(pulumi.CustomResource):
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance. A
-               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               Add them to your config in order to keep them attached to your instance.
+               A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
                
                > Depending on the OS you choose for your instance, some metadata keys have
                special functionality.  Most linux-based images will run the content of
@@ -2165,8 +2165,8 @@ class Instance(pulumi.CustomResource):
         """
         Metadata key/value pairs to make available from
         within the instance. Ssh keys attached in the Cloud Console will be removed.
-        Add them to your config in order to keep them attached to your instance. A
-        list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        Add them to your config in order to keep them attached to your instance.
+        A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
 
         > Depending on the OS you choose for your instance, some metadata keys have
         special functionality.  Most linux-based images will run the content of

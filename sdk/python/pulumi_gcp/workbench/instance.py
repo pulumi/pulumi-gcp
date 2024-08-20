@@ -579,7 +579,7 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a",
             gce_setup={
-                "containerImage": {
+                "container_image": {
                     "repository": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
                     "tag": "latest",
                 },
@@ -595,12 +595,12 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-central1-a",
             gce_setup={
-                "machineType": "n1-standard-1",
-                "acceleratorConfigs": [{
+                "machine_type": "n1-standard-1",
+                "accelerator_configs": [{
                     "type": "NVIDIA_TESLA_T4",
-                    "coreCount": "1",
+                    "core_count": "1",
                 }],
-                "vmImage": {
+                "vm_image": {
                     "project": "cloud-notebooks-managed",
                     "family": "workbench-instances",
                 },
@@ -616,20 +616,19 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-central1-a",
             gce_setup={
-                "machineType": "e2-standard-4",
-                "shieldedInstanceConfig": {
-                    "enableSecureBoot": False,
-                    "enableVtpm": False,
-                    "enableIntegrityMonitoring": False,
+                "machine_type": "e2-standard-4",
+                "shielded_instance_config": {
+                    "enable_secure_boot": False,
+                    "enable_vtpm": False,
+                    "enable_integrity_monitoring": False,
                 },
-                "serviceAccounts": [{
+                "service_accounts": [{
                     "email": "my@service-account.com",
                 }],
                 "metadata": {
                     "terraform": "true",
                 },
             },
-            instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
             },
@@ -649,52 +648,60 @@ class Instance(pulumi.CustomResource):
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
+        static = gcp.compute.Address("static", name="wbi-test-default")
+        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+            service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
+            role="roles/iam.serviceAccountUser",
+            members=["user:example@example.com"])
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
             gce_setup={
-                "machineType": "n1-standard-4",
-                "acceleratorConfigs": [{
+                "machine_type": "n1-standard-4",
+                "accelerator_configs": [{
                     "type": "NVIDIA_TESLA_T4",
-                    "coreCount": "1",
+                    "core_count": "1",
                 }],
-                "shieldedInstanceConfig": {
-                    "enableSecureBoot": True,
-                    "enableVtpm": True,
-                    "enableIntegrityMonitoring": True,
+                "shielded_instance_config": {
+                    "enable_secure_boot": True,
+                    "enable_vtpm": True,
+                    "enable_integrity_monitoring": True,
                 },
-                "disablePublicIp": False,
-                "serviceAccounts": [{
+                "disable_public_ip": False,
+                "service_accounts": [{
                     "email": "my@service-account.com",
                 }],
-                "bootDisk": {
-                    "diskSizeGb": "310",
-                    "diskType": "PD_SSD",
-                    "diskEncryption": "CMEK",
-                    "kmsKey": "my-crypto-key",
+                "boot_disk": {
+                    "disk_size_gb": "310",
+                    "disk_type": "PD_SSD",
+                    "disk_encryption": "CMEK",
+                    "kms_key": "my-crypto-key",
                 },
-                "dataDisks": {
-                    "diskSizeGb": "330",
-                    "diskType": "PD_SSD",
-                    "diskEncryption": "CMEK",
-                    "kmsKey": "my-crypto-key",
+                "data_disks": {
+                    "disk_size_gb": "330",
+                    "disk_type": "PD_SSD",
+                    "disk_encryption": "CMEK",
+                    "kms_key": "my-crypto-key",
                 },
-                "networkInterfaces": [{
+                "network_interfaces": [{
                     "network": my_network.id,
                     "subnet": my_subnetwork.id,
-                    "nicType": "GVNIC",
+                    "nic_type": "GVNIC",
+                    "access_configs": [{
+                        "external_ip": static.address,
+                    }],
                 }],
                 "metadata": {
                     "terraform": "true",
                 },
-                "enableIpForwarding": True,
+                "enable_ip_forwarding": True,
                 "tags": [
                     "abc",
                     "def",
                 ],
             },
             disable_proxy_access=True,
-            instance_owners=["my@service-account.com"],
+            instance_owners=["example@example.com"],
             labels={
                 "k": "val",
             },
@@ -779,7 +786,7 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a",
             gce_setup={
-                "containerImage": {
+                "container_image": {
                     "repository": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
                     "tag": "latest",
                 },
@@ -795,12 +802,12 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-central1-a",
             gce_setup={
-                "machineType": "n1-standard-1",
-                "acceleratorConfigs": [{
+                "machine_type": "n1-standard-1",
+                "accelerator_configs": [{
                     "type": "NVIDIA_TESLA_T4",
-                    "coreCount": "1",
+                    "core_count": "1",
                 }],
-                "vmImage": {
+                "vm_image": {
                     "project": "cloud-notebooks-managed",
                     "family": "workbench-instances",
                 },
@@ -816,20 +823,19 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-central1-a",
             gce_setup={
-                "machineType": "e2-standard-4",
-                "shieldedInstanceConfig": {
-                    "enableSecureBoot": False,
-                    "enableVtpm": False,
-                    "enableIntegrityMonitoring": False,
+                "machine_type": "e2-standard-4",
+                "shielded_instance_config": {
+                    "enable_secure_boot": False,
+                    "enable_vtpm": False,
+                    "enable_integrity_monitoring": False,
                 },
-                "serviceAccounts": [{
+                "service_accounts": [{
                     "email": "my@service-account.com",
                 }],
                 "metadata": {
                     "terraform": "true",
                 },
             },
-            instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
             },
@@ -849,52 +855,60 @@ class Instance(pulumi.CustomResource):
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
+        static = gcp.compute.Address("static", name="wbi-test-default")
+        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+            service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
+            role="roles/iam.serviceAccountUser",
+            members=["user:example@example.com"])
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
             gce_setup={
-                "machineType": "n1-standard-4",
-                "acceleratorConfigs": [{
+                "machine_type": "n1-standard-4",
+                "accelerator_configs": [{
                     "type": "NVIDIA_TESLA_T4",
-                    "coreCount": "1",
+                    "core_count": "1",
                 }],
-                "shieldedInstanceConfig": {
-                    "enableSecureBoot": True,
-                    "enableVtpm": True,
-                    "enableIntegrityMonitoring": True,
+                "shielded_instance_config": {
+                    "enable_secure_boot": True,
+                    "enable_vtpm": True,
+                    "enable_integrity_monitoring": True,
                 },
-                "disablePublicIp": False,
-                "serviceAccounts": [{
+                "disable_public_ip": False,
+                "service_accounts": [{
                     "email": "my@service-account.com",
                 }],
-                "bootDisk": {
-                    "diskSizeGb": "310",
-                    "diskType": "PD_SSD",
-                    "diskEncryption": "CMEK",
-                    "kmsKey": "my-crypto-key",
+                "boot_disk": {
+                    "disk_size_gb": "310",
+                    "disk_type": "PD_SSD",
+                    "disk_encryption": "CMEK",
+                    "kms_key": "my-crypto-key",
                 },
-                "dataDisks": {
-                    "diskSizeGb": "330",
-                    "diskType": "PD_SSD",
-                    "diskEncryption": "CMEK",
-                    "kmsKey": "my-crypto-key",
+                "data_disks": {
+                    "disk_size_gb": "330",
+                    "disk_type": "PD_SSD",
+                    "disk_encryption": "CMEK",
+                    "kms_key": "my-crypto-key",
                 },
-                "networkInterfaces": [{
+                "network_interfaces": [{
                     "network": my_network.id,
                     "subnet": my_subnetwork.id,
-                    "nicType": "GVNIC",
+                    "nic_type": "GVNIC",
+                    "access_configs": [{
+                        "external_ip": static.address,
+                    }],
                 }],
                 "metadata": {
                     "terraform": "true",
                 },
-                "enableIpForwarding": True,
+                "enable_ip_forwarding": True,
                 "tags": [
                     "abc",
                     "def",
                 ],
             },
             disable_proxy_access=True,
-            instance_owners=["my@service-account.com"],
+            instance_owners=["example@example.com"],
             labels={
                 "k": "val",
             },

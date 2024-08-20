@@ -20,7 +20,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -44,10 +47,35 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-key-ring"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleKey, err := kms.NewCryptoKey(ctx, "example_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-crypto-key-name"),
+//				KeyRing: keyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: exampleKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-dataform.iam.gserviceaccount.com", project.Number),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 //				Name:                                   pulumi.String("dataform_repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
 //				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
+//				KmsKeyName:                             exampleKey.ID(),
 //				Labels: pulumi.StringMap{
 //					"label_foo1": pulumi.String("label-bar1"),
 //				},
@@ -61,7 +89,9 @@ import (
 //					SchemaSuffix:    pulumi.String("_suffix"),
 //					TablePrefix:     pulumi.String("prefix_"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKeyBinding,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -110,6 +140,9 @@ type Repository struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrOutput `pulumi:"gitRemoteSettings"`
+	// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+	// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// Optional. Repository user labels.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -179,6 +212,9 @@ type repositoryState struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings *RepositoryGitRemoteSettings `pulumi:"gitRemoteSettings"`
+	// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+	// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Optional. Repository user labels.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -214,6 +250,9 @@ type RepositoryState struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrInput
+	// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+	// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName pulumi.StringPtrInput
 	// Optional. Repository user labels.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -251,6 +290,9 @@ type repositoryArgs struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings *RepositoryGitRemoteSettings `pulumi:"gitRemoteSettings"`
+	// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+	// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Optional. Repository user labels.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -282,6 +324,9 @@ type RepositoryArgs struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrInput
+	// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+	// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+	KmsKeyName pulumi.StringPtrInput
 	// Optional. Repository user labels.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
@@ -407,6 +452,12 @@ func (o RepositoryOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o RepositoryOutput) GitRemoteSettings() RepositoryGitRemoteSettingsPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryGitRemoteSettingsPtrOutput { return v.GitRemoteSettings }).(RepositoryGitRemoteSettingsPtrOutput)
+}
+
+// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
+func (o RepositoryOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Repository user labels.

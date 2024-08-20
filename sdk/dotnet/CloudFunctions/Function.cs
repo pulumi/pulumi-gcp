@@ -161,7 +161,13 @@ namespace Pulumi.Gcp.CloudFunctions
         /// A set of key/value environment variable pairs available during build time.
         /// </summary>
         [Output("buildEnvironmentVariables")]
-        public Output<ImmutableDictionary<string, object>?> BuildEnvironmentVariables { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> BuildEnvironmentVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        /// </summary>
+        [Output("buildServiceAccount")]
+        public Output<string> BuildServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -203,7 +209,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// A set of key/value environment variable pairs to assign to the function.
         /// </summary>
         [Output("environmentVariables")]
-        public Output<ImmutableDictionary<string, object>?> EnvironmentVariables { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
         /// <summary>
         /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
@@ -246,7 +252,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The limit on the maximum number of function instances that may coexist at a given time.
@@ -425,16 +431,22 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<int>? AvailableMemoryMb { get; set; }
 
         [Input("buildEnvironmentVariables")]
-        private InputMap<object>? _buildEnvironmentVariables;
+        private InputMap<string>? _buildEnvironmentVariables;
 
         /// <summary>
         /// A set of key/value environment variable pairs available during build time.
         /// </summary>
-        public InputMap<object> BuildEnvironmentVariables
+        public InputMap<string> BuildEnvironmentVariables
         {
-            get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<object>());
+            get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<string>());
             set => _buildEnvironmentVariables = value;
         }
+
+        /// <summary>
+        /// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        /// </summary>
+        [Input("buildServiceAccount")]
+        public Input<string>? BuildServiceAccount { get; set; }
 
         /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -467,14 +479,14 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? EntryPoint { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
+        private InputMap<string>? _environmentVariables;
 
         /// <summary>
         /// A set of key/value environment variable pairs to assign to the function.
         /// </summary>
-        public InputMap<object> EnvironmentVariables
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
@@ -513,7 +525,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
@@ -521,9 +533,9 @@ namespace Pulumi.Gcp.CloudFunctions
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -654,16 +666,22 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<int>? AvailableMemoryMb { get; set; }
 
         [Input("buildEnvironmentVariables")]
-        private InputMap<object>? _buildEnvironmentVariables;
+        private InputMap<string>? _buildEnvironmentVariables;
 
         /// <summary>
         /// A set of key/value environment variable pairs available during build time.
         /// </summary>
-        public InputMap<object> BuildEnvironmentVariables
+        public InputMap<string> BuildEnvironmentVariables
         {
-            get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<object>());
+            get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<string>());
             set => _buildEnvironmentVariables = value;
         }
+
+        /// <summary>
+        /// If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
+        /// </summary>
+        [Input("buildServiceAccount")]
+        public Input<string>? BuildServiceAccount { get; set; }
 
         /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -712,14 +730,14 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? EntryPoint { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
+        private InputMap<string>? _environmentVariables;
 
         /// <summary>
         /// A set of key/value environment variable pairs to assign to the function.
         /// </summary>
-        public InputMap<object> EnvironmentVariables
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
@@ -758,7 +776,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
@@ -766,9 +784,9 @@ namespace Pulumi.Gcp.CloudFunctions
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

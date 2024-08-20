@@ -25,8 +25,7 @@ import javax.annotation.Nullable;
  * balancing. Global forwarding rules can only be used for HTTP load
  * balancing.
  * 
- * For more information, see
- * https://cloud.google.com/compute/docs/load-balancing/http/
+ * For more information, see https://cloud.google.com/compute/docs/load-balancing/http/
  * 
  * ## Example Usage
  * 
@@ -1251,7 +1250,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalForwardingRule(String name) {
+    public GlobalForwardingRule(java.lang.String name) {
         this(name, GlobalForwardingRuleArgs.Empty);
     }
     /**
@@ -1259,7 +1258,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalForwardingRule(String name, GlobalForwardingRuleArgs args) {
+    public GlobalForwardingRule(java.lang.String name, GlobalForwardingRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -1268,15 +1267,22 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalForwardingRule(String name, GlobalForwardingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, args == null ? GlobalForwardingRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GlobalForwardingRule(java.lang.String name, GlobalForwardingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GlobalForwardingRule(String name, Output<String> id, @Nullable GlobalForwardingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, state, makeResourceOptions(options, id));
+    private GlobalForwardingRule(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalForwardingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GlobalForwardingRuleArgs makeArgs(GlobalForwardingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalForwardingRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -1296,7 +1302,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalForwardingRule get(String name, Output<String> id, @Nullable GlobalForwardingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalForwardingRule get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalForwardingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalForwardingRule(name, id, state, options);
     }
 }

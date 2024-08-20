@@ -40,7 +40,8 @@ type GetHcVpnGatewayArgs struct {
 
 // A collection of values returned by getHcVpnGateway.
 type GetHcVpnGatewayResult struct {
-	Description string `pulumi:"description"`
+	Description      string `pulumi:"description"`
+	GatewayIpVersion string `pulumi:"gatewayIpVersion"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                        `pulumi:"id"`
 	Name          string                        `pulumi:"name"`
@@ -100,6 +101,10 @@ func (o GetHcVpnGatewayResultOutput) ToGetHcVpnGatewayResultOutputWithContext(ct
 
 func (o GetHcVpnGatewayResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) GatewayIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.GatewayIpVersion }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

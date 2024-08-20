@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.securitycenter.inputs.GetSourceIamPolicyArgs;
 import com.pulumi.gcp.securitycenter.inputs.GetSourceIamPolicyPlainArgs;
+import com.pulumi.gcp.securitycenter.inputs.GetV2OrganizationSourceIamPolicyArgs;
+import com.pulumi.gcp.securitycenter.inputs.GetV2OrganizationSourceIamPolicyPlainArgs;
 import com.pulumi.gcp.securitycenter.outputs.GetSourceIamPolicyResult;
+import com.pulumi.gcp.securitycenter.outputs.GetV2OrganizationSourceIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SecuritycenterFunctions {
@@ -181,5 +184,173 @@ public final class SecuritycenterFunctions {
      */
     public static CompletableFuture<GetSourceIamPolicyResult> getSourceIamPolicyPlain(GetSourceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", TypeShape.of(GetSourceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for organizationsource
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.gcp.securitycenter.inputs.GetV2OrganizationSourceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecuritycenterFunctions.getV2OrganizationSourceIamPolicy(GetV2OrganizationSourceIamPolicyArgs.builder()
+     *             .source(customSource.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetV2OrganizationSourceIamPolicyResult> getV2OrganizationSourceIamPolicy(GetV2OrganizationSourceIamPolicyArgs args) {
+        return getV2OrganizationSourceIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for organizationsource
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.gcp.securitycenter.inputs.GetV2OrganizationSourceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecuritycenterFunctions.getV2OrganizationSourceIamPolicy(GetV2OrganizationSourceIamPolicyArgs.builder()
+     *             .source(customSource.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetV2OrganizationSourceIamPolicyResult> getV2OrganizationSourceIamPolicyPlain(GetV2OrganizationSourceIamPolicyPlainArgs args) {
+        return getV2OrganizationSourceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for organizationsource
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.gcp.securitycenter.inputs.GetV2OrganizationSourceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecuritycenterFunctions.getV2OrganizationSourceIamPolicy(GetV2OrganizationSourceIamPolicyArgs.builder()
+     *             .source(customSource.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetV2OrganizationSourceIamPolicyResult> getV2OrganizationSourceIamPolicy(GetV2OrganizationSourceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", TypeShape.of(GetV2OrganizationSourceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for organizationsource
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.gcp.securitycenter.inputs.GetV2OrganizationSourceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecuritycenterFunctions.getV2OrganizationSourceIamPolicy(GetV2OrganizationSourceIamPolicyArgs.builder()
+     *             .source(customSource.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetV2OrganizationSourceIamPolicyResult> getV2OrganizationSourceIamPolicyPlain(GetV2OrganizationSourceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", TypeShape.of(GetV2OrganizationSourceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

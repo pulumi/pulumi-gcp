@@ -229,7 +229,7 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LocationTagBinding(String name) {
+    public LocationTagBinding(java.lang.String name) {
         this(name, LocationTagBindingArgs.Empty);
     }
     /**
@@ -237,7 +237,7 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LocationTagBinding(String name, LocationTagBindingArgs args) {
+    public LocationTagBinding(java.lang.String name, LocationTagBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -246,15 +246,22 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LocationTagBinding(String name, LocationTagBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/locationTagBinding:LocationTagBinding", name, args == null ? LocationTagBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LocationTagBinding(java.lang.String name, LocationTagBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tags/locationTagBinding:LocationTagBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LocationTagBinding(String name, Output<String> id, @Nullable LocationTagBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/locationTagBinding:LocationTagBinding", name, state, makeResourceOptions(options, id));
+    private LocationTagBinding(java.lang.String name, Output<java.lang.String> id, @Nullable LocationTagBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:tags/locationTagBinding:LocationTagBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LocationTagBindingArgs makeArgs(LocationTagBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LocationTagBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -270,7 +277,7 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LocationTagBinding get(String name, Output<String> id, @Nullable LocationTagBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LocationTagBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable LocationTagBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LocationTagBinding(name, id, state, options);
     }
 }

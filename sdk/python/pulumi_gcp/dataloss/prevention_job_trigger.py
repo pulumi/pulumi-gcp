@@ -368,24 +368,24 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -404,30 +404,30 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "bigQueryOptions": {
-                        "tableReference": {
-                            "projectId": "project",
-                            "datasetId": "dataset",
-                            "tableId": "table_to_scan",
+                "storage_config": {
+                    "big_query_options": {
+                        "table_reference": {
+                            "project_id": "project",
+                            "dataset_id": "dataset",
+                            "table_id": "table_to_scan",
                         },
-                        "rowsLimit": 1000,
-                        "sampleMethod": "RANDOM_START",
+                        "rows_limit": 1000,
+                        "sample_method": "RANDOM_START",
                     },
                 },
             })
@@ -444,30 +444,30 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "bigQueryOptions": {
-                        "tableReference": {
-                            "projectId": "project",
-                            "datasetId": "dataset",
-                            "tableId": "table_to_scan",
+                "storage_config": {
+                    "big_query_options": {
+                        "table_reference": {
+                            "project_id": "project",
+                            "dataset_id": "dataset",
+                            "table_id": "table_to_scan",
                         },
-                        "rowsLimitPercent": 50,
-                        "sampleMethod": "RANDOM_START",
+                        "rows_limit_percent": 50,
+                        "sample_method": "RANDOM_START",
                     },
                 },
             })
@@ -484,17 +484,17 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="TerraformDisplayName",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "sample-inspect-template",
+                "inspect_template_name": "sample-inspect-template",
                 "actions": [{
-                    "jobNotificationEmails": {},
+                    "job_notification_emails": {},
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -547,35 +547,35 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="TerraformDisplayName",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "sample-inspect-template",
+                "inspect_template_name": "sample-inspect-template",
                 "actions": [{
                     "deidentify": {
-                        "cloudStorageOutput": "gs://samplebucket/dir/",
-                        "fileTypesToTransforms": [
+                        "cloud_storage_output": "gs://samplebucket/dir/",
+                        "file_types_to_transforms": [
                             "CSV",
                             "TSV",
                         ],
-                        "transformationDetailsStorageConfig": {
+                        "transformation_details_storage_config": {
                             "table": {
-                                "projectId": "my-project-name",
-                                "datasetId": default.dataset_id,
-                                "tableId": default_table.table_id,
+                                "project_id": "my-project-name",
+                                "dataset_id": default.dataset_id,
+                                "table_id": default_table.table_id,
                             },
                         },
-                        "transformationConfig": {
-                            "deidentifyTemplate": "sample-deidentify-template",
-                            "imageRedactTemplate": "sample-image-redact-template",
-                            "structuredDeidentifyTemplate": "sample-structured-deidentify-template",
+                        "transformation_config": {
+                            "deidentify_template": "sample-deidentify-template",
+                            "image_redact_template": "sample-image-redact-template",
+                            "structured_deidentify_template": "sample-structured-deidentify-template",
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -594,26 +594,26 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 "manual": {},
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "hybridOptions": {
+                "storage_config": {
+                    "hybrid_options": {
                         "description": "Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
-                        "requiredFindingLabelKeys": ["appointment-bookings-comments"],
+                        "required_finding_label_keys": ["appointment-bookings-comments"],
                         "labels": {
                             "env": "prod",
                         },
-                        "tableOptions": {
-                            "identifyingFields": [{
+                        "table_options": {
+                            "identifying_fields": [{
                                 "name": "booking_id",
                             }],
                         },
@@ -633,31 +633,31 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
                 },
-                "inspectConfig": {
-                    "customInfoTypes": [{
-                        "infoType": {
+                "inspect_config": {
+                    "custom_info_types": [{
+                        "info_type": {
                             "name": "MY_CUSTOM_TYPE",
                         },
                         "likelihood": "UNLIKELY",
@@ -665,46 +665,46 @@ class PreventionJobTrigger(pulumi.CustomResource):
                             "pattern": "test*",
                         },
                     }],
-                    "infoTypes": [{
+                    "info_types": [{
                         "name": "EMAIL_ADDRESS",
                     }],
-                    "minLikelihood": "UNLIKELY",
-                    "ruleSets": [
+                    "min_likelihood": "UNLIKELY",
+                    "rule_sets": [
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "EMAIL_ADDRESS",
                             }],
                             "rules": [{
-                                "exclusionRule": {
+                                "exclusion_rule": {
                                     "regex": {
                                         "pattern": ".+@example.com",
                                     },
-                                    "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                    "matching_type": "MATCHING_TYPE_FULL_MATCH",
                                 },
                             }],
                         },
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "MY_CUSTOM_TYPE",
                             }],
                             "rules": [{
-                                "hotwordRule": {
-                                    "hotwordRegex": {
+                                "hotword_rule": {
+                                    "hotword_regex": {
                                         "pattern": "example*",
                                     },
                                     "proximity": {
-                                        "windowBefore": 50,
+                                        "window_before": 50,
                                     },
-                                    "likelihoodAdjustment": {
-                                        "fixedLikelihood": "VERY_LIKELY",
+                                    "likelihood_adjustment": {
+                                        "fixed_likelihood": "VERY_LIKELY",
                                     },
                                 },
                             }],
                         },
                     ],
                     "limits": {
-                        "maxFindingsPerItem": 10,
-                        "maxFindingsPerRequest": 50,
+                        "max_findings_per_item": 10,
+                        "max_findings_per_request": 50,
                     },
                 },
             })
@@ -721,17 +721,17 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="TerraformDisplayName",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "sample-inspect-template",
+                "inspect_template_name": "sample-inspect-template",
                 "actions": [{
-                    "publishToStackdriver": {},
+                    "publish_to_stackdriver": {},
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -751,24 +751,24 @@ class PreventionJobTrigger(pulumi.CustomResource):
             trigger_id="id-",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset123",
+                                "project_id": "project",
+                                "dataset_id": "dataset123",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -787,31 +787,31 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [
                     {
-                        "saveFindings": {
-                            "outputConfig": {
+                        "save_findings": {
+                            "output_config": {
                                 "table": {
-                                    "projectId": "project",
-                                    "datasetId": "dataset",
+                                    "project_id": "project",
+                                    "dataset_id": "dataset",
                                 },
                             },
                         },
                     },
                     {
-                        "pubSub": {
+                        "pub_sub": {
                             "topic": "projects/project/topics/topic-name",
                         },
                     },
                 ],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -830,31 +830,76 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "timespanConfig": {
-                        "enableAutoPopulationOfTimespanConfig": True,
+                "storage_config": {
+                    "timespan_config": {
+                        "enable_auto_population_of_timespan_config": True,
                     },
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
                 },
+            })
+        ```
+        ### Dlp Job Trigger Timespan Config Big Query
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        timespan_config_big_query = gcp.dataloss.PreventionJobTrigger("timespan_config_big_query",
+            parent="projects/my-project-name",
+            description="BigQuery DLP Job Trigger with timespan config and row limit",
+            display_name="bigquery-dlp-job-trigger-limit-timespan",
+            triggers=[{
+                "schedule": {
+                    "recurrence_period_duration": "86400s",
+                },
+            }],
+            inspect_job={
+                "inspect_template_name": "projects/test/locations/global/inspectTemplates/6425492983381733900",
+                "storage_config": {
+                    "big_query_options": {
+                        "table_reference": {
+                            "project_id": "project",
+                            "dataset_id": "dataset",
+                            "table_id": "table",
+                        },
+                        "sample_method": "",
+                    },
+                    "timespan_config": {
+                        "start_time": "2023-01-01T00:00:23Z",
+                        "timestamp_field": {
+                            "name": "timestamp",
+                        },
+                    },
+                },
+                "actions": [{
+                    "save_findings": {
+                        "output_config": {
+                            "table": {
+                                "project_id": "project",
+                                "dataset_id": "output",
+                            },
+                        },
+                    },
+                }],
             })
         ```
 
@@ -918,24 +963,24 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -954,30 +999,30 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "bigQueryOptions": {
-                        "tableReference": {
-                            "projectId": "project",
-                            "datasetId": "dataset",
-                            "tableId": "table_to_scan",
+                "storage_config": {
+                    "big_query_options": {
+                        "table_reference": {
+                            "project_id": "project",
+                            "dataset_id": "dataset",
+                            "table_id": "table_to_scan",
                         },
-                        "rowsLimit": 1000,
-                        "sampleMethod": "RANDOM_START",
+                        "rows_limit": 1000,
+                        "sample_method": "RANDOM_START",
                     },
                 },
             })
@@ -994,30 +1039,30 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "bigQueryOptions": {
-                        "tableReference": {
-                            "projectId": "project",
-                            "datasetId": "dataset",
-                            "tableId": "table_to_scan",
+                "storage_config": {
+                    "big_query_options": {
+                        "table_reference": {
+                            "project_id": "project",
+                            "dataset_id": "dataset",
+                            "table_id": "table_to_scan",
                         },
-                        "rowsLimitPercent": 50,
-                        "sampleMethod": "RANDOM_START",
+                        "rows_limit_percent": 50,
+                        "sample_method": "RANDOM_START",
                     },
                 },
             })
@@ -1034,17 +1079,17 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="TerraformDisplayName",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "sample-inspect-template",
+                "inspect_template_name": "sample-inspect-template",
                 "actions": [{
-                    "jobNotificationEmails": {},
+                    "job_notification_emails": {},
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -1097,35 +1142,35 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="TerraformDisplayName",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "sample-inspect-template",
+                "inspect_template_name": "sample-inspect-template",
                 "actions": [{
                     "deidentify": {
-                        "cloudStorageOutput": "gs://samplebucket/dir/",
-                        "fileTypesToTransforms": [
+                        "cloud_storage_output": "gs://samplebucket/dir/",
+                        "file_types_to_transforms": [
                             "CSV",
                             "TSV",
                         ],
-                        "transformationDetailsStorageConfig": {
+                        "transformation_details_storage_config": {
                             "table": {
-                                "projectId": "my-project-name",
-                                "datasetId": default.dataset_id,
-                                "tableId": default_table.table_id,
+                                "project_id": "my-project-name",
+                                "dataset_id": default.dataset_id,
+                                "table_id": default_table.table_id,
                             },
                         },
-                        "transformationConfig": {
-                            "deidentifyTemplate": "sample-deidentify-template",
-                            "imageRedactTemplate": "sample-image-redact-template",
-                            "structuredDeidentifyTemplate": "sample-structured-deidentify-template",
+                        "transformation_config": {
+                            "deidentify_template": "sample-deidentify-template",
+                            "image_redact_template": "sample-image-redact-template",
+                            "structured_deidentify_template": "sample-structured-deidentify-template",
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -1144,26 +1189,26 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 "manual": {},
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "hybridOptions": {
+                "storage_config": {
+                    "hybrid_options": {
                         "description": "Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
-                        "requiredFindingLabelKeys": ["appointment-bookings-comments"],
+                        "required_finding_label_keys": ["appointment-bookings-comments"],
                         "labels": {
                             "env": "prod",
                         },
-                        "tableOptions": {
-                            "identifyingFields": [{
+                        "table_options": {
+                            "identifying_fields": [{
                                 "name": "booking_id",
                             }],
                         },
@@ -1183,31 +1228,31 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
                 },
-                "inspectConfig": {
-                    "customInfoTypes": [{
-                        "infoType": {
+                "inspect_config": {
+                    "custom_info_types": [{
+                        "info_type": {
                             "name": "MY_CUSTOM_TYPE",
                         },
                         "likelihood": "UNLIKELY",
@@ -1215,46 +1260,46 @@ class PreventionJobTrigger(pulumi.CustomResource):
                             "pattern": "test*",
                         },
                     }],
-                    "infoTypes": [{
+                    "info_types": [{
                         "name": "EMAIL_ADDRESS",
                     }],
-                    "minLikelihood": "UNLIKELY",
-                    "ruleSets": [
+                    "min_likelihood": "UNLIKELY",
+                    "rule_sets": [
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "EMAIL_ADDRESS",
                             }],
                             "rules": [{
-                                "exclusionRule": {
+                                "exclusion_rule": {
                                     "regex": {
                                         "pattern": ".+@example.com",
                                     },
-                                    "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                    "matching_type": "MATCHING_TYPE_FULL_MATCH",
                                 },
                             }],
                         },
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "MY_CUSTOM_TYPE",
                             }],
                             "rules": [{
-                                "hotwordRule": {
-                                    "hotwordRegex": {
+                                "hotword_rule": {
+                                    "hotword_regex": {
                                         "pattern": "example*",
                                     },
                                     "proximity": {
-                                        "windowBefore": 50,
+                                        "window_before": 50,
                                     },
-                                    "likelihoodAdjustment": {
-                                        "fixedLikelihood": "VERY_LIKELY",
+                                    "likelihood_adjustment": {
+                                        "fixed_likelihood": "VERY_LIKELY",
                                     },
                                 },
                             }],
                         },
                     ],
                     "limits": {
-                        "maxFindingsPerItem": 10,
-                        "maxFindingsPerRequest": 50,
+                        "max_findings_per_item": 10,
+                        "max_findings_per_request": 50,
                     },
                 },
             })
@@ -1271,17 +1316,17 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="TerraformDisplayName",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "sample-inspect-template",
+                "inspect_template_name": "sample-inspect-template",
                 "actions": [{
-                    "publishToStackdriver": {},
+                    "publish_to_stackdriver": {},
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -1301,24 +1346,24 @@ class PreventionJobTrigger(pulumi.CustomResource):
             trigger_id="id-",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset123",
+                                "project_id": "project",
+                                "dataset_id": "dataset123",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -1337,31 +1382,31 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [
                     {
-                        "saveFindings": {
-                            "outputConfig": {
+                        "save_findings": {
+                            "output_config": {
                                 "table": {
-                                    "projectId": "project",
-                                    "datasetId": "dataset",
+                                    "project_id": "project",
+                                    "dataset_id": "dataset",
                                 },
                             },
                         },
                     },
                     {
-                        "pubSub": {
+                        "pub_sub": {
                             "topic": "projects/project/topics/topic-name",
                         },
                     },
                 ],
-                "storageConfig": {
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                "storage_config": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
@@ -1380,31 +1425,76 @@ class PreventionJobTrigger(pulumi.CustomResource):
             display_name="Displayname",
             triggers=[{
                 "schedule": {
-                    "recurrencePeriodDuration": "86400s",
+                    "recurrence_period_duration": "86400s",
                 },
             }],
             inspect_job={
-                "inspectTemplateName": "fake",
+                "inspect_template_name": "fake",
                 "actions": [{
-                    "saveFindings": {
-                        "outputConfig": {
+                    "save_findings": {
+                        "output_config": {
                             "table": {
-                                "projectId": "project",
-                                "datasetId": "dataset",
+                                "project_id": "project",
+                                "dataset_id": "dataset",
                             },
                         },
                     },
                 }],
-                "storageConfig": {
-                    "timespanConfig": {
-                        "enableAutoPopulationOfTimespanConfig": True,
+                "storage_config": {
+                    "timespan_config": {
+                        "enable_auto_population_of_timespan_config": True,
                     },
-                    "cloudStorageOptions": {
-                        "fileSet": {
+                    "cloud_storage_options": {
+                        "file_set": {
                             "url": "gs://mybucket/directory/",
                         },
                     },
                 },
+            })
+        ```
+        ### Dlp Job Trigger Timespan Config Big Query
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        timespan_config_big_query = gcp.dataloss.PreventionJobTrigger("timespan_config_big_query",
+            parent="projects/my-project-name",
+            description="BigQuery DLP Job Trigger with timespan config and row limit",
+            display_name="bigquery-dlp-job-trigger-limit-timespan",
+            triggers=[{
+                "schedule": {
+                    "recurrence_period_duration": "86400s",
+                },
+            }],
+            inspect_job={
+                "inspect_template_name": "projects/test/locations/global/inspectTemplates/6425492983381733900",
+                "storage_config": {
+                    "big_query_options": {
+                        "table_reference": {
+                            "project_id": "project",
+                            "dataset_id": "dataset",
+                            "table_id": "table",
+                        },
+                        "sample_method": "",
+                    },
+                    "timespan_config": {
+                        "start_time": "2023-01-01T00:00:23Z",
+                        "timestamp_field": {
+                            "name": "timestamp",
+                        },
+                    },
+                },
+                "actions": [{
+                    "save_findings": {
+                        "output_config": {
+                            "table": {
+                                "project_id": "project",
+                                "dataset_id": "output",
+                            },
+                        },
+                    },
+                }],
             })
         ```
 

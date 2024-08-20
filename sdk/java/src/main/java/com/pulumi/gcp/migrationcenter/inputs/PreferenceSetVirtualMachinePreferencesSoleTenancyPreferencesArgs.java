@@ -19,24 +19,14 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesA
     public static final PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs Empty = new PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs();
 
     /**
-     * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * ON_DEMAND
-     * COMMITMENT_1_YEAR
-     * COMMITMENT_3_YEAR
+     * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
      * 
      */
     @Import(name="commitmentPlan")
     private @Nullable Output<String> commitmentPlan;
 
     /**
-     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * ON_DEMAND
-     * COMMITMENT_1_YEAR
-     * COMMITMENT_3_YEAR
+     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
      * 
      */
     public Optional<Output<String>> commitmentPlan() {
@@ -59,24 +49,14 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesA
     }
 
     /**
-     * Sole Tenancy nodes maintenance policy.
-     * Possible values:
-     * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-     * HOST_MAINTENANCE_POLICY_DEFAULT
-     * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-     * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+     * Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
      * 
      */
     @Import(name="hostMaintenancePolicy")
     private @Nullable Output<String> hostMaintenancePolicy;
 
     /**
-     * @return Sole Tenancy nodes maintenance policy.
-     * Possible values:
-     * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-     * HOST_MAINTENANCE_POLICY_DEFAULT
-     * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-     * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+     * @return Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
      * 
      */
     public Optional<Output<String>> hostMaintenancePolicy() {
@@ -128,12 +108,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesA
         }
 
         /**
-         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR
-         * COMMITMENT_3_YEAR
+         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
          * 
          * @return builder
          * 
@@ -144,12 +119,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesA
         }
 
         /**
-         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * ON_DEMAND
-         * COMMITMENT_1_YEAR
-         * COMMITMENT_3_YEAR
+         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
          * 
          * @return builder
          * 
@@ -180,12 +150,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesA
         }
 
         /**
-         * @param hostMaintenancePolicy Sole Tenancy nodes maintenance policy.
-         * Possible values:
-         * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-         * HOST_MAINTENANCE_POLICY_DEFAULT
-         * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-         * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+         * @param hostMaintenancePolicy Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
          * 
          * @return builder
          * 
@@ -196,12 +161,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesA
         }
 
         /**
-         * @param hostMaintenancePolicy Sole Tenancy nodes maintenance policy.
-         * Possible values:
-         * HOST_MAINTENANCE_POLICY_UNSPECIFIED
-         * HOST_MAINTENANCE_POLICY_DEFAULT
-         * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-         * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+         * @param hostMaintenancePolicy Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
          * 
          * @return builder
          * 

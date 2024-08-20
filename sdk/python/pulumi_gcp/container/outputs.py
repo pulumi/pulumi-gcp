@@ -96,6 +96,9 @@ __all__ = [
     'ClusterAddonsConfigIstioConfig',
     'ClusterAddonsConfigKalmConfig',
     'ClusterAddonsConfigNetworkPolicyConfig',
+    'ClusterAddonsConfigRayOperatorConfig',
+    'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig',
+    'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig',
     'ClusterAddonsConfigStatefulHaConfig',
     'ClusterAuthenticatorGroupsConfig',
     'ClusterBinaryAuthorization',
@@ -285,6 +288,9 @@ __all__ = [
     'GetClusterAddonsConfigIstioConfigResult',
     'GetClusterAddonsConfigKalmConfigResult',
     'GetClusterAddonsConfigNetworkPolicyConfigResult',
+    'GetClusterAddonsConfigRayOperatorConfigResult',
+    'GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult',
+    'GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult',
     'GetClusterAddonsConfigStatefulHaConfigResult',
     'GetClusterAuthenticatorGroupsConfigResult',
     'GetClusterBinaryAuthorizationResult',
@@ -3762,6 +3768,8 @@ class ClusterAddonsConfig(dict):
             suggest = "kalm_config"
         elif key == "networkPolicyConfig":
             suggest = "network_policy_config"
+        elif key == "rayOperatorConfigs":
+            suggest = "ray_operator_configs"
         elif key == "statefulHaConfig":
             suggest = "stateful_ha_config"
 
@@ -3789,6 +3797,7 @@ class ClusterAddonsConfig(dict):
                  istio_config: Optional['outputs.ClusterAddonsConfigIstioConfig'] = None,
                  kalm_config: Optional['outputs.ClusterAddonsConfigKalmConfig'] = None,
                  network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None,
+                 ray_operator_configs: Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']] = None,
                  stateful_ha_config: Optional['outputs.ClusterAddonsConfigStatefulHaConfig'] = None):
         """
         :param 'ClusterAddonsConfigCloudrunConfigArgs' cloudrun_config: . Structure is documented below.
@@ -3832,11 +3841,24 @@ class ClusterAddonsConfig(dict):
                otherwise nothing will happen.
                It can only be disabled if the nodes already do not have network policies enabled.
                Defaults to disabled; set `disabled = false` to enable.
+        :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: . The status of the [Ray Operator
+               addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+               It is disabled by default. Set `enabled = true` to enable. The minimum
+               cluster version to enable Ray is 1.30.0-gke.1747000.
+               
+               Ray Operator config has optional subfields
+               `ray_cluster_logging_config.enabled` and
+               `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+               and monitoring respectively. See [Collect and view logs and metrics for Ray
+               clusters on
+               GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+               for more information.
+               
+               
+               This example `addons_config` disables two addons:
         :param 'ClusterAddonsConfigStatefulHaConfigArgs' stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-               
-               This example `addons_config` disables two addons:
         """
         if cloudrun_config is not None:
             pulumi.set(__self__, "cloudrun_config", cloudrun_config)
@@ -3862,6 +3884,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "kalm_config", kalm_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if ray_operator_configs is not None:
+            pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         if stateful_ha_config is not None:
             pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
@@ -3991,14 +4015,34 @@ class ClusterAddonsConfig(dict):
         return pulumi.get(self, "network_policy_config")
 
     @property
+    @pulumi.getter(name="rayOperatorConfigs")
+    def ray_operator_configs(self) -> Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']]:
+        """
+        . The status of the [Ray Operator
+        addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
+        It is disabled by default. Set `enabled = true` to enable. The minimum
+        cluster version to enable Ray is 1.30.0-gke.1747000.
+
+        Ray Operator config has optional subfields
+        `ray_cluster_logging_config.enabled` and
+        `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
+        and monitoring respectively. See [Collect and view logs and metrics for Ray
+        clusters on
+        GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
+        for more information.
+
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "ray_operator_configs")
+
+    @property
     @pulumi.getter(name="statefulHaConfig")
     def stateful_ha_config(self) -> Optional['outputs.ClusterAddonsConfigStatefulHaConfig']:
         """
         .
         The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
         It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "stateful_ha_config")
 
@@ -4235,6 +4279,87 @@ class ClusterAddonsConfigNetworkPolicyConfig(dict):
 
 
 @pulumi.output_type
+class ClusterAddonsConfigRayOperatorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rayClusterLoggingConfig":
+            suggest = "ray_cluster_logging_config"
+        elif key == "rayClusterMonitoringConfig":
+            suggest = "ray_cluster_monitoring_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAddonsConfigRayOperatorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAddonsConfigRayOperatorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAddonsConfigRayOperatorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 ray_cluster_logging_config: Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig'] = None,
+                 ray_cluster_monitoring_config: Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig'] = None):
+        """
+        :param 'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs' ray_cluster_logging_config: The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        :param 'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs' ray_cluster_monitoring_config: The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if ray_cluster_logging_config is not None:
+            pulumi.set(__self__, "ray_cluster_logging_config", ray_cluster_logging_config)
+        if ray_cluster_monitoring_config is not None:
+            pulumi.set(__self__, "ray_cluster_monitoring_config", ray_cluster_monitoring_config)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="rayClusterLoggingConfig")
+    def ray_cluster_logging_config(self) -> Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig']:
+        """
+        The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "ray_cluster_logging_config")
+
+    @property
+    @pulumi.getter(name="rayClusterMonitoringConfig")
+    def ray_cluster_monitoring_config(self) -> Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig']:
+        """
+        The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "ray_cluster_monitoring_config")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ClusterAddonsConfigStatefulHaConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
@@ -4337,6 +4462,8 @@ class ClusterClusterAutoscaling(dict):
         suggest = None
         if key == "autoProvisioningDefaults":
             suggest = "auto_provisioning_defaults"
+        elif key == "autoProvisioningLocations":
+            suggest = "auto_provisioning_locations"
         elif key == "autoscalingProfile":
             suggest = "autoscaling_profile"
         elif key == "resourceLimits":
@@ -4355,6 +4482,7 @@ class ClusterClusterAutoscaling(dict):
 
     def __init__(__self__, *,
                  auto_provisioning_defaults: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaults'] = None,
+                 auto_provisioning_locations: Optional[Sequence[str]] = None,
                  autoscaling_profile: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  resource_limits: Optional[Sequence['outputs.ClusterClusterAutoscalingResourceLimit']] = None):
@@ -4362,6 +4490,9 @@ class ClusterClusterAutoscaling(dict):
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsArgs' auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
                GKE Autopilot clusters.
                Structure is documented below.
+        :param Sequence[str] auto_provisioning_locations: The list of Google Compute Engine 
+               [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+               NodePool's nodes can be created by NAP.
         :param str autoscaling_profile: Configuration
                options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
                feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
@@ -4375,6 +4506,8 @@ class ClusterClusterAutoscaling(dict):
         """
         if auto_provisioning_defaults is not None:
             pulumi.set(__self__, "auto_provisioning_defaults", auto_provisioning_defaults)
+        if auto_provisioning_locations is not None:
+            pulumi.set(__self__, "auto_provisioning_locations", auto_provisioning_locations)
         if autoscaling_profile is not None:
             pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
         if enabled is not None:
@@ -4391,6 +4524,16 @@ class ClusterClusterAutoscaling(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "auto_provisioning_defaults")
+
+    @property
+    @pulumi.getter(name="autoProvisioningLocations")
+    def auto_provisioning_locations(self) -> Optional[Sequence[str]]:
+        """
+        The list of Google Compute Engine 
+        [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        NodePool's nodes can be created by NAP.
+        """
+        return pulumi.get(self, "auto_provisioning_locations")
 
     @property
     @pulumi.getter(name="autoscalingProfile")
@@ -6286,7 +6429,7 @@ class ClusterMonitoringConfig(dict):
                  managed_prometheus: Optional['outputs.ClusterMonitoringConfigManagedPrometheus'] = None):
         """
         :param Sequence['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
-        :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+        :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
         :param 'ClusterMonitoringConfigManagedPrometheusArgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         if advanced_datapath_observability_configs is not None:
@@ -6308,7 +6451,7 @@ class ClusterMonitoringConfig(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Optional[Sequence[str]]:
         """
-        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
         """
         return pulumi.get(self, "enable_components")
 
@@ -6351,7 +6494,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
         """
         :param bool enable_metrics: Whether or not to enable advanced datapath metrics.
         :param bool enable_relay: Whether or not Relay is enabled.
-        :param str relay_mode: Mode used to make Relay available.
+        :param str relay_mode: Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
         if enable_relay is not None:
@@ -6380,7 +6523,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
     @_utilities.deprecated("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
     def relay_mode(self) -> Optional[str]:
         """
-        Mode used to make Relay available.
+        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         return pulumi.get(self, "relay_mode")
 
@@ -6547,7 +6690,7 @@ class ClusterNodeConfig(dict):
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodeConfigReservationAffinity'] = None,
                  resource_labels: Optional[Mapping[str, str]] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.ClusterNodeConfigSandboxConfig'] = None,
                  secondary_boot_disks: Optional[Sequence['outputs.ClusterNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
@@ -6634,7 +6777,7 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
         :param Sequence['ClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
@@ -7026,7 +7169,7 @@ class ClusterNodeConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
@@ -8596,10 +8739,10 @@ class ClusterNodePoolAutoConfig(dict):
 
     def __init__(__self__, *,
                  network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
+                 resource_manager_tags: Optional[Mapping[str, str]] = None):
         """
         :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: The network tag config for the cluster's automatically provisioned node pools.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
@@ -8616,7 +8759,7 @@ class ClusterNodePoolAutoConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
@@ -9476,7 +9619,7 @@ class ClusterNodePoolNodeConfig(dict):
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodePoolNodeConfigReservationAffinity'] = None,
                  resource_labels: Optional[Mapping[str, str]] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig'] = None,
                  secondary_boot_disks: Optional[Sequence['outputs.ClusterNodePoolNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
@@ -9563,7 +9706,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
         :param Sequence['ClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param str service_account: The service account to be used by the Node VMs.
@@ -9955,7 +10098,7 @@ class ClusterNodePoolNodeConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
@@ -12816,7 +12959,7 @@ class NodePoolNodeConfig(dict):
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.NodePoolNodeConfigReservationAffinity'] = None,
                  resource_labels: Optional[Mapping[str, str]] = None,
-                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.NodePoolNodeConfigSandboxConfig'] = None,
                  secondary_boot_disks: Optional[Sequence['outputs.NodePoolNodeConfigSecondaryBootDisk']] = None,
                  service_account: Optional[str] = None,
@@ -12855,9 +12998,12 @@ class NodePoolNodeConfig(dict):
         :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs.
         :param bool preemptible: Whether the nodes are created as preemptible VM instances.
-        :param 'NodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The reservation affinity configuration for the node pool.
+        :param 'NodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from.
+               Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param 'NodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
         :param Sequence['NodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
@@ -13177,7 +13323,10 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional['outputs.NodePoolNodeConfigReservationAffinity']:
         """
-        The reservation affinity configuration for the node pool.
+        The configuration of the desired reservation which instances could take capacity from.
+        Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -13191,7 +13340,7 @@ class NodePoolNodeConfig(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -14058,9 +14207,15 @@ class NodePoolNodeConfigReservationAffinity(dict):
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str consume_reservation_type: Corresponds to the type of reservation consumption.
-        :param str key: The label key of a reservation resource.
-        :param Sequence[str] values: The label values of the reservation resource.
+        :param str consume_reservation_type: The type of reservation consumption
+               Accepted values are:
+               
+               * `"UNSPECIFIED"`: Default value. This should not be used.
+               * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+               * `"ANY_RESERVATION"`: Consume any reservation available.
+               * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        :param str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        :param Sequence[str] values: The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
         pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
         if key is not None:
@@ -14072,7 +14227,13 @@ class NodePoolNodeConfigReservationAffinity(dict):
     @pulumi.getter(name="consumeReservationType")
     def consume_reservation_type(self) -> str:
         """
-        Corresponds to the type of reservation consumption.
+        The type of reservation consumption
+        Accepted values are:
+
+        * `"UNSPECIFIED"`: Default value. This should not be used.
+        * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+        * `"ANY_RESERVATION"`: Consume any reservation available.
+        * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
         """
         return pulumi.get(self, "consume_reservation_type")
 
@@ -14080,7 +14241,7 @@ class NodePoolNodeConfigReservationAffinity(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The label key of a reservation resource.
+        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         """
         return pulumi.get(self, "key")
 
@@ -14088,7 +14249,7 @@ class NodePoolNodeConfigReservationAffinity(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The label values of the reservation resource.
+        The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
         return pulumi.get(self, "values")
 
@@ -14665,6 +14826,7 @@ class GetClusterAddonsConfigResult(dict):
                  istio_configs: Sequence['outputs.GetClusterAddonsConfigIstioConfigResult'],
                  kalm_configs: Sequence['outputs.GetClusterAddonsConfigKalmConfigResult'],
                  network_policy_configs: Sequence['outputs.GetClusterAddonsConfigNetworkPolicyConfigResult'],
+                 ray_operator_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigResult'],
                  stateful_ha_configs: Sequence['outputs.GetClusterAddonsConfigStatefulHaConfigResult']):
         """
         :param Sequence['GetClusterAddonsConfigCloudrunConfigArgs'] cloudrun_configs: The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
@@ -14679,6 +14841,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigIstioConfigArgs'] istio_configs: The status of the Istio addon.
         :param Sequence['GetClusterAddonsConfigKalmConfigArgs'] kalm_configs: Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigNetworkPolicyConfigArgs'] network_policy_configs: Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
+        :param Sequence['GetClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_configs: The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
         """
         pulumi.set(__self__, "cloudrun_configs", cloudrun_configs)
@@ -14693,6 +14856,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "istio_configs", istio_configs)
         pulumi.set(__self__, "kalm_configs", kalm_configs)
         pulumi.set(__self__, "network_policy_configs", network_policy_configs)
+        pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         pulumi.set(__self__, "stateful_ha_configs", stateful_ha_configs)
 
     @property
@@ -14790,6 +14954,14 @@ class GetClusterAddonsConfigResult(dict):
         Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
         """
         return pulumi.get(self, "network_policy_configs")
+
+    @property
+    @pulumi.getter(name="rayOperatorConfigs")
+    def ray_operator_configs(self) -> Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigResult']:
+        """
+        The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "ray_operator_configs")
 
     @property
     @pulumi.getter(name="statefulHaConfigs")
@@ -14969,6 +15141,66 @@ class GetClusterAddonsConfigNetworkPolicyConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterAddonsConfigRayOperatorConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 ray_cluster_logging_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult'],
+                 ray_cluster_monitoring_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult']):
+        """
+        :param Sequence['GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs'] ray_cluster_logging_configs: The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        :param Sequence['GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs'] ray_cluster_monitoring_configs: The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "ray_cluster_logging_configs", ray_cluster_logging_configs)
+        pulumi.set(__self__, "ray_cluster_monitoring_configs", ray_cluster_monitoring_configs)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="rayClusterLoggingConfigs")
+    def ray_cluster_logging_configs(self) -> Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult']:
+        """
+        The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "ray_cluster_logging_configs")
+
+    @property
+    @pulumi.getter(name="rayClusterMonitoringConfigs")
+    def ray_cluster_monitoring_configs(self) -> Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult']:
+        """
+        The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "ray_cluster_monitoring_configs")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetClusterAddonsConfigStatefulHaConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
@@ -15031,16 +15263,19 @@ class GetClusterBinaryAuthorizationResult(dict):
 class GetClusterClusterAutoscalingResult(dict):
     def __init__(__self__, *,
                  auto_provisioning_defaults: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultResult'],
+                 auto_provisioning_locations: Sequence[str],
                  autoscaling_profile: str,
                  enabled: bool,
                  resource_limits: Sequence['outputs.GetClusterClusterAutoscalingResourceLimitResult']):
         """
         :param Sequence['GetClusterClusterAutoscalingAutoProvisioningDefaultArgs'] auto_provisioning_defaults: Contains defaults for a node pool created by NAP.
+        :param Sequence[str] auto_provisioning_locations: The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
         :param str autoscaling_profile: Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
         :param bool enabled: Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
         :param Sequence['GetClusterClusterAutoscalingResourceLimitArgs'] resource_limits: Global constraints for machine resources in the cluster. Configuring the cpu and memory types is required if node auto-provisioning is enabled. These limits will apply to node pool autoscaling in addition to node auto-provisioning.
         """
         pulumi.set(__self__, "auto_provisioning_defaults", auto_provisioning_defaults)
+        pulumi.set(__self__, "auto_provisioning_locations", auto_provisioning_locations)
         pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "resource_limits", resource_limits)
@@ -15052,6 +15287,14 @@ class GetClusterClusterAutoscalingResult(dict):
         Contains defaults for a node pool created by NAP.
         """
         return pulumi.get(self, "auto_provisioning_defaults")
+
+    @property
+    @pulumi.getter(name="autoProvisioningLocations")
+    def auto_provisioning_locations(self) -> Sequence[str]:
+        """
+        The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
+        """
+        return pulumi.get(self, "auto_provisioning_locations")
 
     @property
     @pulumi.getter(name="autoscalingProfile")
@@ -16158,7 +16401,7 @@ class GetClusterMonitoringConfigResult(dict):
                  managed_prometheuses: Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusResult']):
         """
         :param Sequence['GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_configs: Configuration of Advanced Datapath Observability features.
-        :param Sequence[str] enable_components: GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET and CADVISOR.
+        :param Sequence[str] enable_components: GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
         :param Sequence['GetClusterMonitoringConfigManagedPrometheusArgs'] managed_prometheuses: Configuration for Google Cloud Managed Services for Prometheus.
         """
         pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
@@ -16177,7 +16420,7 @@ class GetClusterMonitoringConfigResult(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET and CADVISOR.
+        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
         """
         return pulumi.get(self, "enable_components")
 
@@ -16310,7 +16553,7 @@ class GetClusterNodeConfigResult(dict):
                  preemptible: bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodeConfigReservationAffinityResult'],
                  resource_labels: Mapping[str, str],
-                 resource_manager_tags: Mapping[str, Any],
+                 resource_manager_tags: Mapping[str, str],
                  sandbox_configs: Sequence['outputs.GetClusterNodeConfigSandboxConfigResult'],
                  secondary_boot_disks: Sequence['outputs.GetClusterNodeConfigSecondaryBootDiskResult'],
                  service_account: str,
@@ -16351,7 +16594,7 @@ class GetClusterNodeConfigResult(dict):
         :param bool preemptible: Whether the nodes are created as preemptible VM instances.
         :param Sequence['GetClusterNodeConfigReservationAffinityArgs'] reservation_affinities: The reservation affinity configuration for the node pool.
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence['GetClusterNodeConfigSandboxConfigArgs'] sandbox_configs: Sandbox configuration for this node.
         :param Sequence['GetClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
@@ -16645,7 +16888,7 @@ class GetClusterNodeConfigResult(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Mapping[str, Any]:
+    def resource_manager_tags(self) -> Mapping[str, str]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -17635,10 +17878,10 @@ class GetClusterNodePoolResult(dict):
 class GetClusterNodePoolAutoConfigResult(dict):
     def __init__(__self__, *,
                  network_tags: Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult'],
-                 resource_manager_tags: Mapping[str, Any]):
+                 resource_manager_tags: Mapping[str, str]):
         """
         :param Sequence['GetClusterNodePoolAutoConfigNetworkTagArgs'] network_tags: Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         pulumi.set(__self__, "network_tags", network_tags)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
@@ -17653,7 +17896,7 @@ class GetClusterNodePoolAutoConfigResult(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Mapping[str, Any]:
+    def resource_manager_tags(self) -> Mapping[str, str]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
@@ -18166,7 +18409,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  preemptible: bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigReservationAffinityResult'],
                  resource_labels: Mapping[str, str],
-                 resource_manager_tags: Mapping[str, Any],
+                 resource_manager_tags: Mapping[str, str],
                  sandbox_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSandboxConfigResult'],
                  secondary_boot_disks: Sequence['outputs.GetClusterNodePoolNodeConfigSecondaryBootDiskResult'],
                  service_account: str,
@@ -18207,7 +18450,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param bool preemptible: Whether the nodes are created as preemptible VM instances.
         :param Sequence['GetClusterNodePoolNodeConfigReservationAffinityArgs'] reservation_affinities: The reservation affinity configuration for the node pool.
         :param Mapping[str, str] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
-        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence['GetClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_configs: Sandbox configuration for this node.
         :param Sequence['GetClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Secondary boot disks for preloading data or container images.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
@@ -18501,7 +18744,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
 
     @property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Mapping[str, Any]:
+    def resource_manager_tags(self) -> Mapping[str, str]:
         """
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """

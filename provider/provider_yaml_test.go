@@ -386,64 +386,7 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 			"preview": true
 		},
 		"response": {
-			"properties": {
-				"id": "",
-				"initialNodeCount": 1,
-				"name": "gpu-node-pool-c90bfc0",
-				"nodeConfig": {
-				  "advancedMachineFeatures": null,
-				  "bootDiskKmsKey": "",
-				  "containerdConfig": null,
-				  "confidentialNodes": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "diskSizeGb": 50,
-				  "diskType": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "effectiveTaints": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "enableConfidentialStorage": false,
-				  "ephemeralStorageConfig": null,
-				  "ephemeralStorageLocalSsdConfig": null,
-				  "fastSocket": null,
-				  "gcfsConfig": null,
-				  "guestAccelerators": [
-					{
-					  "count": 1,
-					  "gpuDriverInstallationConfig": null,
-					  "gpuPartitionSize": "",
-					  "gpuSharingConfig": null,
-					  "type": "nvidia-tesla-t4"
-					}
-				  ],
-				  "gvnic": null,
-				  "hostMaintenancePolicy": null,
-				  "imageType": "",
-				  "kubeletConfig": null,
-				  "labels": {},
-				  "linuxNodeConfig": null,
-				  "localNvmeSsdBlockConfig": null,
-				  "localSsdCount": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "loggingVariant": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "machineType": "n1-highmem-8",
-				  "metadata": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "minCpuPlatform": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "nodeGroup": "",
-				  "oauthScopes": [
-					"https://www.googleapis.com/auth/cloud-platform"
-				  ],
-				  "preemptible": false,
-				  "reservationAffinity": null,
-				  "resourceLabels": {},
-				  "resourceManagerTags": {},
-				  "sandboxConfig": null,
-				  "serviceAccount": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "secondaryBootDisks": [],
-				  "shieldedInstanceConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				  "soleTenantConfig": null,
-				  "spot": false,
-				  "tags": [],
-				  "taints": [],
-				  "workloadMetadataConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9"
-				},
-				"project": "pulumi-development"
-			  }
+			"properties": "*"
 		},
 		"metadata": {
 			"kind": "resource",
@@ -468,12 +411,14 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
         "inputs": {
             "__defaults": [
                 "autoCreateNetwork",
+ 				"deletionPolicy",
                 "name",
                 "projectId"
             ],
             "autoCreateNetwork": true,
             "name": "my-proj",
-            "projectId": "my-proj-760b06d"
+            "projectId": "my-proj-760b06d",
+			"deletionPolicy": "DELETE"
         }
     },
     "metadata": {
@@ -868,8 +813,7 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 	]`, proj, proj))
 }
 
-func pulumiTestExec(ptest *pulumitest.PulumiTest, args ...string) {
-	t := ptest.T()
+func pulumiTestExec(t *testing.T, ptest *pulumitest.PulumiTest, args ...string) {
 	workspace := ptest.CurrentStack().Workspace()
 	ctx := context.Background()
 	workdir := workspace.WorkDir()
@@ -889,7 +833,8 @@ func pulumiTestExec(ptest *pulumitest.PulumiTest, args ...string) {
 }
 
 func pulumiTestImport(
-	ptest *pulumitest.PulumiTest, resourceType, resourceName, resourceID string, providerUrn string,
+	t *testing.T, ptest *pulumitest.PulumiTest,
+	resourceType, resourceName, resourceID string, providerUrn string,
 ) {
 	arguments := []string{
 		"import", resourceType, resourceName, resourceID, "--yes", "--protect=false", "-s", ptest.CurrentStack().Name(),
@@ -897,14 +842,14 @@ func pulumiTestImport(
 	if providerUrn != "" {
 		arguments = append(arguments, "--provider="+providerUrn)
 	}
-	pulumiTestExec(ptest, arguments...)
+	pulumiTestExec(t, ptest, arguments...)
 }
 
-func pulumiTestDeleteFromState(ptest *pulumitest.PulumiTest, resourceURN string) {
+func pulumiTestDeleteFromState(t *testing.T, ptest *pulumitest.PulumiTest, resourceURN string) {
 	arguments := []string{
 		"state", "delete", resourceURN, "--yes", "-s", ptest.CurrentStack().Name(),
 	}
-	pulumiTestExec(ptest, arguments...)
+	pulumiTestExec(t, ptest, arguments...)
 }
 
 func TestImport(t *testing.T) {
@@ -943,8 +888,8 @@ func TestImport(t *testing.T) {
 				providerUrn = res.Outputs["providerUrn"].Value.(string)
 			}
 
-			pulumiTestDeleteFromState(test, resourceUrn)
-			pulumiTestImport(test, tc.resourceType, "resource", resourceID, providerUrn)
+			pulumiTestDeleteFromState(t, test, resourceUrn)
+			pulumiTestImport(t, test, tc.resourceType, "resource", resourceID, providerUrn)
 
 			prevResult := test.Preview()
 			assertpreview.HasNoChanges(t, prevResult)
@@ -960,6 +905,15 @@ func TestFirestoreBackupScheduleNoPermadiff(t *testing.T) {
 
 func TestPAMEntitlementPermadiffRegress2167(t *testing.T) {
 	pt := pulumiTest(t, "test-programs/pam-entitlement", opttest.DownloadProviderVersion("random", "4.16.3"))
+
+	proj := getProject()
+	pt.SetConfig("gcpProj", proj)
+	pt.Up()
+	pt.Preview(optpreview.ExpectNoChanges())
+}
+
+func TestFirestoreFieldPermadiffRegress2166(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/firestore-field")
 
 	proj := getProject()
 	pt.SetConfig("gcpProj", proj)

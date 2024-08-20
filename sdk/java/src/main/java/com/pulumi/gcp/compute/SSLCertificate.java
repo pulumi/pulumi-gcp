@@ -231,7 +231,7 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SSLCertificate(String name) {
+    public SSLCertificate(java.lang.String name) {
         this(name, SSLCertificateArgs.Empty);
     }
     /**
@@ -239,7 +239,7 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SSLCertificate(String name, SSLCertificateArgs args) {
+    public SSLCertificate(java.lang.String name, SSLCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -248,15 +248,22 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SSLCertificate(String name, SSLCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/sSLCertificate:SSLCertificate", name, args == null ? SSLCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SSLCertificate(java.lang.String name, SSLCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/sSLCertificate:SSLCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SSLCertificate(String name, Output<String> id, @Nullable SSLCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/sSLCertificate:SSLCertificate", name, state, makeResourceOptions(options, id));
+    private SSLCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable SSLCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/sSLCertificate:SSLCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SSLCertificateArgs makeArgs(SSLCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SSLCertificateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -276,7 +283,7 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SSLCertificate get(String name, Output<String> id, @Nullable SSLCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SSLCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable SSLCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SSLCertificate(name, id, state, options);
     }
 }

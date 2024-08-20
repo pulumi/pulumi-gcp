@@ -289,7 +289,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RepositoryReleaseConfig(String name) {
+    public RepositoryReleaseConfig(java.lang.String name) {
         this(name, RepositoryReleaseConfigArgs.Empty);
     }
     /**
@@ -297,7 +297,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RepositoryReleaseConfig(String name, RepositoryReleaseConfigArgs args) {
+    public RepositoryReleaseConfig(java.lang.String name, RepositoryReleaseConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -306,15 +306,22 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RepositoryReleaseConfig(String name, RepositoryReleaseConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig", name, args == null ? RepositoryReleaseConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RepositoryReleaseConfig(java.lang.String name, RepositoryReleaseConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RepositoryReleaseConfig(String name, Output<String> id, @Nullable RepositoryReleaseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig", name, state, makeResourceOptions(options, id));
+    private RepositoryReleaseConfig(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryReleaseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RepositoryReleaseConfigArgs makeArgs(RepositoryReleaseConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RepositoryReleaseConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -330,7 +337,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RepositoryReleaseConfig get(String name, Output<String> id, @Nullable RepositoryReleaseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RepositoryReleaseConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryReleaseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RepositoryReleaseConfig(name, id, state, options);
     }
 }

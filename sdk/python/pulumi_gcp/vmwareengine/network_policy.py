@@ -443,7 +443,7 @@ class NetworkPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network_policy_nw = gcp.vmwareengine.Network("network-policy-nw",
-            name="standard-nw",
+            name="sample-network",
             location="global",
             type="STANDARD",
             description="VMwareEngine standard network sample")
@@ -460,13 +460,13 @@ class NetworkPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network_policy_nw = gcp.vmwareengine.Network("network-policy-nw",
-            name="standard-full-nw",
+            name="sample-network",
             location="global",
             type="STANDARD",
             description="VMwareEngine standard network sample")
         vmw_engine_network_policy = gcp.vmwareengine.NetworkPolicy("vmw-engine-network-policy",
             location="us-west1",
-            name="sample-network-policy-full",
+            name="sample-network-policy",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id,
             description="Sample Network Policy",
@@ -548,7 +548,7 @@ class NetworkPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network_policy_nw = gcp.vmwareengine.Network("network-policy-nw",
-            name="standard-nw",
+            name="sample-network",
             location="global",
             type="STANDARD",
             description="VMwareEngine standard network sample")
@@ -565,13 +565,13 @@ class NetworkPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network_policy_nw = gcp.vmwareengine.Network("network-policy-nw",
-            name="standard-full-nw",
+            name="sample-network",
             location="global",
             type="STANDARD",
             description="VMwareEngine standard network sample")
         vmw_engine_network_policy = gcp.vmwareengine.NetworkPolicy("vmw-engine-network-policy",
             location="us-west1",
-            name="sample-network-policy-full",
+            name="sample-network-policy",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id,
             description="Sample Network Policy",

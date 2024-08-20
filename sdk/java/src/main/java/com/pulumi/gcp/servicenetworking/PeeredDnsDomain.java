@@ -170,7 +170,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PeeredDnsDomain(String name) {
+    public PeeredDnsDomain(java.lang.String name) {
         this(name, PeeredDnsDomainArgs.Empty);
     }
     /**
@@ -178,7 +178,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PeeredDnsDomain(String name, PeeredDnsDomainArgs args) {
+    public PeeredDnsDomain(java.lang.String name, PeeredDnsDomainArgs args) {
         this(name, args, null);
     }
     /**
@@ -187,15 +187,22 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PeeredDnsDomain(String name, PeeredDnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain", name, args == null ? PeeredDnsDomainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PeeredDnsDomain(java.lang.String name, PeeredDnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PeeredDnsDomain(String name, Output<String> id, @Nullable PeeredDnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain", name, state, makeResourceOptions(options, id));
+    private PeeredDnsDomain(java.lang.String name, Output<java.lang.String> id, @Nullable PeeredDnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PeeredDnsDomainArgs makeArgs(PeeredDnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PeeredDnsDomainArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -211,7 +218,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PeeredDnsDomain get(String name, Output<String> id, @Nullable PeeredDnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PeeredDnsDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable PeeredDnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PeeredDnsDomain(name, id, state, options);
     }
 }

@@ -27,7 +27,6 @@ import com.pulumi.gcp.container.outputs.ClusterNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -228,7 +227,7 @@ public final class ClusterNodeConfig {
      * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
      * 
      */
-    private @Nullable Map<String,Object> resourceManagerTags;
+    private @Nullable Map<String,String> resourceManagerTags;
     /**
      * @return Sandbox configuration for this node.
      * 
@@ -539,7 +538,7 @@ public final class ClusterNodeConfig {
      * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
@@ -657,7 +656,7 @@ public final class ClusterNodeConfig {
         private @Nullable Boolean preemptible;
         private @Nullable ClusterNodeConfigReservationAffinity reservationAffinity;
         private @Nullable Map<String,String> resourceLabels;
-        private @Nullable Map<String,Object> resourceManagerTags;
+        private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable ClusterNodeConfigSandboxConfig sandboxConfig;
         private @Nullable List<ClusterNodeConfigSecondaryBootDisk> secondaryBootDisks;
         private @Nullable String serviceAccount;
@@ -902,7 +901,7 @@ public final class ClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
 
             this.resourceManagerTags = resourceManagerTags;
             return this;

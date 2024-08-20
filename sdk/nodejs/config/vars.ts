@@ -1169,6 +1169,14 @@ Object.defineProperty(exports, "securityCenterManagementCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const securityCenterV2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "securityCenterV2CustomEndpoint", {
+    get() {
+        return __config.get("securityCenterV2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const securityScannerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "securityScannerCustomEndpoint", {
     get() {
@@ -1213,6 +1221,14 @@ export declare const serviceUsageCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "serviceUsageCustomEndpoint", {
     get() {
         return __config.get("serviceUsageCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const siteVerificationCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "siteVerificationCustomEndpoint", {
+    get() {
+        return __config.get("siteVerificationCustomEndpoint");
     },
     enumerable: true,
 });

@@ -361,7 +361,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PreventionDeidentifyTemplate(String name) {
+    public PreventionDeidentifyTemplate(java.lang.String name) {
         this(name, PreventionDeidentifyTemplateArgs.Empty);
     }
     /**
@@ -369,7 +369,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PreventionDeidentifyTemplate(String name, PreventionDeidentifyTemplateArgs args) {
+    public PreventionDeidentifyTemplate(java.lang.String name, PreventionDeidentifyTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -378,15 +378,22 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PreventionDeidentifyTemplate(String name, PreventionDeidentifyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, args == null ? PreventionDeidentifyTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PreventionDeidentifyTemplate(java.lang.String name, PreventionDeidentifyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PreventionDeidentifyTemplate(String name, Output<String> id, @Nullable PreventionDeidentifyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, state, makeResourceOptions(options, id));
+    private PreventionDeidentifyTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionDeidentifyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PreventionDeidentifyTemplateArgs makeArgs(PreventionDeidentifyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreventionDeidentifyTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -402,7 +409,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PreventionDeidentifyTemplate get(String name, Output<String> id, @Nullable PreventionDeidentifyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PreventionDeidentifyTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionDeidentifyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PreventionDeidentifyTemplate(name, id, state, options);
     }
 }

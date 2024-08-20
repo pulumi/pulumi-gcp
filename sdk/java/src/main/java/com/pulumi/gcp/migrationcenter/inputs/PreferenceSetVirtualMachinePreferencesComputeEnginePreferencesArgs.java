@@ -17,22 +17,14 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
     public static final PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs Empty = new PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs();
 
     /**
-     * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-     * Possible values:
-     * LICENSE_TYPE_UNSPECIFIED
-     * LICENSE_TYPE_DEFAULT
-     * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+     * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
      * 
      */
     @Import(name="licenseType")
     private @Nullable Output<String> licenseType;
 
     /**
-     * @return License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-     * Possible values:
-     * LICENSE_TYPE_UNSPECIFIED
-     * LICENSE_TYPE_DEFAULT
-     * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+     * @return License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
      * 
      */
     public Optional<Output<String>> licenseType() {
@@ -82,11 +74,7 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
         }
 
         /**
-         * @param licenseType License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-         * Possible values:
-         * LICENSE_TYPE_UNSPECIFIED
-         * LICENSE_TYPE_DEFAULT
-         * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+         * @param licenseType License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
          * 
          * @return builder
          * 
@@ -97,11 +85,7 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
         }
 
         /**
-         * @param licenseType License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-         * Possible values:
-         * LICENSE_TYPE_UNSPECIFIED
-         * LICENSE_TYPE_DEFAULT
-         * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+         * @param licenseType License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
          * 
          * @return builder
          * 

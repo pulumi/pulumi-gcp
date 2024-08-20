@@ -342,7 +342,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DicomStore(String name) {
+    public DicomStore(java.lang.String name) {
         this(name, DicomStoreArgs.Empty);
     }
     /**
@@ -350,7 +350,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DicomStore(String name, DicomStoreArgs args) {
+    public DicomStore(java.lang.String name, DicomStoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -359,15 +359,22 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DicomStore(String name, DicomStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/dicomStore:DicomStore", name, args == null ? DicomStoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DicomStore(java.lang.String name, DicomStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/dicomStore:DicomStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DicomStore(String name, Output<String> id, @Nullable DicomStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/dicomStore:DicomStore", name, state, makeResourceOptions(options, id));
+    private DicomStore(java.lang.String name, Output<java.lang.String> id, @Nullable DicomStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/dicomStore:DicomStore", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DicomStoreArgs makeArgs(DicomStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DicomStoreArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -387,7 +394,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DicomStore get(String name, Output<String> id, @Nullable DicomStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DicomStore get(java.lang.String name, Output<java.lang.String> id, @Nullable DicomStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DicomStore(name, id, state, options);
     }
 }

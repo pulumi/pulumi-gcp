@@ -45,6 +45,11 @@ export const getCryptoKeyIamPolicy: typeof import("./getCryptoKeyIamPolicy").get
 export const getCryptoKeyIamPolicyOutput: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getCryptoKeyIamPolicy","getCryptoKeyIamPolicyOutput"], () => require("./getCryptoKeyIamPolicy"));
 
+export { GetCryptoKeysArgs, GetCryptoKeysResult, GetCryptoKeysOutputArgs } from "./getCryptoKeys";
+export const getCryptoKeys: typeof import("./getCryptoKeys").getCryptoKeys = null as any;
+export const getCryptoKeysOutput: typeof import("./getCryptoKeys").getCryptoKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getCryptoKeys","getCryptoKeysOutput"], () => require("./getCryptoKeys"));
+
 export { GetKMSCryptoKeyArgs, GetKMSCryptoKeyResult, GetKMSCryptoKeyOutputArgs } from "./getKMSCryptoKey";
 export const getKMSCryptoKey: typeof import("./getKMSCryptoKey").getKMSCryptoKey = null as any;
 export const getKMSCryptoKeyOutput: typeof import("./getKMSCryptoKey").getKMSCryptoKeyOutput = null as any;
@@ -79,6 +84,11 @@ export { GetKeyRingIamPolicyArgs, GetKeyRingIamPolicyResult, GetKeyRingIamPolicy
 export const getKeyRingIamPolicy: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicy = null as any;
 export const getKeyRingIamPolicyOutput: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyRingIamPolicy","getKeyRingIamPolicyOutput"], () => require("./getKeyRingIamPolicy"));
+
+export { GetKeyRingsArgs, GetKeyRingsResult, GetKeyRingsOutputArgs } from "./getKeyRings";
+export const getKeyRings: typeof import("./getKeyRings").getKeyRings = null as any;
+export const getKeyRingsOutput: typeof import("./getKeyRings").getKeyRingsOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyRings","getKeyRingsOutput"], () => require("./getKeyRings"));
 
 export { KeyHandleArgs, KeyHandleState } from "./keyHandle";
 export type KeyHandle = import("./keyHandle").KeyHandle;

@@ -256,7 +256,7 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PreventionDiscoveryConfig(String name) {
+    public PreventionDiscoveryConfig(java.lang.String name) {
         this(name, PreventionDiscoveryConfigArgs.Empty);
     }
     /**
@@ -264,7 +264,7 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PreventionDiscoveryConfig(String name, PreventionDiscoveryConfigArgs args) {
+    public PreventionDiscoveryConfig(java.lang.String name, PreventionDiscoveryConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -273,15 +273,22 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PreventionDiscoveryConfig(String name, PreventionDiscoveryConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig", name, args == null ? PreventionDiscoveryConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PreventionDiscoveryConfig(java.lang.String name, PreventionDiscoveryConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PreventionDiscoveryConfig(String name, Output<String> id, @Nullable PreventionDiscoveryConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig", name, state, makeResourceOptions(options, id));
+    private PreventionDiscoveryConfig(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionDiscoveryConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PreventionDiscoveryConfigArgs makeArgs(PreventionDiscoveryConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreventionDiscoveryConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -297,7 +304,7 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PreventionDiscoveryConfig get(String name, Output<String> id, @Nullable PreventionDiscoveryConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PreventionDiscoveryConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionDiscoveryConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PreventionDiscoveryConfig(name, id, state, options);
     }
 }

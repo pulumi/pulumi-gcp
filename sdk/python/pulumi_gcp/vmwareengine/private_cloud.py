@@ -24,9 +24,11 @@ class PrivateCloudArgs:
                  location: pulumi.Input[str],
                  management_cluster: pulumi.Input['PrivateCloudManagementClusterArgs'],
                  network_config: pulumi.Input['PrivateCloudNetworkConfigArgs'],
+                 deletion_delay_hours: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PrivateCloud resource.
@@ -35,19 +37,28 @@ class PrivateCloudArgs:
                Structure is documented below.
         :param pulumi.Input['PrivateCloudNetworkConfigArgs'] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
+        :param pulumi.Input[int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
+        :param pulumi.Input[bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+               deletion_delay_hours.
         :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "management_cluster", management_cluster)
         pulumi.set(__self__, "network_config", network_config)
+        if deletion_delay_hours is not None:
+            pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if send_deletion_delay_hours_if_zero is not None:
+            pulumi.set(__self__, "send_deletion_delay_hours_if_zero", send_deletion_delay_hours_if_zero)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -90,6 +101,19 @@ class PrivateCloudArgs:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="deletionDelayHours")
+    def deletion_delay_hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+        starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        """
+        return pulumi.get(self, "deletion_delay_hours")
+
+    @deletion_delay_hours.setter
+    def deletion_delay_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deletion_delay_hours", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -123,6 +147,20 @@ class PrivateCloudArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="sendDeletionDelayHoursIfZero")
+    def send_deletion_delay_hours_if_zero(self) -> Optional[pulumi.Input[bool]]:
+        """
+        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+        only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+        deletion_delay_hours.
+        """
+        return pulumi.get(self, "send_deletion_delay_hours_if_zero")
+
+    @send_deletion_delay_hours_if_zero.setter
+    def send_deletion_delay_hours_if_zero(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_deletion_delay_hours_if_zero", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -138,6 +176,7 @@ class PrivateCloudArgs:
 @pulumi.input_type
 class _PrivateCloudState:
     def __init__(__self__, *,
+                 deletion_delay_hours: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hcxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -146,12 +185,15 @@ class _PrivateCloudState:
                  network_config: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']] = None,
                  nsxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None):
         """
         Input properties used for looking up and filtering PrivateCloud resources.
+        :param pulumi.Input[int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
@@ -163,6 +205,9 @@ class _PrivateCloudState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
+        :param pulumi.Input[bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+               deletion_delay_hours.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
         :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
@@ -170,6 +215,8 @@ class _PrivateCloudState:
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
         """
+        if deletion_delay_hours is not None:
+            pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if hcxes is not None:
@@ -186,6 +233,8 @@ class _PrivateCloudState:
             pulumi.set(__self__, "nsxes", nsxes)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if send_deletion_delay_hours_if_zero is not None:
+            pulumi.set(__self__, "send_deletion_delay_hours_if_zero", send_deletion_delay_hours_if_zero)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if type is not None:
@@ -194,6 +243,19 @@ class _PrivateCloudState:
             pulumi.set(__self__, "uid", uid)
         if vcenters is not None:
             pulumi.set(__self__, "vcenters", vcenters)
+
+    @property
+    @pulumi.getter(name="deletionDelayHours")
+    def deletion_delay_hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+        starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        """
+        return pulumi.get(self, "deletion_delay_hours")
+
+    @deletion_delay_hours.setter
+    def deletion_delay_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deletion_delay_hours", value)
 
     @property
     @pulumi.getter
@@ -293,6 +355,20 @@ class _PrivateCloudState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="sendDeletionDelayHoursIfZero")
+    def send_deletion_delay_hours_if_zero(self) -> Optional[pulumi.Input[bool]]:
+        """
+        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+        only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+        deletion_delay_hours.
+        """
+        return pulumi.get(self, "send_deletion_delay_hours_if_zero")
+
+    @send_deletion_delay_hours_if_zero.setter
+    def send_deletion_delay_hours_if_zero(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_deletion_delay_hours_if_zero", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -348,12 +424,14 @@ class PrivateCloud(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_delay_hours: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -381,14 +459,14 @@ class PrivateCloud(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": pc_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": pc_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         ```
@@ -409,17 +487,19 @@ class PrivateCloud(pulumi.CustomResource):
             description="Sample test PC.",
             type="TIME_LIMITED",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": pc_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": pc_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 1,
-                    "customCoreCount": 32,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 1,
+                    "custom_core_count": 32,
                 }],
-            })
+            },
+            deletion_delay_hours=0,
+            send_deletion_delay_hours_if_zero=True)
         ```
 
         ## Import
@@ -448,6 +528,8 @@ class PrivateCloud(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
         :param pulumi.Input[str] location: The location where the PrivateCloud should reside.
         :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
@@ -455,6 +537,9 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
         :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
+        :param pulumi.Input[bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+               deletion_delay_hours.
         :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
         ...
@@ -488,14 +573,14 @@ class PrivateCloud(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": pc_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": pc_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         ```
@@ -516,17 +601,19 @@ class PrivateCloud(pulumi.CustomResource):
             description="Sample test PC.",
             type="TIME_LIMITED",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": pc_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": pc_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 1,
-                    "customCoreCount": 32,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 1,
+                    "custom_core_count": 32,
                 }],
-            })
+            },
+            deletion_delay_hours=0,
+            send_deletion_delay_hours_if_zero=True)
         ```
 
         ## Import
@@ -568,12 +655,14 @@ class PrivateCloud(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_delay_hours: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -584,6 +673,7 @@ class PrivateCloud(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PrivateCloudArgs.__new__(PrivateCloudArgs)
 
+            __props__.__dict__["deletion_delay_hours"] = deletion_delay_hours
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -596,6 +686,7 @@ class PrivateCloud(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network_config'")
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["send_deletion_delay_hours_if_zero"] = send_deletion_delay_hours_if_zero
             __props__.__dict__["type"] = type
             __props__.__dict__["hcxes"] = None
             __props__.__dict__["nsxes"] = None
@@ -612,6 +703,7 @@ class PrivateCloud(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_delay_hours: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             hcxes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -620,6 +712,7 @@ class PrivateCloud(pulumi.CustomResource):
             network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
             nsxes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            send_deletion_delay_hours_if_zero: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -631,6 +724,8 @@ class PrivateCloud(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
@@ -642,6 +737,9 @@ class PrivateCloud(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
+        :param pulumi.Input[bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+               deletion_delay_hours.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
         :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
@@ -653,6 +751,7 @@ class PrivateCloud(pulumi.CustomResource):
 
         __props__ = _PrivateCloudState.__new__(_PrivateCloudState)
 
+        __props__.__dict__["deletion_delay_hours"] = deletion_delay_hours
         __props__.__dict__["description"] = description
         __props__.__dict__["hcxes"] = hcxes
         __props__.__dict__["location"] = location
@@ -661,11 +760,21 @@ class PrivateCloud(pulumi.CustomResource):
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["nsxes"] = nsxes
         __props__.__dict__["project"] = project
+        __props__.__dict__["send_deletion_delay_hours_if_zero"] = send_deletion_delay_hours_if_zero
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
         __props__.__dict__["vcenters"] = vcenters
         return PrivateCloud(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deletionDelayHours")
+    def deletion_delay_hours(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
+        starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        """
+        return pulumi.get(self, "deletion_delay_hours")
 
     @property
     @pulumi.getter
@@ -731,6 +840,16 @@ class PrivateCloud(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sendDeletionDelayHoursIfZero")
+    def send_deletion_delay_hours_if_zero(self) -> pulumi.Output[Optional[bool]]:
+        """
+        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
+        only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
+        deletion_delay_hours.
+        """
+        return pulumi.get(self, "send_deletion_delay_hours_if_zero")
 
     @property
     @pulumi.getter

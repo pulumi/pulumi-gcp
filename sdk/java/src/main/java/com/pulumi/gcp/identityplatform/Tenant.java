@@ -189,7 +189,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Tenant(String name) {
+    public Tenant(java.lang.String name) {
         this(name, TenantArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Tenant(String name, TenantArgs args) {
+    public Tenant(java.lang.String name, TenantArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,15 +206,22 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Tenant(String name, TenantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/tenant:Tenant", name, args == null ? TenantArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Tenant(java.lang.String name, TenantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:identityplatform/tenant:Tenant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Tenant(String name, Output<String> id, @Nullable TenantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/tenant:Tenant", name, state, makeResourceOptions(options, id));
+    private Tenant(java.lang.String name, Output<java.lang.String> id, @Nullable TenantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:identityplatform/tenant:Tenant", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TenantArgs makeArgs(TenantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TenantArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +237,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Tenant get(String name, Output<String> id, @Nullable TenantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Tenant get(java.lang.String name, Output<java.lang.String> id, @Nullable TenantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Tenant(name, id, state, options);
     }
 }

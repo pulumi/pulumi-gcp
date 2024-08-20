@@ -28,7 +28,6 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -462,14 +461,20 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The reservation affinity configuration for the node pool.
+     * The configuration of the desired reservation which instances could take capacity from.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     @Import(name="reservationAffinity")
     private @Nullable Output<NodePoolNodeConfigReservationAffinityArgs> reservationAffinity;
 
     /**
-     * @return The reservation affinity configuration for the node pool.
+     * @return The configuration of the desired reservation which instances could take capacity from.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Optional<Output<NodePoolNodeConfigReservationAffinityArgs>> reservationAffinity() {
@@ -496,13 +501,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="resourceManagerTags")
-    private @Nullable Output<Map<String,Object>> resourceManagerTags;
+    private @Nullable Output<Map<String,String>> resourceManagerTags;
 
     /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    public Optional<Output<Map<String,Object>>> resourceManagerTags() {
+    public Optional<Output<Map<String,String>>> resourceManagerTags() {
         return Optional.ofNullable(this.resourceManagerTags);
     }
 
@@ -1323,7 +1328,10 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param reservationAffinity The reservation affinity configuration for the node pool.
+         * @param reservationAffinity The configuration of the desired reservation which instances could take capacity from.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 
@@ -1334,7 +1342,10 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param reservationAffinity The reservation affinity configuration for the node pool.
+         * @param reservationAffinity The configuration of the desired reservation which instances could take capacity from.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 
@@ -1370,7 +1381,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
+        public Builder resourceManagerTags(@Nullable Output<Map<String,String>> resourceManagerTags) {
             $.resourceManagerTags = resourceManagerTags;
             return this;
         }
@@ -1381,7 +1392,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             return resourceManagerTags(Output.of(resourceManagerTags));
         }
 

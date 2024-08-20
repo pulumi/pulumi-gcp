@@ -213,7 +213,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EntityType(String name) {
+    public EntityType(java.lang.String name) {
         this(name, EntityTypeArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EntityType(String name, EntityTypeArgs args) {
+    public EntityType(java.lang.String name, EntityTypeArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,15 +230,22 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EntityType(String name, EntityTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/entityType:EntityType", name, args == null ? EntityTypeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EntityType(java.lang.String name, EntityTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/entityType:EntityType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EntityType(String name, Output<String> id, @Nullable EntityTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/entityType:EntityType", name, state, makeResourceOptions(options, id));
+    private EntityType(java.lang.String name, Output<java.lang.String> id, @Nullable EntityTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/entityType:EntityType", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EntityTypeArgs makeArgs(EntityTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EntityTypeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -254,7 +261,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EntityType get(String name, Output<String> id, @Nullable EntityTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EntityType get(java.lang.String name, Output<java.lang.String> id, @Nullable EntityTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EntityType(name, id, state, options);
     }
 }

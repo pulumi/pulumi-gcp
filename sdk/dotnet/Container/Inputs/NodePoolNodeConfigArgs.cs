@@ -211,7 +211,10 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
-        /// The reservation affinity configuration for the node pool.
+        /// The configuration of the desired reservation which instances could take capacity from.
+        /// Structure is documented below.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.NodePoolNodeConfigReservationAffinityArgs>? ReservationAffinity { get; set; }
@@ -229,14 +232,14 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         [Input("resourceManagerTags")]
-        private InputMap<object>? _resourceManagerTags;
+        private InputMap<string>? _resourceManagerTags;
 
         /// <summary>
         /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
-        public InputMap<object> ResourceManagerTags
+        public InputMap<string> ResourceManagerTags
         {
-            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<object>());
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
             set => _resourceManagerTags = value;
         }
 

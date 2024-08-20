@@ -29,11 +29,13 @@ class StoragePoolArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 replica_zone: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a StoragePool resource.
         :param pulumi.Input[str] capacity_gib: Capacity of the storage pool (in GiB).
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+        :param pulumi.Input[str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -48,12 +50,17 @@ class StoragePoolArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
-        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location.
+        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
                
                
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+               If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
         """
         pulumi.set(__self__, "capacity_gib", capacity_gib)
         pulumi.set(__self__, "location", location)
@@ -73,6 +80,10 @@ class StoragePoolArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if replica_zone is not None:
+            pulumi.set(__self__, "replica_zone", replica_zone)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="capacityGib")
@@ -90,7 +101,7 @@ class StoragePoolArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+        Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         """
         return pulumi.get(self, "location")
 
@@ -193,7 +204,7 @@ class StoragePoolArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the storage pool. Needs to be unique per location.
+        The resource name of the storage pool. Needs to be unique per location/region.
 
 
         - - -
@@ -217,6 +228,33 @@ class StoragePoolArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="replicaZone")
+    def replica_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        """
+        return pulumi.get(self, "replica_zone")
+
+    @replica_zone.setter
+    def replica_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replica_zone", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 @pulumi.input_type
 class _StoragePoolState:
@@ -234,9 +272,11 @@ class _StoragePoolState:
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 replica_zone: Optional[pulumi.Input[str]] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
                  volume_capacity_gib: Optional[pulumi.Input[str]] = None,
-                 volume_count: Optional[pulumi.Input[int]] = None):
+                 volume_count: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering StoragePool resources.
         :param pulumi.Input[str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
@@ -253,8 +293,8 @@ class _StoragePoolState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
-        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location.
+        :param pulumi.Input[str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
+        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
                
                
                - - -
@@ -263,10 +303,15 @@ class _StoragePoolState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         :param pulumi.Input[str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[int] volume_count: Number of volume in the storage pool.
+        :param pulumi.Input[str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+               If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
@@ -294,12 +339,16 @@ class _StoragePoolState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if replica_zone is not None:
+            pulumi.set(__self__, "replica_zone", replica_zone)
         if service_level is not None:
             pulumi.set(__self__, "service_level", service_level)
         if volume_capacity_gib is not None:
             pulumi.set(__self__, "volume_capacity_gib", volume_capacity_gib)
         if volume_count is not None:
             pulumi.set(__self__, "volume_count", volume_count)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activeDirectory")
@@ -407,7 +456,7 @@ class _StoragePoolState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+        Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         """
         return pulumi.get(self, "location")
 
@@ -419,7 +468,7 @@ class _StoragePoolState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the storage pool. Needs to be unique per location.
+        The resource name of the storage pool. Needs to be unique per location/region.
 
 
         - - -
@@ -469,6 +518,19 @@ class _StoragePoolState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="replicaZone")
+    def replica_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        """
+        return pulumi.get(self, "replica_zone")
+
+    @replica_zone.setter
+    def replica_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replica_zone", value)
+
+    @property
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -505,6 +567,20 @@ class _StoragePoolState:
     def volume_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_count", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class StoragePool(pulumi.CustomResource):
     @overload
@@ -521,27 +597,11 @@ class StoragePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replica_zone: Optional[pulumi.Input[str]] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
-        * Location
-        * Service level
-        * Virtual Private Cloud (VPC) network
-        * Active Directory policy
-        * LDAP use for NFS volumes, if applicable
-        * Customer-managed encryption key (CMEK) policy
-
-        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
-        component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
-        independent of consumption at the volume level.
-
-        To get more information about storagePool, see:
-
-        * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
-        * How-to Guides
-            * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
-
         ## Example Usage
 
         ### Storage Pool Create
@@ -621,16 +681,21 @@ class StoragePool(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
-        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location.
+        :param pulumi.Input[str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
+        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
                
                
                - - -
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         :param pulumi.Input[str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
+        :param pulumi.Input[str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+               If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
         """
         ...
     @overload
@@ -639,24 +704,6 @@ class StoragePool(pulumi.CustomResource):
                  args: StoragePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
-        * Location
-        * Service level
-        * Virtual Private Cloud (VPC) network
-        * Active Directory policy
-        * LDAP use for NFS volumes, if applicable
-        * Customer-managed encryption key (CMEK) policy
-
-        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
-        component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
-        independent of consumption at the volume level.
-
-        To get more information about storagePool, see:
-
-        * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
-        * How-to Guides
-            * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
-
         ## Example Usage
 
         ### Storage Pool Create
@@ -747,7 +794,9 @@ class StoragePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replica_zone: Optional[pulumi.Input[str]] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -773,9 +822,11 @@ class StoragePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
+            __props__.__dict__["replica_zone"] = replica_zone
             if service_level is None and not opts.urn:
                 raise TypeError("Missing required property 'service_level'")
             __props__.__dict__["service_level"] = service_level
+            __props__.__dict__["zone"] = zone
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_type"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -806,9 +857,11 @@ class StoragePool(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            replica_zone: Optional[pulumi.Input[str]] = None,
             service_level: Optional[pulumi.Input[str]] = None,
             volume_capacity_gib: Optional[pulumi.Input[str]] = None,
-            volume_count: Optional[pulumi.Input[int]] = None) -> 'StoragePool':
+            volume_count: Optional[pulumi.Input[int]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'StoragePool':
         """
         Get an existing StoragePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -830,8 +883,8 @@ class StoragePool(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
-        :param pulumi.Input[str] location: Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
-        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location.
+        :param pulumi.Input[str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
+        :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
                
                
                - - -
@@ -840,10 +893,15 @@ class StoragePool(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         :param pulumi.Input[str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[int] volume_count: Number of volume in the storage pool.
+        :param pulumi.Input[str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+               [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+               If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -862,9 +920,11 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["replica_zone"] = replica_zone
         __props__.__dict__["service_level"] = service_level
         __props__.__dict__["volume_capacity_gib"] = volume_capacity_gib
         __props__.__dict__["volume_count"] = volume_count
+        __props__.__dict__["zone"] = zone
         return StoragePool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -941,7 +1001,7 @@ class StoragePool(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+        Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         """
         return pulumi.get(self, "location")
 
@@ -949,7 +1009,7 @@ class StoragePool(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the storage pool. Needs to be unique per location.
+        The resource name of the storage pool. Needs to be unique per location/region.
 
 
         - - -
@@ -983,6 +1043,15 @@ class StoragePool(pulumi.CustomResource):
         return pulumi.get(self, "pulumi_labels")
 
     @property
+    @pulumi.getter(name="replicaZone")
+    def replica_zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        """
+        return pulumi.get(self, "replica_zone")
+
+    @property
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> pulumi.Output[str]:
         """
@@ -1006,4 +1075,14 @@ class StoragePool(pulumi.CustomResource):
         Number of volume in the storage pool.
         """
         return pulumi.get(self, "volume_count")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        """
+        return pulumi.get(self, "zone")
 

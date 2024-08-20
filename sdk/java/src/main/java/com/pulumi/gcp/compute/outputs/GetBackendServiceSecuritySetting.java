@@ -5,12 +5,19 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySettingAwsV4Authentication;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceSecuritySetting {
+    /**
+     * @return The configuration needed to generate a signature for access to private storage buckets that support AWS&#39;s Signature Version 4 for authentication.
+     * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+     * 
+     */
+    private List<GetBackendServiceSecuritySettingAwsV4Authentication> awsV4Authentications;
     /**
      * @return ClientTlsPolicy is a resource that specifies how a client should authenticate
      * connections to backends of a service. This resource itself does not affect
@@ -27,6 +34,14 @@ public final class GetBackendServiceSecuritySetting {
     private List<String> subjectAltNames;
 
     private GetBackendServiceSecuritySetting() {}
+    /**
+     * @return The configuration needed to generate a signature for access to private storage buckets that support AWS&#39;s Signature Version 4 for authentication.
+     * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+     * 
+     */
+    public List<GetBackendServiceSecuritySettingAwsV4Authentication> awsV4Authentications() {
+        return this.awsV4Authentications;
+    }
     /**
      * @return ClientTlsPolicy is a resource that specifies how a client should authenticate
      * connections to backends of a service. This resource itself does not affect
@@ -55,15 +70,28 @@ public final class GetBackendServiceSecuritySetting {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetBackendServiceSecuritySettingAwsV4Authentication> awsV4Authentications;
         private String clientTlsPolicy;
         private List<String> subjectAltNames;
         public Builder() {}
         public Builder(GetBackendServiceSecuritySetting defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.awsV4Authentications = defaults.awsV4Authentications;
     	      this.clientTlsPolicy = defaults.clientTlsPolicy;
     	      this.subjectAltNames = defaults.subjectAltNames;
         }
 
+        @CustomType.Setter
+        public Builder awsV4Authentications(List<GetBackendServiceSecuritySettingAwsV4Authentication> awsV4Authentications) {
+            if (awsV4Authentications == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceSecuritySetting", "awsV4Authentications");
+            }
+            this.awsV4Authentications = awsV4Authentications;
+            return this;
+        }
+        public Builder awsV4Authentications(GetBackendServiceSecuritySettingAwsV4Authentication... awsV4Authentications) {
+            return awsV4Authentications(List.of(awsV4Authentications));
+        }
         @CustomType.Setter
         public Builder clientTlsPolicy(String clientTlsPolicy) {
             if (clientTlsPolicy == null) {
@@ -85,6 +113,7 @@ public final class GetBackendServiceSecuritySetting {
         }
         public GetBackendServiceSecuritySetting build() {
             final var _resultValue = new GetBackendServiceSecuritySetting();
+            _resultValue.awsV4Authentications = awsV4Authentications;
             _resultValue.clientTlsPolicy = clientTlsPolicy;
             _resultValue.subjectAltNames = subjectAltNames;
             return _resultValue;

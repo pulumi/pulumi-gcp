@@ -383,7 +383,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CxIntent(String name) {
+    public CxIntent(java.lang.String name) {
         this(name, CxIntentArgs.Empty);
     }
     /**
@@ -391,7 +391,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CxIntent(String name, CxIntentArgs args) {
+    public CxIntent(java.lang.String name, CxIntentArgs args) {
         this(name, args, null);
     }
     /**
@@ -400,15 +400,22 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CxIntent(String name, CxIntentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxIntent:CxIntent", name, args == null ? CxIntentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CxIntent(java.lang.String name, CxIntentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/cxIntent:CxIntent", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CxIntent(String name, Output<String> id, @Nullable CxIntentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxIntent:CxIntent", name, state, makeResourceOptions(options, id));
+    private CxIntent(java.lang.String name, Output<java.lang.String> id, @Nullable CxIntentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/cxIntent:CxIntent", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CxIntentArgs makeArgs(CxIntentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CxIntentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -428,7 +435,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CxIntent get(String name, Output<String> id, @Nullable CxIntentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CxIntent get(java.lang.String name, Output<java.lang.String> id, @Nullable CxIntentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CxIntent(name, id, state, options);
     }
 }

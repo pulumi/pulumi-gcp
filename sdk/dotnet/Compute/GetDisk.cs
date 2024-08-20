@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetDiskResult
     {
+        public readonly string AccessMode;
         public readonly ImmutableArray<Outputs.GetDiskAsyncPrimaryDiskResult> AsyncPrimaryDisks;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -256,6 +257,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetDiskResult(
+            string accessMode,
+
             ImmutableArray<Outputs.GetDiskAsyncPrimaryDiskResult> asyncPrimaryDisks,
 
             string creationTimestamp,
@@ -330,6 +333,7 @@ namespace Pulumi.Gcp.Compute
 
             string? zone)
         {
+            AccessMode = accessMode;
             AsyncPrimaryDisks = asyncPrimaryDisks;
             CreationTimestamp = creationTimestamp;
             Description = description;

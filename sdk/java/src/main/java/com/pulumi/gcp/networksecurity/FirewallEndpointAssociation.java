@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
  * * How-to Guides
- *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  *     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+ *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  * 
  * ## Example Usage
  * 
@@ -327,7 +327,7 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FirewallEndpointAssociation(String name) {
+    public FirewallEndpointAssociation(java.lang.String name) {
         this(name, FirewallEndpointAssociationArgs.Empty);
     }
     /**
@@ -335,7 +335,7 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallEndpointAssociation(String name, FirewallEndpointAssociationArgs args) {
+    public FirewallEndpointAssociation(java.lang.String name, FirewallEndpointAssociationArgs args) {
         this(name, args, null);
     }
     /**
@@ -344,15 +344,22 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallEndpointAssociation(String name, FirewallEndpointAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", name, args == null ? FirewallEndpointAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FirewallEndpointAssociation(java.lang.String name, FirewallEndpointAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FirewallEndpointAssociation(String name, Output<String> id, @Nullable FirewallEndpointAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", name, state, makeResourceOptions(options, id));
+    private FirewallEndpointAssociation(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallEndpointAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FirewallEndpointAssociationArgs makeArgs(FirewallEndpointAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallEndpointAssociationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -372,7 +379,7 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FirewallEndpointAssociation get(String name, Output<String> id, @Nullable FirewallEndpointAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FirewallEndpointAssociation get(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallEndpointAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FirewallEndpointAssociation(name, id, state, options);
     }
 }

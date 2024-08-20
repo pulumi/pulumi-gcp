@@ -163,7 +163,7 @@ public class BackendBucketIamBinding extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BackendBucketIamBinding(String name) {
+    public BackendBucketIamBinding(java.lang.String name) {
         this(name, BackendBucketIamBindingArgs.Empty);
     }
     /**
@@ -171,7 +171,7 @@ public class BackendBucketIamBinding extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BackendBucketIamBinding(String name, BackendBucketIamBindingArgs args) {
+    public BackendBucketIamBinding(java.lang.String name, BackendBucketIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -180,15 +180,22 @@ public class BackendBucketIamBinding extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BackendBucketIamBinding(String name, BackendBucketIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendBucketIamBinding:BackendBucketIamBinding", name, args == null ? BackendBucketIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BackendBucketIamBinding(java.lang.String name, BackendBucketIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendBucketIamBinding:BackendBucketIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BackendBucketIamBinding(String name, Output<String> id, @Nullable BackendBucketIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendBucketIamBinding:BackendBucketIamBinding", name, state, makeResourceOptions(options, id));
+    private BackendBucketIamBinding(java.lang.String name, Output<java.lang.String> id, @Nullable BackendBucketIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/backendBucketIamBinding:BackendBucketIamBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BackendBucketIamBindingArgs makeArgs(BackendBucketIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackendBucketIamBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -204,7 +211,7 @@ public class BackendBucketIamBinding extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BackendBucketIamBinding get(String name, Output<String> id, @Nullable BackendBucketIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BackendBucketIamBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable BackendBucketIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BackendBucketIamBinding(name, id, state, options);
     }
 }

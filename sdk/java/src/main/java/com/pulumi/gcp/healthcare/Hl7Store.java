@@ -478,7 +478,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Hl7Store(String name) {
+    public Hl7Store(java.lang.String name) {
         this(name, Hl7StoreArgs.Empty);
     }
     /**
@@ -486,7 +486,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Hl7Store(String name, Hl7StoreArgs args) {
+    public Hl7Store(java.lang.String name, Hl7StoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -495,15 +495,22 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Hl7Store(String name, Hl7StoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/hl7Store:Hl7Store", name, args == null ? Hl7StoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Hl7Store(java.lang.String name, Hl7StoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/hl7Store:Hl7Store", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Hl7Store(String name, Output<String> id, @Nullable Hl7StoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/hl7Store:Hl7Store", name, state, makeResourceOptions(options, id));
+    private Hl7Store(java.lang.String name, Output<java.lang.String> id, @Nullable Hl7StoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:healthcare/hl7Store:Hl7Store", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static Hl7StoreArgs makeArgs(Hl7StoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Hl7StoreArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -523,7 +530,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Hl7Store get(String name, Output<String> id, @Nullable Hl7StoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Hl7Store get(java.lang.String name, Output<java.lang.String> id, @Nullable Hl7StoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Hl7Store(name, id, state, options);
     }
 }

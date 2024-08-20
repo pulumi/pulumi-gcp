@@ -16,7 +16,7 @@ public final class RepositoryGitRemoteSettingsSshAuthenticationConfig {
      */
     private String hostPublicKey;
     /**
-     * @return The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * @return The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     private String userPrivateKeySecretVersion;
@@ -30,7 +30,7 @@ public final class RepositoryGitRemoteSettingsSshAuthenticationConfig {
         return this.hostPublicKey;
     }
     /**
-     * @return The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * @return The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public String userPrivateKeySecretVersion() {

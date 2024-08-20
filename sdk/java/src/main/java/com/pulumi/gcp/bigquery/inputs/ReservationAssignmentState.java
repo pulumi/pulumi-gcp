@@ -76,14 +76,16 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -110,14 +112,16 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+     * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * @return Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+     * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
      */
     public Optional<Output<String>> state() {
@@ -239,7 +243,8 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -250,7 +255,8 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -285,7 +291,8 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param state Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+         * @param state Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+         * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
          * 
          * @return builder
          * 
@@ -296,7 +303,8 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param state Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+         * @param state Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+         * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
          * 
          * @return builder
          * 

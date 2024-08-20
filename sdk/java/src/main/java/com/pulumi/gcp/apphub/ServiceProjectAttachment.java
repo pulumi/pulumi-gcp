@@ -169,14 +169,14 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
         return this.createTime;
     }
     /**
-     * &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34; &#34;
+     * &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34; &#34;
+     * @return &#34;Identifier. The resource name of a ServiceProjectAttachment. Format:\&#34;projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\&#34;&#34;
      * 
      */
     public Output<String> name() {
@@ -201,7 +201,7 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
     /**
      * &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
      * or \&#34;projects/123\&#34;. As input, project name with either project id or number
-     * are accepted. As output, this field will contain project number. &#34;
+     * are accepted. As output, this field will contain project number.&#34;
      * 
      */
     @Export(name="serviceProject", refs={String.class}, tree="[0]")
@@ -210,7 +210,7 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
     /**
      * @return &#34;Immutable. Service project name in the format: \&#34;projects/abc\&#34;
      * or \&#34;projects/123\&#34;. As input, project name with either project id or number
-     * are accepted. As output, this field will contain project number. &#34;
+     * are accepted. As output, this field will contain project number.&#34;
      * 
      */
     public Output<Optional<String>> serviceProject() {
@@ -267,7 +267,7 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceProjectAttachment(String name) {
+    public ServiceProjectAttachment(java.lang.String name) {
         this(name, ServiceProjectAttachmentArgs.Empty);
     }
     /**
@@ -275,7 +275,7 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceProjectAttachment(String name, ServiceProjectAttachmentArgs args) {
+    public ServiceProjectAttachment(java.lang.String name, ServiceProjectAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -284,15 +284,22 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceProjectAttachment(String name, ServiceProjectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, args == null ? ServiceProjectAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceProjectAttachment(java.lang.String name, ServiceProjectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceProjectAttachment(String name, Output<String> id, @Nullable ServiceProjectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, state, makeResourceOptions(options, id));
+    private ServiceProjectAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceProjectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceProjectAttachmentArgs makeArgs(ServiceProjectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceProjectAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -308,7 +315,7 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceProjectAttachment get(String name, Output<String> id, @Nullable ServiceProjectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceProjectAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceProjectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceProjectAttachment(name, id, state, options);
     }
 }

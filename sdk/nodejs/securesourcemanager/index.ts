@@ -10,6 +10,11 @@ export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getIn
 export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 
+export { GetRepositoryIamPolicyArgs, GetRepositoryIamPolicyResult, GetRepositoryIamPolicyOutputArgs } from "./getRepositoryIamPolicy";
+export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicy = null as any;
+export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
@@ -30,6 +35,26 @@ export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
+export { RepositoryArgs, RepositoryState } from "./repository";
+export type Repository = import("./repository").Repository;
+export const Repository: typeof import("./repository").Repository = null as any;
+utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
+
+export { RepositoryIamBindingArgs, RepositoryIamBindingState } from "./repositoryIamBinding";
+export type RepositoryIamBinding = import("./repositoryIamBinding").RepositoryIamBinding;
+export const RepositoryIamBinding: typeof import("./repositoryIamBinding").RepositoryIamBinding = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamBinding"], () => require("./repositoryIamBinding"));
+
+export { RepositoryIamMemberArgs, RepositoryIamMemberState } from "./repositoryIamMember";
+export type RepositoryIamMember = import("./repositoryIamMember").RepositoryIamMember;
+export const RepositoryIamMember: typeof import("./repositoryIamMember").RepositoryIamMember = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamMember"], () => require("./repositoryIamMember"));
+
+export { RepositoryIamPolicyArgs, RepositoryIamPolicyState } from "./repositoryIamPolicy";
+export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamPolicy;
+export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -43,6 +68,14 @@ const _module = {
                 return new InstanceIamMember(name, <any>undefined, { urn })
             case "gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:securesourcemanager/repository:Repository":
+                return new Repository(name, <any>undefined, { urn })
+            case "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding":
+                return new RepositoryIamBinding(name, <any>undefined, { urn })
+            case "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember":
+                return new RepositoryIamMember(name, <any>undefined, { urn })
+            case "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy":
+                return new RepositoryIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -52,3 +85,7 @@ pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instance", _mo
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instanceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/repository", _module)
+pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/repositoryIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/repositoryIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/repositoryIamPolicy", _module)

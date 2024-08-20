@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         [Input("internalIp")]
         public Input<bool>? InternalIp { get; set; }
 
+        /// <summary>
+        /// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        /// </summary>
+        [Input("proxyUrl")]
+        public Input<string>? ProxyUrl { get; set; }
+
         public TargetGkeGetArgs()
         {
         }

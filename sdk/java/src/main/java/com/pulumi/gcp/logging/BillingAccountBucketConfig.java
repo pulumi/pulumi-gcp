@@ -224,7 +224,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BillingAccountBucketConfig(String name) {
+    public BillingAccountBucketConfig(java.lang.String name) {
         this(name, BillingAccountBucketConfigArgs.Empty);
     }
     /**
@@ -232,7 +232,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BillingAccountBucketConfig(String name, BillingAccountBucketConfigArgs args) {
+    public BillingAccountBucketConfig(java.lang.String name, BillingAccountBucketConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -241,15 +241,22 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BillingAccountBucketConfig(String name, BillingAccountBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig", name, args == null ? BillingAccountBucketConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BillingAccountBucketConfig(java.lang.String name, BillingAccountBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BillingAccountBucketConfig(String name, Output<String> id, @Nullable BillingAccountBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig", name, state, makeResourceOptions(options, id));
+    private BillingAccountBucketConfig(java.lang.String name, Output<java.lang.String> id, @Nullable BillingAccountBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BillingAccountBucketConfigArgs makeArgs(BillingAccountBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BillingAccountBucketConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -265,7 +272,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BillingAccountBucketConfig get(String name, Output<String> id, @Nullable BillingAccountBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BillingAccountBucketConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable BillingAccountBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BillingAccountBucketConfig(name, id, state, options);
     }
 }

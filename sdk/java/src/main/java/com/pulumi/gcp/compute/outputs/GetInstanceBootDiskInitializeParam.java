@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -28,7 +27,7 @@ public final class GetInstanceBootDiskInitializeParam {
      * @return A set of key/value label pairs assigned to the disk.
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
@@ -43,12 +42,17 @@ public final class GetInstanceBootDiskInitializeParam {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    private Map<String,Object> resourceManagerTags;
+    private Map<String,String> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes.
      * 
      */
     private Integer size;
+    /**
+     * @return The URL of the storage pool in which the new disk is created
+     * 
+     */
+    private String storagePool;
     /**
      * @return The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
      * 
@@ -74,7 +78,7 @@ public final class GetInstanceBootDiskInitializeParam {
      * @return A set of key/value label pairs assigned to the disk.
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -95,7 +99,7 @@ public final class GetInstanceBootDiskInitializeParam {
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
-    public Map<String,Object> resourceManagerTags() {
+    public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags;
     }
     /**
@@ -104,6 +108,13 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     public Integer size() {
         return this.size;
+    }
+    /**
+     * @return The URL of the storage pool in which the new disk is created
+     * 
+     */
+    public String storagePool() {
+        return this.storagePool;
     }
     /**
      * @return The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -124,11 +135,12 @@ public final class GetInstanceBootDiskInitializeParam {
     public static final class Builder {
         private Boolean enableConfidentialCompute;
         private String image;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private Integer provisionedIops;
         private Integer provisionedThroughput;
-        private Map<String,Object> resourceManagerTags;
+        private Map<String,String> resourceManagerTags;
         private Integer size;
+        private String storagePool;
         private String type;
         public Builder() {}
         public Builder(GetInstanceBootDiskInitializeParam defaults) {
@@ -140,6 +152,7 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
+    	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
 
@@ -160,7 +173,7 @@ public final class GetInstanceBootDiskInitializeParam {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "labels");
             }
@@ -184,7 +197,7 @@ public final class GetInstanceBootDiskInitializeParam {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             if (resourceManagerTags == null) {
               throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "resourceManagerTags");
             }
@@ -197,6 +210,14 @@ public final class GetInstanceBootDiskInitializeParam {
               throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "size");
             }
             this.size = size;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storagePool(String storagePool) {
+            if (storagePool == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "storagePool");
+            }
+            this.storagePool = storagePool;
             return this;
         }
         @CustomType.Setter
@@ -216,6 +237,7 @@ public final class GetInstanceBootDiskInitializeParam {
             _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.size = size;
+            _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;
         }

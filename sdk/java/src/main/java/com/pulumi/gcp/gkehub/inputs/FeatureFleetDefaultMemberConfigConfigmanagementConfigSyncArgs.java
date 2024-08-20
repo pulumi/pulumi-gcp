@@ -19,6 +19,21 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
     public static final FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs Empty = new FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs();
 
     /**
+     * Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
      * Git repo configuration for the cluster
      * Structure is documented below.
      * 
@@ -85,6 +100,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
     private FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs() {}
 
     private FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs $) {
+        this.enabled = $.enabled;
         this.git = $.git;
         this.oci = $.oci;
         this.preventDrift = $.preventDrift;
@@ -107,6 +123,27 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
 
         public Builder(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs defaults) {
             $ = new FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enabled Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

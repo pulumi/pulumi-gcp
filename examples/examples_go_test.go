@@ -13,7 +13,6 @@ import (
 	"math/rand"
 	"os"
 	"path/filepath"
-	"reflect"
 	"testing"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
@@ -288,6 +287,38 @@ func TestLabelsCombinationsGo(t *testing.T) {
 				Labels:        map[string]string{},
 			},
 		},
+		{
+			"empty value keeps old value",
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": "s"},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{},
+				Labels:        map[string]string{"x": ""},
+			},
+		},
+		{
+			"empty initial value does not get overridden by default",
+			labelsState{
+				DefaultLabels: map[string]string{"x": "s"},
+				Labels:        map[string]string{"x": ""},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"x": "s"},
+				Labels:        map[string]string{"x": ""},
+			},
+		},
+		{
+			"label kept if default is empty",
+			labelsState{
+				Labels: 	  map[string]string{"x": "s"},
+			},
+			labelsState{
+				DefaultLabels: map[string]string{"x": ""},
+			},
+
+		},
 	}
 
 	for _, tc := range testCases {
@@ -387,50 +418,98 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 			"state2": st2.serialize(t),
 		},
 		Quick:            true,
-		SkipRefresh: 	  true,
+		SkipRefresh:      true,
 		DestroyOnCleanup: true,
 	})
 
 	integration.ProgramTest(t, &opts)
 }
 
-func (st labelsState) expectedLabelsPRC(prev labelsState) map[string]string {
+type expectedLabelValueArg struct {
+	labels, defaults, prevLabels, prevDefaults valuePresentTuple
+}
+
+type valuePresentTuple struct {
+	value   string
+	present bool
+}
+
+// This takes the combination of label, default, previous label and previous default
+// and returns the expected new value of a label. "" means it should not be present in the result.
+func expectedLabelValue(arg expectedLabelValueArg) string {
+	// The labels behaviour in GCP is non-trivial. The labels are a combination of DefaultLabels and Labels.
+	// The DefaultLabels are the labels that are set by the provider by default. The user can override these
+	// labels by setting them in the Labels field of the resource.
+	//
+	// Things get a bit more complicated with how the GCP TF provider treats empty ("") labels.
+	// Generally, "" is treated as "keep the previous value". However, if the value has always been "", then
+	// it is treated as "no value", which trumps any DefaultLabels.
+	// The test cases above try to illustrate this behaviour.
+	labels, defaults, prevLabels, prevDefaults := arg.labels, arg.defaults, arg.prevLabels, arg.prevDefaults
+	if !labels.present {
+		if !defaults.present {
+			return ""
+		}
+
+		if defaults.value != "" {
+			return defaults.value
+		}
+
+		if prevLabels.present {
+			return prevLabels.value
+		}
+
+		return prevDefaults.value
+	}
+
+	if labels.value != "" {
+		return labels.value
+	}
+
+	if prevLabels.present {
+		return prevLabels.value
+	}
+
+	if prevDefaults.present {
+		return prevDefaults.value
+	}
+
+	return ""
+}
+
+func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 	// Note that the upstream provider actually takes a "" value for a label to mean "keep the previous value".
 	// This behaviour is exposed under PlanResourceChange
 	r := map[string]string{}
-	for k, v := range st.DefaultLabels {
-		if v != "" {
-			r[k] = v
-		} else {
-			if prev.DefaultLabels[k] != "" {
-				r[k] = prev.DefaultLabels[k]
-			} else if prev.Labels[k] != "" {
-				r[k] = prev.Labels[k]
-			}
-		}
-	}
-	for k, v := range st.Labels {
-		if v != "" {
-			r[k] = v
-		} else {
-			if prev.DefaultLabels[k] != "" {
-				r[k] = prev.DefaultLabels[k]
-			} else if prev.Labels[k] != "" {
-				r[k] = prev.Labels[k]
-			}
-		}
-	}
-	return r
-}
 
-func (st labelsState) expectedLabels() map[string]string {
-	r := map[string]string{}
-	for k, v := range st.DefaultLabels {
-		r[k] = v
+	keys := map[string]struct{}{}
+	for k := range st.DefaultLabels {
+		keys[k] = struct{}{}
 	}
-	for k, v := range st.Labels {
-		r[k] = v
+	for k := range st.Labels {
+		keys[k] = struct{}{}
 	}
+
+	for k := range keys {
+		labelsVal, inLabels := st.Labels[k]
+		defaultsVal, inDefaults := st.DefaultLabels[k]
+		prevLabelsVal, inPrevLabels := prev.Labels[k]
+		prevDefaultsVal, inPrevDefaults := prev.DefaultLabels[k]
+
+		expectedVal := expectedLabelValue(
+			expectedLabelValueArg{
+				labels:       valuePresentTuple{value: labelsVal, present: inLabels},
+				defaults:     valuePresentTuple{value: defaultsVal, present: inDefaults},
+				prevLabels:   valuePresentTuple{value: prevLabelsVal, present: inPrevLabels},
+				prevDefaults: valuePresentTuple{value: prevDefaultsVal, present: inPrevDefaults},
+			},
+		)
+
+		if expectedVal != "" {
+			r[k] = expectedVal
+		}
+	}
+
 	return r
 }
 
@@ -438,13 +517,16 @@ func validateStateResult(phase int, st1, st2 labelsState) func(
 	t *testing.T,
 	stack integration.RuntimeValidationStackInfo,
 ) {
-	var st labelsState
+	var st, prev labelsState
 	switch phase {
 	case 1:
 		st = st1
+		prev = labelsState{}
 	default:
 		st = st2
+		prev = st1
 	}
+	expected := st.expectedLabels(prev)
 
 	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 		for k, v := range stack.Outputs {
@@ -453,15 +535,8 @@ func validateStateResult(phase int, st1, st2 labelsState) func(
 			err := json.Unmarshal([]byte(actualLabelsJSON), &actualLabels)
 			require.NoError(t, err)
 			t.Logf("phase: %d", phase)
-			t.Logf("state1: %v", st1.serialize(t))
-			prev := labelsState{}
-			if phase == 2 {
-				prev = st1
-				t.Logf("state2: %v", st2.serialize(t))
-			}
-			if !reflect.DeepEqual(actualLabels, st.expectedLabelsPRC(prev)) {
-				require.Equalf(t, st.expectedLabels(), actualLabels, "key=%s", k)
-			}
+			t.Logf("state: %v", st.serialize(t))
+			require.Equalf(t, expected, actualLabels, "key=%s", k)
 			t.Logf("key=%s labels are as expected: %v", k, actualLabelsJSON)
 		}
 	}

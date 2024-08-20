@@ -503,7 +503,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NodeGroup(String name) {
+    public NodeGroup(java.lang.String name) {
         this(name, NodeGroupArgs.Empty);
     }
     /**
@@ -511,7 +511,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NodeGroup(String name, NodeGroupArgs args) {
+    public NodeGroup(java.lang.String name, NodeGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -520,15 +520,22 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NodeGroup(String name, NodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/nodeGroup:NodeGroup", name, args == null ? NodeGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NodeGroup(java.lang.String name, NodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/nodeGroup:NodeGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NodeGroup(String name, Output<String> id, @Nullable NodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/nodeGroup:NodeGroup", name, state, makeResourceOptions(options, id));
+    private NodeGroup(java.lang.String name, Output<java.lang.String> id, @Nullable NodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/nodeGroup:NodeGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NodeGroupArgs makeArgs(NodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NodeGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -544,7 +551,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NodeGroup get(String name, Output<String> id, @Nullable NodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NodeGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable NodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NodeGroup(name, id, state, options);
     }
 }

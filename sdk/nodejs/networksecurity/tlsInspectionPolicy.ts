@@ -167,7 +167,7 @@ import * as utilities from "../utilities";
  * const defaultCaPoolIamMember = new gcp.certificateauthority.CaPoolIamMember("default", {
  *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
- *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
+ *     member: nsSa.member,
  * });
  * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
  *     name: "my-trust-config",

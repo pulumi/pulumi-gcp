@@ -97,7 +97,7 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnvKeystore(String name) {
+    public EnvKeystore(java.lang.String name) {
         this(name, EnvKeystoreArgs.Empty);
     }
     /**
@@ -105,7 +105,7 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnvKeystore(String name, EnvKeystoreArgs args) {
+    public EnvKeystore(java.lang.String name, EnvKeystoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -114,15 +114,22 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnvKeystore(String name, EnvKeystoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/envKeystore:EnvKeystore", name, args == null ? EnvKeystoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnvKeystore(java.lang.String name, EnvKeystoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/envKeystore:EnvKeystore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnvKeystore(String name, Output<String> id, @Nullable EnvKeystoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/envKeystore:EnvKeystore", name, state, makeResourceOptions(options, id));
+    private EnvKeystore(java.lang.String name, Output<java.lang.String> id, @Nullable EnvKeystoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/envKeystore:EnvKeystore", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnvKeystoreArgs makeArgs(EnvKeystoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnvKeystoreArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -138,7 +145,7 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnvKeystore get(String name, Output<String> id, @Nullable EnvKeystoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnvKeystore get(java.lang.String name, Output<java.lang.String> id, @Nullable EnvKeystoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnvKeystore(name, id, state, options);
     }
 }

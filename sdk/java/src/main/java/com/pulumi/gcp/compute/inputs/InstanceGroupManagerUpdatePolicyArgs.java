@@ -18,14 +18,14 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     public static final InstanceGroupManagerUpdatePolicyArgs Empty = new InstanceGroupManagerUpdatePolicyArgs();
 
     /**
-     * , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+     * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
      * 
      */
     @Import(name="maxSurgeFixed")
     private @Nullable Output<Integer> maxSurgeFixed;
 
     /**
-     * @return , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
      * 
      */
     public Optional<Output<Integer>> maxSurgeFixed() {
@@ -33,14 +33,14 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+     * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
      * 
      */
     @Import(name="maxSurgePercent")
     private @Nullable Output<Integer> maxSurgePercent;
 
     /**
-     * @return , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
      * 
      */
     public Optional<Output<Integer>> maxSurgePercent() {
@@ -48,14 +48,14 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+     * , Specifies a fixed number of VM instances. This must be a positive integer.
      * 
      */
     @Import(name="maxUnavailableFixed")
     private @Nullable Output<Integer> maxUnavailableFixed;
 
     /**
-     * @return , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+     * @return , Specifies a fixed number of VM instances. This must be a positive integer.
      * 
      */
     public Optional<Output<Integer>> maxUnavailableFixed() {
@@ -63,14 +63,14 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+     * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
      * 
      */
     @Import(name="maxUnavailablePercent")
     private @Nullable Output<Integer> maxUnavailablePercent;
 
     /**
-     * @return , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
      * 
      */
     public Optional<Output<Integer>> maxUnavailablePercent() {
@@ -187,7 +187,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgeFixed , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgeFixed , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgePercent , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgePercent , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxUnavailableFixed , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+         * @param maxUnavailableFixed , Specifies a fixed number of VM instances. This must be a positive integer.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxUnavailableFixed , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+         * @param maxUnavailableFixed , Specifies a fixed number of VM instances. This must be a positive integer.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxUnavailablePercent , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+         * @param maxUnavailablePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxUnavailablePercent , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+         * @param maxUnavailablePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
          * 
          * @return builder
          * 

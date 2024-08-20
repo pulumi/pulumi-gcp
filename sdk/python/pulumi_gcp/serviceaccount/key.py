@@ -20,7 +20,7 @@ __all__ = ['KeyArgs', 'Key']
 class KeyArgs:
     def __init__(__self__, *,
                  service_account_id: pulumi.Input[str],
-                 keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
                  private_key_type: Optional[pulumi.Input[str]] = None,
                  public_key_data: Optional[pulumi.Input[str]] = None,
@@ -33,7 +33,7 @@ class KeyArgs:
                automatically be inferred from the account. Otherwise, if the `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`
                syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
                unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
-        :param pulumi.Input[Mapping[str, Any]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
         :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
                Valid values are listed at
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -73,14 +73,14 @@ class KeyArgs:
 
     @property
     @pulumi.getter
-    def keepers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def keepers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Arbitrary map of values that, when changed, will trigger a new key to be generated.
         """
         return pulumi.get(self, "keepers")
 
     @keepers.setter
-    def keepers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def keepers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "keepers", value)
 
     @property
@@ -138,7 +138,7 @@ class KeyArgs:
 @pulumi.input_type
 class _KeyState:
     def __init__(__self__, *,
-                 keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class _KeyState:
                  valid_before: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Key resources.
-        :param pulumi.Input[Mapping[str, Any]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
         :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
                Valid values are listed at
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -198,14 +198,14 @@ class _KeyState:
 
     @property
     @pulumi.getter
-    def keepers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def keepers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Arbitrary map of values that, when changed, will trigger a new key to be generated.
         """
         return pulumi.get(self, "keepers")
 
     @keepers.setter
-    def keepers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def keepers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "keepers", value)
 
     @property
@@ -344,7 +344,7 @@ class Key(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
                  private_key_type: Optional[pulumi.Input[str]] = None,
                  public_key_data: Optional[pulumi.Input[str]] = None,
@@ -402,9 +402,9 @@ class Key(pulumi.CustomResource):
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
         google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",
-            metadata=kubernetes.meta.v1.ObjectMetaArgs(
-                name="google-application-credentials",
-            ),
+            metadata={
+                "name": "google-application-credentials",
+            },
             data={
                 "credentials.json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
@@ -416,7 +416,7 @@ class Key(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
         :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
                Valid values are listed at
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -488,9 +488,9 @@ class Key(pulumi.CustomResource):
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
         google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",
-            metadata=kubernetes.meta.v1.ObjectMetaArgs(
-                name="google-application-credentials",
-            ),
+            metadata={
+                "name": "google-application-credentials",
+            },
             data={
                 "credentials.json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
@@ -515,7 +515,7 @@ class Key(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
                  private_key_type: Optional[pulumi.Input[str]] = None,
                  public_key_data: Optional[pulumi.Input[str]] = None,
@@ -557,7 +557,7 @@ class Key(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            keepers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             key_algorithm: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             private_key: Optional[pulumi.Input[str]] = None,
@@ -575,7 +575,7 @@ class Key(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
         :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
                Valid values are listed at
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -616,7 +616,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def keepers(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def keepers(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Arbitrary map of values that, when changed, will trigger a new key to be generated.
         """

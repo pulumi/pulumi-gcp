@@ -50,7 +50,7 @@ public final class GetDatabaseInstancesInstanceSetting {
      */
     private String collation;
     /**
-     * @return Specifies if connections must use Cloud SQL connectors.
+     * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     private String connectorEnforcement;
@@ -91,6 +91,11 @@ public final class GetDatabaseInstancesInstanceSetting {
      * 
      */
     private String edition;
+    /**
+     * @return Enables Dataplex Integration.
+     * 
+     */
+    private Boolean enableDataplexIntegration;
     /**
      * @return Enables Vertex AI Integration.
      * 
@@ -173,7 +178,7 @@ public final class GetDatabaseInstancesInstanceSetting {
         return this.collation;
     }
     /**
-     * @return Specifies if connections must use Cloud SQL connectors.
+     * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     public String connectorEnforcement() {
@@ -233,6 +238,13 @@ public final class GetDatabaseInstancesInstanceSetting {
      */
     public String edition() {
         return this.edition;
+    }
+    /**
+     * @return Enables Dataplex Integration.
+     * 
+     */
+    public Boolean enableDataplexIntegration() {
+        return this.enableDataplexIntegration;
     }
     /**
      * @return Enables Vertex AI Integration.
@@ -328,6 +340,7 @@ public final class GetDatabaseInstancesInstanceSetting {
         private Integer diskSize;
         private String diskType;
         private String edition;
+        private Boolean enableDataplexIntegration;
         private Boolean enableGoogleMlIntegration;
         private List<GetDatabaseInstancesInstanceSettingInsightsConfig> insightsConfigs;
         private List<GetDatabaseInstancesInstanceSettingIpConfiguration> ipConfigurations;
@@ -359,6 +372,7 @@ public final class GetDatabaseInstancesInstanceSetting {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.edition = defaults.edition;
+    	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
     	      this.insightsConfigs = defaults.insightsConfigs;
     	      this.ipConfigurations = defaults.ipConfigurations;
@@ -520,6 +534,14 @@ public final class GetDatabaseInstancesInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder enableDataplexIntegration(Boolean enableDataplexIntegration) {
+            if (enableDataplexIntegration == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "enableDataplexIntegration");
+            }
+            this.enableDataplexIntegration = enableDataplexIntegration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableGoogleMlIntegration(Boolean enableGoogleMlIntegration) {
             if (enableGoogleMlIntegration == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "enableGoogleMlIntegration");
@@ -651,6 +673,7 @@ public final class GetDatabaseInstancesInstanceSetting {
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;
             _resultValue.edition = edition;
+            _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
             _resultValue.insightsConfigs = insightsConfigs;
             _resultValue.ipConfigurations = ipConfigurations;

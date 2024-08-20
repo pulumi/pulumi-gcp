@@ -121,6 +121,21 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.selfLink);
     }
 
+    /**
+     * Output Only. The shared secret to be used for reverse DNS verification.
+     * 
+     */
+    @Import(name="sharedSecret")
+    private @Nullable Output<String> sharedSecret;
+
+    /**
+     * @return Output Only. The shared secret to be used for reverse DNS verification.
+     * 
+     */
+    public Optional<Output<String>> sharedSecret() {
+        return Optional.ofNullable(this.sharedSecret);
+    }
+
     private PublicAdvertisedPrefixState() {}
 
     private PublicAdvertisedPrefixState(PublicAdvertisedPrefixState $) {
@@ -130,6 +145,7 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
         this.name = $.name;
         this.project = $.project;
         this.selfLink = $.selfLink;
+        this.sharedSecret = $.sharedSecret;
     }
 
     public static Builder builder() {
@@ -290,6 +306,27 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param sharedSecret Output Only. The shared secret to be used for reverse DNS verification.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecret(@Nullable Output<String> sharedSecret) {
+            $.sharedSecret = sharedSecret;
+            return this;
+        }
+
+        /**
+         * @param sharedSecret Output Only. The shared secret to be used for reverse DNS verification.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecret(String sharedSecret) {
+            return sharedSecret(Output.of(sharedSecret));
         }
 
         public PublicAdvertisedPrefixState build() {

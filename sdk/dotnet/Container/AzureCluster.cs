@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("effectiveAnnotations")]
-        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The endpoint of the cluster's API server.
@@ -564,10 +564,10 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         [Input("effectiveAnnotations")]
-        private InputMap<object>? _effectiveAnnotations;
-        public InputMap<object> EffectiveAnnotations
+        private InputMap<string>? _effectiveAnnotations;
+        public InputMap<string> EffectiveAnnotations
         {
-            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
             set => _effectiveAnnotations = value;
         }
 

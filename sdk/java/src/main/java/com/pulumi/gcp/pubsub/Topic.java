@@ -242,12 +242,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
@@ -255,13 +255,13 @@ import javax.annotation.Nullable;
  *                     .streamArn("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name")
  *                     .consumerArn("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111")
  *                     .awsRoleArn("arn:aws:iam::111111111111:role/fake-role-name")
- *                     .gcpServiceAccount("fake-service-account{@literal @}fake-gcp-project.iam.gserviceaccount.com")
+ *                     .gcpServiceAccount("fake-service-account}{@literal @}{@code fake-gcp-project.iam.gserviceaccount.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -328,7 +328,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * to messages published on this topic. Your project&#39;s PubSub service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
+     * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
@@ -339,7 +339,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * to messages published on this topic. Your project&#39;s PubSub service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
+     * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      * 
      */
     public Output<Optional<String>> kmsKeyName() {
@@ -484,7 +484,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Topic(String name) {
+    public Topic(java.lang.String name) {
         this(name, TopicArgs.Empty);
     }
     /**
@@ -492,7 +492,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Topic(String name, @Nullable TopicArgs args) {
+    public Topic(java.lang.String name, @Nullable TopicArgs args) {
         this(name, args, null);
     }
     /**
@@ -501,15 +501,22 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Topic(String name, @Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/topic:Topic", name, args == null ? TopicArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Topic(java.lang.String name, @Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/topic:Topic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Topic(String name, Output<String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/topic:Topic", name, state, makeResourceOptions(options, id));
+    private Topic(java.lang.String name, Output<java.lang.String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/topic:Topic", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TopicArgs makeArgs(@Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TopicArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -529,7 +536,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Topic get(String name, Output<String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Topic get(java.lang.String name, Output<java.lang.String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Topic(name, id, state, options);
     }
 }

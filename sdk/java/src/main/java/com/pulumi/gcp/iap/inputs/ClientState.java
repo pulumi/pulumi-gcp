@@ -18,7 +18,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     /**
      * Identifier of the brand to which this client
      * is attached to. The format is
-     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      * ***
      * 
@@ -29,7 +29,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identifier of the brand to which this client
      * is attached to. The format is
-     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      * ***
      * 
@@ -39,14 +39,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The OAuth2 ID of the client.
+     * Output only. Unique identifier of the OAuth client.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return The OAuth2 ID of the client.
+     * @return Output only. Unique identifier of the OAuth client.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -115,7 +115,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param brand Identifier of the brand to which this client
          * is attached to. The format is
-         * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+         * `projects/{project_number}/brands/{brand_id}`.
          * 
          * ***
          * 
@@ -130,7 +130,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param brand Identifier of the brand to which this client
          * is attached to. The format is
-         * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+         * `projects/{project_number}/brands/{brand_id}`.
          * 
          * ***
          * 
@@ -142,7 +142,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId The OAuth2 ID of the client.
+         * @param clientId Output only. Unique identifier of the OAuth client.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId The OAuth2 ID of the client.
+         * @param clientId Output only. Unique identifier of the OAuth client.
          * 
          * @return builder
          * 

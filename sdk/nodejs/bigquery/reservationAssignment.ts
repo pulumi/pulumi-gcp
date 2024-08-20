@@ -5,23 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The BigqueryReservation Assignment resource
+ * The BigqueryReservation Assignment resource.
+ *
+ * To get more information about ReservationAssignment, see:
+ *
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
+ * * How-to Guides
+ *     * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
  *
  * ## Example Usage
  *
- * ### Basic
+ * ### Bigquery Reservation Assignment Basic
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.bigquery.Reservation("basic", {
- *     name: "tf-test-my-reservation",
+ *     name: "example-reservation",
  *     project: "my-project-name",
  *     location: "us-central1",
  *     slotCapacity: 0,
  *     ignoreIdleSlots: false,
  * });
- * const primary = new gcp.bigquery.ReservationAssignment("primary", {
+ * const assignment = new gcp.bigquery.ReservationAssignment("assignment", {
  *     assignee: "projects/my-project-name",
  *     jobType: "PIPELINE",
  *     reservation: basic.id,
@@ -30,7 +37,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Assignment can be imported using any of these accepted formats:
+ * ReservationAssignment can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
  *
@@ -38,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * * `{{location}}/{{reservation}}/{{name}}`
  *
- * When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
@@ -97,19 +104,20 @@ export class ReservationAssignment extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * The reservation for the resource
      *
      *
-     *
      * - - -
      */
     public readonly reservation!: pulumi.Output<string>;
     /**
-     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+     * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -178,19 +186,20 @@ export interface ReservationAssignmentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * The reservation for the resource
      *
      *
-     *
      * - - -
      */
     reservation?: pulumi.Input<string>;
     /**
-     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+     * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      */
     state?: pulumi.Input<string>;
 }
@@ -212,12 +221,12 @@ export interface ReservationAssignmentArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * The reservation for the resource
-     *
      *
      *
      * - - -

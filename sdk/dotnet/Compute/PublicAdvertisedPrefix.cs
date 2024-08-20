@@ -113,6 +113,12 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// Output Only. The shared secret to be used for reverse DNS verification.
+        /// </summary>
+        [Output("sharedSecret")]
+        public Output<string> SharedSecret { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a PublicAdvertisedPrefix resource with the given unique name, arguments, and options.
@@ -250,6 +256,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Output Only. The shared secret to be used for reverse DNS verification.
+        /// </summary>
+        [Input("sharedSecret")]
+        public Input<string>? SharedSecret { get; set; }
 
         public PublicAdvertisedPrefixState()
         {

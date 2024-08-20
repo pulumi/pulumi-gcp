@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDiscoveryConfigTargetBigQueryTargetConditions
     {
         /// <summary>
-        /// A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+        /// File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
         /// </summary>
         public readonly string? CreatedAfter;
         /// <summary>

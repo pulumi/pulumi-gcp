@@ -111,8 +111,8 @@ type HostingSite struct {
 	AppId pulumi.StringPtrOutput `pulumi:"appId"`
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl pulumi.StringOutput `pulumi:"defaultUrl"`
-	// Output only. The fully-qualified resource name of the Hosting site, in the
-	// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+	// Output only. The fully-qualified resource name of the Hosting site, in
+	// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
 	// Firebase project's
 	// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
 	// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -163,8 +163,8 @@ type hostingSiteState struct {
 	AppId *string `pulumi:"appId"`
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl *string `pulumi:"defaultUrl"`
-	// Output only. The fully-qualified resource name of the Hosting site, in the
-	// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+	// Output only. The fully-qualified resource name of the Hosting site, in
+	// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
 	// Firebase project's
 	// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
 	// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -186,8 +186,8 @@ type HostingSiteState struct {
 	AppId pulumi.StringPtrInput
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl pulumi.StringPtrInput
-	// Output only. The fully-qualified resource name of the Hosting site, in the
-	// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+	// Output only. The fully-qualified resource name of the Hosting site, in
+	// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
 	// Firebase project's
 	// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
 	// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
@@ -332,8 +332,8 @@ func (o HostingSiteOutput) DefaultUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingSite) pulumi.StringOutput { return v.DefaultUrl }).(pulumi.StringOutput)
 }
 
-// Output only. The fully-qualified resource name of the Hosting site, in the
-// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+// Output only. The fully-qualified resource name of the Hosting site, in
+// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
 // Firebase project's
 // [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
 // [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).

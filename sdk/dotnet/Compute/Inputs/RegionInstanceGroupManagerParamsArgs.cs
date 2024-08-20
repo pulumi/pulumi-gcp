@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionInstanceGroupManagerParamsArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceManagerTags")]
-        private InputMap<object>? _resourceManagerTags;
+        private InputMap<string>? _resourceManagerTags;
 
         /// <summary>
         /// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         /// </summary>
-        public InputMap<object> ResourceManagerTags
+        public InputMap<string> ResourceManagerTags
         {
-            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<object>());
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
             set => _resourceManagerTags = value;
         }
 

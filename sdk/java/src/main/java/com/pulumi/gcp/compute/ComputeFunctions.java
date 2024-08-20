@@ -3584,12 +3584,12 @@ public final class ComputeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
@@ -3607,7 +3607,7 @@ public final class ComputeFunctions {
      *                 Map.entry("serial-port-logging-enable", "TRUE"),
      *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("email", "example.user}{@literal @}{@code example.com"),
      *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
      *                         jsonProperty("exponent", "AQAB"),
      *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
@@ -3629,8 +3629,8 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3707,12 +3707,12 @@ public final class ComputeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
@@ -3730,7 +3730,7 @@ public final class ComputeFunctions {
      *                 Map.entry("serial-port-logging-enable", "TRUE"),
      *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("email", "example.user}{@literal @}{@code example.com"),
      *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
      *                         jsonProperty("exponent", "AQAB"),
      *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
@@ -3752,8 +3752,8 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3830,12 +3830,12 @@ public final class ComputeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
@@ -3853,7 +3853,7 @@ public final class ComputeFunctions {
      *                 Map.entry("serial-port-logging-enable", "TRUE"),
      *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("email", "example.user}{@literal @}{@code example.com"),
      *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
      *                         jsonProperty("exponent", "AQAB"),
      *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
@@ -3875,8 +3875,8 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3953,12 +3953,12 @@ public final class ComputeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
      *                 .accessConfigs()
@@ -3976,7 +3976,7 @@ public final class ComputeFunctions {
      *                 Map.entry("serial-port-logging-enable", "TRUE"),
      *                 Map.entry("windows-keys", serializeJson(
      *                     jsonObject(
-     *                         jsonProperty("email", "example.user{@literal @}example.com"),
+     *                         jsonProperty("email", "example.user}{@literal @}{@code example.com"),
      *                         jsonProperty("expireOn", "2020-04-14T01:37:19Z"),
      *                         jsonProperty("exponent", "AQAB"),
      *                         jsonProperty("modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q=="),
@@ -3998,8 +3998,8 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

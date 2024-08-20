@@ -174,7 +174,7 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
     }
     /**
      * A user-defined name of the Certificate Map. Certificate Map names must be unique
-     * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+     * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
      * 
      * ***
      * 
@@ -184,7 +184,7 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A user-defined name of the Certificate Map. Certificate Map names must be unique
-     * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+     * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
      * 
      * ***
      * 
@@ -247,7 +247,7 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CertificateMap(String name) {
+    public CertificateMap(java.lang.String name) {
         this(name, CertificateMapArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CertificateMap(String name, @Nullable CertificateMapArgs args) {
+    public CertificateMap(java.lang.String name, @Nullable CertificateMapArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,15 +264,22 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CertificateMap(String name, @Nullable CertificateMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificatemanager/certificateMap:CertificateMap", name, args == null ? CertificateMapArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CertificateMap(java.lang.String name, @Nullable CertificateMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificatemanager/certificateMap:CertificateMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CertificateMap(String name, Output<String> id, @Nullable CertificateMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificatemanager/certificateMap:CertificateMap", name, state, makeResourceOptions(options, id));
+    private CertificateMap(java.lang.String name, Output<java.lang.String> id, @Nullable CertificateMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificatemanager/certificateMap:CertificateMap", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CertificateMapArgs makeArgs(@Nullable CertificateMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CertificateMapArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -292,7 +299,7 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CertificateMap get(String name, Output<String> id, @Nullable CertificateMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CertificateMap get(java.lang.String name, Output<java.lang.String> id, @Nullable CertificateMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CertificateMap(name, id, state, options);
     }
 }

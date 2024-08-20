@@ -186,7 +186,7 @@ public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserWorkloadsConfigMap(String name) {
+    public UserWorkloadsConfigMap(java.lang.String name) {
         this(name, UserWorkloadsConfigMapArgs.Empty);
     }
     /**
@@ -194,7 +194,7 @@ public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserWorkloadsConfigMap(String name, UserWorkloadsConfigMapArgs args) {
+    public UserWorkloadsConfigMap(java.lang.String name, UserWorkloadsConfigMapArgs args) {
         this(name, args, null);
     }
     /**
@@ -203,15 +203,22 @@ public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserWorkloadsConfigMap(String name, UserWorkloadsConfigMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap", name, args == null ? UserWorkloadsConfigMapArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserWorkloadsConfigMap(java.lang.String name, UserWorkloadsConfigMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserWorkloadsConfigMap(String name, Output<String> id, @Nullable UserWorkloadsConfigMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap", name, state, makeResourceOptions(options, id));
+    private UserWorkloadsConfigMap(java.lang.String name, Output<java.lang.String> id, @Nullable UserWorkloadsConfigMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserWorkloadsConfigMapArgs makeArgs(UserWorkloadsConfigMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserWorkloadsConfigMapArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -227,7 +234,7 @@ public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserWorkloadsConfigMap get(String name, Output<String> id, @Nullable UserWorkloadsConfigMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserWorkloadsConfigMap get(java.lang.String name, Output<java.lang.String> id, @Nullable UserWorkloadsConfigMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserWorkloadsConfigMap(name, id, state, options);
     }
 }

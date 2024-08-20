@@ -67,17 +67,18 @@ type LookupFunctionArgs struct {
 // A collection of values returned by getFunction.
 type LookupFunctionResult struct {
 	// Available memory (in MB) to the function.
-	AvailableMemoryMb         int                    `pulumi:"availableMemoryMb"`
-	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
-	BuildWorkerPool           string                 `pulumi:"buildWorkerPool"`
+	AvailableMemoryMb         int               `pulumi:"availableMemoryMb"`
+	BuildEnvironmentVariables map[string]string `pulumi:"buildEnvironmentVariables"`
+	BuildServiceAccount       string            `pulumi:"buildServiceAccount"`
+	BuildWorkerPool           string            `pulumi:"buildWorkerPool"`
 	// Description of the function.
 	Description      string            `pulumi:"description"`
 	DockerRegistry   string            `pulumi:"dockerRegistry"`
 	DockerRepository string            `pulumi:"dockerRepository"`
 	EffectiveLabels  map[string]string `pulumi:"effectiveLabels"`
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
-	EntryPoint           string                 `pulumi:"entryPoint"`
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EntryPoint           string            `pulumi:"entryPoint"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below.
 	EventTriggers             []GetFunctionEventTrigger `pulumi:"eventTriggers"`
 	HttpsTriggerSecurityLevel string                    `pulumi:"httpsTriggerSecurityLevel"`
@@ -89,7 +90,7 @@ type LookupFunctionResult struct {
 	IngressSettings string `pulumi:"ingressSettings"`
 	KmsKeyName      string `pulumi:"kmsKeyName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
 	MaxInstances int `pulumi:"maxInstances"`
 	MinInstances int `pulumi:"minInstances"`
@@ -173,8 +174,12 @@ func (o LookupFunctionResultOutput) AvailableMemoryMb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFunctionResult) int { return v.AvailableMemoryMb }).(pulumi.IntOutput)
 }
 
-func (o LookupFunctionResultOutput) BuildEnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupFunctionResult) map[string]interface{} { return v.BuildEnvironmentVariables }).(pulumi.MapOutput)
+func (o LookupFunctionResultOutput) BuildEnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.BuildEnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+func (o LookupFunctionResultOutput) BuildServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildServiceAccount }).(pulumi.StringOutput)
 }
 
 func (o LookupFunctionResultOutput) BuildWorkerPool() pulumi.StringOutput {
@@ -203,8 +208,8 @@ func (o LookupFunctionResultOutput) EntryPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.EntryPoint }).(pulumi.StringOutput)
 }
 
-func (o LookupFunctionResultOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupFunctionResult) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o LookupFunctionResultOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // A source that fires events in response to a condition in another service. Structure is documented below.
@@ -236,8 +241,8 @@ func (o LookupFunctionResultOutput) KmsKeyName() pulumi.StringOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o LookupFunctionResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupFunctionResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupFunctionResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.

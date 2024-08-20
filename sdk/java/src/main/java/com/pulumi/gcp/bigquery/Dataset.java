@@ -244,12 +244,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var public_ = new Dataset("public", DatasetArgs.builder()
  *             .datasetId("public_dataset")
  *             .description("This dataset is public")
@@ -288,7 +288,7 @@ import javax.annotation.Nullable;
  *             .accesses(            
  *                 DatasetAccessArgs.builder()
  *                     .role("OWNER")
- *                     .userByEmail("my{@literal @}service-account.com")
+ *                     .userByEmail("my}{@literal @}{@code service-account.com")
  *                     .build(),
  *                 DatasetAccessArgs.builder()
  *                     .routine(DatasetAccessRoutineArgs.builder()
@@ -299,8 +299,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -481,7 +481,6 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
-     * 
      * Once this property is set, all newly-created partitioned tables in
      * the dataset will have an `expirationMs` property in the `timePartitioning`
      * settings set to this value, and changing the value will only
@@ -501,7 +500,6 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * @return The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
-     * 
      * Once this property is set, all newly-created partitioned tables in
      * the dataset will have an `expirationMs` property in the `timePartitioning`
      * settings set to this value, and changing the value will only
@@ -521,7 +519,6 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
-     * 
      * Once this property is set, all newly-created tables in the dataset
      * will have an `expirationTime` property set to the creation time plus
      * the value in this property, and changing the value will only affect
@@ -539,7 +536,6 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * @return The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
-     * 
      * Once this property is set, all newly-created tables in the dataset
      * will have an `expirationTime` property set to the creation time plus
      * the value in this property, and changing the value will only affect
@@ -703,12 +699,10 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     * 
      * There are two types of locations, regional or multi-regional. A regional
      * location is a specific geographic place, such as Tokyo, and a multi-regional
      * location is a large geographic area, such as the United States, that
      * contains at least two geographic places.
-     * 
      * The default value is multi-regional location `US`.
      * Changing this forces a new resource to be created.
      * 
@@ -719,12 +713,10 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * @return The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     * 
      * There are two types of locations, regional or multi-regional. A regional
      * location is a specific geographic place, such as Tokyo, and a multi-regional
      * location is a large geographic area, such as the United States, that
      * contains at least two geographic places.
-     * 
      * The default value is multi-regional location `US`.
      * Changing this forces a new resource to be created.
      * 
@@ -839,7 +831,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Dataset(String name) {
+    public Dataset(java.lang.String name) {
         this(name, DatasetArgs.Empty);
     }
     /**
@@ -847,7 +839,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Dataset(String name, DatasetArgs args) {
+    public Dataset(java.lang.String name, DatasetArgs args) {
         this(name, args, null);
     }
     /**
@@ -856,15 +848,22 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Dataset(String name, DatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/dataset:Dataset", name, args == null ? DatasetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Dataset(java.lang.String name, DatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/dataset:Dataset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Dataset(String name, Output<String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/dataset:Dataset", name, state, makeResourceOptions(options, id));
+    private Dataset(java.lang.String name, Output<java.lang.String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/dataset:Dataset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DatasetArgs makeArgs(DatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatasetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -884,7 +883,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Dataset get(String name, Output<String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Dataset get(java.lang.String name, Output<java.lang.String> id, @Nullable DatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Dataset(name, id, state, options);
     }
 }

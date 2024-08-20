@@ -329,10 +329,10 @@ class FolderBucketConfig(pulumi.CustomResource):
             location="global",
             retention_days=30,
             bucket_id="_Default",
-            index_configs={
-                "filePath": "jsonPayload.request.status",
+            index_configs=[{
+                "field_path": "jsonPayload.request.status",
                 "type": "INDEX_TYPE_STRING",
-            })
+            }])
         ```
 
         ## Import
@@ -386,10 +386,10 @@ class FolderBucketConfig(pulumi.CustomResource):
             location="global",
             retention_days=30,
             bucket_id="_Default",
-            index_configs={
-                "filePath": "jsonPayload.request.status",
+            index_configs=[{
+                "field_path": "jsonPayload.request.status",
                 "type": "INDEX_TYPE_STRING",
-            })
+            }])
         ```
 
         ## Import

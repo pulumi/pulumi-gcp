@@ -129,12 +129,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
@@ -151,16 +151,16 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .authorization(AttachedClusterAuthorizationArgs.builder()
  *                 .adminUsers(                
- *                     "user1{@literal @}example.com",
- *                     "user2{@literal @}example.com")
+ *                     "user1}{@literal @}{@code example.com",
+ *                     "user2}{@literal @}{@code example.com")
  *                 .adminGroups(                
- *                     "group1{@literal @}example.com",
- *                     "group2{@literal @}example.com")
+ *                     "group1}{@literal @}{@code example.com",
+ *                     "group2}{@literal @}{@code example.com")
  *                 .build())
  *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
  *                 .issuerUrl("https://oidc.issuer.url")
  *                 .jwks(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input("{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}")
+ *                     .input("}{{@code \"keys\":[}{{@code \"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}}{@code ]}}{@code ")
  *                     .build()).result())
  *                 .build())
  *             .platformVersion(versions.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]))
@@ -190,8 +190,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -665,7 +665,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AttachedCluster(String name) {
+    public AttachedCluster(java.lang.String name) {
         this(name, AttachedClusterArgs.Empty);
     }
     /**
@@ -673,7 +673,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AttachedCluster(String name, AttachedClusterArgs args) {
+    public AttachedCluster(java.lang.String name, AttachedClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -682,15 +682,22 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AttachedCluster(String name, AttachedClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/attachedCluster:AttachedCluster", name, args == null ? AttachedClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AttachedCluster(java.lang.String name, AttachedClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/attachedCluster:AttachedCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AttachedCluster(String name, Output<String> id, @Nullable AttachedClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/attachedCluster:AttachedCluster", name, state, makeResourceOptions(options, id));
+    private AttachedCluster(java.lang.String name, Output<java.lang.String> id, @Nullable AttachedClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:container/attachedCluster:AttachedCluster", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AttachedClusterArgs makeArgs(AttachedClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AttachedClusterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -706,7 +713,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AttachedCluster get(String name, Output<String> id, @Nullable AttachedClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AttachedCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable AttachedClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AttachedCluster(name, id, state, options);
     }
 }

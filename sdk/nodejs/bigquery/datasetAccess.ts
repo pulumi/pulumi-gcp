@@ -204,13 +204,9 @@ export class DatasetAccess extends pulumi.CustomResource {
     public readonly routine!: pulumi.Output<outputs.bigquery.DatasetAccessRoutine | undefined>;
     /**
      * A special group to grant access to. Possible values include:
-     *
      * * `projectOwners`: Owners of the enclosing project.
-     *
      * * `projectReaders`: Readers of the enclosing project.
-     *
      * * `projectWriters`: Writers of the enclosing project.
-     *
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      */
     public readonly specialGroup!: pulumi.Output<string | undefined>;
@@ -339,13 +335,9 @@ export interface DatasetAccessState {
     routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
     /**
      * A special group to grant access to. Possible values include:
-     *
      * * `projectOwners`: Owners of the enclosing project.
-     *
      * * `projectReaders`: Readers of the enclosing project.
-     *
      * * `projectWriters`: Writers of the enclosing project.
-     *
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      */
     specialGroup?: pulumi.Input<string>;
@@ -422,13 +414,9 @@ export interface DatasetAccessArgs {
     routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
     /**
      * A special group to grant access to. Possible values include:
-     *
      * * `projectOwners`: Owners of the enclosing project.
-     *
      * * `projectReaders`: Readers of the enclosing project.
-     *
      * * `projectWriters`: Writers of the enclosing project.
-     *
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      */
     specialGroup?: pulumi.Input<string>;

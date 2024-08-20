@@ -111,7 +111,7 @@ import (
 //			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
 //				CaPool: _default.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -140,8 +140,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
@@ -227,9 +225,7 @@ import (
 //			defaultCaPoolIamMember, err := certificateauthority.NewCaPoolIamMember(ctx, "default", &certificateauthority.CaPoolIamMemberArgs{
 //				CaPool: _default.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
-//				Member: nsSa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
+//				Member: nsSa.Member,
 //			})
 //			if err != nil {
 //				return err
@@ -254,12 +250,12 @@ import (
 //					&certificatemanager.TrustConfigTrustStoreArgs{
 //						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
 //							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
-//								PemCertificate: invokeFile.Result,
+//								PemCertificate: pulumi.String(invokeFile.Result),
 //							},
 //						},
 //						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
 //							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
-//								PemCertificate: invokeFile1.Result,
+//								PemCertificate: pulumi.String(invokeFile1.Result),
 //							},
 //						},
 //					},

@@ -199,7 +199,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Fulfillment(String name) {
+    public Fulfillment(java.lang.String name) {
         this(name, FulfillmentArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Fulfillment(String name, FulfillmentArgs args) {
+    public Fulfillment(java.lang.String name, FulfillmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,15 +216,22 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Fulfillment(String name, FulfillmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/fulfillment:Fulfillment", name, args == null ? FulfillmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Fulfillment(java.lang.String name, FulfillmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/fulfillment:Fulfillment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Fulfillment(String name, Output<String> id, @Nullable FulfillmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/fulfillment:Fulfillment", name, state, makeResourceOptions(options, id));
+    private Fulfillment(java.lang.String name, Output<java.lang.String> id, @Nullable FulfillmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:diagflow/fulfillment:Fulfillment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FulfillmentArgs makeArgs(FulfillmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FulfillmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -240,7 +247,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Fulfillment get(String name, Output<String> id, @Nullable FulfillmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Fulfillment get(java.lang.String name, Output<java.lang.String> id, @Nullable FulfillmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Fulfillment(name, id, state, options);
     }
 }

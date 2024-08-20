@@ -706,7 +706,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceFromTemplate(String name) {
+    public InstanceFromTemplate(java.lang.String name) {
         this(name, InstanceFromTemplateArgs.Empty);
     }
     /**
@@ -714,7 +714,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceFromTemplate(String name, InstanceFromTemplateArgs args) {
+    public InstanceFromTemplate(java.lang.String name, InstanceFromTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -723,15 +723,22 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceFromTemplate(String name, InstanceFromTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, args == null ? InstanceFromTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceFromTemplate(java.lang.String name, InstanceFromTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceFromTemplate(String name, Output<String> id, @Nullable InstanceFromTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, state, makeResourceOptions(options, id));
+    private InstanceFromTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceFromTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstanceFromTemplateArgs makeArgs(InstanceFromTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceFromTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -751,7 +758,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceFromTemplate get(String name, Output<String> id, @Nullable InstanceFromTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceFromTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceFromTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceFromTemplate(name, id, state, options);
     }
 }

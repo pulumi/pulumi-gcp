@@ -26,7 +26,10 @@ class GetProjectServiceResult:
     """
     A collection of values returned by getProjectService.
     """
-    def __init__(__self__, disable_dependent_services=None, disable_on_destroy=None, id=None, project=None, service=None):
+    def __init__(__self__, check_if_service_has_usage_on_destroy=None, disable_dependent_services=None, disable_on_destroy=None, id=None, project=None, service=None):
+        if check_if_service_has_usage_on_destroy and not isinstance(check_if_service_has_usage_on_destroy, bool):
+            raise TypeError("Expected argument 'check_if_service_has_usage_on_destroy' to be a bool")
+        pulumi.set(__self__, "check_if_service_has_usage_on_destroy", check_if_service_has_usage_on_destroy)
         if disable_dependent_services and not isinstance(disable_dependent_services, bool):
             raise TypeError("Expected argument 'disable_dependent_services' to be a bool")
         pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
@@ -42,6 +45,11 @@ class GetProjectServiceResult:
         if service and not isinstance(service, str):
             raise TypeError("Expected argument 'service' to be a str")
         pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
+    def check_if_service_has_usage_on_destroy(self) -> bool:
+        return pulumi.get(self, "check_if_service_has_usage_on_destroy")
 
     @property
     @pulumi.getter(name="disableDependentServices")
@@ -78,6 +86,7 @@ class AwaitableGetProjectServiceResult(GetProjectServiceResult):
         if False:
             yield self
         return GetProjectServiceResult(
+            check_if_service_has_usage_on_destroy=self.check_if_service_has_usage_on_destroy,
             disable_dependent_services=self.disable_dependent_services,
             disable_on_destroy=self.disable_on_destroy,
             id=self.id,
@@ -126,6 +135,7 @@ def get_project_service(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:projects/getProjectService:getProjectService', __args__, opts=opts, typ=GetProjectServiceResult).value
 
     return AwaitableGetProjectServiceResult(
+        check_if_service_has_usage_on_destroy=pulumi.get(__ret__, 'check_if_service_has_usage_on_destroy'),
         disable_dependent_services=pulumi.get(__ret__, 'disable_dependent_services'),
         disable_on_destroy=pulumi.get(__ret__, 'disable_on_destroy'),
         id=pulumi.get(__ret__, 'id'),

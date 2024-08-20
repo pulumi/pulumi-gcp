@@ -342,7 +342,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionPerInstanceConfig(String name) {
+    public RegionPerInstanceConfig(java.lang.String name) {
         this(name, RegionPerInstanceConfigArgs.Empty);
     }
     /**
@@ -350,7 +350,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionPerInstanceConfig(String name, RegionPerInstanceConfigArgs args) {
+    public RegionPerInstanceConfig(java.lang.String name, RegionPerInstanceConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -359,15 +359,22 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionPerInstanceConfig(String name, RegionPerInstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, args == null ? RegionPerInstanceConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionPerInstanceConfig(java.lang.String name, RegionPerInstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionPerInstanceConfig(String name, Output<String> id, @Nullable RegionPerInstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, state, makeResourceOptions(options, id));
+    private RegionPerInstanceConfig(java.lang.String name, Output<java.lang.String> id, @Nullable RegionPerInstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionPerInstanceConfigArgs makeArgs(RegionPerInstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionPerInstanceConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -383,7 +390,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionPerInstanceConfig get(String name, Output<String> id, @Nullable RegionPerInstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionPerInstanceConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionPerInstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionPerInstanceConfig(name, id, state, options);
     }
 }

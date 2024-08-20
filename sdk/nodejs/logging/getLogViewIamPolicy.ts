@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves the current IAM policy data for logview
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.logging.getLogViewIamPolicy({
+ *     parent: loggingLogView.parent,
+ *     location: loggingLogView.location,
+ *     bucket: loggingLogView.bucket,
+ *     name: loggingLogView.name,
+ * });
+ * ```
+ */
 export function getLogViewIamPolicy(args: GetLogViewIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetLogViewIamPolicyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -61,6 +78,23 @@ export interface GetLogViewIamPolicyResult {
      */
     readonly policyData: string;
 }
+/**
+ * Retrieves the current IAM policy data for logview
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.logging.getLogViewIamPolicy({
+ *     parent: loggingLogView.parent,
+ *     location: loggingLogView.location,
+ *     bucket: loggingLogView.bucket,
+ *     name: loggingLogView.name,
+ * });
+ * ```
+ */
 export function getLogViewIamPolicyOutput(args: GetLogViewIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogViewIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getLogViewIamPolicy(a, opts))
 }

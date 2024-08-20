@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.AppProfileArgs;
 import com.pulumi.gcp.bigquery.inputs.AppProfileState;
+import com.pulumi.gcp.bigquery.outputs.AppProfileDataBoostIsolationReadOnly;
 import com.pulumi.gcp.bigquery.outputs.AppProfileSingleClusterRouting;
 import com.pulumi.gcp.bigquery.outputs.AppProfileStandardIsolation;
 import java.lang.Boolean;
@@ -319,6 +320,22 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
         return this.appProfileId;
     }
     /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dataBoostIsolationReadOnly", refs={AppProfileDataBoostIsolationReadOnly.class}, tree="[0]")
+    private Output</* @Nullable */ AppProfileDataBoostIsolationReadOnly> dataBoostIsolationReadOnly;
+
+    /**
+     * @return Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AppProfileDataBoostIsolationReadOnly>> dataBoostIsolationReadOnly() {
+        return Codegen.optional(this.dataBoostIsolationReadOnly);
+    }
+    /**
      * Long form description of the use case for this app profile.
      * 
      */
@@ -461,7 +478,7 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppProfile(String name) {
+    public AppProfile(java.lang.String name) {
         this(name, AppProfileArgs.Empty);
     }
     /**
@@ -469,7 +486,7 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppProfile(String name, AppProfileArgs args) {
+    public AppProfile(java.lang.String name, AppProfileArgs args) {
         this(name, args, null);
     }
     /**
@@ -478,15 +495,22 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppProfile(String name, AppProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/appProfile:AppProfile", name, args == null ? AppProfileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AppProfile(java.lang.String name, AppProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/appProfile:AppProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppProfile(String name, Output<String> id, @Nullable AppProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/appProfile:AppProfile", name, state, makeResourceOptions(options, id));
+    private AppProfile(java.lang.String name, Output<java.lang.String> id, @Nullable AppProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/appProfile:AppProfile", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AppProfileArgs makeArgs(AppProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppProfileArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -502,7 +526,7 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppProfile get(String name, Output<String> id, @Nullable AppProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppProfile get(java.lang.String name, Output<java.lang.String> id, @Nullable AppProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppProfile(name, id, state, options);
     }
 }

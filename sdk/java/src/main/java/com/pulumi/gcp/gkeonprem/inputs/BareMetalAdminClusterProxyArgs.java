@@ -19,7 +19,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
     /**
      * A list of IPs, hostnames, and domains that should skip the proxy.
-     * Examples: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
+     * For example: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
      * 
      */
     @Import(name="noProxies")
@@ -27,7 +27,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
     /**
      * @return A list of IPs, hostnames, and domains that should skip the proxy.
-     * Examples: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
+     * For example: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
      * 
      */
     public Optional<Output<List<String>>> noProxies() {
@@ -36,9 +36,9 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
     /**
      * Specifies the address of your proxy server.
-     * Examples: http://domain
+     * For Example: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password{@literal @})domain these will be rejected by the server.
+     * of http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     @Import(name="uri", required=true)
@@ -46,9 +46,9 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
     /**
      * @return Specifies the address of your proxy server.
-     * Examples: http://domain
+     * For Example: http://domain
      * WARNING: Do not provide credentials in the format
-     * http://(username:password{@literal @})domain these will be rejected by the server.
+     * of http://(username:password{@literal @})domain these will be rejected by the server.
      * 
      */
     public Output<String> uri() {
@@ -82,7 +82,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
         /**
          * @param noProxies A list of IPs, hostnames, and domains that should skip the proxy.
-         * Examples: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
+         * For example: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
         /**
          * @param noProxies A list of IPs, hostnames, and domains that should skip the proxy.
-         * Examples: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
+         * For example: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
         /**
          * @param noProxies A list of IPs, hostnames, and domains that should skip the proxy.
-         * Examples: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
+         * For example: [&#34;127.0.0.1&#34;, &#34;example.com&#34;, &#34;.corp&#34;, &#34;localhost&#34;].
          * 
          * @return builder
          * 
@@ -116,9 +116,9 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
         /**
          * @param uri Specifies the address of your proxy server.
-         * Examples: http://domain
+         * For Example: http://domain
          * WARNING: Do not provide credentials in the format
-         * http://(username:password{@literal @})domain these will be rejected by the server.
+         * of http://(username:password{@literal @})domain these will be rejected by the server.
          * 
          * @return builder
          * 
@@ -130,9 +130,9 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
 
         /**
          * @param uri Specifies the address of your proxy server.
-         * Examples: http://domain
+         * For Example: http://domain
          * WARNING: Do not provide credentials in the format
-         * http://(username:password{@literal @})domain these will be rejected by the server.
+         * of http://(username:password{@literal @})domain these will be rejected by the server.
          * 
          * @return builder
          * 

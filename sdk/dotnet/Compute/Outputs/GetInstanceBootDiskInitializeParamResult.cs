@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// A set of key/value label pairs assigned to the disk.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         /// </summary>
@@ -36,11 +36,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> ResourceManagerTags;
+        public readonly ImmutableDictionary<string, string> ResourceManagerTags;
         /// <summary>
         /// The size of the image in gigabytes.
         /// </summary>
         public readonly int Size;
+        /// <summary>
+        /// The URL of the storage pool in which the new disk is created
+        /// </summary>
+        public readonly string StoragePool;
         /// <summary>
         /// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
@@ -52,15 +56,17 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string image,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             int provisionedIops,
 
             int provisionedThroughput,
 
-            ImmutableDictionary<string, object> resourceManagerTags,
+            ImmutableDictionary<string, string> resourceManagerTags,
 
             int size,
+
+            string storagePool,
 
             string type)
         {
@@ -71,6 +77,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ProvisionedThroughput = provisionedThroughput;
             ResourceManagerTags = resourceManagerTags;
             Size = size;
+            StoragePool = storagePool;
             Type = type;
         }
     }

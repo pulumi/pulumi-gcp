@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string Collation;
         /// <summary>
-        /// Specifies if connections must use Cloud SQL connectors.
+        /// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         /// </summary>
         public readonly string ConnectorEnforcement;
         /// <summary>
@@ -67,6 +67,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         /// </summary>
         public readonly string Edition;
+        /// <summary>
+        /// Enables Dataplex Integration.
+        /// </summary>
+        public readonly bool EnableDataplexIntegration;
         /// <summary>
         /// Enables Vertex AI Integration.
         /// </summary>
@@ -138,6 +142,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string edition,
 
+            bool enableDataplexIntegration,
+
             bool enableGoogleMlIntegration,
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult> insightsConfigs,
@@ -178,6 +184,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskSize = diskSize;
             DiskType = diskType;
             Edition = edition;
+            EnableDataplexIntegration = enableDataplexIntegration;
             EnableGoogleMlIntegration = enableGoogleMlIntegration;
             InsightsConfigs = insightsConfigs;
             IpConfigurations = ipConfigurations;

@@ -253,7 +253,7 @@ class _WorkloadState:
                  compliant_but_disallowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ekm_provisioning_responses: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadEkmProvisioningResponseArgs']]]] = None,
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  kaj_enrollment_state: Optional[pulumi.Input[str]] = None,
@@ -265,7 +265,7 @@ class _WorkloadState:
                  partner: Optional[pulumi.Input[str]] = None,
                  partner_permissions: Optional[pulumi.Input['WorkloadPartnerPermissionsArgs']] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None,
                  saa_enrollment_responses: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadSaaEnrollmentResponseArgs']]]] = None,
@@ -278,7 +278,7 @@ class _WorkloadState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compliant_but_disallowed_services: Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         :param pulumi.Input[str] create_time: Output only. Immutable. The Workload creation timestamp.
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadEkmProvisioningResponseArgs']]] ekm_provisioning_responses: Optional. Represents the Ekm Provisioning State of the given workload.
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] kaj_enrollment_state: Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
@@ -297,7 +297,7 @@ class _WorkloadState:
         :param pulumi.Input[str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
         :param pulumi.Input['WorkloadPartnerPermissionsArgs'] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadSaaEnrollmentResponseArgs']]] saa_enrollment_responses: Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
@@ -424,14 +424,14 @@ class _WorkloadState:
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @property
@@ -575,14 +575,14 @@ class _WorkloadState:
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @property
@@ -671,21 +671,21 @@ class Workload(pulumi.CustomResource):
             organization="123456789",
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
                 {
-                    "displayName": "folder-display-name",
-                    "resourceType": "CONSUMER_FOLDER",
+                    "display_name": "folder-display-name",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             violation_notifications_enabled=True,
@@ -707,19 +707,19 @@ class Workload(pulumi.CustomResource):
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             enable_sovereign_controls=True,
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             resource_settings=[
                 {
-                    "resourceType": "CONSUMER_FOLDER",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             labels={
@@ -792,21 +792,21 @@ class Workload(pulumi.CustomResource):
             organization="123456789",
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
                 {
-                    "displayName": "folder-display-name",
-                    "resourceType": "CONSUMER_FOLDER",
+                    "display_name": "folder-display-name",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             violation_notifications_enabled=True,
@@ -828,19 +828,19 @@ class Workload(pulumi.CustomResource):
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             enable_sovereign_controls=True,
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             resource_settings=[
                 {
-                    "resourceType": "CONSUMER_FOLDER",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             labels={
@@ -952,7 +952,7 @@ class Workload(pulumi.CustomResource):
             compliant_but_disallowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ekm_provisioning_responses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict']]]]] = None,
             enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
             kaj_enrollment_state: Optional[pulumi.Input[str]] = None,
@@ -964,7 +964,7 @@ class Workload(pulumi.CustomResource):
             partner: Optional[pulumi.Input[str]] = None,
             partner_permissions: Optional[pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']]] = None,
             provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]]] = None,
             resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict']]]]] = None,
             saa_enrollment_responses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict']]]]] = None,
@@ -982,7 +982,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compliant_but_disallowed_services: Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         :param pulumi.Input[str] create_time: Output only. Immutable. The Workload creation timestamp.
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict']]]] ekm_provisioning_responses: Optional. Represents the Ekm Provisioning State of the given workload.
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] kaj_enrollment_state: Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
@@ -1001,7 +1001,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
         :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict']]]] saa_enrollment_responses: Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
@@ -1086,7 +1086,7 @@ class Workload(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
@@ -1189,7 +1189,7 @@ class Workload(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """

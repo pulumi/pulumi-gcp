@@ -10,11 +10,14 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyPlainArgs;
+import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
+import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureIamPolicyResult;
+import com.pulumi.gcp.gkehub.outputs.GetMembershipBindingResult;
 import com.pulumi.gcp.gkehub.outputs.GetMembershipIamPolicyResult;
 import com.pulumi.gcp.gkehub.outputs.GetScopeIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
@@ -195,6 +198,18 @@ public final class GkehubFunctions {
      */
     public static CompletableFuture<GetFeatureIamPolicyResult> getFeatureIamPolicyPlain(GetFeatureIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", TypeShape.of(GetFeatureIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetMembershipBindingResult> getMembershipBinding(GetMembershipBindingArgs args) {
+        return getMembershipBinding(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetMembershipBindingResult> getMembershipBindingPlain(GetMembershipBindingPlainArgs args) {
+        return getMembershipBindingPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetMembershipBindingResult> getMembershipBinding(GetMembershipBindingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:gkehub/getMembershipBinding:getMembershipBinding", TypeShape.of(GetMembershipBindingResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetMembershipBindingResult> getMembershipBindingPlain(GetMembershipBindingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:gkehub/getMembershipBinding:getMembershipBinding", TypeShape.of(GetMembershipBindingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for membership

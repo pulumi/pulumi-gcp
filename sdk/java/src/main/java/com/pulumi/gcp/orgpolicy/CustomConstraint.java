@@ -277,7 +277,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomConstraint(String name) {
+    public CustomConstraint(java.lang.String name) {
         this(name, CustomConstraintArgs.Empty);
     }
     /**
@@ -285,7 +285,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomConstraint(String name, CustomConstraintArgs args) {
+    public CustomConstraint(java.lang.String name, CustomConstraintArgs args) {
         this(name, args, null);
     }
     /**
@@ -294,15 +294,22 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomConstraint(String name, CustomConstraintArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:orgpolicy/customConstraint:CustomConstraint", name, args == null ? CustomConstraintArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomConstraint(java.lang.String name, CustomConstraintArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:orgpolicy/customConstraint:CustomConstraint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomConstraint(String name, Output<String> id, @Nullable CustomConstraintState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:orgpolicy/customConstraint:CustomConstraint", name, state, makeResourceOptions(options, id));
+    private CustomConstraint(java.lang.String name, Output<java.lang.String> id, @Nullable CustomConstraintState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:orgpolicy/customConstraint:CustomConstraint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomConstraintArgs makeArgs(CustomConstraintArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomConstraintArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -318,7 +325,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomConstraint get(String name, Output<String> id, @Nullable CustomConstraintState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomConstraint get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomConstraintState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomConstraint(name, id, state, options);
     }
 }

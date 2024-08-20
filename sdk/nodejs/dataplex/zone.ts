@@ -120,7 +120,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
      * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
@@ -146,7 +146,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      */
@@ -267,7 +267,7 @@ export interface ZoneState {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
      * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
@@ -293,7 +293,7 @@ export interface ZoneState {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      */

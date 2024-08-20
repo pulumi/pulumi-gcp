@@ -77,6 +77,45 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquerydatatransfer Config Salesforce
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var myDataset = new Gcp.BigQuery.Dataset("my_dataset", new()
+    ///     {
+    ///         DatasetId = "my_dataset",
+    ///         Description = "My dataset",
+    ///         Location = "asia-northeast1",
+    ///     });
+    /// 
+    ///     var salesforceConfig = new Gcp.BigQuery.DataTransferConfig("salesforce_config", new()
+    ///     {
+    ///         DisplayName = "my-salesforce-config",
+    ///         Location = "asia-northeast1",
+    ///         DataSourceId = "salesforce",
+    ///         Schedule = "first sunday of quarter 00:00",
+    ///         DestinationDatasetId = myDataset.DatasetId,
+    ///         Params = 
+    ///         {
+    ///             { "connector.authentication.oauth.clientId", "client-id" },
+    ///             { "connector.authentication.oauth.clientSecret", "client-secret" },
+    ///             { "connector.authentication.username", "username" },
+    ///             { "connector.authentication.password", "password" },
+    ///             { "connector.authentication.securityToken", "security-token" },
+    ///             { "assets", "[\"asset-a\",\"asset-b\"]" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

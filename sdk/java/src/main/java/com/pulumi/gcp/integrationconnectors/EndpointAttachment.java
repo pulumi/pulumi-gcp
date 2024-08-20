@@ -281,7 +281,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EndpointAttachment(String name) {
+    public EndpointAttachment(java.lang.String name) {
         this(name, EndpointAttachmentArgs.Empty);
     }
     /**
@@ -289,7 +289,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EndpointAttachment(String name, EndpointAttachmentArgs args) {
+    public EndpointAttachment(java.lang.String name, EndpointAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -298,15 +298,22 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EndpointAttachment(String name, EndpointAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:integrationconnectors/endpointAttachment:EndpointAttachment", name, args == null ? EndpointAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EndpointAttachment(java.lang.String name, EndpointAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:integrationconnectors/endpointAttachment:EndpointAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EndpointAttachment(String name, Output<String> id, @Nullable EndpointAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:integrationconnectors/endpointAttachment:EndpointAttachment", name, state, makeResourceOptions(options, id));
+    private EndpointAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:integrationconnectors/endpointAttachment:EndpointAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EndpointAttachmentArgs makeArgs(EndpointAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EndpointAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -326,7 +333,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EndpointAttachment get(String name, Output<String> id, @Nullable EndpointAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EndpointAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EndpointAttachment(name, id, state, options);
     }
 }

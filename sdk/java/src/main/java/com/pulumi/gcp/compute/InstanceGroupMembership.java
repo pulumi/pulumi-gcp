@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups)
  * * How-to Guides
  *     * [Add instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/addInstances)
- *     * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
  *     * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
+ *     * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
  * 
  * ## Example Usage
  * 
@@ -202,7 +202,7 @@ public class InstanceGroupMembership extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceGroupMembership(String name) {
+    public InstanceGroupMembership(java.lang.String name) {
         this(name, InstanceGroupMembershipArgs.Empty);
     }
     /**
@@ -210,7 +210,7 @@ public class InstanceGroupMembership extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceGroupMembership(String name, InstanceGroupMembershipArgs args) {
+    public InstanceGroupMembership(java.lang.String name, InstanceGroupMembershipArgs args) {
         this(name, args, null);
     }
     /**
@@ -219,15 +219,22 @@ public class InstanceGroupMembership extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceGroupMembership(String name, InstanceGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceGroupMembership:InstanceGroupMembership", name, args == null ? InstanceGroupMembershipArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceGroupMembership(java.lang.String name, InstanceGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceGroupMembership:InstanceGroupMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceGroupMembership(String name, Output<String> id, @Nullable InstanceGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceGroupMembership:InstanceGroupMembership", name, state, makeResourceOptions(options, id));
+    private InstanceGroupMembership(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceGroupMembership:InstanceGroupMembership", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstanceGroupMembershipArgs makeArgs(InstanceGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceGroupMembershipArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -243,7 +250,7 @@ public class InstanceGroupMembership extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceGroupMembership get(String name, Output<String> id, @Nullable InstanceGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceGroupMembership get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceGroupMembership(name, id, state, options);
     }
 }

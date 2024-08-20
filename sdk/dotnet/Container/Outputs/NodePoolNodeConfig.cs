@@ -126,7 +126,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
-        /// The reservation affinity configuration for the node pool.
+        /// The configuration of the desired reservation which instances could take capacity from.
+        /// Structure is documented below.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigReservationAffinity? ReservationAffinity;
         /// <summary>
@@ -136,7 +139,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
+        public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
         /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>
@@ -236,7 +239,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableDictionary<string, string>? resourceLabels,
 
-            ImmutableDictionary<string, object>? resourceManagerTags,
+            ImmutableDictionary<string, string>? resourceManagerTags,
 
             Outputs.NodePoolNodeConfigSandboxConfig? sandboxConfig,
 

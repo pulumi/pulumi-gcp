@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var image_store = new Bucket("image-store", BucketArgs.builder()
  *             .name("image-store-bucket")
  *             .location("EU")
@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  *         var image_store_acl = new BucketACL("image-store-acl", BucketACLArgs.builder()
  *             .bucket(image_store.name())
  *             .roleEntities(            
- *                 "OWNER:user-my.email{@literal @}gmail.com",
+ *                 "OWNER:user-my.email}{@literal @}{@code gmail.com",
  *                 "READER:group-mygroup")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -146,7 +146,7 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketACL(String name) {
+    public BucketACL(java.lang.String name) {
         this(name, BucketACLArgs.Empty);
     }
     /**
@@ -154,7 +154,7 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketACL(String name, BucketACLArgs args) {
+    public BucketACL(java.lang.String name, BucketACLArgs args) {
         this(name, args, null);
     }
     /**
@@ -163,15 +163,22 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketACL(String name, BucketACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/bucketACL:BucketACL", name, args == null ? BucketACLArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketACL(java.lang.String name, BucketACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/bucketACL:BucketACL", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketACL(String name, Output<String> id, @Nullable BucketACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/bucketACL:BucketACL", name, state, makeResourceOptions(options, id));
+    private BucketACL(java.lang.String name, Output<java.lang.String> id, @Nullable BucketACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/bucketACL:BucketACL", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketACLArgs makeArgs(BucketACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketACLArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -187,7 +194,7 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketACL get(String name, Output<String> id, @Nullable BucketACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketACL get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketACL(name, id, state, options);
     }
 }

@@ -753,7 +753,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkforcePoolProvider(String name) {
+    public WorkforcePoolProvider(java.lang.String name) {
         this(name, WorkforcePoolProviderArgs.Empty);
     }
     /**
@@ -761,7 +761,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkforcePoolProvider(String name, WorkforcePoolProviderArgs args) {
+    public WorkforcePoolProvider(java.lang.String name, WorkforcePoolProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -770,15 +770,22 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkforcePoolProvider(String name, WorkforcePoolProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/workforcePoolProvider:WorkforcePoolProvider", name, args == null ? WorkforcePoolProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkforcePoolProvider(java.lang.String name, WorkforcePoolProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iam/workforcePoolProvider:WorkforcePoolProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkforcePoolProvider(String name, Output<String> id, @Nullable WorkforcePoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/workforcePoolProvider:WorkforcePoolProvider", name, state, makeResourceOptions(options, id));
+    private WorkforcePoolProvider(java.lang.String name, Output<java.lang.String> id, @Nullable WorkforcePoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iam/workforcePoolProvider:WorkforcePoolProvider", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkforcePoolProviderArgs makeArgs(WorkforcePoolProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkforcePoolProviderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -794,7 +801,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkforcePoolProvider get(String name, Output<String> id, @Nullable WorkforcePoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkforcePoolProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkforcePoolProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkforcePoolProvider(name, id, state, options);
     }
 }

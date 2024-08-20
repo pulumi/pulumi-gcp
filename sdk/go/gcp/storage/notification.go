@@ -63,7 +63,7 @@ import (
 //				Topic: topic.ID(),
 //				Role:  pulumi.String("roles/pubsub.publisher"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//					pulumi.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress),
 //				},
 //			})
 //			if err != nil {

@@ -146,16 +146,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigquery/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
-     * This field is in beta. If set to true, it allows table deletion when there
-     * are still resource tags attached. The default value is false.
+     * If set to true, it allows table
+     * deletion when there are still resource tags attached. The default value is
+     * false.
+     * 
+     * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+     * removed in a future major release. The default behavior will be allowing
+     * the presence of resource tags on deletion after the next major release.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release. */
     @Export(name="allowResourceTagsOnDeletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowResourceTagsOnDeletion;
 
     /**
-     * @return This field is in beta. If set to true, it allows table deletion when there
-     * are still resource tags attached. The default value is false.
+     * @return If set to true, it allows table
+     * deletion when there are still resource tags attached. The default value is
+     * false.
+     * 
+     * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
+     * removed in a future major release. The default behavior will be allowing
+     * the presence of resource tags on deletion after the next major release.
      * 
      */
     public Output<Optional<Boolean>> allowResourceTagsOnDeletion() {
@@ -560,7 +574,7 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requirePartitionFilter);
     }
     /**
-     * This field is in beta. The tags attached to this table. Tag keys are
+     * The tags attached to this table. Tag keys are
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
@@ -571,7 +585,7 @@ public class Table extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> resourceTags;
 
     /**
-     * @return This field is in beta. The tags attached to this table. Tag keys are
+     * @return The tags attached to this table. Tag keys are
      * globally unique. Tag key is expected to be in the namespaced format, for
      * example &#34;123456789012/environment&#34; where 123456789012 is the ID of the
      * parent organization or project resource for this tag key. Tag value is
@@ -712,7 +726,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Table(String name) {
+    public Table(java.lang.String name) {
         this(name, TableArgs.Empty);
     }
     /**
@@ -720,7 +734,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Table(String name, TableArgs args) {
+    public Table(java.lang.String name, TableArgs args) {
         this(name, args, null);
     }
     /**
@@ -729,15 +743,22 @@ public class Table extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Table(String name, TableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/table:Table", name, args == null ? TableArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Table(java.lang.String name, TableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/table:Table", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Table(String name, Output<String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/table:Table", name, state, makeResourceOptions(options, id));
+    private Table(java.lang.String name, Output<java.lang.String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/table:Table", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TableArgs makeArgs(TableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TableArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -757,7 +778,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Table get(String name, Output<String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Table get(java.lang.String name, Output<java.lang.String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Table(name, id, state, options);
     }
 }

@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var vertexNetwork = new Network("vertexNetwork", NetworkArgs.builder()
  *             .name("network-name")
  *             .build());
@@ -104,11 +104,11 @@ import javax.annotation.Nullable;
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -387,7 +387,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiEndpoint(String name) {
+    public AiEndpoint(java.lang.String name) {
         this(name, AiEndpointArgs.Empty);
     }
     /**
@@ -395,7 +395,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiEndpoint(String name, AiEndpointArgs args) {
+    public AiEndpoint(java.lang.String name, AiEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -404,15 +404,22 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiEndpoint(String name, AiEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiEndpoint:AiEndpoint", name, args == null ? AiEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AiEndpoint(java.lang.String name, AiEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiEndpoint:AiEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiEndpoint(String name, Output<String> id, @Nullable AiEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiEndpoint:AiEndpoint", name, state, makeResourceOptions(options, id));
+    private AiEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable AiEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiEndpoint:AiEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AiEndpointArgs makeArgs(AiEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiEndpointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -432,7 +439,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiEndpoint get(String name, Output<String> id, @Nullable AiEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable AiEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiEndpoint(name, id, state, options);
     }
 }

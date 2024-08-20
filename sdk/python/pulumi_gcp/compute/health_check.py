@@ -31,6 +31,7 @@ class HealthCheckArgs:
                  log_config: Optional[pulumi.Input['HealthCheckLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_health_check: Optional[pulumi.Input['HealthCheckSslHealthCheckArgs']] = None,
                  tcp_health_check: Optional[pulumi.Input['HealthCheckTcpHealthCheckArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -65,6 +66,18 @@ class HealthCheckArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If
+               any regions are specified, then exactly 3 regions should be specified.
+               The region names must be valid names of Google Cloud regions. This can
+               only be set for global health check. If this list is non-empty, then
+               there are restrictions on what other health check fields are supported
+               and what other resources can use this health check:
+               * SSL, HTTP2, and GRPC protocols are not supported.
+               * The TCP request field is not supported.
+               * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+               * The checkIntervalSec field must be at least 30.
+               * The health check cannot be used with BackendService nor with managed
+               instance group auto-healing.
         :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource
@@ -95,6 +108,8 @@ class HealthCheckArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if source_regions is not None:
+            pulumi.set(__self__, "source_regions", source_regions)
         if ssl_health_check is not None:
             pulumi.set(__self__, "ssl_health_check", ssl_health_check)
         if tcp_health_check is not None:
@@ -243,6 +258,29 @@ class HealthCheckArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="sourceRegions")
+    def source_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of cloud regions from which health checks are performed. If
+        any regions are specified, then exactly 3 regions should be specified.
+        The region names must be valid names of Google Cloud regions. This can
+        only be set for global health check. If this list is non-empty, then
+        there are restrictions on what other health check fields are supported
+        and what other resources can use this health check:
+        * SSL, HTTP2, and GRPC protocols are not supported.
+        * The TCP request field is not supported.
+        * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+        * The checkIntervalSec field must be at least 30.
+        * The health check cannot be used with BackendService nor with managed
+        instance group auto-healing.
+        """
+        return pulumi.get(self, "source_regions")
+
+    @source_regions.setter
+    def source_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_regions", value)
+
+    @property
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> Optional[pulumi.Input['HealthCheckSslHealthCheckArgs']]:
         """
@@ -311,6 +349,7 @@ class _HealthCheckState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_health_check: Optional[pulumi.Input['HealthCheckSslHealthCheckArgs']] = None,
                  tcp_health_check: Optional[pulumi.Input['HealthCheckTcpHealthCheckArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -348,6 +387,18 @@ class _HealthCheckState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If
+               any regions are specified, then exactly 3 regions should be specified.
+               The region names must be valid names of Google Cloud regions. This can
+               only be set for global health check. If this list is non-empty, then
+               there are restrictions on what other health check fields are supported
+               and what other resources can use this health check:
+               * SSL, HTTP2, and GRPC protocols are not supported.
+               * The TCP request field is not supported.
+               * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+               * The checkIntervalSec field must be at least 30.
+               * The health check cannot be used with BackendService nor with managed
+               instance group auto-healing.
         :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource
@@ -383,6 +434,8 @@ class _HealthCheckState:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if source_regions is not None:
+            pulumi.set(__self__, "source_regions", source_regions)
         if ssl_health_check is not None:
             pulumi.set(__self__, "ssl_health_check", ssl_health_check)
         if tcp_health_check is not None:
@@ -557,6 +610,29 @@ class _HealthCheckState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="sourceRegions")
+    def source_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of cloud regions from which health checks are performed. If
+        any regions are specified, then exactly 3 regions should be specified.
+        The region names must be valid names of Google Cloud regions. This can
+        only be set for global health check. If this list is non-empty, then
+        there are restrictions on what other health check fields are supported
+        and what other resources can use this health check:
+        * SSL, HTTP2, and GRPC protocols are not supported.
+        * The TCP request field is not supported.
+        * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+        * The checkIntervalSec field must be at least 30.
+        * The health check cannot be used with BackendService nor with managed
+        instance group auto-healing.
+        """
+        return pulumi.get(self, "source_regions")
+
+    @source_regions.setter
+    def source_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_regions", value)
+
+    @property
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> Optional[pulumi.Input['HealthCheckSslHealthCheckArgs']]:
         """
@@ -637,6 +713,7 @@ class HealthCheck(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_health_check: Optional[pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
                  tcp_health_check: Optional[pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -695,10 +772,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             tcp_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -730,10 +807,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             ssl_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -765,11 +842,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -801,11 +878,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             https_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -837,11 +914,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http2_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -870,9 +947,9 @@ class HealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
-                "grpcServiceName": "testservice",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
+                "grpc_service_name": "testservice",
             })
         ```
         ### Health Check With Logging
@@ -947,6 +1024,18 @@ class HealthCheck(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If
+               any regions are specified, then exactly 3 regions should be specified.
+               The region names must be valid names of Google Cloud regions. This can
+               only be set for global health check. If this list is non-empty, then
+               there are restrictions on what other health check fields are supported
+               and what other resources can use this health check:
+               * SSL, HTTP2, and GRPC protocols are not supported.
+               * The TCP request field is not supported.
+               * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+               * The checkIntervalSec field must be at least 30.
+               * The health check cannot be used with BackendService nor with managed
+               instance group auto-healing.
         :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
@@ -1016,10 +1105,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             tcp_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1051,10 +1140,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             ssl_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1086,11 +1175,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1122,11 +1211,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             https_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1158,11 +1247,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http2_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1191,9 +1280,9 @@ class HealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
-                "grpcServiceName": "testservice",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
+                "grpc_service_name": "testservice",
             })
         ```
         ### Health Check With Logging
@@ -1263,6 +1352,7 @@ class HealthCheck(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_health_check: Optional[pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
                  tcp_health_check: Optional[pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1286,6 +1376,7 @@ class HealthCheck(pulumi.CustomResource):
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["source_regions"] = source_regions
             __props__.__dict__["ssl_health_check"] = ssl_health_check
             __props__.__dict__["tcp_health_check"] = tcp_health_check
             __props__.__dict__["timeout_sec"] = timeout_sec
@@ -1315,6 +1406,7 @@ class HealthCheck(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssl_health_check: Optional[pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
             tcp_health_check: Optional[pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1357,6 +1449,18 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If
+               any regions are specified, then exactly 3 regions should be specified.
+               The region names must be valid names of Google Cloud regions. This can
+               only be set for global health check. If this list is non-empty, then
+               there are restrictions on what other health check fields are supported
+               and what other resources can use this health check:
+               * SSL, HTTP2, and GRPC protocols are not supported.
+               * The TCP request field is not supported.
+               * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+               * The checkIntervalSec field must be at least 30.
+               * The health check cannot be used with BackendService nor with managed
+               instance group auto-healing.
         :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
@@ -1384,6 +1488,7 @@ class HealthCheck(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["source_regions"] = source_regions
         __props__.__dict__["ssl_health_check"] = ssl_health_check
         __props__.__dict__["tcp_health_check"] = tcp_health_check
         __props__.__dict__["timeout_sec"] = timeout_sec
@@ -1504,6 +1609,25 @@ class HealthCheck(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sourceRegions")
+    def source_regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The list of cloud regions from which health checks are performed. If
+        any regions are specified, then exactly 3 regions should be specified.
+        The region names must be valid names of Google Cloud regions. This can
+        only be set for global health check. If this list is non-empty, then
+        there are restrictions on what other health check fields are supported
+        and what other resources can use this health check:
+        * SSL, HTTP2, and GRPC protocols are not supported.
+        * The TCP request field is not supported.
+        * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+        * The checkIntervalSec field must be at least 30.
+        * The health check cannot be used with BackendService nor with managed
+        instance group auto-healing.
+        """
+        return pulumi.get(self, "source_regions")
 
     @property
     @pulumi.getter(name="sslHealthCheck")

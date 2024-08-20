@@ -509,12 +509,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var inspect = new PreventionJobTrigger("inspect", PreventionJobTriggerArgs.builder()
  *             .parent("projects/my-project-name")
  *             .description("Description")
@@ -565,7 +565,7 @@ import javax.annotation.Nullable;
  *                             .rules(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs.builder()
  *                                 .exclusionRule(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs.builder()
  *                                     .regex(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
- *                                         .pattern(".+{@literal @}example.com")
+ *                                         .pattern(".+}{@literal @}{@code example.com")
  *                                         .build())
  *                                     .matchingType("MATCHING_TYPE_FULL_MATCH")
  *                                     .build())
@@ -597,8 +597,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -874,6 +874,84 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dlp Job Trigger Timespan Config Big Query
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionJobTrigger;
+ * import com.pulumi.gcp.dataloss.PreventionJobTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var timespanConfigBigQuery = new PreventionJobTrigger("timespanConfigBigQuery", PreventionJobTriggerArgs.builder()
+ *             .parent("projects/my-project-name")
+ *             .description("BigQuery DLP Job Trigger with timespan config and row limit")
+ *             .displayName("bigquery-dlp-job-trigger-limit-timespan")
+ *             .triggers(PreventionJobTriggerTriggerArgs.builder()
+ *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
+ *                     .recurrencePeriodDuration("86400s")
+ *                     .build())
+ *                 .build())
+ *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
+ *                 .inspectTemplateName("projects/test/locations/global/inspectTemplates/6425492983381733900")
+ *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
+ *                     .bigQueryOptions(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs.builder()
+ *                         .tableReference(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs.builder()
+ *                             .projectId("project")
+ *                             .datasetId("dataset")
+ *                             .tableId("table")
+ *                             .build())
+ *                         .sampleMethod("")
+ *                         .build())
+ *                     .timespanConfig(PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs.builder()
+ *                         .startTime("2023-01-01T00:00:23Z")
+ *                         .timestampField(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs.builder()
+ *                             .name("timestamp")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
+ *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
+ *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
+ *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
+ *                                 .projectId("project")
+ *                                 .datasetId("output")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -1061,7 +1139,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PreventionJobTrigger(String name) {
+    public PreventionJobTrigger(java.lang.String name) {
         this(name, PreventionJobTriggerArgs.Empty);
     }
     /**
@@ -1069,7 +1147,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PreventionJobTrigger(String name, PreventionJobTriggerArgs args) {
+    public PreventionJobTrigger(java.lang.String name, PreventionJobTriggerArgs args) {
         this(name, args, null);
     }
     /**
@@ -1078,15 +1156,22 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PreventionJobTrigger(String name, PreventionJobTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger", name, args == null ? PreventionJobTriggerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PreventionJobTrigger(java.lang.String name, PreventionJobTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PreventionJobTrigger(String name, Output<String> id, @Nullable PreventionJobTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger", name, state, makeResourceOptions(options, id));
+    private PreventionJobTrigger(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionJobTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PreventionJobTriggerArgs makeArgs(PreventionJobTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreventionJobTriggerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1102,7 +1187,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PreventionJobTrigger get(String name, Output<String> id, @Nullable PreventionJobTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PreventionJobTrigger get(java.lang.String name, Output<java.lang.String> id, @Nullable PreventionJobTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PreventionJobTrigger(name, id, state, options);
     }
 }

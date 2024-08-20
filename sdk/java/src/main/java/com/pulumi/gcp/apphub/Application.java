@@ -83,12 +83,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example2 = new Application("example2", ApplicationArgs.builder()
  *             .location("us-east1")
  *             .applicationId("example-application")
@@ -106,21 +106,21 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .businessOwners(ApplicationAttributesBusinessOwnerArgs.builder()
  *                     .displayName("Alice")
- *                     .email("alice{@literal @}google.com")
+ *                     .email("alice}{@literal @}{@code google.com")
  *                     .build())
  *                 .developerOwners(ApplicationAttributesDeveloperOwnerArgs.builder()
  *                     .displayName("Bob")
- *                     .email("bob{@literal @}google.com")
+ *                     .email("bob}{@literal @}{@code google.com")
  *                     .build())
  *                 .operatorOwners(ApplicationAttributesOperatorOwnerArgs.builder()
  *                     .displayName("Charlie")
- *                     .email("charlie{@literal @}google.com")
+ *                     .email("charlie}{@literal @}{@code google.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -331,7 +331,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Application(String name) {
+    public Application(java.lang.String name) {
         this(name, ApplicationArgs.Empty);
     }
     /**
@@ -339,7 +339,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Application(String name, ApplicationArgs args) {
+    public Application(java.lang.String name, ApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -348,15 +348,22 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Application(String name, ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/application:Application", name, args == null ? ApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Application(java.lang.String name, ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apphub/application:Application", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Application(String name, Output<String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/application:Application", name, state, makeResourceOptions(options, id));
+    private Application(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apphub/application:Application", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationArgs makeArgs(ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -372,7 +379,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Application get(String name, Output<String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Application get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Application(name, id, state, options);
     }
 }

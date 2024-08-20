@@ -483,7 +483,7 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InternalRange(String name) {
+    public InternalRange(java.lang.String name) {
         this(name, InternalRangeArgs.Empty);
     }
     /**
@@ -491,7 +491,7 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InternalRange(String name, InternalRangeArgs args) {
+    public InternalRange(java.lang.String name, InternalRangeArgs args) {
         this(name, args, null);
     }
     /**
@@ -500,15 +500,22 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InternalRange(String name, InternalRangeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/internalRange:InternalRange", name, args == null ? InternalRangeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InternalRange(java.lang.String name, InternalRangeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/internalRange:InternalRange", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InternalRange(String name, Output<String> id, @Nullable InternalRangeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/internalRange:InternalRange", name, state, makeResourceOptions(options, id));
+    private InternalRange(java.lang.String name, Output<java.lang.String> id, @Nullable InternalRangeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/internalRange:InternalRange", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InternalRangeArgs makeArgs(InternalRangeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InternalRangeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -528,7 +535,7 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InternalRange get(String name, Output<String> id, @Nullable InternalRangeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InternalRange get(java.lang.String name, Output<java.lang.String> id, @Nullable InternalRangeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InternalRange(name, id, state, options);
     }
 }

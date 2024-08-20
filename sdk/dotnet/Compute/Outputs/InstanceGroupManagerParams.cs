@@ -16,10 +16,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
+        public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
 
         [OutputConstructor]
-        private InstanceGroupManagerParams(ImmutableDictionary<string, object>? resourceManagerTags)
+        private InstanceGroupManagerParams(ImmutableDictionary<string, string>? resourceManagerTags)
         {
             ResourceManagerTags = resourceManagerTags;
         }

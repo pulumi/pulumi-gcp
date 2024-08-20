@@ -145,14 +145,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Resource name of the AccessPolicy. Format: {policy_id}
+     * Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Resource name of the AccessPolicy. Format: {policy_id}
+     * @return Resource name of the AccessPolicy. Format: &#39;{{policy_id}}&#39;
      * 
      */
     public Output<String> name() {
@@ -160,7 +160,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: &#39;organizations/{{organization_id}}&#39;
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -168,7 +168,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-     * Format: organizations/{organization_id}
+     * Format: &#39;organizations/{{organization_id}}&#39;
      * 
      */
     public Output<String> parent() {
@@ -176,7 +176,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
      * 
      */
     @Export(name="scopes", refs={String.class}, tree="[0]")
@@ -184,7 +184,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Folder or project on which this policy is applicable.
-     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     * Format: &#39;folders/{{folder_id}}&#39; or &#39;projects/{{project_number}}&#39;
      * 
      */
     public Output<Optional<String>> scopes() {
@@ -227,7 +227,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessPolicy(String name) {
+    public AccessPolicy(java.lang.String name) {
         this(name, AccessPolicyArgs.Empty);
     }
     /**
@@ -235,7 +235,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessPolicy(String name, AccessPolicyArgs args) {
+    public AccessPolicy(java.lang.String name, AccessPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -244,15 +244,22 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessPolicy(String name, AccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/accessPolicy:AccessPolicy", name, args == null ? AccessPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessPolicy(java.lang.String name, AccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/accessPolicy:AccessPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessPolicy(String name, Output<String> id, @Nullable AccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/accessPolicy:AccessPolicy", name, state, makeResourceOptions(options, id));
+    private AccessPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/accessPolicy:AccessPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessPolicyArgs makeArgs(AccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -268,7 +275,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessPolicy get(String name, Output<String> id, @Nullable AccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessPolicy(name, id, state, options);
     }
 }

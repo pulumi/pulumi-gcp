@@ -14,6 +14,7 @@ import com.pulumi.gcp.storage.inputs.BucketObjectState;
 import com.pulumi.gcp.storage.outputs.BucketObjectCustomerEncryption;
 import com.pulumi.gcp.storage.outputs.BucketObjectRetention;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -263,6 +264,20 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eventBasedHold);
     }
     /**
+     * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+     * 
+     */
+    @Export(name="generation", refs={Integer.class}, tree="[0]")
+    private Output<Integer> generation;
+
+    /**
+     * @return (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+     * 
+     */
+    public Output<Integer> generation() {
+        return this.generation;
+    }
+    /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      * 
      */
@@ -437,7 +452,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketObject(String name) {
+    public BucketObject(java.lang.String name) {
         this(name, BucketObjectArgs.Empty);
     }
     /**
@@ -445,7 +460,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketObject(String name, BucketObjectArgs args) {
+    public BucketObject(java.lang.String name, BucketObjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -454,15 +469,22 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketObject(String name, BucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/bucketObject:BucketObject", name, args == null ? BucketObjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketObject(java.lang.String name, BucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/bucketObject:BucketObject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketObject(String name, Output<String> id, @Nullable BucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/bucketObject:BucketObject", name, state, makeResourceOptions(options, id));
+    private BucketObject(java.lang.String name, Output<java.lang.String> id, @Nullable BucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:storage/bucketObject:BucketObject", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketObjectArgs makeArgs(BucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketObjectArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -482,7 +504,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketObject get(String name, Output<String> id, @Nullable BucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketObject get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketObject(name, id, state, options);
     }
 }

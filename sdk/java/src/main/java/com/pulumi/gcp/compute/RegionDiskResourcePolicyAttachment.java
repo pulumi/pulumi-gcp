@@ -216,7 +216,7 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionDiskResourcePolicyAttachment(String name) {
+    public RegionDiskResourcePolicyAttachment(java.lang.String name) {
         this(name, RegionDiskResourcePolicyAttachmentArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionDiskResourcePolicyAttachment(String name, RegionDiskResourcePolicyAttachmentArgs args) {
+    public RegionDiskResourcePolicyAttachment(java.lang.String name, RegionDiskResourcePolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,15 +233,22 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionDiskResourcePolicyAttachment(String name, RegionDiskResourcePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", name, args == null ? RegionDiskResourcePolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionDiskResourcePolicyAttachment(java.lang.String name, RegionDiskResourcePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionDiskResourcePolicyAttachment(String name, Output<String> id, @Nullable RegionDiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", name, state, makeResourceOptions(options, id));
+    private RegionDiskResourcePolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable RegionDiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionDiskResourcePolicyAttachmentArgs makeArgs(RegionDiskResourcePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionDiskResourcePolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +264,7 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionDiskResourcePolicyAttachment get(String name, Output<String> id, @Nullable RegionDiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionDiskResourcePolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionDiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionDiskResourcePolicyAttachment(name, id, state, options);
     }
 }

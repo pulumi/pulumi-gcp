@@ -107,6 +107,7 @@ export class Project extends pulumi.CustomResource {
      * for more details.
      */
     public readonly billingAccount!: pulumi.Output<string | undefined>;
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -151,8 +152,13 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * If true, the resource can be deleted without
+     * deleting the Project via the Google API. `skipDelete` is deprecated and will be
+     * removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+     * can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+     * to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
+     *
+     * @deprecated skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
      */
     public readonly skipDelete!: pulumi.Output<boolean>;
 
@@ -171,6 +177,7 @@ export class Project extends pulumi.CustomResource {
             const state = argsOrState as ProjectState | undefined;
             resourceInputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
             resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -184,6 +191,7 @@ export class Project extends pulumi.CustomResource {
             const args = argsOrState as ProjectArgs | undefined;
             resourceInputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
             resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -219,6 +227,7 @@ export interface ProjectState {
      * for more details.
      */
     billingAccount?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -263,8 +272,13 @@ export interface ProjectState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * If true, the resource can be deleted without
+     * deleting the Project via the Google API. `skipDelete` is deprecated and will be
+     * removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+     * can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+     * to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
+     *
+     * @deprecated skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
      */
     skipDelete?: pulumi.Input<boolean>;
 }
@@ -287,6 +301,7 @@ export interface ProjectArgs {
      * for more details.
      */
     billingAccount?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
@@ -319,8 +334,13 @@ export interface ProjectArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * If true, the resource can be deleted without
+     * deleting the Project via the Google API. `skipDelete` is deprecated and will be
+     * removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
+     * can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
+     * to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
+     *
+     * @deprecated skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
      */
     skipDelete?: pulumi.Input<boolean>;
 }

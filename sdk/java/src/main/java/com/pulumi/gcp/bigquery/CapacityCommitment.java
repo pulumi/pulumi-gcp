@@ -281,7 +281,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CapacityCommitment(String name) {
+    public CapacityCommitment(java.lang.String name) {
         this(name, CapacityCommitmentArgs.Empty);
     }
     /**
@@ -289,7 +289,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CapacityCommitment(String name, CapacityCommitmentArgs args) {
+    public CapacityCommitment(java.lang.String name, CapacityCommitmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -298,15 +298,22 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CapacityCommitment(String name, CapacityCommitmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/capacityCommitment:CapacityCommitment", name, args == null ? CapacityCommitmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CapacityCommitment(java.lang.String name, CapacityCommitmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/capacityCommitment:CapacityCommitment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CapacityCommitment(String name, Output<String> id, @Nullable CapacityCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/capacityCommitment:CapacityCommitment", name, state, makeResourceOptions(options, id));
+    private CapacityCommitment(java.lang.String name, Output<java.lang.String> id, @Nullable CapacityCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/capacityCommitment:CapacityCommitment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CapacityCommitmentArgs makeArgs(CapacityCommitmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CapacityCommitmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -322,7 +329,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CapacityCommitment get(String name, Output<String> id, @Nullable CapacityCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CapacityCommitment get(java.lang.String name, Output<java.lang.String> id, @Nullable CapacityCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CapacityCommitment(name, id, state, options);
     }
 }

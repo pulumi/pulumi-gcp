@@ -1336,6 +1336,8 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(dict):
         suggest = None
         if key == "featureGroups":
             suggest = "feature_groups"
+        elif key == "projectNumber":
+            suggest = "project_number"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreFeatureviewFeatureRegistrySource. Access the value via the '{suggest}' property getter instead.")
@@ -1349,12 +1351,16 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 feature_groups: Sequence['outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup']):
+                 feature_groups: Sequence['outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup'],
+                 project_number: Optional[str] = None):
         """
         :param Sequence['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs'] feature_groups: List of features that need to be synced to Online Store.
                Structure is documented below.
+        :param str project_number: The project number of the parent project of the feature Groups.
         """
         pulumi.set(__self__, "feature_groups", feature_groups)
+        if project_number is not None:
+            pulumi.set(__self__, "project_number", project_number)
 
     @property
     @pulumi.getter(name="featureGroups")
@@ -1364,6 +1370,14 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "feature_groups")
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> Optional[str]:
+        """
+        The project number of the parent project of the feature Groups.
+        """
+        return pulumi.get(self, "project_number")
 
 
 @pulumi.output_type

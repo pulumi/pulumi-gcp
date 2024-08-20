@@ -30,11 +30,12 @@ class PolicyArgs:
         :param pulumi.Input[str] parent: The parent of the resource.
                
                
-               
                - - -
         :param pulumi.Input['PolicyDryRunSpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+               Structure is documented below.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
+               Structure is documented below.
         """
         pulumi.set(__self__, "parent", parent)
         if dry_run_spec is not None:
@@ -51,7 +52,6 @@ class PolicyArgs:
         The parent of the resource.
 
 
-
         - - -
         """
         return pulumi.get(self, "parent")
@@ -65,6 +65,7 @@ class PolicyArgs:
     def dry_run_spec(self) -> Optional[pulumi.Input['PolicyDryRunSpecArgs']]:
         """
         Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        Structure is documented below.
         """
         return pulumi.get(self, "dry_run_spec")
 
@@ -89,6 +90,7 @@ class PolicyArgs:
     def spec(self) -> Optional[pulumi.Input['PolicySpecArgs']]:
         """
         Basic information about the Organization Policy.
+        Structure is documented below.
         """
         return pulumi.get(self, "spec")
 
@@ -108,14 +110,15 @@ class _PolicyState:
         """
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input['PolicyDryRunSpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+               Structure is documented below.
         :param pulumi.Input[str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
                
                
-               
                - - -
         :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
+               Structure is documented below.
         """
         if dry_run_spec is not None:
             pulumi.set(__self__, "dry_run_spec", dry_run_spec)
@@ -133,6 +136,7 @@ class _PolicyState:
     def dry_run_spec(self) -> Optional[pulumi.Input['PolicyDryRunSpecArgs']]:
         """
         Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        Structure is documented below.
         """
         return pulumi.get(self, "dry_run_spec")
 
@@ -171,7 +175,6 @@ class _PolicyState:
         The parent of the resource.
 
 
-
         - - -
         """
         return pulumi.get(self, "parent")
@@ -185,6 +188,7 @@ class _PolicyState:
     def spec(self) -> Optional[pulumi.Input['PolicySpecArgs']]:
         """
         Basic information about the Organization Policy.
+        Structure is documented below.
         """
         return pulumi.get(self, "spec")
 
@@ -204,16 +208,19 @@ class Policy(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
                  __props__=None):
         """
-        An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+        Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
 
-        For more information, see:
-        * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-        * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
-        * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
+        To get more information about Policy, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+            * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+
         ## Example Usage
 
-        ### Enforce_policy
-        A test of an enforce orgpolicy policy for a project
+        ### Org Policy Policy Enforce
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -231,8 +238,8 @@ class Policy(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Folder_policy
-        A test of an orgpolicy policy for a folder
+        ### Org Policy Policy Folder
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -244,14 +251,14 @@ class Policy(pulumi.CustomResource):
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
             spec={
-                "inheritFromParent": True,
+                "inherit_from_parent": True,
                 "rules": [{
-                    "denyAll": "TRUE",
+                    "deny_all": "TRUE",
                 }],
             })
         ```
-        ### Organization_policy
-        A test of an orgpolicy policy for an organization
+        ### Org Policy Policy Organization
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -263,8 +270,8 @@ class Policy(pulumi.CustomResource):
                 "reset": True,
             })
         ```
-        ### Project_policy
-        A test of an orgpolicy policy for a project
+        ### Org Policy Policy Project
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -281,28 +288,29 @@ class Policy(pulumi.CustomResource):
                     {
                         "condition": {
                             "description": "A sample condition for the policy",
-                            "expression": "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+                            "expression": "resource.matchTagId('tagKeys/123', 'tagValues/345')",
                             "location": "sample-location.log",
                             "title": "sample-condition",
                         },
                         "values": {
-                            "allowedValues": ["projects/allowed-project"],
-                            "deniedValues": ["projects/denied-project"],
+                            "allowed_values": ["projects/allowed-project"],
+                            "denied_values": ["projects/denied-project"],
                         },
                     },
                     {
-                        "allowAll": "TRUE",
+                        "allow_all": "TRUE",
                     },
                 ],
             })
         ```
-        ### Dry_run_spec
+        ### Org Policy Policy Dry Run Spec
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         constraint = gcp.orgpolicy.CustomConstraint("constraint",
-            name="custom.disableGkeAutoUpgrade_40785",
+            name="custom.disableGkeAutoUpgrade_37559",
             parent="organizations/123456789",
             display_name="Disable GKE auto upgrade",
             description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -319,7 +327,7 @@ class Policy(pulumi.CustomResource):
                 }],
             },
             dry_run_spec={
-                "inheritFromParent": False,
+                "inherit_from_parent": False,
                 "reset": False,
                 "rules": [{
                     "enforce": "FALSE",
@@ -330,6 +338,7 @@ class Policy(pulumi.CustomResource):
         ## Import
 
         Policy can be imported using any of these accepted formats:
+
         * `{{parent}}/policies/{{name}}`
 
         When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
@@ -341,13 +350,14 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+               Structure is documented below.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
                
                
-               
                - - -
         :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
+               Structure is documented below.
         """
         ...
     @overload
@@ -356,16 +366,19 @@ class Policy(pulumi.CustomResource):
                  args: PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+        Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
 
-        For more information, see:
-        * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-        * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
-        * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
+        To get more information about Policy, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+            * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+
         ## Example Usage
 
-        ### Enforce_policy
-        A test of an enforce orgpolicy policy for a project
+        ### Org Policy Policy Enforce
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,8 +396,8 @@ class Policy(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Folder_policy
-        A test of an orgpolicy policy for a folder
+        ### Org Policy Policy Folder
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -396,14 +409,14 @@ class Policy(pulumi.CustomResource):
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
             spec={
-                "inheritFromParent": True,
+                "inherit_from_parent": True,
                 "rules": [{
-                    "denyAll": "TRUE",
+                    "deny_all": "TRUE",
                 }],
             })
         ```
-        ### Organization_policy
-        A test of an orgpolicy policy for an organization
+        ### Org Policy Policy Organization
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -415,8 +428,8 @@ class Policy(pulumi.CustomResource):
                 "reset": True,
             })
         ```
-        ### Project_policy
-        A test of an orgpolicy policy for a project
+        ### Org Policy Policy Project
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -433,28 +446,29 @@ class Policy(pulumi.CustomResource):
                     {
                         "condition": {
                             "description": "A sample condition for the policy",
-                            "expression": "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+                            "expression": "resource.matchTagId('tagKeys/123', 'tagValues/345')",
                             "location": "sample-location.log",
                             "title": "sample-condition",
                         },
                         "values": {
-                            "allowedValues": ["projects/allowed-project"],
-                            "deniedValues": ["projects/denied-project"],
+                            "allowed_values": ["projects/allowed-project"],
+                            "denied_values": ["projects/denied-project"],
                         },
                     },
                     {
-                        "allowAll": "TRUE",
+                        "allow_all": "TRUE",
                     },
                 ],
             })
         ```
-        ### Dry_run_spec
+        ### Org Policy Policy Dry Run Spec
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         constraint = gcp.orgpolicy.CustomConstraint("constraint",
-            name="custom.disableGkeAutoUpgrade_40785",
+            name="custom.disableGkeAutoUpgrade_37559",
             parent="organizations/123456789",
             display_name="Disable GKE auto upgrade",
             description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -471,7 +485,7 @@ class Policy(pulumi.CustomResource):
                 }],
             },
             dry_run_spec={
-                "inheritFromParent": False,
+                "inherit_from_parent": False,
                 "reset": False,
                 "rules": [{
                     "enforce": "FALSE",
@@ -482,6 +496,7 @@ class Policy(pulumi.CustomResource):
         ## Import
 
         Policy can be imported using any of these accepted formats:
+
         * `{{parent}}/policies/{{name}}`
 
         When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
@@ -548,14 +563,15 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+               Structure is documented below.
         :param pulumi.Input[str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
                
                
-               
                - - -
         :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -573,6 +589,7 @@ class Policy(pulumi.CustomResource):
     def dry_run_spec(self) -> pulumi.Output[Optional['outputs.PolicyDryRunSpec']]:
         """
         Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        Structure is documented below.
         """
         return pulumi.get(self, "dry_run_spec")
 
@@ -599,7 +616,6 @@ class Policy(pulumi.CustomResource):
         The parent of the resource.
 
 
-
         - - -
         """
         return pulumi.get(self, "parent")
@@ -609,6 +625,7 @@ class Policy(pulumi.CustomResource):
     def spec(self) -> pulumi.Output[Optional['outputs.PolicySpec']]:
         """
         Basic information about the Organization Policy.
+        Structure is documented below.
         """
         return pulumi.get(self, "spec")
 

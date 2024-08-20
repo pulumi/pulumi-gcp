@@ -235,6 +235,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.logging.ProjectBucketConfig;
  * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
+ * import com.pulumi.gcp.logging.inputs.ProjectBucketConfigIndexConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -254,7 +255,7 @@ import javax.annotation.Nullable;
  *             .retentionDays(30)
  *             .bucketId("custom-bucket")
  *             .indexConfigs(ProjectBucketConfigIndexConfigArgs.builder()
- *                 .filePath("jsonPayload.request.status")
+ *                 .fieldPath("jsonPayload.request.status")
  *                 .type("INDEX_TYPE_STRING")
  *                 .build())
  *             .build());
@@ -439,7 +440,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectBucketConfig(String name) {
+    public ProjectBucketConfig(java.lang.String name) {
         this(name, ProjectBucketConfigArgs.Empty);
     }
     /**
@@ -447,7 +448,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectBucketConfig(String name, ProjectBucketConfigArgs args) {
+    public ProjectBucketConfig(java.lang.String name, ProjectBucketConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -456,15 +457,22 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectBucketConfig(String name, ProjectBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/projectBucketConfig:ProjectBucketConfig", name, args == null ? ProjectBucketConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectBucketConfig(java.lang.String name, ProjectBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/projectBucketConfig:ProjectBucketConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectBucketConfig(String name, Output<String> id, @Nullable ProjectBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/projectBucketConfig:ProjectBucketConfig", name, state, makeResourceOptions(options, id));
+    private ProjectBucketConfig(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/projectBucketConfig:ProjectBucketConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectBucketConfigArgs makeArgs(ProjectBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectBucketConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -480,7 +488,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectBucketConfig get(String name, Output<String> id, @Nullable ProjectBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectBucketConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectBucketConfig(name, id, state, options);
     }
 }

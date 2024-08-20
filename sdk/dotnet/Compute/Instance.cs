@@ -250,8 +250,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
-        /// Add them to your config in order to keep them attached to your instance. A
-        /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        /// Add them to your config in order to keep them attached to your instance.
+        /// A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
         /// 
         /// &gt; Depending on the OS you choose for your instance, some metadata keys have
         /// special functionality.  Most linux-based images will run the content of
@@ -591,8 +591,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
-        /// Add them to your config in order to keep them attached to your instance. A
-        /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        /// Add them to your config in order to keep them attached to your instance.
+        /// A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
         /// 
         /// &gt; Depending on the OS you choose for your instance, some metadata keys have
         /// special functionality.  Most linux-based images will run the content of
@@ -932,8 +932,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
-        /// Add them to your config in order to keep them attached to your instance. A
-        /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        /// Add them to your config in order to keep them attached to your instance.
+        /// A list of predefined metadata keys (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/predefined-metadata-keys)
         /// 
         /// &gt; Depending on the OS you choose for your instance, some metadata keys have
         /// special functionality.  Most linux-based images will run the content of

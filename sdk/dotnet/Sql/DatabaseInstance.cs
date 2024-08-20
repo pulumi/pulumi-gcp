@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Sql
     ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
     ///             {
     ///                 Ipv4Enabled = false,
-    ///                 PrivateNetwork = privateNetwork.Id,
+    ///                 PrivateNetwork = privateNetwork.SelfLink,
     ///                 EnablePrivatePathForGoogleCloudServices = true,
     ///             },
     ///         },

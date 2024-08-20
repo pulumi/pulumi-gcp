@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? Collation { get; set; }
 
         /// <summary>
-        /// Specifies if connections must use Cloud SQL connectors.
+        /// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         /// </summary>
         [Input("connectorEnforcement")]
         public Input<string>? ConnectorEnforcement { get; set; }
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<Inputs.DatabaseInstanceSettingsDenyMaintenancePeriodGetArgs>? DenyMaintenancePeriod { get; set; }
 
         /// <summary>
-        /// Enables auto-resizing of the storage size. Defaults to `true`.
+        /// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<int>? DiskAutoresizeLimit { get; set; }
 
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
@@ -103,6 +103,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
+
+        /// <summary>
+        /// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+        /// </summary>
+        [Input("enableDataplexIntegration")]
+        public Input<bool>? EnableDataplexIntegration { get; set; }
 
         /// <summary>
         /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.

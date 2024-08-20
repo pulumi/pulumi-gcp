@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the current IAM policy data for logview
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.LookupLogViewIamPolicy(ctx, &logging.LookupLogViewIamPolicyArgs{
+//				Parent:   loggingLogView.Parent,
+//				Location: pulumi.StringRef(loggingLogView.Location),
+//				Bucket:   loggingLogView.Bucket,
+//				Name:     loggingLogView.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupLogViewIamPolicy(ctx *pulumi.Context, args *LookupLogViewIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupLogViewIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogViewIamPolicyResult

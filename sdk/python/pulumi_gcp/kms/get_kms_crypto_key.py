@@ -27,7 +27,7 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, crypto_key_backend=None, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_ring=None, labels=None, name=None, primaries=None, pulumi_labels=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
+    def __init__(__self__, crypto_key_backend=None, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_access_justifications_policies=None, key_ring=None, labels=None, name=None, primaries=None, pulumi_labels=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
         if crypto_key_backend and not isinstance(crypto_key_backend, str):
             raise TypeError("Expected argument 'crypto_key_backend' to be a str")
         pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
@@ -43,6 +43,9 @@ class GetKMSCryptoKeyResult:
         if import_only and not isinstance(import_only, bool):
             raise TypeError("Expected argument 'import_only' to be a bool")
         pulumi.set(__self__, "import_only", import_only)
+        if key_access_justifications_policies and not isinstance(key_access_justifications_policies, list):
+            raise TypeError("Expected argument 'key_access_justifications_policies' to be a list")
+        pulumi.set(__self__, "key_access_justifications_policies", key_access_justifications_policies)
         if key_ring and not isinstance(key_ring, str):
             raise TypeError("Expected argument 'key_ring' to be a str")
         pulumi.set(__self__, "key_ring", key_ring)
@@ -98,6 +101,11 @@ class GetKMSCryptoKeyResult:
     @pulumi.getter(name="importOnly")
     def import_only(self) -> bool:
         return pulumi.get(self, "import_only")
+
+    @property
+    @pulumi.getter(name="keyAccessJustificationsPolicies")
+    def key_access_justifications_policies(self) -> Sequence['outputs.GetKMSCryptoKeyKeyAccessJustificationsPolicyResult']:
+        return pulumi.get(self, "key_access_justifications_policies")
 
     @property
     @pulumi.getter(name="keyRing")
@@ -164,6 +172,7 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
             effective_labels=self.effective_labels,
             id=self.id,
             import_only=self.import_only,
+            key_access_justifications_policies=self.key_access_justifications_policies,
             key_ring=self.key_ring,
             labels=self.labels,
             name=self.name,
@@ -216,6 +225,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         import_only=pulumi.get(__ret__, 'import_only'),
+        key_access_justifications_policies=pulumi.get(__ret__, 'key_access_justifications_policies'),
         key_ring=pulumi.get(__ret__, 'key_ring'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

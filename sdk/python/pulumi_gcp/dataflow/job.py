@@ -25,19 +25,19 @@ class JobArgs:
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
@@ -49,7 +49,7 @@ class JobArgs:
         :param pulumi.Input[bool] enable_streaming_engine: Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
@@ -57,7 +57,7 @@ class JobArgs:
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
@@ -65,7 +65,7 @@ class JobArgs:
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
         pulumi.set(__self__, "temp_gcs_location", temp_gcs_location)
@@ -183,7 +183,7 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User labels to be specified for the job. Keys and values should follow the restrictions
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
@@ -192,7 +192,7 @@ class JobArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -257,7 +257,7 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -266,7 +266,7 @@ class JobArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -331,14 +331,14 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         """
         return pulumi.get(self, "transform_name_mapping")
 
     @transform_name_mapping.setter
-    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "transform_name_mapping", value)
 
     @property
@@ -363,13 +363,13 @@ class _JobState:
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -379,7 +379,7 @@ class _JobState:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_gcs_location: Optional[pulumi.Input[str]] = None,
                  template_gcs_path: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -390,7 +390,7 @@ class _JobState:
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
@@ -398,7 +398,7 @@ class _JobState:
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
@@ -412,7 +412,7 @@ class _JobState:
                
                - - -
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
@@ -541,7 +541,7 @@ class _JobState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User labels to be specified for the job. Keys and values should follow the restrictions
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
@@ -550,7 +550,7 @@ class _JobState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -615,7 +615,7 @@ class _JobState:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -624,7 +624,7 @@ class _JobState:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -739,14 +739,14 @@ class _JobState:
 
     @property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         """
         return pulumi.get(self, "transform_name_mapping")
 
     @transform_name_mapping.setter
-    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "transform_name_mapping", value)
 
     @property
@@ -783,13 +783,13 @@ class Job(pulumi.CustomResource):
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
@@ -797,7 +797,7 @@ class Job(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_gcs_location: Optional[pulumi.Input[str]] = None,
                  template_gcs_path: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -905,7 +905,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_streaming_engine: Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
@@ -913,7 +913,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
@@ -925,7 +925,7 @@ class Job(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
         ...
@@ -1052,13 +1052,13 @@ class Job(pulumi.CustomResource):
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
@@ -1066,7 +1066,7 @@ class Job(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_gcs_location: Optional[pulumi.Input[str]] = None,
                  template_gcs_path: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1124,13 +1124,13 @@ class Job(pulumi.CustomResource):
             ip_configuration: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
             max_workers: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             on_delete: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1140,7 +1140,7 @@ class Job(pulumi.CustomResource):
             subnetwork: Optional[pulumi.Input[str]] = None,
             temp_gcs_location: Optional[pulumi.Input[str]] = None,
             template_gcs_path: Optional[pulumi.Input[str]] = None,
-            transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
@@ -1156,7 +1156,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
@@ -1164,7 +1164,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
@@ -1178,7 +1178,7 @@ class Job(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
@@ -1263,7 +1263,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User labels to be specified for the job. Keys and values should follow the restrictions
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
@@ -1313,7 +1313,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -1397,7 +1397,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def transform_name_mapping(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         """

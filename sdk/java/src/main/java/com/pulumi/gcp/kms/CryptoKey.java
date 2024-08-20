@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.kms.CryptoKeyArgs;
 import com.pulumi.gcp.kms.inputs.CryptoKeyState;
+import com.pulumi.gcp.kms.outputs.CryptoKeyKeyAccessJustificationsPolicy;
 import com.pulumi.gcp.kms.outputs.CryptoKeyPrimary;
 import com.pulumi.gcp.kms.outputs.CryptoKeyVersionTemplate;
 import java.lang.Boolean;
@@ -151,7 +152,7 @@ import javax.annotation.Nullable;
 public class CryptoKey extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
-     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * The resource name is in the format &#34;projects/*&#47;locations/*&#47;ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
      * 
      */
     @Export(name="cryptoKeyBackend", refs={String.class}, tree="[0]")
@@ -159,7 +160,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
-     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * The resource name is in the format &#34;projects/*&#47;locations/*&#47;ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
      * 
      */
     public Output<String> cryptoKeyBackend() {
@@ -167,7 +168,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
     }
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      * 
      */
     @Export(name="destroyScheduledDuration", refs={String.class}, tree="[0]")
@@ -175,7 +176,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      * 
      */
     public Output<String> destroyScheduledDuration() {
@@ -208,6 +209,36 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> importOnly() {
         return this.importOnly;
+    }
+    /**
+     * The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="keyAccessJustificationsPolicy", refs={CryptoKeyKeyAccessJustificationsPolicy.class}, tree="[0]")
+    private Output<CryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicy;
+
+    /**
+     * @return The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     * 
+     */
+    public Output<CryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicy() {
+        return this.keyAccessJustificationsPolicy;
     }
     /**
      * The KeyRing that this key belongs to.
@@ -376,7 +407,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CryptoKey(String name) {
+    public CryptoKey(java.lang.String name) {
         this(name, CryptoKeyArgs.Empty);
     }
     /**
@@ -384,7 +415,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CryptoKey(String name, CryptoKeyArgs args) {
+    public CryptoKey(java.lang.String name, CryptoKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -393,15 +424,22 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CryptoKey(String name, CryptoKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/cryptoKey:CryptoKey", name, args == null ? CryptoKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CryptoKey(java.lang.String name, CryptoKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/cryptoKey:CryptoKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CryptoKey(String name, Output<String> id, @Nullable CryptoKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/cryptoKey:CryptoKey", name, state, makeResourceOptions(options, id));
+    private CryptoKey(java.lang.String name, Output<java.lang.String> id, @Nullable CryptoKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/cryptoKey:CryptoKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CryptoKeyArgs makeArgs(CryptoKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CryptoKeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -421,7 +459,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CryptoKey get(String name, Output<String> id, @Nullable CryptoKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CryptoKey get(java.lang.String name, Output<java.lang.String> id, @Nullable CryptoKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CryptoKey(name, id, state, options);
     }
 }

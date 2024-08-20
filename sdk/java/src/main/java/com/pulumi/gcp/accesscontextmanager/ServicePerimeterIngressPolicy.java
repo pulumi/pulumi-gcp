@@ -17,6 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manage a single IngressPolicy in the status (enforced) configuration for a service perimeter.
  * IngressPolicies match requests based on ingressFrom and ingressTo stanzas. For an ingress policy to match,
  * both the ingressFrom and ingressTo stanzas must be matched. If an IngressPolicy matches a request,
  * the request is allowed through the perimeter boundary from outside the perimeter.
@@ -35,18 +36,6 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
  * 
  * ## Example Usage
- * 
- * ## Import
- * 
- * ServicePerimeterIngressPolicy can be imported using any of these accepted formats:
- * 
- * * `{{perimeter}}`
- * 
- * When using the `pulumi import` command, ServicePerimeterIngressPolicy can be imported using one of the formats above. For example:
- * 
- * ```sh
- * $ pulumi import gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy default {{perimeter}}
- * ```
  * 
  */
 @ResourceType(type="gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy")
@@ -110,7 +99,7 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServicePerimeterIngressPolicy(String name) {
+    public ServicePerimeterIngressPolicy(java.lang.String name) {
         this(name, ServicePerimeterIngressPolicyArgs.Empty);
     }
     /**
@@ -118,7 +107,7 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePerimeterIngressPolicy(String name, ServicePerimeterIngressPolicyArgs args) {
+    public ServicePerimeterIngressPolicy(java.lang.String name, ServicePerimeterIngressPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -127,15 +116,22 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePerimeterIngressPolicy(String name, ServicePerimeterIngressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy", name, args == null ? ServicePerimeterIngressPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServicePerimeterIngressPolicy(java.lang.String name, ServicePerimeterIngressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServicePerimeterIngressPolicy(String name, Output<String> id, @Nullable ServicePerimeterIngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy", name, state, makeResourceOptions(options, id));
+    private ServicePerimeterIngressPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePerimeterIngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServicePerimeterIngressPolicyArgs makeArgs(ServicePerimeterIngressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePerimeterIngressPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -151,7 +147,7 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServicePerimeterIngressPolicy get(String name, Output<String> id, @Nullable ServicePerimeterIngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServicePerimeterIngressPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePerimeterIngressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServicePerimeterIngressPolicy(name, id, state, options);
     }
 }

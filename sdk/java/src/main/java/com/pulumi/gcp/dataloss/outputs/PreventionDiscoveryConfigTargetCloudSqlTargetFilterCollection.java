@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection {
     /**
-     * @return A collection of regular expressions to match a database resource against.
+     * @return A collection of regular expressions to match a file store against.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
 
     private PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection() {}
     /**
-     * @return A collection of regular expressions to match a database resource against.
+     * @return A collection of regular expressions to match a file store against.
      * Structure is documented below.
      * 
      */

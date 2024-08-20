@@ -243,6 +243,211 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Featureonlinestore Featureview Cross Project
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testProject = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "tf-test_13293",
+    ///         Name = "tf-test_40289",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var vertexai = new Gcp.Projects.Service("vertexai", new()
+    ///     {
+    ///         ServiceName = "aiplatform.googleapis.com",
+    ///         Project = project.ProjectId,
+    ///         DisableOnDestroy = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
+    ///     {
+    ///         Name = "example_cross_project_featureview",
+    ///         Project = project.ProjectId,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         Bigtable = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableArgs
+    ///         {
+    ///             AutoScaling = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs
+    ///             {
+    ///                 MinNodeCount = 1,
+    ///                 MaxNodeCount = 2,
+    ///                 CpuUtilizationTarget = 80,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vertexai,
+    ///         },
+    ///     });
+    /// 
+    ///     var sampleDataset = new Gcp.BigQuery.Dataset("sample_dataset", new()
+    ///     {
+    ///         DatasetId = "example_cross_project_featureview",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var viewer = new Gcp.BigQuery.DatasetIamMember("viewer", new()
+    ///     {
+    ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         DatasetId = sampleDataset.DatasetId,
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Member = project.Number.Apply(number =&gt; $"serviceAccount:service-{number}@gcp-sa-aiplatform.iam.gserviceaccount.com"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             featureonlinestore,
+    ///         },
+    ///     });
+    /// 
+    ///     var wait30Seconds = new Time.Index.Sleep("wait_30_seconds", new()
+    ///     {
+    ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             viewer,
+    ///         },
+    ///     });
+    /// 
+    ///     var sampleTable = new Gcp.BigQuery.Table("sample_table", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = sampleDataset.DatasetId,
+    ///         TableId = "example_cross_project_featureview",
+    ///         Schema = @"[
+    ///     {
+    ///         ""name"": ""feature_id"",
+    ///         ""type"": ""STRING"",
+    ///         ""mode"": ""NULLABLE""
+    ///     },
+    ///     {
+    ///         ""name"": ""example_cross_project_featureview"",
+    ///         ""type"": ""STRING"",
+    ///         ""mode"": ""NULLABLE""
+    ///     },
+    ///     {
+    ///         ""name"": ""feature_timestamp"",
+    ///         ""type"": ""TIMESTAMP"",
+    ///         ""mode"": ""NULLABLE""
+    ///     }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var sampleFeatureGroup = new Gcp.Vertex.AiFeatureGroup("sample_feature_group", new()
+    ///     {
+    ///         Name = "example_cross_project_featureview",
+    ///         Description = "A sample feature group",
+    ///         Region = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         BigQuery = new Gcp.Vertex.Inputs.AiFeatureGroupBigQueryArgs
+    ///         {
+    ///             BigQuerySource = new Gcp.Vertex.Inputs.AiFeatureGroupBigQueryBigQuerySourceArgs
+    ///             {
+    ///                 InputUri = Output.Tuple(sampleTable.Project, sampleTable.DatasetId, sampleTable.TableId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var datasetId = values.Item2;
+    ///                     var tableId = values.Item3;
+    ///                     return $"bq://{project}.{datasetId}.{tableId}";
+    ///                 }),
+    ///             },
+    ///             EntityIdColumns = new[]
+    ///             {
+    ///                 "feature_id",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sampleFeature = new Gcp.Vertex.AiFeatureGroupFeature("sample_feature", new()
+    ///     {
+    ///         Name = "example_cross_project_featureview",
+    ///         Region = "us-central1",
+    ///         FeatureGroup = sampleFeatureGroup.Name,
+    ///         Description = "A sample feature",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var crossProjectFeatureview = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("cross_project_featureview", new()
+    ///     {
+    ///         Name = "example_cross_project_featureview",
+    ///         Project = project.ProjectId,
+    ///         Region = "us-central1",
+    ///         FeatureOnlineStore = featureonlinestore.Name,
+    ///         SyncConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs
+    ///         {
+    ///             Cron = "0 0 * * *",
+    ///         },
+    ///         FeatureRegistrySource = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs
+    ///         {
+    ///             FeatureGroups = new[]
+    ///             {
+    ///                 new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs
+    ///                 {
+    ///                     FeatureGroupId = sampleFeatureGroup.Name,
+    ///                     FeatureIds = new[]
+    ///                     {
+    ///                         sampleFeature.Name,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ProjectNumber = testProject.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vertexai,
+    ///             wait30Seconds,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Featureonlinestore Featureview With Vector Search
     /// 
     /// ```csharp

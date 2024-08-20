@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("job-topic")
  *             .build());
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test job")
- *             .schedule("*{@literal /}2 * * * *")
+ *             .schedule("*}&#47;{@code 2 * * * *")
  *             .pubsubTarget(JobPubsubTargetArgs.builder()
  *                 .topicName(topic.id())
  *                 .data(StdFunctions.base64encode(Base64encodeArgs.builder()
@@ -75,8 +75,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -101,16 +101,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test http job")
- *             .schedule("*{@literal /}8 * * * *")
+ *             .schedule("*}&#47;{@code 8 * * * *")
  *             .timeZone("America/New_York")
  *             .attemptDeadline("320s")
  *             .retryConfig(JobRetryConfigArgs.builder()
@@ -120,14 +120,14 @@ import javax.annotation.Nullable;
  *                 .httpMethod("POST")
  *                 .uri("https://example.com/")
  *                 .body(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input("{\"foo\":\"bar\"}")
+ *                     .input("}{{@code \"foo\":\"bar\"}}{@code ")
  *                     .build()).result())
  *                 .headers(Map.of("Content-Type", "application/json"))
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -152,17 +152,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var job = new Job("job", JobArgs.builder()
  *             .paused(true)
  *             .name("test-job")
  *             .description("test http job with updated fields")
- *             .schedule("*{@literal /}8 * * * *")
+ *             .schedule("*}&#47;{@code 8 * * * *")
  *             .timeZone("America/New_York")
  *             .attemptDeadline("320s")
  *             .retryConfig(JobRetryConfigArgs.builder()
@@ -172,14 +172,14 @@ import javax.annotation.Nullable;
  *                 .httpMethod("POST")
  *                 .uri("https://example.com/ping")
  *                 .body(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input("{\"foo\":\"bar\"}")
+ *                     .input("}{{@code \"foo\":\"bar\"}}{@code ")
  *                     .build()).result())
  *                 .headers(Map.of("Content-Type", "application/json"))
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -205,15 +205,15 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
- *             .schedule("*{@literal /}4 * * * *")
+ *             .schedule("*}&#47;{@code 4 * * * *")
  *             .description("test app engine job")
  *             .timeZone("Europe/London")
  *             .attemptDeadline("320s")
@@ -234,8 +234,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -262,18 +262,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test http job")
- *             .schedule("*{@literal /}8 * * * *")
+ *             .schedule("*}&#47;{@code 8 * * * *")
  *             .timeZone("America/New_York")
  *             .attemptDeadline("320s")
  *             .httpTarget(JobHttpTargetArgs.builder()
@@ -285,8 +285,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -313,18 +313,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
  *             .description("test http job")
- *             .schedule("*{@literal /}8 * * * *")
+ *             .schedule("*}&#47;{@code 8 * * * *")
  *             .timeZone("America/New_York")
  *             .attemptDeadline("320s")
  *             .httpTarget(JobHttpTargetArgs.builder()
@@ -336,8 +336,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -610,7 +610,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Job(String name) {
+    public Job(java.lang.String name) {
         this(name, JobArgs.Empty);
     }
     /**
@@ -618,7 +618,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Job(String name, @Nullable JobArgs args) {
+    public Job(java.lang.String name, @Nullable JobArgs args) {
         this(name, args, null);
     }
     /**
@@ -627,15 +627,22 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Job(String name, @Nullable JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudscheduler/job:Job", name, args == null ? JobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Job(java.lang.String name, @Nullable JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudscheduler/job:Job", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Job(String name, Output<String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudscheduler/job:Job", name, state, makeResourceOptions(options, id));
+    private Job(java.lang.String name, Output<java.lang.String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudscheduler/job:Job", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static JobArgs makeArgs(@Nullable JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? JobArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -651,7 +658,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Job get(String name, Output<String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Job get(java.lang.String name, Output<java.lang.String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Job(name, id, state, options);
     }
 }

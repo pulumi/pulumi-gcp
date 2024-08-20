@@ -429,7 +429,7 @@ public class GrpcRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GrpcRoute(String name) {
+    public GrpcRoute(java.lang.String name) {
         this(name, GrpcRouteArgs.Empty);
     }
     /**
@@ -437,7 +437,7 @@ public class GrpcRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GrpcRoute(String name, GrpcRouteArgs args) {
+    public GrpcRoute(java.lang.String name, GrpcRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -446,15 +446,22 @@ public class GrpcRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GrpcRoute(String name, GrpcRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/grpcRoute:GrpcRoute", name, args == null ? GrpcRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GrpcRoute(java.lang.String name, GrpcRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/grpcRoute:GrpcRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GrpcRoute(String name, Output<String> id, @Nullable GrpcRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/grpcRoute:GrpcRoute", name, state, makeResourceOptions(options, id));
+    private GrpcRoute(java.lang.String name, Output<java.lang.String> id, @Nullable GrpcRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkservices/grpcRoute:GrpcRoute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GrpcRouteArgs makeArgs(GrpcRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GrpcRouteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -474,7 +481,7 @@ public class GrpcRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GrpcRoute get(String name, Output<String> id, @Nullable GrpcRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GrpcRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable GrpcRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GrpcRoute(name, id, state, options);
     }
 }

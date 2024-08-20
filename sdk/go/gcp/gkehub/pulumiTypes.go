@@ -208,6 +208,9 @@ type FeatureFleetDefaultMemberConfigConfigmanagement struct {
 	// ConfigSync configuration for the cluster
 	// Structure is documented below.
 	ConfigSync *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync `pulumi:"configSync"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+	Management *string `pulumi:"management"`
 	// Version of ACM installed
 	Version *string `pulumi:"version"`
 }
@@ -227,6 +230,9 @@ type FeatureFleetDefaultMemberConfigConfigmanagementArgs struct {
 	// ConfigSync configuration for the cluster
 	// Structure is documented below.
 	ConfigSync FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+	Management pulumi.StringPtrInput `pulumi:"management"`
 	// Version of ACM installed
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -316,6 +322,12 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ConfigSync() Feat
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
 }
 
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *string { return v.Management }).(pulumi.StringPtrOutput)
+}
+
 // Version of ACM installed
 func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -356,6 +368,17 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ConfigSync() F
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
 }
 
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(pulumi.StringPtrOutput)
+}
+
 // Version of ACM installed
 func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagement) *string {
@@ -367,6 +390,8 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Version() pulu
 }
 
 type FeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled *bool `pulumi:"enabled"`
 	// Git repo configuration for the cluster
 	// Structure is documented below.
 	Git *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit `pulumi:"git"`
@@ -391,6 +416,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput interface {
 }
 
 type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Git repo configuration for the cluster
 	// Structure is documented below.
 	Git FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
@@ -480,6 +507,11 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToFeatu
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
 }
 
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 // Git repo configuration for the cluster
 // Structure is documented below.
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Git() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
@@ -528,6 +560,16 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Elem
 		var ret FeatureFleetDefaultMemberConfigConfigmanagementConfigSync
 		return ret
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput)
+}
+
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Git repo configuration for the cluster
@@ -3414,6 +3456,8 @@ type FeatureMembershipConfigmanagement struct {
 	ConfigSync *FeatureMembershipConfigmanagementConfigSync `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster. Structure is documented below.
 	HierarchyController *FeatureMembershipConfigmanagementHierarchyController `pulumi:"hierarchyController"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	Management *string `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
 	PolicyController *FeatureMembershipConfigmanagementPolicyController `pulumi:"policyController"`
 	// Version of ACM installed.
@@ -3438,6 +3482,8 @@ type FeatureMembershipConfigmanagementArgs struct {
 	ConfigSync FeatureMembershipConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster. Structure is documented below.
 	HierarchyController FeatureMembershipConfigmanagementHierarchyControllerPtrInput `pulumi:"hierarchyController"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+	Management pulumi.StringPtrInput `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
 	PolicyController FeatureMembershipConfigmanagementPolicyControllerPtrInput `pulumi:"policyController"`
 	// Version of ACM installed.
@@ -3542,6 +3588,11 @@ func (o FeatureMembershipConfigmanagementOutput) HierarchyController() FeatureMe
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+func (o FeatureMembershipConfigmanagementOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *string { return v.Management }).(pulumi.StringPtrOutput)
+}
+
 // Policy Controller configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
@@ -3606,6 +3657,16 @@ func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() Featur
 		}
 		return v.HierarchyController
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
+}
+
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+func (o FeatureMembershipConfigmanagementPtrOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(pulumi.StringPtrOutput)
 }
 
 // Policy Controller configuration for the cluster. Structure is documented below.
@@ -3766,6 +3827,8 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 }
 
 type FeatureMembershipConfigmanagementConfigSync struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled *bool `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
 	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
@@ -3792,6 +3855,8 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
 	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
@@ -3883,6 +3948,11 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 // (Optional) Structure is documented below.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
@@ -3936,6 +4006,16 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMemb
 		var ret FeatureMembershipConfigmanagementConfigSync
 		return ret
 	}).(FeatureMembershipConfigmanagementConfigSyncOutput)
+}
+
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // (Optional) Structure is documented below.
@@ -11372,6 +11452,103 @@ func (o ScopeStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeStateTypeOutput
 	}).(ScopeStateTypeOutput)
 }
 
+type GetMembershipBindingState struct {
+	// Code describes the state of a MembershipBinding resource.
+	Code string `pulumi:"code"`
+}
+
+// GetMembershipBindingStateInput is an input type that accepts GetMembershipBindingStateArgs and GetMembershipBindingStateOutput values.
+// You can construct a concrete instance of `GetMembershipBindingStateInput` via:
+//
+//	GetMembershipBindingStateArgs{...}
+type GetMembershipBindingStateInput interface {
+	pulumi.Input
+
+	ToGetMembershipBindingStateOutput() GetMembershipBindingStateOutput
+	ToGetMembershipBindingStateOutputWithContext(context.Context) GetMembershipBindingStateOutput
+}
+
+type GetMembershipBindingStateArgs struct {
+	// Code describes the state of a MembershipBinding resource.
+	Code pulumi.StringInput `pulumi:"code"`
+}
+
+func (GetMembershipBindingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipBindingState)(nil)).Elem()
+}
+
+func (i GetMembershipBindingStateArgs) ToGetMembershipBindingStateOutput() GetMembershipBindingStateOutput {
+	return i.ToGetMembershipBindingStateOutputWithContext(context.Background())
+}
+
+func (i GetMembershipBindingStateArgs) ToGetMembershipBindingStateOutputWithContext(ctx context.Context) GetMembershipBindingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipBindingStateOutput)
+}
+
+// GetMembershipBindingStateArrayInput is an input type that accepts GetMembershipBindingStateArray and GetMembershipBindingStateArrayOutput values.
+// You can construct a concrete instance of `GetMembershipBindingStateArrayInput` via:
+//
+//	GetMembershipBindingStateArray{ GetMembershipBindingStateArgs{...} }
+type GetMembershipBindingStateArrayInput interface {
+	pulumi.Input
+
+	ToGetMembershipBindingStateArrayOutput() GetMembershipBindingStateArrayOutput
+	ToGetMembershipBindingStateArrayOutputWithContext(context.Context) GetMembershipBindingStateArrayOutput
+}
+
+type GetMembershipBindingStateArray []GetMembershipBindingStateInput
+
+func (GetMembershipBindingStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipBindingState)(nil)).Elem()
+}
+
+func (i GetMembershipBindingStateArray) ToGetMembershipBindingStateArrayOutput() GetMembershipBindingStateArrayOutput {
+	return i.ToGetMembershipBindingStateArrayOutputWithContext(context.Background())
+}
+
+func (i GetMembershipBindingStateArray) ToGetMembershipBindingStateArrayOutputWithContext(ctx context.Context) GetMembershipBindingStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipBindingStateArrayOutput)
+}
+
+type GetMembershipBindingStateOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipBindingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipBindingState)(nil)).Elem()
+}
+
+func (o GetMembershipBindingStateOutput) ToGetMembershipBindingStateOutput() GetMembershipBindingStateOutput {
+	return o
+}
+
+func (o GetMembershipBindingStateOutput) ToGetMembershipBindingStateOutputWithContext(ctx context.Context) GetMembershipBindingStateOutput {
+	return o
+}
+
+// Code describes the state of a MembershipBinding resource.
+func (o GetMembershipBindingStateOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembershipBindingState) string { return v.Code }).(pulumi.StringOutput)
+}
+
+type GetMembershipBindingStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipBindingStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipBindingState)(nil)).Elem()
+}
+
+func (o GetMembershipBindingStateArrayOutput) ToGetMembershipBindingStateArrayOutput() GetMembershipBindingStateArrayOutput {
+	return o
+}
+
+func (o GetMembershipBindingStateArrayOutput) ToGetMembershipBindingStateArrayOutputWithContext(ctx context.Context) GetMembershipBindingStateArrayOutput {
+	return o
+}
+
+func (o GetMembershipBindingStateArrayOutput) Index(i pulumi.IntInput) GetMembershipBindingStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMembershipBindingState {
+		return vs[0].([]GetMembershipBindingState)[vs[1].(int)]
+	}).(GetMembershipBindingStateOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigArgs{})
@@ -11515,6 +11692,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), ScopeRbacRoleBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeInput)(nil)).Elem(), ScopeStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeArrayInput)(nil)).Elem(), ScopeStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateInput)(nil)).Elem(), GetMembershipBindingStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateArrayInput)(nil)).Elem(), GetMembershipBindingStateArray{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPtrOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementOutput{})
@@ -11657,4 +11836,6 @@ func init() {
 	pulumi.RegisterOutputType(ScopeRbacRoleBindingStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(ScopeStateTypeOutput{})
 	pulumi.RegisterOutputType(ScopeStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetMembershipBindingStateOutput{})
+	pulumi.RegisterOutputType(GetMembershipBindingStateArrayOutput{})
 }

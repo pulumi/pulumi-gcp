@@ -40,12 +40,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var projectBrand = new Brand("projectBrand", BrandArgs.builder()
- *             .supportEmail("support{@literal @}example.com")
+ *             .supportEmail("support}{@literal @}{@code example.com")
  *             .applicationTitle("Cloud IAP protected Application")
  *             .project(projectService.project())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -191,7 +191,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Brand(String name) {
+    public Brand(java.lang.String name) {
         this(name, BrandArgs.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Brand(String name, BrandArgs args) {
+    public Brand(java.lang.String name, BrandArgs args) {
         this(name, args, null);
     }
     /**
@@ -208,15 +208,22 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Brand(String name, BrandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/brand:Brand", name, args == null ? BrandArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Brand(java.lang.String name, BrandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iap/brand:Brand", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Brand(String name, Output<String> id, @Nullable BrandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/brand:Brand", name, state, makeResourceOptions(options, id));
+    private Brand(java.lang.String name, Output<java.lang.String> id, @Nullable BrandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iap/brand:Brand", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BrandArgs makeArgs(BrandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BrandArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -232,7 +239,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Brand get(String name, Output<String> id, @Nullable BrandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Brand get(java.lang.String name, Output<java.lang.String> id, @Nullable BrandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Brand(name, id, state, options);
     }
 }

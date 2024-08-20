@@ -907,9 +907,9 @@ class Subscription(pulumi.CustomResource):
                 "foo": "bar",
             },
             push_config={
-                "pushEndpoint": "https://example.com/push",
+                "push_endpoint": "https://example.com/push",
                 "attributes": {
-                    "x-goog-version": "v1",
+                    "x_goog_version": "v1",
                 },
             })
         ```
@@ -933,7 +933,7 @@ class Subscription(pulumi.CustomResource):
                 "ttl": "300000.5s",
             },
             retry_policy={
-                "minimumBackoff": "10s",
+                "minimum_backoff": "10s",
             },
             enable_message_ordering=False)
         ```
@@ -949,8 +949,8 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             dead_letter_policy={
-                "deadLetterTopic": example_dead_letter.id,
-                "maxDeliveryAttempts": 10,
+                "dead_letter_topic": example_dead_letter.id,
+                "max_delivery_attempts": 10,
             })
         ```
         ### Pubsub Subscription Push Bq
@@ -987,7 +987,12 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                "table": pulumi.Output.all(
+                    project=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
@@ -1028,8 +1033,13 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-                "useTableSchema": True,
+                "table": pulumi.Output.all(
+                    project=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
+                "use_table_schema": True,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
@@ -1073,8 +1083,13 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-                "serviceAccountEmail": bq_write_service_account.email,
+                "table": pulumi.Output.all(
+                    project=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
+                "service_account_email": bq_write_service_account.email,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     bq_write_service_account,
@@ -1103,11 +1118,11 @@ class Subscription(pulumi.CustomResource):
             topic=example_topic.id,
             cloud_storage_config={
                 "bucket": example.name,
-                "filenamePrefix": "pre-",
-                "filenameSuffix": "-_79169",
-                "filenameDatetimeFormat": "YYYY-MM-DD/hh_mm_ssZ",
-                "maxBytes": 1000,
-                "maxDuration": "300s",
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_91980",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     example,
@@ -1135,13 +1150,13 @@ class Subscription(pulumi.CustomResource):
             topic=example_topic.id,
             cloud_storage_config={
                 "bucket": example.name,
-                "filenamePrefix": "pre-",
-                "filenameSuffix": "-_56529",
-                "filenameDatetimeFormat": "YYYY-MM-DD/hh_mm_ssZ",
-                "maxBytes": 1000,
-                "maxDuration": "300s",
-                "avroConfig": {
-                    "writeMetadata": True,
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_37118",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
+                "avro_config": {
+                    "write_metadata": True,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1172,12 +1187,12 @@ class Subscription(pulumi.CustomResource):
             topic=example_topic.id,
             cloud_storage_config={
                 "bucket": example.name,
-                "filenamePrefix": "pre-",
-                "filenameSuffix": "-_75413",
-                "filenameDatetimeFormat": "YYYY-MM-DD/hh_mm_ssZ",
-                "maxBytes": 1000,
-                "maxDuration": "300s",
-                "serviceAccountEmail": storage_write_service_account.email,
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_80332",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
+                "service_account_email": storage_write_service_account.email,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     storage_write_service_account,
@@ -1335,9 +1350,9 @@ class Subscription(pulumi.CustomResource):
                 "foo": "bar",
             },
             push_config={
-                "pushEndpoint": "https://example.com/push",
+                "push_endpoint": "https://example.com/push",
                 "attributes": {
-                    "x-goog-version": "v1",
+                    "x_goog_version": "v1",
                 },
             })
         ```
@@ -1361,7 +1376,7 @@ class Subscription(pulumi.CustomResource):
                 "ttl": "300000.5s",
             },
             retry_policy={
-                "minimumBackoff": "10s",
+                "minimum_backoff": "10s",
             },
             enable_message_ordering=False)
         ```
@@ -1377,8 +1392,8 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             dead_letter_policy={
-                "deadLetterTopic": example_dead_letter.id,
-                "maxDeliveryAttempts": 10,
+                "dead_letter_topic": example_dead_letter.id,
+                "max_delivery_attempts": 10,
             })
         ```
         ### Pubsub Subscription Push Bq
@@ -1415,7 +1430,12 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                "table": pulumi.Output.all(
+                    project=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
@@ -1456,8 +1476,13 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-                "useTableSchema": True,
+                "table": pulumi.Output.all(
+                    project=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
+                "use_table_schema": True,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
@@ -1501,8 +1526,13 @@ class Subscription(pulumi.CustomResource):
             name="example-subscription",
             topic=example.id,
             bigquery_config={
-                "table": pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-                "serviceAccountEmail": bq_write_service_account.email,
+                "table": pulumi.Output.all(
+                    project=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
+                "service_account_email": bq_write_service_account.email,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     bq_write_service_account,
@@ -1531,11 +1561,11 @@ class Subscription(pulumi.CustomResource):
             topic=example_topic.id,
             cloud_storage_config={
                 "bucket": example.name,
-                "filenamePrefix": "pre-",
-                "filenameSuffix": "-_79169",
-                "filenameDatetimeFormat": "YYYY-MM-DD/hh_mm_ssZ",
-                "maxBytes": 1000,
-                "maxDuration": "300s",
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_91980",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     example,
@@ -1563,13 +1593,13 @@ class Subscription(pulumi.CustomResource):
             topic=example_topic.id,
             cloud_storage_config={
                 "bucket": example.name,
-                "filenamePrefix": "pre-",
-                "filenameSuffix": "-_56529",
-                "filenameDatetimeFormat": "YYYY-MM-DD/hh_mm_ssZ",
-                "maxBytes": 1000,
-                "maxDuration": "300s",
-                "avroConfig": {
-                    "writeMetadata": True,
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_37118",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
+                "avro_config": {
+                    "write_metadata": True,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1600,12 +1630,12 @@ class Subscription(pulumi.CustomResource):
             topic=example_topic.id,
             cloud_storage_config={
                 "bucket": example.name,
-                "filenamePrefix": "pre-",
-                "filenameSuffix": "-_75413",
-                "filenameDatetimeFormat": "YYYY-MM-DD/hh_mm_ssZ",
-                "maxBytes": 1000,
-                "maxDuration": "300s",
-                "serviceAccountEmail": storage_write_service_account.email,
+                "filename_prefix": "pre-",
+                "filename_suffix": "-_80332",
+                "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
+                "max_bytes": 1000,
+                "max_duration": "300s",
+                "service_account_email": storage_write_service_account.email,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     storage_write_service_account,

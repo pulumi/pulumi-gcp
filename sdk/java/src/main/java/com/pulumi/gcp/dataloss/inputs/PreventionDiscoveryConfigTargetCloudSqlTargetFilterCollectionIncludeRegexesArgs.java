@@ -17,7 +17,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
     public static final PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs Empty = new PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs();
 
     /**
-     * A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
+     * The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
     private @Nullable Output<List<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs>> patterns;
 
     /**
-     * @return A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
+     * @return The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
         }
 
         /**
-         * @param patterns A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
+         * @param patterns The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder
@@ -70,7 +70,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
         }
 
         /**
-         * @param patterns A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
+         * @param patterns The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder
@@ -81,7 +81,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
         }
 
         /**
-         * @param patterns A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions&#39; length can&#39;t exceed 10 KiB.
+         * @param patterns The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder

@@ -27,13 +27,16 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_service_account=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables and not isinstance(build_environment_variables, dict):
             raise TypeError("Expected argument 'build_environment_variables' to be a dict")
         pulumi.set(__self__, "build_environment_variables", build_environment_variables)
+        if build_service_account and not isinstance(build_service_account, str):
+            raise TypeError("Expected argument 'build_service_account' to be a str")
+        pulumi.set(__self__, "build_service_account", build_service_account)
         if build_worker_pool and not isinstance(build_worker_pool, str):
             raise TypeError("Expected argument 'build_worker_pool' to be a str")
         pulumi.set(__self__, "build_worker_pool", build_worker_pool)
@@ -144,8 +147,13 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter(name="buildEnvironmentVariables")
-    def build_environment_variables(self) -> Mapping[str, Any]:
+    def build_environment_variables(self) -> Mapping[str, str]:
         return pulumi.get(self, "build_environment_variables")
+
+    @property
+    @pulumi.getter(name="buildServiceAccount")
+    def build_service_account(self) -> str:
+        return pulumi.get(self, "build_service_account")
 
     @property
     @pulumi.getter(name="buildWorkerPool")
@@ -185,7 +193,7 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Mapping[str, Any]:
+    def environment_variables(self) -> Mapping[str, str]:
         return pulumi.get(self, "environment_variables")
 
     @property
@@ -232,7 +240,7 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
@@ -375,6 +383,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
         return GetFunctionResult(
             available_memory_mb=self.available_memory_mb,
             build_environment_variables=self.build_environment_variables,
+            build_service_account=self.build_service_account,
             build_worker_pool=self.build_worker_pool,
             description=self.description,
             docker_registry=self.docker_registry,
@@ -447,6 +456,7 @@ def get_function(name: Optional[str] = None,
     return AwaitableGetFunctionResult(
         available_memory_mb=pulumi.get(__ret__, 'available_memory_mb'),
         build_environment_variables=pulumi.get(__ret__, 'build_environment_variables'),
+        build_service_account=pulumi.get(__ret__, 'build_service_account'),
         build_worker_pool=pulumi.get(__ret__, 'build_worker_pool'),
         description=pulumi.get(__ret__, 'description'),
         docker_registry=pulumi.get(__ret__, 'docker_registry'),

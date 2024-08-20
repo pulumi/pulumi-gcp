@@ -237,7 +237,7 @@ class GetRegionInstanceTemplateResult:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.
@@ -473,7 +473,7 @@ def get_region_instance_template(filter: Optional[str] = None,
 
 
     :param str filter: A filter to retrieve the instance templates.
-           See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+           See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
            If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
     :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
     :param str name: The name of the instance template. One of `name` or `filter` must be provided.
@@ -557,7 +557,7 @@ def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[s
 
 
     :param str filter: A filter to retrieve the instance templates.
-           See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+           See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
            If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
     :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
     :param str name: The name of the instance template. One of `name` or `filter` must be provided.

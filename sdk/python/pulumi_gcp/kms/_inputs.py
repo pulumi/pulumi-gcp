@@ -19,6 +19,8 @@ __all__ = [
     'CryptoKeyIAMBindingConditionArgsDict',
     'CryptoKeyIAMMemberConditionArgs',
     'CryptoKeyIAMMemberConditionArgsDict',
+    'CryptoKeyKeyAccessJustificationsPolicyArgs',
+    'CryptoKeyKeyAccessJustificationsPolicyArgsDict',
     'CryptoKeyPrimaryArgs',
     'CryptoKeyPrimaryArgsDict',
     'CryptoKeyVersionAttestationArgs',
@@ -209,6 +211,44 @@ class CryptoKeyIAMMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class CryptoKeyKeyAccessJustificationsPolicyArgsDict(TypedDict):
+        allowed_access_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of allowed reasons for access to this CryptoKey. Zero allowed
+        access reasons means all encrypt, decrypt, and sign operations for
+        this CryptoKey will fail.
+        """
+elif False:
+    CryptoKeyKeyAccessJustificationsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CryptoKeyKeyAccessJustificationsPolicyArgs:
+    def __init__(__self__, *,
+                 allowed_access_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_access_reasons: The list of allowed reasons for access to this CryptoKey. Zero allowed
+               access reasons means all encrypt, decrypt, and sign operations for
+               this CryptoKey will fail.
+        """
+        if allowed_access_reasons is not None:
+            pulumi.set(__self__, "allowed_access_reasons", allowed_access_reasons)
+
+    @property
+    @pulumi.getter(name="allowedAccessReasons")
+    def allowed_access_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of allowed reasons for access to this CryptoKey. Zero allowed
+        access reasons means all encrypt, decrypt, and sign operations for
+        this CryptoKey will fail.
+        """
+        return pulumi.get(self, "allowed_access_reasons")
+
+    @allowed_access_reasons.setter
+    def allowed_access_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_access_reasons", value)
 
 
 if not MYPY:

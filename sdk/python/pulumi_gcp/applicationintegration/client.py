@@ -366,18 +366,18 @@ class Client(pulumi.CustomResource):
             rotation_period="7776000s")
         test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
         service_account = gcp.serviceaccount.Account("service_account",
-            account_id="service-account-id",
+            account_id="my-service-acc",
             display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",
             create_sample_integrations=True,
             run_as_service_account=service_account.email,
             cloud_kms_config={
-                "kmsLocation": "us-east1",
-                "kmsRing": keyring.id,
+                "kms_location": "us-east1",
+                "kms_ring": keyring.id,
                 "key": cryptokey.id,
-                "keyVersion": test_key.id,
-                "kmsProjectId": test_project.project_id,
+                "key_version": test_key.id,
+                "kms_project_id": test_project.project_id,
             })
         ```
 
@@ -468,18 +468,18 @@ class Client(pulumi.CustomResource):
             rotation_period="7776000s")
         test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
         service_account = gcp.serviceaccount.Account("service_account",
-            account_id="service-account-id",
+            account_id="my-service-acc",
             display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",
             create_sample_integrations=True,
             run_as_service_account=service_account.email,
             cloud_kms_config={
-                "kmsLocation": "us-east1",
-                "kmsRing": keyring.id,
+                "kms_location": "us-east1",
+                "kms_ring": keyring.id,
                 "key": cryptokey.id,
-                "keyVersion": test_key.id,
-                "kmsProjectId": test_project.project_id,
+                "key_version": test_key.id,
+                "kms_project_id": test_project.project_id,
             })
         ```
 

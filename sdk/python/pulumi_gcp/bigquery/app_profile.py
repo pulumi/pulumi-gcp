@@ -22,6 +22,7 @@ __all__ = ['AppProfileArgs', 'AppProfile']
 class AppProfileArgs:
     def __init__(__self__, *,
                  app_profile_id: pulumi.Input[str],
+                 data_boost_isolation_read_only: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,8 @@ class AppProfileArgs:
                
                
                - - -
+        :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+               Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -52,6 +55,8 @@ class AppProfileArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "app_profile_id", app_profile_id)
+        if data_boost_isolation_read_only is not None:
+            pulumi.set(__self__, "data_boost_isolation_read_only", data_boost_isolation_read_only)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ignore_warnings is not None:
@@ -83,6 +88,19 @@ class AppProfileArgs:
     @app_profile_id.setter
     def app_profile_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "app_profile_id", value)
+
+    @property
+    @pulumi.getter(name="dataBoostIsolationReadOnly")
+    def data_boost_isolation_read_only(self) -> Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]:
+        """
+        Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_boost_isolation_read_only")
+
+    @data_boost_isolation_read_only.setter
+    def data_boost_isolation_read_only(self, value: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]):
+        pulumi.set(self, "data_boost_isolation_read_only", value)
 
     @property
     @pulumi.getter
@@ -191,6 +209,7 @@ class AppProfileArgs:
 class _AppProfileState:
     def __init__(__self__, *,
                  app_profile_id: Optional[pulumi.Input[str]] = None,
+                 data_boost_isolation_read_only: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -206,6 +225,8 @@ class _AppProfileState:
                
                
                - - -
+        :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+               Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -224,6 +245,8 @@ class _AppProfileState:
         """
         if app_profile_id is not None:
             pulumi.set(__self__, "app_profile_id", app_profile_id)
+        if data_boost_isolation_read_only is not None:
+            pulumi.set(__self__, "data_boost_isolation_read_only", data_boost_isolation_read_only)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ignore_warnings is not None:
@@ -257,6 +280,19 @@ class _AppProfileState:
     @app_profile_id.setter
     def app_profile_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "app_profile_id", value)
+
+    @property
+    @pulumi.getter(name="dataBoostIsolationReadOnly")
+    def data_boost_isolation_read_only(self) -> Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]:
+        """
+        Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_boost_isolation_read_only")
+
+    @data_boost_isolation_read_only.setter
+    def data_boost_isolation_read_only(self, value: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]):
+        pulumi.set(self, "data_boost_isolation_read_only", value)
 
     @property
     @pulumi.getter
@@ -379,6 +415,7 @@ class AppProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: Optional[pulumi.Input[str]] = None,
+                 data_boost_isolation_read_only: Optional[pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -407,22 +444,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -441,18 +478,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             ignore_warnings=True)
         ```
@@ -466,22 +503,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -504,18 +541,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             standard_isolation={
                 "priority": "PRIORITY_LOW",
@@ -553,6 +590,8 @@ class AppProfile(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+               Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -593,22 +632,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -627,18 +666,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             ignore_warnings=True)
         ```
@@ -652,22 +691,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -690,18 +729,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             standard_isolation={
                 "priority": "PRIORITY_LOW",
@@ -749,6 +788,7 @@ class AppProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: Optional[pulumi.Input[str]] = None,
+                 data_boost_isolation_read_only: Optional[pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -769,6 +809,7 @@ class AppProfile(pulumi.CustomResource):
             if app_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_profile_id'")
             __props__.__dict__["app_profile_id"] = app_profile_id
+            __props__.__dict__["data_boost_isolation_read_only"] = data_boost_isolation_read_only
             __props__.__dict__["description"] = description
             __props__.__dict__["ignore_warnings"] = ignore_warnings
             __props__.__dict__["instance"] = instance
@@ -789,6 +830,7 @@ class AppProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_profile_id: Optional[pulumi.Input[str]] = None,
+            data_boost_isolation_read_only: Optional[pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             ignore_warnings: Optional[pulumi.Input[bool]] = None,
             instance: Optional[pulumi.Input[str]] = None,
@@ -809,6 +851,8 @@ class AppProfile(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+               Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -830,6 +874,7 @@ class AppProfile(pulumi.CustomResource):
         __props__ = _AppProfileState.__new__(_AppProfileState)
 
         __props__.__dict__["app_profile_id"] = app_profile_id
+        __props__.__dict__["data_boost_isolation_read_only"] = data_boost_isolation_read_only
         __props__.__dict__["description"] = description
         __props__.__dict__["ignore_warnings"] = ignore_warnings
         __props__.__dict__["instance"] = instance
@@ -851,6 +896,15 @@ class AppProfile(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "app_profile_id")
+
+    @property
+    @pulumi.getter(name="dataBoostIsolationReadOnly")
+    def data_boost_isolation_read_only(self) -> pulumi.Output[Optional['outputs.AppProfileDataBoostIsolationReadOnly']]:
+        """
+        Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_boost_isolation_read_only")
 
     @property
     @pulumi.getter

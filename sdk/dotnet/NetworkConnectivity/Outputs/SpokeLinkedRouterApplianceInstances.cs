@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
     {
         /// <summary>
         /// The list of router appliance instances
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SpokeLinkedRouterApplianceInstancesInstance> Instances;
         /// <summary>

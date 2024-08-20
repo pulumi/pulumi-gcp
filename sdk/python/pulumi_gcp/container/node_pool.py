@@ -87,8 +87,6 @@ class NodePoolArgs:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -337,8 +335,6 @@ class NodePoolArgs:
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 
@@ -451,8 +447,6 @@ class _NodePoolState:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -741,8 +735,6 @@ class _NodePoolState:
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 
@@ -831,9 +823,9 @@ class NodePool(pulumi.CustomResource):
             node_count=1,
             node_config={
                 "preemptible": True,
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -852,9 +844,9 @@ class NodePool(pulumi.CustomResource):
             initial_node_count=3,
             node_locations=["us-central1-c"],
             node_config={
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
-                "guestAccelerators": [{
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "guest_accelerators": [{
                     "type": "nvidia-tesla-k80",
                     "count": 1,
                 }],
@@ -863,9 +855,9 @@ class NodePool(pulumi.CustomResource):
             name="my-node-pool",
             cluster=primary.id,
             node_config={
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -938,8 +930,6 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -982,9 +972,9 @@ class NodePool(pulumi.CustomResource):
             node_count=1,
             node_config={
                 "preemptible": True,
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -1003,9 +993,9 @@ class NodePool(pulumi.CustomResource):
             initial_node_count=3,
             node_locations=["us-central1-c"],
             node_config={
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
-                "guestAccelerators": [{
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "guest_accelerators": [{
                     "type": "nvidia-tesla-k80",
                     "count": 1,
                 }],
@@ -1014,9 +1004,9 @@ class NodePool(pulumi.CustomResource):
             name="my-node-pool",
             cluster=primary.id,
             node_config={
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -1189,8 +1179,6 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -1396,8 +1384,6 @@ class NodePool(pulumi.CustomResource):
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 

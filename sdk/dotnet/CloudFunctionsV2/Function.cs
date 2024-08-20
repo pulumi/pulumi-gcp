@@ -966,7 +966,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             $"serviceAccount:service-{projectGetProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
     ///             $"serviceAccount:service-{projectGetProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gs-project-accounts.iam.gserviceaccount.com",
     ///             $"serviceAccount:service-{projectGetProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@serverless-robot-prod.iam.gserviceaccount.com",
-    ///             eaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///             eaSa.Member,
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

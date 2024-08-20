@@ -52,20 +52,18 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for
-     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional labels in key:value format. For more information about labels, see [Requirements for
-     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effective_labels` for all of the labels present on the resource.
+     * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -73,18 +71,16 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-     * advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * Structure is documented below.
      * 
      */
     @Import(name="linkedInterconnectAttachments")
     private @Nullable Output<SpokeLinkedInterconnectAttachmentsArgs> linkedInterconnectAttachments;
 
     /**
-     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-     * advertising the same prefixes.
+     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<SpokeLinkedInterconnectAttachmentsArgs>> linkedInterconnectAttachments() {
@@ -93,6 +89,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The URIs of linked Router appliance resources
+     * Structure is documented below.
      * 
      */
     @Import(name="linkedRouterApplianceInstances")
@@ -100,6 +97,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The URIs of linked Router appliance resources
+     * Structure is documented below.
      * 
      */
     public Optional<Output<SpokeLinkedRouterApplianceInstancesArgs>> linkedRouterApplianceInstances() {
@@ -108,6 +106,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * VPC network that is associated with the spoke.
+     * Structure is documented below.
      * 
      */
     @Import(name="linkedVpcNetwork")
@@ -115,6 +114,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return VPC network that is associated with the spoke.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<SpokeLinkedVpcNetworkArgs>> linkedVpcNetwork() {
@@ -123,6 +123,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The URIs of linked VPN tunnel resources
+     * Structure is documented below.
      * 
      */
     @Import(name="linkedVpnTunnels")
@@ -130,6 +131,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The URIs of linked VPN tunnel resources
+     * Structure is documented below.
      * 
      */
     public Optional<Output<SpokeLinkedVpnTunnelsArgs>> linkedVpnTunnels() {
@@ -139,12 +141,16 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location for the resource
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -167,14 +173,16 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -257,10 +265,9 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for
-         * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -271,10 +278,9 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for
-         * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -284,9 +290,8 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-         * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-         * advertising the same prefixes.
+         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -297,9 +302,8 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-         * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-         * advertising the same prefixes.
+         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -310,6 +314,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param linkedRouterApplianceInstances The URIs of linked Router appliance resources
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -321,6 +326,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param linkedRouterApplianceInstances The URIs of linked Router appliance resources
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -331,6 +337,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param linkedVpcNetwork VPC network that is associated with the spoke.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -342,6 +349,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param linkedVpcNetwork VPC network that is associated with the spoke.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -352,6 +360,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param linkedVpnTunnels The URIs of linked VPN tunnel resources
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -363,6 +372,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param linkedVpnTunnels The URIs of linked VPN tunnel resources
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -374,6 +384,8 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -384,6 +396,8 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the resource
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -414,7 +428,8 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -425,7 +440,8 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

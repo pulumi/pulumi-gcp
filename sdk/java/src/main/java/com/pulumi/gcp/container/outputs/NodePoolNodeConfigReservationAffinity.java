@@ -14,38 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolNodeConfigReservationAffinity {
     /**
-     * @return Corresponds to the type of reservation consumption.
+     * @return The type of reservation consumption
+     * Accepted values are:
+     * 
+     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
      * 
      */
     private String consumeReservationType;
     /**
-     * @return The label key of a reservation resource.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     private @Nullable String key;
     /**
-     * @return The label values of the reservation resource.
+     * @return The list of label values of reservation resources. For example: the name of the specific reservation when using a key of &#34;compute.googleapis.com/reservation-name&#34;
      * 
      */
     private @Nullable List<String> values;
 
     private NodePoolNodeConfigReservationAffinity() {}
     /**
-     * @return Corresponds to the type of reservation consumption.
+     * @return The type of reservation consumption
+     * Accepted values are:
+     * 
+     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
      * 
      */
     public String consumeReservationType() {
         return this.consumeReservationType;
     }
     /**
-     * @return The label key of a reservation resource.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The label values of the reservation resource.
+     * @return The list of label values of reservation resources. For example: the name of the specific reservation when using a key of &#34;compute.googleapis.com/reservation-name&#34;
      * 
      */
     public List<String> values() {

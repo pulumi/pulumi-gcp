@@ -26,7 +26,7 @@ public final class GetSubscriptionBigqueryConfig {
      */
     private String serviceAccountEmail;
     /**
-     * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+     * @return The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
      * 
      */
     private String table;
@@ -69,7 +69,7 @@ public final class GetSubscriptionBigqueryConfig {
         return this.serviceAccountEmail;
     }
     /**
-     * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+     * @return The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
      * 
      */
     public String table() {

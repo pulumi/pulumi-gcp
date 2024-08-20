@@ -218,14 +218,14 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
                 "network": "default",
             }],
             disks=[{
-                "sourceImage": "debian-cloud/debian-11",
-                "autoDelete": True,
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
                 "boot": True,
             }])
         webservers = gcp.compute.InstanceGroupManager("webservers",
             name="my-webservers",
             versions=[{
-                "instanceTemplate": webserver.id,
+                "instance_template": webserver.id,
                 "name": "primary",
             }],
             base_instance_name="webserver",
@@ -302,14 +302,14 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
                 "network": "default",
             }],
             disks=[{
-                "sourceImage": "debian-cloud/debian-11",
-                "autoDelete": True,
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
                 "boot": True,
             }])
         webservers = gcp.compute.InstanceGroupManager("webservers",
             name="my-webservers",
             versions=[{
-                "instanceTemplate": webserver.id,
+                "instance_template": webserver.id,
                 "name": "primary",
             }],
             base_instance_name="webserver",

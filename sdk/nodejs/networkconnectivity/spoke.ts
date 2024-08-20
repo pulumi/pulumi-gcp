@@ -9,28 +9,35 @@ import * as utilities from "../utilities";
 /**
  * The NetworkConnectivity Spoke resource
  *
+ * To get more information about Spoke, see:
+ *
+ * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+ *
  * ## Example Usage
  *
- * ### Linked_vpc_network
+ * ### Network Connectivity Spoke Linked Vpc Network Basic
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "network",
+ *     name: "net",
  *     autoCreateSubnetworks: false,
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "hub",
+ *     name: "hub1",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "name",
+ *     name: "spoke1",
  *     location: "global",
- *     description: "A sample spoke with a linked routher appliance instance",
+ *     description: "A sample spoke with a linked router appliance instance",
  *     labels: {
  *         "label-one": "value-one",
  *     },
@@ -44,26 +51,27 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Router_appliance
+ * ### Network Connectivity Spoke Router Appliance Basic
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "network",
+ *     name: "tf-test-network_2067",
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "subnet",
+ *     name: "tf-test-subnet_40785",
  *     ipCidrRange: "10.0.0.0/28",
- *     region: "us-west1",
+ *     region: "us-central1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
- *     name: "instance",
+ *     name: "tf-test-instance_79169",
  *     machineType: "e2-medium",
  *     canIpForward: true,
- *     zone: "us-west1-a",
+ *     zone: "us-central1-a",
  *     bootDisk: {
  *         initializeParams: {
  *             image: "projects/debian-cloud/global/images/debian-10-buster-v20210817",
@@ -78,15 +86,15 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "hub",
+ *     name: "tf-test-hub_56529",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "name",
- *     location: "us-west1",
+ *     name: "tf-test-name_75413",
+ *     location: "us-central1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
  *         "label-one": "value-one",
@@ -165,38 +173,42 @@ export class Spoke extends pulumi.CustomResource {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */
     public readonly hub!: pulumi.Output<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for
-     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effectiveLabels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-     * advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * Structure is documented below.
      */
     public readonly linkedInterconnectAttachments!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedInterconnectAttachments | undefined>;
     /**
      * The URIs of linked Router appliance resources
+     * Structure is documented below.
      */
     public readonly linkedRouterApplianceInstances!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedRouterApplianceInstances | undefined>;
     /**
      * VPC network that is associated with the spoke.
+     * Structure is documented below.
      */
     public readonly linkedVpcNetwork!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpcNetwork | undefined>;
     /**
      * The URIs of linked VPN tunnel resources
+     * Structure is documented below.
      */
     public readonly linkedVpnTunnels!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -204,15 +216,17 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * Output only. The current lifecycle state of this spoke.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -300,38 +314,42 @@ export interface SpokeState {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */
     hub?: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for
-     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effectiveLabels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-     * advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * Structure is documented below.
      */
     linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
     /**
      * The URIs of linked Router appliance resources
+     * Structure is documented below.
      */
     linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances>;
     /**
      * VPC network that is associated with the spoke.
+     * Structure is documented below.
      */
     linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork>;
     /**
      * The URIs of linked VPN tunnel resources
+     * Structure is documented below.
      */
     linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -339,15 +357,17 @@ export interface SpokeState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+     * Output only. The current lifecycle state of this spoke.
      */
     state?: pulumi.Input<string>;
     /**
@@ -373,32 +393,36 @@ export interface SpokeArgs {
      */
     hub: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for
-     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * `effectiveLabels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
-     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
-     * advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * Structure is documented below.
      */
     linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
     /**
      * The URIs of linked Router appliance resources
+     * Structure is documented below.
      */
     linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances>;
     /**
      * VPC network that is associated with the spoke.
+     * Structure is documented below.
      */
     linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork>;
     /**
      * The URIs of linked VPN tunnel resources
+     * Structure is documented below.
      */
     linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**
@@ -406,7 +430,8 @@ export interface SpokeArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
 }

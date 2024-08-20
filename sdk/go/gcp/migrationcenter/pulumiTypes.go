@@ -14,12 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type PreferenceSetVirtualMachinePreferences struct {
-	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-	// Possible values:
-	// COMMITMENT_PLAN_UNSPECIFIED
-	// COMMITMENT_PLAN_NONE
-	// COMMITMENT_PLAN_ONE_YEAR
-	// COMMITMENT_PLAN_THREE_YEARS
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
 	CommitmentPlan *string `pulumi:"commitmentPlan"`
 	// The user preferences relating to Compute Engine target platform.
 	// Structure is documented below.
@@ -27,22 +22,12 @@ type PreferenceSetVirtualMachinePreferences struct {
 	// The user preferences relating to target regions.
 	// Structure is documented below.
 	RegionPreferences *PreferenceSetVirtualMachinePreferencesRegionPreferences `pulumi:"regionPreferences"`
-	// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-	// Possible values:
-	// SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-	// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-	// SIZING_OPTIMIZATION_STRATEGY_MODERATE
-	// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+	// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
 	SizingOptimizationStrategy *string `pulumi:"sizingOptimizationStrategy"`
 	// Preferences concerning Sole Tenancy nodes and VMs.
 	// Structure is documented below.
 	SoleTenancyPreferences *PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences `pulumi:"soleTenancyPreferences"`
-	// Target product for assets using this preference set. Specify either target product or business goal, but not both.
-	// Possible values:
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+	// Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
 	TargetProduct *string `pulumi:"targetProduct"`
 	// The user preferences relating to Google Cloud VMware Engine target platform.
 	// Structure is documented below.
@@ -61,12 +46,7 @@ type PreferenceSetVirtualMachinePreferencesInput interface {
 }
 
 type PreferenceSetVirtualMachinePreferencesArgs struct {
-	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-	// Possible values:
-	// COMMITMENT_PLAN_UNSPECIFIED
-	// COMMITMENT_PLAN_NONE
-	// COMMITMENT_PLAN_ONE_YEAR
-	// COMMITMENT_PLAN_THREE_YEARS
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
 	CommitmentPlan pulumi.StringPtrInput `pulumi:"commitmentPlan"`
 	// The user preferences relating to Compute Engine target platform.
 	// Structure is documented below.
@@ -74,22 +54,12 @@ type PreferenceSetVirtualMachinePreferencesArgs struct {
 	// The user preferences relating to target regions.
 	// Structure is documented below.
 	RegionPreferences PreferenceSetVirtualMachinePreferencesRegionPreferencesPtrInput `pulumi:"regionPreferences"`
-	// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-	// Possible values:
-	// SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-	// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-	// SIZING_OPTIMIZATION_STRATEGY_MODERATE
-	// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+	// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
 	SizingOptimizationStrategy pulumi.StringPtrInput `pulumi:"sizingOptimizationStrategy"`
 	// Preferences concerning Sole Tenancy nodes and VMs.
 	// Structure is documented below.
 	SoleTenancyPreferences PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrInput `pulumi:"soleTenancyPreferences"`
-	// Target product for assets using this preference set. Specify either target product or business goal, but not both.
-	// Possible values:
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-	// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+	// Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
 	TargetProduct pulumi.StringPtrInput `pulumi:"targetProduct"`
 	// The user preferences relating to Google Cloud VMware Engine target platform.
 	// Structure is documented below.
@@ -173,12 +143,7 @@ func (o PreferenceSetVirtualMachinePreferencesOutput) ToPreferenceSetVirtualMach
 	}).(PreferenceSetVirtualMachinePreferencesPtrOutput)
 }
 
-// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-// Possible values:
-// COMMITMENT_PLAN_UNSPECIFIED
-// COMMITMENT_PLAN_NONE
-// COMMITMENT_PLAN_ONE_YEAR
-// COMMITMENT_PLAN_THREE_YEARS
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
 func (o PreferenceSetVirtualMachinePreferencesOutput) CommitmentPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferences) *string { return v.CommitmentPlan }).(pulumi.StringPtrOutput)
 }
@@ -199,12 +164,7 @@ func (o PreferenceSetVirtualMachinePreferencesOutput) RegionPreferences() Prefer
 	}).(PreferenceSetVirtualMachinePreferencesRegionPreferencesPtrOutput)
 }
 
-// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-// Possible values:
-// SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-// SIZING_OPTIMIZATION_STRATEGY_MODERATE
-// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
 func (o PreferenceSetVirtualMachinePreferencesOutput) SizingOptimizationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferences) *string { return v.SizingOptimizationStrategy }).(pulumi.StringPtrOutput)
 }
@@ -217,12 +177,7 @@ func (o PreferenceSetVirtualMachinePreferencesOutput) SoleTenancyPreferences() P
 	}).(PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput)
 }
 
-// Target product for assets using this preference set. Specify either target product or business goal, but not both.
-// Possible values:
-// COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+// Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
 func (o PreferenceSetVirtualMachinePreferencesOutput) TargetProduct() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferences) *string { return v.TargetProduct }).(pulumi.StringPtrOutput)
 }
@@ -259,12 +214,7 @@ func (o PreferenceSetVirtualMachinePreferencesPtrOutput) Elem() PreferenceSetVir
 	}).(PreferenceSetVirtualMachinePreferencesOutput)
 }
 
-// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-// Possible values:
-// COMMITMENT_PLAN_UNSPECIFIED
-// COMMITMENT_PLAN_NONE
-// COMMITMENT_PLAN_ONE_YEAR
-// COMMITMENT_PLAN_THREE_YEARS
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
 func (o PreferenceSetVirtualMachinePreferencesPtrOutput) CommitmentPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferences) *string {
 		if v == nil {
@@ -296,12 +246,7 @@ func (o PreferenceSetVirtualMachinePreferencesPtrOutput) RegionPreferences() Pre
 	}).(PreferenceSetVirtualMachinePreferencesRegionPreferencesPtrOutput)
 }
 
-// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-// Possible values:
-// SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-// SIZING_OPTIMIZATION_STRATEGY_MODERATE
-// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
 func (o PreferenceSetVirtualMachinePreferencesPtrOutput) SizingOptimizationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferences) *string {
 		if v == nil {
@@ -322,12 +267,7 @@ func (o PreferenceSetVirtualMachinePreferencesPtrOutput) SoleTenancyPreferences(
 	}).(PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput)
 }
 
-// Target product for assets using this preference set. Specify either target product or business goal, but not both.
-// Possible values:
-// COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+// Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
 func (o PreferenceSetVirtualMachinePreferencesPtrOutput) TargetProduct() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferences) *string {
 		if v == nil {
@@ -349,11 +289,7 @@ func (o PreferenceSetVirtualMachinePreferencesPtrOutput) VmwareEnginePreferences
 }
 
 type PreferenceSetVirtualMachinePreferencesComputeEnginePreferences struct {
-	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-	// Possible values:
-	// LICENSE_TYPE_UNSPECIFIED
-	// LICENSE_TYPE_DEFAULT
-	// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
 	LicenseType *string `pulumi:"licenseType"`
 	// The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
 	// Structure is documented below.
@@ -372,11 +308,7 @@ type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesInput interfa
 }
 
 type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs struct {
-	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-	// Possible values:
-	// LICENSE_TYPE_UNSPECIFIED
-	// LICENSE_TYPE_DEFAULT
-	// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
 	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
 	// The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
 	// Structure is documented below.
@@ -460,11 +392,7 @@ func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput) To
 	}).(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesPtrOutput)
 }
 
-// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-// Possible values:
-// LICENSE_TYPE_UNSPECIFIED
-// LICENSE_TYPE_DEFAULT
-// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
 func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesComputeEnginePreferences) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
@@ -501,11 +429,7 @@ func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesPtrOutput)
 	}).(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput)
 }
 
-// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-// Possible values:
-// LICENSE_TYPE_UNSPECIFIED
-// LICENSE_TYPE_DEFAULT
-// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
 func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesPtrOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferencesComputeEnginePreferences) *string {
 		if v == nil {
@@ -906,21 +830,11 @@ func (o PreferenceSetVirtualMachinePreferencesRegionPreferencesPtrOutput) Prefer
 }
 
 type PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences struct {
-	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-	// Possible values:
-	// COMMITMENT_PLAN_UNSPECIFIED
-	// ON_DEMAND
-	// COMMITMENT_1_YEAR
-	// COMMITMENT_3_YEAR
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
 	CommitmentPlan *string `pulumi:"commitmentPlan"`
 	// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
 	CpuOvercommitRatio *float64 `pulumi:"cpuOvercommitRatio"`
-	// Sole Tenancy nodes maintenance policy.
-	// Possible values:
-	// HOST_MAINTENANCE_POLICY_UNSPECIFIED
-	// HOST_MAINTENANCE_POLICY_DEFAULT
-	// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-	// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+	// Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
 	HostMaintenancePolicy *string `pulumi:"hostMaintenancePolicy"`
 	// A list of sole tenant node types. An empty list means that all possible node types will be considered.
 	// Structure is documented below.
@@ -939,21 +853,11 @@ type PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesInput interface
 }
 
 type PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs struct {
-	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-	// Possible values:
-	// COMMITMENT_PLAN_UNSPECIFIED
-	// ON_DEMAND
-	// COMMITMENT_1_YEAR
-	// COMMITMENT_3_YEAR
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
 	CommitmentPlan pulumi.StringPtrInput `pulumi:"commitmentPlan"`
 	// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
 	CpuOvercommitRatio pulumi.Float64PtrInput `pulumi:"cpuOvercommitRatio"`
-	// Sole Tenancy nodes maintenance policy.
-	// Possible values:
-	// HOST_MAINTENANCE_POLICY_UNSPECIFIED
-	// HOST_MAINTENANCE_POLICY_DEFAULT
-	// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-	// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+	// Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
 	HostMaintenancePolicy pulumi.StringPtrInput `pulumi:"hostMaintenancePolicy"`
 	// A list of sole tenant node types. An empty list means that all possible node types will be considered.
 	// Structure is documented below.
@@ -1037,12 +941,7 @@ func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesOutput) ToPr
 	}).(PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput)
 }
 
-// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-// Possible values:
-// COMMITMENT_PLAN_UNSPECIFIED
-// ON_DEMAND
-// COMMITMENT_1_YEAR
-// COMMITMENT_3_YEAR
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
 func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesOutput) CommitmentPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences) *string { return v.CommitmentPlan }).(pulumi.StringPtrOutput)
 }
@@ -1054,12 +953,7 @@ func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesOutput) CpuO
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sole Tenancy nodes maintenance policy.
-// Possible values:
-// HOST_MAINTENANCE_POLICY_UNSPECIFIED
-// HOST_MAINTENANCE_POLICY_DEFAULT
-// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+// Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
 func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesOutput) HostMaintenancePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences) *string {
 		return v.HostMaintenancePolicy
@@ -1098,12 +992,7 @@ func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput) E
 	}).(PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesOutput)
 }
 
-// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-// Possible values:
-// COMMITMENT_PLAN_UNSPECIFIED
-// ON_DEMAND
-// COMMITMENT_1_YEAR
-// COMMITMENT_3_YEAR
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
 func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput) CommitmentPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences) *string {
 		if v == nil {
@@ -1123,12 +1012,7 @@ func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput) C
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sole Tenancy nodes maintenance policy.
-// Possible values:
-// HOST_MAINTENANCE_POLICY_UNSPECIFIED
-// HOST_MAINTENANCE_POLICY_DEFAULT
-// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
-// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+// Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
 func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput) HostMaintenancePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences) *string {
 		if v == nil {
@@ -1249,14 +1133,7 @@ func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArra
 }
 
 type PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences struct {
-	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-	// Possible values:
-	// COMMITMENT_PLAN_UNSPECIFIED
-	// ON_DEMAND
-	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
 	CommitmentPlan *string `pulumi:"commitmentPlan"`
 	// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
 	CpuOvercommitRatio *float64 `pulumi:"cpuOvercommitRatio"`
@@ -1278,14 +1155,7 @@ type PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesInput interfac
 }
 
 type PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs struct {
-	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-	// Possible values:
-	// COMMITMENT_PLAN_UNSPECIFIED
-	// ON_DEMAND
-	// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-	// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-	// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-	// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
 	CommitmentPlan pulumi.StringPtrInput `pulumi:"commitmentPlan"`
 	// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
 	CpuOvercommitRatio pulumi.Float64PtrInput `pulumi:"cpuOvercommitRatio"`
@@ -1372,14 +1242,7 @@ func (o PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesOutput) ToP
 	}).(PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesPtrOutput)
 }
 
-// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-// Possible values:
-// COMMITMENT_PLAN_UNSPECIFIED
-// ON_DEMAND
-// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
 func (o PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesOutput) CommitmentPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences) *string { return v.CommitmentPlan }).(pulumi.StringPtrOutput)
 }
@@ -1429,14 +1292,7 @@ func (o PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesPtrOutput) 
 	}).(PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesOutput)
 }
 
-// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-// Possible values:
-// COMMITMENT_PLAN_UNSPECIFIED
-// ON_DEMAND
-// COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
-// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
-// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
-// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
 func (o PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesPtrOutput) CommitmentPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences) *string {
 		if v == nil {

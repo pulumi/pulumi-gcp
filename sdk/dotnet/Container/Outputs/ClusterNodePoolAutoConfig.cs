@@ -20,13 +20,13 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
+        public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
 
         [OutputConstructor]
         private ClusterNodePoolAutoConfig(
             Outputs.ClusterNodePoolAutoConfigNetworkTags? networkTags,
 
-            ImmutableDictionary<string, object>? resourceManagerTags)
+            ImmutableDictionary<string, string>? resourceManagerTags)
         {
             NetworkTags = networkTags;
             ResourceManagerTags = resourceManagerTags;

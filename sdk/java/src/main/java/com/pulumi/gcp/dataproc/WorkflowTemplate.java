@@ -14,7 +14,6 @@ import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateJob;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateParameter;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacement;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -189,10 +188,10 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dagTimeout() {
         return Codegen.optional(this.dagTimeout);
     }
-    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveLabels;
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
 
-    public Output<Map<String,Object>> effectiveLabels() {
+    public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
@@ -309,14 +308,14 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> pulumiLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> pulumiLabels() {
+    public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
     /**
@@ -356,7 +355,7 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkflowTemplate(String name) {
+    public WorkflowTemplate(java.lang.String name) {
         this(name, WorkflowTemplateArgs.Empty);
     }
     /**
@@ -364,7 +363,7 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkflowTemplate(String name, WorkflowTemplateArgs args) {
+    public WorkflowTemplate(java.lang.String name, WorkflowTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -373,15 +372,22 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkflowTemplate(String name, WorkflowTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, args == null ? WorkflowTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkflowTemplate(java.lang.String name, WorkflowTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkflowTemplate(String name, Output<String> id, @Nullable WorkflowTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, state, makeResourceOptions(options, id));
+    private WorkflowTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable WorkflowTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkflowTemplateArgs makeArgs(WorkflowTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkflowTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -401,7 +407,7 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkflowTemplate get(String name, Output<String> id, @Nullable WorkflowTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkflowTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkflowTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkflowTemplate(name, id, state, options);
     }
 }

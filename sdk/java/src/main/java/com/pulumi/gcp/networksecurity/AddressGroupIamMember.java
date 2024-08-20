@@ -198,7 +198,7 @@ public class AddressGroupIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AddressGroupIamMember(String name) {
+    public AddressGroupIamMember(java.lang.String name) {
         this(name, AddressGroupIamMemberArgs.Empty);
     }
     /**
@@ -206,7 +206,7 @@ public class AddressGroupIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AddressGroupIamMember(String name, AddressGroupIamMemberArgs args) {
+    public AddressGroupIamMember(java.lang.String name, AddressGroupIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -215,15 +215,22 @@ public class AddressGroupIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AddressGroupIamMember(String name, AddressGroupIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember", name, args == null ? AddressGroupIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AddressGroupIamMember(java.lang.String name, AddressGroupIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AddressGroupIamMember(String name, Output<String> id, @Nullable AddressGroupIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember", name, state, makeResourceOptions(options, id));
+    private AddressGroupIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable AddressGroupIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AddressGroupIamMemberArgs makeArgs(AddressGroupIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddressGroupIamMemberArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -239,7 +246,7 @@ public class AddressGroupIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AddressGroupIamMember get(String name, Output<String> id, @Nullable AddressGroupIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AddressGroupIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable AddressGroupIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AddressGroupIamMember(name, id, state, options);
     }
 }

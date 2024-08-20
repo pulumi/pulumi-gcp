@@ -655,7 +655,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
             cmek_config={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
@@ -717,7 +717,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
             cmek_config={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
@@ -862,7 +862,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
             cmek_config={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
@@ -924,7 +924,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE",
             cmek_config={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```

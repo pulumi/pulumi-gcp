@@ -205,7 +205,7 @@ type KeyHandle struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Selector of the resource type where we want to protect resources.
-	// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+	// For example, `storage.googleapis.com/Bucket`.
 	ResourceTypeSelector pulumi.StringOutput `pulumi:"resourceTypeSelector"`
 }
 
@@ -260,7 +260,7 @@ type keyHandleState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Selector of the resource type where we want to protect resources.
-	// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+	// For example, `storage.googleapis.com/Bucket`.
 	ResourceTypeSelector *string `pulumi:"resourceTypeSelector"`
 }
 
@@ -280,7 +280,7 @@ type KeyHandleState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Selector of the resource type where we want to protect resources.
-	// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+	// For example, `storage.googleapis.com/Bucket`.
 	ResourceTypeSelector pulumi.StringPtrInput
 }
 
@@ -300,7 +300,7 @@ type keyHandleArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Selector of the resource type where we want to protect resources.
-	// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+	// For example, `storage.googleapis.com/Bucket`.
 	ResourceTypeSelector string `pulumi:"resourceTypeSelector"`
 }
 
@@ -317,7 +317,7 @@ type KeyHandleArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Selector of the resource type where we want to protect resources.
-	// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+	// For example, `storage.googleapis.com/Bucket`.
 	ResourceTypeSelector pulumi.StringInput
 }
 
@@ -435,7 +435,7 @@ func (o KeyHandleOutput) Project() pulumi.StringOutput {
 }
 
 // Selector of the resource type where we want to protect resources.
-// For example, `storage.googleapis.com/Bucket OR compute.googleapis.com/*`
+// For example, `storage.googleapis.com/Bucket`.
 func (o KeyHandleOutput) ResourceTypeSelector() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyHandle) pulumi.StringOutput { return v.ResourceTypeSelector }).(pulumi.StringOutput)
 }

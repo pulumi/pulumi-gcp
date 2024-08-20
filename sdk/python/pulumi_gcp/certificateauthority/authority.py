@@ -791,37 +791,37 @@ class Authority(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": True,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
                 },
@@ -842,26 +842,26 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority-root",
             location="us-central1",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -878,40 +878,40 @@ class Authority(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=True,
             subordinate_config={
-                "certificateAuthority": root_ca.name,
+                "certificate_authority": root_ca.name,
             },
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-subordinate-authority",
+                        "common_name": "my-subordinate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 0,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 0,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": True,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
                 },
@@ -932,50 +932,50 @@ class Authority(pulumi.CustomResource):
         privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             deletion_protection=True,
             key_spec={
-                "cloudKmsKeyVersion": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+                "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             },
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Example, Org.",
-                        "commonName": "Example Authority",
+                        "common_name": "Example Authority",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
-                    "nameConstraints": {
+                    "name_constraints": {
                         "critical": True,
-                        "permittedDnsNames": ["*.example.com"],
-                        "excludedDnsNames": ["*.deny.example.com"],
-                        "permittedIpRanges": ["10.0.0.0/8"],
-                        "excludedIpRanges": ["10.1.1.0/24"],
-                        "permittedEmailAddresses": [".example.com"],
-                        "excludedEmailAddresses": [".deny.example.com"],
-                        "permittedUris": [".example.com"],
-                        "excludedUris": [".deny.example.com"],
+                        "permitted_dns_names": ["*.example.com"],
+                        "excluded_dns_names": ["*.deny.example.com"],
+                        "permitted_ip_ranges": ["10.0.0.0/8"],
+                        "excluded_ip_ranges": ["10.1.1.0/24"],
+                        "permitted_email_addresses": [".example.com"],
+                        "excluded_email_addresses": [".deny.example.com"],
+                        "permitted_uris": [".example.com"],
+                        "excluded_uris": [".deny.example.com"],
                     },
                 },
             },
@@ -996,47 +996,47 @@ class Authority(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "subjectKeyId": {
-                    "keyId": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                "subject_key_id": {
+                    "key_id": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": True,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
                 },
             },
             lifetime="86400s",
             key_spec={
-                "cloudKmsKeyVersion": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+                "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             })
         ```
 
@@ -1132,37 +1132,37 @@ class Authority(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": True,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
                 },
@@ -1183,26 +1183,26 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority-root",
             location="us-central1",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -1219,40 +1219,40 @@ class Authority(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=True,
             subordinate_config={
-                "certificateAuthority": root_ca.name,
+                "certificate_authority": root_ca.name,
             },
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-subordinate-authority",
+                        "common_name": "my-subordinate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 0,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 0,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": True,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
                 },
@@ -1273,50 +1273,50 @@ class Authority(pulumi.CustomResource):
         privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
-            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=privateca_sa.member)
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             deletion_protection=True,
             key_spec={
-                "cloudKmsKeyVersion": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+                "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             },
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Example, Org.",
-                        "commonName": "Example Authority",
+                        "common_name": "Example Authority",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
-                    "nameConstraints": {
+                    "name_constraints": {
                         "critical": True,
-                        "permittedDnsNames": ["*.example.com"],
-                        "excludedDnsNames": ["*.deny.example.com"],
-                        "permittedIpRanges": ["10.0.0.0/8"],
-                        "excludedIpRanges": ["10.1.1.0/24"],
-                        "permittedEmailAddresses": [".example.com"],
-                        "excludedEmailAddresses": [".deny.example.com"],
-                        "permittedUris": [".example.com"],
-                        "excludedUris": [".deny.example.com"],
+                        "permitted_dns_names": ["*.example.com"],
+                        "excluded_dns_names": ["*.deny.example.com"],
+                        "permitted_ip_ranges": ["10.0.0.0/8"],
+                        "excluded_ip_ranges": ["10.1.1.0/24"],
+                        "permitted_email_addresses": [".example.com"],
+                        "excluded_email_addresses": [".deny.example.com"],
+                        "permitted_uris": [".example.com"],
+                        "excluded_uris": [".deny.example.com"],
                     },
                 },
             },
@@ -1337,47 +1337,47 @@ class Authority(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "subjectKeyId": {
-                    "keyId": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                "subject_key_id": {
+                    "key_id": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": True,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
                 },
             },
             lifetime="86400s",
             key_spec={
-                "cloudKmsKeyVersion": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
+                "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             })
         ```
 

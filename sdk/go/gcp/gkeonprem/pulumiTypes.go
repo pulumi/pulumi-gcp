@@ -587,9 +587,9 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig s
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -620,9 +620,9 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigAr
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -718,9 +718,9 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
 		return v.Labels
@@ -781,9 +781,9 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
 		if v == nil {
@@ -833,9 +833,9 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -861,9 +861,9 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -928,9 +928,9 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig) map[string]string {
 		return v.Labels
@@ -2531,12 +2531,12 @@ func (o BareMetalAdminClusterNodeConfigPtrOutput) MaxPodsPerNode() pulumi.IntPtr
 
 type BareMetalAdminClusterProxy struct {
 	// A list of IPs, hostnames, and domains that should skip the proxy.
-	// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+	// For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
 	NoProxies []string `pulumi:"noProxies"`
 	// Specifies the address of your proxy server.
-	// Examples: http://domain
+	// For Example: http://domain
 	// WARNING: Do not provide credentials in the format
-	// http://(username:password@)domain these will be rejected by the server.
+	// of http://(username:password@)domain these will be rejected by the server.
 	Uri string `pulumi:"uri"`
 }
 
@@ -2553,12 +2553,12 @@ type BareMetalAdminClusterProxyInput interface {
 
 type BareMetalAdminClusterProxyArgs struct {
 	// A list of IPs, hostnames, and domains that should skip the proxy.
-	// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+	// For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
 	NoProxies pulumi.StringArrayInput `pulumi:"noProxies"`
 	// Specifies the address of your proxy server.
-	// Examples: http://domain
+	// For Example: http://domain
 	// WARNING: Do not provide credentials in the format
-	// http://(username:password@)domain these will be rejected by the server.
+	// of http://(username:password@)domain these will be rejected by the server.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -2640,15 +2640,15 @@ func (o BareMetalAdminClusterProxyOutput) ToBareMetalAdminClusterProxyPtrOutputW
 }
 
 // A list of IPs, hostnames, and domains that should skip the proxy.
-// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+// For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalAdminClusterProxyOutput) NoProxies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterProxy) []string { return v.NoProxies }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the address of your proxy server.
-// Examples: http://domain
+// For Example: http://domain
 // WARNING: Do not provide credentials in the format
-// http://(username:password@)domain these will be rejected by the server.
+// of http://(username:password@)domain these will be rejected by the server.
 func (o BareMetalAdminClusterProxyOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterProxy) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -2678,7 +2678,7 @@ func (o BareMetalAdminClusterProxyPtrOutput) Elem() BareMetalAdminClusterProxyOu
 }
 
 // A list of IPs, hostnames, and domains that should skip the proxy.
-// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+// For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalAdminClusterProxyPtrOutput) NoProxies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterProxy) []string {
 		if v == nil {
@@ -2689,9 +2689,9 @@ func (o BareMetalAdminClusterProxyPtrOutput) NoProxies() pulumi.StringArrayOutpu
 }
 
 // Specifies the address of your proxy server.
-// Examples: http://domain
+// For Example: http://domain
 // WARNING: Do not provide credentials in the format
-// http://(username:password@)domain these will be rejected by the server.
+// of http://(username:password@)domain these will be rejected by the server.
 func (o BareMetalAdminClusterProxyPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterProxy) *string {
 		if v == nil {
@@ -5112,9 +5112,9 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig struct
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -5145,9 +5145,9 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs st
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -5243,9 +5243,9 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutp
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
 		return v.Labels
@@ -5306,9 +5306,9 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrO
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
 		if v == nil {
@@ -5358,9 +5358,9 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCon
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -5386,9 +5386,9 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCon
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -5453,9 +5453,9 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNode
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig) map[string]string {
 		return v.Labels
@@ -6616,9 +6616,9 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -6652,9 +6652,9 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -6758,9 +6758,9 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) map[string]string {
 		return v.Labels
@@ -6832,9 +6832,9 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) map[string]string {
 		if v == nil {
@@ -7117,9 +7117,9 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -7145,9 +7145,9 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -7212,9 +7212,9 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig) map[string]string {
 		return v.Labels
@@ -7964,9 +7964,9 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -7997,9 +7997,9 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -8095,9 +8095,9 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig) map[string]string {
 		return v.Labels
@@ -8158,9 +8158,9 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig) map[string]string {
 		if v == nil {
@@ -8210,9 +8210,9 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -8238,9 +8238,9 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -8305,9 +8305,9 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig) map[string]string {
 		return v.Labels
@@ -10016,12 +10016,12 @@ func (o BareMetalClusterOsEnvironmentConfigPtrOutput) PackageRepoExcluded() pulu
 
 type BareMetalClusterProxy struct {
 	// A list of IPs, hostnames, and domains that should skip the proxy.
-	// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+	// For example ["127.0.0.1", "example.com", ".corp", "localhost"].
 	NoProxies []string `pulumi:"noProxies"`
 	// Specifies the address of your proxy server.
-	// Examples: http://domain
+	// For example: http://domain
 	// WARNING: Do not provide credentials in the format
-	// http://(username:password@)domain these will be rejected by the server.
+	// of http://(username:password@)domain these will be rejected by the server.
 	Uri string `pulumi:"uri"`
 }
 
@@ -10038,12 +10038,12 @@ type BareMetalClusterProxyInput interface {
 
 type BareMetalClusterProxyArgs struct {
 	// A list of IPs, hostnames, and domains that should skip the proxy.
-	// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+	// For example ["127.0.0.1", "example.com", ".corp", "localhost"].
 	NoProxies pulumi.StringArrayInput `pulumi:"noProxies"`
 	// Specifies the address of your proxy server.
-	// Examples: http://domain
+	// For example: http://domain
 	// WARNING: Do not provide credentials in the format
-	// http://(username:password@)domain these will be rejected by the server.
+	// of http://(username:password@)domain these will be rejected by the server.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -10125,15 +10125,15 @@ func (o BareMetalClusterProxyOutput) ToBareMetalClusterProxyPtrOutputWithContext
 }
 
 // A list of IPs, hostnames, and domains that should skip the proxy.
-// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+// For example ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalClusterProxyOutput) NoProxies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalClusterProxy) []string { return v.NoProxies }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the address of your proxy server.
-// Examples: http://domain
+// For example: http://domain
 // WARNING: Do not provide credentials in the format
-// http://(username:password@)domain these will be rejected by the server.
+// of http://(username:password@)domain these will be rejected by the server.
 func (o BareMetalClusterProxyOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalClusterProxy) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -10163,7 +10163,7 @@ func (o BareMetalClusterProxyPtrOutput) Elem() BareMetalClusterProxyOutput {
 }
 
 // A list of IPs, hostnames, and domains that should skip the proxy.
-// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+// For example ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalClusterProxyPtrOutput) NoProxies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BareMetalClusterProxy) []string {
 		if v == nil {
@@ -10174,9 +10174,9 @@ func (o BareMetalClusterProxyPtrOutput) NoProxies() pulumi.StringArrayOutput {
 }
 
 // Specifies the address of your proxy server.
-// Examples: http://domain
+// For example: http://domain
 // WARNING: Do not provide credentials in the format
-// http://(username:password@)domain these will be rejected by the server.
+// of http://(username:password@)domain these will be rejected by the server.
 func (o BareMetalClusterProxyPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterProxy) *string {
 		if v == nil {
@@ -12034,9 +12034,9 @@ type BareMetalNodePoolNodePoolConfig struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -12067,9 +12067,9 @@ type BareMetalNodePoolNodePoolConfigArgs struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
@@ -12165,9 +12165,9 @@ func (o BareMetalNodePoolNodePoolConfigOutput) ToBareMetalNodePoolNodePoolConfig
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalNodePoolNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalNodePoolNodePoolConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -12222,9 +12222,9 @@ func (o BareMetalNodePoolNodePoolConfigPtrOutput) Elem() BareMetalNodePoolNodePo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalNodePoolNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalNodePoolNodePoolConfig) map[string]string {
 		if v == nil {
@@ -12274,9 +12274,9 @@ type BareMetalNodePoolNodePoolConfigNodeConfig struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -12302,9 +12302,9 @@ type BareMetalNodePoolNodePoolConfigNodeConfigArgs struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	// An object containing a list of "key": value pairs.
-	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	//   An object containing a list of "key": value pairs.
+	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The default IPv4 address for SSH access and Kubernetes node.
 	// Example: 192.168.0.1
@@ -12369,9 +12369,9 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigOutput) ToBareMetalNodePoolNode
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-// http://kubernetes.io/v1.1/docs/user-guide/labels.html
-// An object containing a list of "key": value pairs.
-// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//     An object containing a list of "key": value pairs.
+//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalNodePoolNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalNodePoolNodePoolConfigNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

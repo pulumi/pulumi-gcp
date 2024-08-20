@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CloudQuota.Outputs
         /// <summary>
         /// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Dimensions;
+        public readonly ImmutableDictionary<string, string> Dimensions;
 
         [OutputConstructor]
         private GetSQuotaInfosQuotaInfoDimensionsInfoResult(
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.CloudQuota.Outputs
 
             ImmutableArray<Outputs.GetSQuotaInfosQuotaInfoDimensionsInfoDetailResult> details,
 
-            ImmutableDictionary<string, object> dimensions)
+            ImmutableDictionary<string, string> dimensions)
         {
             ApplicableLocations = applicableLocations;
             Details = details;

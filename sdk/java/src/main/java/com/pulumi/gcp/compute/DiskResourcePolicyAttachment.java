@@ -195,7 +195,7 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DiskResourcePolicyAttachment(String name) {
+    public DiskResourcePolicyAttachment(java.lang.String name) {
         this(name, DiskResourcePolicyAttachmentArgs.Empty);
     }
     /**
@@ -203,7 +203,7 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DiskResourcePolicyAttachment(String name, DiskResourcePolicyAttachmentArgs args) {
+    public DiskResourcePolicyAttachment(java.lang.String name, DiskResourcePolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -212,15 +212,22 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DiskResourcePolicyAttachment(String name, DiskResourcePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment", name, args == null ? DiskResourcePolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DiskResourcePolicyAttachment(java.lang.String name, DiskResourcePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DiskResourcePolicyAttachment(String name, Output<String> id, @Nullable DiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment", name, state, makeResourceOptions(options, id));
+    private DiskResourcePolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable DiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DiskResourcePolicyAttachmentArgs makeArgs(DiskResourcePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DiskResourcePolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -236,7 +243,7 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DiskResourcePolicyAttachment get(String name, Output<String> id, @Nullable DiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DiskResourcePolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable DiskResourcePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DiskResourcePolicyAttachment(name, id, state, options);
     }
 }

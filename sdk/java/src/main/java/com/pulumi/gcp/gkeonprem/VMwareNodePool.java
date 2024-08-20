@@ -518,7 +518,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VMwareNodePool(String name) {
+    public VMwareNodePool(java.lang.String name) {
         this(name, VMwareNodePoolArgs.Empty);
     }
     /**
@@ -526,7 +526,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VMwareNodePool(String name, VMwareNodePoolArgs args) {
+    public VMwareNodePool(java.lang.String name, VMwareNodePoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -535,15 +535,22 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VMwareNodePool(String name, VMwareNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/vMwareNodePool:VMwareNodePool", name, args == null ? VMwareNodePoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VMwareNodePool(java.lang.String name, VMwareNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/vMwareNodePool:VMwareNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VMwareNodePool(String name, Output<String> id, @Nullable VMwareNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/vMwareNodePool:VMwareNodePool", name, state, makeResourceOptions(options, id));
+    private VMwareNodePool(java.lang.String name, Output<java.lang.String> id, @Nullable VMwareNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/vMwareNodePool:VMwareNodePool", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VMwareNodePoolArgs makeArgs(VMwareNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VMwareNodePoolArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -559,7 +566,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VMwareNodePool get(String name, Output<String> id, @Nullable VMwareNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VMwareNodePool get(java.lang.String name, Output<java.lang.String> id, @Nullable VMwareNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VMwareNodePool(name, id, state, options);
     }
 }

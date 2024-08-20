@@ -214,7 +214,7 @@ class _TriggerState:
                  conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -222,7 +222,7 @@ class _TriggerState:
                  matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  transport: Optional[pulumi.Input['TriggerTransportArgs']] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -235,7 +235,7 @@ class _TriggerState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
                field. This is set to `application/json` if the value is not defined.
@@ -246,7 +246,7 @@ class _TriggerState:
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
                trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
                https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
@@ -346,14 +346,14 @@ class _TriggerState:
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @property
@@ -445,14 +445,14 @@ class _TriggerState:
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @property
@@ -548,16 +548,16 @@ class Trigger(pulumi.CustomResource):
                     "containers": [{
                         "image": "gcr.io/cloudrun/hello",
                         "ports": [{
-                            "containerPort": 8080,
+                            "container_port": 8080,
                         }],
                     }],
-                    "containerConcurrency": 50,
-                    "timeoutSeconds": 100,
+                    "container_concurrency": 50,
+                    "timeout_seconds": 100,
                 },
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         primary = gcp.eventarc.Trigger("primary",
             name="name",
@@ -567,7 +567,7 @@ class Trigger(pulumi.CustomResource):
                 "value": "google.cloud.pubsub.topic.v1.messagePublished",
             }],
             destination={
-                "cloudRunService": {
+                "cloud_run_service": {
                     "service": default.name,
                     "region": "europe-west1",
                 },
@@ -654,16 +654,16 @@ class Trigger(pulumi.CustomResource):
                     "containers": [{
                         "image": "gcr.io/cloudrun/hello",
                         "ports": [{
-                            "containerPort": 8080,
+                            "container_port": 8080,
                         }],
                     }],
-                    "containerConcurrency": 50,
-                    "timeoutSeconds": 100,
+                    "container_concurrency": 50,
+                    "timeout_seconds": 100,
                 },
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         primary = gcp.eventarc.Trigger("primary",
             name="name",
@@ -673,7 +673,7 @@ class Trigger(pulumi.CustomResource):
                 "value": "google.cloud.pubsub.topic.v1.messagePublished",
             }],
             destination={
-                "cloudRunService": {
+                "cloud_run_service": {
                     "service": default.name,
                     "region": "europe-west1",
                 },
@@ -781,7 +781,7 @@ class Trigger(pulumi.CustomResource):
             conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             event_data_content_type: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -789,7 +789,7 @@ class Trigger(pulumi.CustomResource):
             matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -807,7 +807,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']] destination: Required. Destination specifies where the events should be sent to.
-        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
                field. This is set to `application/json` if the value is not defined.
@@ -818,7 +818,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
                trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
                https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
@@ -890,7 +890,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
@@ -957,7 +957,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """

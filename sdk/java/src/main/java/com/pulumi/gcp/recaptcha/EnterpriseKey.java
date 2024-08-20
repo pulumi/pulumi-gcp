@@ -15,7 +15,6 @@ import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyIosSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyTestingOptions;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWafSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWebSettings;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -384,14 +383,14 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveLabels;
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
-    public Output<Map<String,Object>> effectiveLabels() {
+    public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
     /**
@@ -460,14 +459,14 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> pulumiLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> pulumiLabels() {
+    public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
     /**
@@ -517,7 +516,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnterpriseKey(String name) {
+    public EnterpriseKey(java.lang.String name) {
         this(name, EnterpriseKeyArgs.Empty);
     }
     /**
@@ -525,7 +524,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnterpriseKey(String name, EnterpriseKeyArgs args) {
+    public EnterpriseKey(java.lang.String name, EnterpriseKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -534,15 +533,22 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnterpriseKey(String name, EnterpriseKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, args == null ? EnterpriseKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnterpriseKey(java.lang.String name, EnterpriseKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnterpriseKey(String name, Output<String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, state, makeResourceOptions(options, id));
+    private EnterpriseKey(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:recaptcha/enterpriseKey:EnterpriseKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnterpriseKeyArgs makeArgs(EnterpriseKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnterpriseKeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -562,7 +568,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnterpriseKey get(String name, Output<String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnterpriseKey get(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnterpriseKey(name, id, state, options);
     }
 }

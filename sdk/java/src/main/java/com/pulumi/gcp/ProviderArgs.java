@@ -1035,6 +1035,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.securityCenterManagementCustomEndpoint);
     }
 
+    @Import(name="securityCenterV2CustomEndpoint")
+    private @Nullable Output<String> securityCenterV2CustomEndpoint;
+
+    public Optional<Output<String>> securityCenterV2CustomEndpoint() {
+        return Optional.ofNullable(this.securityCenterV2CustomEndpoint);
+    }
+
     @Import(name="securityScannerCustomEndpoint")
     private @Nullable Output<String> securityScannerCustomEndpoint;
 
@@ -1075,6 +1082,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> serviceUsageCustomEndpoint() {
         return Optional.ofNullable(this.serviceUsageCustomEndpoint);
+    }
+
+    @Import(name="siteVerificationCustomEndpoint")
+    private @Nullable Output<String> siteVerificationCustomEndpoint;
+
+    public Optional<Output<String>> siteVerificationCustomEndpoint() {
+        return Optional.ofNullable(this.siteVerificationCustomEndpoint);
     }
 
     @Import(name="sourceRepoCustomEndpoint")
@@ -1365,12 +1379,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.secureSourceManagerCustomEndpoint = $.secureSourceManagerCustomEndpoint;
         this.securityCenterCustomEndpoint = $.securityCenterCustomEndpoint;
         this.securityCenterManagementCustomEndpoint = $.securityCenterManagementCustomEndpoint;
+        this.securityCenterV2CustomEndpoint = $.securityCenterV2CustomEndpoint;
         this.securityScannerCustomEndpoint = $.securityScannerCustomEndpoint;
         this.securitypostureCustomEndpoint = $.securitypostureCustomEndpoint;
         this.serviceDirectoryCustomEndpoint = $.serviceDirectoryCustomEndpoint;
         this.serviceManagementCustomEndpoint = $.serviceManagementCustomEndpoint;
         this.serviceNetworkingCustomEndpoint = $.serviceNetworkingCustomEndpoint;
         this.serviceUsageCustomEndpoint = $.serviceUsageCustomEndpoint;
+        this.siteVerificationCustomEndpoint = $.siteVerificationCustomEndpoint;
         this.sourceRepoCustomEndpoint = $.sourceRepoCustomEndpoint;
         this.spannerCustomEndpoint = $.spannerCustomEndpoint;
         this.sqlCustomEndpoint = $.sqlCustomEndpoint;
@@ -2724,6 +2740,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return securityCenterManagementCustomEndpoint(Output.of(securityCenterManagementCustomEndpoint));
         }
 
+        public Builder securityCenterV2CustomEndpoint(@Nullable Output<String> securityCenterV2CustomEndpoint) {
+            $.securityCenterV2CustomEndpoint = securityCenterV2CustomEndpoint;
+            return this;
+        }
+
+        public Builder securityCenterV2CustomEndpoint(String securityCenterV2CustomEndpoint) {
+            return securityCenterV2CustomEndpoint(Output.of(securityCenterV2CustomEndpoint));
+        }
+
         public Builder securityScannerCustomEndpoint(@Nullable Output<String> securityScannerCustomEndpoint) {
             $.securityScannerCustomEndpoint = securityScannerCustomEndpoint;
             return this;
@@ -2776,6 +2801,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder serviceUsageCustomEndpoint(String serviceUsageCustomEndpoint) {
             return serviceUsageCustomEndpoint(Output.of(serviceUsageCustomEndpoint));
+        }
+
+        public Builder siteVerificationCustomEndpoint(@Nullable Output<String> siteVerificationCustomEndpoint) {
+            $.siteVerificationCustomEndpoint = siteVerificationCustomEndpoint;
+            return this;
+        }
+
+        public Builder siteVerificationCustomEndpoint(String siteVerificationCustomEndpoint) {
+            return siteVerificationCustomEndpoint(Output.of(siteVerificationCustomEndpoint));
         }
 
         public Builder sourceRepoCustomEndpoint(@Nullable Output<String> sourceRepoCustomEndpoint) {

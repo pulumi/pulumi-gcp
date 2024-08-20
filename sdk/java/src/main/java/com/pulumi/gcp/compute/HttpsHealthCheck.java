@@ -309,7 +309,7 @@ public class HttpsHealthCheck extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HttpsHealthCheck(String name) {
+    public HttpsHealthCheck(java.lang.String name) {
         this(name, HttpsHealthCheckArgs.Empty);
     }
     /**
@@ -317,7 +317,7 @@ public class HttpsHealthCheck extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HttpsHealthCheck(String name, @Nullable HttpsHealthCheckArgs args) {
+    public HttpsHealthCheck(java.lang.String name, @Nullable HttpsHealthCheckArgs args) {
         this(name, args, null);
     }
     /**
@@ -326,15 +326,22 @@ public class HttpsHealthCheck extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HttpsHealthCheck(String name, @Nullable HttpsHealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/httpsHealthCheck:HttpsHealthCheck", name, args == null ? HttpsHealthCheckArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HttpsHealthCheck(java.lang.String name, @Nullable HttpsHealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/httpsHealthCheck:HttpsHealthCheck", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HttpsHealthCheck(String name, Output<String> id, @Nullable HttpsHealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/httpsHealthCheck:HttpsHealthCheck", name, state, makeResourceOptions(options, id));
+    private HttpsHealthCheck(java.lang.String name, Output<java.lang.String> id, @Nullable HttpsHealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/httpsHealthCheck:HttpsHealthCheck", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HttpsHealthCheckArgs makeArgs(@Nullable HttpsHealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HttpsHealthCheckArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -350,7 +357,7 @@ public class HttpsHealthCheck extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HttpsHealthCheck get(String name, Output<String> id, @Nullable HttpsHealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HttpsHealthCheck get(java.lang.String name, Output<java.lang.String> id, @Nullable HttpsHealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HttpsHealthCheck(name, id, state, options);
     }
 }

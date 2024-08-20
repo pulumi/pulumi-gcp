@@ -27,10 +27,13 @@ class GetHcVpnGatewayResult:
     """
     A collection of values returned by getHcVpnGateway.
     """
-    def __init__(__self__, description=None, id=None, name=None, network=None, project=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
+    def __init__(__self__, description=None, gateway_ip_version=None, id=None, name=None, network=None, project=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if gateway_ip_version and not isinstance(gateway_ip_version, str):
+            raise TypeError("Expected argument 'gateway_ip_version' to be a str")
+        pulumi.set(__self__, "gateway_ip_version", gateway_ip_version)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -60,6 +63,11 @@ class GetHcVpnGatewayResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gatewayIpVersion")
+    def gateway_ip_version(self) -> str:
+        return pulumi.get(self, "gateway_ip_version")
 
     @property
     @pulumi.getter
@@ -112,6 +120,7 @@ class AwaitableGetHcVpnGatewayResult(GetHcVpnGatewayResult):
             yield self
         return GetHcVpnGatewayResult(
             description=self.description,
+            gateway_ip_version=self.gateway_ip_version,
             id=self.id,
             name=self.name,
             network=self.network,
@@ -150,6 +159,7 @@ def get_hc_vpn_gateway(name: Optional[str] = None,
 
     return AwaitableGetHcVpnGatewayResult(
         description=pulumi.get(__ret__, 'description'),
+        gateway_ip_version=pulumi.get(__ret__, 'gateway_ip_version'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),

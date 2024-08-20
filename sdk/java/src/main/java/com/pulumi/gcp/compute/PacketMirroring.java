@@ -332,7 +332,7 @@ public class PacketMirroring extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PacketMirroring(String name) {
+    public PacketMirroring(java.lang.String name) {
         this(name, PacketMirroringArgs.Empty);
     }
     /**
@@ -340,7 +340,7 @@ public class PacketMirroring extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PacketMirroring(String name, PacketMirroringArgs args) {
+    public PacketMirroring(java.lang.String name, PacketMirroringArgs args) {
         this(name, args, null);
     }
     /**
@@ -349,15 +349,22 @@ public class PacketMirroring extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PacketMirroring(String name, PacketMirroringArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/packetMirroring:PacketMirroring", name, args == null ? PacketMirroringArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PacketMirroring(java.lang.String name, PacketMirroringArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/packetMirroring:PacketMirroring", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PacketMirroring(String name, Output<String> id, @Nullable PacketMirroringState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/packetMirroring:PacketMirroring", name, state, makeResourceOptions(options, id));
+    private PacketMirroring(java.lang.String name, Output<java.lang.String> id, @Nullable PacketMirroringState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/packetMirroring:PacketMirroring", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PacketMirroringArgs makeArgs(PacketMirroringArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PacketMirroringArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -373,7 +380,7 @@ public class PacketMirroring extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PacketMirroring get(String name, Output<String> id, @Nullable PacketMirroringState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PacketMirroring get(java.lang.String name, Output<java.lang.String> id, @Nullable PacketMirroringState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PacketMirroring(name, id, state, options);
     }
 }

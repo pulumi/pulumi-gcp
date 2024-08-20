@@ -257,7 +257,7 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkEndpointList(String name) {
+    public NetworkEndpointList(java.lang.String name) {
         this(name, NetworkEndpointListArgs.Empty);
     }
     /**
@@ -265,7 +265,7 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkEndpointList(String name, NetworkEndpointListArgs args) {
+    public NetworkEndpointList(java.lang.String name, NetworkEndpointListArgs args) {
         this(name, args, null);
     }
     /**
@@ -274,15 +274,22 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkEndpointList(String name, NetworkEndpointListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkEndpointList:NetworkEndpointList", name, args == null ? NetworkEndpointListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NetworkEndpointList(java.lang.String name, NetworkEndpointListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkEndpointList:NetworkEndpointList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkEndpointList(String name, Output<String> id, @Nullable NetworkEndpointListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkEndpointList:NetworkEndpointList", name, state, makeResourceOptions(options, id));
+    private NetworkEndpointList(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkEndpointListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkEndpointList:NetworkEndpointList", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NetworkEndpointListArgs makeArgs(NetworkEndpointListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkEndpointListArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -298,7 +305,7 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkEndpointList get(String name, Output<String> id, @Nullable NetworkEndpointListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkEndpointList get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkEndpointListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkEndpointList(name, id, state, options);
     }
 }

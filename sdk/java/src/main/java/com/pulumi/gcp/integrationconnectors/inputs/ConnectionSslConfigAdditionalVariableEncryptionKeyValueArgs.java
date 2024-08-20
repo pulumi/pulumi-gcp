@@ -16,8 +16,8 @@ public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs e
     public static final ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs Empty = new ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs();
 
     /**
-     * The [KMS key name] with which the content of the Operation is encrypted. The expected
-     * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * The [KMS key name] with which the content of the Operation is encrypted. The
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -25,8 +25,8 @@ public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs e
     private @Nullable Output<String> kmsKeyName;
 
     /**
-     * @return The [KMS key name] with which the content of the Operation is encrypted. The expected
-     * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * @return The [KMS key name] with which the content of the Operation is encrypted. The
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -77,8 +77,8 @@ public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs e
         }
 
         /**
-         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          * 
          * @return builder
@@ -90,8 +90,8 @@ public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs e
         }
 
         /**
-         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The expected
-         * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * @param kmsKeyName The [KMS key name] with which the content of the Operation is encrypted. The
+         * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          * Will be empty string if google managed.
          * 
          * @return builder

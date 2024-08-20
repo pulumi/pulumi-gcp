@@ -96,6 +96,20 @@ var substituteRandomSuffix = (func() tfbridge.DocsEdit {
 // correctly.
 var memberRegexp = regexp.MustCompile("`member/members`")
 
+func trimFrontMatter(text []byte) []byte {
+	body, ok := bytes.CutPrefix(text, []byte("---"))
+	if !ok {
+		return text
+	}
+	idx := bytes.Index(body, []byte("\n---"))
+
+	// Unable to find closing, so just return.
+	if idx == -1 {
+		return text
+	}
+	return body[idx+3:]
+}
+
 var rewritemembersField = tfbridge.DocsEdit{
 	Path: "*iam.html.markdown",
 	Edit: func(_ string, content []byte) ([]byte, error) {
@@ -103,7 +117,7 @@ var rewritemembersField = tfbridge.DocsEdit{
 		memberByte := []byte("`member`")
 		var returnContent []byte
 		membersContent := memberRegexp.ReplaceAllLiteral(content, membersByte)
-		memberContent := memberRegexp.ReplaceAllLiteral(content, memberByte)
+		memberContent := memberRegexp.ReplaceAllLiteral(trimFrontMatter(content), memberByte)
 		// Because the IamBinding property matches to a `members` field, while the `IAMMember` property matches to a
 		//`member` field, we need to create content for both `members` and `member` so the bridge can match each.
 		//The easiest way to do this is to duplicate the content in its entirety, once for `members` and once for

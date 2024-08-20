@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Vertex.Inputs
             set => _featureGroups = value;
         }
 
+        /// <summary>
+        /// The project number of the parent project of the feature Groups.
+        /// </summary>
+        [Input("projectNumber")]
+        public Input<string>? ProjectNumber { get; set; }
+
         public AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs()
         {
         }

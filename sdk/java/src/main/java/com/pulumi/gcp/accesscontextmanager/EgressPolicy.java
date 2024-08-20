@@ -72,7 +72,7 @@ public class EgressPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EgressPolicy(String name) {
+    public EgressPolicy(java.lang.String name) {
         this(name, EgressPolicyArgs.Empty);
     }
     /**
@@ -80,7 +80,7 @@ public class EgressPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EgressPolicy(String name, EgressPolicyArgs args) {
+    public EgressPolicy(java.lang.String name, EgressPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -89,15 +89,22 @@ public class EgressPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EgressPolicy(String name, EgressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/egressPolicy:EgressPolicy", name, args == null ? EgressPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EgressPolicy(java.lang.String name, EgressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/egressPolicy:EgressPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EgressPolicy(String name, Output<String> id, @Nullable EgressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/egressPolicy:EgressPolicy", name, state, makeResourceOptions(options, id));
+    private EgressPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable EgressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:accesscontextmanager/egressPolicy:EgressPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EgressPolicyArgs makeArgs(EgressPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EgressPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -113,7 +120,7 @@ public class EgressPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EgressPolicy get(String name, Output<String> id, @Nullable EgressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EgressPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable EgressPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EgressPolicy(name, id, state, options);
     }
 }

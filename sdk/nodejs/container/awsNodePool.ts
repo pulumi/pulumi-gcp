@@ -467,7 +467,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      * Output only. The time at which this node pool was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -630,7 +630,7 @@ export interface AwsNodePoolState {
      * Output only. The time at which this node pool was created.
      */
     createTime?: pulumi.Input<string>;
-    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */

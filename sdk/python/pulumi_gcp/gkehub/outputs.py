@@ -88,6 +88,7 @@ __all__ = [
     'ScopeRbacRoleBindingRole',
     'ScopeRbacRoleBindingState',
     'ScopeState',
+    'GetMembershipBindingStateResult',
 ]
 
 @pulumi.output_type
@@ -160,14 +161,19 @@ class FeatureFleetDefaultMemberConfigConfigmanagement(dict):
 
     def __init__(__self__, *,
                  config_sync: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync'] = None,
+                 management: Optional[str] = None,
                  version: Optional[str] = None):
         """
         :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs' config_sync: ConfigSync configuration for the cluster
                Structure is documented below.
+        :param str management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+               Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
         :param str version: Version of ACM installed
         """
         if config_sync is not None:
             pulumi.set(__self__, "config_sync", config_sync)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -179,6 +185,15 @@ class FeatureFleetDefaultMemberConfigConfigmanagement(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "config_sync")
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[str]:
+        """
+        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        """
+        return pulumi.get(self, "management")
 
     @property
     @pulumi.getter
@@ -211,11 +226,13 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
                  git: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit'] = None,
                  oci: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci'] = None,
                  prevent_drift: Optional[bool] = None,
                  source_format: Optional[str] = None):
         """
+        :param bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs' git: Git repo configuration for the cluster
                Structure is documented below.
         :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs' oci: OCI repo configuration for the cluster
@@ -223,6 +240,8 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
         :param bool prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         :param str source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if git is not None:
             pulumi.set(__self__, "git", git)
         if oci is not None:
@@ -231,6 +250,14 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
             pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
@@ -1215,12 +1242,14 @@ class FeatureMembershipConfigmanagement(dict):
                  binauthz: Optional['outputs.FeatureMembershipConfigmanagementBinauthz'] = None,
                  config_sync: Optional['outputs.FeatureMembershipConfigmanagementConfigSync'] = None,
                  hierarchy_controller: Optional['outputs.FeatureMembershipConfigmanagementHierarchyController'] = None,
+                 management: Optional[str] = None,
                  policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
                  version: Optional[str] = None):
         """
         :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: Binauthz configuration for the cluster. Structure is documented below.
         :param 'FeatureMembershipConfigmanagementConfigSyncArgs' config_sync: Config Sync configuration for the cluster. Structure is documented below.
         :param 'FeatureMembershipConfigmanagementHierarchyControllerArgs' hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
+        :param str management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
         :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param str version: Version of ACM installed.
         """
@@ -1230,6 +1259,8 @@ class FeatureMembershipConfigmanagement(dict):
             pulumi.set(__self__, "config_sync", config_sync)
         if hierarchy_controller is not None:
             pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
         if policy_controller is not None:
             pulumi.set(__self__, "policy_controller", policy_controller)
         if version is not None:
@@ -1258,6 +1289,14 @@ class FeatureMembershipConfigmanagement(dict):
         Hierarchy Controller configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hierarchy_controller")
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[str]:
+        """
+        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        """
+        return pulumi.get(self, "management")
 
     @property
     @pulumi.getter(name="policyController")
@@ -1319,12 +1358,14 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
                  git: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit'] = None,
                  metrics_gcp_service_account_email: Optional[str] = None,
                  oci: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci'] = None,
                  prevent_drift: Optional[bool] = None,
                  source_format: Optional[str] = None):
         """
+        :param bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: (Optional) Structure is documented below.
         :param str metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         :param 'FeatureMembershipConfigmanagementConfigSyncOciArgs' oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
@@ -1333,6 +1374,8 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
         :param bool prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if git is not None:
             pulumi.set(__self__, "git", git)
         if metrics_gcp_service_account_email is not None:
@@ -1343,6 +1386,14 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
             pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
@@ -3572,6 +3623,24 @@ class ScopeState(dict):
         """
         (Output)
         Code describes the state of a Scope resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class GetMembershipBindingStateResult(dict):
+    def __init__(__self__, *,
+                 code: str):
+        """
+        :param str code: Code describes the state of a MembershipBinding resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Code describes the state of a MembershipBinding resource.
         """
         return pulumi.get(self, "code")
 

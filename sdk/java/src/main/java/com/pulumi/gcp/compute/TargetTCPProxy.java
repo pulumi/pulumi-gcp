@@ -270,7 +270,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TargetTCPProxy(String name) {
+    public TargetTCPProxy(java.lang.String name) {
         this(name, TargetTCPProxyArgs.Empty);
     }
     /**
@@ -278,7 +278,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TargetTCPProxy(String name, TargetTCPProxyArgs args) {
+    public TargetTCPProxy(java.lang.String name, TargetTCPProxyArgs args) {
         this(name, args, null);
     }
     /**
@@ -287,15 +287,22 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TargetTCPProxy(String name, TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, args == null ? TargetTCPProxyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TargetTCPProxy(java.lang.String name, TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TargetTCPProxy(String name, Output<String> id, @Nullable TargetTCPProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, state, makeResourceOptions(options, id));
+    private TargetTCPProxy(java.lang.String name, Output<java.lang.String> id, @Nullable TargetTCPProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TargetTCPProxyArgs makeArgs(TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TargetTCPProxyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -311,7 +318,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TargetTCPProxy get(String name, Output<String> id, @Nullable TargetTCPProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TargetTCPProxy get(java.lang.String name, Output<java.lang.String> id, @Nullable TargetTCPProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TargetTCPProxy(name, id, state, options);
     }
 }

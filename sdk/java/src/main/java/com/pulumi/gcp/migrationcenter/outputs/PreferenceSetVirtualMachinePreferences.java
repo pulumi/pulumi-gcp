@@ -16,12 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreferenceSetVirtualMachinePreferences {
     /**
-     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * COMMITMENT_PLAN_NONE
-     * COMMITMENT_PLAN_ONE_YEAR
-     * COMMITMENT_PLAN_THREE_YEARS
+     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
      * 
      */
     private @Nullable String commitmentPlan;
@@ -38,12 +33,7 @@ public final class PreferenceSetVirtualMachinePreferences {
      */
     private @Nullable PreferenceSetVirtualMachinePreferencesRegionPreferences regionPreferences;
     /**
-     * @return Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-     * Possible values:
-     * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-     * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-     * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-     * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+     * @return Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
      * 
      */
     private @Nullable String sizingOptimizationStrategy;
@@ -54,12 +44,7 @@ public final class PreferenceSetVirtualMachinePreferences {
      */
     private @Nullable PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences soleTenancyPreferences;
     /**
-     * @return Target product for assets using this preference set. Specify either target product or business goal, but not both.
-     * Possible values:
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+     * @return Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
      * 
      */
     private @Nullable String targetProduct;
@@ -72,12 +57,7 @@ public final class PreferenceSetVirtualMachinePreferences {
 
     private PreferenceSetVirtualMachinePreferences() {}
     /**
-     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * COMMITMENT_PLAN_NONE
-     * COMMITMENT_PLAN_ONE_YEAR
-     * COMMITMENT_PLAN_THREE_YEARS
+     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
      * 
      */
     public Optional<String> commitmentPlan() {
@@ -100,12 +80,7 @@ public final class PreferenceSetVirtualMachinePreferences {
         return Optional.ofNullable(this.regionPreferences);
     }
     /**
-     * @return Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-     * Possible values:
-     * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-     * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-     * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-     * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+     * @return Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
      * 
      */
     public Optional<String> sizingOptimizationStrategy() {
@@ -120,12 +95,7 @@ public final class PreferenceSetVirtualMachinePreferences {
         return Optional.ofNullable(this.soleTenancyPreferences);
     }
     /**
-     * @return Target product for assets using this preference set. Specify either target product or business goal, but not both.
-     * Possible values:
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+     * @return Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
      * 
      */
     public Optional<String> targetProduct() {

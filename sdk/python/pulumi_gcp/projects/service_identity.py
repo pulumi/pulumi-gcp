@@ -65,11 +65,13 @@ class ServiceIdentityArgs:
 class _ServiceIdentityState:
     def __init__(__self__, *,
                  email: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceIdentity resources.
         :param pulumi.Input[str] email: The email address of the Google managed service account.
+        :param pulumi.Input[str] member: The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to generate identity for.
@@ -78,6 +80,8 @@ class _ServiceIdentityState:
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if service is not None:
@@ -94,6 +98,18 @@ class _ServiceIdentityState:
     @email.setter
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
 
     @property
     @pulumi.getter
@@ -160,7 +176,7 @@ class ServiceIdentity(pulumi.CustomResource):
         hc_sa_bq_jobuser = gcp.projects.IAMMember("hc_sa_bq_jobuser",
             project=project.project_id,
             role="roles/bigquery.jobUser",
-            member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=hc_sa.member)
         ```
 
         ## Import
@@ -210,7 +226,7 @@ class ServiceIdentity(pulumi.CustomResource):
         hc_sa_bq_jobuser = gcp.projects.IAMMember("hc_sa_bq_jobuser",
             project=project.project_id,
             role="roles/bigquery.jobUser",
-            member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=hc_sa.member)
         ```
 
         ## Import
@@ -248,6 +264,7 @@ class ServiceIdentity(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
             __props__.__dict__["email"] = None
+            __props__.__dict__["member"] = None
         super(ServiceIdentity, __self__).__init__(
             'gcp:projects/serviceIdentity:ServiceIdentity',
             resource_name,
@@ -259,6 +276,7 @@ class ServiceIdentity(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             email: Optional[pulumi.Input[str]] = None,
+            member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'ServiceIdentity':
         """
@@ -269,6 +287,7 @@ class ServiceIdentity(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: The email address of the Google managed service account.
+        :param pulumi.Input[str] member: The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to generate identity for.
@@ -280,6 +299,7 @@ class ServiceIdentity(pulumi.CustomResource):
         __props__ = _ServiceIdentityState.__new__(_ServiceIdentityState)
 
         __props__.__dict__["email"] = email
+        __props__.__dict__["member"] = member
         __props__.__dict__["project"] = project
         __props__.__dict__["service"] = service
         return ServiceIdentity(resource_name, opts=opts, __props__=__props__)
@@ -291,6 +311,14 @@ class ServiceIdentity(pulumi.CustomResource):
         The email address of the Google managed service account.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Output[str]:
+        """
+        The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
 
     @property
     @pulumi.getter

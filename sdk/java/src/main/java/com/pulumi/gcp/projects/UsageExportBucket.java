@@ -176,7 +176,7 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UsageExportBucket(String name) {
+    public UsageExportBucket(java.lang.String name) {
         this(name, UsageExportBucketArgs.Empty);
     }
     /**
@@ -184,7 +184,7 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UsageExportBucket(String name, UsageExportBucketArgs args) {
+    public UsageExportBucket(java.lang.String name, UsageExportBucketArgs args) {
         this(name, args, null);
     }
     /**
@@ -193,15 +193,22 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UsageExportBucket(String name, UsageExportBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/usageExportBucket:UsageExportBucket", name, args == null ? UsageExportBucketArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UsageExportBucket(java.lang.String name, UsageExportBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/usageExportBucket:UsageExportBucket", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UsageExportBucket(String name, Output<String> id, @Nullable UsageExportBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/usageExportBucket:UsageExportBucket", name, state, makeResourceOptions(options, id));
+    private UsageExportBucket(java.lang.String name, Output<java.lang.String> id, @Nullable UsageExportBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:projects/usageExportBucket:UsageExportBucket", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UsageExportBucketArgs makeArgs(UsageExportBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UsageExportBucketArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -217,7 +224,7 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UsageExportBucket get(String name, Output<String> id, @Nullable UsageExportBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UsageExportBucket get(java.lang.String name, Output<java.lang.String> id, @Nullable UsageExportBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UsageExportBucket(name, id, state, options);
     }
 }

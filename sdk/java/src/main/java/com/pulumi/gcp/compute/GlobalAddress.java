@@ -204,9 +204,17 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
@@ -347,14 +355,16 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {
@@ -397,7 +407,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalAddress(String name) {
+    public GlobalAddress(java.lang.String name) {
         this(name, GlobalAddressArgs.Empty);
     }
     /**
@@ -405,7 +415,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalAddress(String name, @Nullable GlobalAddressArgs args) {
+    public GlobalAddress(java.lang.String name, @Nullable GlobalAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -414,15 +424,22 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalAddress(String name, @Nullable GlobalAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/globalAddress:GlobalAddress", name, args == null ? GlobalAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GlobalAddress(java.lang.String name, @Nullable GlobalAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/globalAddress:GlobalAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GlobalAddress(String name, Output<String> id, @Nullable GlobalAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/globalAddress:GlobalAddress", name, state, makeResourceOptions(options, id));
+    private GlobalAddress(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/globalAddress:GlobalAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GlobalAddressArgs makeArgs(@Nullable GlobalAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -442,7 +459,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalAddress get(String name, Output<String> id, @Nullable GlobalAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalAddress(name, id, state, options);
     }
 }

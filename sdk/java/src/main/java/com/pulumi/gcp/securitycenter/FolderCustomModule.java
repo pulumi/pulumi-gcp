@@ -319,7 +319,7 @@ public class FolderCustomModule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FolderCustomModule(String name) {
+    public FolderCustomModule(java.lang.String name) {
         this(name, FolderCustomModuleArgs.Empty);
     }
     /**
@@ -327,7 +327,7 @@ public class FolderCustomModule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FolderCustomModule(String name, FolderCustomModuleArgs args) {
+    public FolderCustomModule(java.lang.String name, FolderCustomModuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -336,15 +336,22 @@ public class FolderCustomModule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FolderCustomModule(String name, FolderCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/folderCustomModule:FolderCustomModule", name, args == null ? FolderCustomModuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FolderCustomModule(java.lang.String name, FolderCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/folderCustomModule:FolderCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FolderCustomModule(String name, Output<String> id, @Nullable FolderCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/folderCustomModule:FolderCustomModule", name, state, makeResourceOptions(options, id));
+    private FolderCustomModule(java.lang.String name, Output<java.lang.String> id, @Nullable FolderCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/folderCustomModule:FolderCustomModule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FolderCustomModuleArgs makeArgs(FolderCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FolderCustomModuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -360,7 +367,7 @@ public class FolderCustomModule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FolderCustomModule get(String name, Output<String> id, @Nullable FolderCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FolderCustomModule get(java.lang.String name, Output<java.lang.String> id, @Nullable FolderCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FolderCustomModule(name, id, state, options);
     }
 }

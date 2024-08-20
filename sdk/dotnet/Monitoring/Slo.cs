@@ -22,8 +22,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
     /// * How-to Guides
-    ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+    ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
     /// 
     /// ## Example Usage
     /// 

@@ -12,8 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValue {
     /**
-     * @return The [KMS key name] with which the content of the Operation is encrypted. The expected
-     * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * @return The [KMS key name] with which the content of the Operation is encrypted. The
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */
@@ -27,8 +27,8 @@ public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValue {
 
     private ConnectionSslConfigAdditionalVariableEncryptionKeyValue() {}
     /**
-     * @return The [KMS key name] with which the content of the Operation is encrypted. The expected
-     * format: projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * @return The [KMS key name] with which the content of the Operation is encrypted. The
+     * expected format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      * Will be empty string if google managed.
      * 
      */

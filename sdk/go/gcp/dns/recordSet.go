@@ -67,9 +67,9 @@ import (
 //				Ttl:         pulumi.Int(300),
 //				ManagedZone: prod.Name,
 //				Rrdatas: pulumi.StringArray{
-//					frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//					pulumi.String(frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 //						return &networkInterfaces[0].AccessConfigs[0].NatIp, nil
-//					}).(pulumi.StringPtrOutput),
+//					}).(pulumi.StringPtrOutput)),
 //				},
 //			})
 //			if err != nil {
@@ -275,7 +275,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewRecordSet(ctx, "geo", &dns.RecordSetArgs{
-//				Name:        pulumi.String(fmt.Sprintf("backend.%v", prod.DnsName)),
+//				Name:        pulumi.Sprintf("backend.%v", prod.DnsName),
 //				ManagedZone: pulumi.Any(prod.Name),
 //				Type:        pulumi.String("A"),
 //				Ttl:         pulumi.Int(300),

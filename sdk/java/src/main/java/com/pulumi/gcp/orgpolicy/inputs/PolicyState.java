@@ -19,6 +19,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * Structure is documented below.
      * 
      */
     @Import(name="dryRunSpec")
@@ -26,6 +27,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PolicyDryRunSpecArgs>> dryRunSpec() {
@@ -83,6 +85,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Basic information about the Organization Policy.
+     * Structure is documented below.
      * 
      */
     @Import(name="spec")
@@ -90,6 +93,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Basic information about the Organization Policy.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PolicySpecArgs>> spec() {
@@ -126,6 +130,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dryRunSpec Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -137,6 +142,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dryRunSpec Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -214,6 +220,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param spec Basic information about the Organization Policy.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -225,6 +232,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param spec Basic information about the Organization Policy.
+         * Structure is documented below.
          * 
          * @return builder
          * 

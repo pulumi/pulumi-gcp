@@ -586,7 +586,7 @@ class Automation(pulumi.CustomResource):
             location="us-central1",
             serial_pipeline={
                 "stages": [{
-                    "targetId": "test",
+                    "target_id": "test",
                     "profiles": [],
                 }],
             })
@@ -603,7 +603,7 @@ class Automation(pulumi.CustomResource):
             },
             suspended=False,
             rules=[{
-                "promoteReleaseRule": {
+                "promote_release_rule": {
                     "id": "promote-release",
                 },
             }])
@@ -619,7 +619,7 @@ class Automation(pulumi.CustomResource):
             location="us-central1",
             serial_pipeline={
                 "stages": [{
-                    "targetId": "test",
+                    "target_id": "test",
                     "profiles": ["test-profile"],
                 }],
             })
@@ -648,17 +648,17 @@ class Automation(pulumi.CustomResource):
             suspended=True,
             rules=[
                 {
-                    "promoteReleaseRule": {
+                    "promote_release_rule": {
                         "id": "promote-release",
                         "wait": "200s",
-                        "destinationTargetId": "@next",
-                        "destinationPhase": "stable",
+                        "destination_target_id": "@next",
+                        "destination_phase": "stable",
                     },
                 },
                 {
-                    "advanceRolloutRule": {
+                    "advance_rollout_rule": {
                         "id": "advance-rollout",
-                        "sourcePhases": ["deploy"],
+                        "source_phases": ["deploy"],
                         "wait": "200s",
                     },
                 },
@@ -746,7 +746,7 @@ class Automation(pulumi.CustomResource):
             location="us-central1",
             serial_pipeline={
                 "stages": [{
-                    "targetId": "test",
+                    "target_id": "test",
                     "profiles": [],
                 }],
             })
@@ -763,7 +763,7 @@ class Automation(pulumi.CustomResource):
             },
             suspended=False,
             rules=[{
-                "promoteReleaseRule": {
+                "promote_release_rule": {
                     "id": "promote-release",
                 },
             }])
@@ -779,7 +779,7 @@ class Automation(pulumi.CustomResource):
             location="us-central1",
             serial_pipeline={
                 "stages": [{
-                    "targetId": "test",
+                    "target_id": "test",
                     "profiles": ["test-profile"],
                 }],
             })
@@ -808,17 +808,17 @@ class Automation(pulumi.CustomResource):
             suspended=True,
             rules=[
                 {
-                    "promoteReleaseRule": {
+                    "promote_release_rule": {
                         "id": "promote-release",
                         "wait": "200s",
-                        "destinationTargetId": "@next",
-                        "destinationPhase": "stable",
+                        "destination_target_id": "@next",
+                        "destination_phase": "stable",
                     },
                 },
                 {
-                    "advanceRolloutRule": {
+                    "advance_rollout_rule": {
                         "id": "advance-rollout",
-                        "sourcePhases": ["deploy"],
+                        "source_phases": ["deploy"],
                         "wait": "200s",
                     },
                 },

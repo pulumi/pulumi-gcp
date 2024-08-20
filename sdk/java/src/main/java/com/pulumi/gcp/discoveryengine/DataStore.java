@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  *             .contentConfig("NO_CONTENT")
  *             .solutionTypes("SOLUTION_TYPE_SEARCH")
  *             .createAdvancedSiteSearch(false)
+ *             .skipDefaultSchemaCreation(false)
  *             .build());
  * 
  *     }
@@ -333,6 +334,32 @@ public class DataStore extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     * 
+     */
+    @Export(name="skipDefaultSchemaCreation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipDefaultSchemaCreation;
+
+    /**
+     * @return A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     * 
+     */
+    public Output<Optional<Boolean>> skipDefaultSchemaCreation() {
+        return Codegen.optional(this.skipDefaultSchemaCreation);
+    }
+    /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
      * 
@@ -353,7 +380,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DataStore(String name) {
+    public DataStore(java.lang.String name) {
         this(name, DataStoreArgs.Empty);
     }
     /**
@@ -361,7 +388,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DataStore(String name, DataStoreArgs args) {
+    public DataStore(java.lang.String name, DataStoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -370,15 +397,22 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DataStore(String name, DataStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:discoveryengine/dataStore:DataStore", name, args == null ? DataStoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DataStore(java.lang.String name, DataStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:discoveryengine/dataStore:DataStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DataStore(String name, Output<String> id, @Nullable DataStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:discoveryengine/dataStore:DataStore", name, state, makeResourceOptions(options, id));
+    private DataStore(java.lang.String name, Output<java.lang.String> id, @Nullable DataStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:discoveryengine/dataStore:DataStore", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DataStoreArgs makeArgs(DataStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DataStoreArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -394,7 +428,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DataStore get(String name, Output<String> id, @Nullable DataStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DataStore get(java.lang.String name, Output<java.lang.String> id, @Nullable DataStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DataStore(name, id, state, options);
     }
 }

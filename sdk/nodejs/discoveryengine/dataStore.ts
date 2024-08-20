@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     contentConfig: "NO_CONTENT",
  *     solutionTypes: ["SOLUTION_TYPE_SEARCH"],
  *     createAdvancedSiteSearch: false,
+ *     skipDefaultSchemaCreation: false,
  * });
  * ```
  * ### Discoveryengine Datastore Document Processing Config
@@ -174,6 +175,16 @@ export class DataStore extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     */
+    public readonly skipDefaultSchemaCreation!: pulumi.Output<boolean | undefined>;
+    /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
      */
@@ -203,6 +214,7 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["skipDefaultSchemaCreation"] = state ? state.skipDefaultSchemaCreation : undefined;
             resourceInputs["solutionTypes"] = state ? state.solutionTypes : undefined;
         } else {
             const args = argsOrState as DataStoreArgs | undefined;
@@ -229,6 +241,7 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["industryVertical"] = args ? args.industryVertical : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["skipDefaultSchemaCreation"] = args ? args.skipDefaultSchemaCreation : undefined;
             resourceInputs["solutionTypes"] = args ? args.solutionTypes : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["defaultSchemaId"] = undefined /*out*/;
@@ -302,6 +315,16 @@ export interface DataStoreState {
      */
     project?: pulumi.Input<string>;
     /**
+     * A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     */
+    skipDefaultSchemaCreation?: pulumi.Input<boolean>;
+    /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
      */
@@ -355,6 +378,16 @@ export interface DataStoreArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A boolean flag indicating whether to skip the default schema creation for
+     * the data store. Only enable this flag if you are certain that the default
+     * schema is incompatible with your use case.
+     * If set to true, you must manually create a schema for the data store
+     * before any documents can be ingested.
+     * This flag cannot be specified if `data_store.starting_schema` is
+     * specified.
+     */
+    skipDefaultSchemaCreation?: pulumi.Input<boolean>;
     /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.

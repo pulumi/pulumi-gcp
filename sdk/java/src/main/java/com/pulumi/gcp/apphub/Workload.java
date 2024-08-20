@@ -277,7 +277,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Workload(String name) {
+    public Workload(java.lang.String name) {
         this(name, WorkloadArgs.Empty);
     }
     /**
@@ -285,7 +285,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Workload(String name, WorkloadArgs args) {
+    public Workload(java.lang.String name, WorkloadArgs args) {
         this(name, args, null);
     }
     /**
@@ -294,15 +294,22 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Workload(String name, WorkloadArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/workload:Workload", name, args == null ? WorkloadArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Workload(java.lang.String name, WorkloadArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apphub/workload:Workload", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Workload(String name, Output<String> id, @Nullable WorkloadState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/workload:Workload", name, state, makeResourceOptions(options, id));
+    private Workload(java.lang.String name, Output<java.lang.String> id, @Nullable WorkloadState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apphub/workload:Workload", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkloadArgs makeArgs(WorkloadArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkloadArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -318,7 +325,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Workload get(String name, Output<String> id, @Nullable WorkloadState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Workload get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkloadState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Workload(name, id, state, options);
     }
 }

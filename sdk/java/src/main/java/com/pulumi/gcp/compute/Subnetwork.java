@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
  * * How-to Guides
- *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
  *     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+ *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
  * 
  * ## Example Usage
  * 
@@ -818,7 +818,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Subnetwork(String name) {
+    public Subnetwork(java.lang.String name) {
         this(name, SubnetworkArgs.Empty);
     }
     /**
@@ -826,7 +826,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Subnetwork(String name, SubnetworkArgs args) {
+    public Subnetwork(java.lang.String name, SubnetworkArgs args) {
         this(name, args, null);
     }
     /**
@@ -835,15 +835,22 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Subnetwork(String name, SubnetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetwork:Subnetwork", name, args == null ? SubnetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Subnetwork(java.lang.String name, SubnetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/subnetwork:Subnetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Subnetwork(String name, Output<String> id, @Nullable SubnetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetwork:Subnetwork", name, state, makeResourceOptions(options, id));
+    private Subnetwork(java.lang.String name, Output<java.lang.String> id, @Nullable SubnetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/subnetwork:Subnetwork", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SubnetworkArgs makeArgs(SubnetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubnetworkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -859,7 +866,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Subnetwork get(String name, Output<String> id, @Nullable SubnetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Subnetwork get(java.lang.String name, Output<java.lang.String> id, @Nullable SubnetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Subnetwork(name, id, state, options);
     }
 }

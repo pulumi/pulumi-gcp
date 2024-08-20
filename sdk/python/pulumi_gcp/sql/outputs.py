@@ -627,6 +627,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "disk_size"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "enableDataplexIntegration":
+            suggest = "enable_dataplex_integration"
         elif key == "enableGoogleMlIntegration":
             suggest = "enable_google_ml_integration"
         elif key == "insightsConfig":
@@ -677,6 +679,7 @@ class DatabaseInstanceSettings(dict):
                  disk_size: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  edition: Optional[str] = None,
+                 enable_dataplex_integration: Optional[bool] = None,
                  enable_google_ml_integration: Optional[bool] = None,
                  insights_config: Optional['outputs.DatabaseInstanceSettingsInsightsConfig'] = None,
                  ip_configuration: Optional['outputs.DatabaseInstanceSettingsIpConfiguration'] = None,
@@ -701,14 +704,15 @@ class DatabaseInstanceSettings(dict):
                For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`. Defaults to `ZONAL`.
         :param str collation: The name of server instance collation.
-        :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors.
+        :param str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         :param 'DatabaseInstanceSettingsDataCacheConfigArgs' data_cache_config: Data cache configurations.
         :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
-        :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`.
+        :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         :param int disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         :param str edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        :param bool enable_dataplex_integration: Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         :param bool enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         :param 'DatabaseInstanceSettingsInsightsConfigArgs' insights_config: Configuration of Query Insights.
         :param 'DatabaseInstanceSettingsMaintenanceWindowArgs' maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
@@ -751,6 +755,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if enable_dataplex_integration is not None:
+            pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         if enable_google_ml_integration is not None:
             pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         if insights_config is not None:
@@ -833,7 +839,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="connectorEnforcement")
     def connector_enforcement(self) -> Optional[str]:
         """
-        Specifies if connections must use Cloud SQL connectors.
+        Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
 
@@ -867,7 +873,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[bool]:
         """
-        Enables auto-resizing of the storage size. Defaults to `true`.
+        Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
 
@@ -883,7 +889,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[int]:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         """
         return pulumi.get(self, "disk_size")
 
@@ -902,6 +908,14 @@ class DatabaseInstanceSettings(dict):
         The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         """
         return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="enableDataplexIntegration")
+    def enable_dataplex_integration(self) -> Optional[bool]:
+        """
+        Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_dataplex_integration")
 
     @property
     @pulumi.getter(name="enableGoogleMlIntegration")
@@ -1299,8 +1313,8 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
                  start_date: str,
                  time: str):
         """
-        :param str end_date: "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
-        :param str start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param str end_date: "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
+        :param str start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         :param str time: Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -1311,7 +1325,7 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
     @pulumi.getter(name="endDate")
     def end_date(self) -> str:
         """
-        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         """
         return pulumi.get(self, "end_date")
 
@@ -1319,7 +1333,7 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
     @pulumi.getter(name="startDate")
     def start_date(self) -> str:
         """
-        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
         """
         return pulumi.get(self, "start_date")
 
@@ -1479,7 +1493,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
                * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
                * For MySQL instances, use the same value pairs as the PostgreSQL instances.
                * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -1565,7 +1579,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[str]:
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
         * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
         * For MySQL instances, use the same value pairs as the PostgreSQL instances.
         * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -2560,6 +2574,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  disk_size: int,
                  disk_type: str,
                  edition: str,
+                 enable_dataplex_integration: bool,
                  enable_google_ml_integration: bool,
                  insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
@@ -2581,7 +2596,7 @@ class GetDatabaseInstanceSettingResult(dict):
                For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
                is set to true. Defaults to ZONAL.
         :param str collation: The name of server instance collation.
-        :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors.
+        :param str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         :param Sequence['GetDatabaseInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
         :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
@@ -2589,6 +2604,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
         :param str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        :param bool enable_dataplex_integration: Enables Dataplex Integration.
         :param bool enable_google_ml_integration: Enables Vertex AI Integration.
         :param Sequence['GetDatabaseInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
         :param Sequence['GetDatabaseInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
@@ -2614,6 +2630,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
@@ -2675,7 +2692,7 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="connectorEnforcement")
     def connector_enforcement(self) -> str:
         """
-        Specifies if connections must use Cloud SQL connectors.
+        Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
 
@@ -2744,6 +2761,14 @@ class GetDatabaseInstanceSettingResult(dict):
         The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         """
         return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="enableDataplexIntegration")
+    def enable_dataplex_integration(self) -> bool:
+        """
+        Enables Dataplex Integration.
+        """
+        return pulumi.get(self, "enable_dataplex_integration")
 
     @property
     @pulumi.getter(name="enableGoogleMlIntegration")
@@ -3142,7 +3167,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['GetDatabaseInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
-        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
@@ -3210,7 +3235,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -4052,6 +4077,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  disk_size: int,
                  disk_type: str,
                  edition: str,
+                 enable_dataplex_integration: bool,
                  enable_google_ml_integration: bool,
                  insights_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult'],
@@ -4073,7 +4099,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
                is set to true. Defaults to ZONAL.
         :param str collation: The name of server instance collation.
-        :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors.
+        :param str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         :param Sequence['GetDatabaseInstancesInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
         :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
@@ -4081,6 +4107,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
         :param str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        :param bool enable_dataplex_integration: Enables Dataplex Integration.
         :param bool enable_google_ml_integration: Enables Vertex AI Integration.
         :param Sequence['GetDatabaseInstancesInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
         :param Sequence['GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
@@ -4106,6 +4133,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
@@ -4167,7 +4195,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @pulumi.getter(name="connectorEnforcement")
     def connector_enforcement(self) -> str:
         """
-        Specifies if connections must use Cloud SQL connectors.
+        Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
 
@@ -4236,6 +4264,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         """
         return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="enableDataplexIntegration")
+    def enable_dataplex_integration(self) -> bool:
+        """
+        Enables Dataplex Integration.
+        """
+        return pulumi.get(self, "enable_dataplex_integration")
 
     @property
     @pulumi.getter(name="enableGoogleMlIntegration")
@@ -4634,7 +4670,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
-        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
@@ -4702,7 +4738,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
         """
         return pulumi.get(self, "ssl_mode")
 

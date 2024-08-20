@@ -216,7 +216,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Catalog(String name) {
+    public Catalog(java.lang.String name) {
         this(name, CatalogArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Catalog(String name, CatalogArgs args) {
+    public Catalog(java.lang.String name, CatalogArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,15 +233,22 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Catalog(String name, CatalogArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:biglake/catalog:Catalog", name, args == null ? CatalogArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Catalog(java.lang.String name, CatalogArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:biglake/catalog:Catalog", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Catalog(String name, Output<String> id, @Nullable CatalogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:biglake/catalog:Catalog", name, state, makeResourceOptions(options, id));
+    private Catalog(java.lang.String name, Output<java.lang.String> id, @Nullable CatalogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:biglake/catalog:Catalog", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CatalogArgs makeArgs(CatalogArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CatalogArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +264,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Catalog get(String name, Output<String> id, @Nullable CatalogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Catalog get(java.lang.String name, Output<java.lang.String> id, @Nullable CatalogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Catalog(name, id, state, options);
     }
 }

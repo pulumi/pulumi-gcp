@@ -207,7 +207,7 @@ public class AppCheckRecaptchaEnterpriseConfig extends com.pulumi.resources.Cust
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppCheckRecaptchaEnterpriseConfig(String name) {
+    public AppCheckRecaptchaEnterpriseConfig(java.lang.String name) {
         this(name, AppCheckRecaptchaEnterpriseConfigArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class AppCheckRecaptchaEnterpriseConfig extends com.pulumi.resources.Cust
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppCheckRecaptchaEnterpriseConfig(String name, AppCheckRecaptchaEnterpriseConfigArgs args) {
+    public AppCheckRecaptchaEnterpriseConfig(java.lang.String name, AppCheckRecaptchaEnterpriseConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,15 +224,22 @@ public class AppCheckRecaptchaEnterpriseConfig extends com.pulumi.resources.Cust
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppCheckRecaptchaEnterpriseConfig(String name, AppCheckRecaptchaEnterpriseConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig", name, args == null ? AppCheckRecaptchaEnterpriseConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AppCheckRecaptchaEnterpriseConfig(java.lang.String name, AppCheckRecaptchaEnterpriseConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppCheckRecaptchaEnterpriseConfig(String name, Output<String> id, @Nullable AppCheckRecaptchaEnterpriseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig", name, state, makeResourceOptions(options, id));
+    private AppCheckRecaptchaEnterpriseConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AppCheckRecaptchaEnterpriseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AppCheckRecaptchaEnterpriseConfigArgs makeArgs(AppCheckRecaptchaEnterpriseConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppCheckRecaptchaEnterpriseConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +255,7 @@ public class AppCheckRecaptchaEnterpriseConfig extends com.pulumi.resources.Cust
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppCheckRecaptchaEnterpriseConfig get(String name, Output<String> id, @Nullable AppCheckRecaptchaEnterpriseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppCheckRecaptchaEnterpriseConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AppCheckRecaptchaEnterpriseConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppCheckRecaptchaEnterpriseConfig(name, id, state, options);
     }
 }

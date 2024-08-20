@@ -227,7 +227,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WebApp(String name) {
+    public WebApp(java.lang.String name) {
         this(name, WebAppArgs.Empty);
     }
     /**
@@ -235,7 +235,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WebApp(String name, WebAppArgs args) {
+    public WebApp(java.lang.String name, WebAppArgs args) {
         this(name, args, null);
     }
     /**
@@ -244,15 +244,22 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WebApp(String name, WebAppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/webApp:WebApp", name, args == null ? WebAppArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WebApp(java.lang.String name, WebAppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/webApp:WebApp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WebApp(String name, Output<String> id, @Nullable WebAppState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/webApp:WebApp", name, state, makeResourceOptions(options, id));
+    private WebApp(java.lang.String name, Output<java.lang.String> id, @Nullable WebAppState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/webApp:WebApp", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WebAppArgs makeArgs(WebAppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebAppArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -268,7 +275,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WebApp get(String name, Output<String> id, @Nullable WebAppState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WebApp get(java.lang.String name, Output<java.lang.String> id, @Nullable WebAppState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WebApp(name, id, state, options);
     }
 }

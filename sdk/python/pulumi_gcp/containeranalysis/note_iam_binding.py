@@ -319,6 +319,25 @@ class NoteIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Container Registry Note
+        Three different resources help you manage your IAM policy for Container Registry Note. Each of these resources serves a different use case:
+
+        * `containeranalysis.NoteIamPolicy`: Authoritative. Sets the IAM policy for the note and replaces any existing policy already attached.
+        * `containeranalysis.NoteIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the note are preserved.
+        * `containeranalysis.NoteIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the note are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `containeranalysis.NoteIamPolicy`: Retrieves the IAM policy for the note
+
+        > **Note:** `containeranalysis.NoteIamPolicy` **cannot** be used in conjunction with `containeranalysis.NoteIamBinding` and `containeranalysis.NoteIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
+
         ## containeranalysis.NoteIamPolicy
 
         ```python
@@ -479,6 +498,25 @@ class NoteIamBinding(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             member="user:jane@example.com")
         ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Container Registry Note
+        Three different resources help you manage your IAM policy for Container Registry Note. Each of these resources serves a different use case:
+
+        * `containeranalysis.NoteIamPolicy`: Authoritative. Sets the IAM policy for the note and replaces any existing policy already attached.
+        * `containeranalysis.NoteIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the note are preserved.
+        * `containeranalysis.NoteIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the note are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `containeranalysis.NoteIamPolicy`: Retrieves the IAM policy for the note
+
+        > **Note:** `containeranalysis.NoteIamPolicy` **cannot** be used in conjunction with `containeranalysis.NoteIamBinding` and `containeranalysis.NoteIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## containeranalysis.NoteIamPolicy
 

@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///     {
     ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
-    ///         Member = nsSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = nsSa.Member,
     ///     });
     /// 
     ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()

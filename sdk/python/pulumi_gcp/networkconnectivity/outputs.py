@@ -424,11 +424,11 @@ class ServiceConnectionPolicyPscConnection(dict):
 class ServiceConnectionPolicyPscConnectionError(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
-                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
                  message: Optional[str] = None):
         """
         :param int code: The status code, which should be an enum value of [google.rpc.Code][].
-        :param Sequence[Mapping[str, Any]] details: (Output)
+        :param Sequence[Mapping[str, str]] details: (Output)
                A list of messages that carry the error details.
         :param str message: A developer-facing error message.
         """
@@ -449,7 +449,7 @@ class ServiceConnectionPolicyPscConnectionError(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -578,6 +578,7 @@ class SpokeLinkedRouterApplianceInstances(dict):
                  site_to_site_data_transfer: bool):
         """
         :param Sequence['SpokeLinkedRouterApplianceInstancesInstanceArgs'] instances: The list of router appliance instances
+               Structure is documented below.
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
         pulumi.set(__self__, "instances", instances)
@@ -588,6 +589,7 @@ class SpokeLinkedRouterApplianceInstances(dict):
     def instances(self) -> Sequence['outputs.SpokeLinkedRouterApplianceInstancesInstance']:
         """
         The list of router appliance instances
+        Structure is documented below.
         """
         return pulumi.get(self, "instances")
 
@@ -627,8 +629,6 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
         """
         :param str ip_address: The IP address on the VM to use for peering.
         :param str virtual_machine: The URI of the virtual machine resource
-               
-               - - -
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -648,8 +648,6 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
     def virtual_machine(self) -> Optional[str]:
         """
         The URI of the virtual machine resource
-
-        - - -
         """
         return pulumi.get(self, "virtual_machine")
 

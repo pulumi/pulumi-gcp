@@ -780,16 +780,14 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
     @Export(name="targetService", refs={String.class}, tree="[0]")
     private Output<String> targetService;
 
     /**
-     * @return The URL of a forwarding rule that represents the service identified by
-     * this service attachment.
+     * @return The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
     public Output<String> targetService() {
@@ -800,7 +798,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceAttachment(String name) {
+    public ServiceAttachment(java.lang.String name) {
         this(name, ServiceAttachmentArgs.Empty);
     }
     /**
@@ -808,7 +806,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceAttachment(String name, ServiceAttachmentArgs args) {
+    public ServiceAttachment(java.lang.String name, ServiceAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -817,15 +815,22 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceAttachment(String name, ServiceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/serviceAttachment:ServiceAttachment", name, args == null ? ServiceAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceAttachment(java.lang.String name, ServiceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/serviceAttachment:ServiceAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceAttachment(String name, Output<String> id, @Nullable ServiceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/serviceAttachment:ServiceAttachment", name, state, makeResourceOptions(options, id));
+    private ServiceAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/serviceAttachment:ServiceAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceAttachmentArgs makeArgs(ServiceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -841,7 +846,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceAttachment get(String name, Output<String> id, @Nullable ServiceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceAttachment(name, id, state, options);
     }
 }

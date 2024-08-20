@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var vmimage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-10")
+ *             .family("debian-12")
  *             .project("debian-cloud")
  *             .build());
  * 
@@ -487,7 +487,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TargetInstance(String name) {
+    public TargetInstance(java.lang.String name) {
         this(name, TargetInstanceArgs.Empty);
     }
     /**
@@ -495,7 +495,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TargetInstance(String name, TargetInstanceArgs args) {
+    public TargetInstance(java.lang.String name, TargetInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -504,15 +504,22 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TargetInstance(String name, TargetInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetInstance:TargetInstance", name, args == null ? TargetInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TargetInstance(java.lang.String name, TargetInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/targetInstance:TargetInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TargetInstance(String name, Output<String> id, @Nullable TargetInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetInstance:TargetInstance", name, state, makeResourceOptions(options, id));
+    private TargetInstance(java.lang.String name, Output<java.lang.String> id, @Nullable TargetInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/targetInstance:TargetInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TargetInstanceArgs makeArgs(TargetInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TargetInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -528,7 +535,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TargetInstance get(String name, Output<String> id, @Nullable TargetInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TargetInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable TargetInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TargetInstance(name, id, state, options);
     }
 }

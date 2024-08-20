@@ -800,12 +800,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()
  *             .region("us-central1")
  *             .name("health-check")
@@ -862,19 +862,19 @@ import javax.annotation.Nullable;
  *                 .routeRules(                
  *                     RegionUrlMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}")
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/}{{@code username=*}}{@code /carts/}{{@code cartid=**}}{@code ")
  *                             .build())
  *                         .service(cart_backend.id())
  *                         .priority(1)
  *                         .routeAction(RegionUrlMapPathMatcherRouteRuleRouteActionArgs.builder()
  *                             .urlRewrite(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs.builder()
- *                                 .pathTemplateRewrite("/{username}-{cartid}/")
+ *                                 .pathTemplateRewrite("/}{{@code username}}{@code -}{{@code cartid}}{@code /")
  *                                 .build())
  *                             .build())
  *                         .build(),
  *                     RegionUrlMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
- *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*")
+ *                             .pathTemplateMatch("/xyzwebservices/v2/xyz/users/*}&#47;{@code accountinfo/*")
  *                             .build())
  *                         .service(user_backend.id())
  *                         .priority(2)
@@ -882,8 +882,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -1180,7 +1180,7 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionUrlMap(String name) {
+    public RegionUrlMap(java.lang.String name) {
         this(name, RegionUrlMapArgs.Empty);
     }
     /**
@@ -1188,7 +1188,7 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionUrlMap(String name, @Nullable RegionUrlMapArgs args) {
+    public RegionUrlMap(java.lang.String name, @Nullable RegionUrlMapArgs args) {
         this(name, args, null);
     }
     /**
@@ -1197,15 +1197,22 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionUrlMap(String name, @Nullable RegionUrlMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionUrlMap:RegionUrlMap", name, args == null ? RegionUrlMapArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionUrlMap(java.lang.String name, @Nullable RegionUrlMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionUrlMap:RegionUrlMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionUrlMap(String name, Output<String> id, @Nullable RegionUrlMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionUrlMap:RegionUrlMap", name, state, makeResourceOptions(options, id));
+    private RegionUrlMap(java.lang.String name, Output<java.lang.String> id, @Nullable RegionUrlMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionUrlMap:RegionUrlMap", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionUrlMapArgs makeArgs(@Nullable RegionUrlMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionUrlMapArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1221,7 +1228,7 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionUrlMap get(String name, Output<String> id, @Nullable RegionUrlMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionUrlMap get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionUrlMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionUrlMap(name, id, state, options);
     }
 }

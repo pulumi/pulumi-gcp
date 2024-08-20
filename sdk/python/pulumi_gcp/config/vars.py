@@ -602,6 +602,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('securityCenterManagementCustomEndpoint')
 
     @property
+    def security_center_v2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('securityCenterV2CustomEndpoint')
+
+    @property
     def security_scanner_custom_endpoint(self) -> Optional[str]:
         return __config__.get('securityScannerCustomEndpoint')
 
@@ -624,6 +628,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def service_usage_custom_endpoint(self) -> Optional[str]:
         return __config__.get('serviceUsageCustomEndpoint')
+
+    @property
+    def site_verification_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('siteVerificationCustomEndpoint')
 
     @property
     def skip_region_validation(self) -> bool:

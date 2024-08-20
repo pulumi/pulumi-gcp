@@ -52,15 +52,15 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// A list of the properties used to set the daemon config files.
         /// This will include any values supplied by the user via `cluster_config.software_config.override_properties`
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

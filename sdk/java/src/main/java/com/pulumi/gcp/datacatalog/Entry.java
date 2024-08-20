@@ -474,7 +474,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Entry(String name) {
+    public Entry(java.lang.String name) {
         this(name, EntryArgs.Empty);
     }
     /**
@@ -482,7 +482,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Entry(String name, EntryArgs args) {
+    public Entry(java.lang.String name, EntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -491,15 +491,22 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Entry(String name, EntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/entry:Entry", name, args == null ? EntryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Entry(java.lang.String name, EntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datacatalog/entry:Entry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Entry(String name, Output<String> id, @Nullable EntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/entry:Entry", name, state, makeResourceOptions(options, id));
+    private Entry(java.lang.String name, Output<java.lang.String> id, @Nullable EntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:datacatalog/entry:Entry", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EntryArgs makeArgs(EntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EntryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -515,7 +522,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Entry get(String name, Output<String> id, @Nullable EntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Entry get(java.lang.String name, Output<java.lang.String> id, @Nullable EntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Entry(name, id, state, options);
     }
 }

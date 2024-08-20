@@ -34,6 +34,25 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Import(name="gatewayIpVersion")
+    private @Nullable Output<String> gatewayIpVersion;
+
+    /**
+     * @return The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<Output<String>> gatewayIpVersion() {
+        return Optional.ofNullable(this.gatewayIpVersion);
+    }
+
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -115,7 +134,7 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
      * The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     @Import(name="stackType")
@@ -125,7 +144,7 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
      * @return The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     public Optional<Output<String>> stackType() {
@@ -153,6 +172,7 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     private HaVpnGatewayArgs(HaVpnGatewayArgs $) {
         this.description = $.description;
+        this.gatewayIpVersion = $.gatewayIpVersion;
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
@@ -198,6 +218,31 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gatewayIpVersion The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+         * Default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayIpVersion(@Nullable Output<String> gatewayIpVersion) {
+            $.gatewayIpVersion = gatewayIpVersion;
+            return this;
+        }
+
+        /**
+         * @param gatewayIpVersion The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+         * Default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayIpVersion(String gatewayIpVersion) {
+            return gatewayIpVersion(Output.of(gatewayIpVersion));
         }
 
         /**
@@ -306,7 +351,7 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enabled.
          * If not specified, IPV4_ONLY will be used.
          * Default value is `IPV4_ONLY`.
-         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
          * 
          * @return builder
          * 
@@ -320,7 +365,7 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enabled.
          * If not specified, IPV4_ONLY will be used.
          * Default value is `IPV4_ONLY`.
-         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
          * 
          * @return builder
          * 

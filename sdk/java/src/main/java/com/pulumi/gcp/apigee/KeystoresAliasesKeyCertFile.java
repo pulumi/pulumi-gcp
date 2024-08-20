@@ -183,7 +183,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeystoresAliasesKeyCertFile(String name) {
+    public KeystoresAliasesKeyCertFile(java.lang.String name) {
         this(name, KeystoresAliasesKeyCertFileArgs.Empty);
     }
     /**
@@ -191,7 +191,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeystoresAliasesKeyCertFile(String name, KeystoresAliasesKeyCertFileArgs args) {
+    public KeystoresAliasesKeyCertFile(java.lang.String name, KeystoresAliasesKeyCertFileArgs args) {
         this(name, args, null);
     }
     /**
@@ -200,15 +200,22 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeystoresAliasesKeyCertFile(String name, KeystoresAliasesKeyCertFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile", name, args == null ? KeystoresAliasesKeyCertFileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KeystoresAliasesKeyCertFile(java.lang.String name, KeystoresAliasesKeyCertFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KeystoresAliasesKeyCertFile(String name, Output<String> id, @Nullable KeystoresAliasesKeyCertFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile", name, state, makeResourceOptions(options, id));
+    private KeystoresAliasesKeyCertFile(java.lang.String name, Output<java.lang.String> id, @Nullable KeystoresAliasesKeyCertFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KeystoresAliasesKeyCertFileArgs makeArgs(KeystoresAliasesKeyCertFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeystoresAliasesKeyCertFileArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -228,7 +235,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeystoresAliasesKeyCertFile get(String name, Output<String> id, @Nullable KeystoresAliasesKeyCertFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KeystoresAliasesKeyCertFile get(java.lang.String name, Output<java.lang.String> id, @Nullable KeystoresAliasesKeyCertFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KeystoresAliasesKeyCertFile(name, id, state, options);
     }
 }

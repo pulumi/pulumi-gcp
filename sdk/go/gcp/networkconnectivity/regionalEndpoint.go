@@ -56,12 +56,12 @@ import (
 //			_, err = networkconnectivity.NewRegionalEndpoint(ctx, "default", &networkconnectivity.RegionalEndpointArgs{
 //				Name:            pulumi.String("my-rep"),
 //				Location:        pulumi.String("us-central1"),
-//				TargetGoogleApi: pulumi.String("boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com"),
+//				TargetGoogleApi: pulumi.String("storage.us-central1.p.rep.googleapis.com"),
 //				AccessType:      pulumi.String("REGIONAL"),
 //				Address:         pulumi.String("192.168.0.5"),
 //				Network:         myNetwork.ID(),
 //				Subnetwork:      mySubnetwork.ID(),
-//				Description:     pulumi.String("My RegionalEndpoint targeting Google API boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com"),
+//				Description:     pulumi.String("My RegionalEndpoint targeting Google API storage.us-central1.p.rep.googleapis.com"),
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("default"),
 //				},
@@ -108,7 +108,7 @@ import (
 //			_, err = networkconnectivity.NewRegionalEndpoint(ctx, "default", &networkconnectivity.RegionalEndpointArgs{
 //				Name:            pulumi.String("my-rep"),
 //				Location:        pulumi.String("us-central1"),
-//				TargetGoogleApi: pulumi.String("boqcodelabjaimin-pa.us-central1.p.rep.googleapis.com"),
+//				TargetGoogleApi: pulumi.String("storage.us-central1.p.rep.googleapis.com"),
 //				AccessType:      pulumi.String("GLOBAL"),
 //				Address:         pulumi.String("192.168.0.4"),
 //				Network:         myNetwork.ID(),

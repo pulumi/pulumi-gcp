@@ -20,24 +20,14 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
     public static final PreferenceSetVirtualMachinePreferencesArgs Empty = new PreferenceSetVirtualMachinePreferencesArgs();
 
     /**
-     * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * COMMITMENT_PLAN_NONE
-     * COMMITMENT_PLAN_ONE_YEAR
-     * COMMITMENT_PLAN_THREE_YEARS
+     * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
      * 
      */
     @Import(name="commitmentPlan")
     private @Nullable Output<String> commitmentPlan;
 
     /**
-     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-     * Possible values:
-     * COMMITMENT_PLAN_UNSPECIFIED
-     * COMMITMENT_PLAN_NONE
-     * COMMITMENT_PLAN_ONE_YEAR
-     * COMMITMENT_PLAN_THREE_YEARS
+     * @return Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
      * 
      */
     public Optional<Output<String>> commitmentPlan() {
@@ -79,24 +69,14 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
     }
 
     /**
-     * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-     * Possible values:
-     * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-     * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-     * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-     * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+     * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
      * 
      */
     @Import(name="sizingOptimizationStrategy")
     private @Nullable Output<String> sizingOptimizationStrategy;
 
     /**
-     * @return Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-     * Possible values:
-     * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-     * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-     * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-     * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+     * @return Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
      * 
      */
     public Optional<Output<String>> sizingOptimizationStrategy() {
@@ -121,24 +101,14 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
     }
 
     /**
-     * Target product for assets using this preference set. Specify either target product or business goal, but not both.
-     * Possible values:
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+     * Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
      * 
      */
     @Import(name="targetProduct")
     private @Nullable Output<String> targetProduct;
 
     /**
-     * @return Target product for assets using this preference set. Specify either target product or business goal, but not both.
-     * Possible values:
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-     * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+     * @return Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
      * 
      */
     public Optional<Output<String>> targetProduct() {
@@ -193,12 +163,7 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
         }
 
         /**
-         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * COMMITMENT_PLAN_NONE
-         * COMMITMENT_PLAN_ONE_YEAR
-         * COMMITMENT_PLAN_THREE_YEARS
+         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
          * 
          * @return builder
          * 
@@ -209,12 +174,7 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
         }
 
         /**
-         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-         * Possible values:
-         * COMMITMENT_PLAN_UNSPECIFIED
-         * COMMITMENT_PLAN_NONE
-         * COMMITMENT_PLAN_ONE_YEAR
-         * COMMITMENT_PLAN_THREE_YEARS
+         * @param commitmentPlan Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
          * 
          * @return builder
          * 
@@ -270,12 +230,7 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
         }
 
         /**
-         * @param sizingOptimizationStrategy Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-         * Possible values:
-         * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-         * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-         * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-         * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+         * @param sizingOptimizationStrategy Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
          * 
          * @return builder
          * 
@@ -286,12 +241,7 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
         }
 
         /**
-         * @param sizingOptimizationStrategy Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-         * Possible values:
-         * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
-         * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
-         * SIZING_OPTIMIZATION_STRATEGY_MODERATE
-         * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+         * @param sizingOptimizationStrategy Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
          * 
          * @return builder
          * 
@@ -324,12 +274,7 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
         }
 
         /**
-         * @param targetProduct Target product for assets using this preference set. Specify either target product or business goal, but not both.
-         * Possible values:
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+         * @param targetProduct Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
          * 
          * @return builder
          * 
@@ -340,12 +285,7 @@ public final class PreferenceSetVirtualMachinePreferencesArgs extends com.pulumi
         }
 
         /**
-         * @param targetProduct Target product for assets using this preference set. Specify either target product or business goal, but not both.
-         * Possible values:
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
-         * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+         * @param targetProduct Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
          * 
          * @return builder
          * 

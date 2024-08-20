@@ -633,7 +633,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Backup(String name) {
+    public Backup(java.lang.String name) {
         this(name, BackupArgs.Empty);
     }
     /**
@@ -641,7 +641,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Backup(String name, BackupArgs args) {
+    public Backup(java.lang.String name, BackupArgs args) {
         this(name, args, null);
     }
     /**
@@ -650,15 +650,22 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Backup(String name, BackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:alloydb/backup:Backup", name, args == null ? BackupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Backup(java.lang.String name, BackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:alloydb/backup:Backup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Backup(String name, Output<String> id, @Nullable BackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:alloydb/backup:Backup", name, state, makeResourceOptions(options, id));
+    private Backup(java.lang.String name, Output<java.lang.String> id, @Nullable BackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:alloydb/backup:Backup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BackupArgs makeArgs(BackupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -678,7 +685,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Backup get(String name, Output<String> id, @Nullable BackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Backup get(java.lang.String name, Output<java.lang.String> id, @Nullable BackupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Backup(name, id, state, options);
     }
 }

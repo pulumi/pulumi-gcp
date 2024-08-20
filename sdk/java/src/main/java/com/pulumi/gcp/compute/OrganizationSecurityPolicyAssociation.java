@@ -182,7 +182,7 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationSecurityPolicyAssociation(String name) {
+    public OrganizationSecurityPolicyAssociation(java.lang.String name) {
         this(name, OrganizationSecurityPolicyAssociationArgs.Empty);
     }
     /**
@@ -190,7 +190,7 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationSecurityPolicyAssociation(String name, OrganizationSecurityPolicyAssociationArgs args) {
+    public OrganizationSecurityPolicyAssociation(java.lang.String name, OrganizationSecurityPolicyAssociationArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,15 +199,22 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationSecurityPolicyAssociation(String name, OrganizationSecurityPolicyAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation", name, args == null ? OrganizationSecurityPolicyAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OrganizationSecurityPolicyAssociation(java.lang.String name, OrganizationSecurityPolicyAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationSecurityPolicyAssociation(String name, Output<String> id, @Nullable OrganizationSecurityPolicyAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation", name, state, makeResourceOptions(options, id));
+    private OrganizationSecurityPolicyAssociation(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationSecurityPolicyAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OrganizationSecurityPolicyAssociationArgs makeArgs(OrganizationSecurityPolicyAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationSecurityPolicyAssociationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -223,7 +230,7 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationSecurityPolicyAssociation get(String name, Output<String> id, @Nullable OrganizationSecurityPolicyAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationSecurityPolicyAssociation get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationSecurityPolicyAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationSecurityPolicyAssociation(name, id, state, options);
     }
 }

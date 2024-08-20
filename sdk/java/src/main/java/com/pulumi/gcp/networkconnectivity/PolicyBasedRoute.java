@@ -420,7 +420,7 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PolicyBasedRoute(String name) {
+    public PolicyBasedRoute(java.lang.String name) {
         this(name, PolicyBasedRouteArgs.Empty);
     }
     /**
@@ -428,7 +428,7 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PolicyBasedRoute(String name, PolicyBasedRouteArgs args) {
+    public PolicyBasedRoute(java.lang.String name, PolicyBasedRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -437,15 +437,22 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PolicyBasedRoute(String name, PolicyBasedRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute", name, args == null ? PolicyBasedRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PolicyBasedRoute(java.lang.String name, PolicyBasedRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PolicyBasedRoute(String name, Output<String> id, @Nullable PolicyBasedRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute", name, state, makeResourceOptions(options, id));
+    private PolicyBasedRoute(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyBasedRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PolicyBasedRouteArgs makeArgs(PolicyBasedRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PolicyBasedRouteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -465,7 +472,7 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PolicyBasedRoute get(String name, Output<String> id, @Nullable PolicyBasedRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PolicyBasedRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyBasedRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PolicyBasedRoute(name, id, state, options);
     }
 }

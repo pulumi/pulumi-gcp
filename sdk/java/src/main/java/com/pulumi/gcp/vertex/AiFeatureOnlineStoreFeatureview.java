@@ -273,6 +273,196 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Vertex Ai Featureonlinestore Featureview Cross Project
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamMember;
+ * import com.pulumi.gcp.bigquery.DatasetIamMemberArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureGroup;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureGroupBigQueryArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureGroupBigQueryBigQuerySourceArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupFeature;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupFeatureArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureview;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var testProject = OrganizationsFunctions.getProject();
+ * 
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("tf-test_13293")
+ *             .name("tf-test_40289")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var vertexai = new Service("vertexai", ServiceArgs.builder()
+ *             .service("aiplatform.googleapis.com")
+ *             .project(project.projectId())
+ *             .disableOnDestroy(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .project(project.projectId())
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
+ *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
+ *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
+ *                     .minNodeCount(1)
+ *                     .maxNodeCount(2)
+ *                     .cpuUtilizationTarget(80)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vertexai)
+ *                 .build());
+ * 
+ *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()
+ *             .datasetId("example_cross_project_featureview")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var viewer = new DatasetIamMember("viewer", DatasetIamMemberArgs.builder()
+ *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .datasetId(sampleDataset.datasetId())
+ *             .role("roles/bigquery.dataViewer")
+ *             .member(project.number().applyValue(number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", number)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(featureonlinestore)
+ *                 .build());
+ * 
+ *         var wait30Seconds = new Sleep("wait30Seconds", SleepArgs.builder()
+ *             .createDuration("30s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(viewer)
+ *                 .build());
+ * 
+ *         var sampleTable = new Table("sampleTable", TableArgs.builder()
+ *             .deletionProtection(false)
+ *             .datasetId(sampleDataset.datasetId())
+ *             .tableId("example_cross_project_featureview")
+ *             .schema("""
+ * [
+ *     }{{@code
+ *         "name": "feature_id",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     }}{@code ,
+ *     }{{@code
+ *         "name": "example_cross_project_featureview",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     }}{@code ,
+ *     }{{@code
+ *         "name": "feature_timestamp",
+ *         "type": "TIMESTAMP",
+ *         "mode": "NULLABLE"
+ *     }}{@code
+ * ]
+ *             """)
+ *             .build());
+ * 
+ *         var sampleFeatureGroup = new AiFeatureGroup("sampleFeatureGroup", AiFeatureGroupArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .description("A sample feature group")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
+ *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> }{{@code
+ *                         var project = values.t1;
+ *                         var datasetId = values.t2;
+ *                         var tableId = values.t3;
+ *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
+ *                     }}{@code ))
+ *                     .build())
+ *                 .entityIdColumns("feature_id")
+ *                 .build())
+ *             .build());
+ * 
+ *         var sampleFeature = new AiFeatureGroupFeature("sampleFeature", AiFeatureGroupFeatureArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .region("us-central1")
+ *             .featureGroup(sampleFeatureGroup.name())
+ *             .description("A sample feature")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *         var crossProjectFeatureview = new AiFeatureOnlineStoreFeatureview("crossProjectFeatureview", AiFeatureOnlineStoreFeatureviewArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .project(project.projectId())
+ *             .region("us-central1")
+ *             .featureOnlineStore(featureonlinestore.name())
+ *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
+ *                 .cron("0 0 * * *")
+ *                 .build())
+ *             .featureRegistrySource(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs.builder()
+ *                 .featureGroups(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs.builder()
+ *                     .featureGroupId(sampleFeatureGroup.name())
+ *                     .featureIds(sampleFeature.name())
+ *                     .build())
+ *                 .projectNumber(testProject.applyValue(getProjectResult -> getProjectResult.number()))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     vertexai,
+ *                     wait30Seconds)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore Featureview With Vector Search
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -666,7 +856,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AiFeatureOnlineStoreFeatureview(String name) {
+    public AiFeatureOnlineStoreFeatureview(java.lang.String name) {
         this(name, AiFeatureOnlineStoreFeatureviewArgs.Empty);
     }
     /**
@@ -674,7 +864,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AiFeatureOnlineStoreFeatureview(String name, AiFeatureOnlineStoreFeatureviewArgs args) {
+    public AiFeatureOnlineStoreFeatureview(java.lang.String name, AiFeatureOnlineStoreFeatureviewArgs args) {
         this(name, args, null);
     }
     /**
@@ -683,15 +873,22 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AiFeatureOnlineStoreFeatureview(String name, AiFeatureOnlineStoreFeatureviewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, args == null ? AiFeatureOnlineStoreFeatureviewArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AiFeatureOnlineStoreFeatureview(java.lang.String name, AiFeatureOnlineStoreFeatureviewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AiFeatureOnlineStoreFeatureview(String name, Output<String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, state, makeResourceOptions(options, id));
+    private AiFeatureOnlineStoreFeatureview(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AiFeatureOnlineStoreFeatureviewArgs makeArgs(AiFeatureOnlineStoreFeatureviewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiFeatureOnlineStoreFeatureviewArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -711,7 +908,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AiFeatureOnlineStoreFeatureview get(String name, Output<String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AiFeatureOnlineStoreFeatureview get(java.lang.String name, Output<java.lang.String> id, @Nullable AiFeatureOnlineStoreFeatureviewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AiFeatureOnlineStoreFeatureview(name, id, state, options);
     }
 }

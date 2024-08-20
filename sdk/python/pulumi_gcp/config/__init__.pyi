@@ -305,6 +305,8 @@ securityCenterCustomEndpoint: Optional[str]
 
 securityCenterManagementCustomEndpoint: Optional[str]
 
+securityCenterV2CustomEndpoint: Optional[str]
+
 securityScannerCustomEndpoint: Optional[str]
 
 securitypostureCustomEndpoint: Optional[str]
@@ -316,6 +318,8 @@ serviceManagementCustomEndpoint: Optional[str]
 serviceNetworkingCustomEndpoint: Optional[str]
 
 serviceUsageCustomEndpoint: Optional[str]
+
+siteVerificationCustomEndpoint: Optional[str]
 
 skipRegionValidation: bool
 

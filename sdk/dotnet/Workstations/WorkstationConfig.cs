@@ -22,6 +22,18 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var tagKey1 = new Gcp.Tags.TagKey("tag_key1", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "keyname",
+    ///     });
+    /// 
+    ///     var tagValue1 = new Gcp.Tags.TagValue("tag_value1", new()
+    ///     {
+    ///         Parent = tagKey1.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         ShortName = "valuename",
+    ///     });
+    /// 
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
     ///         Name = "workstation-cluster",
@@ -80,6 +92,15 @@ namespace Pulumi.Gcp.Workstations
     ///                 BootDiskSizeGb = 35,
     ///                 DisablePublicIpAddresses = true,
     ///                 DisableSsh = false,
+    ///                 VmTags = Output.Tuple(tagKey1.Name, tagValue1.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var tagKey1Name = values.Item1;
+    ///                     var tagValue1Name = values.Item2;
+    ///                     return 
+    ///                     {
+    ///                         { $"tagKeys/{tagKey1Name}", $"tagValues/{tagValue1Name}" },
+    ///                     };
+    ///                 }),
     ///             },
     ///         },
     ///     });

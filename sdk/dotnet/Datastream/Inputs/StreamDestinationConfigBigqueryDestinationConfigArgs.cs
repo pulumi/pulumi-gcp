@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamDestinationConfigBigqueryDestinationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
+        /// events) to a source table will be written to the destination Google BigQuery table, retaining the
+        /// historical state of the data.
+        /// </summary>
+        [Input("appendOnly")]
+        public Input<Inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs>? AppendOnly { get; set; }
+
+        /// <summary>
         /// The guaranteed data freshness (in seconds) when querying tables created by the stream.
         /// Editing this field will only affect new tables created in the future, but existing tables
         /// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -20,6 +28,14 @@ namespace Pulumi.Gcp.Datastream.Inputs
         /// </summary>
         [Input("dataFreshness")]
         public Input<string>? DataFreshness { get; set; }
+
+        /// <summary>
+        /// Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
+        /// table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
+        /// in the source database. With Merge mode, no historical record of the change events is kept.
+        /// </summary>
+        [Input("merge")]
+        public Input<Inputs.StreamDestinationConfigBigqueryDestinationConfigMergeArgs>? Merge { get; set; }
 
         /// <summary>
         /// A single target dataset to which all data will be streamed.

@@ -63,7 +63,6 @@ class DatasetArgs:
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
-               
                Once this property is set, all newly-created partitioned tables in
                the dataset will have an `expirationMs` property in the `timePartitioning`
                settings set to this value, and changing the value will only
@@ -77,7 +76,6 @@ class DatasetArgs:
                over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
-               
                Once this property is set, all newly-created tables in the dataset
                will have an `expirationTime` property set to the creation time plus
                the value in this property, and changing the value will only affect
@@ -104,12 +102,10 @@ class DatasetArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-               
                There are two types of locations, regional or multi-regional. A regional
                location is a specific geographic place, such as Tokyo, and a multi-regional
                location is a large geographic area, such as the United States, that
                contains at least two geographic places.
-               
                The default value is multi-regional location `US`.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
@@ -230,7 +226,6 @@ class DatasetArgs:
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
-
         Once this property is set, all newly-created partitioned tables in
         the dataset will have an `expirationMs` property in the `timePartitioning`
         settings set to this value, and changing the value will only
@@ -255,7 +250,6 @@ class DatasetArgs:
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
-
         Once this property is set, all newly-created tables in the dataset
         will have an `expirationTime` property set to the creation time plus
         the value in this property, and changing the value will only affect
@@ -359,12 +353,10 @@ class DatasetArgs:
         """
         The geographic location where the dataset should reside.
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-
         There are two types of locations, regional or multi-regional. A regional
         location is a specific geographic place, such as Tokyo, and a multi-regional
         location is a large geographic area, such as the United States, that
         contains at least two geographic places.
-
         The default value is multi-regional location `US`.
         Changing this forces a new resource to be created.
         """
@@ -484,7 +476,6 @@ class _DatasetState:
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
-               
                Once this property is set, all newly-created partitioned tables in
                the dataset will have an `expirationMs` property in the `timePartitioning`
                settings set to this value, and changing the value will only
@@ -498,7 +489,6 @@ class _DatasetState:
                over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
-               
                Once this property is set, all newly-created tables in the dataset
                will have an `expirationTime` property set to the creation time plus
                the value in this property, and changing the value will only affect
@@ -529,12 +519,10 @@ class _DatasetState:
                milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-               
                There are two types of locations, regional or multi-regional. A regional
                location is a specific geographic place, such as Tokyo, and a multi-regional
                location is a large geographic area, such as the United States, that
                contains at least two geographic places.
-               
                The default value is multi-regional location `US`.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
@@ -684,7 +672,6 @@ class _DatasetState:
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
-
         Once this property is set, all newly-created partitioned tables in
         the dataset will have an `expirationMs` property in the `timePartitioning`
         settings set to this value, and changing the value will only
@@ -709,7 +696,6 @@ class _DatasetState:
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
-
         Once this property is set, all newly-created tables in the dataset
         will have an `expirationTime` property set to the creation time plus
         the value in this property, and changing the value will only affect
@@ -850,12 +836,10 @@ class _DatasetState:
         """
         The geographic location where the dataset should reside.
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-
         There are two types of locations, regional or multi-regional. A regional
         location is a specific geographic place, such as Tokyo, and a multi-regional
         location is a large geographic area, such as the United States, that
         contains at least two geographic places.
-
         The default value is multi-regional location `US`.
         Changing this forces a new resource to be created.
         """
@@ -992,7 +976,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1019,7 +1003,7 @@ class Dataset(pulumi.CustomResource):
             location="US",
             default_table_expiration_ms=3600000,
             default_encryption_configuration={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             })
         ```
         ### Bigquery Dataset Authorized Dataset
@@ -1041,7 +1025,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1060,7 +1044,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1069,10 +1053,10 @@ class Dataset(pulumi.CustomResource):
                 {
                     "dataset": {
                         "dataset": {
-                            "projectId": public.project,
-                            "datasetId": public.dataset_id,
+                            "project_id": public.project,
+                            "dataset_id": public.dataset_id,
                         },
-                        "targetTypes": ["VIEWS"],
+                        "target_types": ["VIEWS"],
                     },
                 },
             ])
@@ -1095,9 +1079,9 @@ class Dataset(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1114,13 +1098,13 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": "my@service-account.com",
+                    "user_by_email": "my@service-account.com",
                 },
                 {
                     "routine": {
-                        "projectId": public_routine.project,
-                        "datasetId": public_routine.dataset_id,
-                        "routineId": public_routine.routine_id,
+                        "project_id": public_routine.project,
+                        "dataset_id": public_routine.dataset_id,
+                        "routine_id": public_routine.routine_id,
                     },
                 },
             ])
@@ -1137,7 +1121,7 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="aws-us-east-1",
             external_dataset_reference={
-                "externalSource": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                "external_source": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
             })
         ```
@@ -1191,7 +1175,6 @@ class Dataset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
-               
                Once this property is set, all newly-created partitioned tables in
                the dataset will have an `expirationMs` property in the `timePartitioning`
                settings set to this value, and changing the value will only
@@ -1205,7 +1188,6 @@ class Dataset(pulumi.CustomResource):
                over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
-               
                Once this property is set, all newly-created tables in the dataset
                will have an `expirationTime` property set to the creation time plus
                the value in this property, and changing the value will only affect
@@ -1232,12 +1214,10 @@ class Dataset(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-               
                There are two types of locations, regional or multi-regional. A regional
                location is a specific geographic place, such as Tokyo, and a multi-regional
                location is a large geographic area, such as the United States, that
                contains at least two geographic places.
-               
                The default value is multi-regional location `US`.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
@@ -1281,7 +1261,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1308,7 +1288,7 @@ class Dataset(pulumi.CustomResource):
             location="US",
             default_table_expiration_ms=3600000,
             default_encryption_configuration={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             })
         ```
         ### Bigquery Dataset Authorized Dataset
@@ -1330,7 +1310,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1349,7 +1329,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1358,10 +1338,10 @@ class Dataset(pulumi.CustomResource):
                 {
                     "dataset": {
                         "dataset": {
-                            "projectId": public.project,
-                            "datasetId": public.dataset_id,
+                            "project_id": public.project,
+                            "dataset_id": public.dataset_id,
                         },
-                        "targetTypes": ["VIEWS"],
+                        "target_types": ["VIEWS"],
                     },
                 },
             ])
@@ -1384,9 +1364,9 @@ class Dataset(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1403,13 +1383,13 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": "my@service-account.com",
+                    "user_by_email": "my@service-account.com",
                 },
                 {
                     "routine": {
-                        "projectId": public_routine.project,
-                        "datasetId": public_routine.dataset_id,
-                        "routineId": public_routine.routine_id,
+                        "project_id": public_routine.project,
+                        "dataset_id": public_routine.dataset_id,
+                        "routine_id": public_routine.routine_id,
                     },
                 },
             ])
@@ -1426,7 +1406,7 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="aws-us-east-1",
             external_dataset_reference={
-                "externalSource": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                "external_source": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
             })
         ```
@@ -1588,7 +1568,6 @@ class Dataset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
-               
                Once this property is set, all newly-created partitioned tables in
                the dataset will have an `expirationMs` property in the `timePartitioning`
                settings set to this value, and changing the value will only
@@ -1602,7 +1581,6 @@ class Dataset(pulumi.CustomResource):
                over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
-               
                Once this property is set, all newly-created tables in the dataset
                will have an `expirationTime` property set to the creation time plus
                the value in this property, and changing the value will only affect
@@ -1633,12 +1611,10 @@ class Dataset(pulumi.CustomResource):
                milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-               
                There are two types of locations, regional or multi-regional. A regional
                location is a specific geographic place, such as Tokyo, and a multi-regional
                location is a large geographic area, such as the United States, that
                contains at least two geographic places.
-               
                The default value is multi-regional location `US`.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
@@ -1750,7 +1726,6 @@ class Dataset(pulumi.CustomResource):
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
-
         Once this property is set, all newly-created partitioned tables in
         the dataset will have an `expirationMs` property in the `timePartitioning`
         settings set to this value, and changing the value will only
@@ -1771,7 +1746,6 @@ class Dataset(pulumi.CustomResource):
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
-
         Once this property is set, all newly-created tables in the dataset
         will have an `expirationTime` property set to the creation time plus
         the value in this property, and changing the value will only affect
@@ -1872,12 +1846,10 @@ class Dataset(pulumi.CustomResource):
         """
         The geographic location where the dataset should reside.
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-
         There are two types of locations, regional or multi-regional. A regional
         location is a specific geographic place, such as Tokyo, and a multi-regional
         location is a large geographic area, such as the United States, that
         contains at least two geographic places.
-
         The default value is multi-regional location `US`.
         Changing this forces a new resource to be created.
         """

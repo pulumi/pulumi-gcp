@@ -236,7 +236,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Api(String name) {
+    public Api(java.lang.String name) {
         this(name, ApiArgs.Empty);
     }
     /**
@@ -244,7 +244,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Api(String name, ApiArgs args) {
+    public Api(java.lang.String name, ApiArgs args) {
         this(name, args, null);
     }
     /**
@@ -253,15 +253,22 @@ public class Api extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Api(String name, ApiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/api:Api", name, args == null ? ApiArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Api(java.lang.String name, ApiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigateway/api:Api", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Api(String name, Output<String> id, @Nullable ApiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/api:Api", name, state, makeResourceOptions(options, id));
+    private Api(java.lang.String name, Output<java.lang.String> id, @Nullable ApiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigateway/api:Api", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApiArgs makeArgs(ApiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -281,7 +288,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Api get(String name, Output<String> id, @Nullable ApiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Api get(java.lang.String name, Output<java.lang.String> id, @Nullable ApiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Api(name, id, state, options);
     }
 }

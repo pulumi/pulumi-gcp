@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var network_policy_nw = new Gcp.VMwareEngine.Network("network-policy-nw", new()
     ///     {
-    ///         Name = "standard-nw",
+    ///         Name = "sample-network",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "VMwareEngine standard network sample",
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var network_policy_nw = new Gcp.VMwareEngine.Network("network-policy-nw", new()
     ///     {
-    ///         Name = "standard-full-nw",
+    ///         Name = "sample-network",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "VMwareEngine standard network sample",
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var vmw_engine_network_policy = new Gcp.VMwareEngine.NetworkPolicy("vmw-engine-network-policy", new()
     ///     {
     ///         Location = "us-west1",
-    ///         Name = "sample-network-policy-full",
+    ///         Name = "sample-network-policy",
     ///         EdgeServicesCidr = "192.168.30.0/26",
     ///         VmwareEngineNetwork = network_policy_nw.Id,
     ///         Description = "Sample Network Policy",

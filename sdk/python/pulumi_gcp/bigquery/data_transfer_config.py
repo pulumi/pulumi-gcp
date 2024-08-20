@@ -693,6 +693,32 @@ class DataTransferConfig(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
         ```
+        ### Bigquerydatatransfer Config Salesforce
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        my_dataset = gcp.bigquery.Dataset("my_dataset",
+            dataset_id="my_dataset",
+            description="My dataset",
+            location="asia-northeast1")
+        salesforce_config = gcp.bigquery.DataTransferConfig("salesforce_config",
+            display_name="my-salesforce-config",
+            location="asia-northeast1",
+            data_source_id="salesforce",
+            schedule="first sunday of quarter 00:00",
+            destination_dataset_id=my_dataset.dataset_id,
+            params={
+                "connector.authentication.oauth.clientId": "client-id",
+                "connector.authentication.oauth.clientSecret": "client-secret",
+                "connector.authentication.username": "username",
+                "connector.authentication.password": "password",
+                "connector.authentication.securityToken": "security-token",
+                "assets": "[\\"asset-a\\",\\"asset-b\\"]",
+            })
+        ```
 
         ## Import
 
@@ -802,6 +828,32 @@ class DataTransferConfig(pulumi.CustomResource):
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
+        ```
+        ### Bigquerydatatransfer Config Salesforce
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        my_dataset = gcp.bigquery.Dataset("my_dataset",
+            dataset_id="my_dataset",
+            description="My dataset",
+            location="asia-northeast1")
+        salesforce_config = gcp.bigquery.DataTransferConfig("salesforce_config",
+            display_name="my-salesforce-config",
+            location="asia-northeast1",
+            data_source_id="salesforce",
+            schedule="first sunday of quarter 00:00",
+            destination_dataset_id=my_dataset.dataset_id,
+            params={
+                "connector.authentication.oauth.clientId": "client-id",
+                "connector.authentication.oauth.clientSecret": "client-secret",
+                "connector.authentication.username": "username",
+                "connector.authentication.password": "password",
+                "connector.authentication.securityToken": "security-token",
+                "assets": "[\\"asset-a\\",\\"asset-b\\"]",
+            })
         ```
 
         ## Import

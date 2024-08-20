@@ -564,8 +564,8 @@ class Slo(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
         * How-to Guides
-            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
 
         ## Example Usage
 
@@ -608,8 +608,8 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=30,
             request_based_sli={
-                "distributionCut": {
-                    "distributionFilter": "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
+                "distribution_cut": {
+                    "distribution_filter": "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
                     "range": {
                         "max": 0.5,
                     },
@@ -632,8 +632,8 @@ class Slo(pulumi.CustomResource):
             goal=0.95,
             calendar_period="FORTNIGHT",
             windows_based_sli={
-                "windowPeriod": "400s",
-                "goodBadMetricFilter": std.join(separator=" AND ",
+                "window_period": "400s",
+                "good_bad_metric_filter": std.join(separator=" AND ",
                     input=[
                         "metric.type=\\"monitoring.googleapis.com/uptime_check/check_passed\\"",
                         "resource.type=\\"uptime_url\\"",
@@ -656,9 +656,9 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
-                "windowPeriod": "600s",
-                "metricMeanInRange": {
-                    "timeSeries": std.join(separator=" AND ",
+                "window_period": "600s",
+                "metric_mean_in_range": {
+                    "time_series": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"agent.googleapis.com/cassandra/client_request/latency/95p\\"",
                             "resource.type=\\"gce_instance\\"",
@@ -685,9 +685,9 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
-                "windowPeriod": "400s",
-                "metricSumInRange": {
-                    "timeSeries": std.join(separator=" AND ",
+                "window_period": "400s",
+                "metric_sum_in_range": {
+                    "time_series": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"monitoring.googleapis.com/uptime_check/request_latency\\"",
                             "resource.type=\\"uptime_url\\"",
@@ -714,12 +714,12 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
-                "windowPeriod": "100s",
-                "goodTotalRatioThreshold": {
+                "window_period": "100s",
+                "good_total_ratio_threshold": {
                     "threshold": 0.1,
                     "performance": {
-                        "distributionCut": {
-                            "distributionFilter": std.join(separator=" AND ",
+                        "distribution_cut": {
+                            "distribution_filter": std.join(separator=" AND ",
                                 input=[
                                     "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\"",
                                     "resource.type=\\"consumed_api\\"",
@@ -812,8 +812,8 @@ class Slo(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
         * How-to Guides
-            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
 
         ## Example Usage
 
@@ -856,8 +856,8 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=30,
             request_based_sli={
-                "distributionCut": {
-                    "distributionFilter": "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
+                "distribution_cut": {
+                    "distribution_filter": "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
                     "range": {
                         "max": 0.5,
                     },
@@ -880,8 +880,8 @@ class Slo(pulumi.CustomResource):
             goal=0.95,
             calendar_period="FORTNIGHT",
             windows_based_sli={
-                "windowPeriod": "400s",
-                "goodBadMetricFilter": std.join(separator=" AND ",
+                "window_period": "400s",
+                "good_bad_metric_filter": std.join(separator=" AND ",
                     input=[
                         "metric.type=\\"monitoring.googleapis.com/uptime_check/check_passed\\"",
                         "resource.type=\\"uptime_url\\"",
@@ -904,9 +904,9 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
-                "windowPeriod": "600s",
-                "metricMeanInRange": {
-                    "timeSeries": std.join(separator=" AND ",
+                "window_period": "600s",
+                "metric_mean_in_range": {
+                    "time_series": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"agent.googleapis.com/cassandra/client_request/latency/95p\\"",
                             "resource.type=\\"gce_instance\\"",
@@ -933,9 +933,9 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
-                "windowPeriod": "400s",
-                "metricSumInRange": {
-                    "timeSeries": std.join(separator=" AND ",
+                "window_period": "400s",
+                "metric_sum_in_range": {
+                    "time_series": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"monitoring.googleapis.com/uptime_check/request_latency\\"",
                             "resource.type=\\"uptime_url\\"",
@@ -962,12 +962,12 @@ class Slo(pulumi.CustomResource):
             goal=0.9,
             rolling_period_days=20,
             windows_based_sli={
-                "windowPeriod": "100s",
-                "goodTotalRatioThreshold": {
+                "window_period": "100s",
+                "good_total_ratio_threshold": {
                     "threshold": 0.1,
                     "performance": {
-                        "distributionCut": {
-                            "distributionFilter": std.join(separator=" AND ",
+                        "distribution_cut": {
+                            "distribution_filter": std.join(separator=" AND ",
                                 input=[
                                     "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\"",
                                     "resource.type=\\"consumed_api\\"",

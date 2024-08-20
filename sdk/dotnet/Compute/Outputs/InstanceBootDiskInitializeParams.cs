@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// A set of key/value label pairs assigned to the disk. This
         /// field is only applicable for persistent disks.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// Indicates how many IOPS to provision for the disk.
         /// This sets the number of I/O operations per second that the disk can handle.
@@ -58,12 +58,19 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
+        public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
         /// <summary>
         /// The size of the image in gigabytes. If not specified, it
         /// will inherit the size of its base image.
         /// </summary>
         public readonly int? Size;
+        /// <summary>
+        /// The URL of the storage pool in which the new disk is created.
+        /// For example:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// </summary>
+        public readonly string? StoragePool;
         /// <summary>
         /// The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         /// </summary>
@@ -75,15 +82,17 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? image,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             int? provisionedIops,
 
             int? provisionedThroughput,
 
-            ImmutableDictionary<string, object>? resourceManagerTags,
+            ImmutableDictionary<string, string>? resourceManagerTags,
 
             int? size,
+
+            string? storagePool,
 
             string? type)
         {
@@ -94,6 +103,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ProvisionedThroughput = provisionedThroughput;
             ResourceManagerTags = resourceManagerTags;
             Size = size;
+            StoragePool = storagePool;
             Type = type;
         }
     }

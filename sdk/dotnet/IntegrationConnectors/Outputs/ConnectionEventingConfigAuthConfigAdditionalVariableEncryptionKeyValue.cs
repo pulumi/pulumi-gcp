@@ -14,8 +14,8 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
     public sealed class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue
     {
         /// <summary>
-        /// The [KMS key name] with which the content of the Operation is encrypted. The expected
-        /// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// The [KMS key name] with which the content of the Operation is encrypted. The
+        /// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         /// Will be empty string if google managed.
         /// </summary>
         public readonly string? KmsKeyName;

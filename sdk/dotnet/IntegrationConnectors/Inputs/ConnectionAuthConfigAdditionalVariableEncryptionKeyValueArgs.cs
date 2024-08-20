@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
     public sealed class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [KMS key name] with which the content of the Operation is encrypted. The expected
-        /// format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// The [KMS key name] with which the content of the Operation is encrypted. The
+        /// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
         /// Will be empty string if google managed.
         /// </summary>
         [Input("kmsKeyName")]

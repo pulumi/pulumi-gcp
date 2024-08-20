@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var projectBrand = new Brand("projectBrand", BrandArgs.builder()
- *             .supportEmail("support{@literal @}example.com")
+ *             .supportEmail("support}{@literal @}{@code example.com")
  *             .applicationTitle("Cloud IAP protected Application")
  *             .project(projectService.project())
  *             .build());
@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  *             .brand(projectBrand.name())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -112,7 +112,7 @@ public class Client extends com.pulumi.resources.CustomResource {
     /**
      * Identifier of the brand to which this client
      * is attached to. The format is
-     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      * ***
      * 
@@ -123,7 +123,7 @@ public class Client extends com.pulumi.resources.CustomResource {
     /**
      * @return Identifier of the brand to which this client
      * is attached to. The format is
-     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      * ***
      * 
@@ -132,14 +132,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.brand;
     }
     /**
-     * The OAuth2 ID of the client.
+     * Output only. Unique identifier of the OAuth client.
      * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
-     * @return The OAuth2 ID of the client.
+     * @return Output only. Unique identifier of the OAuth client.
      * 
      */
     public Output<String> clientId() {
@@ -180,7 +180,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Client(String name) {
+    public Client(java.lang.String name) {
         this(name, ClientArgs.Empty);
     }
     /**
@@ -188,7 +188,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Client(String name, ClientArgs args) {
+    public Client(java.lang.String name, ClientArgs args) {
         this(name, args, null);
     }
     /**
@@ -197,15 +197,22 @@ public class Client extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Client(String name, ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/client:Client", name, args == null ? ClientArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Client(java.lang.String name, ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iap/client:Client", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Client(String name, Output<String> id, @Nullable ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/client:Client", name, state, makeResourceOptions(options, id));
+    private Client(java.lang.String name, Output<java.lang.String> id, @Nullable ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:iap/client:Client", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClientArgs makeArgs(ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClientArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -224,7 +231,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Client get(String name, Output<String> id, @Nullable ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Client get(java.lang.String name, Output<java.lang.String> id, @Nullable ClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Client(name, id, state, options);
     }
 }

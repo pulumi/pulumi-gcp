@@ -31,7 +31,7 @@ class InstanceTemplateArgs:
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
                  instance_description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -73,7 +73,7 @@ class InstanceTemplateArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, mostly to match the compute_instance resource.
@@ -302,7 +302,7 @@ class InstanceTemplateArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.
@@ -310,7 +310,7 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -542,7 +542,7 @@ class _InstanceTemplateState:
                  instance_description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_fingerprint: Optional[pulumi.Input[str]] = None,
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -590,7 +590,7 @@ class _InstanceTemplateState:
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -851,7 +851,7 @@ class _InstanceTemplateState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.
@@ -859,7 +859,7 @@ class _InstanceTemplateState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -1153,7 +1153,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  instance_description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1201,9 +1201,9 @@ class InstanceTemplate(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })
@@ -1221,19 +1221,19 @@ class InstanceTemplate(pulumi.CustomResource):
             machine_type="e2-medium",
             can_ip_forward=False,
             scheduling={
-                "automaticRestart": True,
-                "onHostMaintenance": "MIGRATE",
+                "automatic_restart": True,
+                "on_host_maintenance": "MIGRATE",
             },
             disks=[
                 {
-                    "sourceImage": "debian-cloud/debian-11",
-                    "autoDelete": True,
+                    "source_image": "debian-cloud/debian-11",
+                    "auto_delete": True,
                     "boot": True,
-                    "resourcePolicies": daily_backup.id,
+                    "resource_policies": daily_backup.id,
                 },
                 {
                     "source": foobar.name,
-                    "autoDelete": False,
+                    "auto_delete": False,
                     "boot": False,
                 },
             ],
@@ -1267,8 +1267,8 @@ class InstanceTemplate(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -1276,7 +1276,7 @@ class InstanceTemplate(pulumi.CustomResource):
             }],
             scheduling={
                 "preemptible": False,
-                "automaticRestart": True,
+                "automatic_restart": True,
             },
             metadata={
                 "gce-software-declaration": \"\"\"{
@@ -1390,7 +1390,7 @@ class InstanceTemplate(pulumi.CustomResource):
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, mostly to match the compute_instance resource.
@@ -1467,9 +1467,9 @@ class InstanceTemplate(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })
@@ -1487,19 +1487,19 @@ class InstanceTemplate(pulumi.CustomResource):
             machine_type="e2-medium",
             can_ip_forward=False,
             scheduling={
-                "automaticRestart": True,
-                "onHostMaintenance": "MIGRATE",
+                "automatic_restart": True,
+                "on_host_maintenance": "MIGRATE",
             },
             disks=[
                 {
-                    "sourceImage": "debian-cloud/debian-11",
-                    "autoDelete": True,
+                    "source_image": "debian-cloud/debian-11",
+                    "auto_delete": True,
                     "boot": True,
-                    "resourcePolicies": daily_backup.id,
+                    "resource_policies": daily_backup.id,
                 },
                 {
                     "source": foobar.name,
-                    "autoDelete": False,
+                    "auto_delete": False,
                     "boot": False,
                 },
             ],
@@ -1533,8 +1533,8 @@ class InstanceTemplate(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -1542,7 +1542,7 @@ class InstanceTemplate(pulumi.CustomResource):
             }],
             scheduling={
                 "preemptible": False,
-                "automaticRestart": True,
+                "automatic_restart": True,
             },
             metadata={
                 "gce-software-declaration": \"\"\"{
@@ -1656,7 +1656,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  instance_description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1742,7 +1742,7 @@ class InstanceTemplate(pulumi.CustomResource):
             instance_description: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             metadata_fingerprint: Optional[pulumi.Input[str]] = None,
             metadata_startup_script: Optional[pulumi.Input[str]] = None,
             min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -1795,7 +1795,7 @@ class InstanceTemplate(pulumi.CustomResource):
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -1984,7 +1984,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.

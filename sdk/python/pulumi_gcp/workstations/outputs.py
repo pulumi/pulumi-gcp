@@ -44,12 +44,12 @@ __all__ = [
 class WorkstationClusterCondition(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
-                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
                  message: Optional[str] = None):
         """
         :param int code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, Any]] details: (Output)
+        :param Sequence[Mapping[str, str]] details: (Output)
                A list of messages that carry the error details.
         :param str message: (Output)
                Human readable message indicating details about the current status.
@@ -72,7 +72,7 @@ class WorkstationClusterCondition(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -202,12 +202,12 @@ class WorkstationClusterPrivateClusterConfig(dict):
 class WorkstationConfigCondition(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
-                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
                  message: Optional[str] = None):
         """
         :param int code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, Any]] details: (Output)
+        :param Sequence[Mapping[str, str]] details: (Output)
                A list of messages that carry the error details.
         :param str message: (Output)
                Human readable message indicating details about the current status.
@@ -230,7 +230,7 @@ class WorkstationConfigCondition(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -600,6 +600,8 @@ class WorkstationConfigHostGceInstance(dict):
             suggest = "service_account_scopes"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
+        elif key == "vmTags":
+            suggest = "vm_tags"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstance. Access the value via the '{suggest}' property getter instead.")
@@ -625,7 +627,8 @@ class WorkstationConfigHostGceInstance(dict):
                  service_account: Optional[str] = None,
                  service_account_scopes: Optional[Sequence[str]] = None,
                  shielded_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig'] = None,
-                 tags: Optional[Sequence[str]] = None):
+                 tags: Optional[Sequence[str]] = None,
+                 vm_tags: Optional[Mapping[str, str]] = None):
         """
         :param Sequence['WorkstationConfigHostGceInstanceAcceleratorArgs'] accelerators: An accelerator card attached to the instance.
                Structure is documented below.
@@ -645,6 +648,11 @@ class WorkstationConfigHostGceInstance(dict):
         :param 'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs' shielded_instance_config: A set of Compute Engine Shielded instance options.
                Structure is documented below.
         :param Sequence[str] tags: Network tags to add to the Compute Engine machines backing the Workstations.
+        :param Mapping[str, str] vm_tags: Resource manager tags to be bound to the VM instances backing the Workstations.
+               Tag keys and values have the same definition as
+               https://cloud.google.com/resource-manager/docs/tags/tags-overview
+               Keys must be in the format `tagKeys/{tag_key_id}`, and
+               values are in the format `tagValues/456`.
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -672,6 +680,8 @@ class WorkstationConfigHostGceInstance(dict):
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vm_tags is not None:
+            pulumi.set(__self__, "vm_tags", vm_tags)
 
     @property
     @pulumi.getter
@@ -781,6 +791,18 @@ class WorkstationConfigHostGceInstance(dict):
         Network tags to add to the Compute Engine machines backing the Workstations.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vmTags")
+    def vm_tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Resource manager tags to be bound to the VM instances backing the Workstations.
+        Tag keys and values have the same definition as
+        https://cloud.google.com/resource-manager/docs/tags/tags-overview
+        Keys must be in the format `tagKeys/{tag_key_id}`, and
+        values are in the format `tagValues/456`.
+        """
+        return pulumi.get(self, "vm_tags")
 
 
 @pulumi.output_type

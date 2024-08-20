@@ -138,7 +138,7 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkstationConfigIamPolicy(String name) {
+    public WorkstationConfigIamPolicy(java.lang.String name) {
         this(name, WorkstationConfigIamPolicyArgs.Empty);
     }
     /**
@@ -146,7 +146,7 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkstationConfigIamPolicy(String name, WorkstationConfigIamPolicyArgs args) {
+    public WorkstationConfigIamPolicy(java.lang.String name, WorkstationConfigIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -155,15 +155,22 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkstationConfigIamPolicy(String name, WorkstationConfigIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", name, args == null ? WorkstationConfigIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkstationConfigIamPolicy(java.lang.String name, WorkstationConfigIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkstationConfigIamPolicy(String name, Output<String> id, @Nullable WorkstationConfigIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", name, state, makeResourceOptions(options, id));
+    private WorkstationConfigIamPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable WorkstationConfigIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkstationConfigIamPolicyArgs makeArgs(WorkstationConfigIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkstationConfigIamPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -179,7 +186,7 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkstationConfigIamPolicy get(String name, Output<String> id, @Nullable WorkstationConfigIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkstationConfigIamPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkstationConfigIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkstationConfigIamPolicy(name, id, state, options);
     }
 }

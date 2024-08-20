@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigquery.inputs.AppProfileDataBoostIsolationReadOnlyArgs;
 import com.pulumi.gcp.bigquery.inputs.AppProfileSingleClusterRoutingArgs;
 import com.pulumi.gcp.bigquery.inputs.AppProfileStandardIsolationArgs;
 import java.lang.Boolean;
@@ -37,6 +38,23 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> appProfileId() {
         return this.appProfileId;
+    }
+
+    /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dataBoostIsolationReadOnly")
+    private @Nullable Output<AppProfileDataBoostIsolationReadOnlyArgs> dataBoostIsolationReadOnly;
+
+    /**
+     * @return Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppProfileDataBoostIsolationReadOnlyArgs>> dataBoostIsolationReadOnly() {
+        return Optional.ofNullable(this.dataBoostIsolationReadOnly);
     }
 
     /**
@@ -175,6 +193,7 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     private AppProfileArgs(AppProfileArgs $) {
         this.appProfileId = $.appProfileId;
+        this.dataBoostIsolationReadOnly = $.dataBoostIsolationReadOnly;
         this.description = $.description;
         this.ignoreWarnings = $.ignoreWarnings;
         this.instance = $.instance;
@@ -226,6 +245,29 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appProfileId(String appProfileId) {
             return appProfileId(Output.of(appProfileId));
+        }
+
+        /**
+         * @param dataBoostIsolationReadOnly Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataBoostIsolationReadOnly(@Nullable Output<AppProfileDataBoostIsolationReadOnlyArgs> dataBoostIsolationReadOnly) {
+            $.dataBoostIsolationReadOnly = dataBoostIsolationReadOnly;
+            return this;
+        }
+
+        /**
+         * @param dataBoostIsolationReadOnly Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataBoostIsolationReadOnly(AppProfileDataBoostIsolationReadOnlyArgs dataBoostIsolationReadOnly) {
+            return dataBoostIsolationReadOnly(Output.of(dataBoostIsolationReadOnly));
         }
 
         /**

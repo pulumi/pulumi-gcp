@@ -178,12 +178,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var admin_cluster_basic = new BareMetalAdminCluster("admin-cluster-basic", BareMetalAdminClusterArgs.builder()
  *             .name("my-cluster")
  *             .location("us-west1")
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *             .securityConfig(BareMetalAdminClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalAdminClusterSecurityConfigAuthorizationArgs.builder()
  *                     .adminUsers(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs.builder()
- *                         .username("admin{@literal @}hashicorptest.com")
+ *                         .username("admin}{@literal @}{@code hashicorptest.com")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -277,8 +277,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -805,7 +805,7 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BareMetalAdminCluster(String name) {
+    public BareMetalAdminCluster(java.lang.String name) {
         this(name, BareMetalAdminClusterArgs.Empty);
     }
     /**
@@ -813,7 +813,7 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BareMetalAdminCluster(String name, BareMetalAdminClusterArgs args) {
+    public BareMetalAdminCluster(java.lang.String name, BareMetalAdminClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -822,15 +822,22 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BareMetalAdminCluster(String name, BareMetalAdminClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster", name, args == null ? BareMetalAdminClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BareMetalAdminCluster(java.lang.String name, BareMetalAdminClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BareMetalAdminCluster(String name, Output<String> id, @Nullable BareMetalAdminClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster", name, state, makeResourceOptions(options, id));
+    private BareMetalAdminCluster(java.lang.String name, Output<java.lang.String> id, @Nullable BareMetalAdminClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BareMetalAdminClusterArgs makeArgs(BareMetalAdminClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BareMetalAdminClusterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -846,7 +853,7 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BareMetalAdminCluster get(String name, Output<String> id, @Nullable BareMetalAdminClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BareMetalAdminCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable BareMetalAdminClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BareMetalAdminCluster(name, id, state, options);
     }
 }

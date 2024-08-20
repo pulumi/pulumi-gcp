@@ -380,6 +380,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the replica zone for regional volume.
+     * 
+     */
+    @Import(name="replicaZone")
+    private @Nullable Output<String> replicaZone;
+
+    /**
+     * @return Specifies the replica zone for regional volume.
+     * 
+     */
+    public Optional<Output<String>> replicaZone() {
+        return Optional.ofNullable(this.replicaZone);
+    }
+
+    /**
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      * 
@@ -588,6 +603,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.usedGib);
     }
 
+    /**
+     * Specifies the active zone for regional volume.
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return Specifies the active zone for regional volume.
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
+    }
+
     private VolumeState() {}
 
     private VolumeState(VolumeState $) {
@@ -613,6 +643,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.protocols = $.protocols;
         this.psaRange = $.psaRange;
         this.pulumiLabels = $.pulumiLabels;
+        this.replicaZone = $.replicaZone;
         this.restoreParameters = $.restoreParameters;
         this.restrictedActions = $.restrictedActions;
         this.securityStyle = $.securityStyle;
@@ -626,6 +657,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.storagePool = $.storagePool;
         this.unixPermissions = $.unixPermissions;
         this.usedGib = $.usedGib;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -1157,6 +1189,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param replicaZone Specifies the replica zone for regional volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZone(@Nullable Output<String> replicaZone) {
+            $.replicaZone = replicaZone;
+            return this;
+        }
+
+        /**
+         * @param replicaZone Specifies the replica zone for regional volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZone(String replicaZone) {
+            return replicaZone(Output.of(replicaZone));
+        }
+
+        /**
          * @param restoreParameters Used to create this volume from a snapshot (= cloning) or an backup.
          * Structure is documented below.
          * 
@@ -1463,6 +1516,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder usedGib(String usedGib) {
             return usedGib(Output.of(usedGib));
+        }
+
+        /**
+         * @param zone Specifies the active zone for regional volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone Specifies the active zone for regional volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public VolumeState build() {

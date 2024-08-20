@@ -64,7 +64,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RepositoryIamMember(String name) {
+    public RepositoryIamMember(java.lang.String name) {
         this(name, RepositoryIamMemberArgs.Empty);
     }
     /**
@@ -72,7 +72,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RepositoryIamMember(String name, RepositoryIamMemberArgs args) {
+    public RepositoryIamMember(java.lang.String name, RepositoryIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -81,15 +81,22 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RepositoryIamMember(String name, RepositoryIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryIamMember:RepositoryIamMember", name, args == null ? RepositoryIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RepositoryIamMember(java.lang.String name, RepositoryIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryIamMember:RepositoryIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RepositoryIamMember(String name, Output<String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataform/repositoryIamMember:RepositoryIamMember", name, state, makeResourceOptions(options, id));
+    private RepositoryIamMember(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataform/repositoryIamMember:RepositoryIamMember", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RepositoryIamMemberArgs makeArgs(RepositoryIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RepositoryIamMemberArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -105,7 +112,7 @@ public class RepositoryIamMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RepositoryIamMember get(String name, Output<String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RepositoryIamMember get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RepositoryIamMember(name, id, state, options);
     }
 }

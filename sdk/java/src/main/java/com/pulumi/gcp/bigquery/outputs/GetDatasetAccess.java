@@ -56,13 +56,9 @@ public final class GetDatasetAccess {
     private List<GetDatasetAccessRoutine> routines;
     /**
      * @return A special group to grant access to. Possible values include:
-     * 
      * * &#39;projectOwners&#39;: Owners of the enclosing project.
-     * 
      * * &#39;projectReaders&#39;: Readers of the enclosing project.
-     * 
      * * &#39;projectWriters&#39;: Writers of the enclosing project.
-     * 
      * * &#39;allAuthenticatedUsers&#39;: All authenticated BigQuery users.
      * 
      */
@@ -138,13 +134,9 @@ public final class GetDatasetAccess {
     }
     /**
      * @return A special group to grant access to. Possible values include:
-     * 
      * * &#39;projectOwners&#39;: Owners of the enclosing project.
-     * 
      * * &#39;projectReaders&#39;: Readers of the enclosing project.
-     * 
      * * &#39;projectWriters&#39;: Writers of the enclosing project.
-     * 
      * * &#39;allAuthenticatedUsers&#39;: All authenticated BigQuery users.
      * 
      */

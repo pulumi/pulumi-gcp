@@ -129,49 +129,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.spanner.DatabaseIAMPolicy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
- *     instance: "your-instance-name",
- *     database: "your-database-name",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * With IAM Conditions:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *         condition: {
- *             title: "My Role",
- *             description: "Grant permissions on my_role",
- *             expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
- *         },
- *     }],
- * });
- * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
- *     instance: "your-instance-name",
- *     database: "your-database-name",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## gcp.spanner.DatabaseIAMBinding
  *
  * ```typescript

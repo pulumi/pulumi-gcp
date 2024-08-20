@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *     * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
  * 
  * ## Example Usage
@@ -237,7 +237,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GenericService(String name) {
+    public GenericService(java.lang.String name) {
         this(name, GenericServiceArgs.Empty);
     }
     /**
@@ -245,7 +245,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GenericService(String name, GenericServiceArgs args) {
+    public GenericService(java.lang.String name, GenericServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -254,15 +254,22 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GenericService(String name, GenericServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/genericService:GenericService", name, args == null ? GenericServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GenericService(java.lang.String name, GenericServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/genericService:GenericService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GenericService(String name, Output<String> id, @Nullable GenericServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/genericService:GenericService", name, state, makeResourceOptions(options, id));
+    private GenericService(java.lang.String name, Output<java.lang.String> id, @Nullable GenericServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:monitoring/genericService:GenericService", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GenericServiceArgs makeArgs(GenericServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GenericServiceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -278,7 +285,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GenericService get(String name, Output<String> id, @Nullable GenericServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GenericService get(java.lang.String name, Output<java.lang.String> id, @Nullable GenericServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GenericService(name, id, state, options);
     }
 }

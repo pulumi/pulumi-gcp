@@ -134,7 +134,7 @@ type Trigger struct {
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationOutput `pulumi:"destination"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
@@ -153,7 +153,7 @@ type Trigger struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
 	// trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
 	// https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
@@ -226,7 +226,7 @@ type triggerState struct {
 	// Required. Destination specifies where the events should be sent to.
 	Destination *TriggerDestination `pulumi:"destination"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
@@ -245,7 +245,7 @@ type triggerState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
 	// trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
 	// https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
@@ -275,7 +275,7 @@ type TriggerState struct {
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	EffectiveLabels pulumi.MapInput
+	EffectiveLabels pulumi.StringMapInput
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
@@ -294,7 +294,7 @@ type TriggerState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	PulumiLabels pulumi.MapInput
+	PulumiLabels pulumi.StringMapInput
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
 	// trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See
 	// https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
@@ -497,8 +497,8 @@ func (o TriggerOutput) Destination() TriggerDestinationOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-func (o TriggerOutput) EffectiveLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Trigger) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+func (o TriggerOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
@@ -540,8 +540,8 @@ func (o TriggerOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o TriggerOutput) PulumiLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Trigger) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+func (o TriggerOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Optional. The IAM service account email associated with the trigger. The service account represents the identity of the

@@ -128,7 +128,8 @@ class _PublicAdvertisedPrefixState:
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 shared_secret: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PublicAdvertisedPrefix resources.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -146,6 +147,7 @@ class _PublicAdvertisedPrefixState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] shared_secret: Output Only. The shared secret to be used for reverse DNS verification.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -159,6 +161,8 @@ class _PublicAdvertisedPrefixState:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if shared_secret is not None:
+            pulumi.set(__self__, "shared_secret", shared_secret)
 
     @property
     @pulumi.getter
@@ -240,6 +244,18 @@ class _PublicAdvertisedPrefixState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="sharedSecret")
+    def shared_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output Only. The shared secret to be used for reverse DNS verification.
+        """
+        return pulumi.get(self, "shared_secret")
+
+    @shared_secret.setter
+    def shared_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_secret", value)
 
 
 class PublicAdvertisedPrefix(pulumi.CustomResource):
@@ -411,6 +427,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["shared_secret"] = None
         super(PublicAdvertisedPrefix, __self__).__init__(
             'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
             resource_name,
@@ -426,7 +443,8 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            self_link: Optional[pulumi.Input[str]] = None) -> 'PublicAdvertisedPrefix':
+            self_link: Optional[pulumi.Input[str]] = None,
+            shared_secret: Optional[pulumi.Input[str]] = None) -> 'PublicAdvertisedPrefix':
         """
         Get an existing PublicAdvertisedPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -449,6 +467,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] shared_secret: Output Only. The shared secret to be used for reverse DNS verification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -460,6 +479,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["shared_secret"] = shared_secret
         return PublicAdvertisedPrefix(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -518,4 +538,12 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sharedSecret")
+    def shared_secret(self) -> pulumi.Output[str]:
+        """
+        Output Only. The shared secret to be used for reverse DNS verification.
+        """
+        return pulumi.get(self, "shared_secret")
 

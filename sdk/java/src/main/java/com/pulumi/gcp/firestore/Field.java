@@ -343,7 +343,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Field(String name) {
+    public Field(java.lang.String name) {
         this(name, FieldArgs.Empty);
     }
     /**
@@ -351,7 +351,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Field(String name, FieldArgs args) {
+    public Field(java.lang.String name, FieldArgs args) {
         this(name, args, null);
     }
     /**
@@ -360,15 +360,22 @@ public class Field extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Field(String name, FieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firestore/field:Field", name, args == null ? FieldArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Field(java.lang.String name, FieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firestore/field:Field", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Field(String name, Output<String> id, @Nullable FieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firestore/field:Field", name, state, makeResourceOptions(options, id));
+    private Field(java.lang.String name, Output<java.lang.String> id, @Nullable FieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firestore/field:Field", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FieldArgs makeArgs(FieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FieldArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -384,7 +391,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Field get(String name, Output<String> id, @Nullable FieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Field get(java.lang.String name, Output<java.lang.String> id, @Nullable FieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Field(name, id, state, options);
     }
 }

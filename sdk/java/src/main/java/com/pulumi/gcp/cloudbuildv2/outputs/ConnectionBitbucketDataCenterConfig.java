@@ -50,7 +50,7 @@ public final class ConnectionBitbucketDataCenterConfig {
      */
     private @Nullable String sslCa;
     /**
-     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     private String webhookSecretSecretVersion;
@@ -103,7 +103,7 @@ public final class ConnectionBitbucketDataCenterConfig {
         return Optional.ofNullable(this.sslCa);
     }
     /**
-     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*{@literal /}secrets/*{@literal /}versions/*`.
+     * @return Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public String webhookSecretSecretVersion() {

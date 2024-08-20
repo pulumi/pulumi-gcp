@@ -345,7 +345,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HostingRelease(String name) {
+    public HostingRelease(java.lang.String name) {
         this(name, HostingReleaseArgs.Empty);
     }
     /**
@@ -353,7 +353,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HostingRelease(String name, HostingReleaseArgs args) {
+    public HostingRelease(java.lang.String name, HostingReleaseArgs args) {
         this(name, args, null);
     }
     /**
@@ -362,15 +362,22 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HostingRelease(String name, HostingReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/hostingRelease:HostingRelease", name, args == null ? HostingReleaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HostingRelease(java.lang.String name, HostingReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/hostingRelease:HostingRelease", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HostingRelease(String name, Output<String> id, @Nullable HostingReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/hostingRelease:HostingRelease", name, state, makeResourceOptions(options, id));
+    private HostingRelease(java.lang.String name, Output<java.lang.String> id, @Nullable HostingReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/hostingRelease:HostingRelease", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HostingReleaseArgs makeArgs(HostingReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostingReleaseArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -386,7 +393,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HostingRelease get(String name, Output<String> id, @Nullable HostingReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HostingRelease get(java.lang.String name, Output<java.lang.String> id, @Nullable HostingReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HostingRelease(name, id, state, options);
     }
 }

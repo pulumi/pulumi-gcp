@@ -136,14 +136,14 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
         return this.keyRing;
     }
     /**
-     * The resource name for this ImportJob in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}importJobs/*.
+     * The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource name for this ImportJob in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}importJobs/*.
+     * @return The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
      * 
      */
     public Output<String> name() {
@@ -202,7 +202,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeyRingImportJob(String name) {
+    public KeyRingImportJob(java.lang.String name) {
         this(name, KeyRingImportJobArgs.Empty);
     }
     /**
@@ -210,7 +210,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeyRingImportJob(String name, KeyRingImportJobArgs args) {
+    public KeyRingImportJob(java.lang.String name, KeyRingImportJobArgs args) {
         this(name, args, null);
     }
     /**
@@ -219,15 +219,22 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeyRingImportJob(String name, KeyRingImportJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyRingImportJob:KeyRingImportJob", name, args == null ? KeyRingImportJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KeyRingImportJob(java.lang.String name, KeyRingImportJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/keyRingImportJob:KeyRingImportJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KeyRingImportJob(String name, Output<String> id, @Nullable KeyRingImportJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyRingImportJob:KeyRingImportJob", name, state, makeResourceOptions(options, id));
+    private KeyRingImportJob(java.lang.String name, Output<java.lang.String> id, @Nullable KeyRingImportJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/keyRingImportJob:KeyRingImportJob", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KeyRingImportJobArgs makeArgs(KeyRingImportJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeyRingImportJobArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -243,7 +250,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeyRingImportJob get(String name, Output<String> id, @Nullable KeyRingImportJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KeyRingImportJob get(java.lang.String name, Output<java.lang.String> id, @Nullable KeyRingImportJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KeyRingImportJob(name, id, state, options);
     }
 }

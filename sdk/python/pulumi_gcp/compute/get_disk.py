@@ -27,7 +27,10 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, storage_pool=None, type=None, users=None, zone=None):
+    def __init__(__self__, access_mode=None, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, storage_pool=None, type=None, users=None, zone=None):
+        if access_mode and not isinstance(access_mode, str):
+            raise TypeError("Expected argument 'access_mode' to be a str")
+        pulumi.set(__self__, "access_mode", access_mode)
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -139,6 +142,11 @@ class GetDiskResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> str:
+        return pulumi.get(self, "access_mode")
 
     @property
     @pulumi.getter(name="asyncPrimaryDisks")
@@ -401,6 +409,7 @@ class AwaitableGetDiskResult(GetDiskResult):
         if False:
             yield self
         return GetDiskResult(
+            access_mode=self.access_mode,
             async_primary_disks=self.async_primary_disks,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
@@ -459,7 +468,7 @@ def get_disk(name: Optional[str] = None,
         project="example")
     default = gcp.compute.Instance("default", boot_disk={
         "source": persistent_boot_disk.self_link,
-        "autoDelete": False,
+        "auto_delete": False,
     })
     ```
 
@@ -479,6 +488,7 @@ def get_disk(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getDisk:getDisk', __args__, opts=opts, typ=GetDiskResult).value
 
     return AwaitableGetDiskResult(
+        access_mode=pulumi.get(__ret__, 'access_mode'),
         async_primary_disks=pulumi.get(__ret__, 'async_primary_disks'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
@@ -538,7 +548,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
         project="example")
     default = gcp.compute.Instance("default", boot_disk={
         "source": persistent_boot_disk.self_link,
-        "autoDelete": False,
+        "auto_delete": False,
     })
     ```
 

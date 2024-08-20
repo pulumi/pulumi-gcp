@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("service-account-id"),
+//				AccountId:   pulumi.String("my-service-acc"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
 //			if err != nil {

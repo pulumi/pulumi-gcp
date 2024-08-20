@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *     name: "default",
  * });
  * const vmimage = gcp.compute.getImage({
- *     family: "debian-10",
+ *     family: "debian-12",
  *     project: "debian-cloud",
  * });
  * const target_vmInstance = new gcp.compute.Instance("target-vm", {

@@ -325,6 +325,7 @@ class _BucketObjectState:
                  customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
+                 generation: Optional[pulumi.Input[int]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  md5hash: Optional[pulumi.Input[str]] = None,
                  media_link: Optional[pulumi.Input[str]] = None,
@@ -350,6 +351,7 @@ class _BucketObjectState:
         :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+        :param pulumi.Input[int] generation: (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
         :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
@@ -392,6 +394,8 @@ class _BucketObjectState:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
             pulumi.set(__self__, "event_based_hold", event_based_hold)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if md5hash is not None:
@@ -545,6 +549,18 @@ class _BucketObjectState:
     @event_based_hold.setter
     def event_based_hold(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "event_based_hold", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -881,6 +897,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["temporary_hold"] = temporary_hold
             __props__.__dict__["crc32c"] = None
+            __props__.__dict__["generation"] = None
             __props__.__dict__["md5hash"] = None
             __props__.__dict__["media_link"] = None
             __props__.__dict__["output_name"] = None
@@ -908,6 +925,7 @@ class BucketObject(pulumi.CustomResource):
             customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
             detect_md5hash: Optional[pulumi.Input[str]] = None,
             event_based_hold: Optional[pulumi.Input[bool]] = None,
+            generation: Optional[pulumi.Input[int]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             md5hash: Optional[pulumi.Input[str]] = None,
             media_link: Optional[pulumi.Input[str]] = None,
@@ -938,6 +956,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+        :param pulumi.Input[int] generation: (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
         :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
@@ -973,6 +992,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["customer_encryption"] = customer_encryption
         __props__.__dict__["detect_md5hash"] = detect_md5hash
         __props__.__dict__["event_based_hold"] = event_based_hold
+        __props__.__dict__["generation"] = generation
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["md5hash"] = md5hash
         __props__.__dict__["media_link"] = media_link
@@ -1072,6 +1092,14 @@ class BucketObject(pulumi.CustomResource):
         Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         """
         return pulumi.get(self, "event_based_hold")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> pulumi.Output[int]:
+        """
+        (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
+        """
+        return pulumi.get(self, "generation")
 
     @property
     @pulumi.getter(name="kmsKeyName")

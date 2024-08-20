@@ -53,8 +53,8 @@ import (
 //			defaultRegionSslCertificate, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
 //				Region:      pulumi.String("us-central1"),
 //				Name:        pulumi.String("my-certificate"),
-//				PrivateKey:  invokeFile.Result,
-//				Certificate: invokeFile1.Result,
+//				PrivateKey:  pulumi.String(invokeFile.Result),
+//				Certificate: pulumi.String(invokeFile1.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -171,12 +171,12 @@ import (
 //					&certificatemanager.TrustConfigTrustStoreArgs{
 //						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
 //							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
-//								PemCertificate: invokeFile.Result,
+//								PemCertificate: pulumi.String(invokeFile.Result),
 //							},
 //						},
 //						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
 //							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
-//								PemCertificate: invokeFile1.Result,
+//								PemCertificate: pulumi.String(invokeFile1.Result),
 //							},
 //						},
 //					},
@@ -218,8 +218,8 @@ import (
 //			defaultRegionSslCertificate, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
 //				Region:      pulumi.String("us-central1"),
 //				Name:        pulumi.String("my-certificate"),
-//				PrivateKey:  invokeFile2.Result,
-//				Certificate: invokeFile3.Result,
+//				PrivateKey:  pulumi.String(invokeFile2.Result),
+//				Certificate: pulumi.String(invokeFile3.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -330,8 +330,8 @@ import (
 //				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: invokeFile.Result,
-//					PemPrivateKey:  invokeFile1.Result,
+//					PemCertificate: pulumi.String(invokeFile.Result),
+//					PemPrivateKey:  pulumi.String(invokeFile1.Result),
 //				},
 //			})
 //			if err != nil {
@@ -440,6 +440,10 @@ type RegionTargetHttpsProxy struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
@@ -524,6 +528,10 @@ type regionTargetHttpsProxyState struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
@@ -576,6 +584,10 @@ type RegionTargetHttpsProxyState struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
@@ -626,6 +638,10 @@ type regionTargetHttpsProxyArgs struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
@@ -673,6 +689,10 @@ type RegionTargetHttpsProxyArgs struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
@@ -835,6 +855,10 @@ func (o RegionTargetHttpsProxyOutput) SelfLink() pulumi.StringOutput {
 // INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 // loadBalancingScheme consult ServerTlsPolicy documentation.
 // If left blank, communications are not encrypted.
+// If you remove this field from your configuration at the same time as
+// deleting or recreating a referenced ServerTlsPolicy resource, you will
+// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+// within the ServerTlsPolicy resource to avoid this.
 func (o RegionTargetHttpsProxyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
 }

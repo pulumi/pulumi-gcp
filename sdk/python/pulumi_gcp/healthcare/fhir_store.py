@@ -800,7 +800,7 @@ class FhirStore(pulumi.CustomResource):
             enable_history_import=False,
             default_search_handling_strict=False,
             notification_configs=[{
-                "pubsubTopic": topic.id,
+                "pubsub_topic": topic.id,
             }],
             labels={
                 "label1": "labelvalue1",
@@ -833,14 +833,18 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             },
             stream_configs=[{
-                "resourceTypes": ["Observation"],
-                "bigqueryDestination": {
-                    "datasetUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
-                    "schemaConfig": {
-                        "recursiveStructureDepth": 3,
-                        "lastUpdatedPartitionConfig": {
+                "resource_types": ["Observation"],
+                "bigquery_destination": {
+                    "dataset_uri": pulumi.Output.all(
+                        project=bq_dataset.project,
+                        dataset_id=bq_dataset.dataset_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}")
+        ,
+                    "schema_config": {
+                        "recursive_structure_depth": 3,
+                        "last_updated_partition_config": {
                             "type": "HOUR",
-                            "expirationMs": "1000000",
+                            "expiration_ms": "1000000",
                         },
                     },
                 },
@@ -869,9 +873,9 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             },
             notification_configs=[{
-                "pubsubTopic": topic.id,
-                "sendFullResource": True,
-                "sendPreviousResourceOnDelete": True,
+                "pubsub_topic": topic.id,
+                "send_full_resource": True,
+                "send_previous_resource_on_delete": True,
             }])
         ```
 
@@ -1001,7 +1005,7 @@ class FhirStore(pulumi.CustomResource):
             enable_history_import=False,
             default_search_handling_strict=False,
             notification_configs=[{
-                "pubsubTopic": topic.id,
+                "pubsub_topic": topic.id,
             }],
             labels={
                 "label1": "labelvalue1",
@@ -1034,14 +1038,18 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             },
             stream_configs=[{
-                "resourceTypes": ["Observation"],
-                "bigqueryDestination": {
-                    "datasetUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
-                    "schemaConfig": {
-                        "recursiveStructureDepth": 3,
-                        "lastUpdatedPartitionConfig": {
+                "resource_types": ["Observation"],
+                "bigquery_destination": {
+                    "dataset_uri": pulumi.Output.all(
+                        project=bq_dataset.project,
+                        dataset_id=bq_dataset.dataset_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}")
+        ,
+                    "schema_config": {
+                        "recursive_structure_depth": 3,
+                        "last_updated_partition_config": {
                             "type": "HOUR",
-                            "expirationMs": "1000000",
+                            "expiration_ms": "1000000",
                         },
                     },
                 },
@@ -1070,9 +1078,9 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             },
             notification_configs=[{
-                "pubsubTopic": topic.id,
-                "sendFullResource": True,
-                "sendPreviousResourceOnDelete": True,
+                "pubsub_topic": topic.id,
+                "send_full_resource": True,
+                "send_previous_resource_on_delete": True,
             }])
         ```
 

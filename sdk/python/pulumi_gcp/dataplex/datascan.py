@@ -547,7 +547,7 @@ class Datascan(pulumi.CustomResource):
             },
             execution_spec={
                 "trigger": {
-                    "onDemand": {},
+                    "on_demand": {},
                 },
             },
             data_profile_spec={},
@@ -584,17 +584,17 @@ class Datascan(pulumi.CustomResource):
                 },
             },
             data_profile_spec={
-                "samplingPercent": 80,
-                "rowFilter": "word_count > 10",
-                "includeFields": {
-                    "fieldNames": ["word_count"],
+                "sampling_percent": 80,
+                "row_filter": "word_count > 10",
+                "include_fields": {
+                    "field_names": ["word_count"],
                 },
-                "excludeFields": {
-                    "fieldNames": ["property_type"],
+                "exclude_fields": {
+                    "field_names": ["property_type"],
                 },
-                "postScanActions": {
-                    "bigqueryExport": {
-                        "resultsTable": "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
+                "post_scan_actions": {
+                    "bigquery_export": {
+                        "results_table": "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
                     },
                 },
             },
@@ -615,7 +615,7 @@ class Datascan(pulumi.CustomResource):
             },
             execution_spec={
                 "trigger": {
-                    "onDemand": {},
+                    "on_demand": {},
                 },
             },
             data_quality_spec={
@@ -623,8 +623,8 @@ class Datascan(pulumi.CustomResource):
                     "dimension": "VALIDITY",
                     "name": "rule1",
                     "description": "rule 1 for validity dimension",
-                    "tableConditionExpectation": {
-                        "sqlExpression": "COUNT(*) > 0",
+                    "table_condition_expectation": {
+                        "sql_expression": "COUNT(*) > 0",
                     },
                 }],
             },
@@ -656,40 +656,40 @@ class Datascan(pulumi.CustomResource):
                 "field": "modified_date",
             },
             data_quality_spec={
-                "samplingPercent": 5,
-                "rowFilter": "station_id > 1000",
+                "sampling_percent": 5,
+                "row_filter": "station_id > 1000",
                 "rules": [
                     {
                         "column": "address",
                         "dimension": "VALIDITY",
                         "threshold": 0.99,
-                        "nonNullExpectation": {},
+                        "non_null_expectation": {},
                     },
                     {
                         "column": "council_district",
                         "dimension": "VALIDITY",
-                        "ignoreNull": True,
+                        "ignore_null": True,
                         "threshold": 0.9,
-                        "rangeExpectation": {
-                            "minValue": "1",
-                            "maxValue": "10",
-                            "strictMinEnabled": True,
-                            "strictMaxEnabled": False,
+                        "range_expectation": {
+                            "min_value": "1",
+                            "max_value": "10",
+                            "strict_min_enabled": True,
+                            "strict_max_enabled": False,
                         },
                     },
                     {
                         "column": "power_type",
                         "dimension": "VALIDITY",
-                        "ignoreNull": False,
-                        "regexExpectation": {
+                        "ignore_null": False,
+                        "regex_expectation": {
                             "regex": ".*solar.*",
                         },
                     },
                     {
                         "column": "property_type",
                         "dimension": "VALIDITY",
-                        "ignoreNull": False,
-                        "setExpectation": {
+                        "ignore_null": False,
+                        "set_expectation": {
                             "values": [
                                 "sidewalk",
                                 "parkland",
@@ -699,30 +699,36 @@ class Datascan(pulumi.CustomResource):
                     {
                         "column": "address",
                         "dimension": "UNIQUENESS",
-                        "uniquenessExpectation": {},
+                        "uniqueness_expectation": {},
                     },
                     {
                         "column": "number_of_docks",
                         "dimension": "VALIDITY",
-                        "statisticRangeExpectation": {
+                        "statistic_range_expectation": {
                             "statistic": "MEAN",
-                            "minValue": "5",
-                            "maxValue": "15",
-                            "strictMinEnabled": True,
-                            "strictMaxEnabled": True,
+                            "min_value": "5",
+                            "max_value": "15",
+                            "strict_min_enabled": True,
+                            "strict_max_enabled": True,
                         },
                     },
                     {
                         "column": "footprint_length",
                         "dimension": "VALIDITY",
-                        "rowConditionExpectation": {
-                            "sqlExpression": "footprint_length > 0 AND footprint_length <= 10",
+                        "row_condition_expectation": {
+                            "sql_expression": "footprint_length > 0 AND footprint_length <= 10",
                         },
                     },
                     {
                         "dimension": "VALIDITY",
-                        "tableConditionExpectation": {
-                            "sqlExpression": "COUNT(*) > 0",
+                        "table_condition_expectation": {
+                            "sql_expression": "COUNT(*) > 0",
+                        },
+                    },
+                    {
+                        "dimension": "VALIDITY",
+                        "sql_assertion": {
+                            "sql_statement": "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null",
                         },
                     },
                 ],
@@ -807,7 +813,7 @@ class Datascan(pulumi.CustomResource):
             },
             execution_spec={
                 "trigger": {
-                    "onDemand": {},
+                    "on_demand": {},
                 },
             },
             data_profile_spec={},
@@ -844,17 +850,17 @@ class Datascan(pulumi.CustomResource):
                 },
             },
             data_profile_spec={
-                "samplingPercent": 80,
-                "rowFilter": "word_count > 10",
-                "includeFields": {
-                    "fieldNames": ["word_count"],
+                "sampling_percent": 80,
+                "row_filter": "word_count > 10",
+                "include_fields": {
+                    "field_names": ["word_count"],
                 },
-                "excludeFields": {
-                    "fieldNames": ["property_type"],
+                "exclude_fields": {
+                    "field_names": ["property_type"],
                 },
-                "postScanActions": {
-                    "bigqueryExport": {
-                        "resultsTable": "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
+                "post_scan_actions": {
+                    "bigquery_export": {
+                        "results_table": "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
                     },
                 },
             },
@@ -875,7 +881,7 @@ class Datascan(pulumi.CustomResource):
             },
             execution_spec={
                 "trigger": {
-                    "onDemand": {},
+                    "on_demand": {},
                 },
             },
             data_quality_spec={
@@ -883,8 +889,8 @@ class Datascan(pulumi.CustomResource):
                     "dimension": "VALIDITY",
                     "name": "rule1",
                     "description": "rule 1 for validity dimension",
-                    "tableConditionExpectation": {
-                        "sqlExpression": "COUNT(*) > 0",
+                    "table_condition_expectation": {
+                        "sql_expression": "COUNT(*) > 0",
                     },
                 }],
             },
@@ -916,40 +922,40 @@ class Datascan(pulumi.CustomResource):
                 "field": "modified_date",
             },
             data_quality_spec={
-                "samplingPercent": 5,
-                "rowFilter": "station_id > 1000",
+                "sampling_percent": 5,
+                "row_filter": "station_id > 1000",
                 "rules": [
                     {
                         "column": "address",
                         "dimension": "VALIDITY",
                         "threshold": 0.99,
-                        "nonNullExpectation": {},
+                        "non_null_expectation": {},
                     },
                     {
                         "column": "council_district",
                         "dimension": "VALIDITY",
-                        "ignoreNull": True,
+                        "ignore_null": True,
                         "threshold": 0.9,
-                        "rangeExpectation": {
-                            "minValue": "1",
-                            "maxValue": "10",
-                            "strictMinEnabled": True,
-                            "strictMaxEnabled": False,
+                        "range_expectation": {
+                            "min_value": "1",
+                            "max_value": "10",
+                            "strict_min_enabled": True,
+                            "strict_max_enabled": False,
                         },
                     },
                     {
                         "column": "power_type",
                         "dimension": "VALIDITY",
-                        "ignoreNull": False,
-                        "regexExpectation": {
+                        "ignore_null": False,
+                        "regex_expectation": {
                             "regex": ".*solar.*",
                         },
                     },
                     {
                         "column": "property_type",
                         "dimension": "VALIDITY",
-                        "ignoreNull": False,
-                        "setExpectation": {
+                        "ignore_null": False,
+                        "set_expectation": {
                             "values": [
                                 "sidewalk",
                                 "parkland",
@@ -959,30 +965,36 @@ class Datascan(pulumi.CustomResource):
                     {
                         "column": "address",
                         "dimension": "UNIQUENESS",
-                        "uniquenessExpectation": {},
+                        "uniqueness_expectation": {},
                     },
                     {
                         "column": "number_of_docks",
                         "dimension": "VALIDITY",
-                        "statisticRangeExpectation": {
+                        "statistic_range_expectation": {
                             "statistic": "MEAN",
-                            "minValue": "5",
-                            "maxValue": "15",
-                            "strictMinEnabled": True,
-                            "strictMaxEnabled": True,
+                            "min_value": "5",
+                            "max_value": "15",
+                            "strict_min_enabled": True,
+                            "strict_max_enabled": True,
                         },
                     },
                     {
                         "column": "footprint_length",
                         "dimension": "VALIDITY",
-                        "rowConditionExpectation": {
-                            "sqlExpression": "footprint_length > 0 AND footprint_length <= 10",
+                        "row_condition_expectation": {
+                            "sql_expression": "footprint_length > 0 AND footprint_length <= 10",
                         },
                     },
                     {
                         "dimension": "VALIDITY",
-                        "tableConditionExpectation": {
-                            "sqlExpression": "COUNT(*) > 0",
+                        "table_condition_expectation": {
+                            "sql_expression": "COUNT(*) > 0",
+                        },
+                    },
+                    {
+                        "dimension": "VALIDITY",
+                        "sql_assertion": {
+                            "sql_statement": "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null",
                         },
                     },
                 ],

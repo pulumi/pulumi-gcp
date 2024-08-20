@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         CryptoKeyId = apigeeKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = apigeeSa.Member,
     ///     });
     /// 
     ///     var org = new Gcp.Apigee.Organization("org", new()
@@ -207,7 +207,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         CryptoKeyId = apigeeKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         Member = apigeeSa.Member,
     ///     });
     /// 
     ///     var org = new Gcp.Apigee.Organization("org", new()

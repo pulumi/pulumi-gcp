@@ -866,6 +866,12 @@ class WorkstationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
         default = gcp.compute.Network("default",
             name="workstation-cluster",
             auto_create_subnetworks=False)
@@ -902,11 +908,18 @@ class WorkstationConfig(pulumi.CustomResource):
                 "label": "key",
             },
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "disableSsh": False,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "disable_ssh": False,
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Name=tag_key1.name,
+                        tagValue1Name=tag_value1.name
+        ).apply(lambda resolved_outputs: {
+                        "": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                    })
+        ,
                 },
             })
         ```
@@ -940,18 +953,18 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "n1-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "enableNestedVirtualization": True,
+                "gce_instance": {
+                    "machine_type": "n1-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "enable_nested_virtualization": True,
                 },
             },
             container={
                 "image": "intellij",
                 "env": {
-                    "NAME": "FOO",
-                    "BABE": "bar",
+                    "name": "FOO",
+                    "babe": "bar",
                 },
             })
         ```
@@ -985,23 +998,23 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "shieldedInstanceConfig": {
-                        "enableSecureBoot": True,
-                        "enableVtpm": True,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "shielded_instance_config": {
+                        "enable_secure_boot": True,
+                        "enable_vtpm": True,
                     },
                 },
             },
             persistent_directories=[{
-                "mountPath": "/home",
-                "gcePd": {
-                    "sizeGb": 200,
-                    "fsType": "ext4",
-                    "diskType": "pd-standard",
-                    "reclaimPolicy": "DELETE",
+                "mount_path": "/home",
+                "gce_pd": {
+                    "size_gb": 200,
+                    "fs_type": "ext4",
+                    "disk_type": "pd-standard",
+                    "reclaim_policy": "DELETE",
                 },
             }])
         ```
@@ -1038,10 +1051,10 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location=default_workstation_cluster.location,
             persistent_directories=[{
-                "mountPath": "/home",
-                "gcePd": {
-                    "sourceSnapshot": my_source_snapshot.id,
-                    "reclaimPolicy": "DELETE",
+                "mount_path": "/home",
+                "gce_pd": {
+                    "source_snapshot": my_source_snapshot.id,
+                    "reclaim_policy": "DELETE",
                 },
             }])
         ```
@@ -1075,13 +1088,13 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "shieldedInstanceConfig": {
-                        "enableSecureBoot": True,
-                        "enableVtpm": True,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "shielded_instance_config": {
+                        "enable_secure_boot": True,
+                        "enable_vtpm": True,
                     },
                 },
             })
@@ -1116,10 +1129,10 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "n1-standard-2",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
+                "gce_instance": {
+                    "machine_type": "n1-standard-2",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
                     "accelerators": [{
                         "type": "nvidia-tesla-t4",
                         "count": 1,
@@ -1157,14 +1170,14 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "boostConfigs": [
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "boost_configs": [
                         {
                             "id": "boost-1",
-                            "machineType": "n1-standard-2",
+                            "machine_type": "n1-standard-2",
                             "accelerators": [{
                                 "type": "nvidia-tesla-t4",
                                 "count": 1,
@@ -1172,10 +1185,10 @@ class WorkstationConfig(pulumi.CustomResource):
                         },
                         {
                             "id": "boost-2",
-                            "machineType": "n1-standard-2",
-                            "poolSize": 2,
-                            "bootDiskSizeGb": 30,
-                            "enableNestedVirtualization": True,
+                            "machine_type": "n1-standard-2",
+                            "pool_size": 2,
+                            "boot_disk_size_gb": 30,
+                            "enable_nested_virtualization": True,
                         },
                     ],
                 },
@@ -1220,19 +1233,19 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "shieldedInstanceConfig": {
-                        "enableSecureBoot": True,
-                        "enableVtpm": True,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "shielded_instance_config": {
+                        "enable_secure_boot": True,
+                        "enable_vtpm": True,
                     },
                 },
             },
             encryption_key={
-                "kmsKey": default_crypto_key.id,
-                "kmsKeyServiceAccount": default_account.email,
+                "kms_key": default_crypto_key.id,
+                "kms_key_service_account": default_account.email,
             })
         ```
 
@@ -1316,6 +1329,12 @@ class WorkstationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
         default = gcp.compute.Network("default",
             name="workstation-cluster",
             auto_create_subnetworks=False)
@@ -1352,11 +1371,18 @@ class WorkstationConfig(pulumi.CustomResource):
                 "label": "key",
             },
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "disableSsh": False,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "disable_ssh": False,
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Name=tag_key1.name,
+                        tagValue1Name=tag_value1.name
+        ).apply(lambda resolved_outputs: {
+                        "": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                    })
+        ,
                 },
             })
         ```
@@ -1390,18 +1416,18 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "n1-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "enableNestedVirtualization": True,
+                "gce_instance": {
+                    "machine_type": "n1-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "enable_nested_virtualization": True,
                 },
             },
             container={
                 "image": "intellij",
                 "env": {
-                    "NAME": "FOO",
-                    "BABE": "bar",
+                    "name": "FOO",
+                    "babe": "bar",
                 },
             })
         ```
@@ -1435,23 +1461,23 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "shieldedInstanceConfig": {
-                        "enableSecureBoot": True,
-                        "enableVtpm": True,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "shielded_instance_config": {
+                        "enable_secure_boot": True,
+                        "enable_vtpm": True,
                     },
                 },
             },
             persistent_directories=[{
-                "mountPath": "/home",
-                "gcePd": {
-                    "sizeGb": 200,
-                    "fsType": "ext4",
-                    "diskType": "pd-standard",
-                    "reclaimPolicy": "DELETE",
+                "mount_path": "/home",
+                "gce_pd": {
+                    "size_gb": 200,
+                    "fs_type": "ext4",
+                    "disk_type": "pd-standard",
+                    "reclaim_policy": "DELETE",
                 },
             }])
         ```
@@ -1488,10 +1514,10 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location=default_workstation_cluster.location,
             persistent_directories=[{
-                "mountPath": "/home",
-                "gcePd": {
-                    "sourceSnapshot": my_source_snapshot.id,
-                    "reclaimPolicy": "DELETE",
+                "mount_path": "/home",
+                "gce_pd": {
+                    "source_snapshot": my_source_snapshot.id,
+                    "reclaim_policy": "DELETE",
                 },
             }])
         ```
@@ -1525,13 +1551,13 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "shieldedInstanceConfig": {
-                        "enableSecureBoot": True,
-                        "enableVtpm": True,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "shielded_instance_config": {
+                        "enable_secure_boot": True,
+                        "enable_vtpm": True,
                     },
                 },
             })
@@ -1566,10 +1592,10 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "n1-standard-2",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
+                "gce_instance": {
+                    "machine_type": "n1-standard-2",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
                     "accelerators": [{
                         "type": "nvidia-tesla-t4",
                         "count": 1,
@@ -1607,14 +1633,14 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "boostConfigs": [
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "boost_configs": [
                         {
                             "id": "boost-1",
-                            "machineType": "n1-standard-2",
+                            "machine_type": "n1-standard-2",
                             "accelerators": [{
                                 "type": "nvidia-tesla-t4",
                                 "count": 1,
@@ -1622,10 +1648,10 @@ class WorkstationConfig(pulumi.CustomResource):
                         },
                         {
                             "id": "boost-2",
-                            "machineType": "n1-standard-2",
-                            "poolSize": 2,
-                            "bootDiskSizeGb": 30,
-                            "enableNestedVirtualization": True,
+                            "machine_type": "n1-standard-2",
+                            "pool_size": 2,
+                            "boot_disk_size_gb": 30,
+                            "enable_nested_virtualization": True,
                         },
                     ],
                 },
@@ -1670,19 +1696,19 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
             host={
-                "gceInstance": {
-                    "machineType": "e2-standard-4",
-                    "bootDiskSizeGb": 35,
-                    "disablePublicIpAddresses": True,
-                    "shieldedInstanceConfig": {
-                        "enableSecureBoot": True,
-                        "enableVtpm": True,
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "shielded_instance_config": {
+                        "enable_secure_boot": True,
+                        "enable_vtpm": True,
                     },
                 },
             },
             encryption_key={
-                "kmsKey": default_crypto_key.id,
-                "kmsKeyServiceAccount": default_account.email,
+                "kms_key": default_crypto_key.id,
+                "kms_key_service_account": default_account.email,
             })
         ```
 

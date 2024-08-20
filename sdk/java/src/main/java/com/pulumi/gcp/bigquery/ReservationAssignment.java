@@ -14,11 +14,18 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The BigqueryReservation Assignment resource
+ * The BigqueryReservation Assignment resource.
+ * 
+ * To get more information about ReservationAssignment, see:
+ * 
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
+ * * How-to Guides
+ *     * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
  * 
  * ## Example Usage
  * 
- * ### Basic
+ * ### Bigquery Reservation Assignment Basic
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -45,14 +52,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Reservation("basic", ReservationArgs.builder()
- *             .name("tf-test-my-reservation")
+ *             .name("example-reservation")
  *             .project("my-project-name")
  *             .location("us-central1")
  *             .slotCapacity(0)
  *             .ignoreIdleSlots(false)
  *             .build());
  * 
- *         var primary = new ReservationAssignment("primary", ReservationAssignmentArgs.builder()
+ *         var assignment = new ReservationAssignment("assignment", ReservationAssignmentArgs.builder()
  *             .assignee("projects/my-project-name")
  *             .jobType("PIPELINE")
  *             .reservation(basic.id())
@@ -66,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Assignment can be imported using any of these accepted formats:
+ * ReservationAssignment can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
  * 
@@ -74,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * * `{{location}}/{{reservation}}/{{name}}`
  * 
- * When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
@@ -148,14 +155,16 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
@@ -180,14 +189,16 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
         return this.reservation;
     }
     /**
-     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+     * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * @return Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+     * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
      */
     public Output<String> state() {
@@ -198,7 +209,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReservationAssignment(String name) {
+    public ReservationAssignment(java.lang.String name) {
         this(name, ReservationAssignmentArgs.Empty);
     }
     /**
@@ -206,7 +217,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReservationAssignment(String name, ReservationAssignmentArgs args) {
+    public ReservationAssignment(java.lang.String name, ReservationAssignmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -215,15 +226,22 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReservationAssignment(String name, ReservationAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, args == null ? ReservationAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ReservationAssignment(java.lang.String name, ReservationAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReservationAssignment(String name, Output<String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, state, makeResourceOptions(options, id));
+    private ReservationAssignment(java.lang.String name, Output<java.lang.String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigquery/reservationAssignment:ReservationAssignment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReservationAssignmentArgs makeArgs(ReservationAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReservationAssignmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -239,7 +257,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReservationAssignment get(String name, Output<String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReservationAssignment get(java.lang.String name, Output<java.lang.String> id, @Nullable ReservationAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReservationAssignment(name, id, state, options);
     }
 }

@@ -562,8 +562,8 @@ class AuthConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
             * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
 
         ## Example Usage
 
@@ -579,8 +579,8 @@ class AuthConfig(pulumi.CustomResource):
             display_name="test-authconfig",
             description="Test auth config created via terraform",
             decrypted_credential={
-                "credentialType": "USERNAME_AND_PASSWORD",
-                "usernameAndPassword": {
+                "credential_type": "USERNAME_AND_PASSWORD",
+                "username_and_password": {
                     "username": "test-username",
                     "password": "test-password",
                 },
@@ -634,8 +634,8 @@ class AuthConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
             * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
 
         ## Example Usage
 
@@ -651,8 +651,8 @@ class AuthConfig(pulumi.CustomResource):
             display_name="test-authconfig",
             description="Test auth config created via terraform",
             decrypted_credential={
-                "credentialType": "USERNAME_AND_PASSWORD",
-                "usernameAndPassword": {
+                "credential_type": "USERNAME_AND_PASSWORD",
+                "username_and_password": {
                     "username": "test-username",
                     "password": "test-password",
                 },

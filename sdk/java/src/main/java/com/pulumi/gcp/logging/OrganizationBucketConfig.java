@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
  * import com.pulumi.gcp.logging.OrganizationBucketConfig;
  * import com.pulumi.gcp.logging.OrganizationBucketConfigArgs;
+ * import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigIndexConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,7 +63,7 @@ import javax.annotation.Nullable;
  *             .retentionDays(30)
  *             .bucketId("_Default")
  *             .indexConfigs(OrganizationBucketConfigIndexConfigArgs.builder()
- *                 .filePath("jsonPayload.request.status")
+ *                 .fieldPath("jsonPayload.request.status")
  *                 .type("INDEX_TYPE_STRING")
  *                 .build())
  *             .build());
@@ -223,7 +224,7 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationBucketConfig(String name) {
+    public OrganizationBucketConfig(java.lang.String name) {
         this(name, OrganizationBucketConfigArgs.Empty);
     }
     /**
@@ -231,7 +232,7 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationBucketConfig(String name, OrganizationBucketConfigArgs args) {
+    public OrganizationBucketConfig(java.lang.String name, OrganizationBucketConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -240,15 +241,22 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationBucketConfig(String name, OrganizationBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, args == null ? OrganizationBucketConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OrganizationBucketConfig(java.lang.String name, OrganizationBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationBucketConfig(String name, Output<String> id, @Nullable OrganizationBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, state, makeResourceOptions(options, id));
+    private OrganizationBucketConfig(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OrganizationBucketConfigArgs makeArgs(OrganizationBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationBucketConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -264,7 +272,7 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationBucketConfig get(String name, Output<String> id, @Nullable OrganizationBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationBucketConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationBucketConfig(name, id, state, options);
     }
 }

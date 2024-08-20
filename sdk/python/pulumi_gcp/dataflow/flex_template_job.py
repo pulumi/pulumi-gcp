@@ -25,7 +25,7 @@ class FlexTemplateJobArgs:
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launcher_machine_type: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
@@ -33,7 +33,7 @@ class FlexTemplateJobArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sdk_container_image: Optional[pulumi.Input[str]] = None,
@@ -42,7 +42,7 @@ class FlexTemplateJobArgs:
                  staging_location: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_location: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a FlexTemplateJob resource.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
@@ -54,7 +54,7 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
                page. **Note**: This field is marked as deprecated as the API does not currently
                support adding labels.
@@ -69,7 +69,7 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
@@ -80,7 +80,7 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         """
         pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if additional_experiments is not None:
@@ -207,7 +207,7 @@ class FlexTemplateJobArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -220,7 +220,7 @@ class FlexTemplateJobArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -310,7 +310,7 @@ class FlexTemplateJobArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -319,7 +319,7 @@ class FlexTemplateJobArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -418,14 +418,14 @@ class FlexTemplateJobArgs:
 
     @property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         """
         return pulumi.get(self, "transform_name_mapping")
 
     @transform_name_mapping.setter
-    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "transform_name_mapping", value)
 
 
@@ -440,7 +440,7 @@ class _FlexTemplateJobState:
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launcher_machine_type: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
@@ -448,7 +448,7 @@ class _FlexTemplateJobState:
                  network: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -459,7 +459,7 @@ class _FlexTemplateJobState:
                  state: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_location: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlexTemplateJob resources.
@@ -473,7 +473,7 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
                page. **Note**: This field is marked as deprecated as the API does not currently
                support adding labels.
@@ -488,7 +488,7 @@ class _FlexTemplateJobState:
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
@@ -501,7 +501,7 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of this job, selected from the JobType enum.
         """
         if additional_experiments is not None:
@@ -661,7 +661,7 @@ class _FlexTemplateJobState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -674,7 +674,7 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -764,7 +764,7 @@ class _FlexTemplateJobState:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -773,7 +773,7 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -896,14 +896,14 @@ class _FlexTemplateJobState:
 
     @property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         """
         return pulumi.get(self, "transform_name_mapping")
 
     @transform_name_mapping.setter
-    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "transform_name_mapping", value)
 
     @property
@@ -930,7 +930,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launcher_machine_type: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
@@ -938,7 +938,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sdk_container_image: Optional[pulumi.Input[str]] = None,
@@ -947,7 +947,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  staging_location: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_location: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -1033,7 +1033,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
                page. **Note**: This field is marked as deprecated as the API does not currently
                support adding labels.
@@ -1048,7 +1048,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
@@ -1059,7 +1059,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         """
         ...
     @overload
@@ -1161,7 +1161,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launcher_machine_type: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
@@ -1169,7 +1169,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sdk_container_image: Optional[pulumi.Input[str]] = None,
@@ -1178,7 +1178,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  staging_location: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_location: Optional[pulumi.Input[str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1239,7 +1239,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             ip_configuration: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             launcher_machine_type: Optional[pulumi.Input[str]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
             max_workers: Optional[pulumi.Input[int]] = None,
@@ -1247,7 +1247,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             num_workers: Optional[pulumi.Input[int]] = None,
             on_delete: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1258,7 +1258,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             temp_location: Optional[pulumi.Input[str]] = None,
-            transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'FlexTemplateJob':
         """
         Get an existing FlexTemplateJob resource's state with the given name, id, and optional extra
@@ -1277,7 +1277,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
                page. **Note**: This field is marked as deprecated as the API does not currently
                support adding labels.
@@ -1292,7 +1292,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
-        :param pulumi.Input[Mapping[str, Any]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
@@ -1305,7 +1305,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of this job, selected from the JobType enum.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1409,7 +1409,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -1480,7 +1480,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -1568,7 +1568,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def transform_name_mapping(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         """

@@ -726,7 +726,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionInstanceGroupManager(String name) {
+    public RegionInstanceGroupManager(java.lang.String name) {
         this(name, RegionInstanceGroupManagerArgs.Empty);
     }
     /**
@@ -734,7 +734,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionInstanceGroupManager(String name, RegionInstanceGroupManagerArgs args) {
+    public RegionInstanceGroupManager(java.lang.String name, RegionInstanceGroupManagerArgs args) {
         this(name, args, null);
     }
     /**
@@ -743,15 +743,22 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionInstanceGroupManager(String name, RegionInstanceGroupManagerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, args == null ? RegionInstanceGroupManagerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionInstanceGroupManager(java.lang.String name, RegionInstanceGroupManagerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionInstanceGroupManager(String name, Output<String> id, @Nullable RegionInstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, state, makeResourceOptions(options, id));
+    private RegionInstanceGroupManager(java.lang.String name, Output<java.lang.String> id, @Nullable RegionInstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionInstanceGroupManagerArgs makeArgs(RegionInstanceGroupManagerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionInstanceGroupManagerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -767,7 +774,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionInstanceGroupManager get(String name, Output<String> id, @Nullable RegionInstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionInstanceGroupManager get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionInstanceGroupManagerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionInstanceGroupManager(name, id, state, options);
     }
 }

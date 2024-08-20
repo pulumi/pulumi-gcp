@@ -493,6 +493,87 @@
                     }
                 }
             },
+            "google_access_context_manager_service_perimeter_dry_run_egress_policy": {
+                "current": "gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy",
+                "majorVersion": 7,
+                "fields": {
+                    "egress_from": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "identities": {
+                                    "maxItemsOne": false
+                                },
+                                "sources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "egress_to": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "external_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "operations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "method_selectors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_access_context_manager_service_perimeter_dry_run_ingress_policy": {
+                "current": "gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy",
+                "majorVersion": 7,
+                "fields": {
+                    "ingress_from": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "identities": {
+                                    "maxItemsOne": false
+                                },
+                                "sources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ingress_to": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "operations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "method_selectors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_access_context_manager_service_perimeter_dry_run_resource": {
                 "current": "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource",
                 "majorVersion": 7
@@ -1006,6 +1087,9 @@
                             }
                         }
                     },
+                    "observability_config": {
+                        "maxItemsOne": true
+                    },
                     "psc_instance_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1248,6 +1332,14 @@
             },
             "google_apigee_environment_iam_policy": {
                 "current": "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy",
+                "majorVersion": 7
+            },
+            "google_apigee_environment_keyvaluemaps": {
+                "current": "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps",
+                "majorVersion": 7
+            },
+            "google_apigee_environment_keyvaluemaps_entries": {
+                "current": "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries",
                 "majorVersion": 7
             },
             "google_apigee_flowhook": {
@@ -2673,6 +2765,9 @@
                 "current": "gcp:bigquery/appProfile:AppProfile",
                 "majorVersion": 7,
                 "fields": {
+                    "data_boost_isolation_read_only": {
+                        "maxItemsOne": true
+                    },
                     "multi_cluster_routing_cluster_ids": {
                         "maxItemsOne": false
                     },
@@ -3108,6 +3203,9 @@
                 "current": "gcp:certificatemanager/trustConfig:TrustConfig",
                 "majorVersion": 7,
                 "fields": {
+                    "allowlisted_certificates": {
+                        "maxItemsOne": false
+                    },
                     "trust_stores": {
                         "maxItemsOne": false,
                         "elem": {
@@ -5237,6 +5335,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "aws_v4_authentication": {
+                                    "maxItemsOne": true
+                                },
                                 "subject_alt_names": {
                                     "maxItemsOne": false
                                 }
@@ -5541,6 +5642,9 @@
                     },
                     "log_config": {
                         "maxItemsOne": true
+                    },
+                    "source_regions": {
+                        "maxItemsOne": false
                     },
                     "ssl_health_check": {
                         "maxItemsOne": true
@@ -7788,6 +7892,109 @@
                     }
                 }
             },
+            "google_compute_resize_request": {
+                "current": "gcp:compute/resizeRequest:ResizeRequest",
+                "majorVersion": 7,
+                "fields": {
+                    "requested_run_duration": {
+                        "maxItemsOne": true
+                    },
+                    "status": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "error": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "errors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "error_details": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "error_info": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "help": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "links": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "localized_message": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "quota_info": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_attempt": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "error": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "errors": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "error_details": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "error_info": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "help": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "links": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "localized_message": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "quota_info": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_compute_resource_policy": {
                 "current": "gcp:compute/resourcePolicy:ResourcePolicy",
                 "majorVersion": 7,
@@ -7958,8 +8165,36 @@
                     "bfd": {
                         "maxItemsOne": true
                     },
+                    "custom_learned_ip_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "export_policies": {
+                        "maxItemsOne": false
+                    },
+                    "import_policies": {
+                        "maxItemsOne": false
+                    },
                     "md5_authentication_key": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "google_compute_router_route_policy": {
+                "current": "gcp:compute/routerRoutePolicy:RouterRoutePolicy",
+                "majorVersion": 7,
+                "fields": {
+                    "terms": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "match": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -9449,6 +9684,19 @@
                                 "network_policy_config": {
                                     "maxItemsOne": true
                                 },
+                                "ray_operator_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ray_cluster_logging_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ray_cluster_monitoring_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "stateful_ha_config": {
                                     "maxItemsOne": true
                                 }
@@ -9504,6 +9752,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "auto_provisioning_locations": {
+                                    "maxItemsOne": false
                                 },
                                 "resource_limits": {
                                     "maxItemsOne": false
@@ -11773,6 +12024,83 @@
                                         }
                                     }
                                 },
+                                "cloud_storage_target": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cloud_storage_conditions": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "included_bucket_attributes": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "included_object_attributes": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "disabled": {
+                                                "maxItemsOne": true
+                                            },
+                                            "filter": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cloud_storage_resource_reference": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "collection": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "include_regexes": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "patterns": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "cloud_storage_regex": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "others": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "generation_cadence": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "inspect_template_modified_cadence": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "secrets_target": {
                                     "maxItemsOne": true
                                 }
@@ -12948,6 +13276,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "sql_assertion": {
+                                                "maxItemsOne": true
                                             },
                                             "statistic_range_expectation": {
                                                 "maxItemsOne": true
@@ -14519,6 +14850,12 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "append_only": {
+                                                "maxItemsOne": true
+                                            },
+                                            "merge": {
+                                                "maxItemsOne": true
+                                            },
                                             "single_target_dataset": {
                                                 "maxItemsOne": true
                                             },
@@ -19326,6 +19663,16 @@
                 "current": "gcp:kms/cryptoKey:CryptoKey",
                 "majorVersion": 7,
                 "fields": {
+                    "key_access_justifications_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "primary": {
                         "maxItemsOne": false
                     },
@@ -20489,6 +20836,9 @@
                 "majorVersion": 7,
                 "fields": {
                     "items": {
+                        "maxItemsOne": false
+                    },
+                    "purpose": {
                         "maxItemsOne": false
                     }
                 }
@@ -23940,6 +24290,15 @@
                     }
                 }
             },
+            "google_scc_project_notification_config": {
+                "current": "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_scc_source": {
                 "current": "gcp:securitycenter/source:Source",
                 "majorVersion": 7
@@ -23968,6 +24327,65 @@
             "google_scc_source_iam_policy": {
                 "current": "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy",
                 "majorVersion": 7
+            },
+            "google_scc_v2_folder_mute_config": {
+                "current": "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig",
+                "majorVersion": 7
+            },
+            "google_scc_v2_organization_mute_config": {
+                "current": "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig",
+                "majorVersion": 7
+            },
+            "google_scc_v2_organization_notification_config": {
+                "current": "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_scc_v2_organization_source": {
+                "current": "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource",
+                "majorVersion": 7
+            },
+            "google_scc_v2_organization_source_iam_binding": {
+                "current": "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_scc_v2_organization_source_iam_member": {
+                "current": "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_scc_v2_organization_source_iam_policy": {
+                "current": "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy",
+                "majorVersion": 7
+            },
+            "google_scc_v2_project_mute_config": {
+                "current": "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig",
+                "majorVersion": 7
+            },
+            "google_scc_v2_project_notification_config": {
+                "current": "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_secret_manager_secret": {
                 "current": "gcp:secretmanager/secret:Secret",
@@ -24079,6 +24497,50 @@
             },
             "google_secure_source_manager_instance_iam_policy": {
                 "current": "gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy",
+                "majorVersion": 7
+            },
+            "google_secure_source_manager_repository": {
+                "current": "gcp:securesourcemanager/repository:Repository",
+                "majorVersion": 7,
+                "fields": {
+                    "initial_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "gitignores": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "uris": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_secure_source_manager_repository_iam_binding": {
+                "current": "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_secure_source_manager_repository_iam_member": {
+                "current": "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_secure_source_manager_repository_iam_policy": {
+                "current": "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy",
                 "majorVersion": 7
             },
             "google_security_scanner_scan_config": {
@@ -25654,7 +26116,14 @@
                                     "maxItemsOne": true
                                 },
                                 "network_interfaces": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_configs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "service_accounts": {
                                     "maxItemsOne": false,
@@ -27635,6 +28104,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "aws_v4_authentication": {
+                                    "maxItemsOne": false
+                                },
                                 "subject_alt_names": {
                                     "maxItemsOne": false
                                 }
@@ -27774,6 +28246,9 @@
                         "maxItemsOne": false
                     },
                     "log_config": {
+                        "maxItemsOne": false
+                    },
+                    "source_regions": {
                         "maxItemsOne": false
                     },
                     "ssl_health_check": {
@@ -28929,6 +29404,19 @@
                                 "network_policy_config": {
                                     "maxItemsOne": false
                                 },
+                                "ray_operator_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ray_cluster_logging_config": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ray_cluster_monitoring_config": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "stateful_ha_config": {
                                     "maxItemsOne": false
                                 }
@@ -28984,6 +29472,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "auto_provisioning_locations": {
+                                    "maxItemsOne": false
                                 },
                                 "resource_limits": {
                                     "maxItemsOne": false
@@ -29993,6 +30484,15 @@
                 "current": "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy",
                 "majorVersion": 7
             },
+            "google_gke_hub_membership_binding": {
+                "current": "gcp:gkehub/getMembershipBinding:getMembershipBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "state": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_gke_hub_membership_iam_policy": {
                 "current": "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy",
                 "majorVersion": 7
@@ -30152,6 +30652,16 @@
                 "current": "gcp:kms/getKMSCryptoKey:getKMSCryptoKey",
                 "majorVersion": 7,
                 "fields": {
+                    "key_access_justifications_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "primary": {
                         "maxItemsOne": false
                     },
@@ -30173,6 +30683,35 @@
                     }
                 }
             },
+            "google_kms_crypto_keys": {
+                "current": "gcp:kms/getCryptoKeys:getCryptoKeys",
+                "majorVersion": 7,
+                "fields": {
+                    "keys": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "key_access_justifications_policy": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_access_reasons": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "primary": {
+                                    "maxItemsOne": false
+                                },
+                                "version_template": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_kms_key_ring": {
                 "current": "gcp:kms/getKMSKeyRing:getKMSKeyRing",
                 "majorVersion": 7
@@ -30180,6 +30719,15 @@
             "google_kms_key_ring_iam_policy": {
                 "current": "gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy",
                 "majorVersion": 7
+            },
+            "google_kms_key_rings": {
+                "current": "gcp:kms/getKeyRings:getKeyRings",
+                "majorVersion": 7,
+                "fields": {
+                    "key_rings": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_kms_secret": {
                 "current": "gcp:kms/getKMSSecret:getKMSSecret",
@@ -30683,6 +31231,10 @@
                 "current": "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy",
                 "majorVersion": 7
             },
+            "google_scc_v2_organization_source_iam_policy": {
+                "current": "gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy",
+                "majorVersion": 7
+            },
             "google_secret_manager_secret": {
                 "current": "gcp:secretmanager/getSecret:getSecret",
                 "majorVersion": 7,
@@ -30802,6 +31354,10 @@
                 "current": "gcp:securesourcemanager/getInstanceIamPolicy:getInstanceIamPolicy",
                 "majorVersion": 7
             },
+            "google_secure_source_manager_repository_iam_policy": {
+                "current": "gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy",
+                "majorVersion": 7
+            },
             "google_service_account": {
                 "current": "gcp:serviceaccount/getAccount:getAccount",
                 "majorVersion": 7
@@ -30854,6 +31410,10 @@
             },
             "google_service_networking_peered_dns_domain": {
                 "current": "gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain",
+                "majorVersion": 7
+            },
+            "google_site_verification_token": {
+                "current": "gcp:siteverification/getToken:getToken",
                 "majorVersion": 7
             },
             "google_sourcerepo_repository": {
@@ -32398,9 +32958,17 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_gke_hub_membership_binding": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_kms_crypto_key": [
                 "effective_labels",
                 "terraform_labels"
+            ],
+            "google_kms_crypto_keys": [
+                "keys.$.effective_labels",
+                "keys.$.terraform_labels"
             ],
             "google_privateca_certificate_authority": [
                 "effective_labels",
@@ -32473,6 +33041,8 @@
             "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding": 0,
             "gcp:accesscontextmanager/ingressPolicy:IngressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter": 0,
+            "gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy": 0,
+            "gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource": 0,
             "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy": 0,
@@ -32507,6 +33077,8 @@
             "gcp:apigee/environmentIamBinding:EnvironmentIamBinding": 0,
             "gcp:apigee/environmentIamMember:EnvironmentIamMember": 0,
             "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy": 0,
+            "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps": 0,
+            "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries": 0,
             "gcp:apigee/flowhook:Flowhook": 0,
             "gcp:apigee/instance:Instance": 0,
             "gcp:apigee/instanceAttachment:InstanceAttachment": 0,
@@ -32786,12 +33358,14 @@
             "gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy": 0,
             "gcp:compute/regionUrlMap:RegionUrlMap": 0,
             "gcp:compute/reservation:Reservation": 0,
+            "gcp:compute/resizeRequest:ResizeRequest": 0,
             "gcp:compute/resourcePolicy:ResourcePolicy": 0,
             "gcp:compute/route:Route": 0,
             "gcp:compute/router:Router": 0,
             "gcp:compute/routerInterface:RouterInterface": 0,
             "gcp:compute/routerNat:RouterNat": 0,
             "gcp:compute/routerPeer:RouterPeer": 0,
+            "gcp:compute/routerRoutePolicy:RouterRoutePolicy": 0,
             "gcp:compute/sSLCertificate:SSLCertificate": 0,
             "gcp:compute/sSLPolicy:SSLPolicy": 0,
             "gcp:compute/securityPolicy:SecurityPolicy": 0,
@@ -33276,6 +33850,10 @@
             "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding": 0,
             "gcp:securesourcemanager/instanceIamMember:InstanceIamMember": 0,
             "gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy": 0,
+            "gcp:securesourcemanager/repository:Repository": 0,
+            "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding": 0,
+            "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember": 0,
+            "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy": 0,
             "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule": 0,
             "gcp:securitycenter/folderCustomModule:FolderCustomModule": 0,
             "gcp:securitycenter/instanceIamBinding:InstanceIamBinding": 0,
@@ -33289,10 +33867,20 @@
             "gcp:securitycenter/notificationConfig:NotificationConfig": 0,
             "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule": 0,
             "gcp:securitycenter/projectCustomModule:ProjectCustomModule": 0,
+            "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig": 0,
             "gcp:securitycenter/source:Source": 0,
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
+            "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig": 0,
+            "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig": 0,
+            "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": 0,
+            "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource": 0,
+            "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding": 0,
+            "gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember": 0,
+            "gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy": 0,
+            "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig": 0,
+            "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig": 0,
             "gcp:securityposture/posture:Posture": 0,
             "gcp:securityposture/postureDeployment:PostureDeployment": 0,
             "gcp:serviceaccount/account:Account": 0,
@@ -33582,6 +34170,7 @@
             "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy": 0,
             "gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy": 0,
             "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy": 0,
+            "gcp:gkehub/getMembershipBinding:getMembershipBinding": 0,
             "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy": 0,
             "gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy": 0,
             "gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy": 0,
@@ -33605,6 +34194,7 @@
             "gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy": 0,
             "gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy": 0,
             "gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy": 0,
+            "gcp:kms/getCryptoKeys:getCryptoKeys": 0,
             "gcp:kms/getKMSCryptoKey:getKMSCryptoKey": 0,
             "gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion": 0,
             "gcp:kms/getKMSKeyRing:getKMSKeyRing": 0,
@@ -33612,6 +34202,7 @@
             "gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric": 0,
             "gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext": 0,
             "gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy": 0,
+            "gcp:kms/getKeyRings:getKeyRings": 0,
             "gcp:logging/getFolderSettings:getFolderSettings": 0,
             "gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy": 0,
             "gcp:logging/getOrganizationSettings:getOrganizationSettings": 0,
@@ -33656,7 +34247,9 @@
             "gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess": 0,
             "gcp:secretmanager/getSecrets:getSecrets": 0,
             "gcp:securesourcemanager/getInstanceIamPolicy:getInstanceIamPolicy": 0,
+            "gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy": 0,
+            "gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy": 0,
             "gcp:serviceaccount/getAccount:getAccount": 0,
             "gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken": 0,
             "gcp:serviceaccount/getAccountIdToken:getAccountIdToken": 0,
@@ -33666,6 +34259,7 @@
             "gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy": 0,
             "gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy": 0,
             "gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain": 0,
+            "gcp:siteverification/getToken:getToken": 0,
             "gcp:sourcerepo/getRepository:getRepository": 0,
             "gcp:sourcerepo/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy": 0,

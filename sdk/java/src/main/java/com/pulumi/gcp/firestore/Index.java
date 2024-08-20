@@ -18,8 +18,9 @@ import javax.annotation.Nullable;
 
 /**
  * Cloud Firestore indexes enable simple and complex queries against documents in a database.
- *  This resource manages composite indexes and not single
- * field indexes.
+ *  Both Firestore Native and Datastore Mode indexes are supported.
+ *  This resource manages composite indexes and not single field indexes.
+ *  To manage single field indexes, use the `gcp.firestore.Field` resource instead.
  * 
  * To get more information about Index, see:
  * 
@@ -31,9 +32,8 @@ import javax.annotation.Nullable;
  * a Firestore database. If you haven&#39;t already created it, you may
  * create a `gcp.firestore.Database` resource and `location_id` set
  * to your chosen location. If you wish to use App Engine, you may
- * instead create a `gcp.appengine.Application` resource with
- * `database_type` set to `&#34;CLOUD_FIRESTORE&#34;`. Your Firestore location
- * will be the same as the App Engine location specified.
+ * instead create a `gcp.appengine.Application` resource.
+ * Your Firestore location will be the same as the App Engine location specified.
  * 
  * ## Example Usage
  * 
@@ -346,7 +346,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Index(String name) {
+    public Index(java.lang.String name) {
         this(name, IndexArgs.Empty);
     }
     /**
@@ -354,7 +354,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Index(String name, IndexArgs args) {
+    public Index(java.lang.String name, IndexArgs args) {
         this(name, args, null);
     }
     /**
@@ -363,15 +363,22 @@ public class Index extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Index(String name, IndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firestore/index:Index", name, args == null ? IndexArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Index(java.lang.String name, IndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firestore/index:Index", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Index(String name, Output<String> id, @Nullable IndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firestore/index:Index", name, state, makeResourceOptions(options, id));
+    private Index(java.lang.String name, Output<java.lang.String> id, @Nullable IndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firestore/index:Index", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IndexArgs makeArgs(IndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IndexArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -387,7 +394,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Index get(String name, Output<String> id, @Nullable IndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Index get(java.lang.String name, Output<java.lang.String> id, @Nullable IndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Index(name, id, state, options);
     }
 }

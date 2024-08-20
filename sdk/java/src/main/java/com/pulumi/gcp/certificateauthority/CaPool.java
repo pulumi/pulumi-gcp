@@ -406,7 +406,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CaPool(String name) {
+    public CaPool(java.lang.String name) {
         this(name, CaPoolArgs.Empty);
     }
     /**
@@ -414,7 +414,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CaPool(String name, CaPoolArgs args) {
+    public CaPool(java.lang.String name, CaPoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -423,15 +423,22 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CaPool(String name, CaPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/caPool:CaPool", name, args == null ? CaPoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CaPool(java.lang.String name, CaPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificateauthority/caPool:CaPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CaPool(String name, Output<String> id, @Nullable CaPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/caPool:CaPool", name, state, makeResourceOptions(options, id));
+    private CaPool(java.lang.String name, Output<java.lang.String> id, @Nullable CaPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:certificateauthority/caPool:CaPool", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CaPoolArgs makeArgs(CaPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CaPoolArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -451,7 +458,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CaPool get(String name, Output<String> id, @Nullable CaPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CaPool get(java.lang.String name, Output<java.lang.String> id, @Nullable CaPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CaPool(name, id, state, options);
     }
 }

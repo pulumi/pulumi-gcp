@@ -12,7 +12,6 @@ import com.pulumi.gcp.dataflow.JobArgs;
 import com.pulumi.gcp.dataflow.inputs.JobState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -296,8 +295,8 @@ public class Job extends com.pulumi.resources.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return User labels to be specified for the job. Keys and values should follow the restrictions
@@ -305,7 +304,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
-    public Output<Optional<Map<String,Object>>> labels() {
+    public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
@@ -384,8 +383,8 @@ public class Job extends com.pulumi.resources.CustomResource {
      * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
-    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> parameters;
+    @Export(name="parameters", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> parameters;
 
     /**
      * @return **Template specific** Key/Value pairs to be forwarded to the pipeline&#39;s options; keys are
@@ -393,7 +392,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * **Note**: do not configure Dataflow options here in parameters.
      * 
      */
-    public Output<Optional<Map<String,Object>>> parameters() {
+    public Output<Optional<Map<String,String>>> parameters() {
         return Codegen.optional(this.parameters);
     }
     /**
@@ -530,14 +529,14 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      * 
      */
-    @Export(name="transformNameMapping", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> transformNameMapping;
+    @Export(name="transformNameMapping", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> transformNameMapping;
 
     /**
      * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      * 
      */
-    public Output<Optional<Map<String,Object>>> transformNameMapping() {
+    public Output<Optional<Map<String,String>>> transformNameMapping() {
         return Codegen.optional(this.transformNameMapping);
     }
     /**
@@ -573,7 +572,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Job(String name) {
+    public Job(java.lang.String name) {
         this(name, JobArgs.Empty);
     }
     /**
@@ -581,7 +580,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Job(String name, JobArgs args) {
+    public Job(java.lang.String name, JobArgs args) {
         this(name, args, null);
     }
     /**
@@ -590,15 +589,22 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Job(String name, JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataflow/job:Job", name, args == null ? JobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Job(java.lang.String name, JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataflow/job:Job", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Job(String name, Output<String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataflow/job:Job", name, state, makeResourceOptions(options, id));
+    private Job(java.lang.String name, Output<java.lang.String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataflow/job:Job", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static JobArgs makeArgs(JobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? JobArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -618,7 +624,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Job get(String name, Output<String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Job get(java.lang.String name, Output<java.lang.String> id, @Nullable JobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Job(name, id, state, options);
     }
 }

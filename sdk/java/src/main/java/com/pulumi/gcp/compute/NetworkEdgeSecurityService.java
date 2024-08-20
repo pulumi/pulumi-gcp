@@ -240,7 +240,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkEdgeSecurityService(String name) {
+    public NetworkEdgeSecurityService(java.lang.String name) {
         this(name, NetworkEdgeSecurityServiceArgs.Empty);
     }
     /**
@@ -248,7 +248,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkEdgeSecurityService(String name, @Nullable NetworkEdgeSecurityServiceArgs args) {
+    public NetworkEdgeSecurityService(java.lang.String name, @Nullable NetworkEdgeSecurityServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -257,15 +257,22 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkEdgeSecurityService(String name, @Nullable NetworkEdgeSecurityServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService", name, args == null ? NetworkEdgeSecurityServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NetworkEdgeSecurityService(java.lang.String name, @Nullable NetworkEdgeSecurityServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkEdgeSecurityService(String name, Output<String> id, @Nullable NetworkEdgeSecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService", name, state, makeResourceOptions(options, id));
+    private NetworkEdgeSecurityService(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkEdgeSecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NetworkEdgeSecurityServiceArgs makeArgs(@Nullable NetworkEdgeSecurityServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkEdgeSecurityServiceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -281,7 +288,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkEdgeSecurityService get(String name, Output<String> id, @Nullable NetworkEdgeSecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkEdgeSecurityService get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkEdgeSecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkEdgeSecurityService(name, id, state, options);
     }
 }

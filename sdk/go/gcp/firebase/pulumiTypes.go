@@ -358,7 +358,7 @@ type ExtensionsInstanceErrorStatus struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
 	// A list of messages that carry the error details.
-	Details []map[string]interface{} `pulumi:"details"`
+	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English.
 	Message *string `pulumi:"message"`
 }
@@ -378,7 +378,7 @@ type ExtensionsInstanceErrorStatusArgs struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// A list of messages that carry the error details.
-	Details pulumi.MapArrayInput `pulumi:"details"`
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// A developer-facing error message, which should be in English.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -440,8 +440,8 @@ func (o ExtensionsInstanceErrorStatusOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details.
-func (o ExtensionsInstanceErrorStatusOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v ExtensionsInstanceErrorStatus) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+func (o ExtensionsInstanceErrorStatusOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v ExtensionsInstanceErrorStatus) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English.

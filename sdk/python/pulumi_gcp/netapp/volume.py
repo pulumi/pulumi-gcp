@@ -404,6 +404,7 @@ class _VolumeState:
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  psa_range: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 replica_zone: Optional[pulumi.Input[str]] = None,
                  restore_parameters: Optional[pulumi.Input['VolumeRestoreParametersArgs']] = None,
                  restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_style: Optional[pulumi.Input[str]] = None,
@@ -416,7 +417,8 @@ class _VolumeState:
                  state_details: Optional[pulumi.Input[str]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None,
-                 used_gib: Optional[pulumi.Input[str]] = None):
+                 used_gib: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
         :param pulumi.Input[str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
@@ -455,6 +457,7 @@ class _VolumeState:
         :param pulumi.Input[str] psa_range: Name of the Private Service Access allocated range. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] replica_zone: Specifies the replica zone for regional volume.
         :param pulumi.Input['VolumeRestoreParametersArgs'] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
@@ -475,6 +478,7 @@ class _VolumeState:
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         :param pulumi.Input[str] used_gib: Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
+        :param pulumi.Input[str] zone: Specifies the active zone for regional volume.
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
@@ -520,6 +524,8 @@ class _VolumeState:
             pulumi.set(__self__, "psa_range", psa_range)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if replica_zone is not None:
+            pulumi.set(__self__, "replica_zone", replica_zone)
         if restore_parameters is not None:
             pulumi.set(__self__, "restore_parameters", restore_parameters)
         if restricted_actions is not None:
@@ -546,6 +552,8 @@ class _VolumeState:
             pulumi.set(__self__, "unix_permissions", unix_permissions)
         if used_gib is not None:
             pulumi.set(__self__, "used_gib", used_gib)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activeDirectory")
@@ -826,6 +834,18 @@ class _VolumeState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="replicaZone")
+    def replica_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the replica zone for regional volume.
+        """
+        return pulumi.get(self, "replica_zone")
+
+    @replica_zone.setter
+    def replica_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replica_zone", value)
+
+    @property
     @pulumi.getter(name="restoreParameters")
     def restore_parameters(self) -> Optional[pulumi.Input['VolumeRestoreParametersArgs']]:
         """
@@ -988,6 +1008,18 @@ class _VolumeState:
     def used_gib(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "used_gib", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the active zone for regional volume.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class Volume(pulumi.CustomResource):
     @overload
@@ -1026,8 +1058,8 @@ class Volume(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
         * How-to Guides
-            * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
             * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+            * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 
         ## Example Usage
 
@@ -1137,8 +1169,8 @@ class Volume(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
         * How-to Guides
-            * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
             * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+            * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 
         ## Example Usage
 
@@ -1274,10 +1306,12 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["network"] = None
             __props__.__dict__["psa_range"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["replica_zone"] = None
             __props__.__dict__["service_level"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_details"] = None
             __props__.__dict__["used_gib"] = None
+            __props__.__dict__["zone"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Volume, __self__).__init__(
@@ -1312,6 +1346,7 @@ class Volume(pulumi.CustomResource):
             protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             psa_range: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            replica_zone: Optional[pulumi.Input[str]] = None,
             restore_parameters: Optional[pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']]] = None,
             restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_style: Optional[pulumi.Input[str]] = None,
@@ -1324,7 +1359,8 @@ class Volume(pulumi.CustomResource):
             state_details: Optional[pulumi.Input[str]] = None,
             storage_pool: Optional[pulumi.Input[str]] = None,
             unix_permissions: Optional[pulumi.Input[str]] = None,
-            used_gib: Optional[pulumi.Input[str]] = None) -> 'Volume':
+            used_gib: Optional[pulumi.Input[str]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1368,6 +1404,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] psa_range: Name of the Private Service Access allocated range. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] replica_zone: Specifies the replica zone for regional volume.
         :param pulumi.Input[Union['VolumeRestoreParametersArgs', 'VolumeRestoreParametersArgsDict']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
@@ -1388,6 +1425,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         :param pulumi.Input[str] used_gib: Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
+        :param pulumi.Input[str] zone: Specifies the active zone for regional volume.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1415,6 +1453,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["protocols"] = protocols
         __props__.__dict__["psa_range"] = psa_range
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["replica_zone"] = replica_zone
         __props__.__dict__["restore_parameters"] = restore_parameters
         __props__.__dict__["restricted_actions"] = restricted_actions
         __props__.__dict__["security_style"] = security_style
@@ -1428,6 +1467,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["storage_pool"] = storage_pool
         __props__.__dict__["unix_permissions"] = unix_permissions
         __props__.__dict__["used_gib"] = used_gib
+        __props__.__dict__["zone"] = zone
         return Volume(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1621,6 +1661,14 @@ class Volume(pulumi.CustomResource):
         return pulumi.get(self, "pulumi_labels")
 
     @property
+    @pulumi.getter(name="replicaZone")
+    def replica_zone(self) -> pulumi.Output[str]:
+        """
+        Specifies the replica zone for regional volume.
+        """
+        return pulumi.get(self, "replica_zone")
+
+    @property
     @pulumi.getter(name="restoreParameters")
     def restore_parameters(self) -> pulumi.Output[Optional['outputs.VolumeRestoreParameters']]:
         """
@@ -1666,7 +1714,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smbSettings")
-    def smb_settings(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def smb_settings(self) -> pulumi.Output[Sequence[str]]:
         """
         Settings for volumes with SMB access.
         Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
@@ -1730,4 +1778,12 @@ class Volume(pulumi.CustomResource):
         Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
         """
         return pulumi.get(self, "used_gib")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        Specifies the active zone for regional volume.
+        """
+        return pulumi.get(self, "zone")
 

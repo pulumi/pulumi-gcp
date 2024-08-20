@@ -21,7 +21,8 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
 
     /**
      * ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-     * requests per container of the Revision. Values are:
+     * requests per container of the Revision. If not specified or 0, defaults to 80 when
+     * requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
      * 
      */
     @Import(name="containerConcurrency")
@@ -29,7 +30,8 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
 
     /**
      * @return ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-     * requests per container of the Revision. Values are:
+     * requests per container of the Revision. If not specified or 0, defaults to 80 when
+     * requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
      * 
      */
     public Optional<Output<Integer>> containerConcurrency() {
@@ -172,7 +174,8 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
 
         /**
          * @param containerConcurrency ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-         * requests per container of the Revision. Values are:
+         * requests per container of the Revision. If not specified or 0, defaults to 80 when
+         * requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
          * 
          * @return builder
          * 
@@ -184,7 +187,8 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
 
         /**
          * @param containerConcurrency ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-         * requests per container of the Revision. Values are:
+         * requests per container of the Revision. If not specified or 0, defaults to 80 when
+         * requested CPU &gt;= 1 and defaults to 1 when requested CPU &lt; 1.
          * 
          * @return builder
          * 

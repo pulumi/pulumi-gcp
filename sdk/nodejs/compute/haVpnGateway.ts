@@ -182,6 +182,12 @@ export class HaVpnGateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    public readonly gatewayIpVersion!: pulumi.Output<string | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -215,7 +221,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
      * The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      */
     public readonly stackType!: pulumi.Output<string | undefined>;
     /**
@@ -238,6 +244,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as HaVpnGatewayState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["gatewayIpVersion"] = state ? state.gatewayIpVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -251,6 +258,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'network'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gatewayIpVersion"] = args ? args.gatewayIpVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -272,6 +280,12 @@ export interface HaVpnGatewayState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    gatewayIpVersion?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -306,7 +320,7 @@ export interface HaVpnGatewayState {
      * The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      */
     stackType?: pulumi.Input<string>;
     /**
@@ -324,6 +338,12 @@ export interface HaVpnGatewayArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    gatewayIpVersion?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -354,7 +374,7 @@ export interface HaVpnGatewayArgs {
      * The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      */
     stackType?: pulumi.Input<string>;
     /**

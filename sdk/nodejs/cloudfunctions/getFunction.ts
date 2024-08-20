@@ -62,7 +62,8 @@ export interface GetFunctionResult {
      * Available memory (in MB) to the function.
      */
     readonly availableMemoryMb: number;
-    readonly buildEnvironmentVariables: {[key: string]: any};
+    readonly buildEnvironmentVariables: {[key: string]: string};
+    readonly buildServiceAccount: string;
     readonly buildWorkerPool: string;
     /**
      * Description of the function.
@@ -75,7 +76,7 @@ export interface GetFunctionResult {
      * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      */
     readonly entryPoint: string;
-    readonly environmentVariables: {[key: string]: any};
+    readonly environmentVariables: {[key: string]: string};
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below.
      */
@@ -97,7 +98,7 @@ export interface GetFunctionResult {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
      */

@@ -1051,7 +1051,7 @@ type DatabaseInstanceSettings struct {
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation *string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement *string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfig *DatabaseInstanceSettingsDataCacheConfig `pulumi:"dataCacheConfig"`
@@ -1059,16 +1059,18 @@ type DatabaseInstanceSettings struct {
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled *bool                                          `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     *DatabaseInstanceSettingsDenyMaintenancePeriod `pulumi:"denyMaintenancePeriod"`
-	// Enables auto-resizing of the storage size. Defaults to `true`.
+	// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
 	DiskAutoresize *bool `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit *int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize *int `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
 	DiskType *string `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition *string `pulumi:"edition"`
+	// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+	EnableDataplexIntegration *bool `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 	EnableGoogleMlIntegration *bool `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
@@ -1121,7 +1123,7 @@ type DatabaseInstanceSettingsArgs struct {
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringPtrInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfig DatabaseInstanceSettingsDataCacheConfigPtrInput `pulumi:"dataCacheConfig"`
@@ -1129,16 +1131,18 @@ type DatabaseInstanceSettingsArgs struct {
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled pulumi.BoolPtrInput                                   `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput `pulumi:"denyMaintenancePeriod"`
-	// Enables auto-resizing of the storage size. Defaults to `true`.
+	// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
 	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntPtrInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+	EnableDataplexIntegration pulumi.BoolPtrInput `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 	EnableGoogleMlIntegration pulumi.BoolPtrInput `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
@@ -1280,7 +1284,7 @@ func (o DatabaseInstanceSettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o DatabaseInstanceSettingsOutput) ConnectorEnforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ConnectorEnforcement }).(pulumi.StringPtrOutput)
 }
@@ -1305,7 +1309,7 @@ func (o DatabaseInstanceSettingsOutput) DenyMaintenancePeriod() DatabaseInstance
 	}).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
 }
 
-// Enables auto-resizing of the storage size. Defaults to `true`.
+// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
 func (o DatabaseInstanceSettingsOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
 }
@@ -1315,7 +1319,7 @@ func (o DatabaseInstanceSettingsOutput) DiskAutoresizeLimit() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskAutoresizeLimit }).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
@@ -1328,6 +1332,11 @@ func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 // The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 func (o DatabaseInstanceSettingsOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+func (o DatabaseInstanceSettingsOutput) EnableDataplexIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.EnableDataplexIntegration }).(pulumi.BoolPtrOutput)
 }
 
 // Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
@@ -1484,7 +1493,7 @@ func (o DatabaseInstanceSettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o DatabaseInstanceSettingsPtrOutput) ConnectorEnforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {
@@ -1532,7 +1541,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DenyMaintenancePeriod() DatabaseInsta
 	}).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
 }
 
-// Enables auto-resizing of the storage size. Defaults to `true`.
+// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
 func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
 		if v == nil {
@@ -1552,7 +1561,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresizeLimit() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
 		if v == nil {
@@ -1580,6 +1589,16 @@ func (o DatabaseInstanceSettingsPtrOutput) Edition() pulumi.StringPtrOutput {
 		}
 		return v.Edition
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+func (o DatabaseInstanceSettingsPtrOutput) EnableDataplexIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDataplexIntegration
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
@@ -2648,9 +2667,9 @@ func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) Index(i pulumi.IntInput
 }
 
 type DatabaseInstanceSettingsDenyMaintenancePeriod struct {
-	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 	EndDate string `pulumi:"endDate"`
-	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 	StartDate string `pulumi:"startDate"`
 	// Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
 	Time string `pulumi:"time"`
@@ -2668,9 +2687,9 @@ type DatabaseInstanceSettingsDenyMaintenancePeriodInput interface {
 }
 
 type DatabaseInstanceSettingsDenyMaintenancePeriodArgs struct {
-	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 	EndDate pulumi.StringInput `pulumi:"endDate"`
-	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 	StartDate pulumi.StringInput `pulumi:"startDate"`
 	// Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
 	Time pulumi.StringInput `pulumi:"time"`
@@ -2753,12 +2772,12 @@ func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ToDatabaseInstanceS
 	}).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
 }
 
-// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsDenyMaintenancePeriod) string { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsDenyMaintenancePeriod) string { return v.StartDate }).(pulumi.StringOutput)
 }
@@ -2792,7 +2811,7 @@ func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) Elem() DatabaseI
 	}).(DatabaseInstanceSettingsDenyMaintenancePeriodOutput)
 }
 
-// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) EndDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsDenyMaintenancePeriod) *string {
 		if v == nil {
@@ -2802,7 +2821,7 @@ func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) EndDate() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
 func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) StartDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsDenyMaintenancePeriod) *string {
 		if v == nil {
@@ -3057,7 +3076,7 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	//
 	// Deprecated: `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
 	RequireSsl *bool `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
 	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 	// * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 	// * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -3097,7 +3116,7 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	//
 	// Deprecated: `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
 	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 	// * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 	// * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -3229,7 +3248,7 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) RequireSsl() pulumi.BoolP
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
+// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
 // * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 // * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 // * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -3338,7 +3357,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) RequireSsl() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
+// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
 // * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 // * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 // * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
@@ -5589,7 +5608,7 @@ type GetDatabaseInstanceSetting struct {
 	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
@@ -5607,6 +5626,8 @@ type GetDatabaseInstanceSetting struct {
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
+	// Enables Dataplex Integration.
+	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
@@ -5655,7 +5676,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation pulumi.StringInput `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
@@ -5673,6 +5694,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
+	// Enables Dataplex Integration.
+	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
@@ -5784,7 +5807,7 @@ func (o GetDatabaseInstanceSettingOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
@@ -5834,6 +5857,11 @@ func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 // The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 func (o GetDatabaseInstanceSettingOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// Enables Dataplex Integration.
+func (o GetDatabaseInstanceSettingOutput) EnableDataplexIntegration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.EnableDataplexIntegration }).(pulumi.BoolOutput)
 }
 
 // Enables Vertex AI Integration.
@@ -6843,7 +6871,7 @@ type GetDatabaseInstanceSettingIpConfiguration struct {
 	PscConfigs []GetDatabaseInstanceSettingIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl bool `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode string `pulumi:"sslMode"`
 }
 
@@ -6872,7 +6900,7 @@ type GetDatabaseInstanceSettingIpConfigurationArgs struct {
 	PscConfigs GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
 
@@ -6967,7 +6995,7 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) RequireSsl() pulumi.Boo
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) SslMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.SslMode }).(pulumi.StringOutput)
 }
@@ -8675,7 +8703,7 @@ type GetDatabaseInstancesInstanceSetting struct {
 	BackupConfigurations []GetDatabaseInstancesInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstancesInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
@@ -8693,6 +8721,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
+	// Enables Dataplex Integration.
+	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
@@ -8741,7 +8771,7 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	BackupConfigurations GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation pulumi.StringInput `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors.
+	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
@@ -8759,6 +8789,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
+	// Enables Dataplex Integration.
+	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
@@ -8870,7 +8902,7 @@ func (o GetDatabaseInstancesInstanceSettingOutput) Collation() pulumi.StringOutp
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors.
+// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstancesInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
@@ -8922,6 +8954,11 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutpu
 // The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 func (o GetDatabaseInstancesInstanceSettingOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// Enables Dataplex Integration.
+func (o GetDatabaseInstancesInstanceSettingOutput) EnableDataplexIntegration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.EnableDataplexIntegration }).(pulumi.BoolOutput)
 }
 
 // Enables Vertex AI Integration.
@@ -9935,7 +9972,7 @@ type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
 	PscConfigs []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl bool `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode string `pulumi:"sslMode"`
 }
 
@@ -9964,7 +10001,7 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
 	PscConfigs GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
 	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
-	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
 
@@ -10059,7 +10096,7 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) RequireSsl() p
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
+// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) SslMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.SslMode }).(pulumi.StringOutput)
 }

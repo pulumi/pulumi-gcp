@@ -375,8 +375,8 @@ class Snapshot(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.snapshots)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
+            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
 
         ## Example Usage
 
@@ -391,7 +391,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-east1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -414,7 +414,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-west1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -490,8 +490,8 @@ class Snapshot(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.snapshots)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
+            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
 
         ## Example Usage
 
@@ -506,7 +506,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-east1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -529,7 +529,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-west1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{

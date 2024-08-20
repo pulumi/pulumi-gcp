@@ -119,6 +119,41 @@ import (
 //	}
 //
 // ```
+// ### Network Security Address Groups Cloud Armor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewAddressGroup(ctx, "default", &networksecurity.AddressGroupArgs{
+//				Name:     pulumi.String("my-address-groups"),
+//				Parent:   pulumi.String("projects/my-project-name"),
+//				Location: pulumi.String("global"),
+//				Type:     pulumi.String("IPV4"),
+//				Capacity: pulumi.Int(100),
+//				Purposes: pulumi.StringArray{
+//					pulumi.String("CLOUD_ARMOR"),
+//				},
+//				Items: pulumi.StringArray{
+//					pulumi.String("208.80.154.224/32"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -164,6 +199,9 @@ type AddressGroup struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// List of supported purposes of the Address Group.
+	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+	Purposes pulumi.StringArrayOutput `pulumi:"purposes"`
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -247,6 +285,9 @@ type addressGroupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// List of supported purposes of the Address Group.
+	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+	Purposes []string `pulumi:"purposes"`
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type *string `pulumi:"type"`
@@ -287,6 +328,9 @@ type AddressGroupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// List of supported purposes of the Address Group.
+	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+	Purposes pulumi.StringArrayInput
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type pulumi.StringPtrInput
@@ -322,6 +366,9 @@ type addressGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent *string `pulumi:"parent"`
+	// List of supported purposes of the Address Group.
+	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+	Purposes []string `pulumi:"purposes"`
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type string `pulumi:"type"`
@@ -350,6 +397,9 @@ type AddressGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent pulumi.StringPtrInput
+	// List of supported purposes of the Address Group.
+	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+	Purposes pulumi.StringArrayInput
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type pulumi.StringInput
@@ -500,6 +550,12 @@ func (o AddressGroupOutput) Parent() pulumi.StringPtrOutput {
 // and default labels configured on the provider.
 func (o AddressGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// List of supported purposes of the Address Group.
+// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+func (o AddressGroupOutput) Purposes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddressGroup) pulumi.StringArrayOutput { return v.Purposes }).(pulumi.StringArrayOutput)
 }
 
 // The type of the Address Group. Possible values are "IPV4" or "IPV6".

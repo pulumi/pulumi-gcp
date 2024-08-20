@@ -37,10 +37,13 @@ namespace Pulumi.Gcp.Logging
     ///         Location = "global",
     ///         RetentionDays = 30,
     ///         BucketId = "_Default",
-    ///         IndexConfigs = 
+    ///         IndexConfigs = new[]
     ///         {
-    ///             { "filePath", "jsonPayload.request.status" },
-    ///             { "type", "INDEX_TYPE_STRING" },
+    ///             new Gcp.Logging.Inputs.OrganizationBucketConfigIndexConfigArgs
+    ///             {
+    ///                 FieldPath = "jsonPayload.request.status",
+    ///                 Type = "INDEX_TYPE_STRING",
+    ///             },
     ///         },
     ///     });
     /// 

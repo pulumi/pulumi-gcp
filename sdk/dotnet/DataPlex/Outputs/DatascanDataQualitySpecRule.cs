@@ -63,6 +63,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly Outputs.DatascanDataQualitySpecRuleSetExpectation? SetExpectation;
         /// <summary>
+        /// Table rule which evaluates whether any row matches invalid state.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatascanDataQualitySpecRuleSqlAssertion? SqlAssertion;
+        /// <summary>
         /// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         /// Structure is documented below.
         /// </summary>
@@ -103,6 +108,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             Outputs.DatascanDataQualitySpecRuleSetExpectation? setExpectation,
 
+            Outputs.DatascanDataQualitySpecRuleSqlAssertion? sqlAssertion,
+
             Outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation? statisticRangeExpectation,
 
             Outputs.DatascanDataQualitySpecRuleTableConditionExpectation? tableConditionExpectation,
@@ -121,6 +128,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
             RegexExpectation = regexExpectation;
             RowConditionExpectation = rowConditionExpectation;
             SetExpectation = setExpectation;
+            SqlAssertion = sqlAssertion;
             StatisticRangeExpectation = statisticRangeExpectation;
             TableConditionExpectation = tableConditionExpectation;
             Threshold = threshold;

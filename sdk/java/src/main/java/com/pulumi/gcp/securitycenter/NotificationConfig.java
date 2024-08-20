@@ -214,7 +214,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NotificationConfig(String name) {
+    public NotificationConfig(java.lang.String name) {
         this(name, NotificationConfigArgs.Empty);
     }
     /**
@@ -222,7 +222,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NotificationConfig(String name, NotificationConfigArgs args) {
+    public NotificationConfig(java.lang.String name, NotificationConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -231,15 +231,22 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NotificationConfig(String name, NotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/notificationConfig:NotificationConfig", name, args == null ? NotificationConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NotificationConfig(java.lang.String name, NotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/notificationConfig:NotificationConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NotificationConfig(String name, Output<String> id, @Nullable NotificationConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/notificationConfig:NotificationConfig", name, state, makeResourceOptions(options, id));
+    private NotificationConfig(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:securitycenter/notificationConfig:NotificationConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NotificationConfigArgs makeArgs(NotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NotificationConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -255,7 +262,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NotificationConfig get(String name, Output<String> id, @Nullable NotificationConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NotificationConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NotificationConfig(name, id, state, options);
     }
 }

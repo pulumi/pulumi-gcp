@@ -241,7 +241,7 @@ public class AppCheckAppAttestConfig extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppCheckAppAttestConfig(String name) {
+    public AppCheckAppAttestConfig(java.lang.String name) {
         this(name, AppCheckAppAttestConfigArgs.Empty);
     }
     /**
@@ -249,7 +249,7 @@ public class AppCheckAppAttestConfig extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppCheckAppAttestConfig(String name, AppCheckAppAttestConfigArgs args) {
+    public AppCheckAppAttestConfig(java.lang.String name, AppCheckAppAttestConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -258,15 +258,22 @@ public class AppCheckAppAttestConfig extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppCheckAppAttestConfig(String name, AppCheckAppAttestConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig", name, args == null ? AppCheckAppAttestConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AppCheckAppAttestConfig(java.lang.String name, AppCheckAppAttestConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppCheckAppAttestConfig(String name, Output<String> id, @Nullable AppCheckAppAttestConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig", name, state, makeResourceOptions(options, id));
+    private AppCheckAppAttestConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AppCheckAppAttestConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AppCheckAppAttestConfigArgs makeArgs(AppCheckAppAttestConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppCheckAppAttestConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -282,7 +289,7 @@ public class AppCheckAppAttestConfig extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppCheckAppAttestConfig get(String name, Output<String> id, @Nullable AppCheckAppAttestConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppCheckAppAttestConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AppCheckAppAttestConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppCheckAppAttestConfig(name, id, state, options);
     }
 }

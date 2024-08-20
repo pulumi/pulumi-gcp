@@ -20,6 +20,7 @@ public final class PolicyDryRunSpecRule {
     private @Nullable String allowAll;
     /**
      * @return A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr&#39; must include from 1 to 10 subexpressions, joined by the &#34;||&#34; or &#34;&amp;&amp;&#34; operators. Each subexpression must be of the form &#34;resource.matchTag(&#39;/tag_key_short_name, &#39;tag_value_short_name&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/key_id&#39;, &#39;tagValues/value_id&#39;)&#34;. where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: &#34;resource.matchTag(&#39;123456789/environment, &#39;prod&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/123&#39;, &#39;tagValues/456&#39;)&#34;.
+     * Structure is documented below.
      * 
      */
     private @Nullable PolicyDryRunSpecRuleCondition condition;
@@ -34,7 +35,8 @@ public final class PolicyDryRunSpecRule {
      */
     private @Nullable String enforce;
     /**
-     * @return List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+     * @return List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+     * Structure is documented below.
      * 
      */
     private @Nullable PolicyDryRunSpecRuleValues values;
@@ -49,6 +51,7 @@ public final class PolicyDryRunSpecRule {
     }
     /**
      * @return A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr&#39; must include from 1 to 10 subexpressions, joined by the &#34;||&#34; or &#34;&amp;&amp;&#34; operators. Each subexpression must be of the form &#34;resource.matchTag(&#39;/tag_key_short_name, &#39;tag_value_short_name&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/key_id&#39;, &#39;tagValues/value_id&#39;)&#34;. where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: &#34;resource.matchTag(&#39;123456789/environment, &#39;prod&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/123&#39;, &#39;tagValues/456&#39;)&#34;.
+     * Structure is documented below.
      * 
      */
     public Optional<PolicyDryRunSpecRuleCondition> condition() {
@@ -69,7 +72,8 @@ public final class PolicyDryRunSpecRule {
         return Optional.ofNullable(this.enforce);
     }
     /**
-     * @return List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+     * @return List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+     * Structure is documented below.
      * 
      */
     public Optional<PolicyDryRunSpecRuleValues> values() {

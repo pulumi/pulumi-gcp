@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
  * * How-to Guides
- *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+ *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  * 
  * ## Example Usage
  * 
@@ -457,6 +457,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * Specifies the replica zone for regional volume.
+     * 
+     */
+    @Export(name="replicaZone", refs={String.class}, tree="[0]")
+    private Output<String> replicaZone;
+
+    /**
+     * @return Specifies the replica zone for regional volume.
+     * 
+     */
+    public Output<String> replicaZone() {
+        return this.replicaZone;
+    }
+    /**
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      * 
@@ -540,15 +554,15 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="smbSettings", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> smbSettings;
+    private Output<List<String>> smbSettings;
 
     /**
      * @return Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
      * 
      */
-    public Output<Optional<List<String>>> smbSettings() {
-        return Codegen.optional(this.smbSettings);
+    public Output<List<String>> smbSettings() {
+        return this.smbSettings;
     }
     /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume&#39;s snapshots. Will enable &#34;Previous Versions&#34; support for SMB.
@@ -652,12 +666,26 @@ public class Volume extends com.pulumi.resources.CustomResource {
     public Output<String> usedGib() {
         return this.usedGib;
     }
+    /**
+     * Specifies the active zone for regional volume.
+     * 
+     */
+    @Export(name="zone", refs={String.class}, tree="[0]")
+    private Output<String> zone;
+
+    /**
+     * @return Specifies the active zone for regional volume.
+     * 
+     */
+    public Output<String> zone() {
+        return this.zone;
+    }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Volume(String name) {
+    public Volume(java.lang.String name) {
         this(name, VolumeArgs.Empty);
     }
     /**
@@ -665,7 +693,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Volume(String name, VolumeArgs args) {
+    public Volume(java.lang.String name, VolumeArgs args) {
         this(name, args, null);
     }
     /**
@@ -674,15 +702,22 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Volume(String name, VolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/volume:Volume", name, args == null ? VolumeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Volume(java.lang.String name, VolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/volume:Volume", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Volume(String name, Output<String> id, @Nullable VolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/volume:Volume", name, state, makeResourceOptions(options, id));
+    private Volume(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:netapp/volume:Volume", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VolumeArgs makeArgs(VolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VolumeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -702,7 +737,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Volume get(String name, Output<String> id, @Nullable VolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Volume get(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Volume(name, id, state, options);
     }
 }

@@ -279,7 +279,7 @@ type GetSQuotaInfoDimensionsInfo struct {
 	// The quota details for a map of dimensions.
 	Details []GetSQuotaInfoDimensionsInfoDetail `pulumi:"details"`
 	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 }
 
 // GetSQuotaInfoDimensionsInfoInput is an input type that accepts GetSQuotaInfoDimensionsInfoArgs and GetSQuotaInfoDimensionsInfoOutput values.
@@ -299,7 +299,7 @@ type GetSQuotaInfoDimensionsInfoArgs struct {
 	// The quota details for a map of dimensions.
 	Details GetSQuotaInfoDimensionsInfoDetailArrayInput `pulumi:"details"`
 	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
+	Dimensions pulumi.StringMapInput `pulumi:"dimensions"`
 }
 
 func (GetSQuotaInfoDimensionsInfoArgs) ElementType() reflect.Type {
@@ -364,8 +364,8 @@ func (o GetSQuotaInfoDimensionsInfoOutput) Details() GetSQuotaInfoDimensionsInfo
 }
 
 // The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
-func (o GetSQuotaInfoDimensionsInfoOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSQuotaInfoDimensionsInfo) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o GetSQuotaInfoDimensionsInfoOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSQuotaInfoDimensionsInfo) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 type GetSQuotaInfoDimensionsInfoArrayOutput struct{ *pulumi.OutputState }
@@ -828,7 +828,7 @@ type GetSQuotaInfosQuotaInfoDimensionsInfo struct {
 	// The quota details for a map of dimensions.
 	Details []GetSQuotaInfosQuotaInfoDimensionsInfoDetail `pulumi:"details"`
 	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 }
 
 // GetSQuotaInfosQuotaInfoDimensionsInfoInput is an input type that accepts GetSQuotaInfosQuotaInfoDimensionsInfoArgs and GetSQuotaInfosQuotaInfoDimensionsInfoOutput values.
@@ -848,7 +848,7 @@ type GetSQuotaInfosQuotaInfoDimensionsInfoArgs struct {
 	// The quota details for a map of dimensions.
 	Details GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayInput `pulumi:"details"`
 	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
+	Dimensions pulumi.StringMapInput `pulumi:"dimensions"`
 }
 
 func (GetSQuotaInfosQuotaInfoDimensionsInfoArgs) ElementType() reflect.Type {
@@ -915,8 +915,8 @@ func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) Details() GetSQuotaInfosQuo
 }
 
 // The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
-func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoDimensionsInfo) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoDimensionsInfo) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 type GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput struct{ *pulumi.OutputState }

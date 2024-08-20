@@ -67,6 +67,7 @@ export interface GetKMSCryptoKeyResult {
      */
     readonly id: string;
     readonly importOnly: boolean;
+    readonly keyAccessJustificationsPolicies: outputs.kms.GetKMSCryptoKeyKeyAccessJustificationsPolicy[];
     readonly keyRing: string;
     readonly labels: {[key: string]: string};
     readonly name: string;

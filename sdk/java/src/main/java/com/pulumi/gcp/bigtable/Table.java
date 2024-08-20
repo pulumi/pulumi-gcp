@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.Table;
  * import com.pulumi.gcp.bigtable.TableArgs;
  * import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
+ * import com.pulumi.gcp.bigtable.inputs.TableAutomatedBackupPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,6 +77,10 @@ import javax.annotation.Nullable;
  *                     .family("family-second")
  *                     .build())
  *             .changeStreamRetention("24h0m0s")
+ *             .automatedBackupPolicy(TableAutomatedBackupPolicyArgs.builder()
+ *                 .retentionPeriod("72h0m0s")
+ *                 .frequency("24h0m0s")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -114,16 +119,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigtable/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-     * Retention Period and Frequency to 0.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+     * 
+     * ***
      * 
      */
     @Export(name="automatedBackupPolicy", refs={TableAutomatedBackupPolicy.class}, tree="[0]")
     private Output</* @Nullable */ TableAutomatedBackupPolicy> automatedBackupPolicy;
 
     /**
-     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
-     * Retention Period and Frequency to 0.
+     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
+     * 
+     * ***
      * 
      */
     public Output<Optional<TableAutomatedBackupPolicy>> automatedBackupPolicy() {
@@ -132,16 +139,12 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      * 
-     * ***
-     * 
      */
     @Export(name="changeStreamRetention", refs={String.class}, tree="[0]")
     private Output<String> changeStreamRetention;
 
     /**
      * @return Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-     * 
-     * ***
      * 
      */
     public Output<String> changeStreamRetention() {
@@ -242,7 +245,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Table(String name) {
+    public Table(java.lang.String name) {
         this(name, TableArgs.Empty);
     }
     /**
@@ -250,7 +253,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Table(String name, TableArgs args) {
+    public Table(java.lang.String name, TableArgs args) {
         this(name, args, null);
     }
     /**
@@ -259,15 +262,22 @@ public class Table extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Table(String name, TableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/table:Table", name, args == null ? TableArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Table(java.lang.String name, TableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigtable/table:Table", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Table(String name, Output<String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/table:Table", name, state, makeResourceOptions(options, id));
+    private Table(java.lang.String name, Output<java.lang.String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:bigtable/table:Table", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TableArgs makeArgs(TableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TableArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -283,7 +293,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Table get(String name, Output<String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Table get(java.lang.String name, Output<java.lang.String> id, @Nullable TableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Table(name, id, state, options);
     }
 }

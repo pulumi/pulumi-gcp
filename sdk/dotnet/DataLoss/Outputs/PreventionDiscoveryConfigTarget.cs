@@ -24,6 +24,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTarget? CloudSqlTarget;
         /// <summary>
+        /// Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetCloudStorageTarget? CloudStorageTarget;
+        /// <summary>
         /// Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetSecretsTarget? SecretsTarget;
@@ -34,10 +39,13 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionDiscoveryConfigTargetCloudSqlTarget? cloudSqlTarget,
 
+            Outputs.PreventionDiscoveryConfigTargetCloudStorageTarget? cloudStorageTarget,
+
             Outputs.PreventionDiscoveryConfigTargetSecretsTarget? secretsTarget)
         {
             BigQueryTarget = bigQueryTarget;
             CloudSqlTarget = cloudSqlTarget;
+            CloudStorageTarget = cloudStorageTarget;
             SecretsTarget = secretsTarget;
         }
     }

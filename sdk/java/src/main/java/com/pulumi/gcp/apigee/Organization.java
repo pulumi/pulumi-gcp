@@ -212,7 +212,7 @@ import javax.annotation.Nullable;
  *         var apigeeSaKeyuser = new CryptoKeyIAMMember("apigeeSaKeyuser", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(apigeeKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(apigeeSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(apigeeSa.member())
  *             .build());
  * 
  *         var org = new Organization("org", OrganizationArgs.builder()
@@ -288,7 +288,7 @@ import javax.annotation.Nullable;
  *         var apigeeSaKeyuser = new CryptoKeyIAMMember("apigeeSaKeyuser", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(apigeeKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(apigeeSa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(apigeeSa.member())
  *             .build());
  * 
  *         var org = new Organization("org", OrganizationArgs.builder()
@@ -634,7 +634,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Organization(String name) {
+    public Organization(java.lang.String name) {
         this(name, OrganizationArgs.Empty);
     }
     /**
@@ -642,7 +642,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Organization(String name, OrganizationArgs args) {
+    public Organization(java.lang.String name, OrganizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -651,15 +651,22 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Organization(String name, OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/organization:Organization", name, args == null ? OrganizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Organization(java.lang.String name, OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/organization:Organization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Organization(String name, Output<String> id, @Nullable OrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/organization:Organization", name, state, makeResourceOptions(options, id));
+    private Organization(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:apigee/organization:Organization", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OrganizationArgs makeArgs(OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -675,7 +682,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Organization get(String name, Output<String> id, @Nullable OrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Organization get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Organization(name, id, state, options);
     }
 }

@@ -279,10 +279,14 @@ class InstanceIamBinding(pulumi.CustomResource):
             },
             network_config={
                 "network": "default",
-                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+                "ip_allocation": pulumi.Output.all(
+                    address=private_ip_alloc.address,
+                    prefix_length=private_ip_alloc.prefix_length
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['address']}/{resolved_outputs['prefix_length']}")
+        ,
             },
             accelerators=[{
-                "acceleratorType": "CDC",
+                "accelerator_type": "CDC",
                 "state": "ENABLED",
             }])
         ```
@@ -311,10 +315,10 @@ class InstanceIamBinding(pulumi.CustomResource):
             type="BASIC",
             private_instance=True,
             network_config={
-                "connectionType": "PRIVATE_SERVICE_CONNECT_INTERFACES",
-                "privateServiceConnectConfig": {
-                    "networkAttachment": psc_network_attachment.id,
-                    "unreachableCidrBlock": "192.168.0.0/25",
+                "connection_type": "PRIVATE_SERVICE_CONNECT_INTERFACES",
+                "private_service_connect_config": {
+                    "network_attachment": psc_network_attachment.id,
+                    "unreachable_cidr_block": "192.168.0.0/25",
                 },
             })
         ```
@@ -340,7 +344,7 @@ class InstanceIamBinding(pulumi.CustomResource):
             region="us-central1",
             type="BASIC",
             crypto_key_config={
-                "keyReference": crypto_key.id,
+                "key_reference": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
@@ -479,10 +483,14 @@ class InstanceIamBinding(pulumi.CustomResource):
             },
             network_config={
                 "network": "default",
-                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+                "ip_allocation": pulumi.Output.all(
+                    address=private_ip_alloc.address,
+                    prefix_length=private_ip_alloc.prefix_length
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['address']}/{resolved_outputs['prefix_length']}")
+        ,
             },
             accelerators=[{
-                "acceleratorType": "CDC",
+                "accelerator_type": "CDC",
                 "state": "ENABLED",
             }])
         ```
@@ -511,10 +519,10 @@ class InstanceIamBinding(pulumi.CustomResource):
             type="BASIC",
             private_instance=True,
             network_config={
-                "connectionType": "PRIVATE_SERVICE_CONNECT_INTERFACES",
-                "privateServiceConnectConfig": {
-                    "networkAttachment": psc_network_attachment.id,
-                    "unreachableCidrBlock": "192.168.0.0/25",
+                "connection_type": "PRIVATE_SERVICE_CONNECT_INTERFACES",
+                "private_service_connect_config": {
+                    "network_attachment": psc_network_attachment.id,
+                    "unreachable_cidr_block": "192.168.0.0/25",
                 },
             })
         ```
@@ -540,7 +548,7 @@ class InstanceIamBinding(pulumi.CustomResource):
             region="us-central1",
             type="BASIC",
             crypto_key_config={
-                "keyReference": crypto_key.id,
+                "key_reference": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```

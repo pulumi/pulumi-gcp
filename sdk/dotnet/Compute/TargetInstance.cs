@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var vmimage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         Family = "debian-10",
+    ///         Family = "debian-12",
     ///         Project = "debian-cloud",
     ///     });
     /// 

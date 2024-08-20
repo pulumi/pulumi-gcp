@@ -313,7 +313,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ExtensionsInstance(String name) {
+    public ExtensionsInstance(java.lang.String name) {
         this(name, ExtensionsInstanceArgs.Empty);
     }
     /**
@@ -321,7 +321,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ExtensionsInstance(String name, ExtensionsInstanceArgs args) {
+    public ExtensionsInstance(java.lang.String name, ExtensionsInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -330,15 +330,22 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ExtensionsInstance(String name, ExtensionsInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/extensionsInstance:ExtensionsInstance", name, args == null ? ExtensionsInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ExtensionsInstance(java.lang.String name, ExtensionsInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/extensionsInstance:ExtensionsInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ExtensionsInstance(String name, Output<String> id, @Nullable ExtensionsInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/extensionsInstance:ExtensionsInstance", name, state, makeResourceOptions(options, id));
+    private ExtensionsInstance(java.lang.String name, Output<java.lang.String> id, @Nullable ExtensionsInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebase/extensionsInstance:ExtensionsInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ExtensionsInstanceArgs makeArgs(ExtensionsInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ExtensionsInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -354,7 +361,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ExtensionsInstance get(String name, Output<String> id, @Nullable ExtensionsInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ExtensionsInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable ExtensionsInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ExtensionsInstance(name, id, state, options);
     }
 }

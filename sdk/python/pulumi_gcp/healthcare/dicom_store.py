@@ -352,7 +352,7 @@ class DicomStore(pulumi.CustomResource):
             name="example-dicom-store",
             dataset=dataset.id,
             notification_config={
-                "pubsubTopic": topic.id,
+                "pubsub_topic": topic.id,
             },
             labels={
                 "label1": "labelvalue1",
@@ -382,15 +382,20 @@ class DicomStore(pulumi.CustomResource):
             name="example-dicom-store",
             dataset=dataset.id,
             notification_config={
-                "pubsubTopic": topic.id,
-                "sendForBulkImport": True,
+                "pubsub_topic": topic.id,
+                "send_for_bulk_import": True,
             },
             labels={
                 "label1": "labelvalue1",
             },
             stream_configs=[{
-                "bigqueryDestination": {
-                    "tableUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "bigquery_destination": {
+                    "table_uri": pulumi.Output.all(
+                        project=bq_dataset.project,
+                        dataset_id=bq_dataset.dataset_id,
+                        table_id=bq_table.table_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
                 },
             }])
         ```
@@ -471,7 +476,7 @@ class DicomStore(pulumi.CustomResource):
             name="example-dicom-store",
             dataset=dataset.id,
             notification_config={
-                "pubsubTopic": topic.id,
+                "pubsub_topic": topic.id,
             },
             labels={
                 "label1": "labelvalue1",
@@ -501,15 +506,20 @@ class DicomStore(pulumi.CustomResource):
             name="example-dicom-store",
             dataset=dataset.id,
             notification_config={
-                "pubsubTopic": topic.id,
-                "sendForBulkImport": True,
+                "pubsub_topic": topic.id,
+                "send_for_bulk_import": True,
             },
             labels={
                 "label1": "labelvalue1",
             },
             stream_configs=[{
-                "bigqueryDestination": {
-                    "tableUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "bigquery_destination": {
+                    "table_uri": pulumi.Output.all(
+                        project=bq_dataset.project,
+                        dataset_id=bq_dataset.dataset_id,
+                        table_id=bq_table.table_id
+        ).apply(lambda resolved_outputs: f"bq://{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
                 },
             }])
         ```

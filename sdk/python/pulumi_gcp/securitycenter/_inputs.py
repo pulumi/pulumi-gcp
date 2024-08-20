@@ -93,10 +93,20 @@ __all__ = [
     'ProjectCustomModuleCustomConfigPredicateArgsDict',
     'ProjectCustomModuleCustomConfigResourceSelectorArgs',
     'ProjectCustomModuleCustomConfigResourceSelectorArgsDict',
+    'ProjectNotificationConfigStreamingConfigArgs',
+    'ProjectNotificationConfigStreamingConfigArgsDict',
     'SourceIamBindingConditionArgs',
     'SourceIamBindingConditionArgsDict',
     'SourceIamMemberConditionArgs',
     'SourceIamMemberConditionArgsDict',
+    'V2OrganizationNotificationConfigStreamingConfigArgs',
+    'V2OrganizationNotificationConfigStreamingConfigArgsDict',
+    'V2OrganizationSourceIamBindingConditionArgs',
+    'V2OrganizationSourceIamBindingConditionArgsDict',
+    'V2OrganizationSourceIamMemberConditionArgs',
+    'V2OrganizationSourceIamMemberConditionArgsDict',
+    'V2ProjectNotificationConfigStreamingConfigArgs',
+    'V2ProjectNotificationConfigStreamingConfigArgsDict',
 ]
 
 MYPY = False
@@ -3219,6 +3229,97 @@ class ProjectCustomModuleCustomConfigResourceSelectorArgs:
 
 
 if not MYPY:
+    class ProjectNotificationConfigStreamingConfigArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        Expression that defines the filter to apply across create/update
+        events of assets or findings as specified by the event type. The
+        expression is a list of zero or more restrictions combined via
+        logical operators AND and OR. Parentheses are supported, and OR
+        has higher precedence than AND.
+        Restrictions have the form <field> <operator> <value> and may have
+        a - character in front of them to indicate negation. The fields
+        map to those defined in the corresponding resource.
+        The supported operators are:
+        * = for all value types.
+        * >, <, >=, <= for integer values.
+        * :, meaning substring matching, for strings.
+        The supported value types are:
+        * string literals in quotes.
+        * integer literals without quotes.
+        * boolean literals true and false without quotes.
+        See
+        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        for information on how to write a filter.
+
+        - - -
+        """
+elif False:
+    ProjectNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProjectNotificationConfigStreamingConfigArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] filter: Expression that defines the filter to apply across create/update
+               events of assets or findings as specified by the event type. The
+               expression is a list of zero or more restrictions combined via
+               logical operators AND and OR. Parentheses are supported, and OR
+               has higher precedence than AND.
+               Restrictions have the form <field> <operator> <value> and may have
+               a - character in front of them to indicate negation. The fields
+               map to those defined in the corresponding resource.
+               The supported operators are:
+               * = for all value types.
+               * >, <, >=, <= for integer values.
+               * :, meaning substring matching, for strings.
+               The supported value types are:
+               * string literals in quotes.
+               * integer literals without quotes.
+               * boolean literals true and false without quotes.
+               See
+               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+               for information on how to write a filter.
+               
+               - - -
+        """
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        Expression that defines the filter to apply across create/update
+        events of assets or findings as specified by the event type. The
+        expression is a list of zero or more restrictions combined via
+        logical operators AND and OR. Parentheses are supported, and OR
+        has higher precedence than AND.
+        Restrictions have the form <field> <operator> <value> and may have
+        a - character in front of them to indicate negation. The fields
+        map to those defined in the corresponding resource.
+        The supported operators are:
+        * = for all value types.
+        * >, <, >=, <= for integer values.
+        * :, meaning substring matching, for strings.
+        The supported value types are:
+        * string literals in quotes.
+        * integer literals without quotes.
+        * boolean literals true and false without quotes.
+        See
+        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        for information on how to write a filter.
+
+        - - -
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+
+if not MYPY:
     class SourceIamBindingConditionArgsDict(TypedDict):
         expression: pulumi.Input[str]
         title: pulumi.Input[str]
@@ -3328,5 +3429,281 @@ class SourceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class V2OrganizationNotificationConfigStreamingConfigArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        Expression that defines the filter to apply across create/update
+        events of assets or findings as specified by the event type. The
+        expression is a list of zero or more restrictions combined via
+        logical operators AND and OR. Parentheses are supported, and OR
+        has higher precedence than AND.
+        Restrictions have the form <field> <operator> <value> and may have
+        a - character in front of them to indicate negation. The fields
+        map to those defined in the corresponding resource.
+        The supported operators are:
+        * = for all value types.
+        * >, <, >=, <= for integer values.
+        * :, meaning substring matching, for strings.
+        The supported value types are:
+        * string literals in quotes.
+        * integer literals without quotes.
+        * boolean literals true and false without quotes.
+        See
+        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        for information on how to write a filter.
+
+        - - -
+        """
+elif False:
+    V2OrganizationNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V2OrganizationNotificationConfigStreamingConfigArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] filter: Expression that defines the filter to apply across create/update
+               events of assets or findings as specified by the event type. The
+               expression is a list of zero or more restrictions combined via
+               logical operators AND and OR. Parentheses are supported, and OR
+               has higher precedence than AND.
+               Restrictions have the form <field> <operator> <value> and may have
+               a - character in front of them to indicate negation. The fields
+               map to those defined in the corresponding resource.
+               The supported operators are:
+               * = for all value types.
+               * >, <, >=, <= for integer values.
+               * :, meaning substring matching, for strings.
+               The supported value types are:
+               * string literals in quotes.
+               * integer literals without quotes.
+               * boolean literals true and false without quotes.
+               See
+               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+               for information on how to write a filter.
+               
+               - - -
+        """
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        Expression that defines the filter to apply across create/update
+        events of assets or findings as specified by the event type. The
+        expression is a list of zero or more restrictions combined via
+        logical operators AND and OR. Parentheses are supported, and OR
+        has higher precedence than AND.
+        Restrictions have the form <field> <operator> <value> and may have
+        a - character in front of them to indicate negation. The fields
+        map to those defined in the corresponding resource.
+        The supported operators are:
+        * = for all value types.
+        * >, <, >=, <= for integer values.
+        * :, meaning substring matching, for strings.
+        The supported value types are:
+        * string literals in quotes.
+        * integer literals without quotes.
+        * boolean literals true and false without quotes.
+        See
+        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        for information on how to write a filter.
+
+        - - -
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+
+if not MYPY:
+    class V2OrganizationSourceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    V2OrganizationSourceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V2OrganizationSourceIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class V2OrganizationSourceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    V2OrganizationSourceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V2OrganizationSourceIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class V2ProjectNotificationConfigStreamingConfigArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        Expression that defines the filter to apply across create/update
+        events of assets or findings as specified by the event type. The
+        expression is a list of zero or more restrictions combined via
+        logical operators AND and OR. Parentheses are supported, and OR
+        has higher precedence than AND.
+        Restrictions have the form <field> <operator> <value> and may have
+        a - character in front of them to indicate negation. The fields
+        map to those defined in the corresponding resource.
+        The supported operators are:
+        * = for all value types.
+        * >, <, >=, <= for integer values.
+        * :, meaning substring matching, for strings.
+        The supported value types are:
+        * string literals in quotes.
+        * integer literals without quotes.
+        * boolean literals true and false without quotes.
+        See
+        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        for information on how to write a filter.
+
+        - - -
+        """
+elif False:
+    V2ProjectNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V2ProjectNotificationConfigStreamingConfigArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] filter: Expression that defines the filter to apply across create/update
+               events of assets or findings as specified by the event type. The
+               expression is a list of zero or more restrictions combined via
+               logical operators AND and OR. Parentheses are supported, and OR
+               has higher precedence than AND.
+               Restrictions have the form <field> <operator> <value> and may have
+               a - character in front of them to indicate negation. The fields
+               map to those defined in the corresponding resource.
+               The supported operators are:
+               * = for all value types.
+               * >, <, >=, <= for integer values.
+               * :, meaning substring matching, for strings.
+               The supported value types are:
+               * string literals in quotes.
+               * integer literals without quotes.
+               * boolean literals true and false without quotes.
+               See
+               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+               for information on how to write a filter.
+               
+               - - -
+        """
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        Expression that defines the filter to apply across create/update
+        events of assets or findings as specified by the event type. The
+        expression is a list of zero or more restrictions combined via
+        logical operators AND and OR. Parentheses are supported, and OR
+        has higher precedence than AND.
+        Restrictions have the form <field> <operator> <value> and may have
+        a - character in front of them to indicate negation. The fields
+        map to those defined in the corresponding resource.
+        The supported operators are:
+        * = for all value types.
+        * >, <, >=, <= for integer values.
+        * :, meaning substring matching, for strings.
+        The supported value types are:
+        * string literals in quotes.
+        * integer literals without quotes.
+        * boolean literals true and false without quotes.
+        See
+        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        for information on how to write a filter.
+
+        - - -
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
 
 

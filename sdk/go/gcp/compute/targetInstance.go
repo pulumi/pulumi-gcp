@@ -99,7 +99,7 @@ import (
 //				return err
 //			}
 //			vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-10"),
+//				Family:  pulumi.StringRef("debian-12"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
 //			if err != nil {

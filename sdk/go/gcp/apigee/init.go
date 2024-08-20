@@ -41,6 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnvironmentIamMember{}
 	case "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy":
 		r = &EnvironmentIamPolicy{}
+	case "gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps":
+		r = &EnvironmentKeyvaluemaps{}
+	case "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries":
+		r = &EnvironmentKeyvaluemapsEntries{}
 	case "gcp:apigee/flowhook:Flowhook":
 		r = &Flowhook{}
 	case "gcp:apigee/instance:Instance":
@@ -126,6 +130,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/environmentIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/environmentKeyvaluemaps",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/environmentKeyvaluemapsEntries",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -453,7 +453,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionCommitment(String name) {
+    public RegionCommitment(java.lang.String name) {
         this(name, RegionCommitmentArgs.Empty);
     }
     /**
@@ -461,7 +461,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionCommitment(String name, RegionCommitmentArgs args) {
+    public RegionCommitment(java.lang.String name, RegionCommitmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -470,15 +470,22 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionCommitment(String name, RegionCommitmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionCommitment:RegionCommitment", name, args == null ? RegionCommitmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionCommitment(java.lang.String name, RegionCommitmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionCommitment:RegionCommitment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionCommitment(String name, Output<String> id, @Nullable RegionCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionCommitment:RegionCommitment", name, state, makeResourceOptions(options, id));
+    private RegionCommitment(java.lang.String name, Output<java.lang.String> id, @Nullable RegionCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionCommitment:RegionCommitment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionCommitmentArgs makeArgs(RegionCommitmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionCommitmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -494,7 +501,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionCommitment get(String name, Output<String> id, @Nullable RegionCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionCommitment get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionCommitmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionCommitment(name, id, state, options);
     }
 }

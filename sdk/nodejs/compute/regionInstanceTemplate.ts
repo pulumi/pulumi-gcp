@@ -120,7 +120,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The unique fingerprint of the metadata.
      */
@@ -374,7 +374,7 @@ export interface RegionInstanceTemplateState {
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The unique fingerprint of the metadata.
      */
@@ -532,7 +532,7 @@ export interface RegionInstanceTemplateArgs {
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An alternative to using the
      * startup-script metadata key, mostly to match the computeInstance resource.

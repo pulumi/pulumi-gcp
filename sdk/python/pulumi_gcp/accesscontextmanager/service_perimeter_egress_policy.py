@@ -163,6 +163,7 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
                  perimeter: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage a single EgressPolicy in the status (enforced) configuration for a service perimeter.
         EgressPolicies match requests based on egressFrom and egressTo stanzas.
         For an EgressPolicy to match, both egressFrom and egressTo stanzas must be matched.
         If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter
@@ -180,18 +181,6 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
 
         ## Example Usage
-
-        ## Import
-
-        ServicePerimeterEgressPolicy can be imported using any of these accepted formats:
-
-        * `{{perimeter}}`
-
-        When using the `pulumi import` command, ServicePerimeterEgressPolicy can be imported using one of the formats above. For example:
-
-        ```sh
-        $ pulumi import gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy default {{perimeter}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -212,6 +201,7 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
                  args: ServicePerimeterEgressPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage a single EgressPolicy in the status (enforced) configuration for a service perimeter.
         EgressPolicies match requests based on egressFrom and egressTo stanzas.
         For an EgressPolicy to match, both egressFrom and egressTo stanzas must be matched.
         If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter
@@ -229,18 +219,6 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
 
         ## Example Usage
-
-        ## Import
-
-        ServicePerimeterEgressPolicy can be imported using any of these accepted formats:
-
-        * `{{perimeter}}`
-
-        When using the `pulumi import` command, ServicePerimeterEgressPolicy can be imported using one of the formats above. For example:
-
-        ```sh
-        $ pulumi import gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy default {{perimeter}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param ServicePerimeterEgressPolicyArgs args: The arguments to use to populate this resource's properties.

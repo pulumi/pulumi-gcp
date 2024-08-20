@@ -12,7 +12,6 @@ import com.pulumi.gcp.cloudbuild.WorkerPoolArgs;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolState;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolNetworkConfig;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolWorkerConfig;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -236,10 +235,10 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
-    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveAnnotations;
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
 
-    public Output<Map<String,Object>> effectiveAnnotations() {
+    public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
     /**
@@ -363,7 +362,7 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkerPool(String name) {
+    public WorkerPool(java.lang.String name) {
         this(name, WorkerPoolArgs.Empty);
     }
     /**
@@ -371,7 +370,7 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkerPool(String name, WorkerPoolArgs args) {
+    public WorkerPool(java.lang.String name, WorkerPoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -380,15 +379,22 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkerPool(String name, WorkerPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuild/workerPool:WorkerPool", name, args == null ? WorkerPoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkerPool(java.lang.String name, WorkerPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudbuild/workerPool:WorkerPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkerPool(String name, Output<String> id, @Nullable WorkerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuild/workerPool:WorkerPool", name, state, makeResourceOptions(options, id));
+    private WorkerPool(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudbuild/workerPool:WorkerPool", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkerPoolArgs makeArgs(WorkerPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkerPoolArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -404,7 +410,7 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkerPool get(String name, Output<String> id, @Nullable WorkerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkerPool get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkerPool(name, id, state, options);
     }
 }

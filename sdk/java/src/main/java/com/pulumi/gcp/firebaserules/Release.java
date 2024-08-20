@@ -126,7 +126,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Release(String name) {
+    public Release(java.lang.String name) {
         this(name, ReleaseArgs.Empty);
     }
     /**
@@ -134,7 +134,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Release(String name, ReleaseArgs args) {
+    public Release(java.lang.String name, ReleaseArgs args) {
         this(name, args, null);
     }
     /**
@@ -143,15 +143,22 @@ public class Release extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Release(String name, ReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebaserules/release:Release", name, args == null ? ReleaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Release(java.lang.String name, ReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebaserules/release:Release", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Release(String name, Output<String> id, @Nullable ReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebaserules/release:Release", name, state, makeResourceOptions(options, id));
+    private Release(java.lang.String name, Output<java.lang.String> id, @Nullable ReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:firebaserules/release:Release", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReleaseArgs makeArgs(ReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReleaseArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -167,7 +174,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Release get(String name, Output<String> id, @Nullable ReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Release get(java.lang.String name, Output<java.lang.String> id, @Nullable ReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Release(name, id, state, options);
     }
 }

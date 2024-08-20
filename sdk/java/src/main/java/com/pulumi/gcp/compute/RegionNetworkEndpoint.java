@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  * 
  * ## Example Usage
  * 
@@ -391,7 +391,7 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionNetworkEndpoint(String name) {
+    public RegionNetworkEndpoint(java.lang.String name) {
         this(name, RegionNetworkEndpointArgs.Empty);
     }
     /**
@@ -399,7 +399,7 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionNetworkEndpoint(String name, RegionNetworkEndpointArgs args) {
+    public RegionNetworkEndpoint(java.lang.String name, RegionNetworkEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -408,15 +408,22 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionNetworkEndpoint(String name, RegionNetworkEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint", name, args == null ? RegionNetworkEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionNetworkEndpoint(java.lang.String name, RegionNetworkEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionNetworkEndpoint(String name, Output<String> id, @Nullable RegionNetworkEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint", name, state, makeResourceOptions(options, id));
+    private RegionNetworkEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable RegionNetworkEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionNetworkEndpointArgs makeArgs(RegionNetworkEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionNetworkEndpointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -432,7 +439,7 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionNetworkEndpoint get(String name, Output<String> id, @Nullable RegionNetworkEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionNetworkEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionNetworkEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionNetworkEndpoint(name, id, state, options);
     }
 }

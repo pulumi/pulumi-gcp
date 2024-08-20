@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Logging.Inputs
     {
         /// <summary>
         /// The LogEntry field path to index.
-        /// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        /// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         /// </summary>
         [Input("fieldPath", required: true)]
         public Input<string> FieldPath { get; set; } = null!;

@@ -450,6 +450,9 @@ public final class Config {
     public Optional<String> securityCenterManagementCustomEndpoint() {
         return Codegen.stringProp("securityCenterManagementCustomEndpoint").config(config).get();
     }
+    public Optional<String> securityCenterV2CustomEndpoint() {
+        return Codegen.stringProp("securityCenterV2CustomEndpoint").config(config).get();
+    }
     public Optional<String> securityScannerCustomEndpoint() {
         return Codegen.stringProp("securityScannerCustomEndpoint").config(config).get();
     }
@@ -467,6 +470,9 @@ public final class Config {
     }
     public Optional<String> serviceUsageCustomEndpoint() {
         return Codegen.stringProp("serviceUsageCustomEndpoint").config(config).get();
+    }
+    public Optional<String> siteVerificationCustomEndpoint() {
+        return Codegen.stringProp("siteVerificationCustomEndpoint").config(config).get();
     }
     public Optional<Boolean> skipRegionValidation() {
         return Codegen.booleanProp("skipRegionValidation").config(config).env("PULUMI_GCP_SKIP_REGION_VALIDATION").def(false).get();

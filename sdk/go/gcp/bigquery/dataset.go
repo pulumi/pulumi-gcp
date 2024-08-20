@@ -368,7 +368,6 @@ type Dataset struct {
 	DefaultEncryptionConfiguration DatasetDefaultEncryptionConfigurationPtrOutput `pulumi:"defaultEncryptionConfiguration"`
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
-	//
 	// Once this property is set, all newly-created partitioned tables in
 	// the dataset will have an `expirationMs` property in the `timePartitioning`
 	// settings set to this value, and changing the value will only
@@ -383,7 +382,6 @@ type Dataset struct {
 	DefaultPartitionExpirationMs pulumi.IntPtrOutput `pulumi:"defaultPartitionExpirationMs"`
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
-	//
 	// Once this property is set, all newly-created tables in the dataset
 	// will have an `expirationTime` property set to the creation time plus
 	// the value in this property, and changing the value will only affect
@@ -424,12 +422,10 @@ type Dataset struct {
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-	//
 	// There are two types of locations, regional or multi-regional. A regional
 	// location is a specific geographic place, such as Tokyo, and a multi-regional
 	// location is a large geographic area, such as the United States, that
 	// contains at least two geographic places.
-	//
 	// The default value is multi-regional location `US`.
 	// Changing this forces a new resource to be created.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -523,7 +519,6 @@ type datasetState struct {
 	DefaultEncryptionConfiguration *DatasetDefaultEncryptionConfiguration `pulumi:"defaultEncryptionConfiguration"`
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
-	//
 	// Once this property is set, all newly-created partitioned tables in
 	// the dataset will have an `expirationMs` property in the `timePartitioning`
 	// settings set to this value, and changing the value will only
@@ -538,7 +533,6 @@ type datasetState struct {
 	DefaultPartitionExpirationMs *int `pulumi:"defaultPartitionExpirationMs"`
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
-	//
 	// Once this property is set, all newly-created tables in the dataset
 	// will have an `expirationTime` property set to the creation time plus
 	// the value in this property, and changing the value will only affect
@@ -579,12 +573,10 @@ type datasetState struct {
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-	//
 	// There are two types of locations, regional or multi-regional. A regional
 	// location is a specific geographic place, such as Tokyo, and a multi-regional
 	// location is a large geographic area, such as the United States, that
 	// contains at least two geographic places.
-	//
 	// The default value is multi-regional location `US`.
 	// Changing this forces a new resource to be created.
 	Location *string `pulumi:"location"`
@@ -641,7 +633,6 @@ type DatasetState struct {
 	DefaultEncryptionConfiguration DatasetDefaultEncryptionConfigurationPtrInput
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
-	//
 	// Once this property is set, all newly-created partitioned tables in
 	// the dataset will have an `expirationMs` property in the `timePartitioning`
 	// settings set to this value, and changing the value will only
@@ -656,7 +647,6 @@ type DatasetState struct {
 	DefaultPartitionExpirationMs pulumi.IntPtrInput
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
-	//
 	// Once this property is set, all newly-created tables in the dataset
 	// will have an `expirationTime` property set to the creation time plus
 	// the value in this property, and changing the value will only affect
@@ -697,12 +687,10 @@ type DatasetState struct {
 	LastModifiedTime pulumi.IntPtrInput
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-	//
 	// There are two types of locations, regional or multi-regional. A regional
 	// location is a specific geographic place, such as Tokyo, and a multi-regional
 	// location is a large geographic area, such as the United States, that
 	// contains at least two geographic places.
-	//
 	// The default value is multi-regional location `US`.
 	// Changing this forces a new resource to be created.
 	Location pulumi.StringPtrInput
@@ -760,7 +748,6 @@ type datasetArgs struct {
 	DefaultEncryptionConfiguration *DatasetDefaultEncryptionConfiguration `pulumi:"defaultEncryptionConfiguration"`
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
-	//
 	// Once this property is set, all newly-created partitioned tables in
 	// the dataset will have an `expirationMs` property in the `timePartitioning`
 	// settings set to this value, and changing the value will only
@@ -775,7 +762,6 @@ type datasetArgs struct {
 	DefaultPartitionExpirationMs *int `pulumi:"defaultPartitionExpirationMs"`
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
-	//
 	// Once this property is set, all newly-created tables in the dataset
 	// will have an `expirationTime` property set to the creation time plus
 	// the value in this property, and changing the value will only affect
@@ -809,12 +795,10 @@ type datasetArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-	//
 	// There are two types of locations, regional or multi-regional. A regional
 	// location is a specific geographic place, such as Tokyo, and a multi-regional
 	// location is a large geographic area, such as the United States, that
 	// contains at least two geographic places.
-	//
 	// The default value is multi-regional location `US`.
 	// Changing this forces a new resource to be created.
 	Location *string `pulumi:"location"`
@@ -864,7 +848,6 @@ type DatasetArgs struct {
 	DefaultEncryptionConfiguration DatasetDefaultEncryptionConfigurationPtrInput
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
-	//
 	// Once this property is set, all newly-created partitioned tables in
 	// the dataset will have an `expirationMs` property in the `timePartitioning`
 	// settings set to this value, and changing the value will only
@@ -879,7 +862,6 @@ type DatasetArgs struct {
 	DefaultPartitionExpirationMs pulumi.IntPtrInput
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
-	//
 	// Once this property is set, all newly-created tables in the dataset
 	// will have an `expirationTime` property set to the creation time plus
 	// the value in this property, and changing the value will only affect
@@ -913,12 +895,10 @@ type DatasetArgs struct {
 	Labels pulumi.StringMapInput
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-	//
 	// There are two types of locations, regional or multi-regional. A regional
 	// location is a specific geographic place, such as Tokyo, and a multi-regional
 	// location is a large geographic area, such as the United States, that
 	// contains at least two geographic places.
-	//
 	// The default value is multi-regional location `US`.
 	// Changing this forces a new resource to be created.
 	Location pulumi.StringPtrInput
@@ -1073,7 +1053,6 @@ func (o DatasetOutput) DefaultEncryptionConfiguration() DatasetDefaultEncryption
 
 // The default partition expiration for all partitioned tables in
 // the dataset, in milliseconds.
-//
 // Once this property is set, all newly-created partitioned tables in
 // the dataset will have an `expirationMs` property in the `timePartitioning`
 // settings set to this value, and changing the value will only
@@ -1091,7 +1070,6 @@ func (o DatasetOutput) DefaultPartitionExpirationMs() pulumi.IntPtrOutput {
 
 // The default lifetime of all tables in the dataset, in milliseconds.
 // The minimum value is 3600000 milliseconds (one hour).
-//
 // Once this property is set, all newly-created tables in the dataset
 // will have an `expirationTime` property set to the creation time plus
 // the value in this property, and changing the value will only affect
@@ -1162,12 +1140,10 @@ func (o DatasetOutput) LastModifiedTime() pulumi.IntOutput {
 
 // The geographic location where the dataset should reside.
 // See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-//
 // There are two types of locations, regional or multi-regional. A regional
 // location is a specific geographic place, such as Tokyo, and a multi-regional
 // location is a large geographic area, such as the United States, that
 // contains at least two geographic places.
-//
 // The default value is multi-regional location `US`.
 // Changing this forces a new resource to be created.
 func (o DatasetOutput) Location() pulumi.StringPtrOutput {

@@ -21,8 +21,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //   - [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
 //
@@ -187,9 +187,9 @@ import (
 //				Region:                     pulumi.String("us-central1"),
 //				Instance:                   defaultInstance.SelfLink,
 //				Port:                       pulumi.Int(80),
-//				IpAddress: defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//				IpAddress: pulumi.String(defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 //					return &networkInterfaces[0].NetworkIp, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				ClientDestinationPort: pulumi.Int(8080),
 //			})
 //			if err != nil {
