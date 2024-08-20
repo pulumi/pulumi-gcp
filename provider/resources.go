@@ -1296,7 +1296,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Firestore resources
 			"google_firestore_index":    {Tok: gcpResource(gcpFirestore, "Index")},
 			"google_firestore_document": {Tok: gcpResource(gcpFirestore, "Document")},
-			"google_firestore_database": {Tok: gcpResource(gcpFirestore, "Database")},
+			"google_firestore_database": {Tok: gcpResource(gcpFirestore, "Database"), Fields: nameField(lowercaseAutoName())},
 			"google_firestore_field": {
 				Tok: gcpResource(gcpFirestore, "Field"),
 				Fields: map[string]*tfbridge.SchemaInfo{
