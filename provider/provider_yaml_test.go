@@ -927,4 +927,3 @@ func TestFirestoreDatabaseAutoname(t *testing.T) {
 	pt.SetConfig("gcpProj", proj)
 	pt.Up()
 }
-
