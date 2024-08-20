@@ -8,5 +8,5 @@ resources:
     properties:
       type: "FIRESTORE_NATIVE"
       project: ${gcpProj}
-      locationId: "us-central"
+      locationId: "us-central1"
       deletionPolicy: DELETE
