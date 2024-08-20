@@ -920,3 +920,11 @@ func TestFirestoreFieldPermadiffRegress2166(t *testing.T) {
 	pt.Up()
 	pt.Preview(optpreview.ExpectNoChanges())
 }
+
+func TestFirestoreDatabaseAutoname(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/firestore-db-autoname")
+	proj := getProject()
+	pt.SetConfig("gcpProj", proj)
+	pt.Up()
+}
+

@@ -1,0 +1,12 @@
+name: firestore-db-autoname
+runtime: yaml
+config:
+  gcpProj: string
+resources:
+  myFirestoreDatabase:
+    type: gcp:firestore:Database
+    properties:
+      type: "FIRESTORE_NATIVE"
+      project: ${gcpProj}
+      locationId: "us-central"
+      deletionPolicy: DELETE
