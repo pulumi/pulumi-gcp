@@ -6,6 +6,7 @@ package com.pulumi.gcp.servicenetworking;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -77,6 +78,21 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         return this.service;
     }
 
+    /**
+     * When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+     * 
+     */
+    @Import(name="updateOnCreationFail")
+    private @Nullable Output<Boolean> updateOnCreationFail;
+
+    /**
+     * @return When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+     * 
+     */
+    public Optional<Output<Boolean>> updateOnCreationFail() {
+        return Optional.ofNullable(this.updateOnCreationFail);
+    }
+
     private ConnectionArgs() {}
 
     private ConnectionArgs(ConnectionArgs $) {
@@ -84,6 +100,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.reservedPeeringRanges = $.reservedPeeringRanges;
         this.service = $.service;
+        this.updateOnCreationFail = $.updateOnCreationFail;
     }
 
     public static Builder builder() {
@@ -194,6 +211,27 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder service(String service) {
             return service(Output.of(service));
+        }
+
+        /**
+         * @param updateOnCreationFail When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateOnCreationFail(@Nullable Output<Boolean> updateOnCreationFail) {
+            $.updateOnCreationFail = updateOnCreationFail;
+            return this;
+        }
+
+        /**
+         * @param updateOnCreationFail When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateOnCreationFail(Boolean updateOnCreationFail) {
+            return updateOnCreationFail(Output.of(updateOnCreationFail));
         }
 
         public ConnectionArgs build() {

@@ -14,9 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetRegionInstanceTemplateConfidentialInstanceConfigResult
     {
         /// <summary>
-        /// Specifies which confidential computing technology to use.
-        /// 								This could be one of the following values: SEV, SEV_SNP.
-        /// 								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        /// The confidential computing technology the instance uses.
+        /// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+        /// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        /// 								"AMD Milan" is currently required.
         /// </summary>
         public readonly string ConfidentialInstanceType;
         /// <summary>

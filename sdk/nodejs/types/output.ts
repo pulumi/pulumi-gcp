@@ -13247,6 +13247,10 @@ export namespace clouddeploy {
          */
         httpRoute: string;
         /**
+         * Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+         */
+        podSelectorLabel?: string;
+        /**
          * Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
          */
         routeUpdateWaitTime?: string;
@@ -13269,6 +13273,10 @@ export namespace clouddeploy {
          * Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
          */
         disablePodOverprovisioning?: boolean;
+        /**
+         * Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+         */
+        podSelectorLabel?: string;
         /**
          * Required. Name of the Kubernetes Service.
          */
@@ -14125,7 +14133,7 @@ export namespace cloudfunctionsv2 {
         /**
          * Environment variables that shall be available during function execution.
          */
-        environmentVariables?: {[key: string]: string};
+        environmentVariables: {[key: string]: string};
         /**
          * (Output)
          * URIs of the Service deployed
@@ -14658,6 +14666,58 @@ export namespace cloudidentity {
          * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         expireTime: string;
+    }
+
+    export interface GetGroupTransitiveMembershipsMembership {
+        /**
+         * Resource name for this member.
+         */
+        member: string;
+        /**
+         * EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+         */
+        preferredMemberKeys: outputs.cloudidentity.GetGroupTransitiveMembershipsMembershipPreferredMemberKey[];
+        /**
+         * The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+         */
+        relationType: string;
+        /**
+         * The membership role details
+         */
+        roles: outputs.cloudidentity.GetGroupTransitiveMembershipsMembershipRole[];
+    }
+
+    export interface GetGroupTransitiveMembershipsMembershipPreferredMemberKey {
+        /**
+         * The ID of the entity.
+         *
+         * For Google-managed entities, the id must be the email address of an existing
+         * group or user.
+         *
+         * For external-identity-mapped entities, the id must be a string conforming
+         * to the Identity Source's requirements.
+         *
+         * Must be unique within a namespace.
+         */
+        id: string;
+        /**
+         * The namespace in which the entity exists.
+         *
+         * If not specified, the EntityKey represents a Google-managed entity
+         * such as a Google user or a Google Group.
+         *
+         * If specified, the EntityKey represents an external-identity-mapped group.
+         * The namespace must correspond to an identity source created in Admin Console
+         * and must be in the form of 'identitysources/{identity_source_id}'.
+         */
+        namespace: string;
+    }
+
+    export interface GetGroupTransitiveMembershipsMembershipRole {
+        /**
+         * The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+         */
+        role: string;
     }
 
     export interface GetGroupsGroup {
@@ -23093,9 +23153,10 @@ export namespace compute {
 
     export interface GetInstanceConfidentialInstanceConfig {
         /**
-         * Specifies which confidential computing technology to use.
-         * 								This could be one of the following values: SEV, SEV_SNP.
-         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         * The confidential computing technology the instance uses.
+         * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+         * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+         * 								"AMD Milan" is currently required. TDX is only available in beta.
          */
         confidentialInstanceType: string;
         /**
@@ -23653,9 +23714,10 @@ export namespace compute {
 
     export interface GetInstanceTemplateConfidentialInstanceConfig {
         /**
-         * Specifies which confidential computing technology to use.
-         * 								This could be one of the following values: SEV, SEV_SNP.
-         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         * The confidential computing technology the instance uses.
+         * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+         * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+         * 								"AMD Milan" is currently required. TDX is only available in beta.
          */
         confidentialInstanceType: string;
         /**
@@ -24295,9 +24357,10 @@ export namespace compute {
 
     export interface GetRegionInstanceTemplateConfidentialInstanceConfig {
         /**
-         * Specifies which confidential computing technology to use.
-         * 								This could be one of the following values: SEV, SEV_SNP.
-         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         * The confidential computing technology the instance uses.
+         * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+         * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+         * 								"AMD Milan" is currently required.
          */
         confidentialInstanceType: string;
         /**
@@ -26507,7 +26570,7 @@ export namespace compute {
 
     export interface InstanceConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
          */
         confidentialInstanceType?: string;
         /**
@@ -26634,9 +26697,10 @@ export namespace compute {
 
     export interface InstanceFromMachineImageConfidentialInstanceConfig {
         /**
-         * Specifies which confidential computing technology to use.
-         * 								This could be one of the following values: SEV, SEV_SNP.
-         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         * The confidential computing technology the instance uses.
+         * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+         * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+         * 								"AMD Milan" is currently required. TDX is only available in beta.
          */
         confidentialInstanceType: string;
         /**
@@ -27067,9 +27131,10 @@ export namespace compute {
 
     export interface InstanceFromTemplateConfidentialInstanceConfig {
         /**
-         * Specifies which confidential computing technology to use.
-         * 								This could be one of the following values: SEV, SEV_SNP.
-         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         * The confidential computing technology the instance uses.
+         * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+         * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+         * 								"AMD Milan" is currently required. TDX is only available in beta.
          */
         confidentialInstanceType: string;
         /**
@@ -28049,7 +28114,7 @@ export namespace compute {
 
     export interface InstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
          */
         confidentialInstanceType?: string;
         /**
@@ -30650,7 +30715,7 @@ export namespace compute {
 
     export interface RegionInstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
          */
         confidentialInstanceType?: string;
         /**
@@ -31034,7 +31099,7 @@ export namespace compute {
          */
         preemptible?: boolean;
         /**
-         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
          * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -38875,7 +38940,7 @@ export namespace container {
          */
         bootDiskKmsKey?: string;
         /**
-         * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         * Configuration for Confidential Nodes feature. Structure is documented below.
          */
         confidentialNodes: outputs.container.ClusterNodeConfigConfidentialNodes;
         /**
@@ -39705,7 +39770,7 @@ export namespace container {
          */
         bootDiskKmsKey?: string;
         /**
-         * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         * Configuration for Confidential Nodes feature. Structure is documented below.
          */
         confidentialNodes: outputs.container.ClusterNodePoolNodeConfigConfidentialNodes;
         /**
@@ -42666,7 +42731,7 @@ export namespace container {
          */
         bootDiskKmsKey?: string;
         /**
-         * Configuration for Confidential Nodes feature. Structure is documented below.
+         * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
          */
         confidentialNodes: outputs.container.NodePoolNodeConfigConfidentialNodes;
         /**
@@ -42835,8 +42900,7 @@ export namespace container {
 
     export interface NodePoolNodeConfigConfidentialNodes {
         /**
-         * Enable Confidential GKE Nodes for this cluster, to
-         * enforce encryption of data in-use.
+         * Whether Confidential Nodes feature is enabled for all nodes in this pool.
          */
         enabled: boolean;
     }
@@ -43153,7 +43217,7 @@ export namespace container {
          */
         maxUnavailable: number;
         /**
-         * The upgrade stragey to be used for upgrading the nodes.
+         * The upgrade strategy to be used for upgrading the nodes.
          */
         strategy?: string;
     }
@@ -58167,7 +58231,7 @@ export namespace dns {
         /**
          * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
-        loadBalancerType: string;
+        loadBalancerType?: string;
         /**
          * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
          */
@@ -58239,7 +58303,7 @@ export namespace dns {
         /**
          * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
-        loadBalancerType: string;
+        loadBalancerType?: string;
         /**
          * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
          */
@@ -58277,7 +58341,7 @@ export namespace dns {
         /**
          * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
-        loadBalancerType: string;
+        loadBalancerType?: string;
         /**
          * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
          */
@@ -58332,7 +58396,7 @@ export namespace dns {
         /**
          * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
-        loadBalancerType: string;
+        loadBalancerType?: string;
         /**
          * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
          */
@@ -67057,7 +67121,7 @@ export namespace managedkafka {
 
     export interface ClusterGcpConfigAccessConfig {
         /**
-         * Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+         * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          */
         networkConfigs: outputs.managedkafka.ClusterGcpConfigAccessConfigNetworkConfig[];
@@ -67065,7 +67129,7 @@ export namespace managedkafka {
 
     export interface ClusterGcpConfigAccessConfigNetworkConfig {
         /**
-         * Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. A minimum of 1 subnet is required. A maximum of 10 subnets can be specified. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+         * Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
          */
         subnet: string;
     }
@@ -76197,6 +76261,33 @@ export namespace securitycenter {
         resourceTypes: string[];
     }
 
+    export interface FolderNotificationConfigStreamingConfig {
+        /**
+         * Expression that defines the filter to apply across create/update
+         * events of assets or findings as specified by the event type. The
+         * expression is a list of zero or more restrictions combined via
+         * logical operators AND and OR. Parentheses are supported, and OR
+         * has higher precedence than AND.
+         * Restrictions have the form <field> <operator> <value> and may have
+         * a - character in front of them to indicate negation. The fields
+         * map to those defined in the corresponding resource.
+         * The supported operators are:
+         * * = for all value types.
+         * * >, <, >=, <= for integer values.
+         * * :, meaning substring matching, for strings.
+         * The supported value types are:
+         * * string literals in quotes.
+         * * integer literals without quotes.
+         * * boolean literals true and false without quotes.
+         * See
+         * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+         * for information on how to write a filter.
+         *
+         * - - -
+         */
+        filter: string;
+    }
+
     export interface InstanceIamBindingCondition {
         /**
          * An optional description of the instance.
@@ -76834,6 +76925,33 @@ export namespace securitycenter {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface V2FolderNotificationConfigStreamingConfig {
+        /**
+         * Expression that defines the filter to apply across create/update
+         * events of assets or findings as specified by the event type. The
+         * expression is a list of zero or more restrictions combined via
+         * logical operators AND and OR. Parentheses are supported, and OR
+         * has higher precedence than AND.
+         * Restrictions have the form <field> <operator> <value> and may have
+         * a - character in front of them to indicate negation. The fields
+         * map to those defined in the corresponding resource.
+         * The supported operators are:
+         * * = for all value types.
+         * * >, <, >=, <= for integer values.
+         * * :, meaning substring matching, for strings.
+         * The supported value types are:
+         * * string literals in quotes.
+         * * integer literals without quotes.
+         * * boolean literals true and false without quotes.
+         * See
+         * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+         * for information on how to write a filter.
+         *
+         * - - -
+         */
+        filter: string;
     }
 
     export interface V2OrganizationNotificationConfigStreamingConfig {
@@ -77988,6 +78106,10 @@ export namespace sql {
          */
         requireSsl?: boolean;
         /**
+         * Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+         */
+        serverCaMode: string;
+        /**
          * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
          * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
          * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
@@ -78468,6 +78590,10 @@ export namespace sql {
          * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
          */
         requireSsl: boolean;
+        /**
+         * Specify how the server certificate's Certificate Authority is hosted.
+         */
+        serverCaMode: string;
         /**
          * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
@@ -78988,6 +79114,10 @@ export namespace sql {
          * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
          */
         requireSsl: boolean;
+        /**
+         * Specify how the server certificate's Certificate Authority is hosted.
+         */
+        serverCaMode: string;
         /**
          * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in requireSsl until next major release.
          */
@@ -80976,6 +81106,101 @@ export namespace vertex {
          * A resource name of the IndexEndpoint.
          */
         indexEndpoint: string;
+    }
+
+    export interface AiIndexEndpointDeployedIndexAutomaticResources {
+        /**
+         * The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+         * The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+         */
+        maxReplicaCount: number;
+        /**
+         * The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+         * If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+         */
+        minReplicaCount: number;
+    }
+
+    export interface AiIndexEndpointDeployedIndexDedicatedResources {
+        /**
+         * The minimum number of replicas this DeployedModel will be always deployed on.
+         * Structure is documented below.
+         */
+        machineSpec: outputs.vertex.AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec;
+        /**
+         * The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+         */
+        maxReplicaCount: number;
+        /**
+         * The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+         */
+        minReplicaCount: number;
+    }
+
+    export interface AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
+        /**
+         * The type of the machine.
+         * See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+         * See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+         * For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+         */
+        machineType?: string;
+    }
+
+    export interface AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
+        /**
+         * Defines the authentication provider that the DeployedIndex uses.
+         * Structure is documented below.
+         */
+        authProvider?: outputs.vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider;
+    }
+
+    export interface AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
+        /**
+         * A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+         */
+        allowedIssuers?: string[];
+        /**
+         * The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+         */
+        audiences?: string[];
+    }
+
+    export interface AiIndexEndpointDeployedIndexPrivateEndpoint {
+        /**
+         * (Output)
+         * The ip address used to send match gRPC requests.
+         */
+        matchGrpcAddress: string;
+        /**
+         * (Output)
+         * PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+         * Structure is documented below.
+         */
+        pscAutomatedEndpoints: outputs.vertex.AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint[];
+        /**
+         * (Output)
+         * The name of the service attachment resource. Populated if private service connect is enabled.
+         */
+        serviceAttachment: string;
+    }
+
+    export interface AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
+        /**
+         * (Output)
+         * ip Address created by the automated forwarding rule.
+         */
+        matchAddress: string;
+        /**
+         * (Output)
+         * Corresponding network in pscAutomationConfigs.
+         */
+        network: string;
+        /**
+         * (Output)
+         * Corresponding projectId in pscAutomationConfigs
+         */
+        projectId: string;
     }
 
     export interface AiIndexEndpointPrivateServiceConnectConfig {

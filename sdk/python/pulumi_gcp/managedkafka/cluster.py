@@ -35,7 +35,7 @@ class ClusterArgs:
         :param pulumi.Input[str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
         :param pulumi.Input['ClusterGcpConfigArgs'] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
-        :param pulumi.Input[str] location: ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
                underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
                characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
@@ -95,7 +95,7 @@ class ClusterArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -169,7 +169,7 @@ class _ClusterState:
                underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
                characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
                configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[str] location: ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[str] name: The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -285,7 +285,7 @@ class _ClusterState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -480,7 +480,7 @@ class Cluster(pulumi.CustomResource):
                underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
                characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
                configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[str] location: ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
         """
         ...
@@ -676,7 +676,7 @@ class Cluster(pulumi.CustomResource):
                underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
                characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
                configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[str] location: ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[str] name: The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -760,7 +760,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         """
         return pulumi.get(self, "location")
 

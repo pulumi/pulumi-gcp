@@ -23,13 +23,15 @@ class InstanceArgs:
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 directory_stripe_level: Optional[pulumi.Input[str]] = None,
+                 file_stripe_level: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] capacity_gib: Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        :param pulumi.Input[str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[str] instance_id: The logical name of the Parallelstore instance in the user project with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
@@ -41,6 +43,22 @@ class InstanceArgs:
                - - -
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
+        :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
+               MIN when directory has a small number of files.
+               MAX when directory has a large number of files.
+               Possible values:
+               DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+               DIRECTORY_STRIPE_LEVEL_MIN
+               DIRECTORY_STRIPE_LEVEL_BALANCED
+               DIRECTORY_STRIPE_LEVEL_MAX
+        :param pulumi.Input[str] file_stripe_level: Stripe level for files.
+               MIN better suited for small size files.
+               MAX higher throughput performance for larger files.
+               Possible values:
+               FILE_STRIPE_LEVEL_UNSPECIFIED
+               FILE_STRIPE_LEVEL_MIN
+               FILE_STRIPE_LEVEL_BALANCED
+               FILE_STRIPE_LEVEL_MAX
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud Labels are a flexible and lightweight mechanism for organizing cloud
                resources into groups that reflect a customer's organizational needs and
                deployment strategies. Cloud Labels can be used to filter collections of
@@ -76,6 +94,10 @@ class InstanceArgs:
         pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if directory_stripe_level is not None:
+            pulumi.set(__self__, "directory_stripe_level", directory_stripe_level)
+        if file_stripe_level is not None:
+            pulumi.set(__self__, "file_stripe_level", file_stripe_level)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if network is not None:
@@ -89,7 +111,7 @@ class InstanceArgs:
     @pulumi.getter(name="capacityGib")
     def capacity_gib(self) -> pulumi.Input[str]:
         """
-        Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -140,6 +162,44 @@ class InstanceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="directoryStripeLevel")
+    def directory_stripe_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stripe level for directories.
+        MIN when directory has a small number of files.
+        MAX when directory has a large number of files.
+        Possible values:
+        DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+        DIRECTORY_STRIPE_LEVEL_MIN
+        DIRECTORY_STRIPE_LEVEL_BALANCED
+        DIRECTORY_STRIPE_LEVEL_MAX
+        """
+        return pulumi.get(self, "directory_stripe_level")
+
+    @directory_stripe_level.setter
+    def directory_stripe_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "directory_stripe_level", value)
+
+    @property
+    @pulumi.getter(name="fileStripeLevel")
+    def file_stripe_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stripe level for files.
+        MIN better suited for small size files.
+        MAX higher throughput performance for larger files.
+        Possible values:
+        FILE_STRIPE_LEVEL_UNSPECIFIED
+        FILE_STRIPE_LEVEL_MIN
+        FILE_STRIPE_LEVEL_BALANCED
+        FILE_STRIPE_LEVEL_MAX
+        """
+        return pulumi.get(self, "file_stripe_level")
+
+    @file_stripe_level.setter
+    def file_stripe_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_stripe_level", value)
 
     @property
     @pulumi.getter
@@ -223,8 +283,10 @@ class _InstanceState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  daos_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 directory_stripe_level: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_reserved_ip_range: Optional[pulumi.Input[str]] = None,
+                 file_stripe_level: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -237,17 +299,33 @@ class _InstanceState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_points: List of access_points.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_points: Output only. List of access_points.
                Contains a list of IPv4 addresses used for client side configuration.
-        :param pulumi.Input[str] capacity_gib: Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        :param pulumi.Input[str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[str] create_time: The time when the instance was created.
         :param pulumi.Input[str] daos_version: The version of DAOS software running in the instance
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
+        :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
+               MIN when directory has a small number of files.
+               MAX when directory has a large number of files.
+               Possible values:
+               DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+               DIRECTORY_STRIPE_LEVEL_MIN
+               DIRECTORY_STRIPE_LEVEL_BALANCED
+               DIRECTORY_STRIPE_LEVEL_MAX
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] effective_reserved_ip_range: Immutable. Contains the id of the allocated IP address range associated with the
                private service access connection for example, "test-default" associated
                with IP range 10.0.0.0/29. This field is populated by the service and
                and contains the value currently used by the service.
+        :param pulumi.Input[str] file_stripe_level: Stripe level for files.
+               MIN better suited for small size files.
+               MAX higher throughput performance for larger files.
+               Possible values:
+               FILE_STRIPE_LEVEL_UNSPECIFIED
+               FILE_STRIPE_LEVEL_MIN
+               FILE_STRIPE_LEVEL_BALANCED
+               FILE_STRIPE_LEVEL_MAX
         :param pulumi.Input[str] instance_id: The logical name of the Parallelstore instance in the user project with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
@@ -278,7 +356,7 @@ class _InstanceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
-        :param pulumi.Input[str] name: The resource name of the instance, in the format
+        :param pulumi.Input[str] name: Identifier. The resource name of the instance, in the format
                `projects/{project}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[str] network: Immutable. The name of the Google Compute Engine
                [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
@@ -298,6 +376,7 @@ class _InstanceState:
                ACTIVE
                DELETING
                FAILED
+               UPGRADING
         :param pulumi.Input[str] update_time: The time when the instance was updated.
         """
         if access_points is not None:
@@ -310,10 +389,14 @@ class _InstanceState:
             pulumi.set(__self__, "daos_version", daos_version)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if directory_stripe_level is not None:
+            pulumi.set(__self__, "directory_stripe_level", directory_stripe_level)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if effective_reserved_ip_range is not None:
             pulumi.set(__self__, "effective_reserved_ip_range", effective_reserved_ip_range)
+        if file_stripe_level is not None:
+            pulumi.set(__self__, "file_stripe_level", file_stripe_level)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if labels is not None:
@@ -339,7 +422,7 @@ class _InstanceState:
     @pulumi.getter(name="accessPoints")
     def access_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of access_points.
+        Output only. List of access_points.
         Contains a list of IPv4 addresses used for client side configuration.
         """
         return pulumi.get(self, "access_points")
@@ -352,7 +435,7 @@ class _InstanceState:
     @pulumi.getter(name="capacityGib")
     def capacity_gib(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -397,6 +480,25 @@ class _InstanceState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="directoryStripeLevel")
+    def directory_stripe_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stripe level for directories.
+        MIN when directory has a small number of files.
+        MAX when directory has a large number of files.
+        Possible values:
+        DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+        DIRECTORY_STRIPE_LEVEL_MIN
+        DIRECTORY_STRIPE_LEVEL_BALANCED
+        DIRECTORY_STRIPE_LEVEL_MAX
+        """
+        return pulumi.get(self, "directory_stripe_level")
+
+    @directory_stripe_level.setter
+    def directory_stripe_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "directory_stripe_level", value)
+
+    @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -422,6 +524,25 @@ class _InstanceState:
     @effective_reserved_ip_range.setter
     def effective_reserved_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "effective_reserved_ip_range", value)
+
+    @property
+    @pulumi.getter(name="fileStripeLevel")
+    def file_stripe_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stripe level for files.
+        MIN better suited for small size files.
+        MAX higher throughput performance for larger files.
+        Possible values:
+        FILE_STRIPE_LEVEL_UNSPECIFIED
+        FILE_STRIPE_LEVEL_MIN
+        FILE_STRIPE_LEVEL_BALANCED
+        FILE_STRIPE_LEVEL_MAX
+        """
+        return pulumi.get(self, "file_stripe_level")
+
+    @file_stripe_level.setter
+    def file_stripe_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_stripe_level", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -490,7 +611,7 @@ class _InstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the instance, in the format
+        Identifier. The resource name of the instance, in the format
         `projects/{project}/locations/{location}/instances/{instance_id}`
         """
         return pulumi.get(self, "name")
@@ -565,6 +686,7 @@ class _InstanceState:
         ACTIVE
         DELETING
         FAILED
+        UPGRADING
         """
         return pulumi.get(self, "state")
 
@@ -592,6 +714,8 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 directory_stripe_level: Optional[pulumi.Input[str]] = None,
+                 file_stripe_level: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -630,6 +754,8 @@ class Instance(pulumi.CustomResource):
             description="test instance",
             capacity_gib="12000",
             network=network.name,
+            file_stripe_level="FILE_STRIPE_LEVEL_MIN",
+            directory_stripe_level="DIRECTORY_STRIPE_LEVEL_MIN",
             labels={
                 "test": "value",
             },
@@ -662,8 +788,24 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] capacity_gib: Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        :param pulumi.Input[str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
+        :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
+               MIN when directory has a small number of files.
+               MAX when directory has a large number of files.
+               Possible values:
+               DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+               DIRECTORY_STRIPE_LEVEL_MIN
+               DIRECTORY_STRIPE_LEVEL_BALANCED
+               DIRECTORY_STRIPE_LEVEL_MAX
+        :param pulumi.Input[str] file_stripe_level: Stripe level for files.
+               MIN better suited for small size files.
+               MAX higher throughput performance for larger files.
+               Possible values:
+               FILE_STRIPE_LEVEL_UNSPECIFIED
+               FILE_STRIPE_LEVEL_MIN
+               FILE_STRIPE_LEVEL_BALANCED
+               FILE_STRIPE_LEVEL_MAX
         :param pulumi.Input[str] instance_id: The logical name of the Parallelstore instance in the user project with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
@@ -741,6 +883,8 @@ class Instance(pulumi.CustomResource):
             description="test instance",
             capacity_gib="12000",
             network=network.name,
+            file_stripe_level="FILE_STRIPE_LEVEL_MIN",
+            directory_stripe_level="DIRECTORY_STRIPE_LEVEL_MIN",
             labels={
                 "test": "value",
             },
@@ -788,6 +932,8 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 directory_stripe_level: Optional[pulumi.Input[str]] = None,
+                 file_stripe_level: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -807,6 +953,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
             __props__.__dict__["description"] = description
+            __props__.__dict__["directory_stripe_level"] = directory_stripe_level
+            __props__.__dict__["file_stripe_level"] = file_stripe_level
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -843,8 +991,10 @@ class Instance(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             daos_version: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            directory_stripe_level: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_reserved_ip_range: Optional[pulumi.Input[str]] = None,
+            file_stripe_level: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -862,17 +1012,33 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_points: List of access_points.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_points: Output only. List of access_points.
                Contains a list of IPv4 addresses used for client side configuration.
-        :param pulumi.Input[str] capacity_gib: Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        :param pulumi.Input[str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[str] create_time: The time when the instance was created.
         :param pulumi.Input[str] daos_version: The version of DAOS software running in the instance
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
+        :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
+               MIN when directory has a small number of files.
+               MAX when directory has a large number of files.
+               Possible values:
+               DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+               DIRECTORY_STRIPE_LEVEL_MIN
+               DIRECTORY_STRIPE_LEVEL_BALANCED
+               DIRECTORY_STRIPE_LEVEL_MAX
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] effective_reserved_ip_range: Immutable. Contains the id of the allocated IP address range associated with the
                private service access connection for example, "test-default" associated
                with IP range 10.0.0.0/29. This field is populated by the service and
                and contains the value currently used by the service.
+        :param pulumi.Input[str] file_stripe_level: Stripe level for files.
+               MIN better suited for small size files.
+               MAX higher throughput performance for larger files.
+               Possible values:
+               FILE_STRIPE_LEVEL_UNSPECIFIED
+               FILE_STRIPE_LEVEL_MIN
+               FILE_STRIPE_LEVEL_BALANCED
+               FILE_STRIPE_LEVEL_MAX
         :param pulumi.Input[str] instance_id: The logical name of the Parallelstore instance in the user project with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
@@ -903,7 +1069,7 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
-        :param pulumi.Input[str] name: The resource name of the instance, in the format
+        :param pulumi.Input[str] name: Identifier. The resource name of the instance, in the format
                `projects/{project}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[str] network: Immutable. The name of the Google Compute Engine
                [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
@@ -923,6 +1089,7 @@ class Instance(pulumi.CustomResource):
                ACTIVE
                DELETING
                FAILED
+               UPGRADING
         :param pulumi.Input[str] update_time: The time when the instance was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -934,8 +1101,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["daos_version"] = daos_version
         __props__.__dict__["description"] = description
+        __props__.__dict__["directory_stripe_level"] = directory_stripe_level
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["effective_reserved_ip_range"] = effective_reserved_ip_range
+        __props__.__dict__["file_stripe_level"] = file_stripe_level
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -952,7 +1121,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="accessPoints")
     def access_points(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of access_points.
+        Output only. List of access_points.
         Contains a list of IPv4 addresses used for client side configuration.
         """
         return pulumi.get(self, "access_points")
@@ -961,7 +1130,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="capacityGib")
     def capacity_gib(self) -> pulumi.Output[str]:
         """
-        Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -990,6 +1159,21 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="directoryStripeLevel")
+    def directory_stripe_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Stripe level for directories.
+        MIN when directory has a small number of files.
+        MAX when directory has a large number of files.
+        Possible values:
+        DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+        DIRECTORY_STRIPE_LEVEL_MIN
+        DIRECTORY_STRIPE_LEVEL_BALANCED
+        DIRECTORY_STRIPE_LEVEL_MAX
+        """
+        return pulumi.get(self, "directory_stripe_level")
+
+    @property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -1007,6 +1191,21 @@ class Instance(pulumi.CustomResource):
         and contains the value currently used by the service.
         """
         return pulumi.get(self, "effective_reserved_ip_range")
+
+    @property
+    @pulumi.getter(name="fileStripeLevel")
+    def file_stripe_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Stripe level for files.
+        MIN better suited for small size files.
+        MAX higher throughput performance for larger files.
+        Possible values:
+        FILE_STRIPE_LEVEL_UNSPECIFIED
+        FILE_STRIPE_LEVEL_MIN
+        FILE_STRIPE_LEVEL_BALANCED
+        FILE_STRIPE_LEVEL_MAX
+        """
+        return pulumi.get(self, "file_stripe_level")
 
     @property
     @pulumi.getter(name="instanceId")
@@ -1063,7 +1262,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the instance, in the format
+        Identifier. The resource name of the instance, in the format
         `projects/{project}/locations/{location}/instances/{instance_id}`
         """
         return pulumi.get(self, "name")
@@ -1118,6 +1317,7 @@ class Instance(pulumi.CustomResource):
         ACTIVE
         DELETING
         FAILED
+        UPGRADING
         """
         return pulumi.get(self, "state")
 

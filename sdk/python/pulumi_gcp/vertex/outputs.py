@@ -57,6 +57,13 @@ __all__ = [
     'AiFeatureStoreOnlineServingConfig',
     'AiFeatureStoreOnlineServingConfigScaling',
     'AiIndexDeployedIndex',
+    'AiIndexEndpointDeployedIndexAutomaticResources',
+    'AiIndexEndpointDeployedIndexDedicatedResources',
+    'AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec',
+    'AiIndexEndpointDeployedIndexDeployedIndexAuthConfig',
+    'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider',
+    'AiIndexEndpointDeployedIndexPrivateEndpoint',
+    'AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint',
     'AiIndexEndpointPrivateServiceConnectConfig',
     'AiIndexIndexStat',
     'AiIndexMetadata',
@@ -2182,6 +2189,392 @@ class AiIndexDeployedIndex(dict):
         A resource name of the IndexEndpoint.
         """
         return pulumi.get(self, "index_endpoint")
+
+
+@pulumi.output_type
+class AiIndexEndpointDeployedIndexAutomaticResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxReplicaCount":
+            suggest = "max_replica_count"
+        elif key == "minReplicaCount":
+            suggest = "min_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointDeployedIndexAutomaticResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointDeployedIndexAutomaticResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointDeployedIndexAutomaticResources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_replica_count: Optional[int] = None,
+                 min_replica_count: Optional[int] = None):
+        """
+        :param int max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+               The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        :param int min_replica_count: The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+               If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        """
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[int]:
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[int]:
+        """
+        The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+        If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+
+@pulumi.output_type
+class AiIndexEndpointDeployedIndexDedicatedResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineSpec":
+            suggest = "machine_spec"
+        elif key == "minReplicaCount":
+            suggest = "min_replica_count"
+        elif key == "maxReplicaCount":
+            suggest = "max_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointDeployedIndexDedicatedResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointDeployedIndexDedicatedResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointDeployedIndexDedicatedResources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_spec: 'outputs.AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec',
+                 min_replica_count: int,
+                 max_replica_count: Optional[int] = None):
+        """
+        :param 'AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs' machine_spec: The minimum number of replicas this DeployedModel will be always deployed on.
+               Structure is documented below.
+        :param int min_replica_count: The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+        :param int max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+        """
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        pulumi.set(__self__, "min_replica_count", min_replica_count)
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+
+    @property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> 'outputs.AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec':
+        """
+        The minimum number of replicas this DeployedModel will be always deployed on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> int:
+        """
+        The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[int]:
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+        """
+        return pulumi.get(self, "max_replica_count")
+
+
+@pulumi.output_type
+class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_type: Optional[str] = None):
+        """
+        :param str machine_type: The type of the machine.
+               See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+               See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+               For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        """
+        The type of the machine.
+        See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+        See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+        For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+        """
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class AiIndexEndpointDeployedIndexDeployedIndexAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authProvider":
+            suggest = "auth_provider"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointDeployedIndexDeployedIndexAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_provider: Optional['outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider'] = None):
+        """
+        :param 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs' auth_provider: Defines the authentication provider that the DeployedIndex uses.
+               Structure is documented below.
+        """
+        if auth_provider is not None:
+            pulumi.set(__self__, "auth_provider", auth_provider)
+
+    @property
+    @pulumi.getter(name="authProvider")
+    def auth_provider(self) -> Optional['outputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider']:
+        """
+        Defines the authentication provider that the DeployedIndex uses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auth_provider")
+
+
+@pulumi.output_type
+class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedIssuers":
+            suggest = "allowed_issuers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_issuers: Optional[Sequence[str]] = None,
+                 audiences: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowed_issuers: A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        :param Sequence[str] audiences: The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+        """
+        if allowed_issuers is not None:
+            pulumi.set(__self__, "allowed_issuers", allowed_issuers)
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
+
+    @property
+    @pulumi.getter(name="allowedIssuers")
+    def allowed_issuers(self) -> Optional[Sequence[str]]:
+        """
+        A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        """
+        return pulumi.get(self, "allowed_issuers")
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Optional[Sequence[str]]:
+        """
+        The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+        """
+        return pulumi.get(self, "audiences")
+
+
+@pulumi.output_type
+class AiIndexEndpointDeployedIndexPrivateEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchGrpcAddress":
+            suggest = "match_grpc_address"
+        elif key == "pscAutomatedEndpoints":
+            suggest = "psc_automated_endpoints"
+        elif key == "serviceAttachment":
+            suggest = "service_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointDeployedIndexPrivateEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointDeployedIndexPrivateEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointDeployedIndexPrivateEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_grpc_address: Optional[str] = None,
+                 psc_automated_endpoints: Optional[Sequence['outputs.AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint']] = None,
+                 service_attachment: Optional[str] = None):
+        """
+        :param str match_grpc_address: (Output)
+               The ip address used to send match gRPC requests.
+        :param Sequence['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs'] psc_automated_endpoints: (Output)
+               PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+               Structure is documented below.
+        :param str service_attachment: (Output)
+               The name of the service attachment resource. Populated if private service connect is enabled.
+        """
+        if match_grpc_address is not None:
+            pulumi.set(__self__, "match_grpc_address", match_grpc_address)
+        if psc_automated_endpoints is not None:
+            pulumi.set(__self__, "psc_automated_endpoints", psc_automated_endpoints)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="matchGrpcAddress")
+    def match_grpc_address(self) -> Optional[str]:
+        """
+        (Output)
+        The ip address used to send match gRPC requests.
+        """
+        return pulumi.get(self, "match_grpc_address")
+
+    @property
+    @pulumi.getter(name="pscAutomatedEndpoints")
+    def psc_automated_endpoints(self) -> Optional[Sequence['outputs.AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint']]:
+        """
+        (Output)
+        PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_automated_endpoints")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[str]:
+        """
+        (Output)
+        The name of the service attachment resource. Populated if private service connect is enabled.
+        """
+        return pulumi.get(self, "service_attachment")
+
+
+@pulumi.output_type
+class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchAddress":
+            suggest = "match_address"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_address: Optional[str] = None,
+                 network: Optional[str] = None,
+                 project_id: Optional[str] = None):
+        """
+        :param str match_address: (Output)
+               ip Address created by the automated forwarding rule.
+        :param str network: (Output)
+               Corresponding network in pscAutomationConfigs.
+        :param str project_id: (Output)
+               Corresponding projectId in pscAutomationConfigs
+        """
+        if match_address is not None:
+            pulumi.set(__self__, "match_address", match_address)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="matchAddress")
+    def match_address(self) -> Optional[str]:
+        """
+        (Output)
+        ip Address created by the automated forwarding rule.
+        """
+        return pulumi.get(self, "match_address")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        (Output)
+        Corresponding network in pscAutomationConfigs.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        (Output)
+        Corresponding projectId in pscAutomationConfigs
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type

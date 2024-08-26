@@ -156,7 +156,8 @@ import (
 //					MaxInstanceRequestConcurrency: pulumi.Int(80),
 //					AvailableCpu:                  pulumi.String("4"),
 //					EnvironmentVariables: pulumi.StringMap{
-//						"SERVICE_CONFIG_TEST": pulumi.String("config_test"),
+//						"SERVICE_CONFIG_TEST":      pulumi.String("config_test"),
+//						"SERVICE_CONFIG_DIFF_TEST": account.Email,
 //					},
 //					IngressSettings:            pulumi.String("ALLOW_INTERNAL_ONLY"),
 //					AllTrafficOnLatestRevision: pulumi.Bool(true),

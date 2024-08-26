@@ -15979,6 +15979,10 @@
                     }
                 }
             },
+            "google_discovery_engine_schema": {
+                "current": "gcp:discoveryengine/schema:Schema",
+                "majorVersion": 7
+            },
             "google_discovery_engine_search_engine": {
                 "current": "gcp:discoveryengine/searchEngine:SearchEngine",
                 "majorVersion": 7,
@@ -24058,6 +24062,15 @@
                     }
                 }
             },
+            "google_scc_folder_notification_config": {
+                "current": "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_scc_management_folder_security_health_analytics_custom_module": {
                 "current": "gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule",
                 "majorVersion": 7,
@@ -24331,6 +24344,15 @@
             "google_scc_v2_folder_mute_config": {
                 "current": "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig",
                 "majorVersion": 7
+            },
+            "google_scc_v2_folder_notification_config": {
+                "current": "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_scc_v2_organization_mute_config": {
                 "current": "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig",
@@ -25966,6 +25988,58 @@
                     }
                 }
             },
+            "google_vertex_ai_index_endpoint_deployed_index": {
+                "current": "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex",
+                "majorVersion": 7,
+                "fields": {
+                    "automatic_resources": {
+                        "maxItemsOne": true
+                    },
+                    "dedicated_resources": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "machine_spec": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "deployed_index_auth_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "auth_provider": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_issuers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "audiences": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "private_endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "psc_automated_endpoints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "reserved_ip_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_vertex_ai_metadata_store": {
                 "current": "gcp:vertex/aiMetadataStore:AiMetadataStore",
                 "majorVersion": 7,
@@ -26511,6 +26585,15 @@
                     }
                 }
             },
+            "google_artifact_registry_locations": {
+                "current": "gcp:artifactregistry/getLocations:getLocations",
+                "majorVersion": 7,
+                "fields": {
+                    "locations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_artifact_registry_repository": {
                 "current": "gcp:artifactregistry/getRepository:getRepository",
                 "majorVersion": 7,
@@ -26900,6 +26983,25 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_cloud_identity_group_transitive_memberships": {
+                "current": "gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships",
+                "majorVersion": 7,
+                "fields": {
+                    "memberships": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "preferred_member_key": {
+                                    "maxItemsOne": false
+                                },
+                                "roles": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -33515,6 +33617,7 @@
             "gcp:diagflow/intent:Intent": 0,
             "gcp:discoveryengine/chatEngine:ChatEngine": 0,
             "gcp:discoveryengine/dataStore:DataStore": 0,
+            "gcp:discoveryengine/schema:Schema": 0,
             "gcp:discoveryengine/searchEngine:SearchEngine": 0,
             "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding": 0,
             "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember": 0,
@@ -33856,6 +33959,7 @@
             "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy": 0,
             "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule": 0,
             "gcp:securitycenter/folderCustomModule:FolderCustomModule": 0,
+            "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig": 0,
             "gcp:securitycenter/instanceIamBinding:InstanceIamBinding": 0,
             "gcp:securitycenter/instanceIamMember:InstanceIamMember": 0,
             "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy": 0,
@@ -33873,6 +33977,7 @@
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
             "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig": 0,
+            "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig": 0,
             "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig": 0,
             "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": 0,
             "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource": 0,
@@ -33972,6 +34077,7 @@
             "gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy": 0,
             "gcp:vertex/aiIndex:AiIndex": 0,
             "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": 0,
+            "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex": 0,
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
             "gcp:vmwareengine/cluster:Cluster": 0,
@@ -34014,6 +34120,7 @@
             "gcp:apphub/getDiscoveredService:getDiscoveredService": 0,
             "gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload": 0,
             "gcp:artifactregistry/getDockerImage:getDockerImage": 0,
+            "gcp:artifactregistry/getLocations:getLocations": 0,
             "gcp:artifactregistry/getRepository:getRepository": 0,
             "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:backupdisasterrecovery/getManagementServer:getManagementServer": 0,
@@ -34049,6 +34156,7 @@
             "gcp:cloudfunctionsv2/getFunctionIamPolicy:getFunctionIamPolicy": 0,
             "gcp:cloudidentity/getGroupLookup:getGroupLookup": 0,
             "gcp:cloudidentity/getGroupMemberships:getGroupMemberships": 0,
+            "gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships": 0,
             "gcp:cloudidentity/getGroups:getGroups": 0,
             "gcp:cloudquota/getSQuotaInfo:getSQuotaInfo": 0,
             "gcp:cloudquota/getSQuotaInfos:getSQuotaInfos": 0,

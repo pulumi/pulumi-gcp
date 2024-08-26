@@ -50,15 +50,15 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
      * The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;, &#34;globalL7ilb&#34;]
      * 
      */
-    @Import(name="loadBalancerType", required=true)
-    private Output<String> loadBalancerType;
+    @Import(name="loadBalancerType")
+    private @Nullable Output<String> loadBalancerType;
 
     /**
      * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;, &#34;globalL7ilb&#34;]
      * 
      */
-    public Output<String> loadBalancerType() {
-        return this.loadBalancerType;
+    public Optional<Output<String>> loadBalancerType() {
+        return Optional.ofNullable(this.loadBalancerType);
     }
 
     /**
@@ -199,7 +199,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
          * @return builder
          * 
          */
-        public Builder loadBalancerType(Output<String> loadBalancerType) {
+        public Builder loadBalancerType(@Nullable Output<String> loadBalancerType) {
             $.loadBalancerType = loadBalancerType;
             return this;
         }
@@ -304,9 +304,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
             }
             if ($.ipProtocol == null) {
                 throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "ipProtocol");
-            }
-            if ($.loadBalancerType == null) {
-                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "loadBalancerType");
             }
             if ($.networkUrl == null) {
                 throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "networkUrl");

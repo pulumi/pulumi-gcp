@@ -2122,6 +2122,10 @@ if not MYPY:
         """
         Required. Name of the Kubernetes Service.
         """
+        pod_selector_label: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+        """
         route_update_wait_time: NotRequired[pulumi.Input[str]]
         """
         Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
@@ -2139,18 +2143,22 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
                  deployment: pulumi.Input[str],
                  http_route: pulumi.Input[str],
                  service: pulumi.Input[str],
+                 pod_selector_label: Optional[pulumi.Input[str]] = None,
                  route_update_wait_time: Optional[pulumi.Input[str]] = None,
                  stable_cutback_duration: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] deployment: Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
         :param pulumi.Input[str] http_route: Required. Name of the Gateway API HTTPRoute.
         :param pulumi.Input[str] service: Required. Name of the Kubernetes Service.
+        :param pulumi.Input[str] pod_selector_label: Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
         :param pulumi.Input[str] route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         :param pulumi.Input[str] stable_cutback_duration: Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "http_route", http_route)
         pulumi.set(__self__, "service", service)
+        if pod_selector_label is not None:
+            pulumi.set(__self__, "pod_selector_label", pod_selector_label)
         if route_update_wait_time is not None:
             pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
         if stable_cutback_duration is not None:
@@ -2193,6 +2201,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
         pulumi.set(self, "service", value)
 
     @property
+    @pulumi.getter(name="podSelectorLabel")
+    def pod_selector_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+        """
+        return pulumi.get(self, "pod_selector_label")
+
+    @pod_selector_label.setter
+    def pod_selector_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_selector_label", value)
+
+    @property
     @pulumi.getter(name="routeUpdateWaitTime")
     def route_update_wait_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2231,6 +2251,10 @@ if not MYPY:
         """
         Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
         """
+        pod_selector_label: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+        """
 elif False:
     DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2239,16 +2263,20 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
                  service: pulumi.Input[str],
-                 disable_pod_overprovisioning: Optional[pulumi.Input[bool]] = None):
+                 disable_pod_overprovisioning: Optional[pulumi.Input[bool]] = None,
+                 pod_selector_label: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] deployment: Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
         :param pulumi.Input[str] service: Required. Name of the Kubernetes Service.
         :param pulumi.Input[bool] disable_pod_overprovisioning: Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+        :param pulumi.Input[str] pod_selector_label: Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "service", service)
         if disable_pod_overprovisioning is not None:
             pulumi.set(__self__, "disable_pod_overprovisioning", disable_pod_overprovisioning)
+        if pod_selector_label is not None:
+            pulumi.set(__self__, "pod_selector_label", pod_selector_label)
 
     @property
     @pulumi.getter
@@ -2285,6 +2313,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
     @disable_pod_overprovisioning.setter
     def disable_pod_overprovisioning(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_pod_overprovisioning", value)
+
+    @property
+    @pulumi.getter(name="podSelectorLabel")
+    def pod_selector_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+        """
+        return pulumi.get(self, "pod_selector_label")
+
+    @pod_selector_label.setter
+    def pod_selector_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_selector_label", value)
 
 
 if not MYPY:

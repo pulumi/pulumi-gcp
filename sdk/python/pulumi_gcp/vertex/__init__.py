@@ -26,6 +26,7 @@ from .ai_feature_store_iam_member import *
 from .ai_feature_store_iam_policy import *
 from .ai_index import *
 from .ai_index_endpoint import *
+from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
 from .ai_tensorboard import *
 from .get_ai_endpoint_iam_policy import *

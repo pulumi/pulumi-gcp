@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *     description: "test instance",
  *     capacityGib: "12000",
  *     network: network.name,
+ *     fileStripeLevel: "FILE_STRIPE_LEVEL_MIN",
+ *     directoryStripeLevel: "DIRECTORY_STRIPE_LEVEL_MIN",
  *     labels: {
  *         test: "value",
  *     },
@@ -99,12 +101,12 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * List of access_points.
+     * Output only. List of access_points.
      * Contains a list of IPv4 addresses used for client side configuration.
      */
     public /*out*/ readonly accessPoints!: pulumi.Output<string[]>;
     /**
-     * Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      */
     public readonly capacityGib!: pulumi.Output<string>;
     /**
@@ -120,6 +122,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     */
+    public readonly directoryStripeLevel!: pulumi.Output<string | undefined>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
@@ -130,6 +143,17 @@ export class Instance extends pulumi.CustomResource {
      * and contains the value currently used by the service.
      */
     public /*out*/ readonly effectiveReservedIpRange!: pulumi.Output<string>;
+    /**
+     * Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     */
+    public readonly fileStripeLevel!: pulumi.Output<string | undefined>;
     /**
      * The logical name of the Parallelstore instance in the user project with the following restrictions:
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -170,7 +194,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the instance, in the format
+     * Identifier. The resource name of the instance, in the format
      * `projects/{project}/locations/{location}/instances/{instance_id}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -205,6 +229,7 @@ export class Instance extends pulumi.CustomResource {
      * ACTIVE
      * DELETING
      * FAILED
+     * UPGRADING
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -230,8 +255,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["daosVersion"] = state ? state.daosVersion : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["directoryStripeLevel"] = state ? state.directoryStripeLevel : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["effectiveReservedIpRange"] = state ? state.effectiveReservedIpRange : undefined;
+            resourceInputs["fileStripeLevel"] = state ? state.fileStripeLevel : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -255,6 +282,8 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["directoryStripeLevel"] = args ? args.directoryStripeLevel : undefined;
+            resourceInputs["fileStripeLevel"] = args ? args.fileStripeLevel : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -283,12 +312,12 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * List of access_points.
+     * Output only. List of access_points.
      * Contains a list of IPv4 addresses used for client side configuration.
      */
     accessPoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      */
     capacityGib?: pulumi.Input<string>;
     /**
@@ -304,6 +333,17 @@ export interface InstanceState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     */
+    directoryStripeLevel?: pulumi.Input<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -314,6 +354,17 @@ export interface InstanceState {
      * and contains the value currently used by the service.
      */
     effectiveReservedIpRange?: pulumi.Input<string>;
+    /**
+     * Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     */
+    fileStripeLevel?: pulumi.Input<string>;
     /**
      * The logical name of the Parallelstore instance in the user project with the following restrictions:
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -354,7 +405,7 @@ export interface InstanceState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the instance, in the format
+     * Identifier. The resource name of the instance, in the format
      * `projects/{project}/locations/{location}/instances/{instance_id}`
      */
     name?: pulumi.Input<string>;
@@ -389,6 +440,7 @@ export interface InstanceState {
      * ACTIVE
      * DELETING
      * FAILED
+     * UPGRADING
      */
     state?: pulumi.Input<string>;
     /**
@@ -402,13 +454,35 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      */
     capacityGib: pulumi.Input<string>;
     /**
      * The description of the instance. 2048 characters or less.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     */
+    directoryStripeLevel?: pulumi.Input<string>;
+    /**
+     * Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     */
+    fileStripeLevel?: pulumi.Input<string>;
     /**
      * The logical name of the Parallelstore instance in the user project with the following restrictions:
      * * Must contain only lowercase letters, numbers, and hyphens.

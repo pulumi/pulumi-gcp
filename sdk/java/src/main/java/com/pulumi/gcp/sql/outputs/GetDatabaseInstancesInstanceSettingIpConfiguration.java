@@ -46,6 +46,11 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
      */
     private Boolean requireSsl;
     /**
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted.
+     * 
+     */
+    private String serverCaMode;
+    /**
      * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
      * 
      */
@@ -98,6 +103,13 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         return this.requireSsl;
     }
     /**
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted.
+     * 
+     */
+    public String serverCaMode() {
+        return this.serverCaMode;
+    }
+    /**
      * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
      * 
      */
@@ -121,6 +133,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         private String privateNetwork;
         private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs;
         private Boolean requireSsl;
+        private String serverCaMode;
         private String sslMode;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceSettingIpConfiguration defaults) {
@@ -132,6 +145,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.requireSsl = defaults.requireSsl;
+    	      this.serverCaMode = defaults.serverCaMode;
     	      this.sslMode = defaults.sslMode;
         }
 
@@ -198,6 +212,14 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder serverCaMode(String serverCaMode) {
+            if (serverCaMode == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfiguration", "serverCaMode");
+            }
+            this.serverCaMode = serverCaMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslMode(String sslMode) {
             if (sslMode == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfiguration", "sslMode");
@@ -214,6 +236,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             _resultValue.privateNetwork = privateNetwork;
             _resultValue.pscConfigs = pscConfigs;
             _resultValue.requireSsl = requireSsl;
+            _resultValue.serverCaMode = serverCaMode;
             _resultValue.sslMode = sslMode;
             return _resultValue;
         }

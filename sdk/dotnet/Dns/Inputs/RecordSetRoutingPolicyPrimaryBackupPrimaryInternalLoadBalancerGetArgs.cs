@@ -27,8 +27,8 @@ namespace Pulumi.Gcp.Dns.Inputs
         /// <summary>
         /// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         /// </summary>
-        [Input("loadBalancerType", required: true)]
-        public Input<string> LoadBalancerType { get; set; } = null!;
+        [Input("loadBalancerType")]
+        public Input<string>? LoadBalancerType { get; set; }
 
         /// <summary>
         /// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.

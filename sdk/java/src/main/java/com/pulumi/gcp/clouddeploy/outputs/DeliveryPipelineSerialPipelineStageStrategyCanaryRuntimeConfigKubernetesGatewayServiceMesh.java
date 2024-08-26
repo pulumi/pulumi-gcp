@@ -23,6 +23,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      */
     private String httpRoute;
     /**
+     * @return Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+     * 
+     */
+    private @Nullable String podSelectorLabel;
+    /**
      * @return Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
      * 
      */
@@ -52,6 +57,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      */
     public String httpRoute() {
         return this.httpRoute;
+    }
+    /**
+     * @return Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+     * 
+     */
+    public Optional<String> podSelectorLabel() {
+        return Optional.ofNullable(this.podSelectorLabel);
     }
     /**
      * @return Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
@@ -86,6 +98,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     public static final class Builder {
         private String deployment;
         private String httpRoute;
+        private @Nullable String podSelectorLabel;
         private @Nullable String routeUpdateWaitTime;
         private String service;
         private @Nullable String stableCutbackDuration;
@@ -94,6 +107,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     	      Objects.requireNonNull(defaults);
     	      this.deployment = defaults.deployment;
     	      this.httpRoute = defaults.httpRoute;
+    	      this.podSelectorLabel = defaults.podSelectorLabel;
     	      this.routeUpdateWaitTime = defaults.routeUpdateWaitTime;
     	      this.service = defaults.service;
     	      this.stableCutbackDuration = defaults.stableCutbackDuration;
@@ -113,6 +127,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
               throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh", "httpRoute");
             }
             this.httpRoute = httpRoute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder podSelectorLabel(@Nullable String podSelectorLabel) {
+
+            this.podSelectorLabel = podSelectorLabel;
             return this;
         }
         @CustomType.Setter
@@ -139,6 +159,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh();
             _resultValue.deployment = deployment;
             _resultValue.httpRoute = httpRoute;
+            _resultValue.podSelectorLabel = podSelectorLabel;
             _resultValue.routeUpdateWaitTime = routeUpdateWaitTime;
             _resultValue.service = service;
             _resultValue.stableCutbackDuration = stableCutbackDuration;

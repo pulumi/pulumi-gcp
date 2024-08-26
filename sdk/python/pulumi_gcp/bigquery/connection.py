@@ -751,6 +751,12 @@ class Connection(pulumi.CustomResource):
             name="user",
             instance=instance.name,
             password="tf-test-my-password_77884")
+        bq_sa = gcp.bigquery.get_default_service_account()
+        project = gcp.organizations.get_project()
+        key_sa_user = gcp.projects.IAMMember("key_sa_user",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:{bq_sa.email}")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
             friendly_name="👋",
             description="a riveting description",
@@ -1051,6 +1057,12 @@ class Connection(pulumi.CustomResource):
             name="user",
             instance=instance.name,
             password="tf-test-my-password_77884")
+        bq_sa = gcp.bigquery.get_default_service_account()
+        project = gcp.organizations.get_project()
+        key_sa_user = gcp.projects.IAMMember("key_sa_user",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:{bq_sa.email}")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
             friendly_name="👋",
             description="a riveting description",

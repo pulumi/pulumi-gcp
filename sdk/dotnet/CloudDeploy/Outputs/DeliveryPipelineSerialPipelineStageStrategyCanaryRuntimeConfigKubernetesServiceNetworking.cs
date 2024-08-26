@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly bool? DisablePodOverprovisioning;
         /// <summary>
+        /// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+        /// </summary>
+        public readonly string? PodSelectorLabel;
+        /// <summary>
         /// Required. Name of the Kubernetes Service.
         /// </summary>
         public readonly string Service;
@@ -32,10 +36,13 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             bool? disablePodOverprovisioning,
 
+            string? podSelectorLabel,
+
             string service)
         {
             Deployment = deployment;
             DisablePodOverprovisioning = disablePodOverprovisioning;
+            PodSelectorLabel = podSelectorLabel;
             Service = service;
         }
     }

@@ -2901,7 +2901,7 @@ type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer struct {
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol string `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType string `pulumi:"loadBalancerType"`
+	LoadBalancerType *string `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl string `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -2929,7 +2929,7 @@ type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs struc
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	LoadBalancerType pulumi.StringPtrInput `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -3002,10 +3002,10 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput)
 }
 
 // The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
-	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) string {
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) *string {
 		return v.LoadBalancerType
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
@@ -3517,7 +3517,7 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoa
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol string `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType string `pulumi:"loadBalancerType"`
+	LoadBalancerType *string `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl string `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -3545,7 +3545,7 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoa
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	LoadBalancerType pulumi.StringPtrInput `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -3622,10 +3622,10 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 }
 
 // The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
-	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) string {
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) *string {
 		return v.LoadBalancerType
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
@@ -3821,7 +3821,7 @@ type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer struct {
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol string `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType string `pulumi:"loadBalancerType"`
+	LoadBalancerType *string `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl string `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -3849,7 +3849,7 @@ type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs struct {
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	LoadBalancerType pulumi.StringPtrInput `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -3922,10 +3922,10 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) Ip
 }
 
 // The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
-	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) string {
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) *string {
 		return v.LoadBalancerType
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
@@ -4237,7 +4237,7 @@ type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer struct {
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol string `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType string `pulumi:"loadBalancerType"`
+	LoadBalancerType *string `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl string `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -4265,7 +4265,7 @@ type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs struc
 	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	LoadBalancerType pulumi.StringPtrInput `pulumi:"loadBalancerType"`
 	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
 	// The configured port of the load balancer.
@@ -4338,10 +4338,10 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput)
 }
 
 // The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
-	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) string {
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) *string {
 		return v.LoadBalancerType
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.

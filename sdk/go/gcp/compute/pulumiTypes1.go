@@ -21234,9 +21234,10 @@ func (o GetInstanceBootDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInstanceConfidentialInstanceConfig struct {
-	// Specifies which confidential computing technology to use.
-	// 								This could be one of the following values: SEV, SEV_SNP.
-	// 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required. TDX is only available in beta.
 	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
@@ -21254,9 +21255,10 @@ type GetInstanceConfidentialInstanceConfigInput interface {
 }
 
 type GetInstanceConfidentialInstanceConfigArgs struct {
-	// Specifies which confidential computing technology to use.
-	// 								This could be one of the following values: SEV, SEV_SNP.
-	// 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required. TDX is only available in beta.
 	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
@@ -21313,10 +21315,11 @@ func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialIn
 	return o
 }
 
-// Specifies which confidential computing technology to use.
+// The confidential computing technology the instance uses.
 //
-//	This could be one of the following values: SEV, SEV_SNP.
-//	If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+//	SEV is an AMD feature. TDX is an Intel feature. One of the following
+//	values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+//	"AMD Milan" is currently required. TDX is only available in beta.
 func (o GetInstanceConfidentialInstanceConfigOutput) ConfidentialInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceConfidentialInstanceConfig) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
@@ -25552,9 +25555,10 @@ func (o GetInstanceTemplateAdvancedMachineFeatureArrayOutput) Index(i pulumi.Int
 }
 
 type GetInstanceTemplateConfidentialInstanceConfig struct {
-	// Specifies which confidential computing technology to use.
-	// 								This could be one of the following values: SEV, SEV_SNP.
-	// 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required. TDX is only available in beta.
 	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
@@ -25572,9 +25576,10 @@ type GetInstanceTemplateConfidentialInstanceConfigInput interface {
 }
 
 type GetInstanceTemplateConfidentialInstanceConfigArgs struct {
-	// Specifies which confidential computing technology to use.
-	// 								This could be one of the following values: SEV, SEV_SNP.
-	// 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required. TDX is only available in beta.
 	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
@@ -25631,10 +25636,11 @@ func (o GetInstanceTemplateConfidentialInstanceConfigOutput) ToGetInstanceTempla
 	return o
 }
 
-// Specifies which confidential computing technology to use.
+// The confidential computing technology the instance uses.
 //
-//	This could be one of the following values: SEV, SEV_SNP.
-//	If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+//	SEV is an AMD feature. TDX is an Intel feature. One of the following
+//	values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+//	"AMD Milan" is currently required. TDX is only available in beta.
 func (o GetInstanceTemplateConfidentialInstanceConfigOutput) ConfidentialInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateConfidentialInstanceConfig) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
@@ -29614,9 +29620,10 @@ func (o GetRegionInstanceTemplateAdvancedMachineFeatureArrayOutput) Index(i pulu
 }
 
 type GetRegionInstanceTemplateConfidentialInstanceConfig struct {
-	// Specifies which confidential computing technology to use.
-	// 								This could be one of the following values: SEV, SEV_SNP.
-	// 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required.
 	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
@@ -29634,9 +29641,10 @@ type GetRegionInstanceTemplateConfidentialInstanceConfigInput interface {
 }
 
 type GetRegionInstanceTemplateConfidentialInstanceConfigArgs struct {
-	// Specifies which confidential computing technology to use.
-	// 								This could be one of the following values: SEV, SEV_SNP.
-	// 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+	// The confidential computing technology the instance uses.
+	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+	// 								"AMD Milan" is currently required.
 	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
@@ -29693,10 +29701,11 @@ func (o GetRegionInstanceTemplateConfidentialInstanceConfigOutput) ToGetRegionIn
 	return o
 }
 
-// Specifies which confidential computing technology to use.
+// The confidential computing technology the instance uses.
 //
-//	This could be one of the following values: SEV, SEV_SNP.
-//	If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+//	SEV is an AMD feature. TDX is an Intel feature. One of the following
+//	values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
+//	"AMD Milan" is currently required.
 func (o GetRegionInstanceTemplateConfidentialInstanceConfigOutput) ConfidentialInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateConfidentialInstanceConfig) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ChatEngine{}
 	case "gcp:discoveryengine/dataStore:DataStore":
 		r = &DataStore{}
+	case "gcp:discoveryengine/schema:Schema":
+		r = &Schema{}
 	case "gcp:discoveryengine/searchEngine:SearchEngine":
 		r = &SearchEngine{}
 	default:
@@ -48,6 +50,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"discoveryengine/dataStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/schema",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

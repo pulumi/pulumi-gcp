@@ -388,7 +388,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -419,6 +423,22 @@ import (
 //				Name:     pulumi.String("user"),
 //				Instance: instance.Name,
 //				Password: pulumi.String("tf-test-my-password_77884"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "key_sa_user", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:  pulumi.Sprintf("serviceAccount:%v", bqSa.Email),
 //			})
 //			if err != nil {
 //				return err

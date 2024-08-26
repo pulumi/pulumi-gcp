@@ -111,7 +111,8 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
-     * &#34;eks&#34;, &#34;aks&#34;.
+     * &#34;eks&#34;, &#34;aks&#34;, &#34;generic&#34;. The generic distribution provides the ability to register
+     * or migrate any CNCF conformant cluster.
      * 
      */
     @Import(name="distribution", required=true)
@@ -119,7 +120,8 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The Kubernetes distribution of the underlying attached cluster. Supported values:
-     * &#34;eks&#34;, &#34;aks&#34;.
+     * &#34;eks&#34;, &#34;aks&#34;, &#34;generic&#34;. The generic distribution provides the ability to register
+     * or migrate any CNCF conformant cluster.
      * 
      */
     public Output<String> distribution() {
@@ -428,7 +430,8 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param distribution The Kubernetes distribution of the underlying attached cluster. Supported values:
-         * &#34;eks&#34;, &#34;aks&#34;.
+         * &#34;eks&#34;, &#34;aks&#34;, &#34;generic&#34;. The generic distribution provides the ability to register
+         * or migrate any CNCF conformant cluster.
          * 
          * @return builder
          * 
@@ -440,7 +443,8 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param distribution The Kubernetes distribution of the underlying attached cluster. Supported values:
-         * &#34;eks&#34;, &#34;aks&#34;.
+         * &#34;eks&#34;, &#34;aks&#34;, &#34;generic&#34;. The generic distribution provides the ability to register
+         * or migrate any CNCF conformant cluster.
          * 
          * @return builder
          * 

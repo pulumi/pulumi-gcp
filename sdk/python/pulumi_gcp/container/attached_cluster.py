@@ -39,7 +39,8 @@ class AttachedClusterArgs:
         """
         The set of arguments for constructing a AttachedCluster resource.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
-               "eks", "aks".
+               "eks", "aks", "generic". The generic distribution provides the ability to register
+               or migrate any CNCF conformant cluster.
         :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
@@ -100,7 +101,8 @@ class AttachedClusterArgs:
     def distribution(self) -> pulumi.Input[str]:
         """
         The Kubernetes distribution of the underlying attached cluster. Supported values:
-        "eks", "aks".
+        "eks", "aks", "generic". The generic distribution provides the ability to register
+        or migrate any CNCF conformant cluster.
         """
         return pulumi.get(self, "distribution")
 
@@ -334,7 +336,8 @@ class _AttachedClusterState:
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
-               "eks", "aks".
+               "eks", "aks", "generic". The generic distribution provides the ability to register
+               or migrate any CNCF conformant cluster.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
@@ -512,7 +515,8 @@ class _AttachedClusterState:
     def distribution(self) -> Optional[pulumi.Input[str]]:
         """
         The Kubernetes distribution of the underlying attached cluster. Supported values:
-        "eks", "aks".
+        "eks", "aks", "generic". The generic distribution provides the ability to register
+        or migrate any CNCF conformant cluster.
         """
         return pulumi.get(self, "distribution")
 
@@ -911,7 +915,8 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
-               "eks", "aks".
+               "eks", "aks", "generic". The generic distribution provides the ability to register
+               or migrate any CNCF conformant cluster.
         :param pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
@@ -1212,7 +1217,8 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
-               "eks", "aks".
+               "eks", "aks", "generic". The generic distribution provides the ability to register
+               or migrate any CNCF conformant cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AttachedClusterErrorArgs', 'AttachedClusterErrorArgsDict']]]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']] fleet: Fleet configuration.
@@ -1342,7 +1348,8 @@ class AttachedCluster(pulumi.CustomResource):
     def distribution(self) -> pulumi.Output[str]:
         """
         The Kubernetes distribution of the underlying attached cluster. Supported values:
-        "eks", "aks".
+        "eks", "aks", "generic". The generic distribution provides the ability to register
+        or migrate any CNCF conformant cluster.
         """
         return pulumi.get(self, "distribution")
 

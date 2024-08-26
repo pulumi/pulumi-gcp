@@ -79,6 +79,10 @@ import * as utilities from "../utilities";
  *     project: gaeApi.project,
  *     service: "default",
  *     runtime: "nodejs",
+ *     flexibleRuntimeSettings: {
+ *         operatingSystem: "ubuntu22",
+ *         runtimeVersion: "20",
+ *     },
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },

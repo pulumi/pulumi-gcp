@@ -148,7 +148,7 @@ class ClusterGcpConfigAccessConfig(dict):
     def __init__(__self__, *,
                  network_configs: Sequence['outputs.ClusterGcpConfigAccessConfigNetworkConfig']):
         """
-        :param Sequence['ClusterGcpConfigAccessConfigNetworkConfigArgs'] network_configs: Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+        :param Sequence['ClusterGcpConfigAccessConfigNetworkConfigArgs'] network_configs: Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
                Structure is documented below.
         """
         pulumi.set(__self__, "network_configs", network_configs)
@@ -157,7 +157,7 @@ class ClusterGcpConfigAccessConfig(dict):
     @pulumi.getter(name="networkConfigs")
     def network_configs(self) -> Sequence['outputs.ClusterGcpConfigAccessConfigNetworkConfig']:
         """
-        Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+        Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
         Structure is documented below.
         """
         return pulumi.get(self, "network_configs")
@@ -168,7 +168,7 @@ class ClusterGcpConfigAccessConfigNetworkConfig(dict):
     def __init__(__self__, *,
                  subnet: str):
         """
-        :param str subnet: Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. A minimum of 1 subnet is required. A maximum of 10 subnets can be specified. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+        :param str subnet: Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
         """
         pulumi.set(__self__, "subnet", subnet)
 
@@ -176,7 +176,7 @@ class ClusterGcpConfigAccessConfigNetworkConfig(dict):
     @pulumi.getter
     def subnet(self) -> str:
         """
-        Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. A minimum of 1 subnet is required. A maximum of 10 subnets can be specified. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+        Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
         """
         return pulumi.get(self, "subnet")
 

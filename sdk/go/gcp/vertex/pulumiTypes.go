@@ -6393,6 +6393,1054 @@ func (o AiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) AiIndexDeploye
 	}).(AiIndexDeployedIndexOutput)
 }
 
+type AiIndexEndpointDeployedIndexAutomaticResources struct {
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+	// If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+	MinReplicaCount *int `pulumi:"minReplicaCount"`
+}
+
+// AiIndexEndpointDeployedIndexAutomaticResourcesInput is an input type that accepts AiIndexEndpointDeployedIndexAutomaticResourcesArgs and AiIndexEndpointDeployedIndexAutomaticResourcesOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexAutomaticResourcesInput` via:
+//
+//	AiIndexEndpointDeployedIndexAutomaticResourcesArgs{...}
+type AiIndexEndpointDeployedIndexAutomaticResourcesInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexAutomaticResourcesOutput() AiIndexEndpointDeployedIndexAutomaticResourcesOutput
+	ToAiIndexEndpointDeployedIndexAutomaticResourcesOutputWithContext(context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesOutput
+}
+
+type AiIndexEndpointDeployedIndexAutomaticResourcesArgs struct {
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+	// If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+	MinReplicaCount pulumi.IntPtrInput `pulumi:"minReplicaCount"`
+}
+
+func (AiIndexEndpointDeployedIndexAutomaticResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexAutomaticResources)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexAutomaticResourcesArgs) ToAiIndexEndpointDeployedIndexAutomaticResourcesOutput() AiIndexEndpointDeployedIndexAutomaticResourcesOutput {
+	return i.ToAiIndexEndpointDeployedIndexAutomaticResourcesOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexAutomaticResourcesArgs) ToAiIndexEndpointDeployedIndexAutomaticResourcesOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexAutomaticResourcesOutput)
+}
+
+func (i AiIndexEndpointDeployedIndexAutomaticResourcesArgs) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput() AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexAutomaticResourcesArgs) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexAutomaticResourcesOutput).ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(ctx)
+}
+
+// AiIndexEndpointDeployedIndexAutomaticResourcesPtrInput is an input type that accepts AiIndexEndpointDeployedIndexAutomaticResourcesArgs, AiIndexEndpointDeployedIndexAutomaticResourcesPtr and AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexAutomaticResourcesPtrInput` via:
+//
+//	        AiIndexEndpointDeployedIndexAutomaticResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEndpointDeployedIndexAutomaticResourcesPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput() AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput
+	ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput
+}
+
+type aiIndexEndpointDeployedIndexAutomaticResourcesPtrType AiIndexEndpointDeployedIndexAutomaticResourcesArgs
+
+func AiIndexEndpointDeployedIndexAutomaticResourcesPtr(v *AiIndexEndpointDeployedIndexAutomaticResourcesArgs) AiIndexEndpointDeployedIndexAutomaticResourcesPtrInput {
+	return (*aiIndexEndpointDeployedIndexAutomaticResourcesPtrType)(v)
+}
+
+func (*aiIndexEndpointDeployedIndexAutomaticResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexAutomaticResources)(nil)).Elem()
+}
+
+func (i *aiIndexEndpointDeployedIndexAutomaticResourcesPtrType) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput() AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEndpointDeployedIndexAutomaticResourcesPtrType) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexAutomaticResourcesOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexAutomaticResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexAutomaticResources)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesOutput) ToAiIndexEndpointDeployedIndexAutomaticResourcesOutput() AiIndexEndpointDeployedIndexAutomaticResourcesOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesOutput) ToAiIndexEndpointDeployedIndexAutomaticResourcesOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesOutput) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput() AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return o.ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesOutput) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEndpointDeployedIndexAutomaticResources) *AiIndexEndpointDeployedIndexAutomaticResources {
+		return &v
+	}).(AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput)
+}
+
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexAutomaticResources) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+// If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexAutomaticResources) *int { return v.MinReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexAutomaticResources)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput() AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput) ToAiIndexEndpointDeployedIndexAutomaticResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput) Elem() AiIndexEndpointDeployedIndexAutomaticResourcesOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexAutomaticResources) AiIndexEndpointDeployedIndexAutomaticResources {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEndpointDeployedIndexAutomaticResources
+		return ret
+	}).(AiIndexEndpointDeployedIndexAutomaticResourcesOutput)
+}
+
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexAutomaticResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+// If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+func (o AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexAutomaticResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResources struct {
+	// The minimum number of replicas this DeployedModel will be always deployed on.
+	// Structure is documented below.
+	MachineSpec AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec `pulumi:"machineSpec"`
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+	MinReplicaCount int `pulumi:"minReplicaCount"`
+}
+
+// AiIndexEndpointDeployedIndexDedicatedResourcesInput is an input type that accepts AiIndexEndpointDeployedIndexDedicatedResourcesArgs and AiIndexEndpointDeployedIndexDedicatedResourcesOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDedicatedResourcesInput` via:
+//
+//	AiIndexEndpointDeployedIndexDedicatedResourcesArgs{...}
+type AiIndexEndpointDeployedIndexDedicatedResourcesInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesOutput() AiIndexEndpointDeployedIndexDedicatedResourcesOutput
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesOutput
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResourcesArgs struct {
+	// The minimum number of replicas this DeployedModel will be always deployed on.
+	// Structure is documented below.
+	MachineSpec AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecInput `pulumi:"machineSpec"`
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+	MinReplicaCount pulumi.IntInput `pulumi:"minReplicaCount"`
+}
+
+func (AiIndexEndpointDeployedIndexDedicatedResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResources)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesOutput() AiIndexEndpointDeployedIndexDedicatedResourcesOutput {
+	return i.ToAiIndexEndpointDeployedIndexDedicatedResourcesOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDedicatedResourcesOutput)
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDedicatedResourcesOutput).ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(ctx)
+}
+
+// AiIndexEndpointDeployedIndexDedicatedResourcesPtrInput is an input type that accepts AiIndexEndpointDeployedIndexDedicatedResourcesArgs, AiIndexEndpointDeployedIndexDedicatedResourcesPtr and AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDedicatedResourcesPtrInput` via:
+//
+//	        AiIndexEndpointDeployedIndexDedicatedResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEndpointDeployedIndexDedicatedResourcesPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput
+}
+
+type aiIndexEndpointDeployedIndexDedicatedResourcesPtrType AiIndexEndpointDeployedIndexDedicatedResourcesArgs
+
+func AiIndexEndpointDeployedIndexDedicatedResourcesPtr(v *AiIndexEndpointDeployedIndexDedicatedResourcesArgs) AiIndexEndpointDeployedIndexDedicatedResourcesPtrInput {
+	return (*aiIndexEndpointDeployedIndexDedicatedResourcesPtrType)(v)
+}
+
+func (*aiIndexEndpointDeployedIndexDedicatedResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDedicatedResources)(nil)).Elem()
+}
+
+func (i *aiIndexEndpointDeployedIndexDedicatedResourcesPtrType) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEndpointDeployedIndexDedicatedResourcesPtrType) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResourcesOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDedicatedResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResources)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesOutput() AiIndexEndpointDeployedIndexDedicatedResourcesOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return o.ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEndpointDeployedIndexDedicatedResources) *AiIndexEndpointDeployedIndexDedicatedResources {
+		return &v
+	}).(AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput)
+}
+
+// The minimum number of replicas this DeployedModel will be always deployed on.
+// Structure is documented below.
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesOutput) MachineSpec() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDedicatedResources) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
+		return v.MachineSpec
+	}).(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput)
+}
+
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDedicatedResources) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesOutput) MinReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDedicatedResources) int { return v.MinReplicaCount }).(pulumi.IntOutput)
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDedicatedResources)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput) Elem() AiIndexEndpointDeployedIndexDedicatedResourcesOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDedicatedResources) AiIndexEndpointDeployedIndexDedicatedResources {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEndpointDeployedIndexDedicatedResources
+		return ret
+	}).(AiIndexEndpointDeployedIndexDedicatedResourcesOutput)
+}
+
+// The minimum number of replicas this DeployedModel will be always deployed on.
+// Structure is documented below.
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput) MachineSpec() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDedicatedResources) *AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineSpec
+	}).(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput)
+}
+
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec struct {
+	// The type of the machine.
+	// See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	// See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	// For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+	MachineType *string `pulumi:"machineType"`
+}
+
+// AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecInput is an input type that accepts AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs and AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecInput` via:
+//
+//	AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs{...}
+type AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs struct {
+	// The type of the machine.
+	// See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	// See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	// For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput {
+	return i.ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput)
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput).ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(ctx)
+}
+
+// AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrInput is an input type that accepts AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs, AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtr and AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrInput` via:
+//
+//	        AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput
+	ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput
+}
+
+type aiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrType AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs
+
+func AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtr(v *AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrInput {
+	return (*aiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrType)(v)
+}
+
+func (*aiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (i *aiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrType) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrType) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return o.ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec) *AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
+		return &v
+	}).(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput)
+}
+
+// The type of the machine.
+// See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+// See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+// For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput) ToAiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput) Elem() AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec) AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec
+		return ret
+	}).(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput)
+}
+
+// The type of the machine.
+// See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+// See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+// For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+func (o AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfig struct {
+	// Defines the authentication provider that the DeployedIndex uses.
+	// Structure is documented below.
+	AuthProvider *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider `pulumi:"authProvider"`
+}
+
+// AiIndexEndpointDeployedIndexDeployedIndexAuthConfigInput is an input type that accepts AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs and AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDeployedIndexAuthConfigInput` via:
+//
+//	AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs{...}
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs struct {
+	// Defines the authentication provider that the DeployedIndex uses.
+	// Structure is documented below.
+	AuthProvider AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrInput `pulumi:"authProvider"`
+}
+
+func (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfig)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput {
+	return i.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput)
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput).ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(ctx)
+}
+
+// AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrInput is an input type that accepts AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs, AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtr and AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrInput` via:
+//
+//	        AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput
+}
+
+type aiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrType AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs
+
+func AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtr(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrInput {
+	return (*aiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrType)(v)
+}
+
+func (*aiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDeployedIndexAuthConfig)(nil)).Elem()
+}
+
+func (i *aiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrType) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrType) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfig)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return o.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEndpointDeployedIndexDeployedIndexAuthConfig) *AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
+		return &v
+	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput)
+}
+
+// Defines the authentication provider that the DeployedIndex uses.
+// Structure is documented below.
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput) AuthProvider() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDeployedIndexAuthConfig) *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
+		return v.AuthProvider
+	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDeployedIndexAuthConfig)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput) Elem() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfig) AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEndpointDeployedIndexDeployedIndexAuthConfig
+		return ret
+	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput)
+}
+
+// Defines the authentication provider that the DeployedIndex uses.
+// Structure is documented below.
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput) AuthProvider() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfig) *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProvider
+	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider struct {
+	// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+	AllowedIssuers []string `pulumi:"allowedIssuers"`
+	// The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+	Audiences []string `pulumi:"audiences"`
+}
+
+// AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderInput is an input type that accepts AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs and AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderInput` via:
+//
+//	AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs{...}
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs struct {
+	// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+	AllowedIssuers pulumi.StringArrayInput `pulumi:"allowedIssuers"`
+	// The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
+}
+
+func (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput {
+	return i.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput)
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput).ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(ctx)
+}
+
+// AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrInput is an input type that accepts AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs, AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtr and AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrInput` via:
+//
+//	        AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput
+	ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput
+}
+
+type aiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrType AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs
+
+func AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtr(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrInput {
+	return (*aiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrType)(v)
+}
+
+func (*aiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider)(nil)).Elem()
+}
+
+func (i *aiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrType) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return i.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrType) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return o.ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
+		return &v
+	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput)
+}
+
+// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) AllowedIssuers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) []string {
+		return v.AllowedIssuers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput) ToAiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput) Elem() AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider
+		return ret
+	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput)
+}
+
+// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput) AllowedIssuers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedIssuers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Audiences
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpoint struct {
+	// (Output)
+	// The ip address used to send match gRPC requests.
+	MatchGrpcAddress *string `pulumi:"matchGrpcAddress"`
+	// (Output)
+	// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+	// Structure is documented below.
+	PscAutomatedEndpoints []AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint `pulumi:"pscAutomatedEndpoints"`
+	// (Output)
+	// The name of the service attachment resource. Populated if private service connect is enabled.
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// AiIndexEndpointDeployedIndexPrivateEndpointInput is an input type that accepts AiIndexEndpointDeployedIndexPrivateEndpointArgs and AiIndexEndpointDeployedIndexPrivateEndpointOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexPrivateEndpointInput` via:
+//
+//	AiIndexEndpointDeployedIndexPrivateEndpointArgs{...}
+type AiIndexEndpointDeployedIndexPrivateEndpointInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexPrivateEndpointOutput() AiIndexEndpointDeployedIndexPrivateEndpointOutput
+	ToAiIndexEndpointDeployedIndexPrivateEndpointOutputWithContext(context.Context) AiIndexEndpointDeployedIndexPrivateEndpointOutput
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointArgs struct {
+	// (Output)
+	// The ip address used to send match gRPC requests.
+	MatchGrpcAddress pulumi.StringPtrInput `pulumi:"matchGrpcAddress"`
+	// (Output)
+	// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+	// Structure is documented below.
+	PscAutomatedEndpoints AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayInput `pulumi:"pscAutomatedEndpoints"`
+	// (Output)
+	// The name of the service attachment resource. Populated if private service connect is enabled.
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpoint)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointArgs) ToAiIndexEndpointDeployedIndexPrivateEndpointOutput() AiIndexEndpointDeployedIndexPrivateEndpointOutput {
+	return i.ToAiIndexEndpointDeployedIndexPrivateEndpointOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointArgs) ToAiIndexEndpointDeployedIndexPrivateEndpointOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexPrivateEndpointOutput)
+}
+
+// AiIndexEndpointDeployedIndexPrivateEndpointArrayInput is an input type that accepts AiIndexEndpointDeployedIndexPrivateEndpointArray and AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexPrivateEndpointArrayInput` via:
+//
+//	AiIndexEndpointDeployedIndexPrivateEndpointArray{ AiIndexEndpointDeployedIndexPrivateEndpointArgs{...} }
+type AiIndexEndpointDeployedIndexPrivateEndpointArrayInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexPrivateEndpointArrayOutput() AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput
+	ToAiIndexEndpointDeployedIndexPrivateEndpointArrayOutputWithContext(context.Context) AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointArray []AiIndexEndpointDeployedIndexPrivateEndpointInput
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexEndpointDeployedIndexPrivateEndpoint)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointArray) ToAiIndexEndpointDeployedIndexPrivateEndpointArrayOutput() AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput {
+	return i.ToAiIndexEndpointDeployedIndexPrivateEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointArray) ToAiIndexEndpointDeployedIndexPrivateEndpointArrayOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput)
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpoint)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointOutput() AiIndexEndpointDeployedIndexPrivateEndpointOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointOutput {
+	return o
+}
+
+// (Output)
+// The ip address used to send match gRPC requests.
+func (o AiIndexEndpointDeployedIndexPrivateEndpointOutput) MatchGrpcAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexPrivateEndpoint) *string { return v.MatchGrpcAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+// Structure is documented below.
+func (o AiIndexEndpointDeployedIndexPrivateEndpointOutput) PscAutomatedEndpoints() AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexPrivateEndpoint) []AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
+		return v.PscAutomatedEndpoints
+	}).(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput)
+}
+
+// (Output)
+// The name of the service attachment resource. Populated if private service connect is enabled.
+func (o AiIndexEndpointDeployedIndexPrivateEndpointOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexPrivateEndpoint) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexEndpointDeployedIndexPrivateEndpoint)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointArrayOutput() AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointArrayOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput) Index(i pulumi.IntInput) AiIndexEndpointDeployedIndexPrivateEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiIndexEndpointDeployedIndexPrivateEndpoint {
+		return vs[0].([]AiIndexEndpointDeployedIndexPrivateEndpoint)[vs[1].(int)]
+	}).(AiIndexEndpointDeployedIndexPrivateEndpointOutput)
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint struct {
+	// (Output)
+	// ip Address created by the automated forwarding rule.
+	MatchAddress *string `pulumi:"matchAddress"`
+	// (Output)
+	// Corresponding network in pscAutomationConfigs.
+	Network *string `pulumi:"network"`
+	// (Output)
+	// Corresponding projectId in pscAutomationConfigs
+	ProjectId *string `pulumi:"projectId"`
+}
+
+// AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointInput is an input type that accepts AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs and AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointInput` via:
+//
+//	AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs{...}
+type AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput() AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput
+	ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutputWithContext(context.Context) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs struct {
+	// (Output)
+	// ip Address created by the automated forwarding rule.
+	MatchAddress pulumi.StringPtrInput `pulumi:"matchAddress"`
+	// (Output)
+	// Corresponding network in pscAutomationConfigs.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// (Output)
+	// Corresponding projectId in pscAutomationConfigs
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+}
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput() AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput {
+	return i.ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput)
+}
+
+// AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayInput is an input type that accepts AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray and AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput values.
+// You can construct a concrete instance of `AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayInput` via:
+//
+//	AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray{ AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs{...} }
+type AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput() AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput
+	ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutputWithContext(context.Context) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray []AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointInput
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint)(nil)).Elem()
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput() AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput {
+	return i.ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput)
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput() AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput {
+	return o
+}
+
+// (Output)
+// ip Address created by the automated forwarding rule.
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput) MatchAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint) *string { return v.MatchAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Corresponding network in pscAutomationConfigs.
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Corresponding projectId in pscAutomationConfigs
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+type AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint)(nil)).Elem()
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput() AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput) ToAiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutputWithContext(ctx context.Context) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput {
+	return o
+}
+
+func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput) Index(i pulumi.IntInput) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
+		return vs[0].([]AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint)[vs[1].(int)]
+	}).(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput)
+}
+
 type AiIndexEndpointPrivateServiceConnectConfig struct {
 	// If set to true, the IndexEndpoint is created without private service access.
 	EnablePrivateServiceConnect bool `pulumi:"enablePrivateServiceConnect"`
@@ -8906,6 +9954,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigScalingPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexInput)(nil)).Elem(), AiIndexDeployedIndexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexArrayInput)(nil)).Elem(), AiIndexDeployedIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexAutomaticResourcesInput)(nil)).Elem(), AiIndexEndpointDeployedIndexAutomaticResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexAutomaticResourcesPtrInput)(nil)).Elem(), AiIndexEndpointDeployedIndexAutomaticResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResourcesInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDedicatedResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResourcesPtrInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDedicatedResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfigInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointInput)(nil)).Elem(), AiIndexEndpointDeployedIndexPrivateEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointArrayInput)(nil)).Elem(), AiIndexEndpointDeployedIndexPrivateEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointInput)(nil)).Elem(), AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayInput)(nil)).Elem(), AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatInput)(nil)).Elem(), AiIndexIndexStatArgs{})
@@ -9022,6 +10084,20 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigScalingPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexArrayOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexAutomaticResourcesOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDedicatedResourcesOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexPrivateEndpointOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexIndexStatOutput{})

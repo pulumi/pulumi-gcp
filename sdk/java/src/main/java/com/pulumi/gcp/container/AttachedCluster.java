@@ -396,7 +396,8 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
-     * &#34;eks&#34;, &#34;aks&#34;.
+     * &#34;eks&#34;, &#34;aks&#34;, &#34;generic&#34;. The generic distribution provides the ability to register
+     * or migrate any CNCF conformant cluster.
      * 
      */
     @Export(name="distribution", refs={String.class}, tree="[0]")
@@ -404,7 +405,8 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Kubernetes distribution of the underlying attached cluster. Supported values:
-     * &#34;eks&#34;, &#34;aks&#34;.
+     * &#34;eks&#34;, &#34;aks&#34;, &#34;generic&#34;. The generic distribution provides the ability to register
+     * or migrate any CNCF conformant cluster.
      * 
      */
     public Output<String> distribution() {

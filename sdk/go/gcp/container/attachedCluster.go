@@ -266,7 +266,8 @@ type AttachedCluster struct {
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
-	// "eks", "aks".
+	// "eks", "aks", "generic". The generic distribution provides the ability to register
+	// or migrate any CNCF conformant cluster.
 	Distribution         pulumi.StringOutput    `pulumi:"distribution"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
@@ -383,7 +384,8 @@ type attachedClusterState struct {
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
-	// "eks", "aks".
+	// "eks", "aks", "generic". The generic distribution provides the ability to register
+	// or migrate any CNCF conformant cluster.
 	Distribution         *string           `pulumi:"distribution"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// A set of errors found in the cluster.
@@ -456,7 +458,8 @@ type AttachedClusterState struct {
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
-	// "eks", "aks".
+	// "eks", "aks", "generic". The generic distribution provides the ability to register
+	// or migrate any CNCF conformant cluster.
 	Distribution         pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// A set of errors found in the cluster.
@@ -527,7 +530,8 @@ type attachedClusterArgs struct {
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
-	// "eks", "aks".
+	// "eks", "aks", "generic". The generic distribution provides the ability to register
+	// or migrate any CNCF conformant cluster.
 	Distribution string `pulumi:"distribution"`
 	// Fleet configuration.
 	// Structure is documented below.
@@ -576,7 +580,8 @@ type AttachedClusterArgs struct {
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
-	// "eks", "aks".
+	// "eks", "aks", "generic". The generic distribution provides the ability to register
+	// or migrate any CNCF conformant cluster.
 	Distribution pulumi.StringInput
 	// Fleet configuration.
 	// Structure is documented below.
@@ -737,7 +742,8 @@ func (o AttachedClusterOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The Kubernetes distribution of the underlying attached cluster. Supported values:
-// "eks", "aks".
+// "eks", "aks", "generic". The generic distribution provides the ability to register
+// or migrate any CNCF conformant cluster.
 func (o AttachedClusterOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Distribution }).(pulumi.StringOutput)
 }

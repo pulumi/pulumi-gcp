@@ -39,6 +39,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool RequireSsl;
         /// <summary>
+        /// Specify how the server certificate's Certificate Authority is hosted.
+        /// </summary>
+        public readonly string ServerCaMode;
+        /// <summary>
         /// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
         /// </summary>
         public readonly string SslMode;
@@ -59,6 +63,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool requireSsl,
 
+            string serverCaMode,
+
             string sslMode)
         {
             AllocatedIpRange = allocatedIpRange;
@@ -68,6 +74,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PrivateNetwork = privateNetwork;
             PscConfigs = pscConfigs;
             RequireSsl = requireSsl;
+            ServerCaMode = serverCaMode;
             SslMode = sslMode;
         }
     }

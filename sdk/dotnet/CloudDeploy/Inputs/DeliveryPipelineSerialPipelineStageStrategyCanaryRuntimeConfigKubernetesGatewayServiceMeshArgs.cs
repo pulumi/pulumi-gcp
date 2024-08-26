@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public Input<string> HttpRoute { get; set; } = null!;
 
         /// <summary>
+        /// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+        /// </summary>
+        [Input("podSelectorLabel")]
+        public Input<string>? PodSelectorLabel { get; set; }
+
+        /// <summary>
         /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         /// </summary>
         [Input("routeUpdateWaitTime")]

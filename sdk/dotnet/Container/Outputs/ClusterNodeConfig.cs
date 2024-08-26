@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
-        /// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        /// Configuration for Confidential Nodes feature. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodeConfigConfidentialNodes? ConfidentialNodes;
         /// <summary>

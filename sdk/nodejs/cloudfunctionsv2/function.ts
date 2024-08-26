@@ -101,6 +101,7 @@ import * as utilities from "../utilities";
  *         availableCpu: "4",
  *         environmentVariables: {
  *             SERVICE_CONFIG_TEST: "config_test",
+ *             SERVICE_CONFIG_DIFF_TEST: account.email,
  *         },
  *         ingressSettings: "ALLOW_INTERNAL_ONLY",
  *         allTrafficOnLatestRevision: true,

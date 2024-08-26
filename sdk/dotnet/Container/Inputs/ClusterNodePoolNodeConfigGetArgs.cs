@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? BootDiskKmsKey { get; set; }
 
         /// <summary>
-        /// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        /// Configuration for Confidential Nodes feature. Structure is documented below.
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.ClusterNodePoolNodeConfigConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }

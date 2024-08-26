@@ -28,6 +28,9 @@ __all__ = [
     'GetGroupMembershipsMembershipPreferredMemberKeyResult',
     'GetGroupMembershipsMembershipRoleResult',
     'GetGroupMembershipsMembershipRoleExpiryDetailResult',
+    'GetGroupTransitiveMembershipsMembershipResult',
+    'GetGroupTransitiveMembershipsMembershipPreferredMemberKeyResult',
+    'GetGroupTransitiveMembershipsMembershipRoleResult',
     'GetGroupsGroupResult',
     'GetGroupsGroupAdditionalGroupKeyResult',
     'GetGroupsGroupGroupKeyResult',
@@ -616,6 +619,134 @@ class GetGroupMembershipsMembershipRoleExpiryDetailResult(dict):
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
+class GetGroupTransitiveMembershipsMembershipResult(dict):
+    def __init__(__self__, *,
+                 member: str,
+                 preferred_member_keys: Sequence['outputs.GetGroupTransitiveMembershipsMembershipPreferredMemberKeyResult'],
+                 relation_type: str,
+                 roles: Sequence['outputs.GetGroupTransitiveMembershipsMembershipRoleResult']):
+        """
+        :param str member: Resource name for this member.
+        :param Sequence['GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs'] preferred_member_keys: EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+        :param str relation_type: The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+        :param Sequence['GetGroupTransitiveMembershipsMembershipRoleArgs'] roles: The membership role details
+        """
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "preferred_member_keys", preferred_member_keys)
+        pulumi.set(__self__, "relation_type", relation_type)
+        pulumi.set(__self__, "roles", roles)
+
+    @property
+    @pulumi.getter
+    def member(self) -> str:
+        """
+        Resource name for this member.
+        """
+        return pulumi.get(self, "member")
+
+    @property
+    @pulumi.getter(name="preferredMemberKeys")
+    def preferred_member_keys(self) -> Sequence['outputs.GetGroupTransitiveMembershipsMembershipPreferredMemberKeyResult']:
+        """
+        EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+        """
+        return pulumi.get(self, "preferred_member_keys")
+
+    @property
+    @pulumi.getter(name="relationType")
+    def relation_type(self) -> str:
+        """
+        The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+        """
+        return pulumi.get(self, "relation_type")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Sequence['outputs.GetGroupTransitiveMembershipsMembershipRoleResult']:
+        """
+        The membership role details
+        """
+        return pulumi.get(self, "roles")
+
+
+@pulumi.output_type
+class GetGroupTransitiveMembershipsMembershipPreferredMemberKeyResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 namespace: str):
+        """
+        :param str id: The ID of the entity.
+               
+               For Google-managed entities, the id must be the email address of an existing
+               group or user.
+               
+               For external-identity-mapped entities, the id must be a string conforming
+               to the Identity Source's requirements.
+               
+               Must be unique within a namespace.
+        :param str namespace: The namespace in which the entity exists.
+               
+               If not specified, the EntityKey represents a Google-managed entity
+               such as a Google user or a Google Group.
+               
+               If specified, the EntityKey represents an external-identity-mapped group.
+               The namespace must correspond to an identity source created in Admin Console
+               and must be in the form of 'identitysources/{identity_source_id}'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the entity.
+
+        For Google-managed entities, the id must be the email address of an existing
+        group or user.
+
+        For external-identity-mapped entities, the id must be a string conforming
+        to the Identity Source's requirements.
+
+        Must be unique within a namespace.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        The namespace in which the entity exists.
+
+        If not specified, the EntityKey represents a Google-managed entity
+        such as a Google user or a Google Group.
+
+        If specified, the EntityKey represents an external-identity-mapped group.
+        The namespace must correspond to an identity source created in Admin Console
+        and must be in the form of 'identitysources/{identity_source_id}'.
+        """
+        return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class GetGroupTransitiveMembershipsMembershipRoleResult(dict):
+    def __init__(__self__, *,
+                 role: str):
+        """
+        :param str role: The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+        """
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type

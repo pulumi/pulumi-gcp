@@ -151,6 +151,11 @@ namespace Pulumi.Gcp.Compute
     ///         VersionId = "v1",
     ///         Service = "appengine-network-endpoint-group",
     ///         Runtime = "nodejs",
+    ///         FlexibleRuntimeSettings = new Gcp.AppEngine.Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs
+    ///         {
+    ///             OperatingSystem = "ubuntu22",
+    ///             RuntimeVersion = "20",
+    ///         },
     ///         Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
     ///         {
     ///             Shell = "node ./app.js",

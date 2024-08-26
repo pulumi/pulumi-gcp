@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .get_group_lookup import *
 from .get_group_memberships import *
+from .get_group_transitive_memberships import *
 from .get_groups import *
 from .group import *
 from .group_membership import *

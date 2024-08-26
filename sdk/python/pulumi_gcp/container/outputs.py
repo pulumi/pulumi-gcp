@@ -6704,7 +6704,7 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
-        :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -6902,7 +6902,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional['outputs.ClusterNodeConfigConfidentialNodes']:
         """
-        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        Configuration for Confidential Nodes feature. Structure is documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -9633,7 +9633,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
-        :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -9831,7 +9831,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional['outputs.ClusterNodePoolNodeConfigConfidentialNodes']:
         """
-        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        Configuration for Confidential Nodes feature. Structure is documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -12972,7 +12972,7 @@ class NodePoolNodeConfig(dict):
         """
         :param 'NodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling advanced machine features.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
-        :param 'NodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
+        :param 'NodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
         :param 'NodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters for containerd configuration.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         :param str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -13115,7 +13115,7 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional['outputs.NodePoolNodeConfigConfidentialNodes']:
         """
-        Configuration for Confidential Nodes feature. Structure is documented below.
+        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -13473,8 +13473,7 @@ class NodePoolNodeConfigConfidentialNodes(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable Confidential GKE Nodes for this cluster, to
-               enforce encryption of data in-use.
+        :param bool enabled: Whether Confidential Nodes feature is enabled for all nodes in this pool.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -13482,8 +13481,7 @@ class NodePoolNodeConfigConfidentialNodes(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable Confidential GKE Nodes for this cluster, to
-        enforce encryption of data in-use.
+        Whether Confidential Nodes feature is enabled for all nodes in this pool.
         """
         return pulumi.get(self, "enabled")
 
@@ -14645,7 +14643,7 @@ class NodePoolUpgradeSettings(dict):
                parallel. Can be set to 0 or greater.
                
                `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
-        :param str strategy: The upgrade stragey to be used for upgrading the nodes.
+        :param str strategy: The upgrade strategy to be used for upgrading the nodes.
         """
         if blue_green_settings is not None:
             pulumi.set(__self__, "blue_green_settings", blue_green_settings)
@@ -14691,7 +14689,7 @@ class NodePoolUpgradeSettings(dict):
     @pulumi.getter
     def strategy(self) -> Optional[str]:
         """
-        The upgrade stragey to be used for upgrading the nodes.
+        The upgrade strategy to be used for upgrading the nodes.
         """
         return pulumi.get(self, "strategy")
 

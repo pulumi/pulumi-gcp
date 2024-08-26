@@ -186,7 +186,10 @@ import javax.annotation.Nullable;
  *                 .timeoutSeconds(60)
  *                 .maxInstanceRequestConcurrency(80)
  *                 .availableCpu("4")
- *                 .environmentVariables(Map.of("SERVICE_CONFIG_TEST", "config_test"))
+ *                 .environmentVariables(Map.ofEntries(
+ *                     Map.entry("SERVICE_CONFIG_TEST", "config_test"),
+ *                     Map.entry("SERVICE_CONFIG_DIFF_TEST", account.email())
+ *                 ))
  *                 .ingressSettings("ALLOW_INTERNAL_ONLY")
  *                 .allTrafficOnLatestRevision(true)
  *                 .serviceAccountEmail(account.email())

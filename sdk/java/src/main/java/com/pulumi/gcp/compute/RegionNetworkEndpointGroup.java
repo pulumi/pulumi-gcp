@@ -180,6 +180,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.gcp.appengine.FlexibleAppVersion;
  * import com.pulumi.gcp.appengine.FlexibleAppVersionArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs;
  * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionEntrypointArgs;
  * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentArgs;
  * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentZipArgs;
@@ -221,6 +222,10 @@ import javax.annotation.Nullable;
  *             .versionId("v1")
  *             .service("appengine-network-endpoint-group")
  *             .runtime("nodejs")
+ *             .flexibleRuntimeSettings(FlexibleAppVersionFlexibleRuntimeSettingsArgs.builder()
+ *                 .operatingSystem("ubuntu22")
+ *                 .runtimeVersion("20")
+ *                 .build())
  *             .entrypoint(FlexibleAppVersionEntrypointArgs.builder()
  *                 .shell("node ./app.js")
  *                 .build())

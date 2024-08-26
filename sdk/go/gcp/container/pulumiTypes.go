@@ -19694,7 +19694,7 @@ type ClusterNodeConfig struct {
 	AdvancedMachineFeatures *ClusterNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
-	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes *ClusterNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig *ClusterNodeConfigContainerdConfig `pulumi:"containerdConfig"`
@@ -19837,7 +19837,7 @@ type ClusterNodeConfigArgs struct {
 	AdvancedMachineFeatures ClusterNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes ClusterNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig ClusterNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
@@ -20051,7 +20051,7 @@ func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+// Configuration for Confidential Nodes feature. Structure is documented below.
 func (o ClusterNodeConfigOutput) ConfidentialNodes() ClusterNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(ClusterNodeConfigConfidentialNodesPtrOutput)
 }
@@ -20336,7 +20336,7 @@ func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+// Configuration for Confidential Nodes feature. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) ConfidentialNodes() ClusterNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigConfidentialNodes {
 		if v == nil {
@@ -27317,7 +27317,7 @@ type ClusterNodePoolNodeConfig struct {
 	AdvancedMachineFeatures *ClusterNodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
-	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes *ClusterNodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig *ClusterNodePoolNodeConfigContainerdConfig `pulumi:"containerdConfig"`
@@ -27460,7 +27460,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes ClusterNodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig ClusterNodePoolNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
@@ -27676,7 +27676,7 @@ func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+// Configuration for Confidential Nodes feature. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) ConfidentialNodes() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigConfidentialNodes {
 		return v.ConfidentialNodes
@@ -27983,7 +27983,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+// Configuration for Confidential Nodes feature. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) ConfidentialNodes() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigConfidentialNodes {
 		if v == nil {
@@ -37210,7 +37210,7 @@ type NodePoolNodeConfig struct {
 	AdvancedMachineFeatures *NodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
-	// Configuration for Confidential Nodes feature. Structure is documented below.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 	ConfidentialNodes *NodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfig *NodePoolNodeConfigContainerdConfig `pulumi:"containerdConfig"`
@@ -37307,7 +37307,7 @@ type NodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures NodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for Confidential Nodes feature. Structure is documented below.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 	ConfidentialNodes NodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfig NodePoolNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
@@ -37477,7 +37477,7 @@ func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for Confidential Nodes feature. Structure is documented below.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 func (o NodePoolNodeConfigOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
@@ -37718,7 +37718,7 @@ func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for Confidential Nodes feature. Structure is documented below.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
 func (o NodePoolNodeConfigPtrOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes {
 		if v == nil {
@@ -38258,8 +38258,7 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pul
 }
 
 type NodePoolNodeConfigConfidentialNodes struct {
-	// Enable Confidential GKE Nodes for this cluster, to
-	// enforce encryption of data in-use.
+	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -38275,8 +38274,7 @@ type NodePoolNodeConfigConfidentialNodesInput interface {
 }
 
 type NodePoolNodeConfigConfidentialNodesArgs struct {
-	// Enable Confidential GKE Nodes for this cluster, to
-	// enforce encryption of data in-use.
+	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -38357,8 +38355,7 @@ func (o NodePoolNodeConfigConfidentialNodesOutput) ToNodePoolNodeConfigConfident
 	}).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
 
-// Enable Confidential GKE Nodes for this cluster, to
-// enforce encryption of data in-use.
+// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 func (o NodePoolNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -38387,8 +38384,7 @@ func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Elem() NodePoolNodeConfigC
 	}).(NodePoolNodeConfigConfidentialNodesOutput)
 }
 
-// Enable Confidential GKE Nodes for this cluster, to
-// enforce encryption of data in-use.
+// Whether Confidential Nodes feature is enabled for all nodes in this pool.
 func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigConfidentialNodes) *bool {
 		if v == nil {
@@ -42161,7 +42157,7 @@ type NodePoolUpgradeSettings struct {
 	//
 	// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 	MaxUnavailable *int `pulumi:"maxUnavailable"`
-	// The upgrade stragey to be used for upgrading the nodes.
+	// The upgrade strategy to be used for upgrading the nodes.
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -42190,7 +42186,7 @@ type NodePoolUpgradeSettingsArgs struct {
 	//
 	// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
-	// The upgrade stragey to be used for upgrading the nodes.
+	// The upgrade strategy to be used for upgrading the nodes.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 }
 
@@ -42293,7 +42289,7 @@ func (o NodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
 }
 
-// The upgrade stragey to be used for upgrading the nodes.
+// The upgrade strategy to be used for upgrading the nodes.
 func (o NodePoolUpgradeSettingsOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }
@@ -42359,7 +42355,7 @@ func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The upgrade stragey to be used for upgrading the nodes.
+// The upgrade strategy to be used for upgrading the nodes.
 func (o NodePoolUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolUpgradeSettings) *string {
 		if v == nil {

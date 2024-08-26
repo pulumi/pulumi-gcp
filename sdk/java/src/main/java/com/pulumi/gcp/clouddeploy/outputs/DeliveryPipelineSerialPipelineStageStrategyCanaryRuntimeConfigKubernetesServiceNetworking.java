@@ -24,6 +24,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      */
     private @Nullable Boolean disablePodOverprovisioning;
     /**
+     * @return Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+     * 
+     */
+    private @Nullable String podSelectorLabel;
+    /**
      * @return Required. Name of the Kubernetes Service.
      * 
      */
@@ -45,6 +50,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         return Optional.ofNullable(this.disablePodOverprovisioning);
     }
     /**
+     * @return Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+     * 
+     */
+    public Optional<String> podSelectorLabel() {
+        return Optional.ofNullable(this.podSelectorLabel);
+    }
+    /**
      * @return Required. Name of the Kubernetes Service.
      * 
      */
@@ -63,12 +75,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     public static final class Builder {
         private String deployment;
         private @Nullable Boolean disablePodOverprovisioning;
+        private @Nullable String podSelectorLabel;
         private String service;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deployment = defaults.deployment;
     	      this.disablePodOverprovisioning = defaults.disablePodOverprovisioning;
+    	      this.podSelectorLabel = defaults.podSelectorLabel;
     	      this.service = defaults.service;
         }
 
@@ -87,6 +101,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             return this;
         }
         @CustomType.Setter
+        public Builder podSelectorLabel(@Nullable String podSelectorLabel) {
+
+            this.podSelectorLabel = podSelectorLabel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder service(String service) {
             if (service == null) {
               throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking", "service");
@@ -98,6 +118,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking();
             _resultValue.deployment = deployment;
             _resultValue.disablePodOverprovisioning = disablePodOverprovisioning;
+            _resultValue.podSelectorLabel = podSelectorLabel;
             _resultValue.service = service;
             return _resultValue;
         }

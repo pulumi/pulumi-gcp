@@ -492,6 +492,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+ * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Connection;
  * import com.pulumi.gcp.bigquery.ConnectionArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
@@ -528,6 +534,16 @@ import javax.annotation.Nullable;
  *             .name("user")
  *             .instance(instance.name())
  *             .password("tf-test-my-password_77884")
+ *             .build());
+ * 
+ *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var keySaUser = new IAMMember("keySaUser", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
  *             .build());
  * 
  *         var bq_connection_cmek = new Connection("bq-connection-cmek", ConnectionArgs.builder()

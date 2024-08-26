@@ -10,11 +10,14 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagePlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetLocationsPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryPlainArgs;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImageResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetLocationsResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryIamPolicyResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryResult;
 import java.util.concurrent.CompletableFuture;
@@ -283,6 +286,564 @@ public final class ArtifactregistryFunctions {
      */
     public static CompletableFuture<GetDockerImageResult> getDockerImagePlain(GetDockerImagePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getDockerImage:getDockerImage", TypeShape.of(GetDockerImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get Artifact Registry locations available for a project.
+     * 
+     * To get more information about Artifact Registry, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Multi-Regional Artifact Registry Deployment
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .repositoryId("repo-one")
+     *             .format("apt")
+     *             .build());
+     * 
+     *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .repositoryId("repo-two")
+     *             .format("apt")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLocationsResult> getLocations() {
+        return getLocations(GetLocationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get Artifact Registry locations available for a project.
+     * 
+     * To get more information about Artifact Registry, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Multi-Regional Artifact Registry Deployment
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .repositoryId("repo-one")
+     *             .format("apt")
+     *             .build());
+     * 
+     *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .repositoryId("repo-two")
+     *             .format("apt")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLocationsResult> getLocationsPlain() {
+        return getLocationsPlain(GetLocationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get Artifact Registry locations available for a project.
+     * 
+     * To get more information about Artifact Registry, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Multi-Regional Artifact Registry Deployment
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .repositoryId("repo-one")
+     *             .format("apt")
+     *             .build());
+     * 
+     *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .repositoryId("repo-two")
+     *             .format("apt")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLocationsResult> getLocations(GetLocationsArgs args) {
+        return getLocations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get Artifact Registry locations available for a project.
+     * 
+     * To get more information about Artifact Registry, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Multi-Regional Artifact Registry Deployment
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .repositoryId("repo-one")
+     *             .format("apt")
+     *             .build());
+     * 
+     *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .repositoryId("repo-two")
+     *             .format("apt")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args) {
+        return getLocationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get Artifact Registry locations available for a project.
+     * 
+     * To get more information about Artifact Registry, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Multi-Regional Artifact Registry Deployment
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .repositoryId("repo-one")
+     *             .format("apt")
+     *             .build());
+     * 
+     *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .repositoryId("repo-two")
+     *             .format("apt")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLocationsResult> getLocations(GetLocationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get Artifact Registry locations available for a project.
+     * 
+     * To get more information about Artifact Registry, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Multi-Regional Artifact Registry Deployment
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ArtifactregistryFunctions.getLocations();
+     * 
+     *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .repositoryId("repo-one")
+     *             .format("apt")
+     *             .build());
+     * 
+     *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
+     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .repositoryId("repo-two")
+     *             .format("apt")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a Google Artifact Registry Repository. For more information see

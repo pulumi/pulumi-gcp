@@ -267,7 +267,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes distribution of the underlying attached cluster. Supported values:
-        /// "eks", "aks".
+        /// "eks", "aks", "generic". The generic distribution provides the ability to register
+        /// or migrate any CNCF conformant cluster.
         /// </summary>
         [Output("distribution")]
         public Output<string> Distribution { get; private set; } = null!;
@@ -471,7 +472,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes distribution of the underlying attached cluster. Supported values:
-        /// "eks", "aks".
+        /// "eks", "aks", "generic". The generic distribution provides the ability to register
+        /// or migrate any CNCF conformant cluster.
         /// </summary>
         [Input("distribution", required: true)]
         public Input<string> Distribution { get; set; } = null!;
@@ -602,7 +604,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes distribution of the underlying attached cluster. Supported values:
-        /// "eks", "aks".
+        /// "eks", "aks", "generic". The generic distribution provides the ability to register
+        /// or migrate any CNCF conformant cluster.
         /// </summary>
         [Input("distribution")]
         public Input<string>? Distribution { get; set; }

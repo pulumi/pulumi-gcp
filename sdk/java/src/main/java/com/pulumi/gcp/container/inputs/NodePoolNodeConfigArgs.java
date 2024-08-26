@@ -71,14 +71,14 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configuration for Confidential Nodes feature. Structure is documented below.
+     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
      * 
      */
     @Import(name="confidentialNodes")
     private @Nullable Output<NodePoolNodeConfigConfidentialNodesArgs> confidentialNodes;
 
     /**
-     * @return Configuration for Confidential Nodes feature. Structure is documented below.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
      * 
      */
     public Optional<Output<NodePoolNodeConfigConfidentialNodesArgs>> confidentialNodes() {
@@ -752,7 +752,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param confidentialNodes Configuration for Confidential Nodes feature. Structure is documented below.
+         * @param confidentialNodes Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param confidentialNodes Configuration for Confidential Nodes feature. Structure is documented below.
+         * @param confidentialNodes Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
          * 
          * @return builder
          * 

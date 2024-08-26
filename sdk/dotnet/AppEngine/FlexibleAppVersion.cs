@@ -105,6 +105,11 @@ namespace Pulumi.Gcp.AppEngine
     ///         Project = gaeApi.Project,
     ///         Service = "default",
     ///         Runtime = "nodejs",
+    ///         FlexibleRuntimeSettings = new Gcp.AppEngine.Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs
+    ///         {
+    ///             OperatingSystem = "ubuntu22",
+    ///             RuntimeVersion = "20",
+    ///         },
     ///         Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
     ///         {
     ///             Shell = "node ./app.js",
