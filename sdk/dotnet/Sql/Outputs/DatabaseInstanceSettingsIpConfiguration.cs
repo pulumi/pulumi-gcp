@@ -45,6 +45,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool? RequireSsl;
         /// <summary>
+        /// Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+        /// </summary>
+        public readonly string? ServerCaMode;
+        /// <summary>
         /// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
         /// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
         /// * For MySQL instances, use the same value pairs as the PostgreSQL instances.
@@ -68,6 +72,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool? requireSsl,
 
+            string? serverCaMode,
+
             string? sslMode)
         {
             AllocatedIpRange = allocatedIpRange;
@@ -77,6 +83,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PrivateNetwork = privateNetwork;
             PscConfigs = pscConfigs;
             RequireSsl = requireSsl;
+            ServerCaMode = serverCaMode;
             SslMode = sslMode;
         }
     }

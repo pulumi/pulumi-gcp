@@ -4971,6 +4971,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	Deployment string `pulumi:"deployment"`
 	// Required. Name of the Gateway API HTTPRoute.
 	HttpRoute string `pulumi:"httpRoute"`
+	// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+	PodSelectorLabel *string `pulumi:"podSelectorLabel"`
 	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 	RouteUpdateWaitTime *string `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
@@ -4995,6 +4997,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	Deployment pulumi.StringInput `pulumi:"deployment"`
 	// Required. Name of the Gateway API HTTPRoute.
 	HttpRoute pulumi.StringInput `pulumi:"httpRoute"`
+	// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+	PodSelectorLabel pulumi.StringPtrInput `pulumi:"podSelectorLabel"`
 	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 	RouteUpdateWaitTime pulumi.StringPtrInput `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
@@ -5094,6 +5098,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.StringOutput)
 }
 
+// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) PodSelectorLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		return v.PodSelectorLabel
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
@@ -5159,6 +5170,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) PodSelectorLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodSelectorLabel
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
@@ -5194,6 +5215,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSer
 	Deployment string `pulumi:"deployment"`
 	// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
 	DisablePodOverprovisioning *bool `pulumi:"disablePodOverprovisioning"`
+	// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+	PodSelectorLabel *string `pulumi:"podSelectorLabel"`
 	// Required. Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
 }
@@ -5214,6 +5237,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSer
 	Deployment pulumi.StringInput `pulumi:"deployment"`
 	// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
 	DisablePodOverprovisioning pulumi.BoolPtrInput `pulumi:"disablePodOverprovisioning"`
+	// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+	PodSelectorLabel pulumi.StringPtrInput `pulumi:"podSelectorLabel"`
 	// Required. Name of the Kubernetes Service.
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -5309,6 +5334,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) PodSelectorLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *string {
+		return v.PodSelectorLabel
+	}).(pulumi.StringPtrOutput)
+}
+
 // Required. Name of the Kubernetes Service.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) string {
@@ -5358,6 +5390,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 		}
 		return v.DisablePodOverprovisioning
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) PodSelectorLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodSelectorLabel
+	}).(pulumi.StringPtrOutput)
 }
 
 // Required. Name of the Kubernetes Service.

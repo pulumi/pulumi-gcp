@@ -15,6 +15,11 @@ export type FolderCustomModule = import("./folderCustomModule").FolderCustomModu
 export const FolderCustomModule: typeof import("./folderCustomModule").FolderCustomModule = null as any;
 utilities.lazyLoad(exports, ["FolderCustomModule"], () => require("./folderCustomModule"));
 
+export { FolderNotificationConfigArgs, FolderNotificationConfigState } from "./folderNotificationConfig";
+export type FolderNotificationConfig = import("./folderNotificationConfig").FolderNotificationConfig;
+export const FolderNotificationConfig: typeof import("./folderNotificationConfig").FolderNotificationConfig = null as any;
+utilities.lazyLoad(exports, ["FolderNotificationConfig"], () => require("./folderNotificationConfig"));
+
 export { GetSourceIamPolicyArgs, GetSourceIamPolicyResult, GetSourceIamPolicyOutputArgs } from "./getSourceIamPolicy";
 export const getSourceIamPolicy: typeof import("./getSourceIamPolicy").getSourceIamPolicy = null as any;
 export const getSourceIamPolicyOutput: typeof import("./getSourceIamPolicy").getSourceIamPolicyOutput = null as any;
@@ -110,6 +115,11 @@ export type V2FolderMuteConfig = import("./v2folderMuteConfig").V2FolderMuteConf
 export const V2FolderMuteConfig: typeof import("./v2folderMuteConfig").V2FolderMuteConfig = null as any;
 utilities.lazyLoad(exports, ["V2FolderMuteConfig"], () => require("./v2folderMuteConfig"));
 
+export { V2FolderNotificationConfigArgs, V2FolderNotificationConfigState } from "./v2folderNotificationConfig";
+export type V2FolderNotificationConfig = import("./v2folderNotificationConfig").V2FolderNotificationConfig;
+export const V2FolderNotificationConfig: typeof import("./v2folderNotificationConfig").V2FolderNotificationConfig = null as any;
+utilities.lazyLoad(exports, ["V2FolderNotificationConfig"], () => require("./v2folderNotificationConfig"));
+
 export { V2OrganizationMuteConfigArgs, V2OrganizationMuteConfigState } from "./v2organizationMuteConfig";
 export type V2OrganizationMuteConfig = import("./v2organizationMuteConfig").V2OrganizationMuteConfig;
 export const V2OrganizationMuteConfig: typeof import("./v2organizationMuteConfig").V2OrganizationMuteConfig = null as any;
@@ -159,6 +169,8 @@ const _module = {
                 return new EventThreatDetectionCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/folderCustomModule:FolderCustomModule":
                 return new FolderCustomModule(name, <any>undefined, { urn })
+            case "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig":
+                return new FolderNotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
                 return new InstanceIamBinding(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
@@ -193,6 +205,8 @@ const _module = {
                 return new SourceIamPolicy(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig":
                 return new V2FolderMuteConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig":
+                return new V2FolderNotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
                 return new V2OrganizationMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
@@ -216,6 +230,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/eventThreatDetectionCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderCustomModule", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderNotificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamPolicy", _module)
@@ -233,6 +248,7 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", 
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderMuteConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderNotificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationNotificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSource", _module)

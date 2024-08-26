@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             EnvironmentVariables = 
     ///             {
     ///                 { "SERVICE_CONFIG_TEST", "config_test" },
+    ///                 { "SERVICE_CONFIG_DIFF_TEST", account.Email },
     ///             },
     ///             IngressSettings = "ALLOW_INTERNAL_ONLY",
     ///             AllTrafficOnLatestRevision = true,

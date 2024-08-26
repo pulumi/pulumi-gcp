@@ -365,6 +365,15 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Controls the removal behavior of secondary_ip_range.
+     * When false, removing secondaryIpRange from config will not produce a diff as
+     * the provider will default to the API's value.
+     * When true, the provider will treat removing secondaryIpRange as sending an
+     * empty list of secondary IP ranges to the API.
+     * Defaults to false.
+     */
+    public readonly sendSecondaryIpRangeIfEmpty!: pulumi.Output<boolean | undefined>;
+    /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -405,6 +414,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["secondaryIpRanges"] = state ? state.secondaryIpRanges : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sendSecondaryIpRangeIfEmpty"] = state ? state.sendSecondaryIpRangeIfEmpty : undefined;
             resourceInputs["stackType"] = state ? state.stackType : undefined;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
@@ -429,6 +439,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
+            resourceInputs["sendSecondaryIpRangeIfEmpty"] = args ? args.sendSecondaryIpRangeIfEmpty : undefined;
             resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -576,6 +587,15 @@ export interface SubnetworkState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * Controls the removal behavior of secondary_ip_range.
+     * When false, removing secondaryIpRange from config will not produce a diff as
+     * the provider will default to the API's value.
+     * When true, the provider will treat removing secondaryIpRange as sending an
+     * empty list of secondary IP ranges to the API.
+     * Defaults to false.
+     */
+    sendSecondaryIpRangeIfEmpty?: pulumi.Input<boolean>;
+    /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -689,6 +709,15 @@ export interface SubnetworkArgs {
      * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
+    /**
+     * Controls the removal behavior of secondary_ip_range.
+     * When false, removing secondaryIpRange from config will not produce a diff as
+     * the provider will default to the API's value.
+     * When true, the provider will treat removing secondaryIpRange as sending an
+     * empty list of secondary IP ranges to the API.
+     * Defaults to false.
+     */
+    sendSecondaryIpRangeIfEmpty?: pulumi.Input<boolean>;
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.

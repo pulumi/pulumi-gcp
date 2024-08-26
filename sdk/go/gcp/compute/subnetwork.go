@@ -428,6 +428,13 @@ type Subnetwork struct {
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayOutput `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Controls the removal behavior of secondary_ip_range.
+	// When false, removing secondaryIpRange from config will not produce a diff as
+	// the provider will default to the API's value.
+	// When true, the provider will treat removing secondaryIpRange as sending an
+	// empty list of secondary IP ranges to the API.
+	// Defaults to false.
+	SendSecondaryIpRangeIfEmpty pulumi.BoolPtrOutput `pulumi:"sendSecondaryIpRangeIfEmpty"`
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -556,6 +563,13 @@ type subnetworkState struct {
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Controls the removal behavior of secondary_ip_range.
+	// When false, removing secondaryIpRange from config will not produce a diff as
+	// the provider will default to the API's value.
+	// When true, the provider will treat removing secondaryIpRange as sending an
+	// empty list of secondary IP ranges to the API.
+	// Defaults to false.
+	SendSecondaryIpRangeIfEmpty *bool `pulumi:"sendSecondaryIpRangeIfEmpty"`
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -649,6 +663,13 @@ type SubnetworkState struct {
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Controls the removal behavior of secondary_ip_range.
+	// When false, removing secondaryIpRange from config will not produce a diff as
+	// the provider will default to the API's value.
+	// When true, the provider will treat removing secondaryIpRange as sending an
+	// empty list of secondary IP ranges to the API.
+	// Defaults to false.
+	SendSecondaryIpRangeIfEmpty pulumi.BoolPtrInput
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -731,6 +752,13 @@ type subnetworkArgs struct {
 	// to either primary or secondary ranges.
 	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
+	// Controls the removal behavior of secondary_ip_range.
+	// When false, removing secondaryIpRange from config will not produce a diff as
+	// the provider will default to the API's value.
+	// When true, the provider will treat removing secondaryIpRange as sending an
+	// empty list of secondary IP ranges to the API.
+	// Defaults to false.
+	SendSecondaryIpRangeIfEmpty *bool `pulumi:"sendSecondaryIpRangeIfEmpty"`
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -810,6 +838,13 @@ type SubnetworkArgs struct {
 	// to either primary or secondary ranges.
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
+	// Controls the removal behavior of secondary_ip_range.
+	// When false, removing secondaryIpRange from config will not produce a diff as
+	// the provider will default to the API's value.
+	// When true, the provider will treat removing secondaryIpRange as sending an
+	// empty list of secondary IP ranges to the API.
+	// Defaults to false.
+	SendSecondaryIpRangeIfEmpty pulumi.BoolPtrInput
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -1050,6 +1085,16 @@ func (o SubnetworkOutput) SecondaryIpRanges() SubnetworkSecondaryIpRangeArrayOut
 // The URI of the created resource.
 func (o SubnetworkOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Controls the removal behavior of secondary_ip_range.
+// When false, removing secondaryIpRange from config will not produce a diff as
+// the provider will default to the API's value.
+// When true, the provider will treat removing secondaryIpRange as sending an
+// empty list of secondary IP ranges to the API.
+// Defaults to false.
+func (o SubnetworkOutput) SendSecondaryIpRangeIfEmpty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.BoolPtrOutput { return v.SendSecondaryIpRangeIfEmpty }).(pulumi.BoolPtrOutput)
 }
 
 // The stack type for this subnet to identify whether the IPv6 feature is enabled or not.

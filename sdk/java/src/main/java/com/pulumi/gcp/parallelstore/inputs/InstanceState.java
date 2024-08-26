@@ -18,7 +18,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * List of access_points.
+     * Output only. List of access_points.
      * Contains a list of IPv4 addresses used for client side configuration.
      * 
      */
@@ -26,7 +26,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> accessPoints;
 
     /**
-     * @return List of access_points.
+     * @return Output only. List of access_points.
      * Contains a list of IPv4 addresses used for client side configuration.
      * 
      */
@@ -35,14 +35,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      * 
      */
     @Import(name="capacityGib")
     private @Nullable Output<String> capacityGib;
 
     /**
-     * @return Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * @return Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      * 
      */
     public Optional<Output<String>> capacityGib() {
@@ -95,6 +95,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     * 
+     */
+    @Import(name="directoryStripeLevel")
+    private @Nullable Output<String> directoryStripeLevel;
+
+    /**
+     * @return Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     * 
+     */
+    public Optional<Output<String>> directoryStripeLevel() {
+        return Optional.ofNullable(this.directoryStripeLevel);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -128,6 +157,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> effectiveReservedIpRange() {
         return Optional.ofNullable(this.effectiveReservedIpRange);
+    }
+
+    /**
+     * Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     * 
+     */
+    @Import(name="fileStripeLevel")
+    private @Nullable Output<String> fileStripeLevel;
+
+    /**
+     * @return Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     * 
+     */
+    public Optional<Output<String>> fileStripeLevel() {
+        return Optional.ofNullable(this.fileStripeLevel);
     }
 
     /**
@@ -228,7 +286,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the instance, in the format
+     * Identifier. The resource name of the instance, in the format
      * `projects/{project}/locations/{location}/instances/{instance_id}`
      * 
      */
@@ -236,7 +294,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the instance, in the format
+     * @return Identifier. The resource name of the instance, in the format
      * `projects/{project}/locations/{location}/instances/{instance_id}`
      * 
      */
@@ -326,6 +384,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * ACTIVE
      * DELETING
      * FAILED
+     * UPGRADING
      * 
      */
     @Import(name="state")
@@ -339,6 +398,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * ACTIVE
      * DELETING
      * FAILED
+     * UPGRADING
      * 
      */
     public Optional<Output<String>> state() {
@@ -368,8 +428,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.daosVersion = $.daosVersion;
         this.description = $.description;
+        this.directoryStripeLevel = $.directoryStripeLevel;
         this.effectiveLabels = $.effectiveLabels;
         this.effectiveReservedIpRange = $.effectiveReservedIpRange;
+        this.fileStripeLevel = $.fileStripeLevel;
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
@@ -401,7 +463,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPoints List of access_points.
+         * @param accessPoints Output only. List of access_points.
          * Contains a list of IPv4 addresses used for client side configuration.
          * 
          * @return builder
@@ -413,7 +475,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPoints List of access_points.
+         * @param accessPoints Output only. List of access_points.
          * Contains a list of IPv4 addresses used for client side configuration.
          * 
          * @return builder
@@ -424,7 +486,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPoints List of access_points.
+         * @param accessPoints Output only. List of access_points.
          * Contains a list of IPv4 addresses used for client side configuration.
          * 
          * @return builder
@@ -435,7 +497,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacityGib Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+         * @param capacityGib Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
          * 
          * @return builder
          * 
@@ -446,7 +508,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacityGib Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+         * @param capacityGib Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
          * 
          * @return builder
          * 
@@ -519,6 +581,41 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param directoryStripeLevel Stripe level for directories.
+         * MIN when directory has a small number of files.
+         * MAX when directory has a large number of files.
+         * Possible values:
+         * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+         * DIRECTORY_STRIPE_LEVEL_MIN
+         * DIRECTORY_STRIPE_LEVEL_BALANCED
+         * DIRECTORY_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryStripeLevel(@Nullable Output<String> directoryStripeLevel) {
+            $.directoryStripeLevel = directoryStripeLevel;
+            return this;
+        }
+
+        /**
+         * @param directoryStripeLevel Stripe level for directories.
+         * MIN when directory has a small number of files.
+         * MAX when directory has a large number of files.
+         * Possible values:
+         * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+         * DIRECTORY_STRIPE_LEVEL_MIN
+         * DIRECTORY_STRIPE_LEVEL_BALANCED
+         * DIRECTORY_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryStripeLevel(String directoryStripeLevel) {
+            return directoryStripeLevel(Output.of(directoryStripeLevel));
+        }
+
+        /**
          * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
          * @return builder
@@ -564,6 +661,41 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveReservedIpRange(String effectiveReservedIpRange) {
             return effectiveReservedIpRange(Output.of(effectiveReservedIpRange));
+        }
+
+        /**
+         * @param fileStripeLevel Stripe level for files.
+         * MIN better suited for small size files.
+         * MAX higher throughput performance for larger files.
+         * Possible values:
+         * FILE_STRIPE_LEVEL_UNSPECIFIED
+         * FILE_STRIPE_LEVEL_MIN
+         * FILE_STRIPE_LEVEL_BALANCED
+         * FILE_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileStripeLevel(@Nullable Output<String> fileStripeLevel) {
+            $.fileStripeLevel = fileStripeLevel;
+            return this;
+        }
+
+        /**
+         * @param fileStripeLevel Stripe level for files.
+         * MIN better suited for small size files.
+         * MAX higher throughput performance for larger files.
+         * Possible values:
+         * FILE_STRIPE_LEVEL_UNSPECIFIED
+         * FILE_STRIPE_LEVEL_MIN
+         * FILE_STRIPE_LEVEL_BALANCED
+         * FILE_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileStripeLevel(String fileStripeLevel) {
+            return fileStripeLevel(Output.of(fileStripeLevel));
         }
 
         /**
@@ -682,7 +814,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the instance, in the format
+         * @param name Identifier. The resource name of the instance, in the format
          * `projects/{project}/locations/{location}/instances/{instance_id}`
          * 
          * @return builder
@@ -694,7 +826,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the instance, in the format
+         * @param name Identifier. The resource name of the instance, in the format
          * `projects/{project}/locations/{location}/instances/{instance_id}`
          * 
          * @return builder
@@ -810,6 +942,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * ACTIVE
          * DELETING
          * FAILED
+         * UPGRADING
          * 
          * @return builder
          * 
@@ -827,6 +960,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * ACTIVE
          * DELETING
          * FAILED
+         * UPGRADING
          * 
          * @return builder
          * 

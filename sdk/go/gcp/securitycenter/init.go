@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EventThreatDetectionCustomModule{}
 	case "gcp:securitycenter/folderCustomModule:FolderCustomModule":
 		r = &FolderCustomModule{}
+	case "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig":
+		r = &FolderNotificationConfig{}
 	case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
 		r = &InstanceIamBinding{}
 	case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
@@ -59,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SourceIamPolicy{}
 	case "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig":
 		r = &V2FolderMuteConfig{}
+	case "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig":
+		r = &V2FolderNotificationConfig{}
 	case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
 		r = &V2OrganizationMuteConfig{}
 	case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
@@ -96,6 +100,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/folderCustomModule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/folderNotificationConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -181,6 +190,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/v2FolderMuteConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2FolderNotificationConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

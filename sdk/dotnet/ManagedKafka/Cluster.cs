@@ -195,7 +195,7 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -321,7 +321,7 @@ namespace Pulumi.Gcp.ManagedKafka
         }
 
         /// <summary>
-        /// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.ManagedKafka
         }
 
         /// <summary>
-        /// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

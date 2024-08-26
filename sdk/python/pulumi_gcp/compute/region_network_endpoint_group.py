@@ -646,6 +646,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             version_id="v1",
             service="appengine-network-endpoint-group",
             runtime="nodejs",
+            flexible_runtime_settings={
+                "operating_system": "ubuntu22",
+                "runtime_version": "20",
+            },
             entrypoint={
                 "shell": "node ./app.js",
             },
@@ -986,6 +990,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             version_id="v1",
             service="appengine-network-endpoint-group",
             runtime="nodejs",
+            flexible_runtime_settings={
+                "operating_system": "ubuntu22",
+                "runtime_version": "20",
+            },
             entrypoint={
                 "shell": "node ./app.js",
             },

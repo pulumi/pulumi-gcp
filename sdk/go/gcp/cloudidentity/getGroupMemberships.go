@@ -15,6 +15,12 @@ import (
 //
 // https://cloud.google.com/identity/docs/concepts/overview#memberships
 //
+// To get more information about GroupMembership, see:
+//
+// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+//
 // ## Example Usage
 func GetGroupMemberships(ctx *pulumi.Context, args *GetGroupMembershipsArgs, opts ...pulumi.InvokeOption) (*GetGroupMembershipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

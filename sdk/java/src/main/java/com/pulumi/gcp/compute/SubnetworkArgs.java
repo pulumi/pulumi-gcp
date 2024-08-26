@@ -328,6 +328,31 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Controls the removal behavior of secondary_ip_range.
+     * When false, removing secondary_ip_range from config will not produce a diff as
+     * the provider will default to the API&#39;s value.
+     * When true, the provider will treat removing secondary_ip_range as sending an
+     * empty list of secondary IP ranges to the API.
+     * Defaults to false.
+     * 
+     */
+    @Import(name="sendSecondaryIpRangeIfEmpty")
+    private @Nullable Output<Boolean> sendSecondaryIpRangeIfEmpty;
+
+    /**
+     * @return Controls the removal behavior of secondary_ip_range.
+     * When false, removing secondary_ip_range from config will not produce a diff as
+     * the provider will default to the API&#39;s value.
+     * When true, the provider will treat removing secondary_ip_range as sending an
+     * empty list of secondary IP ranges to the API.
+     * Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> sendSecondaryIpRangeIfEmpty() {
+        return Optional.ofNullable(this.sendSecondaryIpRangeIfEmpty);
+    }
+
+    /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -364,6 +389,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.role = $.role;
         this.secondaryIpRanges = $.secondaryIpRanges;
+        this.sendSecondaryIpRangeIfEmpty = $.sendSecondaryIpRangeIfEmpty;
         this.stackType = $.stackType;
     }
 
@@ -794,6 +820,37 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secondaryIpRanges(SubnetworkSecondaryIpRangeArgs... secondaryIpRanges) {
             return secondaryIpRanges(List.of(secondaryIpRanges));
+        }
+
+        /**
+         * @param sendSecondaryIpRangeIfEmpty Controls the removal behavior of secondary_ip_range.
+         * When false, removing secondary_ip_range from config will not produce a diff as
+         * the provider will default to the API&#39;s value.
+         * When true, the provider will treat removing secondary_ip_range as sending an
+         * empty list of secondary IP ranges to the API.
+         * Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendSecondaryIpRangeIfEmpty(@Nullable Output<Boolean> sendSecondaryIpRangeIfEmpty) {
+            $.sendSecondaryIpRangeIfEmpty = sendSecondaryIpRangeIfEmpty;
+            return this;
+        }
+
+        /**
+         * @param sendSecondaryIpRangeIfEmpty Controls the removal behavior of secondary_ip_range.
+         * When false, removing secondary_ip_range from config will not produce a diff as
+         * the provider will default to the API&#39;s value.
+         * When true, the provider will treat removing secondary_ip_range as sending an
+         * empty list of secondary IP ranges to the API.
+         * Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendSecondaryIpRangeIfEmpty(Boolean sendSecondaryIpRangeIfEmpty) {
+            return sendSecondaryIpRangeIfEmpty(Output.of(sendSecondaryIpRangeIfEmpty));
         }
 
         /**

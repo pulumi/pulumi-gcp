@@ -13,9 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceFromTemplateConfidentialInstanceConfig {
     /**
-     * @return Specifies which confidential computing technology to use.
-     * 								This could be one of the following values: SEV, SEV_SNP.
-     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * @return The confidential computing technology the instance uses.
+     * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
      * 
      */
     private @Nullable String confidentialInstanceType;
@@ -27,9 +28,10 @@ public final class InstanceFromTemplateConfidentialInstanceConfig {
 
     private InstanceFromTemplateConfidentialInstanceConfig() {}
     /**
-     * @return Specifies which confidential computing technology to use.
-     * 								This could be one of the following values: SEV, SEV_SNP.
-     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * @return The confidential computing technology the instance uses.
+     * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
      * 
      */
     public Optional<String> confidentialInstanceType() {

@@ -226,7 +226,8 @@ export class AttachedCluster extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
-     * "eks", "aks".
+     * "eks", "aks", "generic". The generic distribution provides the ability to register
+     * or migrate any CNCF conformant cluster.
      */
     public readonly distribution!: pulumi.Output<string>;
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
@@ -433,7 +434,8 @@ export interface AttachedClusterState {
     description?: pulumi.Input<string>;
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
-     * "eks", "aks".
+     * "eks", "aks", "generic". The generic distribution provides the ability to register
+     * or migrate any CNCF conformant cluster.
      */
     distribution?: pulumi.Input<string>;
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -545,7 +547,8 @@ export interface AttachedClusterArgs {
     description?: pulumi.Input<string>;
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
-     * "eks", "aks".
+     * "eks", "aks", "generic". The generic distribution provides the ability to register
+     * or migrate any CNCF conformant cluster.
      */
     distribution: pulumi.Input<string>;
     /**

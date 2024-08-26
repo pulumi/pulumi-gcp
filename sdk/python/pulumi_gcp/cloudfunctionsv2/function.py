@@ -579,6 +579,7 @@ class Function(pulumi.CustomResource):
                 "available_cpu": "4",
                 "environment_variables": {
                     "servic_e__confi_g__test": "config_test",
+                    "servic_e__confi_g__dif_f__test": account.email,
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -1384,6 +1385,7 @@ class Function(pulumi.CustomResource):
                 "available_cpu": "4",
                 "environment_variables": {
                     "servic_e__confi_g__test": "config_test",
+                    "servic_e__confi_g__dif_f__test": account.email,
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,

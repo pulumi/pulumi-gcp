@@ -16,7 +16,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
     public static final ClusterGcpConfigAccessConfigArgs Empty = new ClusterGcpConfigAccessConfigArgs();
 
     /**
-     * Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+     * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
     private Output<List<ClusterGcpConfigAccessConfigNetworkConfigArgs>> networkConfigs;
 
     /**
-     * @return Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -80,7 +80,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
          * Structure is documented below.
          * 
          * @return builder

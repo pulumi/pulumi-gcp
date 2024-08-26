@@ -73,14 +73,14 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * Configuration for Confidential Nodes feature. Structure is documented below.
      * 
      */
     @Import(name="confidentialNodes")
     private @Nullable Output<ClusterNodePoolNodeConfigConfidentialNodesArgs> confidentialNodes;
 
     /**
-     * @return Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * @return Configuration for Confidential Nodes feature. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolNodeConfigConfidentialNodesArgs>> confidentialNodes() {
@@ -846,7 +846,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param confidentialNodes Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         * @param confidentialNodes Configuration for Confidential Nodes feature. Structure is documented below.
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param confidentialNodes Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         * @param confidentialNodes Configuration for Confidential Nodes feature. Structure is documented below.
          * 
          * @return builder
          * 

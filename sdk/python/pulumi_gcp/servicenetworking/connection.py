@@ -22,7 +22,8 @@ class ConnectionArgs:
                  network: pulumi.Input[str],
                  reserved_peering_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service: pulumi.Input[str],
-                 deletion_policy: Optional[pulumi.Input[str]] = None):
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
+                 update_on_creation_fail: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
@@ -32,12 +33,15 @@ class ConnectionArgs:
         :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
+        :param pulumi.Input[bool] update_on_creation_fail: When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
         pulumi.set(__self__, "service", service)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if update_on_creation_fail is not None:
+            pulumi.set(__self__, "update_on_creation_fail", update_on_creation_fail)
 
     @property
     @pulumi.getter
@@ -88,6 +92,18 @@ class ConnectionArgs:
     def deletion_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "deletion_policy", value)
 
+    @property
+    @pulumi.getter(name="updateOnCreationFail")
+    def update_on_creation_fail(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+        """
+        return pulumi.get(self, "update_on_creation_fail")
+
+    @update_on_creation_fail.setter
+    def update_on_creation_fail(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_on_creation_fail", value)
+
 
 @pulumi.input_type
 class _ConnectionState:
@@ -96,7 +112,8 @@ class _ConnectionState:
                  network: Optional[pulumi.Input[str]] = None,
                  peering: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service: Optional[pulumi.Input[str]] = None):
+                 service: Optional[pulumi.Input[str]] = None,
+                 update_on_creation_fail: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
@@ -107,6 +124,7 @@ class _ConnectionState:
         :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
+        :param pulumi.Input[bool] update_on_creation_fail: When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -118,6 +136,8 @@ class _ConnectionState:
             pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if update_on_creation_fail is not None:
+            pulumi.set(__self__, "update_on_creation_fail", update_on_creation_fail)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -180,6 +200,18 @@ class _ConnectionState:
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
 
+    @property
+    @pulumi.getter(name="updateOnCreationFail")
+    def update_on_creation_fail(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+        """
+        return pulumi.get(self, "update_on_creation_fail")
+
+    @update_on_creation_fail.setter
+    def update_on_creation_fail(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_on_creation_fail", value)
+
 
 class Connection(pulumi.CustomResource):
     @overload
@@ -190,6 +222,7 @@ class Connection(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 update_on_creation_fail: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Manages a private VPC connection with a GCP service provider. For more information see
@@ -252,6 +285,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
+        :param pulumi.Input[bool] update_on_creation_fail: When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         ...
     @overload
@@ -330,6 +364,7 @@ class Connection(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 update_on_creation_fail: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,6 +384,7 @@ class Connection(pulumi.CustomResource):
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
+            __props__.__dict__["update_on_creation_fail"] = update_on_creation_fail
             __props__.__dict__["peering"] = None
         super(Connection, __self__).__init__(
             'gcp:servicenetworking/connection:Connection',
@@ -364,7 +400,8 @@ class Connection(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             peering: Optional[pulumi.Input[str]] = None,
             reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            service: Optional[pulumi.Input[str]] = None) -> 'Connection':
+            service: Optional[pulumi.Input[str]] = None,
+            update_on_creation_fail: Optional[pulumi.Input[bool]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -380,6 +417,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
+        :param pulumi.Input[bool] update_on_creation_fail: When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -390,6 +428,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["peering"] = peering
         __props__.__dict__["reserved_peering_ranges"] = reserved_peering_ranges
         __props__.__dict__["service"] = service
+        __props__.__dict__["update_on_creation_fail"] = update_on_creation_fail
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -432,4 +471,12 @@ class Connection(pulumi.CustomResource):
         'servicenetworking.googleapis.com'.
         """
         return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="updateOnCreationFail")
+    def update_on_creation_fail(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+        """
+        return pulumi.get(self, "update_on_creation_fail")
 

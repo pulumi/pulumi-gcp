@@ -15,6 +15,11 @@ export type DataStore = import("./dataStore").DataStore;
 export const DataStore: typeof import("./dataStore").DataStore = null as any;
 utilities.lazyLoad(exports, ["DataStore"], () => require("./dataStore"));
 
+export { SchemaArgs, SchemaState } from "./schema";
+export type Schema = import("./schema").Schema;
+export const Schema: typeof import("./schema").Schema = null as any;
+utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+
 export { SearchEngineArgs, SearchEngineState } from "./searchEngine";
 export type SearchEngine = import("./searchEngine").SearchEngine;
 export const SearchEngine: typeof import("./searchEngine").SearchEngine = null as any;
@@ -29,6 +34,8 @@ const _module = {
                 return new ChatEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/dataStore:DataStore":
                 return new DataStore(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/schema:Schema":
+                return new Schema(name, <any>undefined, { urn })
             case "gcp:discoveryengine/searchEngine:SearchEngine":
                 return new SearchEngine(name, <any>undefined, { urn })
             default:
@@ -38,4 +45,5 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/chatEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngine", _module)

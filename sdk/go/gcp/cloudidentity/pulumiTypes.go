@@ -1735,6 +1735,382 @@ func (o GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput) Index(i pulumi
 	}).(GetGroupMembershipsMembershipRoleExpiryDetailOutput)
 }
 
+type GetGroupTransitiveMembershipsMembership struct {
+	// Resource name for this member.
+	Member string `pulumi:"member"`
+	// EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+	PreferredMemberKeys []GetGroupTransitiveMembershipsMembershipPreferredMemberKey `pulumi:"preferredMemberKeys"`
+	// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+	RelationType string `pulumi:"relationType"`
+	// The membership role details
+	Roles []GetGroupTransitiveMembershipsMembershipRole `pulumi:"roles"`
+}
+
+// GetGroupTransitiveMembershipsMembershipInput is an input type that accepts GetGroupTransitiveMembershipsMembershipArgs and GetGroupTransitiveMembershipsMembershipOutput values.
+// You can construct a concrete instance of `GetGroupTransitiveMembershipsMembershipInput` via:
+//
+//	GetGroupTransitiveMembershipsMembershipArgs{...}
+type GetGroupTransitiveMembershipsMembershipInput interface {
+	pulumi.Input
+
+	ToGetGroupTransitiveMembershipsMembershipOutput() GetGroupTransitiveMembershipsMembershipOutput
+	ToGetGroupTransitiveMembershipsMembershipOutputWithContext(context.Context) GetGroupTransitiveMembershipsMembershipOutput
+}
+
+type GetGroupTransitiveMembershipsMembershipArgs struct {
+	// Resource name for this member.
+	Member pulumi.StringInput `pulumi:"member"`
+	// EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+	PreferredMemberKeys GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayInput `pulumi:"preferredMemberKeys"`
+	// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+	RelationType pulumi.StringInput `pulumi:"relationType"`
+	// The membership role details
+	Roles GetGroupTransitiveMembershipsMembershipRoleArrayInput `pulumi:"roles"`
+}
+
+func (GetGroupTransitiveMembershipsMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupTransitiveMembershipsMembership)(nil)).Elem()
+}
+
+func (i GetGroupTransitiveMembershipsMembershipArgs) ToGetGroupTransitiveMembershipsMembershipOutput() GetGroupTransitiveMembershipsMembershipOutput {
+	return i.ToGetGroupTransitiveMembershipsMembershipOutputWithContext(context.Background())
+}
+
+func (i GetGroupTransitiveMembershipsMembershipArgs) ToGetGroupTransitiveMembershipsMembershipOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupTransitiveMembershipsMembershipOutput)
+}
+
+// GetGroupTransitiveMembershipsMembershipArrayInput is an input type that accepts GetGroupTransitiveMembershipsMembershipArray and GetGroupTransitiveMembershipsMembershipArrayOutput values.
+// You can construct a concrete instance of `GetGroupTransitiveMembershipsMembershipArrayInput` via:
+//
+//	GetGroupTransitiveMembershipsMembershipArray{ GetGroupTransitiveMembershipsMembershipArgs{...} }
+type GetGroupTransitiveMembershipsMembershipArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupTransitiveMembershipsMembershipArrayOutput() GetGroupTransitiveMembershipsMembershipArrayOutput
+	ToGetGroupTransitiveMembershipsMembershipArrayOutputWithContext(context.Context) GetGroupTransitiveMembershipsMembershipArrayOutput
+}
+
+type GetGroupTransitiveMembershipsMembershipArray []GetGroupTransitiveMembershipsMembershipInput
+
+func (GetGroupTransitiveMembershipsMembershipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupTransitiveMembershipsMembership)(nil)).Elem()
+}
+
+func (i GetGroupTransitiveMembershipsMembershipArray) ToGetGroupTransitiveMembershipsMembershipArrayOutput() GetGroupTransitiveMembershipsMembershipArrayOutput {
+	return i.ToGetGroupTransitiveMembershipsMembershipArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupTransitiveMembershipsMembershipArray) ToGetGroupTransitiveMembershipsMembershipArrayOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupTransitiveMembershipsMembershipArrayOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipOutput struct{ *pulumi.OutputState }
+
+func (GetGroupTransitiveMembershipsMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupTransitiveMembershipsMembership)(nil)).Elem()
+}
+
+func (o GetGroupTransitiveMembershipsMembershipOutput) ToGetGroupTransitiveMembershipsMembershipOutput() GetGroupTransitiveMembershipsMembershipOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipOutput) ToGetGroupTransitiveMembershipsMembershipOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipOutput {
+	return o
+}
+
+// Resource name for this member.
+func (o GetGroupTransitiveMembershipsMembershipOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) string { return v.Member }).(pulumi.StringOutput)
+}
+
+// EntityKey of the member. Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.
+func (o GetGroupTransitiveMembershipsMembershipOutput) PreferredMemberKeys() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput {
+	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) []GetGroupTransitiveMembershipsMembershipPreferredMemberKey {
+		return v.PreferredMemberKeys
+	}).(GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput)
+}
+
+// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT
+func (o GetGroupTransitiveMembershipsMembershipOutput) RelationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) string { return v.RelationType }).(pulumi.StringOutput)
+}
+
+// The membership role details
+func (o GetGroupTransitiveMembershipsMembershipOutput) Roles() GetGroupTransitiveMembershipsMembershipRoleArrayOutput {
+	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembership) []GetGroupTransitiveMembershipsMembershipRole {
+		return v.Roles
+	}).(GetGroupTransitiveMembershipsMembershipRoleArrayOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupTransitiveMembershipsMembershipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupTransitiveMembershipsMembership)(nil)).Elem()
+}
+
+func (o GetGroupTransitiveMembershipsMembershipArrayOutput) ToGetGroupTransitiveMembershipsMembershipArrayOutput() GetGroupTransitiveMembershipsMembershipArrayOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipArrayOutput) ToGetGroupTransitiveMembershipsMembershipArrayOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipArrayOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupTransitiveMembershipsMembershipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupTransitiveMembershipsMembership {
+		return vs[0].([]GetGroupTransitiveMembershipsMembership)[vs[1].(int)]
+	}).(GetGroupTransitiveMembershipsMembershipOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipPreferredMemberKey struct {
+	// The ID of the entity.
+	//
+	// For Google-managed entities, the id must be the email address of an existing
+	// group or user.
+	//
+	// For external-identity-mapped entities, the id must be a string conforming
+	// to the Identity Source's requirements.
+	//
+	// Must be unique within a namespace.
+	Id string `pulumi:"id"`
+	// The namespace in which the entity exists.
+	//
+	// If not specified, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	//
+	// If specified, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of 'identitysources/{identity_source_id}'.
+	Namespace string `pulumi:"namespace"`
+}
+
+// GetGroupTransitiveMembershipsMembershipPreferredMemberKeyInput is an input type that accepts GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs and GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput values.
+// You can construct a concrete instance of `GetGroupTransitiveMembershipsMembershipPreferredMemberKeyInput` via:
+//
+//	GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs{...}
+type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyInput interface {
+	pulumi.Input
+
+	ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput
+	ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutputWithContext(context.Context) GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput
+}
+
+type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs struct {
+	// The ID of the entity.
+	//
+	// For Google-managed entities, the id must be the email address of an existing
+	// group or user.
+	//
+	// For external-identity-mapped entities, the id must be a string conforming
+	// to the Identity Source's requirements.
+	//
+	// Must be unique within a namespace.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The namespace in which the entity exists.
+	//
+	// If not specified, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	//
+	// If specified, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of 'identitysources/{identity_source_id}'.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipPreferredMemberKey)(nil)).Elem()
+}
+
+func (i GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput {
+	return i.ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutputWithContext(context.Background())
+}
+
+func (i GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput)
+}
+
+// GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayInput is an input type that accepts GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArray and GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput values.
+// You can construct a concrete instance of `GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayInput` via:
+//
+//	GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArray{ GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs{...} }
+type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput
+	ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(context.Context) GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput
+}
+
+type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArray []GetGroupTransitiveMembershipsMembershipPreferredMemberKeyInput
+
+func (GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupTransitiveMembershipsMembershipPreferredMemberKey)(nil)).Elem()
+}
+
+func (i GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArray) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput {
+	return i.ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArray) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipPreferredMemberKey)(nil)).Elem()
+}
+
+func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput {
+	return o
+}
+
+// The ID of the entity.
+//
+// For Google-managed entities, the id must be the email address of an existing
+// group or user.
+//
+// For external-identity-mapped entities, the id must be a string conforming
+// to the Identity Source's requirements.
+//
+// Must be unique within a namespace.
+func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembershipPreferredMemberKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The namespace in which the entity exists.
+//
+// If not specified, the EntityKey represents a Google-managed entity
+// such as a Google user or a Google Group.
+//
+// If specified, the EntityKey represents an external-identity-mapped group.
+// The namespace must correspond to an identity source created in Admin Console
+// and must be in the form of 'identitysources/{identity_source_id}'.
+func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembershipPreferredMemberKey) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupTransitiveMembershipsMembershipPreferredMemberKey)(nil)).Elem()
+}
+
+func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput() GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput) ToGetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput) Index(i pulumi.IntInput) GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupTransitiveMembershipsMembershipPreferredMemberKey {
+		return vs[0].([]GetGroupTransitiveMembershipsMembershipPreferredMemberKey)[vs[1].(int)]
+	}).(GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipRole struct {
+	// The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+	Role string `pulumi:"role"`
+}
+
+// GetGroupTransitiveMembershipsMembershipRoleInput is an input type that accepts GetGroupTransitiveMembershipsMembershipRoleArgs and GetGroupTransitiveMembershipsMembershipRoleOutput values.
+// You can construct a concrete instance of `GetGroupTransitiveMembershipsMembershipRoleInput` via:
+//
+//	GetGroupTransitiveMembershipsMembershipRoleArgs{...}
+type GetGroupTransitiveMembershipsMembershipRoleInput interface {
+	pulumi.Input
+
+	ToGetGroupTransitiveMembershipsMembershipRoleOutput() GetGroupTransitiveMembershipsMembershipRoleOutput
+	ToGetGroupTransitiveMembershipsMembershipRoleOutputWithContext(context.Context) GetGroupTransitiveMembershipsMembershipRoleOutput
+}
+
+type GetGroupTransitiveMembershipsMembershipRoleArgs struct {
+	// The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetGroupTransitiveMembershipsMembershipRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipRole)(nil)).Elem()
+}
+
+func (i GetGroupTransitiveMembershipsMembershipRoleArgs) ToGetGroupTransitiveMembershipsMembershipRoleOutput() GetGroupTransitiveMembershipsMembershipRoleOutput {
+	return i.ToGetGroupTransitiveMembershipsMembershipRoleOutputWithContext(context.Background())
+}
+
+func (i GetGroupTransitiveMembershipsMembershipRoleArgs) ToGetGroupTransitiveMembershipsMembershipRoleOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupTransitiveMembershipsMembershipRoleOutput)
+}
+
+// GetGroupTransitiveMembershipsMembershipRoleArrayInput is an input type that accepts GetGroupTransitiveMembershipsMembershipRoleArray and GetGroupTransitiveMembershipsMembershipRoleArrayOutput values.
+// You can construct a concrete instance of `GetGroupTransitiveMembershipsMembershipRoleArrayInput` via:
+//
+//	GetGroupTransitiveMembershipsMembershipRoleArray{ GetGroupTransitiveMembershipsMembershipRoleArgs{...} }
+type GetGroupTransitiveMembershipsMembershipRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupTransitiveMembershipsMembershipRoleArrayOutput() GetGroupTransitiveMembershipsMembershipRoleArrayOutput
+	ToGetGroupTransitiveMembershipsMembershipRoleArrayOutputWithContext(context.Context) GetGroupTransitiveMembershipsMembershipRoleArrayOutput
+}
+
+type GetGroupTransitiveMembershipsMembershipRoleArray []GetGroupTransitiveMembershipsMembershipRoleInput
+
+func (GetGroupTransitiveMembershipsMembershipRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupTransitiveMembershipsMembershipRole)(nil)).Elem()
+}
+
+func (i GetGroupTransitiveMembershipsMembershipRoleArray) ToGetGroupTransitiveMembershipsMembershipRoleArrayOutput() GetGroupTransitiveMembershipsMembershipRoleArrayOutput {
+	return i.ToGetGroupTransitiveMembershipsMembershipRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupTransitiveMembershipsMembershipRoleArray) ToGetGroupTransitiveMembershipsMembershipRoleArrayOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupTransitiveMembershipsMembershipRoleArrayOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipRoleOutput struct{ *pulumi.OutputState }
+
+func (GetGroupTransitiveMembershipsMembershipRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipRole)(nil)).Elem()
+}
+
+func (o GetGroupTransitiveMembershipsMembershipRoleOutput) ToGetGroupTransitiveMembershipsMembershipRoleOutput() GetGroupTransitiveMembershipsMembershipRoleOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipRoleOutput) ToGetGroupTransitiveMembershipsMembershipRoleOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipRoleOutput {
+	return o
+}
+
+// The name of the TransitiveMembershipRole. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+func (o GetGroupTransitiveMembershipsMembershipRoleOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupTransitiveMembershipsMembershipRole) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetGroupTransitiveMembershipsMembershipRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupTransitiveMembershipsMembershipRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupTransitiveMembershipsMembershipRole)(nil)).Elem()
+}
+
+func (o GetGroupTransitiveMembershipsMembershipRoleArrayOutput) ToGetGroupTransitiveMembershipsMembershipRoleArrayOutput() GetGroupTransitiveMembershipsMembershipRoleArrayOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipRoleArrayOutput) ToGetGroupTransitiveMembershipsMembershipRoleArrayOutputWithContext(ctx context.Context) GetGroupTransitiveMembershipsMembershipRoleArrayOutput {
+	return o
+}
+
+func (o GetGroupTransitiveMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) GetGroupTransitiveMembershipsMembershipRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupTransitiveMembershipsMembershipRole {
+		return vs[0].([]GetGroupTransitiveMembershipsMembershipRole)[vs[1].(int)]
+	}).(GetGroupTransitiveMembershipsMembershipRoleOutput)
+}
+
 type GetGroupsGroup struct {
 	// Additional group keys associated with the Group
 	AdditionalGroupKeys []GetGroupsGroupAdditionalGroupKey `pulumi:"additionalGroupKeys"`
@@ -2215,6 +2591,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleExpiryDetailInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleExpiryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleExpiryDetailArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleExpiryDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipInput)(nil)).Elem(), GetGroupTransitiveMembershipsMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipArrayInput)(nil)).Elem(), GetGroupTransitiveMembershipsMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipPreferredMemberKeyInput)(nil)).Elem(), GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayInput)(nil)).Elem(), GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipRoleInput)(nil)).Elem(), GetGroupTransitiveMembershipsMembershipRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupTransitiveMembershipsMembershipRoleArrayInput)(nil)).Elem(), GetGroupTransitiveMembershipsMembershipRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupAdditionalGroupKeyInput)(nil)).Elem(), GetGroupsGroupAdditionalGroupKeyArgs{})
@@ -2244,6 +2626,12 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleExpiryDetailOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupTransitiveMembershipsMembershipOutput{})
+	pulumi.RegisterOutputType(GetGroupTransitiveMembershipsMembershipArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupTransitiveMembershipsMembershipPreferredMemberKeyOutput{})
+	pulumi.RegisterOutputType(GetGroupTransitiveMembershipsMembershipPreferredMemberKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupTransitiveMembershipsMembershipRoleOutput{})
+	pulumi.RegisterOutputType(GetGroupTransitiveMembershipsMembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupAdditionalGroupKeyOutput{})

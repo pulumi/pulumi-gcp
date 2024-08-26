@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public Input<bool>? DisablePodOverprovisioning { get; set; }
 
         /// <summary>
+        /// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+        /// </summary>
+        [Input("podSelectorLabel")]
+        public Input<string>? PodSelectorLabel { get; set; }
+
+        /// <summary>
         /// Required. Name of the Kubernetes Service.
         /// </summary>
         [Input("service", required: true)]

@@ -12,10 +12,13 @@ import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupPlainArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsPlainArgs;
+import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
+import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsPlainArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsPlainArgs;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupLookupResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsResult;
+import com.pulumi.gcp.cloudidentity.outputs.GetGroupTransitiveMembershipsResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupsResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -69,6 +72,12 @@ public final class CloudidentityFunctions {
      * 
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
      * 
+     * To get more information about GroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
      * ## Example Usage
      * 
      */
@@ -79,6 +88,12 @@ public final class CloudidentityFunctions {
      * Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
      * 
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
+     * 
+     * To get more information about GroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
      * 
      * ## Example Usage
      * 
@@ -91,6 +106,12 @@ public final class CloudidentityFunctions {
      * 
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
      * 
+     * To get more information about GroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
      * ## Example Usage
      * 
      */
@@ -102,11 +123,29 @@ public final class CloudidentityFunctions {
      * 
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
      * 
+     * To get more information about GroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
      * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupMembershipsResult> getGroupMembershipsPlain(GetGroupMembershipsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", TypeShape.of(GetGroupMembershipsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs args) {
+        return getGroupTransitiveMemberships(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGroupTransitiveMembershipsResult> getGroupTransitiveMembershipsPlain(GetGroupTransitiveMembershipsPlainArgs args) {
+        return getGroupTransitiveMembershipsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", TypeShape.of(GetGroupTransitiveMembershipsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGroupTransitiveMembershipsResult> getGroupTransitiveMembershipsPlain(GetGroupTransitiveMembershipsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", TypeShape.of(GetGroupTransitiveMembershipsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get list of the Cloud Identity Groups under a customer or namespace.

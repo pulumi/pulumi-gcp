@@ -79,6 +79,8 @@ import javax.annotation.Nullable;
  *             .description("test instance")
  *             .capacityGib(12000)
  *             .network(network.name())
+ *             .fileStripeLevel("FILE_STRIPE_LEVEL_MIN")
+ *             .directoryStripeLevel("DIRECTORY_STRIPE_LEVEL_MIN")
  *             .labels(Map.of("test", "value"))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
@@ -118,7 +120,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:parallelstore/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * List of access_points.
+     * Output only. List of access_points.
      * Contains a list of IPv4 addresses used for client side configuration.
      * 
      */
@@ -126,7 +128,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<List<String>> accessPoints;
 
     /**
-     * @return List of access_points.
+     * @return Output only. List of access_points.
      * Contains a list of IPv4 addresses used for client side configuration.
      * 
      */
@@ -134,14 +136,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.accessPoints;
     }
     /**
-     * Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      * 
      */
     @Export(name="capacityGib", refs={String.class}, tree="[0]")
     private Output<String> capacityGib;
 
     /**
-     * @return Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * @return Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      * 
      */
     public Output<String> capacityGib() {
@@ -190,6 +192,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     * 
+     */
+    @Export(name="directoryStripeLevel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> directoryStripeLevel;
+
+    /**
+     * @return Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     * 
+     */
+    public Output<Optional<String>> directoryStripeLevel() {
+        return Codegen.optional(this.directoryStripeLevel);
+    }
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -222,6 +252,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> effectiveReservedIpRange() {
         return this.effectiveReservedIpRange;
+    }
+    /**
+     * Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     * 
+     */
+    @Export(name="fileStripeLevel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> fileStripeLevel;
+
+    /**
+     * @return Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     * 
+     */
+    public Output<Optional<String>> fileStripeLevel() {
+        return Codegen.optional(this.fileStripeLevel);
     }
     /**
      * The logical name of the Parallelstore instance in the user project with the following restrictions:
@@ -318,7 +376,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The resource name of the instance, in the format
+     * Identifier. The resource name of the instance, in the format
      * `projects/{project}/locations/{location}/instances/{instance_id}`
      * 
      */
@@ -326,7 +384,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The resource name of the instance, in the format
+     * @return Identifier. The resource name of the instance, in the format
      * `projects/{project}/locations/{location}/instances/{instance_id}`
      * 
      */
@@ -411,6 +469,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ACTIVE
      * DELETING
      * FAILED
+     * UPGRADING
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -424,6 +483,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ACTIVE
      * DELETING
      * FAILED
+     * UPGRADING
      * 
      */
     public Output<String> state() {

@@ -116,6 +116,12 @@ namespace Pulumi.Gcp.ServiceNetworking
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+        /// </summary>
+        [Output("updateOnCreationFail")]
+        public Output<bool?> UpdateOnCreationFail { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Connection resource with the given unique name, arguments, and options.
@@ -193,6 +199,12 @@ namespace Pulumi.Gcp.ServiceNetworking
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+        /// </summary>
+        [Input("updateOnCreationFail")]
+        public Input<bool>? UpdateOnCreationFail { get; set; }
+
         public ConnectionArgs()
         {
         }
@@ -237,6 +249,12 @@ namespace Pulumi.Gcp.ServiceNetworking
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
+
+        /// <summary>
+        /// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+        /// </summary>
+        [Input("updateOnCreationFail")]
+        public Input<bool>? UpdateOnCreationFail { get; set; }
 
         public ConnectionState()
         {

@@ -105,6 +105,10 @@ import * as utilities from "../utilities";
  *     versionId: "v1",
  *     service: "appengine-network-endpoint-group",
  *     runtime: "nodejs",
+ *     flexibleRuntimeSettings: {
+ *         operatingSystem: "ubuntu22",
+ *         runtimeVersion: "20",
+ *     },
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },

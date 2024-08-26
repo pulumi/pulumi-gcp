@@ -251,6 +251,13 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     password: "tf-test-my-password_77884",
  * });
+ * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
+ * const project = gcp.organizations.getProject({});
+ * const keySaUser = new gcp.projects.IAMMember("key_sa_user", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
+ * });
  * const bq_connection_cmek = new gcp.bigquery.Connection("bq-connection-cmek", {
  *     friendlyName: "👋",
  *     description: "a riveting description",

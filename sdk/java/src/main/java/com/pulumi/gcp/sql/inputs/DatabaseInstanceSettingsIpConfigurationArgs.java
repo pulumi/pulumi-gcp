@@ -137,6 +137,21 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
+     * Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+     * 
+     */
+    @Import(name="serverCaMode")
+    private @Nullable Output<String> serverCaMode;
+
+    /**
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+     * 
+     */
+    public Optional<Output<String>> serverCaMode() {
+        return Optional.ofNullable(this.serverCaMode);
+    }
+
+    /**
      * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
      * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
      * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
@@ -167,6 +182,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         this.privateNetwork = $.privateNetwork;
         this.pscConfigs = $.pscConfigs;
         this.requireSsl = $.requireSsl;
+        this.serverCaMode = $.serverCaMode;
         this.sslMode = $.sslMode;
     }
 
@@ -355,6 +371,27 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
         public Builder requireSsl(Boolean requireSsl) {
             return requireSsl(Output.of(requireSsl));
+        }
+
+        /**
+         * @param serverCaMode Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaMode(@Nullable Output<String> serverCaMode) {
+            $.serverCaMode = serverCaMode;
+            return this;
+        }
+
+        /**
+         * @param serverCaMode Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaMode(String serverCaMode) {
+            return serverCaMode(Output.of(serverCaMode));
         }
 
         /**

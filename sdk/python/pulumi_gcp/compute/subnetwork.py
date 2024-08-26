@@ -36,6 +36,7 @@ class SubnetworkArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
+                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
@@ -96,6 +97,12 @@ class SubnetworkArgs:
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
                Structure is documented below.
+        :param pulumi.Input[bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
+               When false, removing secondary_ip_range from config will not produce a diff as
+               the provider will default to the API's value.
+               When true, the provider will treat removing secondary_ip_range as sending an
+               empty list of secondary IP ranges to the API.
+               Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -128,6 +135,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
             pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
+        if send_secondary_ip_range_if_empty is not None:
+            pulumi.set(__self__, "send_secondary_ip_range_if_empty", send_secondary_ip_range_if_empty)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
 
@@ -354,6 +363,23 @@ class SubnetworkArgs:
         pulumi.set(self, "secondary_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="sendSecondaryIpRangeIfEmpty")
+    def send_secondary_ip_range_if_empty(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls the removal behavior of secondary_ip_range.
+        When false, removing secondary_ip_range from config will not produce a diff as
+        the provider will default to the API's value.
+        When true, the provider will treat removing secondary_ip_range as sending an
+        empty list of secondary IP ranges to the API.
+        Defaults to false.
+        """
+        return pulumi.get(self, "send_secondary_ip_range_if_empty")
+
+    @send_secondary_ip_range_if_empty.setter
+    def send_secondary_ip_range_if_empty(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_secondary_ip_range_if_empty", value)
+
+    @property
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -392,6 +418,7 @@ class _SubnetworkState:
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
@@ -459,6 +486,12 @@ class _SubnetworkState:
                to either primary or secondary ranges.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
+               When false, removing secondary_ip_range from config will not produce a diff as
+               the provider will default to the API's value.
+               When true, the provider will treat removing secondary_ip_range as sending an
+               empty list of secondary IP ranges to the API.
+               Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -508,6 +541,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if send_secondary_ip_range_if_empty is not None:
+            pulumi.set(__self__, "send_secondary_ip_range_if_empty", send_secondary_ip_range_if_empty)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
 
@@ -808,6 +843,23 @@ class _SubnetworkState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="sendSecondaryIpRangeIfEmpty")
+    def send_secondary_ip_range_if_empty(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls the removal behavior of secondary_ip_range.
+        When false, removing secondary_ip_range from config will not produce a diff as
+        the provider will default to the API's value.
+        When true, the provider will treat removing secondary_ip_range as sending an
+        empty list of secondary IP ranges to the API.
+        Defaults to false.
+        """
+        return pulumi.get(self, "send_secondary_ip_range_if_empty")
+
+    @send_secondary_ip_range_if_empty.setter
+    def send_secondary_ip_range_if_empty(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_secondary_ip_range_if_empty", value)
+
+    @property
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -842,6 +894,7 @@ class Subnetwork(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
+                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1090,6 +1143,12 @@ class Subnetwork(pulumi.CustomResource):
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
                Structure is documented below.
+        :param pulumi.Input[bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
+               When false, removing secondary_ip_range from config will not produce a diff as
+               the provider will default to the API's value.
+               When true, the provider will treat removing secondary_ip_range as sending an
+               empty list of secondary IP ranges to the API.
+               Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -1317,6 +1376,7 @@ class Subnetwork(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
+                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1346,6 +1406,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["role"] = role
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
+            __props__.__dict__["send_secondary_ip_range_if_empty"] = send_secondary_ip_range_if_empty
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -1384,6 +1445,7 @@ class Subnetwork(pulumi.CustomResource):
             role: Optional[pulumi.Input[str]] = None,
             secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
             stack_type: Optional[pulumi.Input[str]] = None) -> 'Subnetwork':
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
@@ -1456,6 +1518,12 @@ class Subnetwork(pulumi.CustomResource):
                to either primary or secondary ranges.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[bool] send_secondary_ip_range_if_empty: Controls the removal behavior of secondary_ip_range.
+               When false, removing secondary_ip_range from config will not produce a diff as
+               the provider will default to the API's value.
+               When true, the provider will treat removing secondary_ip_range as sending an
+               empty list of secondary IP ranges to the API.
+               Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -1485,6 +1553,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["send_secondary_ip_range_if_empty"] = send_secondary_ip_range_if_empty
         __props__.__dict__["stack_type"] = stack_type
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
 
@@ -1699,6 +1768,19 @@ class Subnetwork(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sendSecondaryIpRangeIfEmpty")
+    def send_secondary_ip_range_if_empty(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Controls the removal behavior of secondary_ip_range.
+        When false, removing secondary_ip_range from config will not produce a diff as
+        the provider will default to the API's value.
+        When true, the provider will treat removing secondary_ip_range as sending an
+        empty list of secondary IP ranges to the API.
+        Defaults to false.
+        """
+        return pulumi.get(self, "send_secondary_ip_range_if_empty")
 
     @property
     @pulumi.getter(name="stackType")

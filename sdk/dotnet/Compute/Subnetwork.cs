@@ -451,6 +451,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// Controls the removal behavior of secondary_ip_range.
+        /// When false, removing secondary_ip_range from config will not produce a diff as
+        /// the provider will default to the API's value.
+        /// When true, the provider will treat removing secondary_ip_range as sending an
+        /// empty list of secondary IP ranges to the API.
+        /// Defaults to false.
+        /// </summary>
+        [Output("sendSecondaryIpRangeIfEmpty")]
+        public Output<bool?> SendSecondaryIpRangeIfEmpty { get; private set; } = null!;
+
+        /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
         /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -643,6 +654,17 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Controls the removal behavior of secondary_ip_range.
+        /// When false, removing secondary_ip_range from config will not produce a diff as
+        /// the provider will default to the API's value.
+        /// When true, the provider will treat removing secondary_ip_range as sending an
+        /// empty list of secondary IP ranges to the API.
+        /// Defaults to false.
+        /// </summary>
+        [Input("sendSecondaryIpRangeIfEmpty")]
+        public Input<bool>? SendSecondaryIpRangeIfEmpty { get; set; }
+
+        /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
         /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -832,6 +854,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Controls the removal behavior of secondary_ip_range.
+        /// When false, removing secondary_ip_range from config will not produce a diff as
+        /// the provider will default to the API's value.
+        /// When true, the provider will treat removing secondary_ip_range as sending an
+        /// empty list of secondary IP ranges to the API.
+        /// Defaults to false.
+        /// </summary>
+        [Input("sendSecondaryIpRangeIfEmpty")]
+        public Input<bool>? SendSecondaryIpRangeIfEmpty { get; set; }
 
         /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.

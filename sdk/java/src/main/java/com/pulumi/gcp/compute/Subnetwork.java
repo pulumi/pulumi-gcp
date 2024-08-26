@@ -796,6 +796,30 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * Controls the removal behavior of secondary_ip_range.
+     * When false, removing secondary_ip_range from config will not produce a diff as
+     * the provider will default to the API&#39;s value.
+     * When true, the provider will treat removing secondary_ip_range as sending an
+     * empty list of secondary IP ranges to the API.
+     * Defaults to false.
+     * 
+     */
+    @Export(name="sendSecondaryIpRangeIfEmpty", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> sendSecondaryIpRangeIfEmpty;
+
+    /**
+     * @return Controls the removal behavior of secondary_ip_range.
+     * When false, removing secondary_ip_range from config will not produce a diff as
+     * the provider will default to the API&#39;s value.
+     * When true, the provider will treat removing secondary_ip_range as sending an
+     * empty list of secondary IP ranges to the API.
+     * Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> sendSecondaryIpRangeIfEmpty() {
+        return Codegen.optional(this.sendSecondaryIpRangeIfEmpty);
+    }
+    /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.

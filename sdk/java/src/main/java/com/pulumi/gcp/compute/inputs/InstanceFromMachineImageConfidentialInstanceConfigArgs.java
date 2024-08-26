@@ -17,18 +17,20 @@ public final class InstanceFromMachineImageConfidentialInstanceConfigArgs extend
     public static final InstanceFromMachineImageConfidentialInstanceConfigArgs Empty = new InstanceFromMachineImageConfidentialInstanceConfigArgs();
 
     /**
-     * Specifies which confidential computing technology to use.
-     * 								This could be one of the following values: SEV, SEV_SNP.
-     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * The confidential computing technology the instance uses.
+     * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
      * 
      */
     @Import(name="confidentialInstanceType")
     private @Nullable Output<String> confidentialInstanceType;
 
     /**
-     * @return Specifies which confidential computing technology to use.
-     * 								This could be one of the following values: SEV, SEV_SNP.
-     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * @return The confidential computing technology the instance uses.
+     * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
      * 
      */
     public Optional<Output<String>> confidentialInstanceType() {
@@ -76,9 +78,10 @@ public final class InstanceFromMachineImageConfidentialInstanceConfigArgs extend
         }
 
         /**
-         * @param confidentialInstanceType Specifies which confidential computing technology to use.
-         * 								This could be one of the following values: SEV, SEV_SNP.
-         * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+         * @param confidentialInstanceType The confidential computing technology the instance uses.
+         * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+         * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+         * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
          * 
          * @return builder
          * 
@@ -89,9 +92,10 @@ public final class InstanceFromMachineImageConfidentialInstanceConfigArgs extend
         }
 
         /**
-         * @param confidentialInstanceType Specifies which confidential computing technology to use.
-         * 								This could be one of the following values: SEV, SEV_SNP.
-         * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+         * @param confidentialInstanceType The confidential computing technology the instance uses.
+         * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+         * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+         * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
          * 
          * @return builder
          * 

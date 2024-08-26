@@ -190,7 +190,7 @@ type Cluster struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	Name    pulumi.StringOutput `pulumi:"name"`
@@ -270,7 +270,7 @@ type clusterState struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location *string `pulumi:"location"`
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	Name    *string `pulumi:"name"`
@@ -304,7 +304,7 @@ type ClusterState struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringPtrInput
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	Name    pulumi.StringPtrInput
@@ -338,7 +338,7 @@ type clusterArgs struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location string  `pulumi:"location"`
 	Project  *string `pulumi:"project"`
 	// Defines rebalancing behavior of a Kafka cluster.
@@ -360,7 +360,7 @@ type ClusterArgs struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringInput
 	Project  pulumi.StringPtrInput
 	// Defines rebalancing behavior of a Kafka cluster.
@@ -489,7 +489,7 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

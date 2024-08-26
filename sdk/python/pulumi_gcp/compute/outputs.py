@@ -6549,7 +6549,7 @@ class InstanceConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -6561,7 +6561,7 @@ class InstanceConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -7034,9 +7034,10 @@ class InstanceFromMachineImageConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Specifies which confidential computing technology to use.
-               								This could be one of the following values: SEV, SEV_SNP.
-               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param str confidential_instance_type: The confidential computing technology the instance uses.
+               								SEV is an AMD feature. TDX is an Intel feature. One of the following
+               								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+               								"AMD Milan" is currently required. TDX is only available in beta.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         if confidential_instance_type is not None:
@@ -7048,9 +7049,10 @@ class InstanceFromMachineImageConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Specifies which confidential computing technology to use.
-        								This could be one of the following values: SEV, SEV_SNP.
-        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        The confidential computing technology the instance uses.
+        								SEV is an AMD feature. TDX is an Intel feature. One of the following
+        								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        								"AMD Milan" is currently required. TDX is only available in beta.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -8640,9 +8642,10 @@ class InstanceFromTemplateConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Specifies which confidential computing technology to use.
-               								This could be one of the following values: SEV, SEV_SNP.
-               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param str confidential_instance_type: The confidential computing technology the instance uses.
+               								SEV is an AMD feature. TDX is an Intel feature. One of the following
+               								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+               								"AMD Milan" is currently required. TDX is only available in beta.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         if confidential_instance_type is not None:
@@ -8654,9 +8657,10 @@ class InstanceFromTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Specifies which confidential computing technology to use.
-        								This could be one of the following values: SEV, SEV_SNP.
-        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        The confidential computing technology the instance uses.
+        								SEV is an AMD feature. TDX is an Intel feature. One of the following
+        								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        								"AMD Milan" is currently required. TDX is only available in beta.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -12155,7 +12159,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -12167,7 +12171,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -20634,7 +20638,7 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -20646,7 +20650,7 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -21826,7 +21830,7 @@ class RegionInstanceTemplateScheduling(dict):
         :param bool preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
-        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -21950,7 +21954,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         """
-        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
         `preemptible` should be `true` and `automatic_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -46054,9 +46058,10 @@ class GetInstanceConfidentialInstanceConfigResult(dict):
                  confidential_instance_type: str,
                  enable_confidential_compute: bool):
         """
-        :param str confidential_instance_type: Specifies which confidential computing technology to use.
-               								This could be one of the following values: SEV, SEV_SNP.
-               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param str confidential_instance_type: The confidential computing technology the instance uses.
+               								SEV is an AMD feature. TDX is an Intel feature. One of the following
+               								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+               								"AMD Milan" is currently required. TDX is only available in beta.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -46066,9 +46071,10 @@ class GetInstanceConfidentialInstanceConfigResult(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> str:
         """
-        Specifies which confidential computing technology to use.
-        								This could be one of the following values: SEV, SEV_SNP.
-        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        The confidential computing technology the instance uses.
+        								SEV is an AMD feature. TDX is an Intel feature. One of the following
+        								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        								"AMD Milan" is currently required. TDX is only available in beta.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -47552,9 +47558,10 @@ class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
                  confidential_instance_type: str,
                  enable_confidential_compute: bool):
         """
-        :param str confidential_instance_type: Specifies which confidential computing technology to use.
-               								This could be one of the following values: SEV, SEV_SNP.
-               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param str confidential_instance_type: The confidential computing technology the instance uses.
+               								SEV is an AMD feature. TDX is an Intel feature. One of the following
+               								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+               								"AMD Milan" is currently required. TDX is only available in beta.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -47564,9 +47571,10 @@ class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> str:
         """
-        Specifies which confidential computing technology to use.
-        								This could be one of the following values: SEV, SEV_SNP.
-        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        The confidential computing technology the instance uses.
+        								SEV is an AMD feature. TDX is an Intel feature. One of the following
+        								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        								"AMD Milan" is currently required. TDX is only available in beta.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -49214,9 +49222,10 @@ class GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
                  confidential_instance_type: str,
                  enable_confidential_compute: bool):
         """
-        :param str confidential_instance_type: Specifies which confidential computing technology to use.
-               								This could be one of the following values: SEV, SEV_SNP.
-               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param str confidential_instance_type: The confidential computing technology the instance uses.
+               								SEV is an AMD feature. TDX is an Intel feature. One of the following
+               								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+               								"AMD Milan" is currently required.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -49226,9 +49235,10 @@ class GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> str:
         """
-        Specifies which confidential computing technology to use.
-        								This could be one of the following values: SEV, SEV_SNP.
-        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        The confidential computing technology the instance uses.
+        								SEV is an AMD feature. TDX is an Intel feature. One of the following
+        								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        								"AMD Milan" is currently required.
         """
         return pulumi.get(self, "confidential_instance_type")
 

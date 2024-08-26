@@ -47,7 +47,7 @@ public final class NodePoolNodeConfig {
      */
     private @Nullable String bootDiskKmsKey;
     /**
-     * @return Configuration for Confidential Nodes feature. Structure is documented below.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
      * 
      */
     private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
@@ -256,7 +256,7 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.bootDiskKmsKey);
     }
     /**
-     * @return Configuration for Confidential Nodes feature. Structure is documented below.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
      * 
      */
     public Optional<NodePoolNodeConfigConfidentialNodes> confidentialNodes() {

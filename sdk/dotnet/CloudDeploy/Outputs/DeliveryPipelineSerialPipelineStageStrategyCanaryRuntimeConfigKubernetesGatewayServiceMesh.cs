@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly string HttpRoute;
         /// <summary>
+        /// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+        /// </summary>
+        public readonly string? PodSelectorLabel;
+        /// <summary>
         /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         /// </summary>
         public readonly string? RouteUpdateWaitTime;
@@ -40,6 +44,8 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             string httpRoute,
 
+            string? podSelectorLabel,
+
             string? routeUpdateWaitTime,
 
             string service,
@@ -48,6 +54,7 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         {
             Deployment = deployment;
             HttpRoute = httpRoute;
+            PodSelectorLabel = podSelectorLabel;
             RouteUpdateWaitTime = routeUpdateWaitTime;
             Service = service;
             StableCutbackDuration = stableCutbackDuration;

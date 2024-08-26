@@ -47,6 +47,21 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     }
 
     /**
+     * Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+     * 
+     */
+    @Import(name="podSelectorLabel")
+    private @Nullable Output<String> podSelectorLabel;
+
+    /**
+     * @return Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+     * 
+     */
+    public Optional<Output<String>> podSelectorLabel() {
+        return Optional.ofNullable(this.podSelectorLabel);
+    }
+
+    /**
      * Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
      * 
      */
@@ -96,6 +111,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs $) {
         this.deployment = $.deployment;
         this.httpRoute = $.httpRoute;
+        this.podSelectorLabel = $.podSelectorLabel;
         this.routeUpdateWaitTime = $.routeUpdateWaitTime;
         this.service = $.service;
         this.stableCutbackDuration = $.stableCutbackDuration;
@@ -159,6 +175,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
          */
         public Builder httpRoute(String httpRoute) {
             return httpRoute(Output.of(httpRoute));
+        }
+
+        /**
+         * @param podSelectorLabel Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSelectorLabel(@Nullable Output<String> podSelectorLabel) {
+            $.podSelectorLabel = podSelectorLabel;
+            return this;
+        }
+
+        /**
+         * @param podSelectorLabel Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSelectorLabel(String podSelectorLabel) {
+            return podSelectorLabel(Output.of(podSelectorLabel));
         }
 
         /**

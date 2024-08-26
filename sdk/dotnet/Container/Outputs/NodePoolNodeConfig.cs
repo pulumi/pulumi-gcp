@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
-        /// Configuration for Confidential Nodes feature. Structure is documented below.
+        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigConfidentialNodes? ConfidentialNodes;
         /// <summary>

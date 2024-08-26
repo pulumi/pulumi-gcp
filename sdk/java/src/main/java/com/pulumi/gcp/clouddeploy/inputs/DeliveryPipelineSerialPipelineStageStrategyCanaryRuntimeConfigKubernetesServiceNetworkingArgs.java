@@ -48,6 +48,21 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     }
 
     /**
+     * Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+     * 
+     */
+    @Import(name="podSelectorLabel")
+    private @Nullable Output<String> podSelectorLabel;
+
+    /**
+     * @return Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+     * 
+     */
+    public Optional<Output<String>> podSelectorLabel() {
+        return Optional.ofNullable(this.podSelectorLabel);
+    }
+
+    /**
      * Required. Name of the Kubernetes Service.
      * 
      */
@@ -67,6 +82,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs $) {
         this.deployment = $.deployment;
         this.disablePodOverprovisioning = $.disablePodOverprovisioning;
+        this.podSelectorLabel = $.podSelectorLabel;
         this.service = $.service;
     }
 
@@ -128,6 +144,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
          */
         public Builder disablePodOverprovisioning(Boolean disablePodOverprovisioning) {
             return disablePodOverprovisioning(Output.of(disablePodOverprovisioning));
+        }
+
+        /**
+         * @param podSelectorLabel Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSelectorLabel(@Nullable Output<String> podSelectorLabel) {
+            $.podSelectorLabel = podSelectorLabel;
+            return this;
+        }
+
+        /**
+         * @param podSelectorLabel Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSelectorLabel(String podSelectorLabel) {
+            return podSelectorLabel(Output.of(podSelectorLabel));
         }
 
         /**

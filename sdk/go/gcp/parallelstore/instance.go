@@ -61,11 +61,13 @@ import (
 //				return err
 //			}
 //			_, err = parallelstore.NewInstance(ctx, "instance", &parallelstore.InstanceArgs{
-//				InstanceId:  pulumi.String("instance"),
-//				Location:    pulumi.String("us-central1-a"),
-//				Description: pulumi.String("test instance"),
-//				CapacityGib: pulumi.String("12000"),
-//				Network:     network.Name,
+//				InstanceId:           pulumi.String("instance"),
+//				Location:             pulumi.String("us-central1-a"),
+//				Description:          pulumi.String("test instance"),
+//				CapacityGib:          pulumi.String("12000"),
+//				Network:              network.Name,
+//				FileStripeLevel:      pulumi.String("FILE_STRIPE_LEVEL_MIN"),
+//				DirectoryStripeLevel: pulumi.String("DIRECTORY_STRIPE_LEVEL_MIN"),
 //				Labels: pulumi.StringMap{
 //					"test": pulumi.String("value"),
 //				},
@@ -107,10 +109,10 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// List of access_points.
+	// Output only. List of access_points.
 	// Contains a list of IPv4 addresses used for client side configuration.
 	AccessPoints pulumi.StringArrayOutput `pulumi:"accessPoints"`
-	// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
 	// The time when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -118,6 +120,15 @@ type Instance struct {
 	DaosVersion pulumi.StringOutput `pulumi:"daosVersion"`
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Stripe level for directories.
+	// MIN when directory has a small number of files.
+	// MAX when directory has a large number of files.
+	// Possible values:
+	// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+	// DIRECTORY_STRIPE_LEVEL_MIN
+	// DIRECTORY_STRIPE_LEVEL_BALANCED
+	// DIRECTORY_STRIPE_LEVEL_MAX
+	DirectoryStripeLevel pulumi.StringPtrOutput `pulumi:"directoryStripeLevel"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. Contains the id of the allocated IP address range associated with the
@@ -125,6 +136,15 @@ type Instance struct {
 	// with IP range 10.0.0.0/29. This field is populated by the service and
 	// and contains the value currently used by the service.
 	EffectiveReservedIpRange pulumi.StringOutput `pulumi:"effectiveReservedIpRange"`
+	// Stripe level for files.
+	// MIN better suited for small size files.
+	// MAX higher throughput performance for larger files.
+	// Possible values:
+	// FILE_STRIPE_LEVEL_UNSPECIFIED
+	// FILE_STRIPE_LEVEL_MIN
+	// FILE_STRIPE_LEVEL_BALANCED
+	// FILE_STRIPE_LEVEL_MAX
+	FileStripeLevel pulumi.StringPtrOutput `pulumi:"fileStripeLevel"`
 	// The logical name of the Parallelstore instance in the user project with the following restrictions:
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
@@ -157,7 +177,7 @@ type Instance struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name of the instance, in the format
+	// Identifier. The resource name of the instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The name of the Google Compute Engine
@@ -182,6 +202,7 @@ type Instance struct {
 	// ACTIVE
 	// DELETING
 	// FAILED
+	// UPGRADING
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time when the instance was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -231,10 +252,10 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// List of access_points.
+	// Output only. List of access_points.
 	// Contains a list of IPv4 addresses used for client side configuration.
 	AccessPoints []string `pulumi:"accessPoints"`
-	// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
 	// The time when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -242,6 +263,15 @@ type instanceState struct {
 	DaosVersion *string `pulumi:"daosVersion"`
 	// The description of the instance. 2048 characters or less.
 	Description *string `pulumi:"description"`
+	// Stripe level for directories.
+	// MIN when directory has a small number of files.
+	// MAX when directory has a large number of files.
+	// Possible values:
+	// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+	// DIRECTORY_STRIPE_LEVEL_MIN
+	// DIRECTORY_STRIPE_LEVEL_BALANCED
+	// DIRECTORY_STRIPE_LEVEL_MAX
+	DirectoryStripeLevel *string `pulumi:"directoryStripeLevel"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. Contains the id of the allocated IP address range associated with the
@@ -249,6 +279,15 @@ type instanceState struct {
 	// with IP range 10.0.0.0/29. This field is populated by the service and
 	// and contains the value currently used by the service.
 	EffectiveReservedIpRange *string `pulumi:"effectiveReservedIpRange"`
+	// Stripe level for files.
+	// MIN better suited for small size files.
+	// MAX higher throughput performance for larger files.
+	// Possible values:
+	// FILE_STRIPE_LEVEL_UNSPECIFIED
+	// FILE_STRIPE_LEVEL_MIN
+	// FILE_STRIPE_LEVEL_BALANCED
+	// FILE_STRIPE_LEVEL_MAX
+	FileStripeLevel *string `pulumi:"fileStripeLevel"`
 	// The logical name of the Parallelstore instance in the user project with the following restrictions:
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
@@ -281,7 +320,7 @@ type instanceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location *string `pulumi:"location"`
-	// The resource name of the instance, in the format
+	// Identifier. The resource name of the instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance_id}`
 	Name *string `pulumi:"name"`
 	// Immutable. The name of the Google Compute Engine
@@ -306,16 +345,17 @@ type instanceState struct {
 	// ACTIVE
 	// DELETING
 	// FAILED
+	// UPGRADING
 	State *string `pulumi:"state"`
 	// The time when the instance was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type InstanceState struct {
-	// List of access_points.
+	// Output only. List of access_points.
 	// Contains a list of IPv4 addresses used for client side configuration.
 	AccessPoints pulumi.StringArrayInput
-	// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib pulumi.StringPtrInput
 	// The time when the instance was created.
 	CreateTime pulumi.StringPtrInput
@@ -323,6 +363,15 @@ type InstanceState struct {
 	DaosVersion pulumi.StringPtrInput
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrInput
+	// Stripe level for directories.
+	// MIN when directory has a small number of files.
+	// MAX when directory has a large number of files.
+	// Possible values:
+	// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+	// DIRECTORY_STRIPE_LEVEL_MIN
+	// DIRECTORY_STRIPE_LEVEL_BALANCED
+	// DIRECTORY_STRIPE_LEVEL_MAX
+	DirectoryStripeLevel pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Immutable. Contains the id of the allocated IP address range associated with the
@@ -330,6 +379,15 @@ type InstanceState struct {
 	// with IP range 10.0.0.0/29. This field is populated by the service and
 	// and contains the value currently used by the service.
 	EffectiveReservedIpRange pulumi.StringPtrInput
+	// Stripe level for files.
+	// MIN better suited for small size files.
+	// MAX higher throughput performance for larger files.
+	// Possible values:
+	// FILE_STRIPE_LEVEL_UNSPECIFIED
+	// FILE_STRIPE_LEVEL_MIN
+	// FILE_STRIPE_LEVEL_BALANCED
+	// FILE_STRIPE_LEVEL_MAX
+	FileStripeLevel pulumi.StringPtrInput
 	// The logical name of the Parallelstore instance in the user project with the following restrictions:
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
@@ -362,7 +420,7 @@ type InstanceState struct {
 	Labels pulumi.StringMapInput
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringPtrInput
-	// The resource name of the instance, in the format
+	// Identifier. The resource name of the instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringPtrInput
 	// Immutable. The name of the Google Compute Engine
@@ -387,6 +445,7 @@ type InstanceState struct {
 	// ACTIVE
 	// DELETING
 	// FAILED
+	// UPGRADING
 	State pulumi.StringPtrInput
 	// The time when the instance was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -397,10 +456,28 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib string `pulumi:"capacityGib"`
 	// The description of the instance. 2048 characters or less.
 	Description *string `pulumi:"description"`
+	// Stripe level for directories.
+	// MIN when directory has a small number of files.
+	// MAX when directory has a large number of files.
+	// Possible values:
+	// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+	// DIRECTORY_STRIPE_LEVEL_MIN
+	// DIRECTORY_STRIPE_LEVEL_BALANCED
+	// DIRECTORY_STRIPE_LEVEL_MAX
+	DirectoryStripeLevel *string `pulumi:"directoryStripeLevel"`
+	// Stripe level for files.
+	// MIN better suited for small size files.
+	// MAX higher throughput performance for larger files.
+	// Possible values:
+	// FILE_STRIPE_LEVEL_UNSPECIFIED
+	// FILE_STRIPE_LEVEL_MIN
+	// FILE_STRIPE_LEVEL_BALANCED
+	// FILE_STRIPE_LEVEL_MAX
+	FileStripeLevel *string `pulumi:"fileStripeLevel"`
 	// The logical name of the Parallelstore instance in the user project with the following restrictions:
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
@@ -449,10 +526,28 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib pulumi.StringInput
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrInput
+	// Stripe level for directories.
+	// MIN when directory has a small number of files.
+	// MAX when directory has a large number of files.
+	// Possible values:
+	// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+	// DIRECTORY_STRIPE_LEVEL_MIN
+	// DIRECTORY_STRIPE_LEVEL_BALANCED
+	// DIRECTORY_STRIPE_LEVEL_MAX
+	DirectoryStripeLevel pulumi.StringPtrInput
+	// Stripe level for files.
+	// MIN better suited for small size files.
+	// MAX higher throughput performance for larger files.
+	// Possible values:
+	// FILE_STRIPE_LEVEL_UNSPECIFIED
+	// FILE_STRIPE_LEVEL_MIN
+	// FILE_STRIPE_LEVEL_BALANCED
+	// FILE_STRIPE_LEVEL_MAX
+	FileStripeLevel pulumi.StringPtrInput
 	// The logical name of the Parallelstore instance in the user project with the following restrictions:
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
@@ -586,13 +681,13 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// List of access_points.
+// Output only. List of access_points.
 // Contains a list of IPv4 addresses used for client side configuration.
 func (o InstanceOutput) AccessPoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AccessPoints }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 func (o InstanceOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
 }
@@ -612,6 +707,18 @@ func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Stripe level for directories.
+// MIN when directory has a small number of files.
+// MAX when directory has a large number of files.
+// Possible values:
+// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+// DIRECTORY_STRIPE_LEVEL_MIN
+// DIRECTORY_STRIPE_LEVEL_BALANCED
+// DIRECTORY_STRIPE_LEVEL_MAX
+func (o InstanceOutput) DirectoryStripeLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DirectoryStripeLevel }).(pulumi.StringPtrOutput)
+}
+
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
@@ -623,6 +730,18 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 // and contains the value currently used by the service.
 func (o InstanceOutput) EffectiveReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EffectiveReservedIpRange }).(pulumi.StringOutput)
+}
+
+// Stripe level for files.
+// MIN better suited for small size files.
+// MAX higher throughput performance for larger files.
+// Possible values:
+// FILE_STRIPE_LEVEL_UNSPECIFIED
+// FILE_STRIPE_LEVEL_MIN
+// FILE_STRIPE_LEVEL_BALANCED
+// FILE_STRIPE_LEVEL_MAX
+func (o InstanceOutput) FileStripeLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.FileStripeLevel }).(pulumi.StringPtrOutput)
 }
 
 // The logical name of the Parallelstore instance in the user project with the following restrictions:
@@ -666,7 +785,7 @@ func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the instance, in the format
+// Identifier. The resource name of the instance, in the format
 // `projects/{project}/locations/{location}/instances/{instance_id}`
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -706,6 +825,7 @@ func (o InstanceOutput) ReservedIpRange() pulumi.StringPtrOutput {
 // ACTIVE
 // DELETING
 // FAILED
+// UPGRADING
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

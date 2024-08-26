@@ -57,6 +57,8 @@ namespace Pulumi.Gcp.ParallelStore
     ///         Description = "test instance",
     ///         CapacityGib = "12000",
     ///         Network = network.Name,
+    ///         FileStripeLevel = "FILE_STRIPE_LEVEL_MIN",
+    ///         DirectoryStripeLevel = "DIRECTORY_STRIPE_LEVEL_MIN",
     ///         Labels = 
     ///         {
     ///             { "test", "value" },
@@ -100,14 +102,14 @@ namespace Pulumi.Gcp.ParallelStore
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of access_points.
+        /// Output only. List of access_points.
         /// Contains a list of IPv4 addresses used for client side configuration.
         /// </summary>
         [Output("accessPoints")]
         public Output<ImmutableArray<string>> AccessPoints { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        /// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         /// </summary>
         [Output("capacityGib")]
         public Output<string> CapacityGib { get; private set; } = null!;
@@ -131,6 +133,19 @@ namespace Pulumi.Gcp.ParallelStore
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Stripe level for directories.
+        /// MIN when directory has a small number of files.
+        /// MAX when directory has a large number of files.
+        /// Possible values:
+        /// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+        /// DIRECTORY_STRIPE_LEVEL_MIN
+        /// DIRECTORY_STRIPE_LEVEL_BALANCED
+        /// DIRECTORY_STRIPE_LEVEL_MAX
+        /// </summary>
+        [Output("directoryStripeLevel")]
+        public Output<string?> DirectoryStripeLevel { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -144,6 +159,19 @@ namespace Pulumi.Gcp.ParallelStore
         /// </summary>
         [Output("effectiveReservedIpRange")]
         public Output<string> EffectiveReservedIpRange { get; private set; } = null!;
+
+        /// <summary>
+        /// Stripe level for files.
+        /// MIN better suited for small size files.
+        /// MAX higher throughput performance for larger files.
+        /// Possible values:
+        /// FILE_STRIPE_LEVEL_UNSPECIFIED
+        /// FILE_STRIPE_LEVEL_MIN
+        /// FILE_STRIPE_LEVEL_BALANCED
+        /// FILE_STRIPE_LEVEL_MAX
+        /// </summary>
+        [Output("fileStripeLevel")]
+        public Output<string?> FileStripeLevel { get; private set; } = null!;
 
         /// <summary>
         /// The logical name of the Parallelstore instance in the user project with the following restrictions:
@@ -191,7 +219,7 @@ namespace Pulumi.Gcp.ParallelStore
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the instance, in the format
+        /// Identifier. The resource name of the instance, in the format
         /// `projects/{project}/locations/{location}/instances/{instance_id}`
         /// </summary>
         [Output("name")]
@@ -236,6 +264,7 @@ namespace Pulumi.Gcp.ParallelStore
         /// ACTIVE
         /// DELETING
         /// FAILED
+        /// UPGRADING
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -298,7 +327,7 @@ namespace Pulumi.Gcp.ParallelStore
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        /// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         /// </summary>
         [Input("capacityGib", required: true)]
         public Input<string> CapacityGib { get; set; } = null!;
@@ -308,6 +337,32 @@ namespace Pulumi.Gcp.ParallelStore
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Stripe level for directories.
+        /// MIN when directory has a small number of files.
+        /// MAX when directory has a large number of files.
+        /// Possible values:
+        /// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+        /// DIRECTORY_STRIPE_LEVEL_MIN
+        /// DIRECTORY_STRIPE_LEVEL_BALANCED
+        /// DIRECTORY_STRIPE_LEVEL_MAX
+        /// </summary>
+        [Input("directoryStripeLevel")]
+        public Input<string>? DirectoryStripeLevel { get; set; }
+
+        /// <summary>
+        /// Stripe level for files.
+        /// MIN better suited for small size files.
+        /// MAX higher throughput performance for larger files.
+        /// Possible values:
+        /// FILE_STRIPE_LEVEL_UNSPECIFIED
+        /// FILE_STRIPE_LEVEL_MIN
+        /// FILE_STRIPE_LEVEL_BALANCED
+        /// FILE_STRIPE_LEVEL_MAX
+        /// </summary>
+        [Input("fileStripeLevel")]
+        public Input<string>? FileStripeLevel { get; set; }
 
         /// <summary>
         /// The logical name of the Parallelstore instance in the user project with the following restrictions:
@@ -396,7 +451,7 @@ namespace Pulumi.Gcp.ParallelStore
         private InputList<string>? _accessPoints;
 
         /// <summary>
-        /// List of access_points.
+        /// Output only. List of access_points.
         /// Contains a list of IPv4 addresses used for client side configuration.
         /// </summary>
         public InputList<string> AccessPoints
@@ -406,7 +461,7 @@ namespace Pulumi.Gcp.ParallelStore
         }
 
         /// <summary>
-        /// Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        /// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         /// </summary>
         [Input("capacityGib")]
         public Input<string>? CapacityGib { get; set; }
@@ -428,6 +483,19 @@ namespace Pulumi.Gcp.ParallelStore
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Stripe level for directories.
+        /// MIN when directory has a small number of files.
+        /// MAX when directory has a large number of files.
+        /// Possible values:
+        /// DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+        /// DIRECTORY_STRIPE_LEVEL_MIN
+        /// DIRECTORY_STRIPE_LEVEL_BALANCED
+        /// DIRECTORY_STRIPE_LEVEL_MAX
+        /// </summary>
+        [Input("directoryStripeLevel")]
+        public Input<string>? DirectoryStripeLevel { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
@@ -453,6 +521,19 @@ namespace Pulumi.Gcp.ParallelStore
         /// </summary>
         [Input("effectiveReservedIpRange")]
         public Input<string>? EffectiveReservedIpRange { get; set; }
+
+        /// <summary>
+        /// Stripe level for files.
+        /// MIN better suited for small size files.
+        /// MAX higher throughput performance for larger files.
+        /// Possible values:
+        /// FILE_STRIPE_LEVEL_UNSPECIFIED
+        /// FILE_STRIPE_LEVEL_MIN
+        /// FILE_STRIPE_LEVEL_BALANCED
+        /// FILE_STRIPE_LEVEL_MAX
+        /// </summary>
+        [Input("fileStripeLevel")]
+        public Input<string>? FileStripeLevel { get; set; }
 
         /// <summary>
         /// The logical name of the Parallelstore instance in the user project with the following restrictions:
@@ -506,7 +587,7 @@ namespace Pulumi.Gcp.ParallelStore
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the instance, in the format
+        /// Identifier. The resource name of the instance, in the format
         /// `projects/{project}/locations/{location}/instances/{instance_id}`
         /// </summary>
         [Input("name")]
@@ -561,6 +642,7 @@ namespace Pulumi.Gcp.ParallelStore
         /// ACTIVE
         /// DELETING
         /// FAILED
+        /// UPGRADING
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -102,7 +102,7 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly configs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -192,7 +192,7 @@ export interface TopicState {
      */
     configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
     location?: pulumi.Input<string>;
     /**
@@ -234,7 +234,7 @@ export interface TopicArgs {
      */
     configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
     location: pulumi.Input<string>;
     /**

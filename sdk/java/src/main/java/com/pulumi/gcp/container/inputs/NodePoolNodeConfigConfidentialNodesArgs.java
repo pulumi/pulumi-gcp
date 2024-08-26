@@ -15,16 +15,14 @@ public final class NodePoolNodeConfigConfidentialNodesArgs extends com.pulumi.re
     public static final NodePoolNodeConfigConfidentialNodesArgs Empty = new NodePoolNodeConfigConfidentialNodesArgs();
 
     /**
-     * Enable Confidential GKE Nodes for this cluster, to
-     * enforce encryption of data in-use.
+     * Whether Confidential Nodes feature is enabled for all nodes in this pool.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Confidential GKE Nodes for this cluster, to
-     * enforce encryption of data in-use.
+     * @return Whether Confidential Nodes feature is enabled for all nodes in this pool.
      * 
      */
     public Output<Boolean> enabled() {
@@ -56,8 +54,7 @@ public final class NodePoolNodeConfigConfidentialNodesArgs extends com.pulumi.re
         }
 
         /**
-         * @param enabled Enable Confidential GKE Nodes for this cluster, to
-         * enforce encryption of data in-use.
+         * @param enabled Whether Confidential Nodes feature is enabled for all nodes in this pool.
          * 
          * @return builder
          * 
@@ -68,8 +65,7 @@ public final class NodePoolNodeConfigConfidentialNodesArgs extends com.pulumi.re
         }
 
         /**
-         * @param enabled Enable Confidential GKE Nodes for this cluster, to
-         * enforce encryption of data in-use.
+         * @param enabled Whether Confidential Nodes feature is enabled for all nodes in this pool.
          * 
          * @return builder
          * 

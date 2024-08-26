@@ -357,6 +357,17 @@ namespace Pulumi.Gcp.BigQuery
     ///         Password = "tf-test-my-password_77884",
     ///     });
     /// 
+    ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var keySaUser = new Gcp.Projects.IAMMember("key_sa_user", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
+    ///     });
+    /// 
     ///     var bq_connection_cmek = new Gcp.BigQuery.Connection("bq-connection-cmek", new()
     ///     {
     ///         FriendlyName = "👋",

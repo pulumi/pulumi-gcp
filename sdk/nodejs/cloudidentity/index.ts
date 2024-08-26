@@ -15,6 +15,11 @@ export const getGroupMemberships: typeof import("./getGroupMemberships").getGrou
 export const getGroupMembershipsOutput: typeof import("./getGroupMemberships").getGroupMembershipsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupMemberships","getGroupMembershipsOutput"], () => require("./getGroupMemberships"));
 
+export { GetGroupTransitiveMembershipsArgs, GetGroupTransitiveMembershipsResult, GetGroupTransitiveMembershipsOutputArgs } from "./getGroupTransitiveMemberships";
+export const getGroupTransitiveMemberships: typeof import("./getGroupTransitiveMemberships").getGroupTransitiveMemberships = null as any;
+export const getGroupTransitiveMembershipsOutput: typeof import("./getGroupTransitiveMemberships").getGroupTransitiveMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupTransitiveMemberships","getGroupTransitiveMembershipsOutput"], () => require("./getGroupTransitiveMemberships"));
+
 export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;

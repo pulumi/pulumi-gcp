@@ -12,9 +12,10 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionInstanceTemplateConfidentialInstanceConfig {
     /**
-     * @return Specifies which confidential computing technology to use.
-     * 								This could be one of the following values: SEV, SEV_SNP.
-     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * @return The confidential computing technology the instance uses.
+     * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
     private String confidentialInstanceType;
@@ -26,9 +27,10 @@ public final class GetRegionInstanceTemplateConfidentialInstanceConfig {
 
     private GetRegionInstanceTemplateConfidentialInstanceConfig() {}
     /**
-     * @return Specifies which confidential computing technology to use.
-     * 								This could be one of the following values: SEV, SEV_SNP.
-     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * @return The confidential computing technology the instance uses.
+     * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
     public String confidentialInstanceType() {

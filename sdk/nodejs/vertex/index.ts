@@ -110,6 +110,11 @@ export type AiIndexEndpoint = import("./aiIndexEndpoint").AiIndexEndpoint;
 export const AiIndexEndpoint: typeof import("./aiIndexEndpoint").AiIndexEndpoint = null as any;
 utilities.lazyLoad(exports, ["AiIndexEndpoint"], () => require("./aiIndexEndpoint"));
 
+export { AiIndexEndpointDeployedIndexArgs, AiIndexEndpointDeployedIndexState } from "./aiIndexEndpointDeployedIndex";
+export type AiIndexEndpointDeployedIndex = import("./aiIndexEndpointDeployedIndex").AiIndexEndpointDeployedIndex;
+export const AiIndexEndpointDeployedIndex: typeof import("./aiIndexEndpointDeployedIndex").AiIndexEndpointDeployedIndex = null as any;
+utilities.lazyLoad(exports, ["AiIndexEndpointDeployedIndex"], () => require("./aiIndexEndpointDeployedIndex"));
+
 export { AiMetadataStoreArgs, AiMetadataStoreState } from "./aiMetadataStore";
 export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
 export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
@@ -187,6 +192,8 @@ const _module = {
                 return new AiIndex(name, <any>undefined, { urn })
             case "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint":
                 return new AiIndexEndpoint(name, <any>undefined, { urn })
+            case "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex":
+                return new AiIndexEndpointDeployedIndex(name, <any>undefined, { urn })
             case "gcp:vertex/aiMetadataStore:AiMetadataStore":
                 return new AiMetadataStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
@@ -217,5 +224,6 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreIamMember", _
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)

@@ -97,6 +97,20 @@ __all__ = [
     'AiFeatureStoreOnlineServingConfigScalingArgsDict',
     'AiIndexDeployedIndexArgs',
     'AiIndexDeployedIndexArgsDict',
+    'AiIndexEndpointDeployedIndexAutomaticResourcesArgs',
+    'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict',
+    'AiIndexEndpointDeployedIndexDedicatedResourcesArgs',
+    'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict',
+    'AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs',
+    'AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgsDict',
+    'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs',
+    'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict',
+    'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs',
+    'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict',
+    'AiIndexEndpointDeployedIndexPrivateEndpointArgs',
+    'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict',
+    'AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs',
+    'AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict',
     'AiIndexEndpointPrivateServiceConnectConfigArgs',
     'AiIndexEndpointPrivateServiceConnectConfigArgsDict',
     'AiIndexIndexStatArgs',
@@ -2687,6 +2701,430 @@ class AiIndexDeployedIndexArgs:
     @index_endpoint.setter
     def index_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "index_endpoint", value)
+
+
+if not MYPY:
+    class AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict(TypedDict):
+        max_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        """
+        min_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+        If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        """
+elif False:
+    AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointDeployedIndexAutomaticResourcesArgs:
+    def __init__(__self__, *,
+                 max_replica_count: Optional[pulumi.Input[int]] = None,
+                 min_replica_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+               The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        :param pulumi.Input[int] min_replica_count: The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+               If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        """
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_replica_count", value)
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
+        If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_replica_count", value)
+
+
+if not MYPY:
+    class AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict(TypedDict):
+        machine_spec: pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgsDict']
+        """
+        The minimum number of replicas this DeployedModel will be always deployed on.
+        Structure is documented below.
+        """
+        min_replica_count: pulumi.Input[int]
+        """
+        The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+        """
+        max_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+        """
+elif False:
+    AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointDeployedIndexDedicatedResourcesArgs:
+    def __init__(__self__, *,
+                 machine_spec: pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs'],
+                 min_replica_count: pulumi.Input[int],
+                 max_replica_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs'] machine_spec: The minimum number of replicas this DeployedModel will be always deployed on.
+               Structure is documented below.
+        :param pulumi.Input[int] min_replica_count: The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+        :param pulumi.Input[int] max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+        """
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        pulumi.set(__self__, "min_replica_count", min_replica_count)
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+
+    @property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs']:
+        """
+        The minimum number of replicas this DeployedModel will be always deployed on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @machine_spec.setter
+    def machine_spec(self, value: pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs']):
+        pulumi.set(self, "machine_spec", value)
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> pulumi.Input[int]:
+        """
+        The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_replica_count", value)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_replica_count", value)
+
+
+if not MYPY:
+    class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgsDict(TypedDict):
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the machine.
+        See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+        See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+        For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+        """
+elif False:
+    AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs:
+    def __init__(__self__, *,
+                 machine_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] machine_type: The type of the machine.
+               See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+               See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+               For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the machine.
+        See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+        See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+        For [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) this field is optional, and the default value is n1-standard-2. For [BatchPredictionJob](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs#BatchPredictionJob) or as part of [WorkerPoolSpec](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/CustomJobSpec#WorkerPoolSpec) this field is required.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+
+if not MYPY:
+    class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict(TypedDict):
+        auth_provider: NotRequired[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict']]
+        """
+        Defines the authentication provider that the DeployedIndex uses.
+        Structure is documented below.
+        """
+elif False:
+    AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs:
+    def __init__(__self__, *,
+                 auth_provider: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']] = None):
+        """
+        :param pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs'] auth_provider: Defines the authentication provider that the DeployedIndex uses.
+               Structure is documented below.
+        """
+        if auth_provider is not None:
+            pulumi.set(__self__, "auth_provider", auth_provider)
+
+    @property
+    @pulumi.getter(name="authProvider")
+    def auth_provider(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]:
+        """
+        Defines the authentication provider that the DeployedIndex uses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auth_provider")
+
+    @auth_provider.setter
+    def auth_provider(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]):
+        pulumi.set(self, "auth_provider", value)
+
+
+if not MYPY:
+    class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict(TypedDict):
+        allowed_issuers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        """
+        audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+        """
+elif False:
+    AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs:
+    def __init__(__self__, *,
+                 allowed_issuers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_issuers: A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+        """
+        if allowed_issuers is not None:
+            pulumi.set(__self__, "allowed_issuers", allowed_issuers)
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
+
+    @property
+    @pulumi.getter(name="allowedIssuers")
+    def allowed_issuers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        """
+        return pulumi.get(self, "allowed_issuers")
+
+    @allowed_issuers.setter
+    def allowed_issuers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_issuers", value)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
+        """
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "audiences", value)
+
+
+if not MYPY:
+    class AiIndexEndpointDeployedIndexPrivateEndpointArgsDict(TypedDict):
+        match_grpc_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The ip address used to send match gRPC requests.
+        """
+        psc_automated_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict']]]]
+        """
+        (Output)
+        PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+        Structure is documented below.
+        """
+        service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the service attachment resource. Populated if private service connect is enabled.
+        """
+elif False:
+    AiIndexEndpointDeployedIndexPrivateEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointDeployedIndexPrivateEndpointArgs:
+    def __init__(__self__, *,
+                 match_grpc_address: Optional[pulumi.Input[str]] = None,
+                 psc_automated_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]] = None,
+                 service_attachment: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] match_grpc_address: (Output)
+               The ip address used to send match gRPC requests.
+        :param pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]] psc_automated_endpoints: (Output)
+               PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+               Structure is documented below.
+        :param pulumi.Input[str] service_attachment: (Output)
+               The name of the service attachment resource. Populated if private service connect is enabled.
+        """
+        if match_grpc_address is not None:
+            pulumi.set(__self__, "match_grpc_address", match_grpc_address)
+        if psc_automated_endpoints is not None:
+            pulumi.set(__self__, "psc_automated_endpoints", psc_automated_endpoints)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="matchGrpcAddress")
+    def match_grpc_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The ip address used to send match gRPC requests.
+        """
+        return pulumi.get(self, "match_grpc_address")
+
+    @match_grpc_address.setter
+    def match_grpc_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "match_grpc_address", value)
+
+    @property
+    @pulumi.getter(name="pscAutomatedEndpoints")
+    def psc_automated_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]:
+        """
+        (Output)
+        PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_automated_endpoints")
+
+    @psc_automated_endpoints.setter
+    def psc_automated_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]):
+        pulumi.set(self, "psc_automated_endpoints", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The name of the service attachment resource. Populated if private service connect is enabled.
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_attachment", value)
+
+
+if not MYPY:
+    class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict(TypedDict):
+        match_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        ip Address created by the automated forwarding rule.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Corresponding network in pscAutomationConfigs.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Corresponding projectId in pscAutomationConfigs
+        """
+elif False:
+    AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs:
+    def __init__(__self__, *,
+                 match_address: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] match_address: (Output)
+               ip Address created by the automated forwarding rule.
+        :param pulumi.Input[str] network: (Output)
+               Corresponding network in pscAutomationConfigs.
+        :param pulumi.Input[str] project_id: (Output)
+               Corresponding projectId in pscAutomationConfigs
+        """
+        if match_address is not None:
+            pulumi.set(__self__, "match_address", match_address)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="matchAddress")
+    def match_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        ip Address created by the automated forwarding rule.
+        """
+        return pulumi.get(self, "match_address")
+
+    @match_address.setter
+    def match_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "match_address", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Corresponding network in pscAutomationConfigs.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Corresponding projectId in pscAutomationConfigs
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
 
 if not MYPY:

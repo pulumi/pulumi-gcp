@@ -4268,6 +4268,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/schema",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/schema:Schema": "Schema"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/searchEngine",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
@@ -6996,6 +7004,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/folderNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig": "FolderNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/instanceIamBinding",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7128,6 +7144,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig": "V2FolderMuteConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2FolderNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig": "V2FolderNotificationConfig"
   }
  },
  {
@@ -7920,6 +7944,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": "AiIndexEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiIndexEndpointDeployedIndex",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex": "AiIndexEndpointDeployedIndex"
   }
  },
  {

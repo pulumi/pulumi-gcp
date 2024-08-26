@@ -131,6 +131,10 @@ import (
 //				Project:   gaeApi.Project,
 //				Service:   pulumi.String("default"),
 //				Runtime:   pulumi.String("nodejs"),
+//				FlexibleRuntimeSettings: &appengine.FlexibleAppVersionFlexibleRuntimeSettingsArgs{
+//					OperatingSystem: pulumi.String("ubuntu22"),
+//					RuntimeVersion:  pulumi.String("20"),
+//				},
 //				Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},

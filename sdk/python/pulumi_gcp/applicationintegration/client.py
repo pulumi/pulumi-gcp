@@ -366,7 +366,7 @@ class Client(pulumi.CustomResource):
             rotation_period="7776000s")
         test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
         service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-service-acc",
+            account_id="service-acc",
             display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",
@@ -468,7 +468,7 @@ class Client(pulumi.CustomResource):
             rotation_period="7776000s")
         test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
         service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-service-acc",
+            account_id="service-acc",
             display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",

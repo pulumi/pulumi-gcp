@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? MaxUnavailable { get; set; }
 
         /// <summary>
-        /// The upgrade stragey to be used for upgrading the nodes.
+        /// The upgrade strategy to be used for upgrading the nodes.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

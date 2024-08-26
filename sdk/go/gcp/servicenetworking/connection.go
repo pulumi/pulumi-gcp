@@ -110,6 +110,8 @@ type Connection struct {
 	// service provider organization. For Google services that support this functionality it is
 	// 'servicenetworking.googleapis.com'.
 	Service pulumi.StringOutput `pulumi:"service"`
+	// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+	UpdateOnCreationFail pulumi.BoolPtrOutput `pulumi:"updateOnCreationFail"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -164,6 +166,8 @@ type connectionState struct {
 	// service provider organization. For Google services that support this functionality it is
 	// 'servicenetworking.googleapis.com'.
 	Service *string `pulumi:"service"`
+	// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+	UpdateOnCreationFail *bool `pulumi:"updateOnCreationFail"`
 }
 
 type ConnectionState struct {
@@ -180,6 +184,8 @@ type ConnectionState struct {
 	// service provider organization. For Google services that support this functionality it is
 	// 'servicenetworking.googleapis.com'.
 	Service pulumi.StringPtrInput
+	// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+	UpdateOnCreationFail pulumi.BoolPtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -198,6 +204,8 @@ type connectionArgs struct {
 	// service provider organization. For Google services that support this functionality it is
 	// 'servicenetworking.googleapis.com'.
 	Service string `pulumi:"service"`
+	// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+	UpdateOnCreationFail *bool `pulumi:"updateOnCreationFail"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -213,6 +221,8 @@ type ConnectionArgs struct {
 	// service provider organization. For Google services that support this functionality it is
 	// 'servicenetworking.googleapis.com'.
 	Service pulumi.StringInput
+	// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+	UpdateOnCreationFail pulumi.BoolPtrInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
@@ -328,6 +338,11 @@ func (o ConnectionOutput) ReservedPeeringRanges() pulumi.StringArrayOutput {
 // 'servicenetworking.googleapis.com'.
 func (o ConnectionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+func (o ConnectionOutput) UpdateOnCreationFail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.UpdateOnCreationFail }).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionArrayOutput struct{ *pulumi.OutputState }

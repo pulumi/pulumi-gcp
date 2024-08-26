@@ -26,7 +26,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
      * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;, &#34;globalL7ilb&#34;]
      * 
      */
-    private String loadBalancerType;
+    private @Nullable String loadBalancerType;
     /**
      * @return The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
      * 
@@ -67,8 +67,8 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
      * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;, &#34;globalL7ilb&#34;]
      * 
      */
-    public String loadBalancerType() {
-        return this.loadBalancerType;
+    public Optional<String> loadBalancerType() {
+        return Optional.ofNullable(this.loadBalancerType);
     }
     /**
      * @return The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
@@ -110,7 +110,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
     public static final class Builder {
         private String ipAddress;
         private String ipProtocol;
-        private String loadBalancerType;
+        private @Nullable String loadBalancerType;
         private String networkUrl;
         private String port;
         private String project;
@@ -144,10 +144,8 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
             return this;
         }
         @CustomType.Setter
-        public Builder loadBalancerType(String loadBalancerType) {
-            if (loadBalancerType == null) {
-              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer", "loadBalancerType");
-            }
+        public Builder loadBalancerType(@Nullable String loadBalancerType) {
+
             this.loadBalancerType = loadBalancerType;
             return this;
         }

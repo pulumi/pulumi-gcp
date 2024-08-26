@@ -18,14 +18,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      * 
      */
     @Import(name="capacityGib", required=true)
     private Output<String> capacityGib;
 
     /**
-     * @return Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+     * @return Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      * 
      */
     public Output<String> capacityGib() {
@@ -45,6 +45,64 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     * 
+     */
+    @Import(name="directoryStripeLevel")
+    private @Nullable Output<String> directoryStripeLevel;
+
+    /**
+     * @return Stripe level for directories.
+     * MIN when directory has a small number of files.
+     * MAX when directory has a large number of files.
+     * Possible values:
+     * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+     * DIRECTORY_STRIPE_LEVEL_MIN
+     * DIRECTORY_STRIPE_LEVEL_BALANCED
+     * DIRECTORY_STRIPE_LEVEL_MAX
+     * 
+     */
+    public Optional<Output<String>> directoryStripeLevel() {
+        return Optional.ofNullable(this.directoryStripeLevel);
+    }
+
+    /**
+     * Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     * 
+     */
+    @Import(name="fileStripeLevel")
+    private @Nullable Output<String> fileStripeLevel;
+
+    /**
+     * @return Stripe level for files.
+     * MIN better suited for small size files.
+     * MAX higher throughput performance for larger files.
+     * Possible values:
+     * FILE_STRIPE_LEVEL_UNSPECIFIED
+     * FILE_STRIPE_LEVEL_MIN
+     * FILE_STRIPE_LEVEL_BALANCED
+     * FILE_STRIPE_LEVEL_MAX
+     * 
+     */
+    public Optional<Output<String>> fileStripeLevel() {
+        return Optional.ofNullable(this.fileStripeLevel);
     }
 
     /**
@@ -206,6 +264,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs(InstanceArgs $) {
         this.capacityGib = $.capacityGib;
         this.description = $.description;
+        this.directoryStripeLevel = $.directoryStripeLevel;
+        this.fileStripeLevel = $.fileStripeLevel;
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
@@ -233,7 +293,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacityGib Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+         * @param capacityGib Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
          * 
          * @return builder
          * 
@@ -244,7 +304,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacityGib Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+         * @param capacityGib Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
          * 
          * @return builder
          * 
@@ -272,6 +332,76 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param directoryStripeLevel Stripe level for directories.
+         * MIN when directory has a small number of files.
+         * MAX when directory has a large number of files.
+         * Possible values:
+         * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+         * DIRECTORY_STRIPE_LEVEL_MIN
+         * DIRECTORY_STRIPE_LEVEL_BALANCED
+         * DIRECTORY_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryStripeLevel(@Nullable Output<String> directoryStripeLevel) {
+            $.directoryStripeLevel = directoryStripeLevel;
+            return this;
+        }
+
+        /**
+         * @param directoryStripeLevel Stripe level for directories.
+         * MIN when directory has a small number of files.
+         * MAX when directory has a large number of files.
+         * Possible values:
+         * DIRECTORY_STRIPE_LEVEL_UNSPECIFIED
+         * DIRECTORY_STRIPE_LEVEL_MIN
+         * DIRECTORY_STRIPE_LEVEL_BALANCED
+         * DIRECTORY_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryStripeLevel(String directoryStripeLevel) {
+            return directoryStripeLevel(Output.of(directoryStripeLevel));
+        }
+
+        /**
+         * @param fileStripeLevel Stripe level for files.
+         * MIN better suited for small size files.
+         * MAX higher throughput performance for larger files.
+         * Possible values:
+         * FILE_STRIPE_LEVEL_UNSPECIFIED
+         * FILE_STRIPE_LEVEL_MIN
+         * FILE_STRIPE_LEVEL_BALANCED
+         * FILE_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileStripeLevel(@Nullable Output<String> fileStripeLevel) {
+            $.fileStripeLevel = fileStripeLevel;
+            return this;
+        }
+
+        /**
+         * @param fileStripeLevel Stripe level for files.
+         * MIN better suited for small size files.
+         * MAX higher throughput performance for larger files.
+         * Possible values:
+         * FILE_STRIPE_LEVEL_UNSPECIFIED
+         * FILE_STRIPE_LEVEL_MIN
+         * FILE_STRIPE_LEVEL_BALANCED
+         * FILE_STRIPE_LEVEL_MAX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileStripeLevel(String fileStripeLevel) {
+            return fileStripeLevel(Output.of(fileStripeLevel));
         }
 
         /**

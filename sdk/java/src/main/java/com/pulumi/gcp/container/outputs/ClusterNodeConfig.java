@@ -48,7 +48,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable String bootDiskKmsKey;
     /**
-     * @return Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * @return Configuration for Confidential Nodes feature. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodeConfigConfidentialNodes confidentialNodes;
@@ -303,7 +303,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.bootDiskKmsKey);
     }
     /**
-     * @return Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * @return Configuration for Confidential Nodes feature. Structure is documented below.
      * 
      */
     public Optional<ClusterNodeConfigConfidentialNodes> confidentialNodes() {

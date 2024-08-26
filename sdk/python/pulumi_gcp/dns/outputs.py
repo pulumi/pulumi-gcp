@@ -1003,10 +1003,10 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
             suggest = "ip_address"
         elif key == "ipProtocol":
             suggest = "ip_protocol"
-        elif key == "loadBalancerType":
-            suggest = "load_balancer_type"
         elif key == "networkUrl":
             suggest = "network_url"
+        elif key == "loadBalancerType":
+            suggest = "load_balancer_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer. Access the value via the '{suggest}' property getter instead.")
@@ -1022,26 +1022,27 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  ip_protocol: str,
-                 load_balancer_type: str,
                  network_url: str,
                  port: str,
                  project: str,
+                 load_balancer_type: Optional[str] = None,
                  region: Optional[str] = None):
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         pulumi.set(__self__, "network_url", network_url)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "project", project)
+        if load_balancer_type is not None:
+            pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -1060,14 +1061,6 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
         The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
         """
         return pulumi.get(self, "ip_protocol")
-
-    @property
-    @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> str:
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -1092,6 +1085,14 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
         The ID of the project in which the load balancer belongs.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> Optional[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter
@@ -1281,10 +1282,10 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
             suggest = "ip_address"
         elif key == "ipProtocol":
             suggest = "ip_protocol"
-        elif key == "loadBalancerType":
-            suggest = "load_balancer_type"
         elif key == "networkUrl":
             suggest = "network_url"
+        elif key == "loadBalancerType":
+            suggest = "load_balancer_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer. Access the value via the '{suggest}' property getter instead.")
@@ -1300,26 +1301,27 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
     def __init__(__self__, *,
                  ip_address: str,
                  ip_protocol: str,
-                 load_balancer_type: str,
                  network_url: str,
                  port: str,
                  project: str,
+                 load_balancer_type: Optional[str] = None,
                  region: Optional[str] = None):
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         pulumi.set(__self__, "network_url", network_url)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "project", project)
+        if load_balancer_type is not None:
+            pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -1338,14 +1340,6 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
         The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
         """
         return pulumi.get(self, "ip_protocol")
-
-    @property
-    @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> str:
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -1370,6 +1364,14 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
         The ID of the project in which the load balancer belongs.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> Optional[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter
@@ -1424,10 +1426,10 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
             suggest = "ip_address"
         elif key == "ipProtocol":
             suggest = "ip_protocol"
-        elif key == "loadBalancerType":
-            suggest = "load_balancer_type"
         elif key == "networkUrl":
             suggest = "network_url"
+        elif key == "loadBalancerType":
+            suggest = "load_balancer_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer. Access the value via the '{suggest}' property getter instead.")
@@ -1443,26 +1445,27 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  ip_protocol: str,
-                 load_balancer_type: str,
                  network_url: str,
                  port: str,
                  project: str,
+                 load_balancer_type: Optional[str] = None,
                  region: Optional[str] = None):
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         pulumi.set(__self__, "network_url", network_url)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "project", project)
+        if load_balancer_type is not None:
+            pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -1481,14 +1484,6 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
         The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
         """
         return pulumi.get(self, "ip_protocol")
-
-    @property
-    @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> str:
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -1513,6 +1508,14 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
         The ID of the project in which the load balancer belongs.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> Optional[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter
@@ -1630,10 +1633,10 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
             suggest = "ip_address"
         elif key == "ipProtocol":
             suggest = "ip_protocol"
-        elif key == "loadBalancerType":
-            suggest = "load_balancer_type"
         elif key == "networkUrl":
             suggest = "network_url"
+        elif key == "loadBalancerType":
+            suggest = "load_balancer_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer. Access the value via the '{suggest}' property getter instead.")
@@ -1649,26 +1652,27 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  ip_protocol: str,
-                 load_balancer_type: str,
                  network_url: str,
                  port: str,
                  project: str,
+                 load_balancer_type: Optional[str] = None,
                  region: Optional[str] = None):
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param str region: The region of the load balancer. Only needed for regional load balancers.
         """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         pulumi.set(__self__, "network_url", network_url)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "project", project)
+        if load_balancer_type is not None:
+            pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -1687,14 +1691,6 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
         The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
         """
         return pulumi.get(self, "ip_protocol")
-
-    @property
-    @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> str:
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter(name="networkUrl")
@@ -1719,6 +1715,14 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
         The ID of the project in which the load balancer belongs.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> Optional[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter

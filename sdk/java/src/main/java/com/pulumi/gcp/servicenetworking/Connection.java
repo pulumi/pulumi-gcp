@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.servicenetworking.ConnectionArgs;
 import com.pulumi.gcp.servicenetworking.inputs.ConnectionState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -177,6 +178,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> service() {
         return this.service;
+    }
+    /**
+     * When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+     * 
+     */
+    @Export(name="updateOnCreationFail", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> updateOnCreationFail;
+
+    /**
+     * @return When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+     * 
+     */
+    public Output<Optional<Boolean>> updateOnCreationFail() {
+        return Codegen.optional(this.updateOnCreationFail);
     }
 
     /**

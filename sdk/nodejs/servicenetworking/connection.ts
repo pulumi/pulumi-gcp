@@ -108,6 +108,10 @@ export class Connection extends pulumi.CustomResource {
      * 'servicenetworking.googleapis.com'.
      */
     public readonly service!: pulumi.Output<string>;
+    /**
+     * When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+     */
+    public readonly updateOnCreationFail!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -127,6 +131,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["peering"] = state ? state.peering : undefined;
             resourceInputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["updateOnCreationFail"] = state ? state.updateOnCreationFail : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
@@ -142,6 +147,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["updateOnCreationFail"] = args ? args.updateOnCreationFail : undefined;
             resourceInputs["peering"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -174,6 +180,10 @@ export interface ConnectionState {
      * 'servicenetworking.googleapis.com'.
      */
     service?: pulumi.Input<string>;
+    /**
+     * When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+     */
+    updateOnCreationFail?: pulumi.Input<boolean>;
 }
 
 /**
@@ -197,4 +207,8 @@ export interface ConnectionArgs {
      * 'servicenetworking.googleapis.com'.
      */
     service: pulumi.Input<string>;
+    /**
+     * When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+     */
+    updateOnCreationFail?: pulumi.Input<boolean>;
 }

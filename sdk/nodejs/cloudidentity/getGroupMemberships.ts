@@ -11,6 +11,12 @@ import * as utilities from "../utilities";
  *
  * https://cloud.google.com/identity/docs/concepts/overview#memberships
  *
+ * To get more information about GroupMembership, see:
+ *
+ * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+ *
  * ## Example Usage
  */
 export function getGroupMemberships(args: GetGroupMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipsResult> {
@@ -49,6 +55,12 @@ export interface GetGroupMembershipsResult {
  * Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
  *
  * https://cloud.google.com/identity/docs/concepts/overview#memberships
+ *
+ * To get more information about GroupMembership, see:
+ *
+ * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
  *
  * ## Example Usage
  */
