@@ -147,10 +147,10 @@ index de386e9ff..0029e996e 100644
  ~> **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
  state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
 diff --git a/website/docs/r/app_engine_flexible_app_version.html.markdown b/website/docs/r/app_engine_flexible_app_version.html.markdown
-index 20dbca48c..bc9d08794 100644
+index 31e6189d9..1fd15d08c 100644
 --- a/website/docs/r/app_engine_flexible_app_version.html.markdown
 +++ b/website/docs/r/app_engine_flexible_app_version.html.markdown
-@@ -307,7 +307,7 @@ The following arguments are supported:
+@@ -311,7 +311,7 @@ The following arguments are supported:
  
  * `env_variables` -
    (Optional)
@@ -697,7 +697,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 555af1b50..565cc9842 100644
+index fa523ea69..54049658d 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -87,7 +87,7 @@ The following arguments are supported:
@@ -854,7 +854,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 3a04965be..31dab61ff 100644
+index 36f3392a9..ee15e5c62 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1172,7 +1172,7 @@ index e0074ea64..2448154fd 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index c5a5ddd00..57b634921 100644
+index 35c6a9fda..42c666893 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -23,11 +23,6 @@ description: |-
@@ -1551,18 +1551,16 @@ index db3205a65..88f367aec 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index a45ba97b9..86dc8cfcd 100644
+index c9c8552ac..9a73c2682 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
-@@ -298,11 +298,6 @@ The following arguments are supported:
+@@ -298,9 +298,6 @@ The following arguments are supported:
    contained in this subnetwork. The primary IP of such VM must belong
    to the primary ipCidrRange of the subnetwork. The alias IPs may belong
    to either primary or secondary ranges.
 -  **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid
--  breaking users during the 0.12 upgrade. To explicitly send a list
--  of zero objects you must use the following syntax:
--  `example=[]`
--  For more details about this behavior, see [this section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+-  breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+-  set `send_secondary_ip_range_if_empty = true`
    Structure is [documented below](#nested_secondary_ip_range).
  
  * `private_ip_google_access` -
@@ -1611,7 +1609,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 73120a1c1..93f2c3d03 100644
+index d28f4f6a1..5d38c317b 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1702,7 +1700,7 @@ index 73120a1c1..93f2c3d03 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -874,8 +892,6 @@ gvnic {
+@@ -876,8 +894,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1711,7 +1709,7 @@ index 73120a1c1..93f2c3d03 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -896,7 +912,7 @@ gvnic {
+@@ -898,7 +914,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1720,7 +1718,7 @@ index 73120a1c1..93f2c3d03 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -921,10 +937,7 @@ gvnic {
+@@ -923,10 +939,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1732,7 +1730,7 @@ index 73120a1c1..93f2c3d03 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -936,13 +949,14 @@ gvnic {
+@@ -938,13 +951,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1754,7 +1752,7 @@ index 73120a1c1..93f2c3d03 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -995,6 +1009,20 @@ sole_tenant_config {
+@@ -1003,6 +1017,20 @@ sole_tenant_config {
  
  * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
@@ -1775,7 +1773,7 @@ index 73120a1c1..93f2c3d03 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1155,7 +1183,7 @@ for more details. This field only applies to private clusters, when
+@@ -1163,7 +1191,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1784,7 +1782,7 @@ index 73120a1c1..93f2c3d03 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1256,9 +1284,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1264,9 +1292,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1798,7 +1796,7 @@ index 73120a1c1..93f2c3d03 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index eaedb6f0f..2a0477581 100644
+index 08759e68c..3b9ca755e 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -6,14 +6,11 @@ description: |-
@@ -1826,7 +1824,7 @@ index eaedb6f0f..2a0477581 100644
  
  ```hcl
  resource "google_service_account" "default" {
-@@ -117,9 +114,9 @@ resource "google_container_cluster" "primary" {
+@@ -115,9 +112,9 @@ resource "google_container_cluster" "primary" {
      regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      this will force recreation of the resource. WARNING: Resizing your node pool manually
      may change this value in your existing cluster, which will trigger destruction
@@ -1839,7 +1837,7 @@ index eaedb6f0f..2a0477581 100644
  
  * `management` - (Optional) Node management configuration, wherein auto-repair and
      auto-upgrade is configured. Structure is [documented below](#nested_management).
-@@ -140,7 +137,7 @@ cluster's zone for zonal clusters. If unspecified, the cluster-level
+@@ -138,7 +135,7 @@ cluster's zone for zonal clusters. If unspecified, the cluster-level
  upon being unset. You must manually reconcile the list of zones with your
  cluster.
  
@@ -1848,7 +1846,7 @@ index eaedb6f0f..2a0477581 100644
      auto-generate a unique name.
  
  * `name_prefix` - (Optional) Creates a unique name for the node pool beginning
-@@ -165,9 +162,9 @@ cluster.
+@@ -163,9 +160,9 @@ cluster.
  * `version` - (Optional) The Kubernetes version for the nodes in this pool. Note that if this field
      and `auto_upgrade` are both specified, they will fight each other for what the node version should
      be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -3599,7 +3597,7 @@ index 2ac02739f..da87bdaae 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index da7cc31cf..56e5111f0 100644
+index 220bfc44f..2fa5c075b 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3661,7 +3659,7 @@ index da7cc31cf..56e5111f0 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -502,7 +498,7 @@ The optional `clone` block supports:
+@@ -504,7 +500,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3670,7 +3668,7 @@ index da7cc31cf..56e5111f0 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -540,21 +536,13 @@ instance.
+@@ -542,21 +538,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  

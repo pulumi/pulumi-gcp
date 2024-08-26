@@ -2621,6 +2621,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloud_identity_group_membership.html.markdown",
 				},
 			},
+			"google_cloud_identity_group_transitive_memberships": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 
 			// Source repo
 			"google_sourcerepo_repository": {
