@@ -5,10 +5,10 @@ Subject: [PATCH] fix label imports
 
 
 diff --git a/google-beta/services/storage/resource_storage_bucket.go b/google-beta/services/storage/resource_storage_bucket.go
-index b0748c214..b62ab99c1 100644
+index e4be7399d..8fbeee2ab 100644
 --- a/google-beta/services/storage/resource_storage_bucket.go
 +++ b/google-beta/services/storage/resource_storage_bucket.go
-@@ -1846,10 +1846,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
+@@ -1858,10 +1858,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
  	if err := d.Set("lifecycle_rule", flattenBucketLifecycle(d, res.Lifecycle)); err != nil {
  		return fmt.Errorf("Error setting lifecycle_rule: %s", err)
  	}
@@ -22,7 +22,7 @@ index b0748c214..b62ab99c1 100644
  	}
  	if err := d.Set("effective_labels", res.Labels); err != nil {
 diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
-index 969c13494..cf3ba739d 100644
+index ffb1515cf..095be91c5 100644
 --- a/google-beta/tpgresource/labels.go
 +++ b/google-beta/tpgresource/labels.go
 @@ -31,6 +31,30 @@ func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string)
