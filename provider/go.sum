@@ -1974,6 +1974,8 @@ github.com/pulumi/inflector v0.1.1 h1:dvlxlWtXwOJTUUtcYDvwnl6Mpg33prhK+7mzeF+Sob
 github.com/pulumi/inflector v0.1.1/go.mod h1:HUFCjcPTz96YtTuUlwG3i3EZG4WlniBvR9bd+iJxCUY=
 github.com/pulumi/providertest v0.0.14 h1:5QlAPAAs82jkQraHsJvq1xgVfC7xtW8sFJwv2pHgxQ8=
 github.com/pulumi/providertest v0.0.14/go.mod h1:GcsqEGgSngwaNOD+kICJPIUQlnA911fGBU8HDlJvVL0=
+github.com/pulumi/pulumi-gcp/provider/v7 v7.0.0-20240826115840-6b6fb169cd7b h1:VBITh1ug4B9Pr63bdkQ2FZfhhet0fXIYaxV4xSiNxDM=
+github.com/pulumi/pulumi-gcp/provider/v7 v7.0.0-20240826115840-6b6fb169cd7b/go.mod h1:Bt89fsfe4vJACdBIDta07UnEwfSmXEhNPLaBeslplpg=
 github.com/pulumi/pulumi-java/pkg v0.14.0 h1:CKL7lLF81Fq6VRhA5TNFsSMnHraTNCUzIhqCzYX8Wzk=
 github.com/pulumi/pulumi-java/pkg v0.14.0/go.mod h1:VybuJMWJtJc9ZNbt1kcYH4TbpocMx9mEi7YWL2Co99c=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.42.1 h1:IMn3MmvoO66iptcU5kBdun60PqwNJBJ20A4hD3AqkDE=

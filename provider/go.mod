@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/provider/v7
+module github.com/pulumi/pulumi-gcp/provider/v8
 
 go 1.21.12
 
@@ -6,6 +6,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.14
+	github.com/pulumi/pulumi-gcp/provider/v7 v7.0.0-20240826115840-6b6fb169cd7b
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.42.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
 	github.com/pulumi/pulumi/pkg/v3 v3.129.0
@@ -151,7 +152,6 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-mux v0.16.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.5.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
