@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/sdk/v7
+module github.com/pulumi/pulumi-gcp/sdk/v8
 
 go 1.21
 

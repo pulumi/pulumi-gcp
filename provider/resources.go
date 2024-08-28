@@ -33,7 +33,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
-	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v8/pkg/version"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -1202,9 +1202,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dataproc_metastore_federation": {Tok: gcpResource(gcpDataProc, "MetastoreFederation")},
 			"google_dataproc_workflow_template":    {Tok: gcpResource(gcpDataProc, "WorkflowTemplate")},
 
-			// DataStore resources
-			"google_datastore_index": {Tok: gcpResource(gcpDatastore, "DataStoreIndex")},
-
 			// DNS resources
 			"google_dns_managed_zone": {
 				Tok: gcpResource(gcpDNS, "ManagedZone"),
@@ -1817,9 +1814,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_identity_platform_default_supported_idp_config": {
 				Tok: gcpResource(gcpIdentityPlatform, "DefaultSupportedIdpConfig"),
 			},
-			"google_identity_platform_inbound_saml_config":    {Tok: gcpResource(gcpIdentityPlatform, "InboundSamlConfig")},
-			"google_identity_platform_oauth_idp_config":       {Tok: gcpResource(gcpIdentityPlatform, "OauthIdpConfig")},
-			"google_identity_platform_project_default_config": {Tok: gcpResource(gcpIdentityPlatform, "ProjectDefaultConfig")},
+			"google_identity_platform_inbound_saml_config": {Tok: gcpResource(gcpIdentityPlatform, "InboundSamlConfig")},
+			"google_identity_platform_oauth_idp_config":    {Tok: gcpResource(gcpIdentityPlatform, "OauthIdpConfig")},
 			"google_identity_platform_tenant_default_supported_idp_config": {
 				Tok: gcpResource(gcpIdentityPlatform, "TenantDefaultSupportedIdpConfig"),
 			},

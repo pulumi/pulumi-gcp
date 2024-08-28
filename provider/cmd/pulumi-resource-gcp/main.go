@@ -24,7 +24,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 
-	gcp "github.com/pulumi/pulumi-gcp/provider/v7"
+	gcp "github.com/pulumi/pulumi-gcp/provider/v8"
 )
 
 //go:embed schema-embed.json
