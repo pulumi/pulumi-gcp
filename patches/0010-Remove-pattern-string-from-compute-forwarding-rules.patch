@@ -5,7 +5,7 @@ Subject: [PATCH] Remove pattern string from compute forwarding rules
 
 
 diff --git a/website/docs/r/compute_forwarding_rule.html.markdown b/website/docs/r/compute_forwarding_rule.html.markdown
-index 85140284c..24adf37cc 100644
+index 66a79fd0f..ac540c4ec 100644
 --- a/website/docs/r/compute_forwarding_rule.html.markdown
 +++ b/website/docs/r/compute_forwarding_rule.html.markdown
 @@ -1435,7 +1435,7 @@ The following arguments are supported:
