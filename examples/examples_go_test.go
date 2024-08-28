@@ -61,7 +61,7 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp/sdk/v7",
+			"github.com/pulumi/pulumi-gcp/sdk/v8",
 		},
 	})
 
@@ -312,12 +312,11 @@ func TestLabelsCombinationsGo(t *testing.T) {
 		{
 			"label kept if default is empty",
 			labelsState{
-				Labels: 	  map[string]string{"x": "s"},
+				Labels: map[string]string{"x": "s"},
 			},
 			labelsState{
 				DefaultLabels: map[string]string{"x": ""},
 			},
-
 		},
 	}
 
