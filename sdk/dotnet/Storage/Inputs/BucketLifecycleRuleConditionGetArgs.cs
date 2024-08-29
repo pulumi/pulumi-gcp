@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class BucketLifecycleRuleConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+        /// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         /// </summary>
         [Input("age")]
         public Input<int>? Age { get; set; }
@@ -80,12 +80,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         }
 
         /// <summary>
-        /// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-        /// </summary>
-        [Input("noAge")]
-        public Input<bool>? NoAge { get; set; }
-
-        /// <summary>
         /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         /// </summary>
         [Input("noncurrentTimeBefore")]
@@ -96,6 +90,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         /// </summary>
         [Input("numNewerVersions")]
         public Input<int>? NumNewerVersions { get; set; }
+
+        /// <summary>
+        /// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+        /// </summary>
+        [Input("sendAgeIfZero")]
+        public Input<bool>? SendAgeIfZero { get; set; }
 
         /// <summary>
         /// While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.

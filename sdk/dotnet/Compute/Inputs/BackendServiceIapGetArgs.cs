@@ -13,12 +13,18 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class BackendServiceIapGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        /// </summary>
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        /// <summary>
         /// OAuth2 Client ID for IAP
         /// </summary>
-        [Input("oauth2ClientId", required: true)]
-        public Input<string> Oauth2ClientId { get; set; } = null!;
+        [Input("oauth2ClientId")]
+        public Input<string>? Oauth2ClientId { get; set; }
 
-        [Input("oauth2ClientSecret", required: true)]
+        [Input("oauth2ClientSecret")]
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>

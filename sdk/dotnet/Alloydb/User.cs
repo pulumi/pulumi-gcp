@@ -30,20 +30,23 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "alloydb-network",
-    ///     });
-    /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("default", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultGoogleComputeNetwork.Id,
+    ///         },
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
     ///             Password = "cluster_secret",
     ///         },
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "alloydb-network",
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -119,7 +122,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///         },
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
     ///             Password = "cluster_secret",

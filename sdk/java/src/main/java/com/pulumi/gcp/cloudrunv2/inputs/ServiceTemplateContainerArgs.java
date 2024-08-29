@@ -8,7 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeArgs;
-import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerPortArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerPortsArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
@@ -24,14 +24,14 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     public static final ServiceTemplateContainerArgs Empty = new ServiceTemplateContainerArgs();
 
     /**
-     * Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references are not supported in Cloud Run.
      * 
      */
     @Import(name="args")
     private @Nullable Output<List<String>> args;
 
     /**
-     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references are not supported in Cloud Run.
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -139,7 +139,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
      * 
      */
     @Import(name="ports")
-    private @Nullable Output<List<ServiceTemplateContainerPortArgs>> ports;
+    private @Nullable Output<ServiceTemplateContainerPortsArgs> ports;
 
     /**
      * @return List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
@@ -147,7 +147,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
      * Structure is documented below.
      * 
      */
-    public Optional<Output<List<ServiceTemplateContainerPortArgs>>> ports() {
+    public Optional<Output<ServiceTemplateContainerPortsArgs>> ports() {
         return Optional.ofNullable(this.ports);
     }
 
@@ -253,7 +253,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references are not supported in Cloud Run.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references are not supported in Cloud Run.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references are not supported in Cloud Run.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder ports(@Nullable Output<List<ServiceTemplateContainerPortArgs>> ports) {
+        public Builder ports(@Nullable Output<ServiceTemplateContainerPortsArgs> ports) {
             $.ports = ports;
             return this;
         }
@@ -465,20 +465,8 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder ports(List<ServiceTemplateContainerPortArgs> ports) {
+        public Builder ports(ServiceTemplateContainerPortsArgs ports) {
             return ports(Output.of(ports));
-        }
-
-        /**
-         * @param ports List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
-         * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ports(ServiceTemplateContainerPortArgs... ports) {
-            return ports(List.of(ports));
         }
 
         /**

@@ -15,6 +15,7 @@ import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
 import com.pulumi.gcp.redis.outputs.ClusterStateInfo;
 import com.pulumi.gcp.redis.outputs.ClusterZoneDistributionConfig;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
  *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .deletionProtectionEnabled(true)
  *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
  *                 .mode("MULTI_ZONE")
  *                 .build())
@@ -185,6 +187,7 @@ import javax.annotation.Nullable;
  *                 .mode("SINGLE_ZONE")
  *                 .zone("us-central1-f")
  *                 .build())
+ *             .deletionProtectionEnabled(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
  *                 .build());
@@ -263,6 +266,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+     * operation will fail. Default value is true.
+     * 
+     */
+    @Export(name="deletionProtectionEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtectionEnabled;
+
+    /**
+     * @return Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+     * operation will fail. Default value is true.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtectionEnabled() {
+        return Codegen.optional(this.deletionProtectionEnabled);
     }
     /**
      * Output only. Endpoints created on each given network,

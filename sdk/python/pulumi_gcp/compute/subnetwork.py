@@ -21,11 +21,11 @@ __all__ = ['SubnetworkArgs', 'Subnetwork']
 @pulumi.input_type
 class SubnetworkArgs:
     def __init__(__self__, *,
-                 ip_cidr_range: pulumi.Input[str],
                  network: pulumi.Input[str],
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
+                 ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -34,16 +34,13 @@ class SubnetworkArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
                  send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
-        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
-               Provide this property when you create the subnetwork. For example,
-               10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
-               non-overlapping within a network. Only IPv4 is supported.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
                
@@ -57,6 +54,11 @@ class SubnetworkArgs:
                you create the resource. This field can be set only at resource
                creation time.
         :param pulumi.Input[str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
+               Provide this property when you create the subnetwork. For example,
+               10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+               non-overlapping within a network. Only IPv4 is supported.
+               Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -86,6 +88,8 @@ class SubnetworkArgs:
                Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
+        :param pulumi.Input[str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+               E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -107,7 +111,6 @@ class SubnetworkArgs:
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "network", network)
         if allow_subnet_cidr_routes_overlap is not None:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
@@ -115,6 +118,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "description", description)
         if external_ipv6_prefix is not None:
             pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
+        if ip_cidr_range is not None:
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if ipv6_access_type is not None:
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if log_config is not None:
@@ -131,6 +136,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "purpose", purpose)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if reserved_internal_range is not None:
+            pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
@@ -139,21 +146,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "send_secondary_ip_range_if_empty", send_secondary_ip_range_if_empty)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
-
-    @property
-    @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> pulumi.Input[str]:
-        """
-        The range of internal addresses that are owned by this subnetwork.
-        Provide this property when you create the subnetwork. For example,
-        10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
-        non-overlapping within a network. Only IPv4 is supported.
-        """
-        return pulumi.get(self, "ip_cidr_range")
-
-    @ip_cidr_range.setter
-    def ip_cidr_range(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ip_cidr_range", value)
 
     @property
     @pulumi.getter
@@ -211,6 +203,22 @@ class SubnetworkArgs:
     @external_ipv6_prefix.setter
     def external_ipv6_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_ipv6_prefix", value)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of internal addresses that are owned by this subnetwork.
+        Provide this property when you create the subnetwork. For example,
+        10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+        non-overlapping within a network. Only IPv4 is supported.
+        Field is optional when `reserved_internal_range` is defined, otherwise required.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @ip_cidr_range.setter
+    def ip_cidr_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_cidr_range", value)
 
     @property
     @pulumi.getter(name="ipv6AccessType")
@@ -330,6 +338,19 @@ class SubnetworkArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        """
+        return pulumi.get(self, "reserved_internal_range")
+
+    @reserved_internal_range.setter
+    def reserved_internal_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_internal_range", value)
+
+    @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
@@ -415,6 +436,7 @@ class _SubnetworkState:
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -439,6 +461,7 @@ class _SubnetworkState:
                Provide this property when you create the subnetwork. For example,
                10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
                non-overlapping within a network. Only IPv4 is supported.
+               Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -474,6 +497,8 @@ class _SubnetworkState:
                Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
+        :param pulumi.Input[str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+               E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -535,6 +560,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "purpose", purpose)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if reserved_internal_range is not None:
+            pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
@@ -645,6 +672,7 @@ class _SubnetworkState:
         Provide this property when you create the subnetwork. For example,
         10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         non-overlapping within a network. Only IPv4 is supported.
+        Field is optional when `reserved_internal_range` is defined, otherwise required.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -798,6 +826,19 @@ class _SubnetworkState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        """
+        return pulumi.get(self, "reserved_internal_range")
+
+    @reserved_internal_range.setter
+    def reserved_internal_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_internal_range", value)
+
+    @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
@@ -892,6 +933,7 @@ class Subnetwork(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
                  send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
@@ -1053,6 +1095,61 @@ class Subnetwork(pulumi.CustomResource):
             allow_subnet_cidr_routes_overlap=True,
             network=net_cidr_overlap.id)
         ```
+        ### Subnetwork Reserved Internal Range
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="network-reserved-internal-range",
+            auto_create_subnetworks=False)
+        reserved = gcp.networkconnectivity.InternalRange("reserved",
+            name="reserved",
+            network=default.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["10.0.0.0/8"])
+        subnetwork_reserved_internal_range = gcp.compute.Subnetwork("subnetwork-reserved-internal-range",
+            name="subnetwork-reserved-internal-range",
+            region="us-central1",
+            network=default.id,
+            reserved_internal_range=reserved.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"))
+        ```
+        ### Subnetwork Reserved Secondary Range
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="network-reserved-secondary-range",
+            auto_create_subnetworks=False)
+        reserved = gcp.networkconnectivity.InternalRange("reserved",
+            name="reserved",
+            network=default.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["10.0.0.0/8"])
+        reserved_secondary = gcp.networkconnectivity.InternalRange("reserved_secondary",
+            name="reserved-secondary",
+            network=default.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=16,
+            target_cidr_ranges=["10.0.0.0/8"])
+        subnetwork_reserved_secondary_range = gcp.compute.Subnetwork("subnetwork-reserved-secondary-range",
+            name="subnetwork-reserved-secondary-range",
+            region="us-central1",
+            network=default.id,
+            reserved_internal_range=reserved.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"),
+            secondary_ip_ranges=[{
+                "range_name": "secondary",
+                "reserved_internal_range": reserved_secondary.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"),
+            }])
+        ```
 
         ## Import
 
@@ -1098,6 +1195,7 @@ class Subnetwork(pulumi.CustomResource):
                Provide this property when you create the subnetwork. For example,
                10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
                non-overlapping within a network. Only IPv4 is supported.
+               Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -1132,6 +1230,8 @@ class Subnetwork(pulumi.CustomResource):
                Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
+        :param pulumi.Input[str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+               E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1315,6 +1415,61 @@ class Subnetwork(pulumi.CustomResource):
             allow_subnet_cidr_routes_overlap=True,
             network=net_cidr_overlap.id)
         ```
+        ### Subnetwork Reserved Internal Range
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="network-reserved-internal-range",
+            auto_create_subnetworks=False)
+        reserved = gcp.networkconnectivity.InternalRange("reserved",
+            name="reserved",
+            network=default.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["10.0.0.0/8"])
+        subnetwork_reserved_internal_range = gcp.compute.Subnetwork("subnetwork-reserved-internal-range",
+            name="subnetwork-reserved-internal-range",
+            region="us-central1",
+            network=default.id,
+            reserved_internal_range=reserved.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"))
+        ```
+        ### Subnetwork Reserved Secondary Range
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="network-reserved-secondary-range",
+            auto_create_subnetworks=False)
+        reserved = gcp.networkconnectivity.InternalRange("reserved",
+            name="reserved",
+            network=default.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["10.0.0.0/8"])
+        reserved_secondary = gcp.networkconnectivity.InternalRange("reserved_secondary",
+            name="reserved-secondary",
+            network=default.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=16,
+            target_cidr_ranges=["10.0.0.0/8"])
+        subnetwork_reserved_secondary_range = gcp.compute.Subnetwork("subnetwork-reserved-secondary-range",
+            name="subnetwork-reserved-secondary-range",
+            region="us-central1",
+            network=default.id,
+            reserved_internal_range=reserved.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"),
+            secondary_ip_ranges=[{
+                "range_name": "secondary",
+                "reserved_internal_range": reserved_secondary.id.apply(lambda id: f"networkconnectivity.googleapis.com/{id}"),
+            }])
+        ```
 
         ## Import
 
@@ -1374,6 +1529,7 @@ class Subnetwork(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
                  send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
@@ -1390,8 +1546,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
             __props__.__dict__["description"] = description
             __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
-            if ip_cidr_range is None and not opts.urn:
-                raise TypeError("Missing required property 'ip_cidr_range'")
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["ipv6_access_type"] = ipv6_access_type
             __props__.__dict__["log_config"] = log_config
@@ -1404,6 +1558,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["region"] = region
+            __props__.__dict__["reserved_internal_range"] = reserved_internal_range
             __props__.__dict__["role"] = role
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["send_secondary_ip_range_if_empty"] = send_secondary_ip_range_if_empty
@@ -1442,6 +1597,7 @@ class Subnetwork(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            reserved_internal_range: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
             secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1471,6 +1627,7 @@ class Subnetwork(pulumi.CustomResource):
                Provide this property when you create the subnetwork. For example,
                10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
                non-overlapping within a network. Only IPv4 is supported.
+               Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -1506,6 +1663,8 @@ class Subnetwork(pulumi.CustomResource):
                Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
+        :param pulumi.Input[str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+               E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1550,6 +1709,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["region"] = region
+        __props__.__dict__["reserved_internal_range"] = reserved_internal_range
         __props__.__dict__["role"] = role
         __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
         __props__.__dict__["self_link"] = self_link
@@ -1628,6 +1788,7 @@ class Subnetwork(pulumi.CustomResource):
         Provide this property when you create the subnetwork. For example,
         10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         non-overlapping within a network. Only IPv4 is supported.
+        Field is optional when `reserved_internal_range` is defined, otherwise required.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -1735,6 +1896,15 @@ class Subnetwork(pulumi.CustomResource):
         The GCP region for this subnetwork.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        """
+        return pulumi.get(self, "reserved_internal_range")
 
     @property
     @pulumi.getter

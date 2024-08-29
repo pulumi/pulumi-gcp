@@ -6,6 +6,7 @@ package com.pulumi.gcp.activedirectory;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,13 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> authorizedNetworks() {
         return Optional.ofNullable(this.authorizedNetworks);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -148,6 +156,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     private DomainArgs(DomainArgs $) {
         this.admin = $.admin;
         this.authorizedNetworks = $.authorizedNetworks;
+        this.deletionProtection = $.deletionProtection;
         this.domainName = $.domainName;
         this.labels = $.labels;
         this.locations = $.locations;
@@ -228,6 +237,15 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authorizedNetworks(String... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

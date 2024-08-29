@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
     ///         Name = "tf-test_22375",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var testProject = Gcp.Organizations.GetProject.Invoke();

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datafusion"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -58,9 +58,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datafusion"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -130,8 +130,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datafusion"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -195,9 +195,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -255,7 +255,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datafusion"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -283,8 +283,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -321,7 +321,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datafusion"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

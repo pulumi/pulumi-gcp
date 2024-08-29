@@ -21,7 +21,6 @@ __all__ = ['MangedSslCertificateArgs', 'MangedSslCertificate']
 @pulumi.input_type
 class MangedSslCertificateArgs:
     def __init__(__self__, *,
-                 certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input['MangedSslCertificateManagedArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +28,6 @@ class MangedSslCertificateArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MangedSslCertificate resource.
-        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['MangedSslCertificateManagedArgs'] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -49,8 +47,6 @@ class MangedSslCertificateArgs:
                Default value is `MANAGED`.
                Possible values are: `MANAGED`.
         """
-        if certificate_id is not None:
-            pulumi.set(__self__, "certificate_id", certificate_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if managed is not None:
@@ -61,18 +57,6 @@ class MangedSslCertificateArgs:
             pulumi.set(__self__, "project", project)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The unique identifier for the resource.
-        """
-        return pulumi.get(self, "certificate_id")
-
-    @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "certificate_id", value)
 
     @property
     @pulumi.getter
@@ -352,7 +336,6 @@ class MangedSslCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -461,7 +444,6 @@ class MangedSslCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -602,7 +584,6 @@ class MangedSslCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[Union['MangedSslCertificateManagedArgs', 'MangedSslCertificateManagedArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -618,12 +599,12 @@ class MangedSslCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MangedSslCertificateArgs.__new__(MangedSslCertificateArgs)
 
-            __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["description"] = description
             __props__.__dict__["managed"] = managed
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
+            __props__.__dict__["certificate_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["self_link"] = None

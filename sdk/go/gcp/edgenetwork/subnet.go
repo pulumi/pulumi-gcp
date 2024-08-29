@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/edgenetwork"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/edgenetwork"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,7 +74,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/edgenetwork"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/edgenetwork"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -158,11 +158,16 @@ type Subnet struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv4Cidrs pulumi.StringArrayOutput `pulumi:"ipv4Cidrs"`
 	// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv6Cidrs pulumi.StringArrayOutput `pulumi:"ipv6Cidrs"`
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -175,6 +180,9 @@ type Subnet struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Current stage of the resource to the device by config push.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A unique ID that identifies this subnet.
@@ -210,6 +218,11 @@ func NewSubnet(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Subnet
 	err := ctx.RegisterResource("gcp:edgenetwork/subnet:Subnet", name, args, &resource, opts...)
@@ -239,11 +252,16 @@ type subnetState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
 	// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location *string `pulumi:"location"`
@@ -256,6 +274,9 @@ type subnetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Current stage of the resource to the device by config push.
 	State *string `pulumi:"state"`
 	// A unique ID that identifies this subnet.
@@ -279,11 +300,16 @@ type SubnetState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv4Cidrs pulumi.StringArrayInput
 	// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv6Cidrs pulumi.StringArrayInput
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location pulumi.StringPtrInput
@@ -296,6 +322,9 @@ type SubnetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Current stage of the resource to the device by config push.
 	State pulumi.StringPtrInput
 	// A unique ID that identifies this subnet.
@@ -324,6 +353,9 @@ type subnetArgs struct {
 	// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location string `pulumi:"location"`
@@ -352,6 +384,9 @@ type SubnetArgs struct {
 	// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
 	Ipv6Cidrs pulumi.StringArrayInput
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location pulumi.StringInput
@@ -470,6 +505,11 @@ func (o SubnetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o SubnetOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
 func (o SubnetOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringArrayOutput { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
@@ -481,6 +521,9 @@ func (o SubnetOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
 }
 
 // Labels associated with this resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SubnetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -506,6 +549,12 @@ func (o SubnetOutput) Network() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o SubnetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SubnetOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Current stage of the resource to the device by config push.

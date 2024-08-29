@@ -47,10 +47,6 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MatchesSuffixes;
         /// <summary>
-        /// While set true, age value will be omitted.Required to set true when age is unset in the config file.
-        /// </summary>
-        public readonly bool NoAge;
-        /// <summary>
         /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         /// </summary>
         public readonly string NoncurrentTimeBefore;
@@ -58,6 +54,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         /// </summary>
         public readonly int NumNewerVersions;
+        /// <summary>
+        /// While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
+        /// </summary>
+        public readonly bool SendAgeIfZero;
         /// <summary>
         /// While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
         /// </summary>
@@ -93,11 +93,11 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             ImmutableArray<string> matchesSuffixes,
 
-            bool noAge,
-
             string noncurrentTimeBefore,
 
             int numNewerVersions,
+
+            bool sendAgeIfZero,
 
             bool sendDaysSinceCustomTimeIfZero,
 
@@ -115,9 +115,9 @@ namespace Pulumi.Gcp.Storage.Outputs
             MatchesPrefixes = matchesPrefixes;
             MatchesStorageClasses = matchesStorageClasses;
             MatchesSuffixes = matchesSuffixes;
-            NoAge = noAge;
             NoncurrentTimeBefore = noncurrentTimeBefore;
             NumNewerVersions = numNewerVersions;
+            SendAgeIfZero = sendAgeIfZero;
             SendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
             SendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
             SendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;

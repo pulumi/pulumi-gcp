@@ -63,7 +63,6 @@ import * as datafusion from "./datafusion";
 import * as dataloss from "./dataloss";
 import * as dataplex from "./dataplex";
 import * as dataproc from "./dataproc";
-import * as datastore from "./datastore";
 import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
 import * as diagflow from "./diagflow";
@@ -187,7 +186,6 @@ export {
     dataloss,
     dataplex,
     dataproc,
-    datastore,
     datastream,
     deploymentmanager,
     diagflow,

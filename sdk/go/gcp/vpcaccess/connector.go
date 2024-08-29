@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vpcaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -36,9 +36,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
-//				Name:        pulumi.String("vpc-con"),
-//				IpCidrRange: pulumi.String("10.8.0.0/28"),
-//				Network:     pulumi.String("default"),
+//				Name:         pulumi.String("vpc-con"),
+//				IpCidrRange:  pulumi.String("10.8.0.0/28"),
+//				Network:      pulumi.String("default"),
+//				MinInstances: pulumi.Int(2),
+//				MaxInstances: pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err
@@ -55,8 +57,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vpcaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,7 +79,9 @@ import (
 //				Subnet: &vpcaccess.ConnectorSubnetArgs{
 //					Name: customTest.Name,
 //				},
-//				MachineType: pulumi.String("e2-standard-4"),
+//				MachineType:  pulumi.String("e2-standard-4"),
+//				MinInstances: pulumi.Int(2),
+//				MaxInstances: pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err
@@ -133,14 +137,14 @@ type Connector struct {
 	// when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
 	// min_throughput. If both maxThroughput and maxInstances are provided, maxInstances takes precedence over max_throughput. The use of
 	// maxThroughput is discouraged in favor of max_instances.
-	MaxThroughput pulumi.IntPtrOutput `pulumi:"maxThroughput"`
+	MaxThroughput pulumi.IntOutput `pulumi:"maxThroughput"`
 	// Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
 	// lower than the value specified by max_instances.
 	MinInstances pulumi.IntOutput `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
 	// Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both minThroughput and
 	// minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
-	MinThroughput pulumi.IntPtrOutput `pulumi:"minThroughput"`
+	MinThroughput pulumi.IntOutput `pulumi:"minThroughput"`
 	// The name of the resource (Max 25 characters).
 	//
 	// ***
@@ -463,8 +467,8 @@ func (o ConnectorOutput) MaxInstances() pulumi.IntOutput {
 // when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
 // min_throughput. If both maxThroughput and maxInstances are provided, maxInstances takes precedence over max_throughput. The use of
 // maxThroughput is discouraged in favor of max_instances.
-func (o ConnectorOutput) MaxThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Connector) pulumi.IntPtrOutput { return v.MaxThroughput }).(pulumi.IntPtrOutput)
+func (o ConnectorOutput) MaxThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connector) pulumi.IntOutput { return v.MaxThroughput }).(pulumi.IntOutput)
 }
 
 // Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
@@ -476,8 +480,8 @@ func (o ConnectorOutput) MinInstances() pulumi.IntOutput {
 // Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
 // Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both minThroughput and
 // minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
-func (o ConnectorOutput) MinThroughput() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Connector) pulumi.IntPtrOutput { return v.MinThroughput }).(pulumi.IntPtrOutput)
+func (o ConnectorOutput) MinThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connector) pulumi.IntOutput { return v.MinThroughput }).(pulumi.IntOutput)
 }
 
 // The name of the resource (Max 25 characters).

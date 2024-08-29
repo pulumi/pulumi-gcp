@@ -6,7 +6,6 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.String;
 import java.util.Objects;
 
 @CustomType
@@ -21,11 +20,6 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
      * 
      */
     private Boolean enableRelay;
-    /**
-     * @return Mode used to make Relay available.
-     * 
-     */
-    private String relayMode;
 
     private GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig() {}
     /**
@@ -42,13 +36,6 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
     public Boolean enableRelay() {
         return this.enableRelay;
     }
-    /**
-     * @return Mode used to make Relay available.
-     * 
-     */
-    public String relayMode() {
-        return this.relayMode;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,13 +48,11 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
     public static final class Builder {
         private Boolean enableMetrics;
         private Boolean enableRelay;
-        private String relayMode;
         public Builder() {}
         public Builder(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableMetrics = defaults.enableMetrics;
     	      this.enableRelay = defaults.enableRelay;
-    	      this.relayMode = defaults.relayMode;
         }
 
         @CustomType.Setter
@@ -86,19 +71,10 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
             this.enableRelay = enableRelay;
             return this;
         }
-        @CustomType.Setter
-        public Builder relayMode(String relayMode) {
-            if (relayMode == null) {
-              throw new MissingRequiredPropertyException("GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig", "relayMode");
-            }
-            this.relayMode = relayMode;
-            return this;
-        }
         public GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig build() {
             final var _resultValue = new GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
             _resultValue.enableMetrics = enableMetrics;
             _resultValue.enableRelay = enableRelay;
-            _resultValue.relayMode = relayMode;
             return _resultValue;
         }
     }

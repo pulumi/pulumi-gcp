@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *         var autokmsFolder = new Folder("autokmsFolder", FolderArgs.builder()
  *             .displayName("folder-example")
  *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         // Create the key project
@@ -68,6 +69,7 @@ import javax.annotation.Nullable;
  *             .name("key-proj")
  *             .folderId(autokmsFolder.folderId())
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(autokmsFolder)
  *                 .build());
@@ -78,6 +80,7 @@ import javax.annotation.Nullable;
  *             .name("resources")
  *             .folderId(autokmsFolder.folderId())
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(autokmsFolder)
  *                 .build());

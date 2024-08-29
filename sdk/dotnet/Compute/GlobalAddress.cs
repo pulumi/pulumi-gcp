@@ -137,7 +137,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> IpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -419,7 +420,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }

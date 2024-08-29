@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,7 +80,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -148,7 +148,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -181,7 +181,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -229,7 +229,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -297,7 +297,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -557,7 +557,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -825,7 +825,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -955,7 +955,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1083,7 +1083,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1143,7 +1143,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1278,6 +1278,8 @@ type ForwardingRule struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId pulumi.IntOutput `pulumi:"forwardingRuleId"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target` or `backendService`.
@@ -1404,6 +1406,7 @@ type ForwardingRule struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringOutput `pulumi:"portRange"`
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -1422,6 +1425,7 @@ type ForwardingRule struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1552,6 +1556,8 @@ type forwardingRuleState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId *int `pulumi:"forwardingRuleId"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target` or `backendService`.
@@ -1678,6 +1684,7 @@ type forwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -1696,6 +1703,7 @@ type forwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1792,6 +1800,8 @@ type ForwardingRuleState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId pulumi.IntPtrInput
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target` or `backendService`.
@@ -1918,6 +1928,7 @@ type ForwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -1936,6 +1947,7 @@ type ForwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -2153,6 +2165,7 @@ type forwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -2171,6 +2184,7 @@ type forwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -2373,6 +2387,7 @@ type ForwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -2391,6 +2406,7 @@ type ForwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -2585,6 +2601,11 @@ func (o ForwardingRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o ForwardingRuleOutput) ForwardingRuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.IntOutput { return v.ForwardingRuleId }).(pulumi.IntOutput)
+}
+
 // IP address for which this forwarding rule accepts traffic. When a client
 // sends traffic to this IP address, the forwarding rule directs the traffic
 // to the referenced `target` or `backendService`.
@@ -2744,6 +2765,7 @@ func (o ForwardingRuleOutput) NoAutomateDnsZone() pulumi.BoolPtrOutput {
 //     For internal forwarding rules within the same VPC network, two or more
 //     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 //     cannot have overlapping `portRange`s.
+//     @pattern: \d+(?:-\d+)?
 func (o ForwardingRuleOutput) PortRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PortRange }).(pulumi.StringOutput)
 }
@@ -2765,6 +2787,7 @@ func (o ForwardingRuleOutput) PortRange() pulumi.StringOutput {
 //     For internal forwarding rules within the same VPC network, two or more
 //     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 //     they share at least one port number.
+//     @pattern: \d+(?:-\d+)?
 func (o ForwardingRuleOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringArrayOutput { return v.Ports }).(pulumi.StringArrayOutput)
 }

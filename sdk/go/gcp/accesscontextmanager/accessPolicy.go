@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,7 +39,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/accesscontextmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,8 +67,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/accesscontextmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -76,9 +76,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("my-project-name"),
-//				Name:      pulumi.String("my-project-name"),
-//				OrgId:     pulumi.String("123456789"),
+//				ProjectId:      pulumi.String("my-project-name"),
+//				Name:           pulumi.String("my-project-name"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err

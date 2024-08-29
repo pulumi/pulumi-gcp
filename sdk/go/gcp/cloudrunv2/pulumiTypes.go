@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1364,7 +1364,7 @@ func (o JobTemplateTemplatePtrOutput) VpcAccess() JobTemplateTemplateVpcAccessPt
 }
 
 type JobTemplateTemplateContainer struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
@@ -1401,7 +1401,7 @@ type JobTemplateTemplateContainerInput interface {
 }
 
 type JobTemplateTemplateContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
@@ -1477,7 +1477,7 @@ func (o JobTemplateTemplateContainerOutput) ToJobTemplateTemplateContainerOutput
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o JobTemplateTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -1550,7 +1550,7 @@ func (o JobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) JobTem
 type JobTemplateTemplateContainerEnv struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 	Name string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value *string `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -1571,7 +1571,7 @@ type JobTemplateTemplateContainerEnvInput interface {
 type JobTemplateTemplateContainerEnvArgs struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -1634,7 +1634,7 @@ func (o JobTemplateTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 func (o JobTemplateTemplateContainerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5148,7 +5148,7 @@ func (o ServiceTemplatePtrOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput 
 }
 
 type ServiceTemplateContainer struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
@@ -5167,7 +5167,7 @@ type ServiceTemplateContainer struct {
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 	// Structure is documented below.
-	Ports []ServiceTemplateContainerPort `pulumi:"ports"`
+	Ports *ServiceTemplateContainerPorts `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *ServiceTemplateContainerResources `pulumi:"resources"`
@@ -5193,7 +5193,7 @@ type ServiceTemplateContainerInput interface {
 }
 
 type ServiceTemplateContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
@@ -5212,7 +5212,7 @@ type ServiceTemplateContainerArgs struct {
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 	// Structure is documented below.
-	Ports ServiceTemplateContainerPortArrayInput `pulumi:"ports"`
+	Ports ServiceTemplateContainerPortsPtrInput `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources ServiceTemplateContainerResourcesPtrInput `pulumi:"resources"`
@@ -5277,7 +5277,7 @@ func (o ServiceTemplateContainerOutput) ToServiceTemplateContainerOutputWithCont
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o ServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -5317,8 +5317,8 @@ func (o ServiceTemplateContainerOutput) Name() pulumi.StringPtrOutput {
 // List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
 // If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 // Structure is documented below.
-func (o ServiceTemplateContainerOutput) Ports() ServiceTemplateContainerPortArrayOutput {
-	return o.ApplyT(func(v ServiceTemplateContainer) []ServiceTemplateContainerPort { return v.Ports }).(ServiceTemplateContainerPortArrayOutput)
+func (o ServiceTemplateContainerOutput) Ports() ServiceTemplateContainerPortsPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerPorts { return v.Ports }).(ServiceTemplateContainerPortsPtrOutput)
 }
 
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
@@ -5365,9 +5365,9 @@ func (o ServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) ServiceTem
 }
 
 type ServiceTemplateContainerEnv struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
 	Name string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value *string `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -5386,9 +5386,9 @@ type ServiceTemplateContainerEnvInput interface {
 }
 
 type ServiceTemplateContainerEnvArgs struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -5446,12 +5446,12 @@ func (o ServiceTemplateContainerEnvOutput) ToServiceTemplateContainerEnvOutputWi
 	return o
 }
 
-// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
 func (o ServiceTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 func (o ServiceTemplateContainerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6650,110 +6650,160 @@ func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) Port() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-type ServiceTemplateContainerPort struct {
+type ServiceTemplateContainerPorts struct {
 	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort *int `pulumi:"containerPort"`
 	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name *string `pulumi:"name"`
 }
 
-// ServiceTemplateContainerPortInput is an input type that accepts ServiceTemplateContainerPortArgs and ServiceTemplateContainerPortOutput values.
-// You can construct a concrete instance of `ServiceTemplateContainerPortInput` via:
+// ServiceTemplateContainerPortsInput is an input type that accepts ServiceTemplateContainerPortsArgs and ServiceTemplateContainerPortsOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerPortsInput` via:
 //
-//	ServiceTemplateContainerPortArgs{...}
-type ServiceTemplateContainerPortInput interface {
+//	ServiceTemplateContainerPortsArgs{...}
+type ServiceTemplateContainerPortsInput interface {
 	pulumi.Input
 
-	ToServiceTemplateContainerPortOutput() ServiceTemplateContainerPortOutput
-	ToServiceTemplateContainerPortOutputWithContext(context.Context) ServiceTemplateContainerPortOutput
+	ToServiceTemplateContainerPortsOutput() ServiceTemplateContainerPortsOutput
+	ToServiceTemplateContainerPortsOutputWithContext(context.Context) ServiceTemplateContainerPortsOutput
 }
 
-type ServiceTemplateContainerPortArgs struct {
+type ServiceTemplateContainerPortsArgs struct {
 	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
 	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (ServiceTemplateContainerPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTemplateContainerPort)(nil)).Elem()
+func (ServiceTemplateContainerPortsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerPorts)(nil)).Elem()
 }
 
-func (i ServiceTemplateContainerPortArgs) ToServiceTemplateContainerPortOutput() ServiceTemplateContainerPortOutput {
-	return i.ToServiceTemplateContainerPortOutputWithContext(context.Background())
+func (i ServiceTemplateContainerPortsArgs) ToServiceTemplateContainerPortsOutput() ServiceTemplateContainerPortsOutput {
+	return i.ToServiceTemplateContainerPortsOutputWithContext(context.Background())
 }
 
-func (i ServiceTemplateContainerPortArgs) ToServiceTemplateContainerPortOutputWithContext(ctx context.Context) ServiceTemplateContainerPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortOutput)
+func (i ServiceTemplateContainerPortsArgs) ToServiceTemplateContainerPortsOutputWithContext(ctx context.Context) ServiceTemplateContainerPortsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortsOutput)
 }
 
-// ServiceTemplateContainerPortArrayInput is an input type that accepts ServiceTemplateContainerPortArray and ServiceTemplateContainerPortArrayOutput values.
-// You can construct a concrete instance of `ServiceTemplateContainerPortArrayInput` via:
+func (i ServiceTemplateContainerPortsArgs) ToServiceTemplateContainerPortsPtrOutput() ServiceTemplateContainerPortsPtrOutput {
+	return i.ToServiceTemplateContainerPortsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerPortsArgs) ToServiceTemplateContainerPortsPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerPortsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortsOutput).ToServiceTemplateContainerPortsPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateContainerPortsPtrInput is an input type that accepts ServiceTemplateContainerPortsArgs, ServiceTemplateContainerPortsPtr and ServiceTemplateContainerPortsPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerPortsPtrInput` via:
 //
-//	ServiceTemplateContainerPortArray{ ServiceTemplateContainerPortArgs{...} }
-type ServiceTemplateContainerPortArrayInput interface {
+//	        ServiceTemplateContainerPortsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateContainerPortsPtrInput interface {
 	pulumi.Input
 
-	ToServiceTemplateContainerPortArrayOutput() ServiceTemplateContainerPortArrayOutput
-	ToServiceTemplateContainerPortArrayOutputWithContext(context.Context) ServiceTemplateContainerPortArrayOutput
+	ToServiceTemplateContainerPortsPtrOutput() ServiceTemplateContainerPortsPtrOutput
+	ToServiceTemplateContainerPortsPtrOutputWithContext(context.Context) ServiceTemplateContainerPortsPtrOutput
 }
 
-type ServiceTemplateContainerPortArray []ServiceTemplateContainerPortInput
+type serviceTemplateContainerPortsPtrType ServiceTemplateContainerPortsArgs
 
-func (ServiceTemplateContainerPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceTemplateContainerPort)(nil)).Elem()
+func ServiceTemplateContainerPortsPtr(v *ServiceTemplateContainerPortsArgs) ServiceTemplateContainerPortsPtrInput {
+	return (*serviceTemplateContainerPortsPtrType)(v)
 }
 
-func (i ServiceTemplateContainerPortArray) ToServiceTemplateContainerPortArrayOutput() ServiceTemplateContainerPortArrayOutput {
-	return i.ToServiceTemplateContainerPortArrayOutputWithContext(context.Background())
+func (*serviceTemplateContainerPortsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerPorts)(nil)).Elem()
 }
 
-func (i ServiceTemplateContainerPortArray) ToServiceTemplateContainerPortArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortArrayOutput)
+func (i *serviceTemplateContainerPortsPtrType) ToServiceTemplateContainerPortsPtrOutput() ServiceTemplateContainerPortsPtrOutput {
+	return i.ToServiceTemplateContainerPortsPtrOutputWithContext(context.Background())
 }
 
-type ServiceTemplateContainerPortOutput struct{ *pulumi.OutputState }
-
-func (ServiceTemplateContainerPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTemplateContainerPort)(nil)).Elem()
+func (i *serviceTemplateContainerPortsPtrType) ToServiceTemplateContainerPortsPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerPortsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortsPtrOutput)
 }
 
-func (o ServiceTemplateContainerPortOutput) ToServiceTemplateContainerPortOutput() ServiceTemplateContainerPortOutput {
+type ServiceTemplateContainerPortsOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerPortsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerPorts)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerPortsOutput) ToServiceTemplateContainerPortsOutput() ServiceTemplateContainerPortsOutput {
 	return o
 }
 
-func (o ServiceTemplateContainerPortOutput) ToServiceTemplateContainerPortOutputWithContext(ctx context.Context) ServiceTemplateContainerPortOutput {
+func (o ServiceTemplateContainerPortsOutput) ToServiceTemplateContainerPortsOutputWithContext(ctx context.Context) ServiceTemplateContainerPortsOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerPortsOutput) ToServiceTemplateContainerPortsPtrOutput() ServiceTemplateContainerPortsPtrOutput {
+	return o.ToServiceTemplateContainerPortsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateContainerPortsOutput) ToServiceTemplateContainerPortsPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerPortsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerPorts) *ServiceTemplateContainerPorts {
+		return &v
+	}).(ServiceTemplateContainerPortsPtrOutput)
 }
 
 // Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
-func (o ServiceTemplateContainerPortOutput) ContainerPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
+func (o ServiceTemplateContainerPortsOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerPorts) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
 
 // If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-func (o ServiceTemplateContainerPortOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ServiceTemplateContainerPortsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerPorts) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type ServiceTemplateContainerPortArrayOutput struct{ *pulumi.OutputState }
+type ServiceTemplateContainerPortsPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceTemplateContainerPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceTemplateContainerPort)(nil)).Elem()
+func (ServiceTemplateContainerPortsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerPorts)(nil)).Elem()
 }
 
-func (o ServiceTemplateContainerPortArrayOutput) ToServiceTemplateContainerPortArrayOutput() ServiceTemplateContainerPortArrayOutput {
+func (o ServiceTemplateContainerPortsPtrOutput) ToServiceTemplateContainerPortsPtrOutput() ServiceTemplateContainerPortsPtrOutput {
 	return o
 }
 
-func (o ServiceTemplateContainerPortArrayOutput) ToServiceTemplateContainerPortArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerPortArrayOutput {
+func (o ServiceTemplateContainerPortsPtrOutput) ToServiceTemplateContainerPortsPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerPortsPtrOutput {
 	return o
 }
 
-func (o ServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateContainerPort {
-		return vs[0].([]ServiceTemplateContainerPort)[vs[1].(int)]
-	}).(ServiceTemplateContainerPortOutput)
+func (o ServiceTemplateContainerPortsPtrOutput) Elem() ServiceTemplateContainerPortsOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerPorts) ServiceTemplateContainerPorts {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateContainerPorts
+		return ret
+	}).(ServiceTemplateContainerPortsOutput)
+}
+
+// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+func (o ServiceTemplateContainerPortsPtrOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerPorts) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+func (o ServiceTemplateContainerPortsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerPorts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateContainerResources struct {
@@ -10667,7 +10717,7 @@ func (o GetJobTemplateTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTempla
 }
 
 type GetJobTemplateTemplateContainer struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
@@ -10701,7 +10751,7 @@ type GetJobTemplateTemplateContainerInput interface {
 }
 
 type GetJobTemplateTemplateContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
@@ -10774,7 +10824,7 @@ func (o GetJobTemplateTemplateContainerOutput) ToGetJobTemplateTemplateContainer
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o GetJobTemplateTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -10846,7 +10896,7 @@ func (o GetJobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) Get
 type GetJobTemplateTemplateContainerEnv struct {
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value string `pulumi:"value"`
 	// Source for the environment variable's value.
 	ValueSources []GetJobTemplateTemplateContainerEnvValueSource `pulumi:"valueSources"`
@@ -10866,7 +10916,7 @@ type GetJobTemplateTemplateContainerEnvInput interface {
 type GetJobTemplateTemplateContainerEnvArgs struct {
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value pulumi.StringInput `pulumi:"value"`
 	// Source for the environment variable's value.
 	ValueSources GetJobTemplateTemplateContainerEnvValueSourceArrayInput `pulumi:"valueSources"`
@@ -10928,7 +10978,7 @@ func (o GetJobTemplateTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 func (o GetJobTemplateTemplateContainerEnvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -13302,7 +13352,7 @@ func (o GetServiceTemplateArrayOutput) Index(i pulumi.IntInput) GetServiceTempla
 }
 
 type GetServiceTemplateContainer struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
@@ -13342,7 +13392,7 @@ type GetServiceTemplateContainerInput interface {
 }
 
 type GetServiceTemplateContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
@@ -13421,7 +13471,7 @@ func (o GetServiceTemplateContainerOutput) ToGetServiceTemplateContainerOutputWi
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o GetServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -13508,7 +13558,7 @@ func (o GetServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) GetServ
 type GetServiceTemplateContainerEnv struct {
 	// The name of the Cloud Run v2 Service.
 	Name string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value string `pulumi:"value"`
 	// Source for the environment variable's value.
 	ValueSources []GetServiceTemplateContainerEnvValueSource `pulumi:"valueSources"`
@@ -13528,7 +13578,7 @@ type GetServiceTemplateContainerEnvInput interface {
 type GetServiceTemplateContainerEnvArgs struct {
 	// The name of the Cloud Run v2 Service.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value pulumi.StringInput `pulumi:"value"`
 	// Source for the environment variable's value.
 	ValueSources GetServiceTemplateContainerEnvValueSourceArrayInput `pulumi:"valueSources"`
@@ -13590,7 +13640,7 @@ func (o GetServiceTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 func (o GetServiceTemplateContainerEnvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnv) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -17000,8 +17050,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeTcpSocketInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeTcpSocketPtrInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeTcpSocketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerPortInput)(nil)).Elem(), ServiceTemplateContainerPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerPortArrayInput)(nil)).Elem(), ServiceTemplateContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerPortsInput)(nil)).Elem(), ServiceTemplateContainerPortsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerPortsPtrInput)(nil)).Elem(), ServiceTemplateContainerPortsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerResourcesInput)(nil)).Elem(), ServiceTemplateContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerResourcesPtrInput)(nil)).Elem(), ServiceTemplateContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeArgs{})
@@ -17232,8 +17282,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput{})
-	pulumi.RegisterOutputType(ServiceTemplateContainerPortOutput{})
-	pulumi.RegisterOutputType(ServiceTemplateContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerPortsOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerPortsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerResourcesOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeOutput{})

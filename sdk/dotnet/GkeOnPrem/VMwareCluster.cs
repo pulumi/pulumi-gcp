@@ -303,18 +303,15 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 KonnectivityServerNodePort = 30008,
     ///             },
     ///         },
-    ///         Vcenters = new[]
+    ///         Vcenter = new Gcp.GkeOnPrem.Inputs.VMwareClusterVcenterArgs
     ///         {
-    ///             new Gcp.GkeOnPrem.Inputs.VMwareClusterVcenterArgs
-    ///             {
-    ///                 ResourcePool = "test-resource-pool",
-    ///                 Datastore = "test-datastore",
-    ///                 Datacenter = "test-datacenter",
-    ///                 Cluster = "test-cluster",
-    ///                 Folder = "test-folder",
-    ///                 CaCertData = "test-ca-cert-data",
-    ///                 StoragePolicyName = "test-storage-policy-name",
-    ///             },
+    ///             ResourcePool = "test-resource-pool",
+    ///             Datastore = "test-datastore",
+    ///             Datacenter = "test-datacenter",
+    ///             Cluster = "test-cluster",
+    ///             Folder = "test-folder",
+    ///             CaCertData = "test-ca-cert-data",
+    ///             StoragePolicyName = "test-storage-policy-name",
     ///         },
     ///         DataplaneV2 = new Gcp.GkeOnPrem.Inputs.VMwareClusterDataplaneV2Args
     ///         {
@@ -589,8 +586,8 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// <summary>
         /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
-        [Output("vcenters")]
-        public Output<ImmutableArray<Outputs.VMwareClusterVcenter>> Vcenters { get; private set; } = null!;
+        [Output("vcenter")]
+        public Output<Outputs.VMwareClusterVcenter?> Vcenter { get; private set; } = null!;
 
         /// <summary>
         /// Enable VM tracking.
@@ -765,17 +762,11 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Input("upgradePolicy")]
         public Input<Inputs.VMwareClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
 
-        [Input("vcenters")]
-        private InputList<Inputs.VMwareClusterVcenterArgs>? _vcenters;
-
         /// <summary>
         /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
-        public InputList<Inputs.VMwareClusterVcenterArgs> Vcenters
-        {
-            get => _vcenters ?? (_vcenters = new InputList<Inputs.VMwareClusterVcenterArgs>());
-            set => _vcenters = value;
-        }
+        [Input("vcenter")]
+        public Input<Inputs.VMwareClusterVcenterArgs>? Vcenter { get; set; }
 
         /// <summary>
         /// Enable VM tracking.
@@ -1028,17 +1019,11 @@ namespace Pulumi.Gcp.GkeOnPrem
             set => _validationChecks = value;
         }
 
-        [Input("vcenters")]
-        private InputList<Inputs.VMwareClusterVcenterGetArgs>? _vcenters;
-
         /// <summary>
         /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
-        public InputList<Inputs.VMwareClusterVcenterGetArgs> Vcenters
-        {
-            get => _vcenters ?? (_vcenters = new InputList<Inputs.VMwareClusterVcenterGetArgs>());
-            set => _vcenters = value;
-        }
+        [Input("vcenter")]
+        public Input<Inputs.VMwareClusterVcenterGetArgs>? Vcenter { get; set; }
 
         /// <summary>
         /// Enable VM tracking.

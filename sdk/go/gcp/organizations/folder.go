@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -84,7 +84,8 @@ type Folder struct {
 
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -137,7 +138,8 @@ func GetFolder(ctx *pulumi.Context,
 type folderState struct {
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime         *string `pulumi:"createTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -155,7 +157,8 @@ type folderState struct {
 type FolderState struct {
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringPtrInput
+	CreateTime         pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
 	DisplayName pulumi.StringPtrInput
@@ -175,6 +178,7 @@ func (FolderState) ElementType() reflect.Type {
 }
 
 type folderArgs struct {
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
 	DisplayName string `pulumi:"displayName"`
@@ -185,6 +189,7 @@ type folderArgs struct {
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
+	DeletionProtection pulumi.BoolPtrInput
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
 	DisplayName pulumi.StringInput
@@ -284,6 +289,10 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o FolderOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o FolderOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Folder) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // The folder’s display name.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,10 +21,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -99,10 +99,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -118,7 +118,9 @@ import (
 //			primary, err := alloydb.NewCluster(ctx, "primary", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-primary-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   _default.ID(),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: _default.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -157,9 +159,11 @@ import (
 //				return err
 //			}
 //			secondary, err := alloydb.NewCluster(ctx, "secondary", &alloydb.ClusterArgs{
-//				ClusterId:   pulumi.String("alloydb-secondary-cluster"),
-//				Location:    pulumi.String("us-east1"),
-//				Network:     _default.ID(),
+//				ClusterId: pulumi.String("alloydb-secondary-cluster"),
+//				Location:  pulumi.String("us-east1"),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: pulumi.Any(defaultGoogleComputeNetwork.Id),
+//				},
 //				ClusterType: pulumi.String("SECONDARY"),
 //				ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{
 //					Enabled: pulumi.Bool(false),
@@ -276,7 +280,7 @@ type Instance struct {
 	ObservabilityConfig InstanceObservabilityConfigOutput `pulumi:"observabilityConfig"`
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
-	PscInstanceConfig InstancePscInstanceConfigPtrOutput `pulumi:"pscInstanceConfig"`
+	PscInstanceConfig InstancePscInstanceConfigOutput `pulumi:"pscInstanceConfig"`
 	// The public IP addresses for the Instance. This is available ONLY when
 	// networkConfig.enablePublicIp is set to true. This is the connection
 	// endpoint for an end-user application.
@@ -806,8 +810,8 @@ func (o InstanceOutput) ObservabilityConfig() InstanceObservabilityConfigOutput 
 
 // Configuration for Private Service Connect (PSC) for the instance.
 // Structure is documented below.
-func (o InstanceOutput) PscInstanceConfig() InstancePscInstanceConfigPtrOutput {
-	return o.ApplyT(func(v *Instance) InstancePscInstanceConfigPtrOutput { return v.PscInstanceConfig }).(InstancePscInstanceConfigPtrOutput)
+func (o InstanceOutput) PscInstanceConfig() InstancePscInstanceConfigOutput {
+	return o.ApplyT(func(v *Instance) InstancePscInstanceConfigOutput { return v.PscInstanceConfig }).(InstancePscInstanceConfigOutput)
 }
 
 // The public IP addresses for the Instance. This is available ONLY when

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apphub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/apphub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,9 +33,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			serviceProject, err := organizations.NewProject(ctx, "service_project", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("project-1"),
-//				Name:      pulumi.String("Service Project"),
-//				OrgId:     pulumi.String("123456789"),
+//				ProjectId:      pulumi.String("project-1"),
+//				Name:           pulumi.String("Service Project"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,8 +69,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apphub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/apphub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -78,9 +79,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			serviceProjectFull, err := organizations.NewProject(ctx, "service_project_full", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("project-1"),
-//				Name:      pulumi.String("Service Project Full"),
-//				OrgId:     pulumi.String("123456789"),
+//				ProjectId:      pulumi.String("project-1"),
+//				Name:           pulumi.String("Service Project Full"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err

@@ -20,23 +20,16 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Whether or not Relay is enabled.
         /// </summary>
-        public readonly bool? EnableRelay;
-        /// <summary>
-        /// Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
-        /// </summary>
-        public readonly string? RelayMode;
+        public readonly bool EnableRelay;
 
         [OutputConstructor]
         private ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(
             bool enableMetrics,
 
-            bool? enableRelay,
-
-            string? relayMode)
+            bool enableRelay)
         {
             EnableMetrics = enableMetrics;
             EnableRelay = enableRelay;
-            RelayMode = relayMode;
         }
     }
 }

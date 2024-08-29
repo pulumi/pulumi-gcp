@@ -210,9 +210,6 @@ public final class Config {
     public Optional<String> dataprocMetastoreCustomEndpoint() {
         return Codegen.stringProp("dataprocMetastoreCustomEndpoint").config(config).get();
     }
-    public Optional<String> datastoreCustomEndpoint() {
-        return Codegen.stringProp("datastoreCustomEndpoint").config(config).get();
-    }
     public Optional<String> datastreamCustomEndpoint() {
         return Codegen.stringProp("datastreamCustomEndpoint").config(config).get();
     }

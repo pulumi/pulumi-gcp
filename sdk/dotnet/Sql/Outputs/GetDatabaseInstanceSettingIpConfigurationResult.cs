@@ -35,15 +35,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult> PscConfigs;
         /// <summary>
-        /// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
-        /// </summary>
-        public readonly bool RequireSsl;
-        /// <summary>
         /// Specify how the server certificate's Certificate Authority is hosted.
         /// </summary>
         public readonly string ServerCaMode;
         /// <summary>
-        /// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        /// Specify how SSL connection should be enforced in DB connections.
         /// </summary>
         public readonly string SslMode;
 
@@ -61,8 +57,6 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult> pscConfigs,
 
-            bool requireSsl,
-
             string serverCaMode,
 
             string sslMode)
@@ -73,7 +67,6 @@ namespace Pulumi.Gcp.Sql.Outputs
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;
             PscConfigs = pscConfigs;
-            RequireSsl = requireSsl;
             ServerCaMode = serverCaMode;
             SslMode = sslMode;
         }

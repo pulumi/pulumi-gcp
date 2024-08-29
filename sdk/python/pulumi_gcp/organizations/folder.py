@@ -20,7 +20,8 @@ __all__ = ['FolderArgs', 'Folder']
 class FolderArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 parent: pulumi.Input[str]):
+                 parent: pulumi.Input[str],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Folder resource.
         :param pulumi.Input[str] display_name: The folder’s display name.
@@ -30,6 +31,8 @@ class FolderArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "parent", parent)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
 
     @property
     @pulumi.getter(name="displayName")
@@ -57,11 +60,21 @@ class FolderArgs:
     def parent(self, value: pulumi.Input[str]):
         pulumi.set(self, "parent", value)
 
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
 
 @pulumi.input_type
 class _FolderState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
@@ -81,6 +94,8 @@ class _FolderState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if folder_id is not None:
@@ -104,6 +119,15 @@ class _FolderState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -173,6 +197,7 @@ class Folder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -302,6 +327,7 @@ class Folder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -313,6 +339,7 @@ class Folder(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FolderArgs.__new__(FolderArgs)
 
+            __props__.__dict__["deletion_protection"] = deletion_protection
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -334,6 +361,7 @@ class Folder(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
@@ -361,6 +389,7 @@ class Folder(pulumi.CustomResource):
         __props__ = _FolderState.__new__(_FolderState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["lifecycle_state"] = lifecycle_state
@@ -376,6 +405,11 @@ class Folder(pulumi.CustomResource):
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")

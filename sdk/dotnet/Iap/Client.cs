@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Iap
     ///         ProjectId = "my-project",
     ///         Name = "my-project",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var projectService = new Gcp.Projects.Service("project_service", new()

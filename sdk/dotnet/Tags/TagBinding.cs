@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Tags
     ///         ProjectId = "project_id",
     ///         Name = "project_id",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var key = new Gcp.Tags.TagKey("key", new()

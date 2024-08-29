@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Folder
     ///     {
     ///         DisplayName = "my-folder",
     ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folder_access_approval", new()
@@ -67,6 +68,7 @@ namespace Pulumi.Gcp.Folder
     ///     {
     ///         DisplayName = "my-folder",
     ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var myProject = new Gcp.Organizations.Project("my_project", new()
@@ -74,6 +76,7 @@ namespace Pulumi.Gcp.Folder
     ///         Name = "My Project",
     ///         ProjectId = "your-project-id",
     ///         FolderId = myFolder.Name,
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()

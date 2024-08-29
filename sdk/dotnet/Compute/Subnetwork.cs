@@ -247,6 +247,105 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Subnetwork Reserved Internal Range
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "network-reserved-internal-range",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var reserved = new Gcp.NetworkConnectivity.InternalRange("reserved", new()
+    ///     {
+    ///         Name = "reserved",
+    ///         Network = @default.Id,
+    ///         Usage = "FOR_VPC",
+    ///         Peering = "FOR_SELF",
+    ///         PrefixLength = 24,
+    ///         TargetCidrRanges = new[]
+    ///         {
+    ///             "10.0.0.0/8",
+    ///         },
+    ///     });
+    /// 
+    ///     var subnetwork_reserved_internal_range = new Gcp.Compute.Subnetwork("subnetwork-reserved-internal-range", new()
+    ///     {
+    ///         Name = "subnetwork-reserved-internal-range",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///         ReservedInternalRange = reserved.Id.Apply(id =&gt; $"networkconnectivity.googleapis.com/{id}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Subnetwork Reserved Secondary Range
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "network-reserved-secondary-range",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var reserved = new Gcp.NetworkConnectivity.InternalRange("reserved", new()
+    ///     {
+    ///         Name = "reserved",
+    ///         Network = @default.Id,
+    ///         Usage = "FOR_VPC",
+    ///         Peering = "FOR_SELF",
+    ///         PrefixLength = 24,
+    ///         TargetCidrRanges = new[]
+    ///         {
+    ///             "10.0.0.0/8",
+    ///         },
+    ///     });
+    /// 
+    ///     var reservedSecondary = new Gcp.NetworkConnectivity.InternalRange("reserved_secondary", new()
+    ///     {
+    ///         Name = "reserved-secondary",
+    ///         Network = @default.Id,
+    ///         Usage = "FOR_VPC",
+    ///         Peering = "FOR_SELF",
+    ///         PrefixLength = 16,
+    ///         TargetCidrRanges = new[]
+    ///         {
+    ///             "10.0.0.0/8",
+    ///         },
+    ///     });
+    /// 
+    ///     var subnetwork_reserved_secondary_range = new Gcp.Compute.Subnetwork("subnetwork-reserved-secondary-range", new()
+    ///     {
+    ///         Name = "subnetwork-reserved-secondary-range",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///         ReservedInternalRange = reserved.Id.Apply(id =&gt; $"networkconnectivity.googleapis.com/{id}"),
+    ///         SecondaryIpRanges = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "secondary",
+    ///                 ReservedInternalRange = reservedSecondary.Id.Apply(id =&gt; $"networkconnectivity.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -334,6 +433,7 @@ namespace Pulumi.Gcp.Compute
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         /// non-overlapping within a network. Only IPv4 is supported.
+        /// Field is optional when `reserved_internal_range` is defined, otherwise required.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -422,6 +522,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        /// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        /// </summary>
+        [Output("reservedInternalRange")]
+        public Output<string?> ReservedInternalRange { get; private set; } = null!;
 
         /// <summary>
         /// The role of subnetwork.
@@ -543,9 +650,10 @@ namespace Pulumi.Gcp.Compute
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         /// non-overlapping within a network. Only IPv4 is supported.
+        /// Field is optional when `reserved_internal_range` is defined, otherwise required.
         /// </summary>
-        [Input("ipCidrRange", required: true)]
-        public Input<string> IpCidrRange { get; set; } = null!;
+        [Input("ipCidrRange")]
+        public Input<string>? IpCidrRange { get; set; }
 
         /// <summary>
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
@@ -625,6 +733,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        /// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        /// </summary>
+        [Input("reservedInternalRange")]
+        public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
         /// The role of subnetwork.
@@ -733,6 +848,7 @@ namespace Pulumi.Gcp.Compute
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         /// non-overlapping within a network. Only IPv4 is supported.
+        /// Field is optional when `reserved_internal_range` is defined, otherwise required.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -821,6 +937,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        /// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        /// </summary>
+        [Input("reservedInternalRange")]
+        public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
         /// The role of subnetwork.

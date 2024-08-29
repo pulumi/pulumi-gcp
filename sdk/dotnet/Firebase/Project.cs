@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.Firebase
     ///         ProjectId = "my-project",
     ///         Name = "my-project",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///         Labels = 
     ///         {
     ///             { "firebase", "enabled" },

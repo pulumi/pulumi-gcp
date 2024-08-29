@@ -60,7 +60,9 @@ import * as utilities from "../utilities";
  * const primary = new gcp.alloydb.Cluster("primary", {
  *     clusterId: "alloydb-primary-cluster",
  *     location: "us-central1",
- *     network: _default.id,
+ *     networkConfig: {
+ *         network: _default.id,
+ *     },
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-secondary-instance",
@@ -87,7 +89,9 @@ import * as utilities from "../utilities";
  * const secondary = new gcp.alloydb.Cluster("secondary", {
  *     clusterId: "alloydb-secondary-cluster",
  *     location: "us-east1",
- *     network: _default.id,
+ *     networkConfig: {
+ *         network: defaultGoogleComputeNetwork.id,
+ *     },
  *     clusterType: "SECONDARY",
  *     continuousBackupConfig: {
  *         enabled: false,
@@ -252,7 +256,7 @@ export class Instance extends pulumi.CustomResource {
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      */
-    public readonly pscInstanceConfig!: pulumi.Output<outputs.alloydb.InstancePscInstanceConfig | undefined>;
+    public readonly pscInstanceConfig!: pulumi.Output<outputs.alloydb.InstancePscInstanceConfig>;
     /**
      * The public IP addresses for the Instance. This is available ONLY when
      * networkConfig.enablePublicIp is set to true. This is the connection

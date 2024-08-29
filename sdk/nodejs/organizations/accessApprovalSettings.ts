@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  *     name: "My Project",
  *     projectId: "your-project-id",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const keyRing = new gcp.kms.KeyRing("key_ring", {
  *     name: "key-ring",

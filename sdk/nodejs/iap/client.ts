@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project",
  *     name: "my-project",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const projectService = new gcp.projects.Service("project_service", {
  *     project: project.projectId,

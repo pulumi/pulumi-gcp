@@ -447,7 +447,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
+        /// prefix. Conflicts with `name`. Max length is 54 characters.
+        /// Prefixes with lengths longer than 37 characters will use a shortened
+        /// UUID that will be more prone to collisions.
+        /// 
+        /// Resulting name for a `name_prefix` &lt;= 37 characters:
+        /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `name_prefix` 38 - 54 characters:
+        /// `name_prefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
@@ -745,7 +752,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
+        /// prefix. Conflicts with `name`. Max length is 54 characters.
+        /// Prefixes with lengths longer than 37 characters will use a shortened
+        /// UUID that will be more prone to collisions.
+        /// 
+        /// Resulting name for a `name_prefix` &lt;= 37 characters:
+        /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `name_prefix` 38 - 54 characters:
+        /// `name_prefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -1021,7 +1035,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
+        /// prefix. Conflicts with `name`. Max length is 54 characters.
+        /// Prefixes with lengths longer than 37 characters will use a shortened
+        /// UUID that will be more prone to collisions.
+        /// 
+        /// Resulting name for a `name_prefix` &lt;= 37 characters:
+        /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `name_prefix` 38 - 54 characters:
+        /// `name_prefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }

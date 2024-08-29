@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -85,6 +85,7 @@ import (
 //				RedisConfigs: pulumi.StringMap{
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
 //				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 //					Mode: pulumi.String("MULTI_ZONE"),
 //				},
@@ -106,9 +107,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -159,6 +160,7 @@ import (
 //					Mode: pulumi.String("SINGLE_ZONE"),
 //					Zone: pulumi.String("us-central1-f"),
 //				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))
@@ -211,6 +213,9 @@ type Cluster struct {
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+	// operation will fail. Default value is true.
+	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
 	// Output only. Endpoints created on each given network,
 	// for Redis clients to connect to the cluster.
 	// Currently only one endpoint is supported.
@@ -304,6 +309,9 @@ type clusterState struct {
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+	// operation will fail. Default value is true.
+	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Output only. Endpoints created on each given network,
 	// for Redis clients to connect to the cluster.
 	// Currently only one endpoint is supported.
@@ -362,6 +370,9 @@ type ClusterState struct {
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+	// operation will fail. Default value is true.
+	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Output only. Endpoints created on each given network,
 	// for Redis clients to connect to the cluster.
 	// Currently only one endpoint is supported.
@@ -420,6 +431,9 @@ type clusterArgs struct {
 	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 	// "AUTH_MODE_DISABLED"]
 	AuthorizationMode *string `pulumi:"authorizationMode"`
+	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+	// operation will fail. Default value is true.
+	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name *string `pulumi:"name"`
@@ -456,6 +470,9 @@ type ClusterArgs struct {
 	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 	// "AUTH_MODE_DISABLED"]
 	AuthorizationMode pulumi.StringPtrInput
+	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+	// operation will fail. Default value is true.
+	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name pulumi.StringPtrInput
@@ -585,6 +602,12 @@ func (o ClusterOutput) AuthorizationMode() pulumi.StringPtrOutput {
 // digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+// operation will fail. Default value is true.
+func (o ClusterOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Output only. Endpoints created on each given network,

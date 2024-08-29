@@ -71,6 +71,7 @@ public final class GetClusterResult {
     private Boolean deletionProtection;
     private String description;
     private List<GetClusterDnsConfig> dnsConfigs;
+    private Map<String,String> effectiveLabels;
     private Boolean enableAutopilot;
     private Boolean enableCiliumClusterwideNetworkPolicy;
     private Boolean enableFqdnNetworkPolicy;
@@ -122,6 +123,7 @@ public final class GetClusterResult {
     private String privateIpv6GoogleAccess;
     private @Nullable String project;
     private List<GetClusterProtectConfig> protectConfigs;
+    private Map<String,String> pulumiLabels;
     private List<GetClusterReleaseChannel> releaseChannels;
     private Boolean removeDefaultNodePool;
     private Map<String,String> resourceLabels;
@@ -186,6 +188,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterDnsConfig> dnsConfigs() {
         return this.dnsConfigs;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Boolean enableAutopilot() {
         return this.enableAutopilot;
@@ -332,6 +337,9 @@ public final class GetClusterResult {
     public List<GetClusterProtectConfig> protectConfigs() {
         return this.protectConfigs;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetClusterReleaseChannel> releaseChannels() {
         return this.releaseChannels;
     }
@@ -403,6 +411,7 @@ public final class GetClusterResult {
         private Boolean deletionProtection;
         private String description;
         private List<GetClusterDnsConfig> dnsConfigs;
+        private Map<String,String> effectiveLabels;
         private Boolean enableAutopilot;
         private Boolean enableCiliumClusterwideNetworkPolicy;
         private Boolean enableFqdnNetworkPolicy;
@@ -450,6 +459,7 @@ public final class GetClusterResult {
         private String privateIpv6GoogleAccess;
         private @Nullable String project;
         private List<GetClusterProtectConfig> protectConfigs;
+        private Map<String,String> pulumiLabels;
         private List<GetClusterReleaseChannel> releaseChannels;
         private Boolean removeDefaultNodePool;
         private Map<String,String> resourceLabels;
@@ -484,6 +494,7 @@ public final class GetClusterResult {
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.dnsConfigs = defaults.dnsConfigs;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableAutopilot = defaults.enableAutopilot;
     	      this.enableCiliumClusterwideNetworkPolicy = defaults.enableCiliumClusterwideNetworkPolicy;
     	      this.enableFqdnNetworkPolicy = defaults.enableFqdnNetworkPolicy;
@@ -531,6 +542,7 @@ public final class GetClusterResult {
     	      this.privateIpv6GoogleAccess = defaults.privateIpv6GoogleAccess;
     	      this.project = defaults.project;
     	      this.protectConfigs = defaults.protectConfigs;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.releaseChannels = defaults.releaseChannels;
     	      this.removeDefaultNodePool = defaults.removeDefaultNodePool;
     	      this.resourceLabels = defaults.resourceLabels;
@@ -705,6 +717,14 @@ public final class GetClusterResult {
         }
         public Builder dnsConfigs(GetClusterDnsConfig... dnsConfigs) {
             return dnsConfigs(List.of(dnsConfigs));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
+            return this;
         }
         @CustomType.Setter
         public Builder enableAutopilot(Boolean enableAutopilot) {
@@ -1142,6 +1162,14 @@ public final class GetClusterResult {
             return protectConfigs(List.of(protectConfigs));
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder releaseChannels(List<GetClusterReleaseChannel> releaseChannels) {
             if (releaseChannels == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "releaseChannels");
@@ -1306,6 +1334,7 @@ public final class GetClusterResult {
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.dnsConfigs = dnsConfigs;
+            _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.enableAutopilot = enableAutopilot;
             _resultValue.enableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             _resultValue.enableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
@@ -1353,6 +1382,7 @@ public final class GetClusterResult {
             _resultValue.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
             _resultValue.project = project;
             _resultValue.protectConfigs = protectConfigs;
+            _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.releaseChannels = releaseChannels;
             _resultValue.removeDefaultNodePool = removeDefaultNodePool;
             _resultValue.resourceLabels = resourceLabels;

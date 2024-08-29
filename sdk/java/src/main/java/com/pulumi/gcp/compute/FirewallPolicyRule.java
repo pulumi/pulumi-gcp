@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  *         var folder = new Folder("folder", FolderArgs.builder()
  *             .displayName("policy")
  *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()

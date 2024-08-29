@@ -122,14 +122,16 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     @Import(name="labelFingerprint")
     private @Nullable Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     public Optional<Output<String>> labelFingerprint() {
@@ -477,7 +479,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -488,7 +491,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
          * 
          * @return builder
          * 

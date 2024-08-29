@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,7 +36,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,7 +71,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -83,6 +83,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL"),
 //				Iap: &compute.BackendServiceIapArgs{
+//					Enabled:            pulumi.Bool(true),
 //					Oauth2ClientId:     pulumi.String("abc"),
 //					Oauth2ClientSecret: pulumi.String("xyz"),
 //				},
@@ -102,7 +103,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -141,7 +142,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -178,7 +179,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -219,7 +220,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -263,7 +264,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -315,7 +316,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -352,7 +353,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -387,7 +388,15 @@ import (
 //					},
 //				},
 //				OutlierDetection: &compute.BackendServiceOutlierDetectionArgs{
-//					ConsecutiveErrors: pulumi.Int(2),
+//					ConsecutiveErrors:                  pulumi.Int(2),
+//					ConsecutiveGatewayFailure:          pulumi.Int(5),
+//					EnforcingConsecutiveErrors:         pulumi.Int(100),
+//					EnforcingConsecutiveGatewayFailure: pulumi.Int(0),
+//					EnforcingSuccessRate:               pulumi.Int(100),
+//					MaxEjectionPercent:                 pulumi.Int(10),
+//					SuccessRateMinimumHosts:            pulumi.Int(5),
+//					SuccessRateRequestVolume:           pulumi.Int(100),
+//					SuccessRateStdevFactor:             pulumi.Int(1900),
 //				},
 //			})
 //			if err != nil {
@@ -407,7 +416,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -464,7 +473,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -655,7 +664,11 @@ type BackendService struct {
 	// character, which cannot be a dash.
 	//
 	// ***
-	Name             pulumi.StringOutput                     `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+	// Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -860,7 +873,11 @@ type backendServiceState struct {
 	// character, which cannot be a dash.
 	//
 	// ***
-	Name             *string                         `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+	// Structure is documented below.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -1036,7 +1053,11 @@ type BackendServiceState struct {
 	// character, which cannot be a dash.
 	//
 	// ***
-	Name             pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+	// Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -1209,7 +1230,11 @@ type backendServiceArgs struct {
 	// character, which cannot be a dash.
 	//
 	// ***
-	Name             *string                         `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+	// Structure is documented below.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -1377,7 +1402,11 @@ type BackendServiceArgs struct {
 	// character, which cannot be a dash.
 	//
 	// ***
-	Name             pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+	// Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -1704,6 +1733,10 @@ func (o BackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+// Applicable backend service types can be a global backend service with the
+// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+// Structure is documented below.
 func (o BackendServiceOutput) OutlierDetection() BackendServiceOutlierDetectionPtrOutput {
 	return o.ApplyT(func(v *BackendService) BackendServiceOutlierDetectionPtrOutput { return v.OutlierDetection }).(BackendServiceOutlierDetectionPtrOutput)
 }

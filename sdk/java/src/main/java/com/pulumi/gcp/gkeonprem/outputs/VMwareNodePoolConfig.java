@@ -76,7 +76,7 @@ public final class VMwareNodePoolConfig {
      * Structure is documented below.
      * 
      */
-    private @Nullable List<VMwareNodePoolConfigVsphereConfig> vsphereConfigs;
+    private @Nullable VMwareNodePoolConfigVsphereConfig vsphereConfig;
 
     private VMwareNodePoolConfig() {}
     /**
@@ -155,8 +155,8 @@ public final class VMwareNodePoolConfig {
      * Structure is documented below.
      * 
      */
-    public List<VMwareNodePoolConfigVsphereConfig> vsphereConfigs() {
-        return this.vsphereConfigs == null ? List.of() : this.vsphereConfigs;
+    public Optional<VMwareNodePoolConfigVsphereConfig> vsphereConfig() {
+        return Optional.ofNullable(this.vsphereConfig);
     }
 
     public static Builder builder() {
@@ -177,7 +177,7 @@ public final class VMwareNodePoolConfig {
         private @Nullable Integer memoryMb;
         private @Nullable Integer replicas;
         private @Nullable List<VMwareNodePoolConfigTaint> taints;
-        private @Nullable List<VMwareNodePoolConfigVsphereConfig> vsphereConfigs;
+        private @Nullable VMwareNodePoolConfigVsphereConfig vsphereConfig;
         public Builder() {}
         public Builder(VMwareNodePoolConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -190,7 +190,7 @@ public final class VMwareNodePoolConfig {
     	      this.memoryMb = defaults.memoryMb;
     	      this.replicas = defaults.replicas;
     	      this.taints = defaults.taints;
-    	      this.vsphereConfigs = defaults.vsphereConfigs;
+    	      this.vsphereConfig = defaults.vsphereConfig;
         }
 
         @CustomType.Setter
@@ -253,13 +253,10 @@ public final class VMwareNodePoolConfig {
             return taints(List.of(taints));
         }
         @CustomType.Setter
-        public Builder vsphereConfigs(@Nullable List<VMwareNodePoolConfigVsphereConfig> vsphereConfigs) {
+        public Builder vsphereConfig(@Nullable VMwareNodePoolConfigVsphereConfig vsphereConfig) {
 
-            this.vsphereConfigs = vsphereConfigs;
+            this.vsphereConfig = vsphereConfig;
             return this;
-        }
-        public Builder vsphereConfigs(VMwareNodePoolConfigVsphereConfig... vsphereConfigs) {
-            return vsphereConfigs(List.of(vsphereConfigs));
         }
         public VMwareNodePoolConfig build() {
             final var _resultValue = new VMwareNodePoolConfig();
@@ -272,7 +269,7 @@ public final class VMwareNodePoolConfig {
             _resultValue.memoryMb = memoryMb;
             _resultValue.replicas = replicas;
             _resultValue.taints = taints;
-            _resultValue.vsphereConfigs = vsphereConfigs;
+            _resultValue.vsphereConfig = vsphereConfig;
             return _resultValue;
         }
     }

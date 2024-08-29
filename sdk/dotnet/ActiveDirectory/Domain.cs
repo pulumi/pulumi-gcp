@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///             "us-central1",
     ///         },
     ///         ReservedIpRange = "192.168.255.0/24",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     /// });
@@ -71,6 +72,9 @@ namespace Pulumi.Gcp.ActiveDirectory
         /// </summary>
         [Output("authorizedNetworks")]
         public Output<ImmutableArray<string>> AuthorizedNetworks { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
@@ -208,6 +212,9 @@ namespace Pulumi.Gcp.ActiveDirectory
             set => _authorizedNetworks = value;
         }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
         /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -286,6 +293,9 @@ namespace Pulumi.Gcp.ActiveDirectory
             get => _authorizedNetworks ?? (_authorizedNetworks = new InputList<string>());
             set => _authorizedNetworks = value;
         }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions

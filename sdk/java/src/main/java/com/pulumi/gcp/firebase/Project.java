@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 

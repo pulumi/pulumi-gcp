@@ -217,7 +217,8 @@ class Brand(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="my-project",
             name="my-project",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         project_service = gcp.projects.Service("project_service",
             project=project.project_id,
             service="iap.googleapis.com")
@@ -283,7 +284,8 @@ class Brand(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="my-project",
             name="my-project",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         project_service = gcp.projects.Service("project_service",
             project=project.project_id,
             service="iap.googleapis.com")

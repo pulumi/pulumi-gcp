@@ -41,6 +41,8 @@ namespace Pulumi.Gcp.VpcAccess
         ///         IpCidrRange = "10.8.0.0/28",
         ///         Network = "default",
         ///         Region = "us-central1",
+        ///         MinInstances = 2,
+        ///         MaxInstances = 3,
         ///     });
         /// 
         /// });
@@ -79,6 +81,8 @@ namespace Pulumi.Gcp.VpcAccess
         ///         IpCidrRange = "10.8.0.0/28",
         ///         Network = "default",
         ///         Region = "us-central1",
+        ///         MinInstances = 2,
+        ///         MaxInstances = 3,
         ///     });
         /// 
         /// });

@@ -26,7 +26,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, auto_create_network=None, billing_account=None, deletion_policy=None, effective_labels=None, folder_id=None, id=None, labels=None, name=None, number=None, org_id=None, project_id=None, pulumi_labels=None, skip_delete=None):
+    def __init__(__self__, auto_create_network=None, billing_account=None, deletion_policy=None, effective_labels=None, folder_id=None, id=None, labels=None, name=None, number=None, org_id=None, project_id=None, pulumi_labels=None):
         if auto_create_network and not isinstance(auto_create_network, bool):
             raise TypeError("Expected argument 'auto_create_network' to be a bool")
         pulumi.set(__self__, "auto_create_network", auto_create_network)
@@ -63,9 +63,6 @@ class GetProjectResult:
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
-        if skip_delete and not isinstance(skip_delete, bool):
-            raise TypeError("Expected argument 'skip_delete' to be a bool")
-        pulumi.set(__self__, "skip_delete", skip_delete)
 
     @property
     @pulumi.getter(name="autoCreateNetwork")
@@ -133,11 +130,6 @@ class GetProjectResult:
     def pulumi_labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "pulumi_labels")
 
-    @property
-    @pulumi.getter(name="skipDelete")
-    def skip_delete(self) -> bool:
-        return pulumi.get(self, "skip_delete")
-
 
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
@@ -156,8 +148,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             number=self.number,
             org_id=self.org_id,
             project_id=self.project_id,
-            pulumi_labels=self.pulumi_labels,
-            skip_delete=self.skip_delete)
+            pulumi_labels=self.pulumi_labels)
 
 
 def get_project(project_id: Optional[str] = None,
@@ -197,8 +188,7 @@ def get_project(project_id: Optional[str] = None,
         number=pulumi.get(__ret__, 'number'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
-        skip_delete=pulumi.get(__ret__, 'skip_delete'))
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'))
 
 
 @_utilities.lift_output_func(get_project)

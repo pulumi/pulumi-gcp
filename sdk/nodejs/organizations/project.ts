@@ -151,16 +151,6 @@ export class Project extends pulumi.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * If true, the resource can be deleted without
-     * deleting the Project via the Google API. `skipDelete` is deprecated and will be
-     * removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-     * can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-     * to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-     *
-     * @deprecated skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-     */
-    public readonly skipDelete!: pulumi.Output<boolean>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -186,7 +176,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["skipDelete"] = state ? state.skipDelete : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             resourceInputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
@@ -197,7 +186,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["skipDelete"] = args ? args.skipDelete : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -271,16 +259,6 @@ export interface ProjectState {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * If true, the resource can be deleted without
-     * deleting the Project via the Google API. `skipDelete` is deprecated and will be
-     * removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-     * can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-     * to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-     *
-     * @deprecated skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-     */
-    skipDelete?: pulumi.Input<boolean>;
 }
 
 /**
@@ -333,14 +311,4 @@ export interface ProjectArgs {
      * The project ID. Changing this forces a new project to be created.
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * If true, the resource can be deleted without
-     * deleting the Project via the Google API. `skipDelete` is deprecated and will be
-     * removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-     * can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-     * to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-     *
-     * @deprecated skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-     */
-    skipDelete?: pulumi.Input<boolean>;
 }

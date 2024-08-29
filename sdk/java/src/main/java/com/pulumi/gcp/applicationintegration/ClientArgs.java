@@ -51,35 +51,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
-     * Indicates if sample workflow should be created along with provisioning.
-     * 
-     * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-     * 
-     * @deprecated
-     * `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-     * 
-     */
-    @Deprecated /* `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead. */
-    @Import(name="createSampleWorkflows")
-    private @Nullable Output<Boolean> createSampleWorkflows;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Indicates if sample workflow should be created along with provisioning.
-     * 
-     * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-     * 
-     * @deprecated
-     * `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-     * 
-     */
-    @Deprecated /* `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead. */
-    public Optional<Output<Boolean>> createSampleWorkflows() {
-        return Optional.ofNullable(this.createSampleWorkflows);
-    }
-
-    /**
      * Location in which client needs to be provisioned.
      * 
      * ***
@@ -116,35 +87,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
-     * Indicates provision with GMEK or CMEK.
-     * 
-     * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-     * 
-     * @deprecated
-     * `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-     * 
-     */
-    @Deprecated /* `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given. */
-    @Import(name="provisionGmek")
-    private @Nullable Output<Boolean> provisionGmek;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Indicates provision with GMEK or CMEK.
-     * 
-     * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-     * 
-     * @deprecated
-     * `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-     * 
-     */
-    @Deprecated /* `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given. */
-    public Optional<Output<Boolean>> provisionGmek() {
-        return Optional.ofNullable(this.provisionGmek);
-    }
-
-    /**
      * User input run-as service account, if empty, will bring up a new default service account.
      * 
      */
@@ -164,10 +106,8 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     private ClientArgs(ClientArgs $) {
         this.cloudKmsConfig = $.cloudKmsConfig;
         this.createSampleIntegrations = $.createSampleIntegrations;
-        this.createSampleWorkflows = $.createSampleWorkflows;
         this.location = $.location;
         this.project = $.project;
-        this.provisionGmek = $.provisionGmek;
         this.runAsServiceAccount = $.runAsServiceAccount;
     }
 
@@ -234,41 +174,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createSampleWorkflows (Optional, Deprecated)
-         * Indicates if sample workflow should be created along with provisioning.
-         * 
-         * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-         * 
-         */
-        @Deprecated /* `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead. */
-        public Builder createSampleWorkflows(@Nullable Output<Boolean> createSampleWorkflows) {
-            $.createSampleWorkflows = createSampleWorkflows;
-            return this;
-        }
-
-        /**
-         * @param createSampleWorkflows (Optional, Deprecated)
-         * Indicates if sample workflow should be created along with provisioning.
-         * 
-         * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-         * 
-         */
-        @Deprecated /* `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead. */
-        public Builder createSampleWorkflows(Boolean createSampleWorkflows) {
-            return createSampleWorkflows(Output.of(createSampleWorkflows));
-        }
-
-        /**
          * @param location Location in which client needs to be provisioned.
          * 
          * ***
@@ -314,41 +219,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param provisionGmek (Optional, Deprecated)
-         * Indicates provision with GMEK or CMEK.
-         * 
-         * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-         * 
-         */
-        @Deprecated /* `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given. */
-        public Builder provisionGmek(@Nullable Output<Boolean> provisionGmek) {
-            $.provisionGmek = provisionGmek;
-            return this;
-        }
-
-        /**
-         * @param provisionGmek (Optional, Deprecated)
-         * Indicates provision with GMEK or CMEK.
-         * 
-         * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-         * 
-         */
-        @Deprecated /* `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given. */
-        public Builder provisionGmek(Boolean provisionGmek) {
-            return provisionGmek(Output.of(provisionGmek));
         }
 
         /**

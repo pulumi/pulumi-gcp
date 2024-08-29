@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,7 +32,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -83,7 +83,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -122,15 +122,15 @@ import (
 //
 // ```
 //
-// ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
-// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `noAge` flag to `true` to prevent this and avoid any potentially unintended interactions.
+// ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
+// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `sendAgeIfZero` flag to `false` to prevent this and avoid any potentially unintended interactions.
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -148,7 +148,7 @@ import (
 //						},
 //						Condition: &storage.BucketLifecycleRuleConditionArgs{
 //							DaysSinceNoncurrentTime: pulumi.Int(3),
-//							NoAge:                   pulumi.Bool(true),
+//							SendAgeIfZero:           pulumi.Bool(false),
 //						},
 //					},
 //				},
@@ -169,7 +169,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

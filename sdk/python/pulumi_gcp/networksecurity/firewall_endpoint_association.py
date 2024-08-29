@@ -462,29 +462,13 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
             * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
             * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 
+        > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+        you must specify a `billing_project_id` and set `user_project_override` to true
+        in the provider configuration. Otherwise the ACM API will return a 403 error.
+        Your account must have the `serviceusage.services.use` permission on the
+        `billing_project_id` you defined.
+
         ## Example Usage
-
-        ### Network Security Firewall Endpoint Association Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.FirewallEndpoint("default",
-            name="my-firewall-endpoint",
-            parent="organizations/123456789",
-            location="us-central1-a",
-            labels={
-                "foo": "bar",
-            })
-        default_association = gcp.networksecurity.FirewallEndpointAssociation("default_association",
-            name="my-firewall-endpoint-association",
-            parent="projects/my-project-name",
-            location="us-central1-a",
-            labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 
@@ -537,29 +521,13 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
             * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
             * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 
+        > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+        you must specify a `billing_project_id` and set `user_project_override` to true
+        in the provider configuration. Otherwise the ACM API will return a 403 error.
+        Your account must have the `serviceusage.services.use` permission on the
+        `billing_project_id` you defined.
+
         ## Example Usage
-
-        ### Network Security Firewall Endpoint Association Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.FirewallEndpoint("default",
-            name="my-firewall-endpoint",
-            parent="organizations/123456789",
-            location="us-central1-a",
-            labels={
-                "foo": "bar",
-            })
-        default_association = gcp.networksecurity.FirewallEndpointAssociation("default_association",
-            name="my-firewall-endpoint-association",
-            parent="projects/my-project-name",
-            location="us-central1-a",
-            labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 

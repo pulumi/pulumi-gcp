@@ -6,7 +6,6 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.MangedSslCertificateManagedArgs;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,21 +15,6 @@ import javax.annotation.Nullable;
 public final class MangedSslCertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MangedSslCertificateArgs Empty = new MangedSslCertificateArgs();
-
-    /**
-     * The unique identifier for the resource.
-     * 
-     */
-    @Import(name="certificateId")
-    private @Nullable Output<Integer> certificateId;
-
-    /**
-     * @return The unique identifier for the resource.
-     * 
-     */
-    public Optional<Output<Integer>> certificateId() {
-        return Optional.ofNullable(this.certificateId);
-    }
 
     /**
      * An optional description of this resource.
@@ -136,7 +120,6 @@ public final class MangedSslCertificateArgs extends com.pulumi.resources.Resourc
     private MangedSslCertificateArgs() {}
 
     private MangedSslCertificateArgs(MangedSslCertificateArgs $) {
-        this.certificateId = $.certificateId;
         this.description = $.description;
         this.managed = $.managed;
         this.name = $.name;
@@ -160,27 +143,6 @@ public final class MangedSslCertificateArgs extends com.pulumi.resources.Resourc
 
         public Builder(MangedSslCertificateArgs defaults) {
             $ = new MangedSslCertificateArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param certificateId The unique identifier for the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificateId(@Nullable Output<Integer> certificateId) {
-            $.certificateId = certificateId;
-            return this;
-        }
-
-        /**
-         * @param certificateId The unique identifier for the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificateId(Integer certificateId) {
-            return certificateId(Output.of(certificateId));
         }
 
         /**

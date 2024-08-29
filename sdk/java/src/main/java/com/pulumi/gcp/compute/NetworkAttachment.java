@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  *             .name("prj-rejected")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var acceptedProducerProject = new Project("acceptedProducerProject", ProjectArgs.builder()
@@ -82,6 +83,7 @@ import javax.annotation.Nullable;
  *             .name("prj-accepted")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var default_ = new NetworkAttachment("default", NetworkAttachmentArgs.builder()

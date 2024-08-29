@@ -281,12 +281,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class MangedSslCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier for the resource.
-        /// </summary>
-        [Input("certificateId")]
-        public Input<int>? CertificateId { get; set; }
-
-        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]

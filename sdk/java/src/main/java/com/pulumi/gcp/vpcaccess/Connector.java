@@ -57,6 +57,8 @@ import javax.annotation.Nullable;
  *             .name("vpc-con")
  *             .ipCidrRange("10.8.0.0/28")
  *             .network("default")
+ *             .minInstances(2)
+ *             .maxInstances(3)
  *             .build());
  * 
  *     }
@@ -105,6 +107,8 @@ import javax.annotation.Nullable;
  *                 .name(customTest.name())
  *                 .build())
  *             .machineType("e2-standard-4")
+ *             .minInstances(2)
+ *             .maxInstances(3)
  *             .build());
  * 
  *     }
@@ -212,7 +216,7 @@ public class Connector extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxThroughput", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxThroughput;
+    private Output<Integer> maxThroughput;
 
     /**
      * @return Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
@@ -221,8 +225,8 @@ public class Connector extends com.pulumi.resources.CustomResource {
      * max_throughput is discouraged in favor of max_instances.
      * 
      */
-    public Output<Optional<Integer>> maxThroughput() {
-        return Codegen.optional(this.maxThroughput);
+    public Output<Integer> maxThroughput() {
+        return this.maxThroughput;
     }
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
@@ -247,7 +251,7 @@ public class Connector extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="minThroughput", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> minThroughput;
+    private Output<Integer> minThroughput;
 
     /**
      * @return Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
@@ -255,8 +259,8 @@ public class Connector extends com.pulumi.resources.CustomResource {
      * min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
      * 
      */
-    public Output<Optional<Integer>> minThroughput() {
-        return Codegen.optional(this.minThroughput);
+    public Output<Integer> minThroughput() {
+        return this.minThroughput;
     }
     /**
      * The name of the resource (Max 25 characters).

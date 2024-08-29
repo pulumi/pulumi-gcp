@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securitycenter"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -42,8 +42,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
-//				Parent:      pulumi.String("organizations/123456789"),
-//				DisplayName: pulumi.String("folder-name"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DisplayName:        pulumi.String("folder-name"),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -81,8 +82,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securitycenter"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,8 +91,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
-//				Parent:      pulumi.String("organizations/123456789"),
-//				DisplayName: pulumi.String("folder-name"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DisplayName:        pulumi.String("folder-name"),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *         var securityPolicyTarget = new Folder("securityPolicyTarget", FolderArgs.builder()
  *             .displayName("tf-test-secpol")
  *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()

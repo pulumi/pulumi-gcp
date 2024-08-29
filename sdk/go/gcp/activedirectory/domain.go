@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/activedirectory"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/activedirectory"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,7 +41,8 @@ import (
 //				Locations: pulumi.StringArray{
 //					pulumi.String("us-central1"),
 //				},
-//				ReservedIpRange: pulumi.String("192.168.255.0/24"),
+//				ReservedIpRange:    pulumi.String("192.168.255.0/24"),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -72,6 +73,7 @@ type Domain struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
+	DeletionProtection pulumi.BoolPtrOutput     `pulumi:"deletionProtection"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
@@ -152,6 +154,7 @@ type domainState struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
+	DeletionProtection *bool    `pulumi:"deletionProtection"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
@@ -189,6 +192,7 @@ type DomainState struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
@@ -230,6 +234,7 @@ type domainArgs struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
+	DeletionProtection *bool    `pulumi:"deletionProtection"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
@@ -258,6 +263,7 @@ type DomainArgs struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
@@ -375,6 +381,10 @@ func (o DomainOutput) Admin() pulumi.StringPtrOutput {
 // If CIDR subnets overlap between networks, domain creation will fail.
 func (o DomainOutput) AuthorizedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.AuthorizedNetworks }).(pulumi.StringArrayOutput)
+}
+
+func (o DomainOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions

@@ -141,6 +141,7 @@ import javax.annotation.Nullable;
  *                         .weight(1)
  *                         .build())
  *                     .originalDestination(false)
+ *                     .idleTimeout("60s")
  *                     .build())
  *                 .build())
  *             .build());

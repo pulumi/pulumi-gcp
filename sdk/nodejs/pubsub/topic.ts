@@ -235,7 +235,7 @@ export class Topic extends pulumi.CustomResource {
      * Settings for validating messages published against a schema.
      * Structure is documented below.
      */
-    public readonly schemaSettings!: pulumi.Output<outputs.pubsub.TopicSchemaSettings>;
+    public readonly schemaSettings!: pulumi.Output<outputs.pubsub.TopicSchemaSettings | undefined>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.

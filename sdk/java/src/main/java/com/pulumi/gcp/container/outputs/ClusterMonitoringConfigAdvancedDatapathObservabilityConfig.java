@@ -6,10 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
@@ -22,16 +19,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
      * @return Whether or not Relay is enabled.
      * 
      */
-    private @Nullable Boolean enableRelay;
-    /**
-     * @return Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
-     * 
-     * @deprecated
-     * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
-     * 
-     */
-    @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
-    private @Nullable String relayMode;
+    private Boolean enableRelay;
 
     private ClusterMonitoringConfigAdvancedDatapathObservabilityConfig() {}
     /**
@@ -45,19 +33,8 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
      * @return Whether or not Relay is enabled.
      * 
      */
-    public Optional<Boolean> enableRelay() {
-        return Optional.ofNullable(this.enableRelay);
-    }
-    /**
-     * @return Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
-     * 
-     * @deprecated
-     * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
-     * 
-     */
-    @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
-    public Optional<String> relayMode() {
-        return Optional.ofNullable(this.relayMode);
+    public Boolean enableRelay() {
+        return this.enableRelay;
     }
 
     public static Builder builder() {
@@ -70,14 +47,12 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enableMetrics;
-        private @Nullable Boolean enableRelay;
-        private @Nullable String relayMode;
+        private Boolean enableRelay;
         public Builder() {}
         public Builder(ClusterMonitoringConfigAdvancedDatapathObservabilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableMetrics = defaults.enableMetrics;
     	      this.enableRelay = defaults.enableRelay;
-    	      this.relayMode = defaults.relayMode;
         }
 
         @CustomType.Setter
@@ -89,22 +64,17 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder enableRelay(@Nullable Boolean enableRelay) {
-
+        public Builder enableRelay(Boolean enableRelay) {
+            if (enableRelay == null) {
+              throw new MissingRequiredPropertyException("ClusterMonitoringConfigAdvancedDatapathObservabilityConfig", "enableRelay");
+            }
             this.enableRelay = enableRelay;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder relayMode(@Nullable String relayMode) {
-
-            this.relayMode = relayMode;
             return this;
         }
         public ClusterMonitoringConfigAdvancedDatapathObservabilityConfig build() {
             final var _resultValue = new ClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
             _resultValue.enableMetrics = enableMetrics;
             _resultValue.enableRelay = enableRelay;
-            _resultValue.relayMode = relayMode;
             return _resultValue;
         }
     }

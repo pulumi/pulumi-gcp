@@ -282,10 +282,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dataprocMetastoreCustomEndpoint')
 
     @property
-    def datastore_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('datastoreCustomEndpoint')
-
-    @property
     def datastream_custom_endpoint(self) -> Optional[str]:
         return __config__.get('datastreamCustomEndpoint')
 

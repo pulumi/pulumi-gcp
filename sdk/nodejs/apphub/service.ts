@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
  * // Enable Compute API
  * const computeServiceProject = new gcp.projects.Service("compute_service_project", {
@@ -123,6 +124,7 @@ import * as utilities from "../utilities";
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
  * // Enable Compute API
  * const computeServiceProject = new gcp.projects.Service("compute_service_project", {

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -48,7 +48,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,9 +77,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,9 +87,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("rtdb-project"),
-//				Name:      pulumi.String("rtdb-project"),
-//				OrgId:     pulumi.String("123456789"),
+//				ProjectId:      pulumi.String("rtdb-project"),
+//				Name:           pulumi.String("rtdb-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //				Labels: pulumi.StringMap{
 //					"firebase": pulumi.String("enabled"),
 //				},

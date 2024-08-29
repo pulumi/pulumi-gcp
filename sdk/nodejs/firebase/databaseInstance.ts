@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     projectId: "rtdb-project",
  *     name: "rtdb-project",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  *     labels: {
  *         firebase: "enabled",
  *     },

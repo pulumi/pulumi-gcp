@@ -152,7 +152,8 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
             project_id="your_project_id",
             name="your_project_id",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         compute = gcp.projects.Service("compute",
             project=project.project_id,
             service="compute.googleapis.com")
@@ -225,7 +226,8 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
             project_id="your_project_id",
             name="your_project_id",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         compute = gcp.projects.Service("compute",
             project=project.project_id,
             service="compute.googleapis.com")

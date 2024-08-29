@@ -115,6 +115,7 @@ import javax.annotation.Nullable;
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var agentProjectService = new Service("agentProjectService", ServiceArgs.builder()

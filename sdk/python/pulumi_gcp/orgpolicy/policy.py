@@ -228,7 +228,8 @@ class Policy(pulumi.CustomResource):
         basic = gcp.organizations.Project("basic",
             project_id="id",
             name="id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
@@ -246,7 +247,8 @@ class Policy(pulumi.CustomResource):
 
         basic = gcp.organizations.Folder("basic",
             parent="organizations/123456789",
-            display_name="folder")
+            display_name="folder",
+            deletion_protection=False)
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
@@ -279,7 +281,8 @@ class Policy(pulumi.CustomResource):
         basic = gcp.organizations.Project("basic",
             project_id="id",
             name="id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
@@ -386,7 +389,8 @@ class Policy(pulumi.CustomResource):
         basic = gcp.organizations.Project("basic",
             project_id="id",
             name="id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
@@ -404,7 +408,8 @@ class Policy(pulumi.CustomResource):
 
         basic = gcp.organizations.Folder("basic",
             parent="organizations/123456789",
-            display_name="folder")
+            display_name="folder",
+            deletion_protection=False)
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
@@ -437,7 +442,8 @@ class Policy(pulumi.CustomResource):
         basic = gcp.organizations.Project("basic",
             project_id="id",
             name="id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
             name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),

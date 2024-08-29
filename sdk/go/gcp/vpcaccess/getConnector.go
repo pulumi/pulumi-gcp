@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vpcaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,10 +40,12 @@ import (
 //				return err
 //			}
 //			_, err = vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
-//				Name:        pulumi.String("vpc-con"),
-//				IpCidrRange: pulumi.String("10.8.0.0/28"),
-//				Network:     pulumi.String("default"),
-//				Region:      pulumi.String("us-central1"),
+//				Name:         pulumi.String("vpc-con"),
+//				IpCidrRange:  pulumi.String("10.8.0.0/28"),
+//				Network:      pulumi.String("default"),
+//				Region:       pulumi.String("us-central1"),
+//				MinInstances: pulumi.Int(2),
+//				MaxInstances: pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err

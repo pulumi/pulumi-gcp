@@ -487,13 +487,6 @@ namespace Pulumi.Gcp
             set => _dataprocMetastoreCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _datastoreCustomEndpoint = new __Value<string?>(() => __config.Get("datastoreCustomEndpoint"));
-        public static string? DatastoreCustomEndpoint
-        {
-            get => _datastoreCustomEndpoint.Get();
-            set => _datastoreCustomEndpoint.Set(value);
-        }
-
         private static readonly __Value<string?> _datastreamCustomEndpoint = new __Value<string?>(() => __config.Get("datastreamCustomEndpoint"));
         public static string? DatastreamCustomEndpoint
         {

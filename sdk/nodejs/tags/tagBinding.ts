@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     projectId: "project_id",
  *     name: "project_id",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const key = new gcp.tags.TagKey("key", {
  *     parent: "organizations/123456789",

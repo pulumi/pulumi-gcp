@@ -5,6 +5,7 @@ package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,13 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -115,6 +123,7 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
 
     private FolderState(FolderState $) {
         this.createTime = $.createTime;
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.folderId = $.folderId;
         this.lifecycleState = $.lifecycleState;
@@ -161,6 +170,15 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

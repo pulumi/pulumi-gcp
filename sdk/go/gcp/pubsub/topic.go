@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,8 +60,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -101,7 +101,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -131,7 +131,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -186,7 +186,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -281,7 +281,7 @@ type Topic struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
-	SchemaSettings TopicSchemaSettingsOutput `pulumi:"schemaSettings"`
+	SchemaSettings TopicSchemaSettingsPtrOutput `pulumi:"schemaSettings"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -653,8 +653,8 @@ func (o TopicOutput) PulumiLabels() pulumi.StringMapOutput {
 
 // Settings for validating messages published against a schema.
 // Structure is documented below.
-func (o TopicOutput) SchemaSettings() TopicSchemaSettingsOutput {
-	return o.ApplyT(func(v *Topic) TopicSchemaSettingsOutput { return v.SchemaSettings }).(TopicSchemaSettingsOutput)
+func (o TopicOutput) SchemaSettings() TopicSchemaSettingsPtrOutput {
+	return o.ApplyT(func(v *Topic) TopicSchemaSettingsPtrOutput { return v.SchemaSettings }).(TopicSchemaSettingsPtrOutput)
 }
 
 type TopicArrayOutput struct{ *pulumi.OutputState }

@@ -43,6 +43,9 @@ class SubnetArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_cidrs: The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_cidrs: The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] vlan_id: VLAN ID for this subnetwork. If not specified, one is assigned automatically.
@@ -157,6 +160,9 @@ class SubnetArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels associated with this resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -195,6 +201,7 @@ class _SubnetState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ipv4_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -202,6 +209,7 @@ class _SubnetState:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -213,9 +221,13 @@ class _SubnetState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_cidrs: The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_cidrs: The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[str] name: The canonical name of this resource, with format
                `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
@@ -223,6 +235,8 @@ class _SubnetState:
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[str] subnet_id: A unique ID that identifies this subnet.
                
@@ -238,6 +252,8 @@ class _SubnetState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if ipv4_cidrs is not None:
             pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         if ipv6_cidrs is not None:
@@ -252,6 +268,8 @@ class _SubnetState:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if subnet_id is not None:
@@ -290,6 +308,18 @@ class _SubnetState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="ipv4Cidrs")
     def ipv4_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -318,6 +348,9 @@ class _SubnetState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels associated with this resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -375,6 +408,19 @@ class _SubnetState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -559,6 +605,9 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_cidrs: The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_cidrs: The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[str] network: The ID of the network to which this router belongs.
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
@@ -725,9 +774,13 @@ class Subnet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Subnet, __self__).__init__(
             'gcp:edgenetwork/subnet:Subnet',
             resource_name,
@@ -740,6 +793,7 @@ class Subnet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ipv4_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -747,6 +801,7 @@ class Subnet(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
@@ -763,9 +818,13 @@ class Subnet(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_cidrs: The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_cidrs: The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[str] name: The canonical name of this resource, with format
                `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
@@ -773,6 +832,8 @@ class Subnet(pulumi.CustomResource):
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[str] subnet_id: A unique ID that identifies this subnet.
                
@@ -790,6 +851,7 @@ class Subnet(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ipv4_cidrs"] = ipv4_cidrs
         __props__.__dict__["ipv6_cidrs"] = ipv6_cidrs
         __props__.__dict__["labels"] = labels
@@ -797,6 +859,7 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["update_time"] = update_time
@@ -823,6 +886,14 @@ class Subnet(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="ipv4Cidrs")
     def ipv4_cidrs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -843,6 +914,9 @@ class Subnet(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels associated with this resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -880,6 +954,15 @@ class Subnet(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

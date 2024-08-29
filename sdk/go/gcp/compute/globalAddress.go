@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,7 +54,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -129,7 +129,8 @@ type GlobalAddress struct {
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -224,7 +225,8 @@ type globalAddressState struct {
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -285,7 +287,8 @@ type GlobalAddressState struct {
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -555,7 +558,8 @@ func (o GlobalAddressOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
 func (o GlobalAddressOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }

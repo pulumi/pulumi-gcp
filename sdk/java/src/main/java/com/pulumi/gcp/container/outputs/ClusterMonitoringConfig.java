@@ -18,7 +18,7 @@ public final class ClusterMonitoringConfig {
      * @return Configuration for Advanced Datapath Monitoring. Structure is documented below.
      * 
      */
-    private @Nullable List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs;
+    private @Nullable ClusterMonitoringConfigAdvancedDatapathObservabilityConfig advancedDatapathObservabilityConfig;
     /**
      * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
      * 
@@ -35,8 +35,8 @@ public final class ClusterMonitoringConfig {
      * @return Configuration for Advanced Datapath Monitoring. Structure is documented below.
      * 
      */
-    public List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs() {
-        return this.advancedDatapathObservabilityConfigs == null ? List.of() : this.advancedDatapathObservabilityConfigs;
+    public Optional<ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfig() {
+        return Optional.ofNullable(this.advancedDatapathObservabilityConfig);
     }
     /**
      * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
@@ -62,25 +62,22 @@ public final class ClusterMonitoringConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs;
+        private @Nullable ClusterMonitoringConfigAdvancedDatapathObservabilityConfig advancedDatapathObservabilityConfig;
         private @Nullable List<String> enableComponents;
         private @Nullable ClusterMonitoringConfigManagedPrometheus managedPrometheus;
         public Builder() {}
         public Builder(ClusterMonitoringConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.advancedDatapathObservabilityConfigs = defaults.advancedDatapathObservabilityConfigs;
+    	      this.advancedDatapathObservabilityConfig = defaults.advancedDatapathObservabilityConfig;
     	      this.enableComponents = defaults.enableComponents;
     	      this.managedPrometheus = defaults.managedPrometheus;
         }
 
         @CustomType.Setter
-        public Builder advancedDatapathObservabilityConfigs(@Nullable List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs) {
+        public Builder advancedDatapathObservabilityConfig(@Nullable ClusterMonitoringConfigAdvancedDatapathObservabilityConfig advancedDatapathObservabilityConfig) {
 
-            this.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
+            this.advancedDatapathObservabilityConfig = advancedDatapathObservabilityConfig;
             return this;
-        }
-        public Builder advancedDatapathObservabilityConfigs(ClusterMonitoringConfigAdvancedDatapathObservabilityConfig... advancedDatapathObservabilityConfigs) {
-            return advancedDatapathObservabilityConfigs(List.of(advancedDatapathObservabilityConfigs));
         }
         @CustomType.Setter
         public Builder enableComponents(@Nullable List<String> enableComponents) {
@@ -99,7 +96,7 @@ public final class ClusterMonitoringConfig {
         }
         public ClusterMonitoringConfig build() {
             final var _resultValue = new ClusterMonitoringConfig();
-            _resultValue.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
+            _resultValue.advancedDatapathObservabilityConfig = advancedDatapathObservabilityConfig;
             _resultValue.enableComponents = enableComponents;
             _resultValue.managedPrometheus = managedPrometheus;
             return _resultValue;

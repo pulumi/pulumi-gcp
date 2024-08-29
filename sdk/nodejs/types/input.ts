@@ -5403,40 +5403,14 @@ export namespace bigquery {
     }
 
     export interface IamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
-        /**
-         * Textual representation of an expression in Common Expression Language syntax.
-         */
         expression: pulumi.Input<string>;
-        /**
-         * A title for the expression, i.e. a short string describing its purpose.
-         */
         title: pulumi.Input<string>;
     }
 
     export interface IamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         */
         description?: pulumi.Input<string>;
-        /**
-         * Textual representation of an expression in Common Expression Language syntax.
-         */
         expression: pulumi.Input<string>;
-        /**
-         * A title for the expression, i.e. a short string describing its purpose.
-         */
         title: pulumi.Input<string>;
     }
 
@@ -13493,7 +13467,7 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateContainer {
         /**
-         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
          */
         args?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -13541,7 +13515,7 @@ export namespace cloudrunv2 {
          */
         name: pulumi.Input<string>;
         /**
-         * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
          */
         value?: pulumi.Input<string>;
         /**
@@ -13938,7 +13912,7 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainer {
         /**
-         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
          */
         args?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -13972,7 +13946,7 @@ export namespace cloudrunv2 {
          * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
          * Structure is documented below.
          */
-        ports?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerPort>[]>;
+        ports?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerPorts>;
         /**
          * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
          * Structure is documented below.
@@ -13996,11 +13970,11 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainerEnv {
         /**
-         * Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
          */
         name: pulumi.Input<string>;
         /**
-         * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
          */
         value?: pulumi.Input<string>;
         /**
@@ -14113,7 +14087,7 @@ export namespace cloudrunv2 {
         port: pulumi.Input<number>;
     }
 
-    export interface ServiceTemplateContainerPort {
+    export interface ServiceTemplateContainerPorts {
         /**
          * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
          */
@@ -15622,7 +15596,6 @@ export namespace compute {
          * and CONNECTION (for TCP/SSL).
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
-         * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
          * Default value is `UTILIZATION`.
          * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          */
@@ -15969,14 +15942,18 @@ export namespace compute {
 
     export interface BackendServiceIap {
         /**
+         * Whether the serving infrastructure will authenticate and authorize all incoming requests.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
          * OAuth2 Client ID for IAP
          */
-        oauth2ClientId: pulumi.Input<string>;
+        oauth2ClientId?: pulumi.Input<string>;
         /**
          * OAuth2 Client Secret for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        oauth2ClientSecret: pulumi.Input<string>;
+        oauth2ClientSecret?: pulumi.Input<string>;
         /**
          * (Output)
          * OAuth2 Client Secret SHA-256 for IAP
@@ -20032,8 +20009,7 @@ export namespace compute {
          * Specifies the balancing mode for this backend.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
-         * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-         * Default value is `CONNECTION`.
+         * Default value is `UTILIZATION`.
          * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          */
         balancingMode?: pulumi.Input<string>;
@@ -20451,14 +20427,18 @@ export namespace compute {
 
     export interface RegionBackendServiceIap {
         /**
+         * Whether the serving infrastructure will authenticate and authorize all incoming requests.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
          * OAuth2 Client ID for IAP
          */
-        oauth2ClientId: pulumi.Input<string>;
+        oauth2ClientId?: pulumi.Input<string>;
         /**
          * OAuth2 Client Secret for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        oauth2ClientSecret: pulumi.Input<string>;
+        oauth2ClientSecret?: pulumi.Input<string>;
         /**
          * (Output)
          * OAuth2 Client Secret SHA-256 for IAP
@@ -25451,8 +25431,9 @@ export namespace compute {
          * range. Provide this property when you create the subnetwork.
          * Ranges must be unique and non-overlapping with all primary and
          * secondary IP ranges within a network. Only IPv4 is supported.
+         * Field is optional when `reservedInternalRange` is defined, otherwise required.
          */
-        ipCidrRange: pulumi.Input<string>;
+        ipCidrRange?: pulumi.Input<string>;
         /**
          * The name associated with this subnetwork secondary range, used
          * when adding an alias IP range to a VM instance. The name must
@@ -25460,6 +25441,11 @@ export namespace compute {
          * must be unique within the subnetwork.
          */
         rangeName: pulumi.Input<string>;
+        /**
+         * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+         * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+         */
+        reservedInternalRange?: pulumi.Input<string>;
     }
 
     export interface URLMapDefaultCustomErrorResponsePolicy {
@@ -29203,7 +29189,7 @@ export namespace container {
         /**
          * Configuration for Advanced Datapath Monitoring. Structure is documented below.
          */
-        advancedDatapathObservabilityConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig>[]>;
+        advancedDatapathObservabilityConfig?: pulumi.Input<inputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig>;
         /**
          * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
          */
@@ -29222,13 +29208,7 @@ export namespace container {
         /**
          * Whether or not Relay is enabled.
          */
-        enableRelay?: pulumi.Input<boolean>;
-        /**
-         * Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
-         *
-         * @deprecated Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
-         */
-        relayMode?: pulumi.Input<string>;
+        enableRelay: pulumi.Input<boolean>;
     }
 
     export interface ClusterMonitoringConfigManagedPrometheus {
@@ -30814,6 +30794,7 @@ export namespace container {
          * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
          * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
          * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+         * * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
          */
         channel: pulumi.Input<string>;
     }
@@ -42249,20 +42230,6 @@ export namespace dataproc {
     }
 }
 
-export namespace datastore {
-    export interface DataStoreIndexProperty {
-        /**
-         * The direction the index should optimize for sorting.
-         * Possible values are: `ASCENDING`, `DESCENDING`.
-         */
-        direction: pulumi.Input<string>;
-        /**
-         * The property name to index.
-         */
-        name: pulumi.Input<string>;
-    }
-}
-
 export namespace datastream {
     export interface ConnectionProfileBigqueryProfile {
     }
@@ -51497,7 +51464,7 @@ export namespace gkeonprem {
          * Specifies the vSphere config for node pool.
          * Structure is documented below.
          */
-        vsphereConfigs?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareNodePoolConfigVsphereConfig>[]>;
+        vsphereConfig?: pulumi.Input<inputs.gkeonprem.VMwareNodePoolConfigVsphereConfig>;
     }
 
     export interface VMwareNodePoolConfigTaint {
@@ -52906,90 +52873,6 @@ export namespace identityplatform {
         x509Certificate?: pulumi.Input<string>;
     }
 
-    export interface ProjectDefaultConfigSignIn {
-        /**
-         * Whether to allow more than one account to have the same email.
-         */
-        allowDuplicateEmails?: pulumi.Input<boolean>;
-        /**
-         * Configuration options related to authenticating an anonymous user.
-         * Structure is documented below.
-         */
-        anonymous?: pulumi.Input<inputs.identityplatform.ProjectDefaultConfigSignInAnonymous>;
-        /**
-         * Configuration options related to authenticating a user by their email address.
-         * Structure is documented below.
-         */
-        email?: pulumi.Input<inputs.identityplatform.ProjectDefaultConfigSignInEmail>;
-        /**
-         * (Output)
-         * Output only. Hash config information.
-         * Structure is documented below.
-         */
-        hashConfigs?: pulumi.Input<pulumi.Input<inputs.identityplatform.ProjectDefaultConfigSignInHashConfig>[]>;
-        /**
-         * Configuration options related to authenticated a user by their phone number.
-         * Structure is documented below.
-         */
-        phoneNumber?: pulumi.Input<inputs.identityplatform.ProjectDefaultConfigSignInPhoneNumber>;
-    }
-
-    export interface ProjectDefaultConfigSignInAnonymous {
-        /**
-         * Whether anonymous user auth is enabled for the project or not.
-         *
-         * <a name="nestedHashConfig"></a>The `hashConfig` block contains:
-         */
-        enabled: pulumi.Input<boolean>;
-    }
-
-    export interface ProjectDefaultConfigSignInEmail {
-        /**
-         * Whether email auth is enabled for the project or not.
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Whether a password is required for email auth or not. If true, both an email and
-         * password must be provided to sign in. If false, a user may sign in via either
-         * email/password or email link.
-         */
-        passwordRequired?: pulumi.Input<boolean>;
-    }
-
-    export interface ProjectDefaultConfigSignInHashConfig {
-        /**
-         * Different password hash algorithms used in Identity Toolkit.
-         */
-        algorithm?: pulumi.Input<string>;
-        /**
-         * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
-         */
-        memoryCost?: pulumi.Input<number>;
-        /**
-         * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
-         */
-        rounds?: pulumi.Input<number>;
-        /**
-         * Non-printable character to be inserted between the salt and plain text password in base64.
-         */
-        saltSeparator?: pulumi.Input<string>;
-        /**
-         * Signer key in base64.
-         */
-        signerKey?: pulumi.Input<string>;
-    }
-
-    export interface ProjectDefaultConfigSignInPhoneNumber {
-        /**
-         * Whether phone number auth is enabled for the project or not.
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * A map of <test phone number, fake code> that can be used for phone auth testing.
-         */
-        testPhoneNumbers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    }
-
     export interface TenantInboundSamlConfigIdpConfig {
         /**
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -53896,6 +53779,30 @@ export namespace kms {
          * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
          */
         protectionLevel?: pulumi.Input<string>;
+    }
+
+    export interface EkmConnectionIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface EkmConnectionIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
     }
 
     export interface EkmConnectionServiceResolver {
@@ -58689,6 +58596,11 @@ export namespace networkservices {
          * Structure is documented below.
          */
         destinations?: pulumi.Input<pulumi.Input<inputs.networkservices.TcpRouteRuleActionDestination>[]>;
+        /**
+         * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        idleTimeout?: pulumi.Input<string>;
         /**
          * If true, Router will use the destination IP and port of the original connection as the destination of the request.
          */
@@ -64764,20 +64676,11 @@ export namespace sql {
          */
         pscConfigs?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig>[]>;
         /**
-         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`. It will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
-         *
-         * @deprecated `requireSsl` will be fully deprecated in a future major release. For now, please use `sslMode` with a compatible `requireSsl` value instead.
-         */
-        requireSsl?: pulumi.Input<boolean>;
-        /**
          * Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
          */
         serverCaMode?: pulumi.Input<string>;
         /**
-         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
-         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
-         * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-         * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+         * Specify how SSL connection should be enforced in DB connections.
          */
         sslMode?: pulumi.Input<string>;
     }
@@ -65048,7 +64951,7 @@ export namespace storage {
 
     export interface BucketLifecycleRuleCondition {
         /**
-         * Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
+         * Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
          */
         age?: pulumi.Input<number>;
         /**
@@ -65081,10 +64984,6 @@ export namespace storage {
          */
         matchesSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-         */
-        noAge?: pulumi.Input<boolean>;
-        /**
          * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
          */
         noncurrentTimeBefore?: pulumi.Input<string>;
@@ -65092,6 +64991,10 @@ export namespace storage {
          * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
          */
         numNewerVersions?: pulumi.Input<number>;
+        /**
+         * While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
+         */
+        sendAgeIfZero?: pulumi.Input<boolean>;
         /**
          * While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
          */

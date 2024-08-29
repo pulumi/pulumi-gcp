@@ -875,6 +875,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly forwardingRuleId!: pulumi.Output<number>;
+    /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
      * to the referenced `target` or `backendService`.
@@ -1024,6 +1028,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
+     * @pattern: \d+(?:-\d+)?
      */
     public readonly portRange!: pulumi.Output<string>;
     /**
@@ -1044,6 +1049,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      * they share at least one port number.
+     * @pattern: \d+(?:-\d+)?
      */
     public readonly ports!: pulumi.Output<string[] | undefined>;
     /**
@@ -1146,6 +1152,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
@@ -1202,6 +1209,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["forwardingRuleId"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["pscConnectionId"] = undefined /*out*/;
             resourceInputs["pscConnectionStatus"] = undefined /*out*/;
@@ -1274,6 +1282,10 @@ export interface ForwardingRuleState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    forwardingRuleId?: pulumi.Input<number>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
@@ -1424,6 +1436,7 @@ export interface ForwardingRuleState {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
+     * @pattern: \d+(?:-\d+)?
      */
     portRange?: pulumi.Input<string>;
     /**
@@ -1444,6 +1457,7 @@ export interface ForwardingRuleState {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      * they share at least one port number.
+     * @pattern: \d+(?:-\d+)?
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1717,6 +1731,7 @@ export interface ForwardingRuleArgs {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
+     * @pattern: \d+(?:-\d+)?
      */
     portRange?: pulumi.Input<string>;
     /**
@@ -1737,6 +1752,7 @@ export interface ForwardingRuleArgs {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      * they share at least one port number.
+     * @pattern: \d+(?:-\d+)?
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**

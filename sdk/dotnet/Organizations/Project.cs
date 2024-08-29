@@ -169,16 +169,6 @@ namespace Pulumi.Gcp.Organizations
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the resource can be deleted without
-        /// deleting the Project via the Google API. `skip_delete` is deprecated and will be
-        /// removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
-        /// can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
-        /// to a `deletion_policy` value of `ABANDON` for equivalent behavior.
-        /// </summary>
-        [Output("skipDelete")]
-        public Output<bool> SkipDelete { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Project resource with the given unique name, arguments, and options.
@@ -298,16 +288,6 @@ namespace Pulumi.Gcp.Organizations
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// If true, the resource can be deleted without
-        /// deleting the Project via the Google API. `skip_delete` is deprecated and will be
-        /// removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
-        /// can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
-        /// to a `deletion_policy` value of `ABANDON` for equivalent behavior.
-        /// </summary>
-        [Input("skipDelete")]
-        public Input<bool>? SkipDelete { get; set; }
-
         public ProjectArgs()
         {
         }
@@ -421,16 +401,6 @@ namespace Pulumi.Gcp.Organizations
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
-
-        /// <summary>
-        /// If true, the resource can be deleted without
-        /// deleting the Project via the Google API. `skip_delete` is deprecated and will be
-        /// removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
-        /// can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
-        /// to a `deletion_policy` value of `ABANDON` for equivalent behavior.
-        /// </summary>
-        [Input("skipDelete")]
-        public Input<bool>? SkipDelete { get; set; }
 
         public ProjectState()
         {

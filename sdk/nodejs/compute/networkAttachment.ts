@@ -38,12 +38,14 @@ import * as utilities from "../utilities";
  *     name: "prj-rejected",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
  * const acceptedProducerProject = new gcp.organizations.Project("accepted_producer_project", {
  *     projectId: "prj-accepted",
  *     name: "prj-accepted",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
  * const _default = new gcp.compute.NetworkAttachment("default", {
  *     name: "basic-network-attachment",

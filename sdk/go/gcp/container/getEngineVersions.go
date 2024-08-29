@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
+//
+// To get more information about GKE versions, see:
+//   - [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
 //
 // > If you are using the `container.getEngineVersions` datasource with a
 // regional cluster, ensure that you have provided a region as the `location` to
@@ -26,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -97,9 +100,9 @@ type GetEngineVersionsResult struct {
 	LatestNodeVersion string  `pulumi:"latestNodeVersion"`
 	Location          *string `pulumi:"location"`
 	Project           *string `pulumi:"project"`
-	// A map from a release channel name to the channel's default version.
+	// A map from a release channel name to the channel's default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 	ReleaseChannelDefaultVersion map[string]string `pulumi:"releaseChannelDefaultVersion"`
-	// A map from a release channel name to the channel's latest version.
+	// A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 	ReleaseChannelLatestVersion map[string]string `pulumi:"releaseChannelLatestVersion"`
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions []string `pulumi:"validMasterVersions"`
@@ -187,12 +190,12 @@ func (o GetEngineVersionsResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-// A map from a release channel name to the channel's default version.
+// A map from a release channel name to the channel's default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 func (o GetEngineVersionsResultOutput) ReleaseChannelDefaultVersion() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) map[string]string { return v.ReleaseChannelDefaultVersion }).(pulumi.StringMapOutput)
 }
 
-// A map from a release channel name to the channel's latest version.
+// A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
 func (o GetEngineVersionsResultOutput) ReleaseChannelLatestVersion() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) map[string]string { return v.ReleaseChannelLatestVersion }).(pulumi.StringMapOutput)
 }

@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *             .projectId("id")
  *             .name("id")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
@@ -108,6 +109,7 @@ import javax.annotation.Nullable;
  *         var basic = new Folder("basic", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
@@ -197,6 +199,7 @@ import javax.annotation.Nullable;
  *             .projectId("id")
  *             .name("id")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()

@@ -109,7 +109,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
-     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     @Import(name="connectionDrainingTimeoutSec")
@@ -118,7 +117,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     /**
      * @return Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
-     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     public Optional<Output<Integer>> connectionDrainingTimeoutSec() {
@@ -502,9 +500,23 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * This field is applicable only when the `load_balancing_scheme` is set
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="outlierDetection")
     private @Nullable Output<RegionBackendServiceOutlierDetectionArgs> outlierDetection;
 
+    /**
+     * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * This field is applicable only when the `load_balancing_scheme` is set
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<RegionBackendServiceOutlierDetectionArgs>> outlierDetection() {
         return Optional.ofNullable(this.outlierDetection);
     }
@@ -847,7 +859,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         /**
          * @param connectionDrainingTimeoutSec Time for which instance will be drained (not accept new
          * connections, but still work to finish started).
-         * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
          * 
          * @return builder
          * 
@@ -860,7 +871,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         /**
          * @param connectionDrainingTimeoutSec Time for which instance will be drained (not accept new
          * connections, but still work to finish started).
-         * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
          * 
          * @return builder
          * 
@@ -1336,11 +1346,29 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
             return network(Output.of(network));
         }
 
+        /**
+         * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
+         * This field is applicable only when the `load_balancing_scheme` is set
+         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outlierDetection(@Nullable Output<RegionBackendServiceOutlierDetectionArgs> outlierDetection) {
             $.outlierDetection = outlierDetection;
             return this;
         }
 
+        /**
+         * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
+         * This field is applicable only when the `load_balancing_scheme` is set
+         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outlierDetection(RegionBackendServiceOutlierDetectionArgs outlierDetection) {
             return outlierDetection(Output.of(outlierDetection));
         }

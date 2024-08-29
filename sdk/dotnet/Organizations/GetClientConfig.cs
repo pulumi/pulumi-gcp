@@ -66,6 +66,10 @@ namespace Pulumi.Gcp.Organizations
         /// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
         /// </summary>
         public readonly string AccessToken;
+        /// <summary>
+        /// The default labels configured on the provider.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> DefaultLabels;
         public readonly string Id;
         /// <summary>
         /// The ID of the project to apply any resources to.
@@ -84,6 +88,8 @@ namespace Pulumi.Gcp.Organizations
         private GetClientConfigResult(
             string accessToken,
 
+            ImmutableDictionary<string, string> defaultLabels,
+
             string id,
 
             string project,
@@ -93,6 +99,7 @@ namespace Pulumi.Gcp.Organizations
             string zone)
         {
             AccessToken = accessToken;
+            DefaultLabels = defaultLabels;
             Id = id;
             Project = project;
             Region = region;

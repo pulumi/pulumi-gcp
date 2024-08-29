@@ -150,7 +150,8 @@ class TagBinding(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="project_id",
             name="project_id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         key = gcp.tags.TagKey("key",
             parent="organizations/123456789",
             short_name="keyname",
@@ -216,7 +217,8 @@ class TagBinding(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="project_id",
             name="project_id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         key = gcp.tags.TagKey("key",
             parent="organizations/123456789",
             short_name="keyname",

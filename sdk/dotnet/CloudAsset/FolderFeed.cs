@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.CloudAsset
     ///     {
     ///         DisplayName = "Networking",
     ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     // Create a feed that sends notifications about network resource updates under a

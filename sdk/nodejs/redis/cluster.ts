@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *     redisConfigs: {
  *         "maxmemory-policy": "volatile-ttl",
  *     },
+ *     deletionProtectionEnabled: true,
  *     zoneDistributionConfig: {
  *         mode: "MULTI_ZONE",
  *     },
@@ -101,6 +102,7 @@ import * as utilities from "../utilities";
  *         mode: "SINGLE_ZONE",
  *         zone: "us-central1-f",
  *     },
+ *     deletionProtectionEnabled: true,
  * }, {
  *     dependsOn: [_default],
  * });
@@ -176,6 +178,11 @@ export class Cluster extends pulumi.CustomResource {
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+     * operation will fail. Default value is true.
+     */
+    public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Output only. Endpoints created on each given network,
      * for Redis clients to connect to the cluster.
@@ -271,6 +278,7 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
@@ -297,6 +305,7 @@ export class Cluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shardCount'");
             }
             resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
+            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -337,6 +346,11 @@ export interface ClusterState {
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+     * operation will fail. Default value is true.
+     */
+    deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
      * Output only. Endpoints created on each given network,
      * for Redis clients to connect to the cluster.
@@ -428,6 +442,11 @@ export interface ClusterArgs {
      * "AUTH_MODE_DISABLED"]
      */
     authorizationMode?: pulumi.Input<string>;
+    /**
+     * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+     * operation will fail. Default value is true.
+     */
+    deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}

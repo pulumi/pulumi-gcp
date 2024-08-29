@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         DisplayName = "policy",
     ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()

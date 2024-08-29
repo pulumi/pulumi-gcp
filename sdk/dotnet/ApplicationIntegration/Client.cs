@@ -133,15 +133,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Output<bool?> CreateSampleIntegrations { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Indicates if sample workflow should be created along with provisioning.
-        /// 
-        /// &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-        /// </summary>
-        [Output("createSampleWorkflows")]
-        public Output<bool?> CreateSampleWorkflows { get; private set; } = null!;
-
-        /// <summary>
         /// Location in which client needs to be provisioned.
         /// 
         /// 
@@ -156,15 +147,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// Indicates provision with GMEK or CMEK.
-        /// 
-        /// &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-        /// </summary>
-        [Output("provisionGmek")]
-        public Output<bool?> ProvisionGmek { get; private set; } = null!;
 
         /// <summary>
         /// User input run-as service account, if empty, will bring up a new default service account.
@@ -232,15 +214,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<bool>? CreateSampleIntegrations { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Indicates if sample workflow should be created along with provisioning.
-        /// 
-        /// &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-        /// </summary>
-        [Input("createSampleWorkflows")]
-        public Input<bool>? CreateSampleWorkflows { get; set; }
-
-        /// <summary>
         /// Location in which client needs to be provisioned.
         /// 
         /// 
@@ -255,15 +228,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// Indicates provision with GMEK or CMEK.
-        /// 
-        /// &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-        /// </summary>
-        [Input("provisionGmek")]
-        public Input<bool>? ProvisionGmek { get; set; }
 
         /// <summary>
         /// User input run-as service account, if empty, will bring up a new default service account.
@@ -293,15 +257,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<bool>? CreateSampleIntegrations { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Indicates if sample workflow should be created along with provisioning.
-        /// 
-        /// &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-        /// </summary>
-        [Input("createSampleWorkflows")]
-        public Input<bool>? CreateSampleWorkflows { get; set; }
-
-        /// <summary>
         /// Location in which client needs to be provisioned.
         /// 
         /// 
@@ -316,15 +271,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// Indicates provision with GMEK or CMEK.
-        /// 
-        /// &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-        /// </summary>
-        [Input("provisionGmek")]
-        public Input<bool>? ProvisionGmek { get; set; }
 
         /// <summary>
         /// User input run-as service account, if empty, will bring up a new default service account.

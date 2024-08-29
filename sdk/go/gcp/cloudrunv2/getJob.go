@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,6 +74,7 @@ type LookupJobResult struct {
 	CreateTime           string                      `pulumi:"createTime"`
 	Creator              string                      `pulumi:"creator"`
 	DeleteTime           string                      `pulumi:"deleteTime"`
+	DeletionProtection   bool                        `pulumi:"deletionProtection"`
 	EffectiveAnnotations map[string]string           `pulumi:"effectiveAnnotations"`
 	EffectiveLabels      map[string]string           `pulumi:"effectiveLabels"`
 	Etag                 string                      `pulumi:"etag"`
@@ -175,6 +176,10 @@ func (o LookupJobResultOutput) Creator() pulumi.StringOutput {
 
 func (o LookupJobResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o LookupJobResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupJobResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupJobResultOutput) EffectiveAnnotations() pulumi.StringMapOutput {

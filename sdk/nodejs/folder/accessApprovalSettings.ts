@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * const myFolder = new gcp.organizations.Folder("my_folder", {
  *     displayName: "my-folder",
  *     parent: "organizations/123456789",
+ *     deletionProtection: false,
  * });
  * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folder_access_approval", {
  *     folderId: myFolder.folderId,
@@ -45,11 +46,13 @@ import * as utilities from "../utilities";
  * const myFolder = new gcp.organizations.Folder("my_folder", {
  *     displayName: "my-folder",
  *     parent: "organizations/123456789",
+ *     deletionProtection: false,
  * });
  * const myProject = new gcp.organizations.Project("my_project", {
  *     name: "My Project",
  *     projectId: "your-project-id",
  *     folderId: myFolder.name,
+ *     deletionPolicy: "DELETE",
  * });
  * const keyRing = new gcp.kms.KeyRing("key_ring", {
  *     name: "key-ring",

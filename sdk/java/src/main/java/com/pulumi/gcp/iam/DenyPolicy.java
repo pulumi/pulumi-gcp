@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *             .name("my-project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var test_account = new Account("test-account", AccountArgs.builder()

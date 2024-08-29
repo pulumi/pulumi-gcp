@@ -200,7 +200,7 @@ import * as utilities from "../utilities";
  *             konnectivityServerNodePort: 30008,
  *         },
  *     },
- *     vcenters: [{
+ *     vcenter: {
  *         resourcePool: "test-resource-pool",
  *         datastore: "test-datastore",
  *         datacenter: "test-datacenter",
@@ -208,7 +208,7 @@ import * as utilities from "../utilities";
  *         folder: "test-folder",
  *         caCertData: "test-ca-cert-data",
  *         storagePolicyName: "test-storage-policy-name",
- *     }],
+ *     },
  *     dataplaneV2: {
  *         dataplaneV2Enabled: true,
  *         windowsDataplaneV2Enabled: true,
@@ -434,7 +434,7 @@ export class VMwareCluster extends pulumi.CustomResource {
     /**
      * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      */
-    public readonly vcenters!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter[] | undefined>;
+    public readonly vcenter!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter | undefined>;
     /**
      * Enable VM tracking.
      */
@@ -484,7 +484,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["upgradePolicy"] = state ? state.upgradePolicy : undefined;
             resourceInputs["validationChecks"] = state ? state.validationChecks : undefined;
-            resourceInputs["vcenters"] = state ? state.vcenters : undefined;
+            resourceInputs["vcenter"] = state ? state.vcenter : undefined;
             resourceInputs["vmTrackingEnabled"] = state ? state.vmTrackingEnabled : undefined;
         } else {
             const args = argsOrState as VMwareClusterArgs | undefined;
@@ -518,7 +518,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
-            resourceInputs["vcenters"] = args ? args.vcenters : undefined;
+            resourceInputs["vcenter"] = args ? args.vcenter : undefined;
             resourceInputs["vmTrackingEnabled"] = args ? args.vmTrackingEnabled : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
@@ -692,7 +692,7 @@ export interface VMwareClusterState {
     /**
      * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      */
-    vcenters?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>[]>;
+    vcenter?: pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>;
     /**
      * Enable VM tracking.
      */
@@ -785,7 +785,7 @@ export interface VMwareClusterArgs {
     /**
      * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      */
-    vcenters?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>[]>;
+    vcenter?: pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>;
     /**
      * Enable VM tracking.
      */

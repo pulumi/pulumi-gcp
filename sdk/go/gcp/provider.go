@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,7 +81,6 @@ type Provider struct {
 	DataplexCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint           pulumi.StringPtrOutput `pulumi:"dataprocMetastoreCustomEndpoint"`
-	DatastoreCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"datastoreCustomEndpoint"`
 	DatastreamCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"datastreamCustomEndpoint"`
 	DeploymentManagerCustomEndpoint           pulumi.StringPtrOutput `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"dialogflowCustomEndpoint"`
@@ -290,7 +289,6 @@ type providerArgs struct {
 	DataplexCustomEndpoint                    *string           `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint                    *string           `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint           *string           `pulumi:"dataprocMetastoreCustomEndpoint"`
-	DatastoreCustomEndpoint                   *string           `pulumi:"datastoreCustomEndpoint"`
 	DatastreamCustomEndpoint                  *string           `pulumi:"datastreamCustomEndpoint"`
 	DefaultLabels                             map[string]string `pulumi:"defaultLabels"`
 	DeploymentManagerCustomEndpoint           *string           `pulumi:"deploymentManagerCustomEndpoint"`
@@ -467,7 +465,6 @@ type ProviderArgs struct {
 	DataplexCustomEndpoint                    pulumi.StringPtrInput
 	DataprocCustomEndpoint                    pulumi.StringPtrInput
 	DataprocMetastoreCustomEndpoint           pulumi.StringPtrInput
-	DatastoreCustomEndpoint                   pulumi.StringPtrInput
 	DatastreamCustomEndpoint                  pulumi.StringPtrInput
 	DefaultLabels                             pulumi.StringMapInput
 	DeploymentManagerCustomEndpoint           pulumi.StringPtrInput
@@ -864,10 +861,6 @@ func (o ProviderOutput) DataprocCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) DataprocMetastoreCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataprocMetastoreCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderOutput) DatastoreCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatastoreCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) DatastreamCustomEndpoint() pulumi.StringPtrOutput {

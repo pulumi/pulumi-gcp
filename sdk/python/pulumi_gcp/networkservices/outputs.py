@@ -5077,7 +5077,9 @@ class TcpRouteRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "originalDestination":
+        if key == "idleTimeout":
+            suggest = "idle_timeout"
+        elif key == "originalDestination":
             suggest = "original_destination"
 
         if suggest:
@@ -5093,14 +5095,19 @@ class TcpRouteRuleAction(dict):
 
     def __init__(__self__, *,
                  destinations: Optional[Sequence['outputs.TcpRouteRuleActionDestination']] = None,
+                 idle_timeout: Optional[str] = None,
                  original_destination: Optional[bool] = None):
         """
         :param Sequence['TcpRouteRuleActionDestinationArgs'] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
                Structure is documented below.
+        :param str idle_timeout: Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param bool original_destination: If true, Router will use the destination IP and port of the original connection as the destination of the request.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if original_destination is not None:
             pulumi.set(__self__, "original_destination", original_destination)
 
@@ -5112,6 +5119,15 @@ class TcpRouteRuleAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[str]:
+        """
+        Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "idle_timeout")
 
     @property
     @pulumi.getter(name="originalDestination")

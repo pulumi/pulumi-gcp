@@ -19,14 +19,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     public static final BucketLifecycleRuleConditionArgs Empty = new BucketLifecycleRuleConditionArgs();
 
     /**
-     * Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+     * Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     @Import(name="age")
     private @Nullable Output<Integer> age;
 
     /**
-     * @return Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     public Optional<Output<Integer>> age() {
@@ -141,21 +141,6 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-     * 
-     */
-    @Import(name="noAge")
-    private @Nullable Output<Boolean> noAge;
-
-    /**
-     * @return While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-     * 
-     */
-    public Optional<Output<Boolean>> noAge() {
-        return Optional.ofNullable(this.noAge);
-    }
-
-    /**
      * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
@@ -183,6 +168,21 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
      */
     public Optional<Output<Integer>> numNewerVersions() {
         return Optional.ofNullable(this.numNewerVersions);
+    }
+
+    /**
+     * While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * 
+     */
+    @Import(name="sendAgeIfZero")
+    private @Nullable Output<Boolean> sendAgeIfZero;
+
+    /**
+     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * 
+     */
+    public Optional<Output<Boolean>> sendAgeIfZero() {
+        return Optional.ofNullable(this.sendAgeIfZero);
     }
 
     /**
@@ -256,9 +256,9 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         this.matchesPrefixes = $.matchesPrefixes;
         this.matchesStorageClasses = $.matchesStorageClasses;
         this.matchesSuffixes = $.matchesSuffixes;
-        this.noAge = $.noAge;
         this.noncurrentTimeBefore = $.noncurrentTimeBefore;
         this.numNewerVersions = $.numNewerVersions;
+        this.sendAgeIfZero = $.sendAgeIfZero;
         this.sendDaysSinceCustomTimeIfZero = $.sendDaysSinceCustomTimeIfZero;
         this.sendDaysSinceNoncurrentTimeIfZero = $.sendDaysSinceNoncurrentTimeIfZero;
         this.sendNumNewerVersionsIfZero = $.sendNumNewerVersionsIfZero;
@@ -284,7 +284,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param age Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+         * @param age Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param age Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+         * @param age Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
          * 
          * @return builder
          * 
@@ -484,27 +484,6 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noAge While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder noAge(@Nullable Output<Boolean> noAge) {
-            $.noAge = noAge;
-            return this;
-        }
-
-        /**
-         * @param noAge While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder noAge(Boolean noAge) {
-            return noAge(Output.of(noAge));
-        }
-
-        /**
          * @param noncurrentTimeBefore Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
          * 
          * @return builder
@@ -544,6 +523,27 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
          */
         public Builder numNewerVersions(Integer numNewerVersions) {
             return numNewerVersions(Output.of(numNewerVersions));
+        }
+
+        /**
+         * @param sendAgeIfZero While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendAgeIfZero(@Nullable Output<Boolean> sendAgeIfZero) {
+            $.sendAgeIfZero = sendAgeIfZero;
+            return this;
+        }
+
+        /**
+         * @param sendAgeIfZero While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendAgeIfZero(Boolean sendAgeIfZero) {
+            return sendAgeIfZero(Output.of(sendAgeIfZero));
         }
 
         /**

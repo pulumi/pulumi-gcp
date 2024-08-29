@@ -47,7 +47,13 @@ class RegionSslCertificateArgs:
                character, which cannot be a dash.
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
-               specified prefix. Conflicts with `name`.
+               specified prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created regional ssl certificate should reside.
@@ -133,7 +139,13 @@ class RegionSslCertificateArgs:
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Creates a unique name beginning with the
-        specified prefix. Conflicts with `name`.
+        specified prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -201,7 +213,13 @@ class _RegionSslCertificateState:
                character, which cannot be a dash.
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
-               specified prefix. Conflicts with `name`.
+               specified prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
@@ -323,7 +341,13 @@ class _RegionSslCertificateState:
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Creates a unique name beginning with the
-        specified prefix. Conflicts with `name`.
+        specified prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -458,7 +482,13 @@ class RegionSslCertificate(pulumi.CustomResource):
                character, which cannot be a dash.
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
-               specified prefix. Conflicts with `name`.
+               specified prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
@@ -611,7 +641,13 @@ class RegionSslCertificate(pulumi.CustomResource):
                character, which cannot be a dash.
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
-               specified prefix. Conflicts with `name`.
+               specified prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
@@ -703,7 +739,13 @@ class RegionSslCertificate(pulumi.CustomResource):
     def name_prefix(self) -> pulumi.Output[str]:
         """
         Creates a unique name beginning with the
-        specified prefix. Conflicts with `name`.
+        specified prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 

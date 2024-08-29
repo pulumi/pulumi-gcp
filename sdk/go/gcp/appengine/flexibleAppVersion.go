@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,11 +37,11 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -53,6 +53,7 @@ import (
 //				ProjectId:      pulumi.String("appeng-flex"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err

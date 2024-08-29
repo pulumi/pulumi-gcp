@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * const securityPolicyTarget = new gcp.organizations.Folder("security_policy_target", {
  *     displayName: "tf-test-secpol",
  *     parent: "organizations/123456789",
+ *     deletionProtection: false,
  * });
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
  *     displayName: "tf-test",

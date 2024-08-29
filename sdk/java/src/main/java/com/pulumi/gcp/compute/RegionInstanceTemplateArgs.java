@@ -269,7 +269,14 @@ public final class RegionInstanceTemplateArgs extends com.pulumi.resources.Resou
 
     /**
      * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * prefix. Conflicts with `name`. Max length is 54 characters.
+     * Prefixes with lengths longer than 37 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     * 
+     * Resulting name for a `name_prefix` &lt;= 37 characters:
+     * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `name_prefix` 38 - 54 characters:
+     * `name_prefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     @Import(name="namePrefix")
@@ -277,7 +284,14 @@ public final class RegionInstanceTemplateArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * prefix. Conflicts with `name`. Max length is 54 characters.
+     * Prefixes with lengths longer than 37 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     * 
+     * Resulting name for a `name_prefix` &lt;= 37 characters:
+     * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `name_prefix` 38 - 54 characters:
+     * `name_prefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -880,7 +894,14 @@ public final class RegionInstanceTemplateArgs extends com.pulumi.resources.Resou
 
         /**
          * @param namePrefix Creates a unique name beginning with the specified
-         * prefix. Conflicts with `name`.
+         * prefix. Conflicts with `name`. Max length is 54 characters.
+         * Prefixes with lengths longer than 37 characters will use a shortened
+         * UUID that will be more prone to collisions.
+         * 
+         * Resulting name for a `name_prefix` &lt;= 37 characters:
+         * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+         * Resulting name for a `name_prefix` 38 - 54 characters:
+         * `name_prefix` + YYmmdd + 3 digit incremental counter
          * 
          * @return builder
          * 
@@ -892,7 +913,14 @@ public final class RegionInstanceTemplateArgs extends com.pulumi.resources.Resou
 
         /**
          * @param namePrefix Creates a unique name beginning with the specified
-         * prefix. Conflicts with `name`.
+         * prefix. Conflicts with `name`. Max length is 54 characters.
+         * Prefixes with lengths longer than 37 characters will use a shortened
+         * UUID that will be more prone to collisions.
+         * 
+         * Resulting name for a `name_prefix` &lt;= 37 characters:
+         * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+         * Resulting name for a `name_prefix` 38 - 54 characters:
+         * `name_prefix` + YYmmdd + 3 digit incremental counter
          * 
          * @return builder
          * 

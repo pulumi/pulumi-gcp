@@ -8021,7 +8021,7 @@ if not MYPY:
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
         """
-        vsphere_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgsDict']]]]
+        vsphere_config: NotRequired[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgsDict']]
         """
         Specifies the vSphere config for node pool.
         Structure is documented below.
@@ -8041,7 +8041,7 @@ class VMwareNodePoolConfigArgs:
                  memory_mb: Optional[pulumi.Input[int]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]] = None,
-                 vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]]] = None):
+                 vsphere_config: Optional[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']] = None):
         """
         :param pulumi.Input[str] image_type: The OS image to be used for each node in a node pool.
                Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
@@ -8060,7 +8060,7 @@ class VMwareNodePoolConfigArgs:
         :param pulumi.Input[int] replicas: The number of nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]] vsphere_configs: Specifies the vSphere config for node pool.
+        :param pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs'] vsphere_config: Specifies the vSphere config for node pool.
                Structure is documented below.
         """
         pulumi.set(__self__, "image_type", image_type)
@@ -8080,8 +8080,8 @@ class VMwareNodePoolConfigArgs:
             pulumi.set(__self__, "replicas", replicas)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
-        if vsphere_configs is not None:
-            pulumi.set(__self__, "vsphere_configs", vsphere_configs)
+        if vsphere_config is not None:
+            pulumi.set(__self__, "vsphere_config", vsphere_config)
 
     @property
     @pulumi.getter(name="imageType")
@@ -8200,17 +8200,17 @@ class VMwareNodePoolConfigArgs:
         pulumi.set(self, "taints", value)
 
     @property
-    @pulumi.getter(name="vsphereConfigs")
-    def vsphere_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]]]:
+    @pulumi.getter(name="vsphereConfig")
+    def vsphere_config(self) -> Optional[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]:
         """
         Specifies the vSphere config for node pool.
         Structure is documented below.
         """
-        return pulumi.get(self, "vsphere_configs")
+        return pulumi.get(self, "vsphere_config")
 
-    @vsphere_configs.setter
-    def vsphere_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]]]):
-        pulumi.set(self, "vsphere_configs", value)
+    @vsphere_config.setter
+    def vsphere_config(self, value: Optional[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]):
+        pulumi.set(self, "vsphere_config", value)
 
 
 if not MYPY:

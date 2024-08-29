@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionDestinationArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,6 +36,23 @@ public final class TcpRouteRuleActionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Import(name="idleTimeout")
+    private @Nullable Output<String> idleTimeout;
+
+    /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Optional<Output<String>> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
+    }
+
+    /**
      * If true, Router will use the destination IP and port of the original connection as the destination of the request.
      * 
      */
@@ -53,6 +71,7 @@ public final class TcpRouteRuleActionArgs extends com.pulumi.resources.ResourceA
 
     private TcpRouteRuleActionArgs(TcpRouteRuleActionArgs $) {
         this.destinations = $.destinations;
+        this.idleTimeout = $.idleTimeout;
         this.originalDestination = $.originalDestination;
     }
 
@@ -106,6 +125,29 @@ public final class TcpRouteRuleActionArgs extends com.pulumi.resources.ResourceA
          */
         public Builder destinations(TcpRouteRuleActionDestinationArgs... destinations) {
             return destinations(List.of(destinations));
+        }
+
+        /**
+         * @param idleTimeout Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(@Nullable Output<String> idleTimeout) {
+            $.idleTimeout = idleTimeout;
+            return this;
+        }
+
+        /**
+         * @param idleTimeout Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(String idleTimeout) {
+            return idleTimeout(Output.of(idleTimeout));
         }
 
         /**
