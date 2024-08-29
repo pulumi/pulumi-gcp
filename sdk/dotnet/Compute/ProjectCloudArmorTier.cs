@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "your_project_id",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var compute = new Gcp.Projects.Service("compute", new()

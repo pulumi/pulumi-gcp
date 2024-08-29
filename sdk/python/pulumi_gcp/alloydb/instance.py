@@ -868,7 +868,9 @@ class Instance(pulumi.CustomResource):
         primary = gcp.alloydb.Cluster("primary",
             cluster_id="alloydb-primary-cluster",
             location="us-central1",
-            network=default.id)
+            network_config={
+                "network": default.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-instance",
             address_type="INTERNAL",
@@ -890,7 +892,9 @@ class Instance(pulumi.CustomResource):
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
-            network=default.id,
+            network_config={
+                "network": default_google_compute_network["id"],
+            },
             cluster_type="SECONDARY",
             continuous_backup_config={
                 "enabled": False,
@@ -1029,7 +1033,9 @@ class Instance(pulumi.CustomResource):
         primary = gcp.alloydb.Cluster("primary",
             cluster_id="alloydb-primary-cluster",
             location="us-central1",
-            network=default.id)
+            network_config={
+                "network": default.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-instance",
             address_type="INTERNAL",
@@ -1051,7 +1057,9 @@ class Instance(pulumi.CustomResource):
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
-            network=default.id,
+            network_config={
+                "network": default_google_compute_network["id"],
+            },
             cluster_type="SECONDARY",
             continuous_backup_config={
                 "enabled": False,
@@ -1456,7 +1464,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pscInstanceConfig")
-    def psc_instance_config(self) -> pulumi.Output[Optional['outputs.InstancePscInstanceConfig']]:
+    def psc_instance_config(self) -> pulumi.Output['outputs.InstancePscInstanceConfig']:
         """
         Configuration for Private Service Connect (PSC) for the instance.
         Structure is documented below.

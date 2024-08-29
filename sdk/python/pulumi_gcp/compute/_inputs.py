@@ -2750,7 +2750,6 @@ if not MYPY:
         and CONNECTION (for TCP/SSL).
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
-        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
         Default value is `UTILIZATION`.
         Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
@@ -2859,7 +2858,6 @@ class BackendServiceBackendArgs:
                and CONNECTION (for TCP/SSL).
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
-               From version 6.0.0 default value will be UTILIZATION to match default GCP value.
                Default value is `UTILIZATION`.
                Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
@@ -2960,7 +2958,6 @@ class BackendServiceBackendArgs:
         and CONNECTION (for TCP/SSL).
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
-        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
         Default value is `UTILIZATION`.
         Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
@@ -4240,11 +4237,15 @@ class BackendServiceIamMemberConditionArgs:
 
 if not MYPY:
     class BackendServiceIapArgsDict(TypedDict):
-        oauth2_client_id: pulumi.Input[str]
+        enabled: pulumi.Input[bool]
+        """
+        Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        """
+        oauth2_client_id: NotRequired[pulumi.Input[str]]
         """
         OAuth2 Client ID for IAP
         """
-        oauth2_client_secret: pulumi.Input[str]
+        oauth2_client_secret: NotRequired[pulumi.Input[str]]
         """
         OAuth2 Client Secret for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -4261,10 +4262,12 @@ elif False:
 @pulumi.input_type
 class BackendServiceIapArgs:
     def __init__(__self__, *,
-                 oauth2_client_id: pulumi.Input[str],
-                 oauth2_client_secret: pulumi.Input[str],
+                 enabled: pulumi.Input[bool],
+                 oauth2_client_id: Optional[pulumi.Input[str]] = None,
+                 oauth2_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests.
         :param pulumi.Input[str] oauth2_client_id: OAuth2 Client ID for IAP
         :param pulumi.Input[str] oauth2_client_secret: OAuth2 Client Secret for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -4272,26 +4275,41 @@ class BackendServiceIapArgs:
                OAuth2 Client Secret SHA-256 for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
-        pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
+        pulumi.set(__self__, "enabled", enabled)
+        if oauth2_client_id is not None:
+            pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        if oauth2_client_secret is not None:
+            pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
         if oauth2_client_secret_sha256 is not None:
             pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
 
     @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
     @pulumi.getter(name="oauth2ClientId")
-    def oauth2_client_id(self) -> pulumi.Input[str]:
+    def oauth2_client_id(self) -> Optional[pulumi.Input[str]]:
         """
         OAuth2 Client ID for IAP
         """
         return pulumi.get(self, "oauth2_client_id")
 
     @oauth2_client_id.setter
-    def oauth2_client_id(self, value: pulumi.Input[str]):
+    def oauth2_client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oauth2_client_id", value)
 
     @property
     @pulumi.getter(name="oauth2ClientSecret")
-    def oauth2_client_secret(self) -> pulumi.Input[str]:
+    def oauth2_client_secret(self) -> Optional[pulumi.Input[str]]:
         """
         OAuth2 Client Secret for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -4299,7 +4317,7 @@ class BackendServiceIapArgs:
         return pulumi.get(self, "oauth2_client_secret")
 
     @oauth2_client_secret.setter
-    def oauth2_client_secret(self, value: pulumi.Input[str]):
+    def oauth2_client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oauth2_client_secret", value)
 
     @property
@@ -22320,8 +22338,7 @@ if not MYPY:
         Specifies the balancing mode for this backend.
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
-        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-        Default value is `CONNECTION`.
+        Default value is `UTILIZATION`.
         Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
         capacity_scaler: NotRequired[pulumi.Input[float]]
@@ -22443,8 +22460,7 @@ class RegionBackendServiceBackendArgs:
         :param pulumi.Input[str] balancing_mode: Specifies the balancing mode for this backend.
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
-               From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-               Default value is `CONNECTION`.
+               Default value is `UTILIZATION`.
                Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
@@ -22556,8 +22572,7 @@ class RegionBackendServiceBackendArgs:
         Specifies the balancing mode for this backend.
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
-        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-        Default value is `CONNECTION`.
+        Default value is `UTILIZATION`.
         Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
         return pulumi.get(self, "balancing_mode")
@@ -24062,11 +24077,15 @@ class RegionBackendServiceIamMemberConditionArgs:
 
 if not MYPY:
     class RegionBackendServiceIapArgsDict(TypedDict):
-        oauth2_client_id: pulumi.Input[str]
+        enabled: pulumi.Input[bool]
+        """
+        Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        """
+        oauth2_client_id: NotRequired[pulumi.Input[str]]
         """
         OAuth2 Client ID for IAP
         """
-        oauth2_client_secret: pulumi.Input[str]
+        oauth2_client_secret: NotRequired[pulumi.Input[str]]
         """
         OAuth2 Client Secret for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -24083,10 +24102,12 @@ elif False:
 @pulumi.input_type
 class RegionBackendServiceIapArgs:
     def __init__(__self__, *,
-                 oauth2_client_id: pulumi.Input[str],
-                 oauth2_client_secret: pulumi.Input[str],
+                 enabled: pulumi.Input[bool],
+                 oauth2_client_id: Optional[pulumi.Input[str]] = None,
+                 oauth2_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests.
         :param pulumi.Input[str] oauth2_client_id: OAuth2 Client ID for IAP
         :param pulumi.Input[str] oauth2_client_secret: OAuth2 Client Secret for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -24094,26 +24115,41 @@ class RegionBackendServiceIapArgs:
                OAuth2 Client Secret SHA-256 for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
-        pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
+        pulumi.set(__self__, "enabled", enabled)
+        if oauth2_client_id is not None:
+            pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        if oauth2_client_secret is not None:
+            pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
         if oauth2_client_secret_sha256 is not None:
             pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
 
     @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
     @pulumi.getter(name="oauth2ClientId")
-    def oauth2_client_id(self) -> pulumi.Input[str]:
+    def oauth2_client_id(self) -> Optional[pulumi.Input[str]]:
         """
         OAuth2 Client ID for IAP
         """
         return pulumi.get(self, "oauth2_client_id")
 
     @oauth2_client_id.setter
-    def oauth2_client_id(self, value: pulumi.Input[str]):
+    def oauth2_client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oauth2_client_id", value)
 
     @property
     @pulumi.getter(name="oauth2ClientSecret")
-    def oauth2_client_secret(self) -> pulumi.Input[str]:
+    def oauth2_client_secret(self) -> Optional[pulumi.Input[str]]:
         """
         OAuth2 Client Secret for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -24121,7 +24157,7 @@ class RegionBackendServiceIapArgs:
         return pulumi.get(self, "oauth2_client_secret")
 
     @oauth2_client_secret.setter
-    def oauth2_client_secret(self, value: pulumi.Input[str]):
+    def oauth2_client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oauth2_client_secret", value)
 
     @property
@@ -45757,13 +45793,6 @@ class SubnetworkLogConfigArgs:
 
 if not MYPY:
     class SubnetworkSecondaryIpRangeArgsDict(TypedDict):
-        ip_cidr_range: pulumi.Input[str]
-        """
-        The range of IP addresses belonging to this subnetwork secondary
-        range. Provide this property when you create the subnetwork.
-        Ranges must be unique and non-overlapping with all primary and
-        secondary IP ranges within a network. Only IPv4 is supported.
-        """
         range_name: pulumi.Input[str]
         """
         The name associated with this subnetwork secondary range, used
@@ -45771,41 +45800,46 @@ if not MYPY:
         be 1-63 characters long, and comply with RFC1035. The name
         must be unique within the subnetwork.
         """
+        ip_cidr_range: NotRequired[pulumi.Input[str]]
+        """
+        The range of IP addresses belonging to this subnetwork secondary
+        range. Provide this property when you create the subnetwork.
+        Ranges must be unique and non-overlapping with all primary and
+        secondary IP ranges within a network. Only IPv4 is supported.
+        Field is optional when `reserved_internal_range` is defined, otherwise required.
+        """
+        reserved_internal_range: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        """
 elif False:
     SubnetworkSecondaryIpRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SubnetworkSecondaryIpRangeArgs:
     def __init__(__self__, *,
-                 ip_cidr_range: pulumi.Input[str],
-                 range_name: pulumi.Input[str]):
+                 range_name: pulumi.Input[str],
+                 ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
-               range. Provide this property when you create the subnetwork.
-               Ranges must be unique and non-overlapping with all primary and
-               secondary IP ranges within a network. Only IPv4 is supported.
         :param pulumi.Input[str] range_name: The name associated with this subnetwork secondary range, used
                when adding an alias IP range to a VM instance. The name must
                be 1-63 characters long, and comply with RFC1035. The name
                must be unique within the subnetwork.
+        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
+               range. Provide this property when you create the subnetwork.
+               Ranges must be unique and non-overlapping with all primary and
+               secondary IP ranges within a network. Only IPv4 is supported.
+               Field is optional when `reserved_internal_range` is defined, otherwise required.
+        :param pulumi.Input[str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+               E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         """
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "range_name", range_name)
-
-    @property
-    @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> pulumi.Input[str]:
-        """
-        The range of IP addresses belonging to this subnetwork secondary
-        range. Provide this property when you create the subnetwork.
-        Ranges must be unique and non-overlapping with all primary and
-        secondary IP ranges within a network. Only IPv4 is supported.
-        """
-        return pulumi.get(self, "ip_cidr_range")
-
-    @ip_cidr_range.setter
-    def ip_cidr_range(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ip_cidr_range", value)
+        if ip_cidr_range is not None:
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if reserved_internal_range is not None:
+            pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
 
     @property
     @pulumi.getter(name="rangeName")
@@ -45821,6 +45855,35 @@ class SubnetworkSecondaryIpRangeArgs:
     @range_name.setter
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of IP addresses belonging to this subnetwork secondary
+        range. Provide this property when you create the subnetwork.
+        Ranges must be unique and non-overlapping with all primary and
+        secondary IP ranges within a network. Only IPv4 is supported.
+        Field is optional when `reserved_internal_range` is defined, otherwise required.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @ip_cidr_range.setter
+    def ip_cidr_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_cidr_range", value)
+
+    @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        """
+        return pulumi.get(self, "reserved_internal_range")
+
+    @reserved_internal_range.setter
+    def reserved_internal_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_internal_range", value)
 
 
 if not MYPY:

@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "prj-rejected",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var acceptedProducerProject = new Gcp.Organizations.Project("accepted_producer_project", new()
@@ -58,6 +59,7 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "prj-accepted",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.NetworkAttachment("default", new()

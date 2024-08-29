@@ -12,6 +12,8 @@ import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeysArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeysPlainArgs;
+import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyArgs;
+import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
@@ -30,6 +32,7 @@ import com.pulumi.gcp.kms.inputs.GetKeyRingsArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingsPlainArgs;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeyIamPolicyResult;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeysResult;
+import com.pulumi.gcp.kms.outputs.GetEkmConnectionIamPolicyResult;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyResult;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyVersionResult;
 import com.pulumi.gcp.kms.outputs.GetKMSKeyRingResult;
@@ -260,6 +263,182 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetCryptoKeysResult> getCryptoKeysPlain(GetCryptoKeysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getCryptoKeys:getCryptoKeys", TypeShape.of(GetCryptoKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for ekmconnection
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
+     *             .project(example_ekmconnection.project())
+     *             .location(example_ekmconnection.location())
+     *             .name(example_ekmconnection.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs args) {
+        return getEkmConnectionIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for ekmconnection
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
+     *             .project(example_ekmconnection.project())
+     *             .location(example_ekmconnection.location())
+     *             .name(example_ekmconnection.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicyPlain(GetEkmConnectionIamPolicyPlainArgs args) {
+        return getEkmConnectionIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for ekmconnection
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
+     *             .project(example_ekmconnection.project())
+     *             .location(example_ekmconnection.location())
+     *             .name(example_ekmconnection.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", TypeShape.of(GetEkmConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for ekmconnection
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
+     *             .project(example_ekmconnection.project())
+     *             .location(example_ekmconnection.location())
+     *             .name(example_ekmconnection.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicyPlain(GetEkmConnectionIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", TypeShape.of(GetEkmConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides access to a Google Cloud Platform KMS CryptoKey. For more information see

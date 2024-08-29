@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,9 +21,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,9 +62,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -132,117 +132,6 @@ import (
 //	}
 //
 // ```
-// ### Alloydb Cluster Restore
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "alloydb-network",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			source, err := alloydb.NewCluster(ctx, "source", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-source-cluster"),
-//				Location:  pulumi.String("us-central1"),
-//				Network:   pulumi.String(_default.Id),
-//				InitialUser: &alloydb.ClusterInitialUserArgs{
-//					Password: pulumi.String("alloydb-source-cluster"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-//				Name:         pulumi.String("alloydb-source-cluster"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      pulumi.String(_default.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(_default.Id),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAlloc.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			sourceInstance, err := alloydb.NewInstance(ctx, "source", &alloydb.InstanceArgs{
-//				Cluster:      source.Name,
-//				InstanceId:   pulumi.String("alloydb-instance"),
-//				InstanceType: pulumi.String("PRIMARY"),
-//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
-//					CpuCount: pulumi.Int(2),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vpcConnection,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			sourceBackup, err := alloydb.NewBackup(ctx, "source", &alloydb.BackupArgs{
-//				BackupId:    pulumi.String("alloydb-backup"),
-//				Location:    pulumi.String("us-central1"),
-//				ClusterName: source.Name,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				sourceInstance,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alloydb.NewCluster(ctx, "restored_from_backup", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-backup-restored"),
-//				Location:  pulumi.String("us-central1"),
-//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: pulumi.String(_default.Id),
-//				},
-//				RestoreBackupSource: &alloydb.ClusterRestoreBackupSourceArgs{
-//					BackupName: sourceBackup.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alloydb.NewCluster(ctx, "restored_via_pitr", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-pitr-restored"),
-//				Location:  pulumi.String("us-central1"),
-//				Network:   pulumi.String(_default.Id),
-//				RestoreContinuousBackupSource: &alloydb.ClusterRestoreContinuousBackupSourceArgs{
-//					Cluster:     source.Name,
-//					PointInTime: pulumi.String("2023-08-03T19:19:00.094Z"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Alloydb Secondary Cluster Basic
 //
 // ```go
@@ -250,10 +139,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -269,7 +158,9 @@ import (
 //			primary, err := alloydb.NewCluster(ctx, "primary", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-primary-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   _default.ID(),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: _default.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -308,9 +199,11 @@ import (
 //				return err
 //			}
 //			_, err = alloydb.NewCluster(ctx, "secondary", &alloydb.ClusterArgs{
-//				ClusterId:   pulumi.String("alloydb-secondary-cluster"),
-//				Location:    pulumi.String("us-east1"),
-//				Network:     _default.ID(),
+//				ClusterId: pulumi.String("alloydb-secondary-cluster"),
+//				Location:  pulumi.String("us-east1"),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: _default.ID(),
+//				},
 //				ClusterType: pulumi.String("SECONDARY"),
 //				ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{
 //					Enabled: pulumi.Bool(false),
@@ -430,14 +323,6 @@ type Cluster struct {
 	MigrationSources ClusterMigrationSourceArrayOutput `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Optional, Deprecated)
-	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-	// "projects/{projectNumber}/global/networks/{network_id}".
-	//
-	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	Network pulumi.StringOutput `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
 	NetworkConfig ClusterNetworkConfigOutput `pulumi:"networkConfig"`
@@ -574,14 +459,6 @@ type clusterState struct {
 	MigrationSources []ClusterMigrationSource `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name *string `pulumi:"name"`
-	// (Optional, Deprecated)
-	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-	// "projects/{projectNumber}/global/networks/{network_id}".
-	//
-	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	Network *string `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
 	NetworkConfig *ClusterNetworkConfig `pulumi:"networkConfig"`
@@ -678,14 +555,6 @@ type ClusterState struct {
 	MigrationSources ClusterMigrationSourceArrayInput
 	// The name of the cluster resource.
 	Name pulumi.StringPtrInput
-	// (Optional, Deprecated)
-	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-	// "projects/{projectNumber}/global/networks/{network_id}".
-	//
-	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	Network pulumi.StringPtrInput
 	// Metadata related to network configuration.
 	// Structure is documented below.
 	NetworkConfig ClusterNetworkConfigPtrInput
@@ -768,14 +637,6 @@ type clusterArgs struct {
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
 	MaintenanceUpdatePolicy *ClusterMaintenanceUpdatePolicy `pulumi:"maintenanceUpdatePolicy"`
-	// (Optional, Deprecated)
-	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-	// "projects/{projectNumber}/global/networks/{network_id}".
-	//
-	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	Network *string `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
 	NetworkConfig *ClusterNetworkConfig `pulumi:"networkConfig"`
@@ -844,14 +705,6 @@ type ClusterArgs struct {
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
 	MaintenanceUpdatePolicy ClusterMaintenanceUpdatePolicyPtrInput
-	// (Optional, Deprecated)
-	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-	// "projects/{projectNumber}/global/networks/{network_id}".
-	//
-	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-	Network pulumi.StringPtrInput
 	// Metadata related to network configuration.
 	// Structure is documented below.
 	NetworkConfig ClusterNetworkConfigPtrInput
@@ -1084,17 +937,6 @@ func (o ClusterOutput) MigrationSources() ClusterMigrationSourceArrayOutput {
 // The name of the cluster resource.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// (Optional, Deprecated)
-// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-// "projects/{projectNumber}/global/networks/{network_id}".
-//
-// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-//
-// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-func (o ClusterOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
 // Metadata related to network configuration.

@@ -93,8 +93,8 @@ __all__ = [
     'ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict',
     'ServiceTemplateContainerLivenessProbeTcpSocketArgs',
     'ServiceTemplateContainerLivenessProbeTcpSocketArgsDict',
-    'ServiceTemplateContainerPortArgs',
-    'ServiceTemplateContainerPortArgsDict',
+    'ServiceTemplateContainerPortsArgs',
+    'ServiceTemplateContainerPortsArgsDict',
     'ServiceTemplateContainerResourcesArgs',
     'ServiceTemplateContainerResourcesArgsDict',
     'ServiceTemplateContainerStartupProbeArgs',
@@ -918,7 +918,7 @@ if not MYPY:
         """
         args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -970,7 +970,7 @@ class JobTemplateTemplateContainerArgs:
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
@@ -1018,7 +1018,7 @@ class JobTemplateTemplateContainerArgs:
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
 
@@ -1124,7 +1124,7 @@ if not MYPY:
         """
         value: NotRequired[pulumi.Input[str]]
         """
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         """
         value_source: NotRequired[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgsDict']]
         """
@@ -1142,7 +1142,7 @@ class JobTemplateTemplateContainerEnvArgs:
                  value_source: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
-        :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        :param pulumi.Input[str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         :param pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs'] value_source: Source for the environment variable's value.
                Structure is documented below.
         """
@@ -1168,7 +1168,7 @@ class JobTemplateTemplateContainerEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "value")
 
@@ -2994,7 +2994,7 @@ if not MYPY:
         """
         args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -3018,7 +3018,7 @@ if not MYPY:
         """
         Name of the container specified as a DNS_LABEL.
         """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgsDict']]]]
+        ports: NotRequired[pulumi.Input['ServiceTemplateContainerPortsArgsDict']]
         """
         List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
         If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -3056,14 +3056,14 @@ class ServiceTemplateContainerArgs:
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]] = None,
                  liveness_probe: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgs']]]] = None,
+                 ports: Optional[pulumi.Input['ServiceTemplateContainerPortsArgs']] = None,
                  resources: Optional[pulumi.Input['ServiceTemplateContainerResourcesArgs']] = None,
                  startup_probe: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeArgs']] = None,
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
@@ -3071,7 +3071,7 @@ class ServiceTemplateContainerArgs:
         :param pulumi.Input['ServiceTemplateContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+        :param pulumi.Input['ServiceTemplateContainerPortsArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
@@ -3122,7 +3122,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
 
@@ -3194,7 +3194,7 @@ class ServiceTemplateContainerArgs:
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgs']]]]:
+    def ports(self) -> Optional[pulumi.Input['ServiceTemplateContainerPortsArgs']]:
         """
         List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
         If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -3203,7 +3203,7 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgs']]]]):
+    def ports(self, value: Optional[pulumi.Input['ServiceTemplateContainerPortsArgs']]):
         pulumi.set(self, "ports", value)
 
     @property
@@ -3262,11 +3262,11 @@ if not MYPY:
     class ServiceTemplateContainerEnvArgsDict(TypedDict):
         name: pulumi.Input[str]
         """
-        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
         """
         value: NotRequired[pulumi.Input[str]]
         """
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         """
         value_source: NotRequired[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgsDict']]
         """
@@ -3283,8 +3283,8 @@ class ServiceTemplateContainerEnvArgs:
                  value: Optional[pulumi.Input[str]] = None,
                  value_source: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs']] = None):
         """
-        :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
-        :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        :param pulumi.Input[str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         :param pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs'] value_source: Source for the environment variable's value.
                Structure is documented below.
         """
@@ -3298,7 +3298,7 @@ class ServiceTemplateContainerEnvArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
         """
         return pulumi.get(self, "name")
 
@@ -3310,7 +3310,7 @@ class ServiceTemplateContainerEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "value")
 
@@ -3804,7 +3804,7 @@ class ServiceTemplateContainerLivenessProbeTcpSocketArgs:
 
 
 if not MYPY:
-    class ServiceTemplateContainerPortArgsDict(TypedDict):
+    class ServiceTemplateContainerPortsArgsDict(TypedDict):
         container_port: NotRequired[pulumi.Input[int]]
         """
         Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
@@ -3814,10 +3814,10 @@ if not MYPY:
         If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
 elif False:
-    ServiceTemplateContainerPortArgsDict: TypeAlias = Mapping[str, Any]
+    ServiceTemplateContainerPortsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class ServiceTemplateContainerPortArgs:
+class ServiceTemplateContainerPortsArgs:
     def __init__(__self__, *,
                  container_port: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):

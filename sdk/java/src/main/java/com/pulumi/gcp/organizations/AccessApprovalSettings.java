@@ -116,6 +116,7 @@ import javax.annotation.Nullable;
  *             .name("My Project")
  *             .projectId("your-project-id")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()

@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
@@ -108,6 +109,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
@@ -189,6 +191,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
@@ -303,6 +306,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
@@ -352,6 +356,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .launchStage("GA")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -440,6 +445,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
@@ -504,6 +510,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .launchStage("BETA")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -560,6 +567,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Job("default", JobArgs.builder()
  *             .name("cloudrun-job")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .startExecutionToken("start-once-created")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -732,6 +740,12 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;

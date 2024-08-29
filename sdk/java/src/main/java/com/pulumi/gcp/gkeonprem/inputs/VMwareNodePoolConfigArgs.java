@@ -178,16 +178,16 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
      * Structure is documented below.
      * 
      */
-    @Import(name="vsphereConfigs")
-    private @Nullable Output<List<VMwareNodePoolConfigVsphereConfigArgs>> vsphereConfigs;
+    @Import(name="vsphereConfig")
+    private @Nullable Output<VMwareNodePoolConfigVsphereConfigArgs> vsphereConfig;
 
     /**
      * @return Specifies the vSphere config for node pool.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<List<VMwareNodePoolConfigVsphereConfigArgs>>> vsphereConfigs() {
-        return Optional.ofNullable(this.vsphereConfigs);
+    public Optional<Output<VMwareNodePoolConfigVsphereConfigArgs>> vsphereConfig() {
+        return Optional.ofNullable(this.vsphereConfig);
     }
 
     private VMwareNodePoolConfigArgs() {}
@@ -202,7 +202,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
         this.memoryMb = $.memoryMb;
         this.replicas = $.replicas;
         this.taints = $.taints;
-        this.vsphereConfigs = $.vsphereConfigs;
+        this.vsphereConfig = $.vsphereConfig;
     }
 
     public static Builder builder() {
@@ -440,37 +440,26 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vsphereConfigs Specifies the vSphere config for node pool.
+         * @param vsphereConfig Specifies the vSphere config for node pool.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder vsphereConfigs(@Nullable Output<List<VMwareNodePoolConfigVsphereConfigArgs>> vsphereConfigs) {
-            $.vsphereConfigs = vsphereConfigs;
+        public Builder vsphereConfig(@Nullable Output<VMwareNodePoolConfigVsphereConfigArgs> vsphereConfig) {
+            $.vsphereConfig = vsphereConfig;
             return this;
         }
 
         /**
-         * @param vsphereConfigs Specifies the vSphere config for node pool.
+         * @param vsphereConfig Specifies the vSphere config for node pool.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder vsphereConfigs(List<VMwareNodePoolConfigVsphereConfigArgs> vsphereConfigs) {
-            return vsphereConfigs(Output.of(vsphereConfigs));
-        }
-
-        /**
-         * @param vsphereConfigs Specifies the vSphere config for node pool.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vsphereConfigs(VMwareNodePoolConfigVsphereConfigArgs... vsphereConfigs) {
-            return vsphereConfigs(List.of(vsphereConfigs));
+        public Builder vsphereConfig(VMwareNodePoolConfigVsphereConfigArgs vsphereConfig) {
+            return vsphereConfig(Output.of(vsphereConfig));
         }
 
         public VMwareNodePoolConfigArgs build() {

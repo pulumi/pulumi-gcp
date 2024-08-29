@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobBinaryAuthorizationArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -89,6 +90,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> clientVersion() {
         return Optional.ofNullable(this.clientVersion);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -240,6 +248,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.binaryAuthorization = $.binaryAuthorization;
         this.client = $.client;
         this.clientVersion = $.clientVersion;
+        this.deletionProtection = $.deletionProtection;
         this.labels = $.labels;
         this.launchStage = $.launchStage;
         this.location = $.location;
@@ -362,6 +371,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientVersion(String clientVersion) {
             return clientVersion(Output.of(clientVersion));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

@@ -312,32 +312,6 @@ public class Project extends com.pulumi.resources.CustomResource {
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
     }
-    /**
-     * If true, the resource can be deleted without
-     * deleting the Project via the Google API. `skip_delete` is deprecated and will be
-     * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
-     * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
-     * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
-     * 
-     * @deprecated
-     * skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior.
-     * 
-     */
-    @Deprecated /* skip_delete is deprecated and will be removed in 6.0.0. Please use deletion_policy instead. A skip_delete value of false can be changed to a deletion_policy value of DELETE and a skip_delete value of true to a deletion_policy value of ABANDON for equivalent behavior. */
-    @Export(name="skipDelete", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> skipDelete;
-
-    /**
-     * @return If true, the resource can be deleted without
-     * deleting the Project via the Google API. `skip_delete` is deprecated and will be
-     * removed in 6.0.0. Please use deletion_policy instead. A `skip_delete` value of `false`
-     * can be changed to a `deletion_policy` value of `DELETE` and a `skip_delete` value of `true`
-     * to a `deletion_policy` value of `ABANDON` for equivalent behavior.
-     * 
-     */
-    public Output<Boolean> skipDelete() {
-        return this.skipDelete;
-    }
 
     /**
      *

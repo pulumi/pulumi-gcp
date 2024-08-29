@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     name: "tf-test-project",
  *     projectId: "quota",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
  *     project: myProject.projectId,
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     name: "tf-test-project",
  *     projectId: "quota",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
  *     dimensions: {
@@ -81,6 +83,7 @@ import * as utilities from "../utilities";
  *     name: "tf-test-project",
  *     projectId: "quota",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
  *     project: myProject.projectId,

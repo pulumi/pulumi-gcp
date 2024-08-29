@@ -244,6 +244,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dnsConfig!: pulumi.Output<outputs.container.ClusterDnsConfig | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -521,6 +525,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly protectConfig!: pulumi.Output<outputs.container.ClusterProtectConfig>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
@@ -541,6 +549,9 @@ export class Cluster extends pulumi.CustomResource {
     public readonly removeDefaultNodePool!: pulumi.Output<boolean | undefined>;
     /**
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly resourceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -636,6 +647,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
             resourceInputs["enableCiliumClusterwideNetworkPolicy"] = state ? state.enableCiliumClusterwideNetworkPolicy : undefined;
             resourceInputs["enableFqdnNetworkPolicy"] = state ? state.enableFqdnNetworkPolicy : undefined;
@@ -682,6 +694,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protectConfig"] = state ? state.protectConfig : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             resourceInputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = state ? state.resourceLabels : undefined;
@@ -769,15 +782,19 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             resourceInputs["workloadAltsConfig"] = args ? args.workloadAltsConfig : undefined;
             resourceInputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["masterVersion"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["servicesIpv4Cidr"] = undefined /*out*/;
             resourceInputs["tpuIpv4CidrBlock"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -867,6 +884,10 @@ export interface ClusterState {
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */
     dnsConfig?: pulumi.Input<inputs.container.ClusterDnsConfig>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -1145,6 +1166,10 @@ export interface ClusterState {
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
@@ -1165,6 +1190,9 @@ export interface ClusterState {
     removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1600,6 +1628,9 @@ export interface ClusterArgs {
     removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

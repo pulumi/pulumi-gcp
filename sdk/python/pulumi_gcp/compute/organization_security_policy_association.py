@@ -182,7 +182,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         security_policy_target = gcp.organizations.Folder("security_policy_target",
             display_name="tf-test-secpol",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
             parent=security_policy_target.name)
@@ -261,7 +262,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         security_policy_target = gcp.organizations.Folder("security_policy_target",
             display_name="tf-test-secpol",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
             parent=security_policy_target.name)

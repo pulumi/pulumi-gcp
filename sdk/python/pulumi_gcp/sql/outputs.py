@@ -1455,8 +1455,6 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             suggest = "private_network"
         elif key == "pscConfigs":
             suggest = "psc_configs"
-        elif key == "requireSsl":
-            suggest = "require_ssl"
         elif key == "serverCaMode":
             suggest = "server_ca_mode"
         elif key == "sslMode":
@@ -1480,7 +1478,6 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                  ipv4_enabled: Optional[bool] = None,
                  private_network: Optional[str] = None,
                  psc_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']] = None,
-                 require_ssl: Optional[bool] = None,
                  server_ca_mode: Optional[str] = None,
                  ssl_mode: Optional[str] = None):
         """
@@ -1495,12 +1492,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
-        :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
         :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
-        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
-               * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
-               * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-               * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections.
         """
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -1514,8 +1507,6 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             pulumi.set(__self__, "private_network", private_network)
         if psc_configs is not None:
             pulumi.set(__self__, "psc_configs", psc_configs)
-        if require_ssl is not None:
-            pulumi.set(__self__, "require_ssl", require_ssl)
         if server_ca_mode is not None:
             pulumi.set(__self__, "server_ca_mode", server_ca_mode)
         if ssl_mode is not None:
@@ -1573,15 +1564,6 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
         return pulumi.get(self, "psc_configs")
 
     @property
-    @pulumi.getter(name="requireSsl")
-    @_utilities.deprecated("""`require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.""")
-    def require_ssl(self) -> Optional[bool]:
-        """
-        Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-        """
-        return pulumi.get(self, "require_ssl")
-
-    @property
     @pulumi.getter(name="serverCaMode")
     def server_ca_mode(self) -> Optional[str]:
         """
@@ -1593,10 +1575,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[str]:
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
-        * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
-        * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-        * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+        Specify how SSL connection should be enforced in DB connections.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -3172,7 +3151,6 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
                  ipv4_enabled: bool,
                  private_network: str,
                  psc_configs: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult'],
-                 require_ssl: bool,
                  server_ca_mode: str,
                  ssl_mode: str):
         """
@@ -3181,9 +3159,8 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         :param bool ipv4_enabled: Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
         :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['GetDatabaseInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
-        :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
         :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted.
-        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
@@ -3191,7 +3168,6 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "psc_configs", psc_configs)
-        pulumi.set(__self__, "require_ssl", require_ssl)
         pulumi.set(__self__, "server_ca_mode", server_ca_mode)
         pulumi.set(__self__, "ssl_mode", ssl_mode)
 
@@ -3241,14 +3217,6 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         return pulumi.get(self, "psc_configs")
 
     @property
-    @pulumi.getter(name="requireSsl")
-    def require_ssl(self) -> bool:
-        """
-        Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
-        """
-        return pulumi.get(self, "require_ssl")
-
-    @property
     @pulumi.getter(name="serverCaMode")
     def server_ca_mode(self) -> str:
         """
@@ -3260,7 +3228,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        Specify how SSL connection should be enforced in DB connections.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -4686,7 +4654,6 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
                  ipv4_enabled: bool,
                  private_network: str,
                  psc_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult'],
-                 require_ssl: bool,
                  server_ca_mode: str,
                  ssl_mode: str):
         """
@@ -4695,9 +4662,8 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         :param bool ipv4_enabled: Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
         :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
-        :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
         :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted.
-        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
@@ -4705,7 +4671,6 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "psc_configs", psc_configs)
-        pulumi.set(__self__, "require_ssl", require_ssl)
         pulumi.set(__self__, "server_ca_mode", server_ca_mode)
         pulumi.set(__self__, "ssl_mode", ssl_mode)
 
@@ -4755,14 +4720,6 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         return pulumi.get(self, "psc_configs")
 
     @property
-    @pulumi.getter(name="requireSsl")
-    def require_ssl(self) -> bool:
-        """
-        Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
-        """
-        return pulumi.get(self, "require_ssl")
-
-    @property
     @pulumi.getter(name="serverCaMode")
     def server_ca_mode(self) -> str:
         """
@@ -4774,7 +4731,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
         """
-        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.
+        Specify how SSL connection should be enforced in DB connections.
         """
         return pulumi.get(self, "ssl_mode")
 

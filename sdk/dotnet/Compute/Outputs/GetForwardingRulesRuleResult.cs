@@ -69,6 +69,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly int ForwardingRuleId;
+        /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
         /// to the referenced 'target' or 'backendService'.
@@ -365,6 +369,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableDictionary<string, string> effectiveLabels,
 
+            int forwardingRuleId,
+
             string ipAddress,
 
             string ipProtocol,
@@ -425,6 +431,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             CreationTimestamp = creationTimestamp;
             Description = description;
             EffectiveLabels = effectiveLabels;
+            ForwardingRuleId = forwardingRuleId;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;
             IpVersion = ipVersion;

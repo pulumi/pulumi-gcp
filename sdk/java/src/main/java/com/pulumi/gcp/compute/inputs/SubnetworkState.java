@@ -149,6 +149,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
     @Import(name="ipCidrRange")
@@ -159,6 +160,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
     public Optional<Output<String>> ipCidrRange() {
@@ -364,6 +366,23 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    @Import(name="reservedInternalRange")
+    private @Nullable Output<String> reservedInternalRange;
+
+    /**
+     * @return The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    public Optional<Output<String>> reservedInternalRange() {
+        return Optional.ofNullable(this.reservedInternalRange);
+    }
+
+    /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
@@ -491,6 +510,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.purpose = $.purpose;
         this.region = $.region;
+        this.reservedInternalRange = $.reservedInternalRange;
         this.role = $.role;
         this.secondaryIpRanges = $.secondaryIpRanges;
         this.selfLink = $.selfLink;
@@ -688,6 +708,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * Provide this property when you create the subnetwork. For example,
          * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
          * non-overlapping within a network. Only IPv4 is supported.
+         * Field is optional when `reserved_internal_range` is defined, otherwise required.
          * 
          * @return builder
          * 
@@ -702,6 +723,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * Provide this property when you create the subnetwork. For example,
          * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
          * non-overlapping within a network. Only IPv4 is supported.
+         * Field is optional when `reserved_internal_range` is defined, otherwise required.
          * 
          * @return builder
          * 
@@ -966,6 +988,29 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param reservedInternalRange The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+         * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedInternalRange(@Nullable Output<String> reservedInternalRange) {
+            $.reservedInternalRange = reservedInternalRange;
+            return this;
+        }
+
+        /**
+         * @param reservedInternalRange The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+         * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedInternalRange(String reservedInternalRange) {
+            return reservedInternalRange(Output.of(reservedInternalRange));
         }
 
         /**

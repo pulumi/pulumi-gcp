@@ -23,7 +23,6 @@ class TableArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  table_id: pulumi.Input[str],
-                 allow_resource_tags_on_deletion: Optional[pulumi.Input[bool]] = None,
                  clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -49,13 +48,6 @@ class TableArgs:
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
-               deletion when there are still resource tags attached. The default value is
-               false.
-               
-               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-               removed in a future major release. The default behavior will be allowing
-               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -110,11 +102,6 @@ class TableArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "table_id", table_id)
-        if allow_resource_tags_on_deletion is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""allow_resource_tags_on_deletion is deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
-        if allow_resource_tags_on_deletion is not None:
-            pulumi.set(__self__, "allow_resource_tags_on_deletion", allow_resource_tags_on_deletion)
         if clusterings is not None:
             pulumi.set(__self__, "clusterings", clusterings)
         if deletion_protection is not None:
@@ -179,25 +166,6 @@ class TableArgs:
     @table_id.setter
     def table_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "table_id", value)
-
-    @property
-    @pulumi.getter(name="allowResourceTagsOnDeletion")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
-    def allow_resource_tags_on_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to true, it allows table
-        deletion when there are still resource tags attached. The default value is
-        false.
-
-        ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-        removed in a future major release. The default behavior will be allowing
-        the presence of resource tags on deletion after the next major release.
-        """
-        return pulumi.get(self, "allow_resource_tags_on_deletion")
-
-    @allow_resource_tags_on_deletion.setter
-    def allow_resource_tags_on_deletion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_resource_tags_on_deletion", value)
 
     @property
     @pulumi.getter
@@ -463,7 +431,6 @@ class TableArgs:
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
-                 allow_resource_tags_on_deletion: Optional[pulumi.Input[bool]] = None,
                  clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -498,13 +465,6 @@ class _TableState:
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
         """
         Input properties used for looking up and filtering Table resources.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
-               deletion when there are still resource tags attached. The default value is
-               false.
-               
-               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-               removed in a future major release. The default behavior will be allowing
-               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -587,11 +547,6 @@ class _TableState:
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
                Structure is documented below.
         """
-        if allow_resource_tags_on_deletion is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""allow_resource_tags_on_deletion is deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
-        if allow_resource_tags_on_deletion is not None:
-            pulumi.set(__self__, "allow_resource_tags_on_deletion", allow_resource_tags_on_deletion)
         if clusterings is not None:
             pulumi.set(__self__, "clusterings", clusterings)
         if creation_time is not None:
@@ -656,25 +611,6 @@ class _TableState:
             pulumi.set(__self__, "type", type)
         if view is not None:
             pulumi.set(__self__, "view", view)
-
-    @property
-    @pulumi.getter(name="allowResourceTagsOnDeletion")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
-    def allow_resource_tags_on_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to true, it allows table
-        deletion when there are still resource tags attached. The default value is
-        false.
-
-        ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-        removed in a future major release. The default behavior will be allowing
-        the presence of resource tags on deletion after the next major release.
-        """
-        return pulumi.get(self, "allow_resource_tags_on_deletion")
-
-    @allow_resource_tags_on_deletion.setter
-    def allow_resource_tags_on_deletion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_resource_tags_on_deletion", value)
 
     @property
     @pulumi.getter
@@ -1115,7 +1051,6 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_resource_tags_on_deletion: Optional[pulumi.Input[bool]] = None,
                  clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1225,13 +1160,6 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
-               deletion when there are still resource tags attached. The default value is
-               false.
-               
-               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-               removed in a future major release. The default behavior will be allowing
-               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -1394,7 +1322,6 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_resource_tags_on_deletion: Optional[pulumi.Input[bool]] = None,
                  clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1425,7 +1352,6 @@ class Table(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableArgs.__new__(TableArgs)
 
-            __props__.__dict__["allow_resource_tags_on_deletion"] = allow_resource_tags_on_deletion
             __props__.__dict__["clusterings"] = clusterings
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
@@ -1474,7 +1400,6 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_resource_tags_on_deletion: Optional[pulumi.Input[bool]] = None,
             clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
@@ -1514,13 +1439,6 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_resource_tags_on_deletion: If set to true, it allows table
-               deletion when there are still resource tags attached. The default value is
-               false.
-               
-               ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-               removed in a future major release. The default behavior will be allowing
-               the presence of resource tags on deletion after the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
@@ -1607,7 +1525,6 @@ class Table(pulumi.CustomResource):
 
         __props__ = _TableState.__new__(_TableState)
 
-        __props__.__dict__["allow_resource_tags_on_deletion"] = allow_resource_tags_on_deletion
         __props__.__dict__["clusterings"] = clusterings
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["dataset_id"] = dataset_id
@@ -1641,21 +1558,6 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["view"] = view
         return Table(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="allowResourceTagsOnDeletion")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.""")
-    def allow_resource_tags_on_deletion(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If set to true, it allows table
-        deletion when there are still resource tags attached. The default value is
-        false.
-
-        ~>**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-        removed in a future major release. The default behavior will be allowing
-        the presence of resource tags on deletion after the next major release.
-        """
-        return pulumi.get(self, "allow_resource_tags_on_deletion")
 
     @property
     @pulumi.getter

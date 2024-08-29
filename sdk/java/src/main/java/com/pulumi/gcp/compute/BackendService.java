@@ -120,6 +120,7 @@ import javax.annotation.Nullable;
  *             .protocol("HTTP")
  *             .loadBalancingScheme("EXTERNAL")
  *             .iap(BackendServiceIapArgs.builder()
+ *                 .enabled(true)
  *                 .oauth2ClientId("abc")
  *                 .oauth2ClientSecret("xyz")
  *                 .build())
@@ -498,6 +499,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .outlierDetection(BackendServiceOutlierDetectionArgs.builder()
  *                 .consecutiveErrors(2)
+ *                 .consecutiveGatewayFailure(5)
+ *                 .enforcingConsecutiveErrors(100)
+ *                 .enforcingConsecutiveGatewayFailure(0)
+ *                 .enforcingSuccessRate(100)
+ *                 .maxEjectionPercent(10)
+ *                 .successRateMinimumHosts(5)
+ *                 .successRateRequestVolume(100)
+ *                 .successRateStdevFactor(1900)
  *                 .build())
  *             .build());
  * 
@@ -1131,9 +1140,23 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="outlierDetection", refs={BackendServiceOutlierDetection.class}, tree="[0]")
     private Output</* @Nullable */ BackendServiceOutlierDetection> outlierDetection;
 
+    /**
+     * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<BackendServiceOutlierDetection>> outlierDetection() {
         return Codegen.optional(this.outlierDetection);
     }

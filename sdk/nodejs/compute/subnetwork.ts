@@ -176,6 +176,68 @@ import * as utilities from "../utilities";
  *     network: net_cidr_overlap.id,
  * });
  * ```
+ * ### Subnetwork Reserved Internal Range
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "network-reserved-internal-range",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const reserved = new gcp.networkconnectivity.InternalRange("reserved", {
+ *     name: "reserved",
+ *     network: _default.id,
+ *     usage: "FOR_VPC",
+ *     peering: "FOR_SELF",
+ *     prefixLength: 24,
+ *     targetCidrRanges: ["10.0.0.0/8"],
+ * });
+ * const subnetwork_reserved_internal_range = new gcp.compute.Subnetwork("subnetwork-reserved-internal-range", {
+ *     name: "subnetwork-reserved-internal-range",
+ *     region: "us-central1",
+ *     network: _default.id,
+ *     reservedInternalRange: pulumi.interpolate`networkconnectivity.googleapis.com/${reserved.id}`,
+ * });
+ * ```
+ * ### Subnetwork Reserved Secondary Range
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "network-reserved-secondary-range",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const reserved = new gcp.networkconnectivity.InternalRange("reserved", {
+ *     name: "reserved",
+ *     network: _default.id,
+ *     usage: "FOR_VPC",
+ *     peering: "FOR_SELF",
+ *     prefixLength: 24,
+ *     targetCidrRanges: ["10.0.0.0/8"],
+ * });
+ * const reservedSecondary = new gcp.networkconnectivity.InternalRange("reserved_secondary", {
+ *     name: "reserved-secondary",
+ *     network: _default.id,
+ *     usage: "FOR_VPC",
+ *     peering: "FOR_SELF",
+ *     prefixLength: 16,
+ *     targetCidrRanges: ["10.0.0.0/8"],
+ * });
+ * const subnetwork_reserved_secondary_range = new gcp.compute.Subnetwork("subnetwork-reserved-secondary-range", {
+ *     name: "subnetwork-reserved-secondary-range",
+ *     region: "us-central1",
+ *     network: _default.id,
+ *     reservedInternalRange: pulumi.interpolate`networkconnectivity.googleapis.com/${reserved.id}`,
+ *     secondaryIpRanges: [{
+ *         rangeName: "secondary",
+ *         reservedInternalRange: pulumi.interpolate`networkconnectivity.googleapis.com/${reservedSecondary.id}`,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -276,6 +338,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -344,6 +407,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     */
+    public readonly reservedInternalRange!: pulumi.Output<string | undefined>;
+    /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
@@ -411,6 +479,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["purpose"] = state ? state.purpose : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["reservedInternalRange"] = state ? state.reservedInternalRange : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["secondaryIpRanges"] = state ? state.secondaryIpRanges : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -418,9 +487,6 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["stackType"] = state ? state.stackType : undefined;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
-            if ((!args || args.ipCidrRange === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ipCidrRange'");
-            }
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
@@ -437,6 +503,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["purpose"] = args ? args.purpose : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["reservedInternalRange"] = args ? args.reservedInternalRange : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             resourceInputs["sendSecondaryIpRangeIfEmpty"] = args ? args.sendSecondaryIpRangeIfEmpty : undefined;
@@ -498,6 +565,7 @@ export interface SubnetworkState {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
@@ -566,6 +634,11 @@ export interface SubnetworkState {
      */
     region?: pulumi.Input<string>;
     /**
+     * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     */
+    reservedInternalRange?: pulumi.Input<string>;
+    /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
@@ -629,8 +702,9 @@ export interface SubnetworkArgs {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      */
-    ipCidrRange: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string>;
     /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -692,6 +766,11 @@ export interface SubnetworkArgs {
      * The GCP region for this subnetwork.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     */
+    reservedInternalRange?: pulumi.Input<string>;
     /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.

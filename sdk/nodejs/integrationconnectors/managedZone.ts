@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     name: "tf-test_22375",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
  * const testProject = gcp.organizations.getProject({});
  * const dnsPeerBinding = new gcp.projects.IAMMember("dns_peer_binding", {

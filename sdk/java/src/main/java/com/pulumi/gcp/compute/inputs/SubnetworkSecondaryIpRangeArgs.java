@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,20 +21,22 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
-    @Import(name="ipCidrRange", required=true)
-    private Output<String> ipCidrRange;
+    @Import(name="ipCidrRange")
+    private @Nullable Output<String> ipCidrRange;
 
     /**
      * @return The range of IP addresses belonging to this subnetwork secondary
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
-    public Output<String> ipCidrRange() {
-        return this.ipCidrRange;
+    public Optional<Output<String>> ipCidrRange() {
+        return Optional.ofNullable(this.ipCidrRange);
     }
 
     /**
@@ -56,11 +60,29 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
         return this.rangeName;
     }
 
+    /**
+     * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    @Import(name="reservedInternalRange")
+    private @Nullable Output<String> reservedInternalRange;
+
+    /**
+     * @return The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    public Optional<Output<String>> reservedInternalRange() {
+        return Optional.ofNullable(this.reservedInternalRange);
+    }
+
     private SubnetworkSecondaryIpRangeArgs() {}
 
     private SubnetworkSecondaryIpRangeArgs(SubnetworkSecondaryIpRangeArgs $) {
         this.ipCidrRange = $.ipCidrRange;
         this.rangeName = $.rangeName;
+        this.reservedInternalRange = $.reservedInternalRange;
     }
 
     public static Builder builder() {
@@ -86,11 +108,12 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
          * range. Provide this property when you create the subnetwork.
          * Ranges must be unique and non-overlapping with all primary and
          * secondary IP ranges within a network. Only IPv4 is supported.
+         * Field is optional when `reserved_internal_range` is defined, otherwise required.
          * 
          * @return builder
          * 
          */
-        public Builder ipCidrRange(Output<String> ipCidrRange) {
+        public Builder ipCidrRange(@Nullable Output<String> ipCidrRange) {
             $.ipCidrRange = ipCidrRange;
             return this;
         }
@@ -100,6 +123,7 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
          * range. Provide this property when you create the subnetwork.
          * Ranges must be unique and non-overlapping with all primary and
          * secondary IP ranges within a network. Only IPv4 is supported.
+         * Field is optional when `reserved_internal_range` is defined, otherwise required.
          * 
          * @return builder
          * 
@@ -135,10 +159,30 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
             return rangeName(Output.of(rangeName));
         }
 
+        /**
+         * @param reservedInternalRange The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+         * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedInternalRange(@Nullable Output<String> reservedInternalRange) {
+            $.reservedInternalRange = reservedInternalRange;
+            return this;
+        }
+
+        /**
+         * @param reservedInternalRange The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+         * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedInternalRange(String reservedInternalRange) {
+            return reservedInternalRange(Output.of(reservedInternalRange));
+        }
+
         public SubnetworkSecondaryIpRangeArgs build() {
-            if ($.ipCidrRange == null) {
-                throw new MissingRequiredPropertyException("SubnetworkSecondaryIpRangeArgs", "ipCidrRange");
-            }
             if ($.rangeName == null) {
                 throw new MissingRequiredPropertyException("SubnetworkSecondaryIpRangeArgs", "rangeName");
             }

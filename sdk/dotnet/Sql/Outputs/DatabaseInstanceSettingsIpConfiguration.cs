@@ -41,18 +41,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationPscConfig> PscConfigs;
         /// <summary>
-        /// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-        /// </summary>
-        public readonly bool? RequireSsl;
-        /// <summary>
         /// Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
         /// </summary>
         public readonly string? ServerCaMode;
         /// <summary>
-        /// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
-        /// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
-        /// * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-        /// * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+        /// Specify how SSL connection should be enforced in DB connections.
         /// </summary>
         public readonly string? SslMode;
 
@@ -70,8 +63,6 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs,
 
-            bool? requireSsl,
-
             string? serverCaMode,
 
             string? sslMode)
@@ -82,7 +73,6 @@ namespace Pulumi.Gcp.Sql.Outputs
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;
             PscConfigs = pscConfigs;
-            RequireSsl = requireSsl;
             ServerCaMode = serverCaMode;
             SslMode = sslMode;
         }

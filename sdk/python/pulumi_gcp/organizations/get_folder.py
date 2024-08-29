@@ -26,10 +26,13 @@ class GetFolderResult:
     """
     A collection of values returned by getFolder.
     """
-    def __init__(__self__, create_time=None, display_name=None, folder=None, folder_id=None, id=None, lifecycle_state=None, lookup_organization=None, name=None, organization=None, parent=None):
+    def __init__(__self__, create_time=None, deletion_protection=None, display_name=None, folder=None, folder_id=None, id=None, lifecycle_state=None, lookup_organization=None, name=None, organization=None, parent=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -65,6 +68,11 @@ class GetFolderResult:
         Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")
@@ -137,6 +145,7 @@ class AwaitableGetFolderResult(GetFolderResult):
             yield self
         return GetFolderResult(
             create_time=self.create_time,
+            deletion_protection=self.deletion_protection,
             display_name=self.display_name,
             folder=self.folder,
             folder_id=self.folder_id,
@@ -177,6 +186,7 @@ def get_folder(folder: Optional[str] = None,
 
     return AwaitableGetFolderResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
         folder=pulumi.get(__ret__, 'folder'),
         folder_id=pulumi.get(__ret__, 'folder_id'),

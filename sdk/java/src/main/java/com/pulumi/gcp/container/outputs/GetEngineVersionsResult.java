@@ -37,12 +37,12 @@ public final class GetEngineVersionsResult {
     private @Nullable String location;
     private @Nullable String project;
     /**
-     * @return A map from a release channel name to the channel&#39;s default version.
+     * @return A map from a release channel name to the channel&#39;s default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
      * 
      */
     private Map<String,String> releaseChannelDefaultVersion;
     /**
-     * @return A map from a release channel name to the channel&#39;s latest version.
+     * @return A map from a release channel name to the channel&#39;s latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
      * 
      */
     private Map<String,String> releaseChannelLatestVersion;
@@ -94,14 +94,14 @@ public final class GetEngineVersionsResult {
         return Optional.ofNullable(this.project);
     }
     /**
-     * @return A map from a release channel name to the channel&#39;s default version.
+     * @return A map from a release channel name to the channel&#39;s default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
      * 
      */
     public Map<String,String> releaseChannelDefaultVersion() {
         return this.releaseChannelDefaultVersion;
     }
     /**
-     * @return A map from a release channel name to the channel&#39;s latest version.
+     * @return A map from a release channel name to the channel&#39;s latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
      * 
      */
     public Map<String,String> releaseChannelLatestVersion() {

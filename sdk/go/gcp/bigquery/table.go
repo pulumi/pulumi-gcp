@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -126,16 +126,6 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	// If set to true, it allows table
-	// deletion when there are still resource tags attached. The default value is
-	// false.
-	//
-	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
-	// removed in a future major release. The default behavior will be allowing
-	// the presence of resource tags on deletion after the next major release.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
-	AllowResourceTagsOnDeletion pulumi.BoolPtrOutput `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -292,16 +282,6 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// If set to true, it allows table
-	// deletion when there are still resource tags attached. The default value is
-	// false.
-	//
-	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
-	// removed in a future major release. The default behavior will be allowing
-	// the presence of resource tags on deletion after the next major release.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
-	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -418,16 +398,6 @@ type tableState struct {
 }
 
 type TableState struct {
-	// If set to true, it allows table
-	// deletion when there are still resource tags attached. The default value is
-	// false.
-	//
-	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
-	// removed in a future major release. The default behavior will be allowing
-	// the presence of resource tags on deletion after the next major release.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
-	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -548,16 +518,6 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// If set to true, it allows table
-	// deletion when there are still resource tags attached. The default value is
-	// false.
-	//
-	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
-	// removed in a future major release. The default behavior will be allowing
-	// the presence of resource tags on deletion after the next major release.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
-	AllowResourceTagsOnDeletion *bool `pulumi:"allowResourceTagsOnDeletion"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -638,16 +598,6 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// If set to true, it allows table
-	// deletion when there are still resource tags attached. The default value is
-	// false.
-	//
-	// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
-	// removed in a future major release. The default behavior will be allowing
-	// the presence of resource tags on deletion after the next major release.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
-	AllowResourceTagsOnDeletion pulumi.BoolPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -811,19 +761,6 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
-}
-
-// If set to true, it allows table
-// deletion when there are still resource tags attached. The default value is
-// false.
-//
-// ~>**Warning:** `allowResourceTagsOnDeletion` is deprecated and will be
-// removed in a future major release. The default behavior will be allowing
-// the presence of resource tags on deletion after the next major release.
-//
-// Deprecated: This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
-func (o TableOutput) AllowResourceTagsOnDeletion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.AllowResourceTagsOnDeletion }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies column names to use for data clustering.

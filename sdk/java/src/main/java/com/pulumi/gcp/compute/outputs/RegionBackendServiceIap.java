@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,16 +14,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionBackendServiceIap {
     /**
+     * @return Whether the serving infrastructure will authenticate and authorize all incoming requests.
+     * 
+     */
+    private Boolean enabled;
+    /**
      * @return OAuth2 Client ID for IAP
      * 
      */
-    private String oauth2ClientId;
+    private @Nullable String oauth2ClientId;
     /**
      * @return OAuth2 Client Secret for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String oauth2ClientSecret;
+    private @Nullable String oauth2ClientSecret;
     /**
      * @return (Output)
      * OAuth2 Client Secret SHA-256 for IAP
@@ -33,19 +39,26 @@ public final class RegionBackendServiceIap {
 
     private RegionBackendServiceIap() {}
     /**
+     * @return Whether the serving infrastructure will authenticate and authorize all incoming requests.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
+    }
+    /**
      * @return OAuth2 Client ID for IAP
      * 
      */
-    public String oauth2ClientId() {
-        return this.oauth2ClientId;
+    public Optional<String> oauth2ClientId() {
+        return Optional.ofNullable(this.oauth2ClientId);
     }
     /**
      * @return OAuth2 Client Secret for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String oauth2ClientSecret() {
-        return this.oauth2ClientSecret;
+    public Optional<String> oauth2ClientSecret() {
+        return Optional.ofNullable(this.oauth2ClientSecret);
     }
     /**
      * @return (Output)
@@ -66,30 +79,36 @@ public final class RegionBackendServiceIap {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String oauth2ClientId;
-        private String oauth2ClientSecret;
+        private Boolean enabled;
+        private @Nullable String oauth2ClientId;
+        private @Nullable String oauth2ClientSecret;
         private @Nullable String oauth2ClientSecretSha256;
         public Builder() {}
         public Builder(RegionBackendServiceIap defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.oauth2ClientId = defaults.oauth2ClientId;
     	      this.oauth2ClientSecret = defaults.oauth2ClientSecret;
     	      this.oauth2ClientSecretSha256 = defaults.oauth2ClientSecretSha256;
         }
 
         @CustomType.Setter
-        public Builder oauth2ClientId(String oauth2ClientId) {
-            if (oauth2ClientId == null) {
-              throw new MissingRequiredPropertyException("RegionBackendServiceIap", "oauth2ClientId");
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("RegionBackendServiceIap", "enabled");
             }
+            this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2ClientId(@Nullable String oauth2ClientId) {
+
             this.oauth2ClientId = oauth2ClientId;
             return this;
         }
         @CustomType.Setter
-        public Builder oauth2ClientSecret(String oauth2ClientSecret) {
-            if (oauth2ClientSecret == null) {
-              throw new MissingRequiredPropertyException("RegionBackendServiceIap", "oauth2ClientSecret");
-            }
+        public Builder oauth2ClientSecret(@Nullable String oauth2ClientSecret) {
+
             this.oauth2ClientSecret = oauth2ClientSecret;
             return this;
         }
@@ -101,6 +120,7 @@ public final class RegionBackendServiceIap {
         }
         public RegionBackendServiceIap build() {
             final var _resultValue = new RegionBackendServiceIap();
+            _resultValue.enabled = enabled;
             _resultValue.oauth2ClientId = oauth2ClientId;
             _resultValue.oauth2ClientSecret = oauth2ClientSecret;
             _resultValue.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;

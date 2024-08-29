@@ -338,6 +338,7 @@ class DatabaseInstance(pulumi.CustomResource):
             project_id="rtdb-project",
             name="rtdb-project",
             org_id="123456789",
+            deletion_policy="DELETE",
             labels={
                 "firebase": "enabled",
             })
@@ -445,6 +446,7 @@ class DatabaseInstance(pulumi.CustomResource):
             project_id="rtdb-project",
             name="rtdb-project",
             org_id="123456789",
+            deletion_policy="DELETE",
             labels={
                 "firebase": "enabled",
             })

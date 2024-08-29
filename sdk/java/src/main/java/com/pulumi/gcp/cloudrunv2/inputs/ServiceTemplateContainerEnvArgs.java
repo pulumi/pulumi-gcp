@@ -18,14 +18,14 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
     public static final ServiceTemplateContainerEnvArgs Empty = new ServiceTemplateContainerEnvArgs();
 
     /**
-     * Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+     * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+     * @return Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
      * 
      */
     public Output<String> name() {
@@ -33,14 +33,14 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
     }
 
     /**
-     * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
+     * Literal value of the environment variable. Defaults to &#34;&#34; and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
+     * @return Literal value of the environment variable. Defaults to &#34;&#34; and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
      * 
      */
     public Optional<Output<String>> value() {
@@ -91,7 +91,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param value Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
+         * @param value Literal value of the environment variable. Defaults to &#34;&#34; and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param value Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
+         * @param value Literal value of the environment variable. Defaults to &#34;&#34; and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
          * 
          * @return builder
          * 

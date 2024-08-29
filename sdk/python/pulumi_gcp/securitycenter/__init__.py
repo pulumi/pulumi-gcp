@@ -30,6 +30,7 @@ from .v2_folder_mute_config import *
 from .v2_folder_notification_config import *
 from .v2_organization_mute_config import *
 from .v2_organization_notification_config import *
+from .v2_organization_scc_big_query_exports import *
 from .v2_organization_source import *
 from .v2_organization_source_iam_binding import *
 from .v2_organization_source_iam_member import *

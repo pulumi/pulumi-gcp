@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class ServiceTemplateContainer
     {
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
         /// Structure is documented below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.ServiceTemplateContainerPort> Ports;
+        public readonly Outputs.ServiceTemplateContainerPorts? Ports;
         /// <summary>
         /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// Structure is documented below.
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string? name,
 
-            ImmutableArray<Outputs.ServiceTemplateContainerPort> ports,
+            Outputs.ServiceTemplateContainerPorts? ports,
 
             Outputs.ServiceTemplateContainerResources? resources,
 

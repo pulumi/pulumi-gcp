@@ -14,14 +14,18 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionBackendServiceIap
     {
         /// <summary>
+        /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// OAuth2 Client ID for IAP
         /// </summary>
-        public readonly string Oauth2ClientId;
+        public readonly string? Oauth2ClientId;
         /// <summary>
         /// OAuth2 Client Secret for IAP
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Oauth2ClientSecret;
+        public readonly string? Oauth2ClientSecret;
         /// <summary>
         /// (Output)
         /// OAuth2 Client Secret SHA-256 for IAP
@@ -31,12 +35,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private RegionBackendServiceIap(
-            string oauth2ClientId,
+            bool enabled,
 
-            string oauth2ClientSecret,
+            string? oauth2ClientId,
+
+            string? oauth2ClientSecret,
 
             string? oauth2ClientSecretSha256)
         {
+            Enabled = enabled;
             Oauth2ClientId = oauth2ClientId;
             Oauth2ClientSecret = oauth2ClientSecret;
             Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,6 +84,7 @@ type LookupClusterResult struct {
 	DeletionProtection                   bool                                  `pulumi:"deletionProtection"`
 	Description                          string                                `pulumi:"description"`
 	DnsConfigs                           []GetClusterDnsConfig                 `pulumi:"dnsConfigs"`
+	EffectiveLabels                      map[string]string                     `pulumi:"effectiveLabels"`
 	EnableAutopilot                      bool                                  `pulumi:"enableAutopilot"`
 	EnableCiliumClusterwideNetworkPolicy bool                                  `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	EnableFqdnNetworkPolicy              bool                                  `pulumi:"enableFqdnNetworkPolicy"`
@@ -132,6 +133,7 @@ type LookupClusterResult struct {
 	PrivateIpv6GoogleAccess         string                                     `pulumi:"privateIpv6GoogleAccess"`
 	Project                         *string                                    `pulumi:"project"`
 	ProtectConfigs                  []GetClusterProtectConfig                  `pulumi:"protectConfigs"`
+	PulumiLabels                    map[string]string                          `pulumi:"pulumiLabels"`
 	ReleaseChannels                 []GetClusterReleaseChannel                 `pulumi:"releaseChannels"`
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
@@ -256,6 +258,10 @@ func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) DnsConfigs() GetClusterDnsConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterDnsConfig { return v.DnsConfigs }).(GetClusterDnsConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterResultOutput) EnableAutopilot() pulumi.BoolOutput {
@@ -447,6 +453,10 @@ func (o LookupClusterResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupClusterResultOutput) ProtectConfigs() GetClusterProtectConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterProtectConfig { return v.ProtectConfigs }).(GetClusterProtectConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterResultOutput) ReleaseChannels() GetClusterReleaseChannelArrayOutput {

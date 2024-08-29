@@ -225,13 +225,15 @@ class KeyHandle(pulumi.CustomResource):
         # Create Folder in GCP Organization
         autokms_folder = gcp.organizations.Folder("autokms_folder",
             display_name="folder-example",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         # Create the key project
         key_project = gcp.organizations.Project("key_project",
             project_id="key-proj",
             name="key-proj",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE",
             opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Create the resource project
         resource_project = gcp.organizations.Project("resource_project",
@@ -239,6 +241,7 @@ class KeyHandle(pulumi.CustomResource):
             name="resources",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE",
             opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Enable the Cloud KMS API
         kms_api_service = gcp.projects.Service("kms_api_service",
@@ -338,13 +341,15 @@ class KeyHandle(pulumi.CustomResource):
         # Create Folder in GCP Organization
         autokms_folder = gcp.organizations.Folder("autokms_folder",
             display_name="folder-example",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         # Create the key project
         key_project = gcp.organizations.Project("key_project",
             project_id="key-proj",
             name="key-proj",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE",
             opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Create the resource project
         resource_project = gcp.organizations.Project("resource_project",
@@ -352,6 +357,7 @@ class KeyHandle(pulumi.CustomResource):
             name="resources",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE",
             opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Enable the Cloud KMS API
         kms_api_service = gcp.projects.Service("kms_api_service",

@@ -80,6 +80,7 @@ import * as utilities from "../utilities";
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
  *         }],
  *     },
+ *     deletionProtection: true,
  * });
  * const defaultHostingVersion = new gcp.firebase.HostingVersion("default", {
  *     siteId: _default.siteId,

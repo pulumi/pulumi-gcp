@@ -100,7 +100,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-primary-cluster",
     ///         Location = "us-central1",
-    ///         Network = @default.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = @default.Id,
+    ///         },
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -143,7 +146,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-secondary-cluster",
     ///         Location = "us-east1",
-    ///         Network = @default.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultGoogleComputeNetwork.Id,
+    ///         },
     ///         ClusterType = "SECONDARY",
     ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
     ///         {
@@ -336,7 +342,7 @@ namespace Pulumi.Gcp.Alloydb
         /// Structure is documented below.
         /// </summary>
         [Output("pscInstanceConfig")]
-        public Output<Outputs.InstancePscInstanceConfig?> PscInstanceConfig { get; private set; } = null!;
+        public Output<Outputs.InstancePscInstanceConfig> PscInstanceConfig { get; private set; } = null!;
 
         /// <summary>
         /// The public IP addresses for the Instance. This is available ONLY when

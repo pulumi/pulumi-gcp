@@ -14,6 +14,9 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
         /// 
+        /// To get more information about GKE versions, see:
+        ///   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
+        /// 
         /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
         /// regional cluster, ensure that you have provided a region as the `location` to
         /// the datasource. A region can have a different set of supported versions than
@@ -57,6 +60,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
+        /// 
+        /// To get more information about GKE versions, see:
+        ///   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
         /// 
         /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
         /// regional cluster, ensure that you have provided a region as the `location` to
@@ -194,11 +200,11 @@ namespace Pulumi.Gcp.Container
         public readonly string? Location;
         public readonly string? Project;
         /// <summary>
-        /// A map from a release channel name to the channel's default version.
+        /// A map from a release channel name to the channel's default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ReleaseChannelDefaultVersion;
         /// <summary>
-        /// A map from a release channel name to the channel's latest version.
+        /// A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ReleaseChannelLatestVersion;
         /// <summary>

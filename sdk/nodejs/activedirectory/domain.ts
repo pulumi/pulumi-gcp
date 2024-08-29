@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     domainName: "tfgen.org.com",
  *     locations: ["us-central1"],
  *     reservedIpRange: "192.168.255.0/24",
+ *     deletionProtection: false,
  * });
  * ```
  *
@@ -78,6 +79,7 @@ export class Domain extends pulumi.CustomResource {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     public readonly authorizedNetworks!: pulumi.Output<string[] | undefined>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -141,6 +143,7 @@ export class Domain extends pulumi.CustomResource {
             const state = argsOrState as DomainState | undefined;
             resourceInputs["admin"] = state ? state.admin : undefined;
             resourceInputs["authorizedNetworks"] = state ? state.authorizedNetworks : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["domainName"] = state ? state.domainName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["fqdn"] = state ? state.fqdn : undefined;
@@ -163,6 +166,7 @@ export class Domain extends pulumi.CustomResource {
             }
             resourceInputs["admin"] = args ? args.admin : undefined;
             resourceInputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["domainName"] = args ? args.domainName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["locations"] = args ? args.locations : undefined;
@@ -194,6 +198,7 @@ export interface DomainState {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -257,6 +262,7 @@ export interface DomainArgs {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.

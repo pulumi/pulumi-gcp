@@ -60,7 +60,6 @@ export interface GetProjectResult {
     readonly orgId: string;
     readonly projectId?: string;
     readonly pulumiLabels: {[key: string]: string};
-    readonly skipDelete: boolean;
 }
 /**
  * Use this data source to get project details.

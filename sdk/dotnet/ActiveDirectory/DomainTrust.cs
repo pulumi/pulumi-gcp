@@ -20,32 +20,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// ## Example Usage
     /// 
-    /// ### Active Directory Domain Trust Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var ad_domain_trust = new Gcp.ActiveDirectory.DomainTrust("ad-domain-trust", new()
-    ///     {
-    ///         Domain = "test-managed-ad.com",
-    ///         TargetDomainName = "example-gcp.com",
-    ///         TargetDnsIpAddresses = new[]
-    ///         {
-    ///             "10.1.0.100",
-    ///         },
-    ///         TrustDirection = "OUTBOUND",
-    ///         TrustType = "FOREST",
-    ///         TrustHandshakeSecret = "Testing1!",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DomainTrust can be imported using any of these accepted formats:

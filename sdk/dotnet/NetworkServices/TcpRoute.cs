@@ -121,6 +121,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///                         },
     ///                     },
     ///                     OriginalDestination = false,
+    ///                     IdleTimeout = "60s",
     ///                 },
     ///             },
     ///         },

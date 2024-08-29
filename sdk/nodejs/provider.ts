@@ -90,7 +90,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataplexCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocMetastoreCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly datastoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly datastreamCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly deploymentManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -270,7 +269,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataplexCustomEndpoint"] = args ? args.dataplexCustomEndpoint : undefined;
             resourceInputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args ? args.dataprocMetastoreCustomEndpoint : undefined;
-            resourceInputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
             resourceInputs["datastreamCustomEndpoint"] = args ? args.datastreamCustomEndpoint : undefined;
             resourceInputs["defaultLabels"] = pulumi.output(args ? args.defaultLabels : undefined).apply(JSON.stringify);
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
@@ -455,7 +453,6 @@ export interface ProviderArgs {
     dataplexCustomEndpoint?: pulumi.Input<string>;
     dataprocCustomEndpoint?: pulumi.Input<string>;
     dataprocMetastoreCustomEndpoint?: pulumi.Input<string>;
-    datastoreCustomEndpoint?: pulumi.Input<string>;
     datastreamCustomEndpoint?: pulumi.Input<string>;
     defaultLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;

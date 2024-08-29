@@ -130,6 +130,11 @@ export type V2OrganizationNotificationConfig = import("./v2organizationNotificat
 export const V2OrganizationNotificationConfig: typeof import("./v2organizationNotificationConfig").V2OrganizationNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["V2OrganizationNotificationConfig"], () => require("./v2organizationNotificationConfig"));
 
+export { V2OrganizationSccBigQueryExportsArgs, V2OrganizationSccBigQueryExportsState } from "./v2organizationSccBigQueryExports";
+export type V2OrganizationSccBigQueryExports = import("./v2organizationSccBigQueryExports").V2OrganizationSccBigQueryExports;
+export const V2OrganizationSccBigQueryExports: typeof import("./v2organizationSccBigQueryExports").V2OrganizationSccBigQueryExports = null as any;
+utilities.lazyLoad(exports, ["V2OrganizationSccBigQueryExports"], () => require("./v2organizationSccBigQueryExports"));
+
 export { V2OrganizationSourceArgs, V2OrganizationSourceState } from "./v2organizationSource";
 export type V2OrganizationSource = import("./v2organizationSource").V2OrganizationSource;
 export const V2OrganizationSource: typeof import("./v2organizationSource").V2OrganizationSource = null as any;
@@ -211,6 +216,8 @@ const _module = {
                 return new V2OrganizationMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
                 return new V2OrganizationNotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports":
+                return new V2OrganizationSccBigQueryExports(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource":
                 return new V2OrganizationSource(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding":
@@ -251,6 +258,7 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderMuteConfig"
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderNotificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationNotificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSccBigQueryExports", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSource", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourceIamMember", _module)

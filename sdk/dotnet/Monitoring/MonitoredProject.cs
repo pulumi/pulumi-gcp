@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Monitoring
     ///         ProjectId = "m-id",
     ///         Name = "m-id-display",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var primary = new Gcp.Monitoring.MonitoredProject("primary", new()

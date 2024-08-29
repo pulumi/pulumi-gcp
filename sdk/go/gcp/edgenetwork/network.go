@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/edgenetwork"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/edgenetwork"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -99,7 +99,12 @@ type Network struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -115,6 +120,9 @@ type Network struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -139,6 +147,11 @@ func NewNetwork(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Network
 	err := ctx.RegisterResource("gcp:edgenetwork/network:Network", name, args, &resource, opts...)
@@ -168,7 +181,12 @@ type networkState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location *string `pulumi:"location"`
@@ -184,6 +202,9 @@ type networkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -199,7 +220,12 @@ type NetworkState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location pulumi.StringPtrInput
@@ -215,6 +241,9 @@ type NetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -231,6 +260,9 @@ type networkArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location string `pulumi:"location"`
@@ -252,6 +284,9 @@ type NetworkArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Labels associated with this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
 	Location pulumi.StringInput
@@ -367,7 +402,15 @@ func (o NetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o NetworkOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Labels associated with this resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o NetworkOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -399,6 +442,12 @@ func (o NetworkOutput) NetworkId() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o NetworkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o NetworkOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The time when the subnet was last updated.

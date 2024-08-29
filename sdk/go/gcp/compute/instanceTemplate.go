@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -134,7 +134,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -400,7 +400,14 @@ type InstanceTemplate struct {
 	// this blank, the provider will auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	// prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -546,7 +553,14 @@ type instanceTemplateState struct {
 	// this blank, the provider will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	// prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -652,7 +666,14 @@ type InstanceTemplateState struct {
 	// this blank, the provider will auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	// prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringPtrInput
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -758,7 +779,14 @@ type instanceTemplateArgs struct {
 	// this blank, the provider will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	// prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -852,7 +880,14 @@ type InstanceTemplateArgs struct {
 	// this blank, the provider will auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	// prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	//
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringPtrInput
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -1087,7 +1122,14 @@ func (o InstanceTemplateOutput) Name() pulumi.StringOutput {
 }
 
 // Creates a unique name beginning with the specified
-// prefix. Conflicts with `name`.
+// prefix. Conflicts with `name`. Max length is 54 characters.
+// Prefixes with lengths longer than 37 characters will use a shortened
+// UUID that will be more prone to collisions.
+//
+// Resulting name for a `namePrefix` <= 37 characters:
+// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+// Resulting name for a `namePrefix` 38 - 54 characters:
+// `namePrefix` + YYmmdd + 3 digit incremental counter
 func (o InstanceTemplateOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }

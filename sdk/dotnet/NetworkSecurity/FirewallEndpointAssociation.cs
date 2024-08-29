@@ -22,42 +22,13 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
     ///     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
     /// 
+    /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+    /// you must specify a `billing_project_id` and set `user_project_override` to true
+    /// in the provider configuration. Otherwise the ACM API will return a 403 error.
+    /// Your account must have the `serviceusage.services.use` permission on the
+    /// `billing_project_id` you defined.
+    /// 
     /// ## Example Usage
-    /// 
-    /// ### Network Security Firewall Endpoint Association Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.FirewallEndpoint("default", new()
-    ///     {
-    ///         Name = "my-firewall-endpoint",
-    ///         Parent = "organizations/123456789",
-    ///         Location = "us-central1-a",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultAssociation = new Gcp.NetworkSecurity.FirewallEndpointAssociation("default_association", new()
-    ///     {
-    ///         Name = "my-firewall-endpoint-association",
-    ///         Parent = "projects/my-project-name",
-    ///         Location = "us-central1-a",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -197,30 +197,6 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.createSampleIntegrations);
     }
     /**
-     * (Optional, Deprecated)
-     * Indicates if sample workflow should be created along with provisioning.
-     * 
-     * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-     * 
-     * @deprecated
-     * `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-     * 
-     */
-    @Deprecated /* `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead. */
-    @Export(name="createSampleWorkflows", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> createSampleWorkflows;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Indicates if sample workflow should be created along with provisioning.
-     * 
-     * &gt; **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
-     * 
-     */
-    public Output<Optional<Boolean>> createSampleWorkflows() {
-        return Codegen.optional(this.createSampleWorkflows);
-    }
-    /**
      * Location in which client needs to be provisioned.
      * 
      * ***
@@ -253,30 +229,6 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
-    }
-    /**
-     * (Optional, Deprecated)
-     * Indicates provision with GMEK or CMEK.
-     * 
-     * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-     * 
-     * @deprecated
-     * `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-     * 
-     */
-    @Deprecated /* `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given. */
-    @Export(name="provisionGmek", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> provisionGmek;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Indicates provision with GMEK or CMEK.
-     * 
-     * &gt; **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
-     * 
-     */
-    public Output<Optional<Boolean>> provisionGmek() {
-        return Codegen.optional(this.provisionGmek);
     }
     /**
      * User input run-as service account, if empty, will bring up a new default service account.

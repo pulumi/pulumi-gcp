@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,9 +37,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:     pulumi.String("cloudrun-service"),
-//				Location: pulumi.String("us-central1"),
-//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -63,7 +64,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,9 +72,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:     pulumi.String("cloudrun-service"),
-//				Location: pulumi.String("us-central1"),
-//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -105,10 +107,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -144,9 +146,10 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:     pulumi.String("cloudrun-service"),
-//				Location: pulumi.String("us-central1"),
-//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Scaling: &cloudrunv2.ServiceTemplateScalingArgs{
 //						MaxInstanceCount: pulumi.Int(2),
@@ -226,9 +229,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vpcaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -265,8 +268,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:     pulumi.String("cloudrun-service"),
-//				Location: pulumi.String("us-central1"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -294,7 +298,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -302,9 +306,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:        pulumi.String("cloudrun-service"),
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("GA"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("GA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -341,7 +346,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -349,8 +354,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:     pulumi.String("cloudrun-service"),
-//				Location: pulumi.String("us-central1"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -390,9 +396,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -416,9 +422,10 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:     pulumi.String("cloudrun-service"),
-//				Location: pulumi.String("us-central1"),
-//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Volumes: cloudrunv2.ServiceTemplateVolumeArray{
 //						&cloudrunv2.ServiceTemplateVolumeArgs{
@@ -479,7 +486,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -487,16 +494,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:        pulumi.String("cloudrun-service"),
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
-//				Ingress:     pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("BETA"),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
 //							Name: pulumi.String("hello-1"),
-//							Ports: cloudrunv2.ServiceTemplateContainerPortArray{
-//								ContainerPort: 8080,
+//							Ports: &cloudrunv2.ServiceTemplateContainerPortsArgs{
+//								ContainerPort: pulumi.Int(8080),
 //							},
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 //							DependsOns: pulumi.StringArray{
@@ -551,8 +559,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -567,9 +575,10 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:        pulumi.String("cloudrun-service"),
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					ExecutionEnvironment: pulumi.String("EXECUTION_ENVIRONMENT_GEN2"),
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
@@ -609,8 +618,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/filestore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -638,10 +647,11 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Name:        pulumi.String("cloudrun-service"),
-//				Location:    pulumi.String("us-central1"),
-//				Ingress:     pulumi.String("INGRESS_TRAFFIC_ALL"),
-//				LaunchStage: pulumi.String("BETA"),
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					ExecutionEnvironment: pulumi.String("EXECUTION_ENVIRONMENT_GEN2"),
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
@@ -740,7 +750,8 @@ type Service struct {
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrOutput `pulumi:"defaultUriDisabled"`
 	// The deletion time.
-	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	DeleteTime         pulumi.StringOutput  `pulumi:"deleteTime"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description          pulumi.StringPtrOutput `pulumi:"description"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
@@ -885,7 +896,8 @@ type serviceState struct {
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
 	// The deletion time.
-	DeleteTime *string `pulumi:"deleteTime"`
+	DeleteTime         *string `pulumi:"deleteTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description          *string           `pulumi:"description"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
@@ -990,7 +1002,8 @@ type ServiceState struct {
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrInput
 	// The deletion time.
-	DeleteTime pulumi.StringPtrInput
+	DeleteTime         pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
@@ -1091,6 +1104,7 @@ type serviceArgs struct {
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
@@ -1150,6 +1164,7 @@ type ServiceArgs struct {
 	CustomAudiences pulumi.StringArrayInput
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
@@ -1331,6 +1346,10 @@ func (o ServiceOutput) DefaultUriDisabled() pulumi.BoolPtrOutput {
 // The deletion time.
 func (o ServiceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o ServiceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // User-provided description of the Service. This field currently has a 512-character limit.

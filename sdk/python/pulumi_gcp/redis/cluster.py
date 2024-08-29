@@ -24,6 +24,7 @@ class ClusterArgs:
                  psc_configs: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]],
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,8 @@ class ClusterArgs:
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
                "AUTH_MODE_DISABLED"]
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+               operation will fail. Default value is true.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
@@ -60,6 +63,8 @@ class ClusterArgs:
         pulumi.set(__self__, "shard_count", shard_count)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type is not None:
@@ -117,6 +122,19 @@ class ClusterArgs:
     @authorization_mode.setter
     def authorization_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorization_mode", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+        operation will fail. Default value is true.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
 
     @property
     @pulumi.getter
@@ -223,6 +241,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -248,6 +267,8 @@ class _ClusterState:
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+               operation will fail. Default value is true.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
@@ -283,6 +304,8 @@ class _ClusterState:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if discovery_endpoints is not None:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
         if name is not None:
@@ -345,6 +368,19 @@ class _ClusterState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+        operation will fail. Default value is true.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
 
     @property
     @pulumi.getter(name="discoveryEndpoints")
@@ -568,6 +604,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -627,6 +664,7 @@ class Cluster(pulumi.CustomResource):
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
+            deletion_protection_enabled=True,
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
@@ -666,6 +704,7 @@ class Cluster(pulumi.CustomResource):
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-f",
             },
+            deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
@@ -704,6 +743,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
                "AUTH_MODE_DISABLED"]
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+               operation will fail. Default value is true.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
@@ -777,6 +818,7 @@ class Cluster(pulumi.CustomResource):
             redis_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
+            deletion_protection_enabled=True,
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
@@ -816,6 +858,7 @@ class Cluster(pulumi.CustomResource):
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-f",
             },
+            deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
@@ -865,6 +908,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -885,6 +929,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["authorization_mode"] = authorization_mode
+            __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["project"] = project
@@ -919,6 +964,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
@@ -949,6 +995,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+               operation will fail. Default value is true.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
@@ -986,6 +1034,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type"] = node_type
@@ -1024,6 +1073,15 @@ class Cluster(pulumi.CustomResource):
         digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+        operation will fail. Default value is true.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
 
     @property
     @pulumi.getter(name="discoveryEndpoints")

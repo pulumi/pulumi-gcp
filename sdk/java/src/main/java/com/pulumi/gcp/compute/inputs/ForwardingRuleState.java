@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.ForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -181,6 +182,21 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="forwardingRuleId")
+    private @Nullable Output<Integer> forwardingRuleId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> forwardingRuleId() {
+        return Optional.ofNullable(this.forwardingRuleId);
     }
 
     /**
@@ -538,6 +554,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     @Import(name="portRange")
@@ -563,6 +580,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -587,6 +605,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     @Import(name="ports")
@@ -610,6 +629,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     public Optional<Output<List<String>>> ports() {
@@ -872,6 +892,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.forwardingRuleId = $.forwardingRuleId;
         this.ipAddress = $.ipAddress;
         this.ipProtocol = $.ipProtocol;
         this.ipVersion = $.ipVersion;
@@ -1128,6 +1149,27 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param forwardingRuleId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardingRuleId(@Nullable Output<Integer> forwardingRuleId) {
+            $.forwardingRuleId = forwardingRuleId;
+            return this;
+        }
+
+        /**
+         * @param forwardingRuleId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardingRuleId(Integer forwardingRuleId) {
+            return forwardingRuleId(Output.of(forwardingRuleId));
         }
 
         /**
@@ -1551,6 +1593,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
+         *   {@literal @}pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1580,6 +1623,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
+         *   {@literal @}pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1606,6 +1650,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
          *   they share at least one port number.
+         *   {@literal @}pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1633,6 +1678,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
          *   they share at least one port number.
+         *   {@literal @}pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1659,6 +1705,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
          *   they share at least one port number.
+         *   {@literal @}pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 

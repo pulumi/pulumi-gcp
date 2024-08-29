@@ -475,13 +475,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataprocMetastoreCustomEndpoint);
     }
 
-    @Import(name="datastoreCustomEndpoint")
-    private @Nullable Output<String> datastoreCustomEndpoint;
-
-    public Optional<Output<String>> datastoreCustomEndpoint() {
-        return Optional.ofNullable(this.datastoreCustomEndpoint);
-    }
-
     @Import(name="datastreamCustomEndpoint")
     private @Nullable Output<String> datastreamCustomEndpoint;
 
@@ -1299,7 +1292,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataplexCustomEndpoint = $.dataplexCustomEndpoint;
         this.dataprocCustomEndpoint = $.dataprocCustomEndpoint;
         this.dataprocMetastoreCustomEndpoint = $.dataprocMetastoreCustomEndpoint;
-        this.datastoreCustomEndpoint = $.datastoreCustomEndpoint;
         this.datastreamCustomEndpoint = $.datastreamCustomEndpoint;
         this.defaultLabels = $.defaultLabels;
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
@@ -2010,15 +2002,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder dataprocMetastoreCustomEndpoint(String dataprocMetastoreCustomEndpoint) {
             return dataprocMetastoreCustomEndpoint(Output.of(dataprocMetastoreCustomEndpoint));
-        }
-
-        public Builder datastoreCustomEndpoint(@Nullable Output<String> datastoreCustomEndpoint) {
-            $.datastoreCustomEndpoint = datastoreCustomEndpoint;
-            return this;
-        }
-
-        public Builder datastoreCustomEndpoint(String datastoreCustomEndpoint) {
-            return datastoreCustomEndpoint(Output.of(datastoreCustomEndpoint));
         }
 
         public Builder datastreamCustomEndpoint(@Nullable Output<String> datastreamCustomEndpoint) {

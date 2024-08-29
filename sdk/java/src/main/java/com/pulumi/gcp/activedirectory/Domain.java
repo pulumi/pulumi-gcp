@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.activedirectory.DomainArgs;
 import com.pulumi.gcp.activedirectory.inputs.DomainState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,7 @@ import javax.annotation.Nullable;
  *             .domainName("tfgen.org.com")
  *             .locations("us-central1")
  *             .reservedIpRange("192.168.255.0/24")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *     }
@@ -110,6 +112,12 @@ public class Domain extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> authorizedNetworks() {
         return Codegen.optional(this.authorizedNetworks);
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions

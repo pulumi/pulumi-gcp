@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
@@ -63,6 +64,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
@@ -127,6 +129,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
@@ -258,6 +261,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -291,6 +295,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         LaunchStage = "GA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
@@ -337,6 +342,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -398,6 +404,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
@@ -476,6 +483,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         LaunchStage = "BETA",
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
@@ -485,9 +493,9 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
     ///                 {
     ///                     Name = "hello-1",
-    ///                     Ports = 
+    ///                     Ports = new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerPortsArgs
     ///                     {
-    ///                         { "containerPort", 8080 },
+    ///                         ContainerPort = 8080,
     ///                     },
     ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
     ///                     DependsOns = new[]
@@ -561,6 +569,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
@@ -634,6 +643,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
@@ -779,6 +789,9 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
@@ -1060,6 +1073,9 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("defaultUriDisabled")]
         public Input<bool>? DefaultUriDisabled { get; set; }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
@@ -1239,6 +1255,9 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.

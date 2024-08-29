@@ -401,12 +401,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> dataprocMetastoreCustomEndpoint() {
         return Codegen.optional(this.dataprocMetastoreCustomEndpoint);
     }
-    @Export(name="datastoreCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> datastoreCustomEndpoint;
-
-    public Output<Optional<String>> datastoreCustomEndpoint() {
-        return Codegen.optional(this.datastoreCustomEndpoint);
-    }
     @Export(name="datastreamCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datastreamCustomEndpoint;
 

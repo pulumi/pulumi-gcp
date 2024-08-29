@@ -193,6 +193,13 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deleteTime);
     }
 
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      * 
@@ -626,6 +633,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.customAudiences = $.customAudiences;
         this.defaultUriDisabled = $.defaultUriDisabled;
         this.deleteTime = $.deleteTime;
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.effectiveLabels = $.effectiveLabels;
@@ -921,6 +929,15 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deleteTime(String deleteTime) {
             return deleteTime(Output.of(deleteTime));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

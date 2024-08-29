@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const project = new gcp.organizations.Project("project", {
  *     projectId: "staging-project",
  *     name: "A very important project!",
+ *     deletionPolicy: "DELETE",
  * });
  * const lien = new gcp.resourcemanager.Lien("lien", {
  *     parent: pulumi.interpolate`projects/${project.number}`,

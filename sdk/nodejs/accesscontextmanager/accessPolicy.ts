@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  *     name: "my-project-name",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",

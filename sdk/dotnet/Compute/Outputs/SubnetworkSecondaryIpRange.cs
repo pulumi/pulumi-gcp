@@ -18,8 +18,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// range. Provide this property when you create the subnetwork.
         /// Ranges must be unique and non-overlapping with all primary and
         /// secondary IP ranges within a network. Only IPv4 is supported.
+        /// Field is optional when `reserved_internal_range` is defined, otherwise required.
         /// </summary>
-        public readonly string IpCidrRange;
+        public readonly string? IpCidrRange;
         /// <summary>
         /// The name associated with this subnetwork secondary range, used
         /// when adding an alias IP range to a VM instance. The name must
@@ -27,15 +28,23 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// must be unique within the subnetwork.
         /// </summary>
         public readonly string RangeName;
+        /// <summary>
+        /// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+        /// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        /// </summary>
+        public readonly string? ReservedInternalRange;
 
         [OutputConstructor]
         private SubnetworkSecondaryIpRange(
-            string ipCidrRange,
+            string? ipCidrRange,
 
-            string rangeName)
+            string rangeName,
+
+            string? reservedInternalRange)
         {
             IpCidrRange = ipCidrRange;
             RangeName = rangeName;
+            ReservedInternalRange = reservedInternalRange;
         }
     }
 }

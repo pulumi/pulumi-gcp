@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &V2OrganizationMuteConfig{}
 	case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
 		r = &V2OrganizationNotificationConfig{}
+	case "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports":
+		r = &V2OrganizationSccBigQueryExports{}
 	case "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource":
 		r = &V2OrganizationSource{}
 	case "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding":
@@ -205,6 +207,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/v2OrganizationNotificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationSccBigQueryExports",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

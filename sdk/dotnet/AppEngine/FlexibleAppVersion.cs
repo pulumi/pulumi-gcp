@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         ProjectId = "appeng-flex",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var app = new Gcp.AppEngine.Application("app", new()

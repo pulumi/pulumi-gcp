@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *             .projectId("tf-test_81126")
  *             .name("tf-test_88717")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var default_ = new ProjectInfo("default", ProjectInfoArgs.builder()

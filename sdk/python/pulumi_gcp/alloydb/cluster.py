@@ -35,7 +35,6 @@ class ClusterArgs:
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maintenance_update_policy: Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']] = None,
-                 network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input['ClusterPscConfigArgs']] = None,
@@ -77,11 +76,6 @@ class ClusterArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['ClusterMaintenanceUpdatePolicyArgs'] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-               "projects/{projectNumber}/global/networks/{network_id}".
-               
-               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         :param pulumi.Input['ClusterNetworkConfigArgs'] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -121,11 +115,6 @@ class ClusterArgs:
             pulumi.set(__self__, "labels", labels)
         if maintenance_update_policy is not None:
             pulumi.set(__self__, "maintenance_update_policy", maintenance_update_policy)
-        if network is not None:
-            warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
-            pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-        if network is not None:
-            pulumi.set(__self__, "network", network)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
@@ -327,23 +316,6 @@ class ClusterArgs:
         pulumi.set(self, "maintenance_update_policy", value)
 
     @property
-    @pulumi.getter
-    @_utilities.deprecated("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-    def network(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional, Deprecated)
-        The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-        "projects/{projectNumber}/global/networks/{network_id}".
-
-        > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
-    @property
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['ClusterNetworkConfigArgs']]:
         """
@@ -446,7 +418,6 @@ class _ClusterState:
                  maintenance_update_policy: Optional[pulumi.Input['ClusterMaintenanceUpdatePolicyArgs']] = None,
                  migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input['ClusterPscConfigArgs']] = None,
@@ -503,11 +474,6 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-               "projects/{projectNumber}/global/networks/{network_id}".
-               
-               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         :param pulumi.Input['ClusterNetworkConfigArgs'] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -570,11 +536,6 @@ class _ClusterState:
             pulumi.set(__self__, "migration_sources", migration_sources)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if network is not None:
-            warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
-            pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-        if network is not None:
-            pulumi.set(__self__, "network", network)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
@@ -870,23 +831,6 @@ class _ClusterState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    @_utilities.deprecated("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-    def network(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional, Deprecated)
-        The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-        "projects/{projectNumber}/global/networks/{network_id}".
-
-        > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
-    @property
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['ClusterNetworkConfigArgs']]:
         """
@@ -1035,7 +979,6 @@ class Cluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_update_policy: Optional[pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
@@ -1108,62 +1051,6 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        ### Alloydb Cluster Restore
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_network(name="alloydb-network")
-        source = gcp.alloydb.Cluster("source",
-            cluster_id="alloydb-source-cluster",
-            location="us-central1",
-            network=default.id,
-            initial_user={
-                "password": "alloydb-source-cluster",
-            })
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="alloydb-source-cluster",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        source_instance = gcp.alloydb.Instance("source",
-            cluster=source.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            machine_config={
-                "cpu_count": 2,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        source_backup = gcp.alloydb.Backup("source",
-            backup_id="alloydb-backup",
-            location="us-central1",
-            cluster_name=source.name,
-            opts = pulumi.ResourceOptions(depends_on=[source_instance]))
-        restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
-            cluster_id="alloydb-backup-restored",
-            location="us-central1",
-            network_config={
-                "network": default.id,
-            },
-            restore_backup_source={
-                "backup_name": source_backup.name,
-            })
-        restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
-            cluster_id="alloydb-pitr-restored",
-            location="us-central1",
-            network=default.id,
-            restore_continuous_backup_source={
-                "cluster": source.name,
-                "point_in_time": "2023-08-03T19:19:00.094Z",
-            })
-        project = gcp.organizations.get_project()
-        ```
         ### Alloydb Secondary Cluster Basic
 
         ```python
@@ -1174,7 +1061,9 @@ class Cluster(pulumi.CustomResource):
         primary = gcp.alloydb.Cluster("primary",
             cluster_id="alloydb-primary-cluster",
             location="us-central1",
-            network=default.id)
+            network_config={
+                "network": default.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-cluster",
             address_type="INTERNAL",
@@ -1196,7 +1085,9 @@ class Cluster(pulumi.CustomResource):
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
-            network=default.id,
+            network_config={
+                "network": default.id,
+            },
             cluster_type="SECONDARY",
             continuous_backup_config={
                 "enabled": False,
@@ -1273,11 +1164,6 @@ class Cluster(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-               "projects/{projectNumber}/global/networks/{network_id}".
-               
-               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1362,62 +1248,6 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        ### Alloydb Cluster Restore
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_network(name="alloydb-network")
-        source = gcp.alloydb.Cluster("source",
-            cluster_id="alloydb-source-cluster",
-            location="us-central1",
-            network=default.id,
-            initial_user={
-                "password": "alloydb-source-cluster",
-            })
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="alloydb-source-cluster",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        source_instance = gcp.alloydb.Instance("source",
-            cluster=source.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            machine_config={
-                "cpu_count": 2,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        source_backup = gcp.alloydb.Backup("source",
-            backup_id="alloydb-backup",
-            location="us-central1",
-            cluster_name=source.name,
-            opts = pulumi.ResourceOptions(depends_on=[source_instance]))
-        restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
-            cluster_id="alloydb-backup-restored",
-            location="us-central1",
-            network_config={
-                "network": default.id,
-            },
-            restore_backup_source={
-                "backup_name": source_backup.name,
-            })
-        restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
-            cluster_id="alloydb-pitr-restored",
-            location="us-central1",
-            network=default.id,
-            restore_continuous_backup_source={
-                "cluster": source.name,
-                "point_in_time": "2023-08-03T19:19:00.094Z",
-            })
-        project = gcp.organizations.get_project()
-        ```
         ### Alloydb Secondary Cluster Basic
 
         ```python
@@ -1428,7 +1258,9 @@ class Cluster(pulumi.CustomResource):
         primary = gcp.alloydb.Cluster("primary",
             cluster_id="alloydb-primary-cluster",
             location="us-central1",
-            network=default.id)
+            network_config={
+                "network": default.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-cluster",
             address_type="INTERNAL",
@@ -1450,7 +1282,9 @@ class Cluster(pulumi.CustomResource):
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
-            network=default.id,
+            network_config={
+                "network": default.id,
+            },
             cluster_type="SECONDARY",
             continuous_backup_config={
                 "enabled": False,
@@ -1521,7 +1355,6 @@ class Cluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_update_policy: Optional[pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
@@ -1555,7 +1388,6 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_update_policy"] = maintenance_update_policy
-            __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
             __props__.__dict__["psc_config"] = psc_config
@@ -1606,7 +1438,6 @@ class Cluster(pulumi.CustomResource):
             maintenance_update_policy: Optional[pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
             migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
@@ -1668,11 +1499,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-               "projects/{projectNumber}/global/networks/{network_id}".
-               
-               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1718,7 +1544,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["maintenance_update_policy"] = maintenance_update_policy
         __props__.__dict__["migration_sources"] = migration_sources
         __props__.__dict__["name"] = name
-        __props__.__dict__["network"] = network
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_config"] = psc_config
@@ -1919,19 +1744,6 @@ class Cluster(pulumi.CustomResource):
         The name of the cluster resource.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-    def network(self) -> pulumi.Output[str]:
-        """
-        (Optional, Deprecated)
-        The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-        "projects/{projectNumber}/global/networks/{network_id}".
-
-        > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        """
-        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="networkConfig")

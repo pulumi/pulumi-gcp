@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     projectId: "project-id",
  *     name: "project-id",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [project],
@@ -73,6 +74,7 @@ import * as utilities from "../utilities";
  *     projectId: "project-id",
  *     name: "project-id",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [project],

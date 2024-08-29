@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     projectId: "id",
  *     name: "id",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
  *     name: pulumi.interpolate`projects/${basic.name}/policies/iam.disableServiceAccountKeyUpload`,
@@ -48,6 +49,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.organizations.Folder("basic", {
  *     parent: "organizations/123456789",
  *     displayName: "folder",
+ *     deletionProtection: false,
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
  *     name: pulumi.interpolate`${basic.name}/policies/gcp.resourceLocations`,
@@ -84,6 +86,7 @@ import * as utilities from "../utilities";
  *     projectId: "id",
  *     name: "id",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
  *     name: pulumi.interpolate`projects/${basic.name}/policies/gcp.resourceLocations`,

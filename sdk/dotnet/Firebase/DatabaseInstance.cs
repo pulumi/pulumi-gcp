@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.Firebase
     ///         ProjectId = "rtdb-project",
     ///         Name = "rtdb-project",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///         Labels = 
     ///         {
     ///             { "firebase", "enabled" },

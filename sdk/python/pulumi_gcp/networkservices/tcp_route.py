@@ -440,6 +440,7 @@ class TcpRoute(pulumi.CustomResource):
                         "weight": 1,
                     }],
                     "original_destination": False,
+                    "idle_timeout": "60s",
                 },
             }])
         ```
@@ -640,6 +641,7 @@ class TcpRoute(pulumi.CustomResource):
                         "weight": 1,
                     }],
                     "original_destination": False,
+                    "idle_timeout": "60s",
                 },
             }])
         ```

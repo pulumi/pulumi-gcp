@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.ServiceUsage
     ///         Name = "tf-test-project",
     ///         ProjectId = "quota",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new()
@@ -74,6 +75,7 @@ namespace Pulumi.Gcp.ServiceUsage
     ///         Name = "tf-test-project",
     ///         ProjectId = "quota",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new()
@@ -114,6 +116,7 @@ namespace Pulumi.Gcp.ServiceUsage
     ///         Name = "tf-test-project",
     ///         ProjectId = "quota",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new()

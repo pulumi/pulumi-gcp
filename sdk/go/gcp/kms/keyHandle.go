@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,9 +23,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -35,8 +35,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create Folder in GCP Organization
 //			autokmsFolder, err := organizations.NewFolder(ctx, "autokms_folder", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("folder-example"),
-//				Parent:      pulumi.String("organizations/123456789"),
+//				DisplayName:        pulumi.String("folder-example"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -47,6 +48,7 @@ import (
 //				Name:           pulumi.String("key-proj"),
 //				FolderId:       autokmsFolder.FolderId,
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				autokmsFolder,
 //			}))
@@ -59,6 +61,7 @@ import (
 //				Name:           pulumi.String("resources"),
 //				FolderId:       autokmsFolder.FolderId,
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				autokmsFolder,
 //			}))

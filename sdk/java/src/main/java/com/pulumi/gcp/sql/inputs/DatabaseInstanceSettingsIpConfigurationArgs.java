@@ -114,29 +114,6 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-     * 
-     * @deprecated
-     * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-     * 
-     */
-    @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
-    @Import(name="requireSsl")
-    private @Nullable Output<Boolean> requireSsl;
-
-    /**
-     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-     * 
-     * @deprecated
-     * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-     * 
-     */
-    @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
-    public Optional<Output<Boolean>> requireSsl() {
-        return Optional.ofNullable(this.requireSsl);
-    }
-
-    /**
      * Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
      * 
      */
@@ -152,20 +129,14 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
-     * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
-     * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-     * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+     * Specify how SSL connection should be enforced in DB connections.
      * 
      */
     @Import(name="sslMode")
     private @Nullable Output<String> sslMode;
 
     /**
-     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
-     * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
-     * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-     * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+     * @return Specify how SSL connection should be enforced in DB connections.
      * 
      */
     public Optional<Output<String>> sslMode() {
@@ -181,7 +152,6 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         this.ipv4Enabled = $.ipv4Enabled;
         this.privateNetwork = $.privateNetwork;
         this.pscConfigs = $.pscConfigs;
-        this.requireSsl = $.requireSsl;
         this.serverCaMode = $.serverCaMode;
         this.sslMode = $.sslMode;
     }
@@ -345,35 +315,6 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-         * 
-         */
-        @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
-        public Builder requireSsl(@Nullable Output<Boolean> requireSsl) {
-            $.requireSsl = requireSsl;
-            return this;
-        }
-
-        /**
-         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
-         * 
-         */
-        @Deprecated /* `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead. */
-        public Builder requireSsl(Boolean requireSsl) {
-            return requireSsl(Output.of(requireSsl));
-        }
-
-        /**
          * @param serverCaMode Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
          * 
          * @return builder
@@ -395,10 +336,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param sslMode Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
-         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
-         * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-         * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+         * @param sslMode Specify how SSL connection should be enforced in DB connections.
          * 
          * @return builder
          * 
@@ -409,10 +347,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param sslMode Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
-         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
-         * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
-         * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+         * @param sslMode Specify how SSL connection should be enforced in DB connections.
          * 
          * @return builder
          * 

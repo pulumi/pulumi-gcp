@@ -624,7 +624,7 @@ if not MYPY:
     class BucketLifecycleRuleConditionArgsDict(TypedDict):
         age: NotRequired[pulumi.Input[int]]
         """
-        Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+        Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         """
         created_before: NotRequired[pulumi.Input[str]]
         """
@@ -655,10 +655,6 @@ if not MYPY:
         """
         One or more matching name suffixes to satisfy this condition.
         """
-        no_age: NotRequired[pulumi.Input[bool]]
-        """
-        While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-        """
         noncurrent_time_before: NotRequired[pulumi.Input[str]]
         """
         Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
@@ -666,6 +662,10 @@ if not MYPY:
         num_newer_versions: NotRequired[pulumi.Input[int]]
         """
         Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        """
+        send_age_if_zero: NotRequired[pulumi.Input[bool]]
+        """
+        While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
         """
         send_days_since_custom_time_if_zero: NotRequired[pulumi.Input[bool]]
         """
@@ -697,15 +697,15 @@ class BucketLifecycleRuleConditionArgs:
                  matches_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  matches_storage_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  matches_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 no_age: Optional[pulumi.Input[bool]] = None,
                  noncurrent_time_before: Optional[pulumi.Input[str]] = None,
                  num_newer_versions: Optional[pulumi.Input[int]] = None,
+                 send_age_if_zero: Optional[pulumi.Input[bool]] = None,
                  send_days_since_custom_time_if_zero: Optional[pulumi.Input[bool]] = None,
                  send_days_since_noncurrent_time_if_zero: Optional[pulumi.Input[bool]] = None,
                  send_num_newer_versions_if_zero: Optional[pulumi.Input[bool]] = None,
                  with_state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] age: Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+        :param pulumi.Input[int] age: Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         :param pulumi.Input[str] created_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
         :param pulumi.Input[str] custom_time_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
         :param pulumi.Input[int] days_since_custom_time: Number of days elapsed since the user-specified timestamp set on an object.
@@ -714,9 +714,9 @@ class BucketLifecycleRuleConditionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_suffixes: One or more matching name suffixes to satisfy this condition.
-        :param pulumi.Input[bool] no_age: While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
         :param pulumi.Input[str] noncurrent_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         :param pulumi.Input[int] num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        :param pulumi.Input[bool] send_age_if_zero: While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
         :param pulumi.Input[bool] send_days_since_custom_time_if_zero: While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
         :param pulumi.Input[bool] send_days_since_noncurrent_time_if_zero: While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
         :param pulumi.Input[bool] send_num_newer_versions_if_zero: While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
@@ -738,12 +738,12 @@ class BucketLifecycleRuleConditionArgs:
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         if matches_suffixes is not None:
             pulumi.set(__self__, "matches_suffixes", matches_suffixes)
-        if no_age is not None:
-            pulumi.set(__self__, "no_age", no_age)
         if noncurrent_time_before is not None:
             pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
             pulumi.set(__self__, "num_newer_versions", num_newer_versions)
+        if send_age_if_zero is not None:
+            pulumi.set(__self__, "send_age_if_zero", send_age_if_zero)
         if send_days_since_custom_time_if_zero is not None:
             pulumi.set(__self__, "send_days_since_custom_time_if_zero", send_days_since_custom_time_if_zero)
         if send_days_since_noncurrent_time_if_zero is not None:
@@ -757,7 +757,7 @@ class BucketLifecycleRuleConditionArgs:
     @pulumi.getter
     def age(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+        Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         """
         return pulumi.get(self, "age")
 
@@ -851,18 +851,6 @@ class BucketLifecycleRuleConditionArgs:
         pulumi.set(self, "matches_suffixes", value)
 
     @property
-    @pulumi.getter(name="noAge")
-    def no_age(self) -> Optional[pulumi.Input[bool]]:
-        """
-        While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-        """
-        return pulumi.get(self, "no_age")
-
-    @no_age.setter
-    def no_age(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "no_age", value)
-
-    @property
     @pulumi.getter(name="noncurrentTimeBefore")
     def noncurrent_time_before(self) -> Optional[pulumi.Input[str]]:
         """
@@ -885,6 +873,18 @@ class BucketLifecycleRuleConditionArgs:
     @num_newer_versions.setter
     def num_newer_versions(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_newer_versions", value)
+
+    @property
+    @pulumi.getter(name="sendAgeIfZero")
+    def send_age_if_zero(self) -> Optional[pulumi.Input[bool]]:
+        """
+        While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+        """
+        return pulumi.get(self, "send_age_if_zero")
+
+    @send_age_if_zero.setter
+    def send_age_if_zero(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_age_if_zero", value)
 
     @property
     @pulumi.getter(name="sendDaysSinceCustomTimeIfZero")

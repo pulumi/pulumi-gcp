@@ -166,7 +166,8 @@ class SyncAuthorization(pulumi.CustomResource):
             project_id="my-project",
             name="my-project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         apigee = gcp.projects.Service("apigee",
             project=project.project_id,
             service="apigee.googleapis.com")
@@ -244,7 +245,8 @@ class SyncAuthorization(pulumi.CustomResource):
             project_id="my-project",
             name="my-project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         apigee = gcp.projects.Service("apigee",
             project=project.project_id,
             service="apigee.googleapis.com")

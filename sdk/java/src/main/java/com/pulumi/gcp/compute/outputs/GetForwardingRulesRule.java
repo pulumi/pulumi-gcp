@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetForwardingRulesRuleServiceDirectoryRegistration;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +77,11 @@ public final class GetForwardingRulesRule {
      */
     private String description;
     private Map<String,String> effectiveLabels;
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    private Integer forwardingRuleId;
     /**
      * @return IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
@@ -459,6 +465,13 @@ public final class GetForwardingRulesRule {
         return this.effectiveLabels;
     }
     /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Integer forwardingRuleId() {
+        return this.forwardingRuleId;
+    }
+    /**
      * @return IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
      * to the referenced &#39;target&#39; or &#39;backendService&#39;.
@@ -830,6 +843,7 @@ public final class GetForwardingRulesRule {
         private String creationTimestamp;
         private String description;
         private Map<String,String> effectiveLabels;
+        private Integer forwardingRuleId;
         private String ipAddress;
         private String ipProtocol;
         private String ipVersion;
@@ -867,6 +881,7 @@ public final class GetForwardingRulesRule {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.forwardingRuleId = defaults.forwardingRuleId;
     	      this.ipAddress = defaults.ipAddress;
     	      this.ipProtocol = defaults.ipProtocol;
     	      this.ipVersion = defaults.ipVersion;
@@ -957,6 +972,14 @@ public final class GetForwardingRulesRule {
               throw new MissingRequiredPropertyException("GetForwardingRulesRule", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forwardingRuleId(Integer forwardingRuleId) {
+            if (forwardingRuleId == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesRule", "forwardingRuleId");
+            }
+            this.forwardingRuleId = forwardingRuleId;
             return this;
         }
         @CustomType.Setter
@@ -1186,6 +1209,7 @@ public final class GetForwardingRulesRule {
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.forwardingRuleId = forwardingRuleId;
             _resultValue.ipAddress = ipAddress;
             _resultValue.ipProtocol = ipProtocol;
             _resultValue.ipVersion = ipVersion;

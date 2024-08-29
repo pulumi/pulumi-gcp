@@ -278,6 +278,9 @@ class ClusterArgs:
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -1286,6 +1289,9 @@ class ClusterArgs:
     def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "resource_labels")
 
@@ -1431,6 +1437,7 @@ class _ClusterState:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
@@ -1477,6 +1484,7 @@ class _ClusterState:
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protect_config: Optional[pulumi.Input['ClusterProtectConfigArgs']] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  release_channel: Optional[pulumi.Input['ClusterReleaseChannelArgs']] = None,
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1529,6 +1537,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -1670,6 +1679,7 @@ class _ClusterState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -1684,6 +1694,9 @@ class _ClusterState:
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -1744,6 +1757,8 @@ class _ClusterState:
             pulumi.set(__self__, "description", description)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
         if enable_cilium_clusterwide_network_policy is not None:
@@ -1836,6 +1851,8 @@ class _ClusterState:
             pulumi.set(__self__, "project", project)
         if protect_config is not None:
             pulumi.set(__self__, "protect_config", protect_config)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if remove_default_node_pool is not None:
@@ -2075,6 +2092,18 @@ class _ClusterState:
     @dns_config.setter
     def dns_config(self, value: Optional[pulumi.Input['ClusterDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="enableAutopilot")
@@ -2722,6 +2751,18 @@ class _ClusterState:
         pulumi.set(self, "protect_config", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input['ClusterReleaseChannelArgs']]:
         """
@@ -2761,6 +2802,9 @@ class _ClusterState:
     def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "resource_labels")
 
@@ -3312,6 +3356,9 @@ class Cluster(pulumi.CustomResource):
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -3623,13 +3670,17 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
             __props__.__dict__["workload_alts_config"] = workload_alts_config
             __props__.__dict__["workload_identity_config"] = workload_identity_config
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["master_version"] = None
             __props__.__dict__["operation"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["services_ipv4_cidr"] = None
             __props__.__dict__["tpu_ipv4_cidr_block"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
             'gcp:container/cluster:Cluster',
             resource_name,
@@ -3656,6 +3707,7 @@ class Cluster(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_config: Optional[pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_autopilot: Optional[pulumi.Input[bool]] = None,
             enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
             enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
@@ -3702,6 +3754,7 @@ class Cluster(pulumi.CustomResource):
             private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protect_config: Optional[pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             release_channel: Optional[pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
             remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -3759,6 +3812,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -3900,6 +3954,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3914,6 +3969,9 @@ class Cluster(pulumi.CustomResource):
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -3962,6 +4020,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_config"] = dns_config
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_autopilot"] = enable_autopilot
         __props__.__dict__["enable_cilium_clusterwide_network_policy"] = enable_cilium_clusterwide_network_policy
         __props__.__dict__["enable_fqdn_network_policy"] = enable_fqdn_network_policy
@@ -4008,6 +4067,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
         __props__.__dict__["project"] = project
         __props__.__dict__["protect_config"] = protect_config
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["release_channel"] = release_channel
         __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
         __props__.__dict__["resource_labels"] = resource_labels
@@ -4169,6 +4229,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         """
         return pulumi.get(self, "dns_config")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableAutopilot")
@@ -4632,6 +4700,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "protect_config")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> pulumi.Output['outputs.ClusterReleaseChannel']:
         """
@@ -4663,6 +4739,9 @@ class Cluster(pulumi.CustomResource):
     def resource_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "resource_labels")
 

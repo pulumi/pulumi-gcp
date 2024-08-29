@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Kms
     ///     {
     ///         DisplayName = "my-folder",
     ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     // Create the key project
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.Kms
     ///         Name = "key-proj",
     ///         FolderId = autokmsFolder.FolderId,
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

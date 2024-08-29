@@ -147,7 +147,8 @@ class ProjectInfo(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="tf-test_81126",
             name="tf-test_88717",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         default = gcp.billing.ProjectInfo("default",
             project=project.project_id,
             billing_account="000000-0000000-0000000-000000")
@@ -208,7 +209,8 @@ class ProjectInfo(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="tf-test_81126",
             name="tf-test_88717",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         default = gcp.billing.ProjectInfo("default",
             project=project.project_id,
             billing_account="000000-0000000-0000000-000000")

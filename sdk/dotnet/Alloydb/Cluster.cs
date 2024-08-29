@@ -116,111 +116,6 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
-    /// ### Alloydb Cluster Restore
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "alloydb-network",
-    ///     });
-    /// 
-    ///     var source = new Gcp.Alloydb.Cluster("source", new()
-    ///     {
-    ///         ClusterId = "alloydb-source-cluster",
-    ///         Location = "us-central1",
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
-    ///         {
-    ///             Password = "alloydb-source-cluster",
-    ///         },
-    ///     });
-    /// 
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
-    ///     {
-    ///         Name = "alloydb-source-cluster",
-    ///         AddressType = "INTERNAL",
-    ///         Purpose = "VPC_PEERING",
-    ///         PrefixLength = 16,
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///     });
-    /// 
-    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
-    ///     {
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             privateIpAlloc.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var sourceInstance = new Gcp.Alloydb.Instance("source", new()
-    ///     {
-    ///         Cluster = source.Name,
-    ///         InstanceId = "alloydb-instance",
-    ///         InstanceType = "PRIMARY",
-    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
-    ///         {
-    ///             CpuCount = 2,
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             vpcConnection,
-    ///         },
-    ///     });
-    /// 
-    ///     var sourceBackup = new Gcp.Alloydb.Backup("source", new()
-    ///     {
-    ///         BackupId = "alloydb-backup",
-    ///         Location = "us-central1",
-    ///         ClusterName = source.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             sourceInstance,
-    ///         },
-    ///     });
-    /// 
-    ///     var restoredFromBackup = new Gcp.Alloydb.Cluster("restored_from_backup", new()
-    ///     {
-    ///         ClusterId = "alloydb-backup-restored",
-    ///         Location = "us-central1",
-    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
-    ///         {
-    ///             Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         },
-    ///         RestoreBackupSource = new Gcp.Alloydb.Inputs.ClusterRestoreBackupSourceArgs
-    ///         {
-    ///             BackupName = sourceBackup.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var restoredViaPitr = new Gcp.Alloydb.Cluster("restored_via_pitr", new()
-    ///     {
-    ///         ClusterId = "alloydb-pitr-restored",
-    ///         Location = "us-central1",
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         RestoreContinuousBackupSource = new Gcp.Alloydb.Inputs.ClusterRestoreContinuousBackupSourceArgs
-    ///         {
-    ///             Cluster = source.Name,
-    ///             PointInTime = "2023-08-03T19:19:00.094Z",
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
     /// ### Alloydb Secondary Cluster Basic
     /// 
     /// ```csharp
@@ -240,7 +135,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-primary-cluster",
     ///         Location = "us-central1",
-    ///         Network = @default.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = @default.Id,
+    ///         },
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -283,7 +181,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-secondary-cluster",
     ///         Location = "us-east1",
-    ///         Network = @default.Id,
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = @default.Id,
+    ///         },
     ///         ClusterType = "SECONDARY",
     ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
     ///         {
@@ -485,16 +386,6 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-        /// "projects/{projectNumber}/global/networks/{network_id}".
-        /// 
-        /// &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        /// </summary>
-        [Output("network")]
-        public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
         /// Metadata related to network configuration.
@@ -730,16 +621,6 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("maintenanceUpdatePolicy")]
         public Input<Inputs.ClusterMaintenanceUpdatePolicyArgs>? MaintenanceUpdatePolicy { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-        /// "projects/{projectNumber}/global/networks/{network_id}".
-        /// 
-        /// &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        /// </summary>
-        [Input("network")]
-        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// Metadata related to network configuration.
@@ -988,16 +869,6 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-        /// "projects/{projectNumber}/global/networks/{network_id}".
-        /// 
-        /// &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        /// </summary>
-        [Input("network")]
-        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// Metadata related to network configuration.

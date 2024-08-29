@@ -27,6 +27,7 @@ class JobArgs:
                  binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -78,6 +79,8 @@ class JobArgs:
             pulumi.set(__self__, "client", client)
         if client_version is not None:
             pulumi.set(__self__, "client_version", client_version)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
@@ -169,6 +172,15 @@ class JobArgs:
     @client_version.setter
     def client_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_version", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -265,6 +277,7 @@ class _JobState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -364,6 +377,8 @@ class _JobState:
             pulumi.set(__self__, "creator", creator)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if effective_labels is not None:
@@ -513,6 +528,15 @@ class _JobState:
     @delete_time.setter
     def delete_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
@@ -803,6 +827,7 @@ class Job(pulumi.CustomResource):
                  binary_authorization: Optional[pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -832,6 +857,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "containers": [{
@@ -849,6 +875,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "containers": [{
@@ -885,6 +912,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "volumes": [{
@@ -953,6 +981,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "containers": [{
@@ -974,6 +1003,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="GA",
             template={
                 "template": {
@@ -1017,6 +1047,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "volumes": [{
@@ -1054,6 +1085,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="BETA",
             template={
                 "template": {
@@ -1083,6 +1115,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             start_execution_token="start-once-created",
             template={
                 "template": {
@@ -1178,6 +1211,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "containers": [{
@@ -1195,6 +1229,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "containers": [{
@@ -1231,6 +1266,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "volumes": [{
@@ -1299,6 +1335,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "containers": [{
@@ -1320,6 +1357,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="GA",
             template={
                 "template": {
@@ -1363,6 +1401,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "template": {
                     "volumes": [{
@@ -1400,6 +1439,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="BETA",
             template={
                 "template": {
@@ -1429,6 +1469,7 @@ class Job(pulumi.CustomResource):
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
+            deletion_protection=False,
             start_execution_token="start-once-created",
             template={
                 "template": {
@@ -1482,6 +1523,7 @@ class Job(pulumi.CustomResource):
                  binary_authorization: Optional[pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1503,6 +1545,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["labels"] = labels
             __props__.__dict__["launch_stage"] = launch_stage
             if location is None and not opts.urn:
@@ -1553,6 +1596,7 @@ class Job(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -1653,6 +1697,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
@@ -1749,6 +1794,11 @@ class Job(pulumi.CustomResource):
         The deletion time.
         """
         return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")

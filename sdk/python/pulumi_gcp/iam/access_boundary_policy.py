@@ -208,7 +208,8 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             project_id="my-project",
             name="my-project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
             parent=project.org_id.apply(lambda org_id: f"organizations/{org_id}"),
             title="my policy")
@@ -296,7 +297,8 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             project_id="my-project",
             name="my-project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
             parent=project.org_id.apply(lambda org_id: f"organizations/{org_id}"),
             title="my policy")

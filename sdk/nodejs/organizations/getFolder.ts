@@ -53,6 +53,7 @@ export interface GetFolderResult {
      * Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     readonly createTime: string;
+    readonly deletionProtection: boolean;
     /**
      * The folder's display name.
      */

@@ -79,6 +79,9 @@ namespace Pulumi.Gcp.Organizations
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
         /// <summary>
         /// The folder’s display name.
         /// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -157,6 +160,9 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// The folder’s display name.
         /// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -185,6 +191,9 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The folder’s display name.

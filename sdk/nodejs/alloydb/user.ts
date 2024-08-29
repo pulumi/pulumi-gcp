@@ -21,15 +21,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.id,
+ *     networkConfig: {
+ *         network: defaultGoogleComputeNetwork.id,
+ *     },
  *     initialUser: {
  *         password: "cluster_secret",
  *     },
  * });
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
  *     addressType: "INTERNAL",
@@ -70,7 +72,9 @@ import * as utilities from "../utilities";
  * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.id,
+ *     networkConfig: {
+ *         network: defaultNetwork.id,
+ *     },
  *     initialUser: {
  *         password: "cluster_secret",
  *     },

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -11988,6 +11988,9 @@ type TcpRouteRuleAction struct {
 	// The destination services to which traffic should be forwarded. At least one destination service is required.
 	// Structure is documented below.
 	Destinations []TcpRouteRuleActionDestination `pulumi:"destinations"`
+	// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// If true, Router will use the destination IP and port of the original connection as the destination of the request.
 	OriginalDestination *bool `pulumi:"originalDestination"`
 }
@@ -12007,6 +12010,9 @@ type TcpRouteRuleActionArgs struct {
 	// The destination services to which traffic should be forwarded. At least one destination service is required.
 	// Structure is documented below.
 	Destinations TcpRouteRuleActionDestinationArrayInput `pulumi:"destinations"`
+	// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// If true, Router will use the destination IP and port of the original connection as the destination of the request.
 	OriginalDestination pulumi.BoolPtrInput `pulumi:"originalDestination"`
 }
@@ -12041,6 +12047,12 @@ func (o TcpRouteRuleActionOutput) ToTcpRouteRuleActionOutputWithContext(ctx cont
 // Structure is documented below.
 func (o TcpRouteRuleActionOutput) Destinations() TcpRouteRuleActionDestinationArrayOutput {
 	return o.ApplyT(func(v TcpRouteRuleAction) []TcpRouteRuleActionDestination { return v.Destinations }).(TcpRouteRuleActionDestinationArrayOutput)
+}
+
+// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o TcpRouteRuleActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TcpRouteRuleAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
 }
 
 // If true, Router will use the destination IP and port of the original connection as the destination of the request.

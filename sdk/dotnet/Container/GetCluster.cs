@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool DeletionProtection;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetClusterDnsConfigResult> DnsConfigs;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableAutopilot;
         public readonly bool EnableCiliumClusterwideNetworkPolicy;
         public readonly bool EnableFqdnNetworkPolicy;
@@ -205,6 +206,7 @@ namespace Pulumi.Gcp.Container
         public readonly string PrivateIpv6GoogleAccess;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetClusterProtectConfigResult> ProtectConfigs;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetClusterReleaseChannelResult> ReleaseChannels;
         public readonly bool RemoveDefaultNodePool;
         public readonly ImmutableDictionary<string, string> ResourceLabels;
@@ -254,6 +256,8 @@ namespace Pulumi.Gcp.Container
             string description,
 
             ImmutableArray<Outputs.GetClusterDnsConfigResult> dnsConfigs,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             bool enableAutopilot,
 
@@ -349,6 +353,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterProtectConfigResult> protectConfigs,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetClusterReleaseChannelResult> releaseChannels,
 
             bool removeDefaultNodePool,
@@ -395,6 +401,7 @@ namespace Pulumi.Gcp.Container
             DeletionProtection = deletionProtection;
             Description = description;
             DnsConfigs = dnsConfigs;
+            EffectiveLabels = effectiveLabels;
             EnableAutopilot = enableAutopilot;
             EnableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
@@ -442,6 +449,7 @@ namespace Pulumi.Gcp.Container
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             Project = project;
             ProtectConfigs = protectConfigs;
+            PulumiLabels = pulumiLabels;
             ReleaseChannels = releaseChannels;
             RemoveDefaultNodePool = removeDefaultNodePool;
             ResourceLabels = resourceLabels;

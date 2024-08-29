@@ -34,7 +34,6 @@ public final class GetProjectResult {
     private String orgId;
     private @Nullable String projectId;
     private Map<String,String> pulumiLabels;
-    private Boolean skipDelete;
 
     private GetProjectResult() {}
     public Boolean autoCreateNetwork() {
@@ -81,9 +80,6 @@ public final class GetProjectResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
-    public Boolean skipDelete() {
-        return this.skipDelete;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -106,7 +102,6 @@ public final class GetProjectResult {
         private String orgId;
         private @Nullable String projectId;
         private Map<String,String> pulumiLabels;
-        private Boolean skipDelete;
         public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -122,7 +117,6 @@ public final class GetProjectResult {
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.pulumiLabels = defaults.pulumiLabels;
-    	      this.skipDelete = defaults.skipDelete;
         }
 
         @CustomType.Setter
@@ -219,14 +213,6 @@ public final class GetProjectResult {
             this.pulumiLabels = pulumiLabels;
             return this;
         }
-        @CustomType.Setter
-        public Builder skipDelete(Boolean skipDelete) {
-            if (skipDelete == null) {
-              throw new MissingRequiredPropertyException("GetProjectResult", "skipDelete");
-            }
-            this.skipDelete = skipDelete;
-            return this;
-        }
         public GetProjectResult build() {
             final var _resultValue = new GetProjectResult();
             _resultValue.autoCreateNetwork = autoCreateNetwork;
@@ -241,7 +227,6 @@ public final class GetProjectResult {
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.pulumiLabels = pulumiLabels;
-            _resultValue.skipDelete = skipDelete;
             return _resultValue;
         }
     }

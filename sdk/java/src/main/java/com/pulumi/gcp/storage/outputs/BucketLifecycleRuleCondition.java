@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRuleCondition {
     /**
-     * @return Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     private @Nullable Integer age;
@@ -56,11 +56,6 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable List<String> matchesSuffixes;
     /**
-     * @return While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-     * 
-     */
-    private @Nullable Boolean noAge;
-    /**
      * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
@@ -70,6 +65,11 @@ public final class BucketLifecycleRuleCondition {
      * 
      */
     private @Nullable Integer numNewerVersions;
+    /**
+     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * 
+     */
+    private @Nullable Boolean sendAgeIfZero;
     /**
      * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
      * 
@@ -93,7 +93,7 @@ public final class BucketLifecycleRuleCondition {
 
     private BucketLifecycleRuleCondition() {}
     /**
-     * @return Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     public Optional<Integer> age() {
@@ -150,13 +150,6 @@ public final class BucketLifecycleRuleCondition {
         return this.matchesSuffixes == null ? List.of() : this.matchesSuffixes;
     }
     /**
-     * @return While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-     * 
-     */
-    public Optional<Boolean> noAge() {
-        return Optional.ofNullable(this.noAge);
-    }
-    /**
      * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
@@ -169,6 +162,13 @@ public final class BucketLifecycleRuleCondition {
      */
     public Optional<Integer> numNewerVersions() {
         return Optional.ofNullable(this.numNewerVersions);
+    }
+    /**
+     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * 
+     */
+    public Optional<Boolean> sendAgeIfZero() {
+        return Optional.ofNullable(this.sendAgeIfZero);
     }
     /**
      * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
@@ -216,9 +216,9 @@ public final class BucketLifecycleRuleCondition {
         private @Nullable List<String> matchesPrefixes;
         private @Nullable List<String> matchesStorageClasses;
         private @Nullable List<String> matchesSuffixes;
-        private @Nullable Boolean noAge;
         private @Nullable String noncurrentTimeBefore;
         private @Nullable Integer numNewerVersions;
+        private @Nullable Boolean sendAgeIfZero;
         private @Nullable Boolean sendDaysSinceCustomTimeIfZero;
         private @Nullable Boolean sendDaysSinceNoncurrentTimeIfZero;
         private @Nullable Boolean sendNumNewerVersionsIfZero;
@@ -234,9 +234,9 @@ public final class BucketLifecycleRuleCondition {
     	      this.matchesPrefixes = defaults.matchesPrefixes;
     	      this.matchesStorageClasses = defaults.matchesStorageClasses;
     	      this.matchesSuffixes = defaults.matchesSuffixes;
-    	      this.noAge = defaults.noAge;
     	      this.noncurrentTimeBefore = defaults.noncurrentTimeBefore;
     	      this.numNewerVersions = defaults.numNewerVersions;
+    	      this.sendAgeIfZero = defaults.sendAgeIfZero;
     	      this.sendDaysSinceCustomTimeIfZero = defaults.sendDaysSinceCustomTimeIfZero;
     	      this.sendDaysSinceNoncurrentTimeIfZero = defaults.sendDaysSinceNoncurrentTimeIfZero;
     	      this.sendNumNewerVersionsIfZero = defaults.sendNumNewerVersionsIfZero;
@@ -301,12 +301,6 @@ public final class BucketLifecycleRuleCondition {
             return matchesSuffixes(List.of(matchesSuffixes));
         }
         @CustomType.Setter
-        public Builder noAge(@Nullable Boolean noAge) {
-
-            this.noAge = noAge;
-            return this;
-        }
-        @CustomType.Setter
         public Builder noncurrentTimeBefore(@Nullable String noncurrentTimeBefore) {
 
             this.noncurrentTimeBefore = noncurrentTimeBefore;
@@ -316,6 +310,12 @@ public final class BucketLifecycleRuleCondition {
         public Builder numNewerVersions(@Nullable Integer numNewerVersions) {
 
             this.numNewerVersions = numNewerVersions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sendAgeIfZero(@Nullable Boolean sendAgeIfZero) {
+
+            this.sendAgeIfZero = sendAgeIfZero;
             return this;
         }
         @CustomType.Setter
@@ -352,9 +352,9 @@ public final class BucketLifecycleRuleCondition {
             _resultValue.matchesPrefixes = matchesPrefixes;
             _resultValue.matchesStorageClasses = matchesStorageClasses;
             _resultValue.matchesSuffixes = matchesSuffixes;
-            _resultValue.noAge = noAge;
             _resultValue.noncurrentTimeBefore = noncurrentTimeBefore;
             _resultValue.numNewerVersions = numNewerVersions;
+            _resultValue.sendAgeIfZero = sendAgeIfZero;
             _resultValue.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
             _resultValue.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
             _resultValue.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;

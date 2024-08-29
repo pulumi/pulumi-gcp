@@ -215,14 +215,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "android_key_restrictions": {
                     "allowed_applications": [{
@@ -242,14 +237,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "api_targets": [{
                     "service": "translate.googleapis.com",
@@ -266,14 +256,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "api_targets": [{
                     "service": "translate.googleapis.com",
@@ -290,14 +275,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
-            display_name="sample-key",
-            project=basic.name)
+            display_name="sample-key")
         ```
         ### Server_key
         A basic example of a server api keys key
@@ -305,14 +285,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "api_targets": [{
                     "service": "translate.googleapis.com",
@@ -372,14 +347,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "android_key_restrictions": {
                     "allowed_applications": [{
@@ -399,14 +369,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "api_targets": [{
                     "service": "translate.googleapis.com",
@@ -423,14 +388,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "api_targets": [{
                     "service": "translate.googleapis.com",
@@ -447,14 +407,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
-            display_name="sample-key",
-            project=basic.name)
+            display_name="sample-key")
         ```
         ### Server_key
         A basic example of a server api keys key
@@ -462,14 +417,9 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            name="app",
-            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
             name="key",
             display_name="sample-key",
-            project=basic.name,
             restrictions={
                 "api_targets": [{
                     "service": "translate.googleapis.com",

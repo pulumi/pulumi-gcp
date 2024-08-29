@@ -248,7 +248,8 @@ class FolderSettings(pulumi.CustomResource):
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="folder-name",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         settings = gcp.logging.get_folder_settings_output(folder=my_folder.folder_id)
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="kms-key",
@@ -315,7 +316,8 @@ class FolderSettings(pulumi.CustomResource):
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="folder-name",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         settings = gcp.logging.get_folder_settings_output(folder=my_folder.folder_id)
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="kms-key",

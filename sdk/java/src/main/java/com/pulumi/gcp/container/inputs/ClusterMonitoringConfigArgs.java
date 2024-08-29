@@ -22,15 +22,15 @@ public final class ClusterMonitoringConfigArgs extends com.pulumi.resources.Reso
      * Configuration for Advanced Datapath Monitoring. Structure is documented below.
      * 
      */
-    @Import(name="advancedDatapathObservabilityConfigs")
-    private @Nullable Output<List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs>> advancedDatapathObservabilityConfigs;
+    @Import(name="advancedDatapathObservabilityConfig")
+    private @Nullable Output<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs> advancedDatapathObservabilityConfig;
 
     /**
      * @return Configuration for Advanced Datapath Monitoring. Structure is documented below.
      * 
      */
-    public Optional<Output<List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs>>> advancedDatapathObservabilityConfigs() {
-        return Optional.ofNullable(this.advancedDatapathObservabilityConfigs);
+    public Optional<Output<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs>> advancedDatapathObservabilityConfig() {
+        return Optional.ofNullable(this.advancedDatapathObservabilityConfig);
     }
 
     /**
@@ -66,7 +66,7 @@ public final class ClusterMonitoringConfigArgs extends com.pulumi.resources.Reso
     private ClusterMonitoringConfigArgs() {}
 
     private ClusterMonitoringConfigArgs(ClusterMonitoringConfigArgs $) {
-        this.advancedDatapathObservabilityConfigs = $.advancedDatapathObservabilityConfigs;
+        this.advancedDatapathObservabilityConfig = $.advancedDatapathObservabilityConfig;
         this.enableComponents = $.enableComponents;
         this.managedPrometheus = $.managedPrometheus;
     }
@@ -90,34 +90,24 @@ public final class ClusterMonitoringConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param advancedDatapathObservabilityConfigs Configuration for Advanced Datapath Monitoring. Structure is documented below.
+         * @param advancedDatapathObservabilityConfig Configuration for Advanced Datapath Monitoring. Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder advancedDatapathObservabilityConfigs(@Nullable Output<List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs>> advancedDatapathObservabilityConfigs) {
-            $.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
+        public Builder advancedDatapathObservabilityConfig(@Nullable Output<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs> advancedDatapathObservabilityConfig) {
+            $.advancedDatapathObservabilityConfig = advancedDatapathObservabilityConfig;
             return this;
         }
 
         /**
-         * @param advancedDatapathObservabilityConfigs Configuration for Advanced Datapath Monitoring. Structure is documented below.
+         * @param advancedDatapathObservabilityConfig Configuration for Advanced Datapath Monitoring. Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder advancedDatapathObservabilityConfigs(List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs> advancedDatapathObservabilityConfigs) {
-            return advancedDatapathObservabilityConfigs(Output.of(advancedDatapathObservabilityConfigs));
-        }
-
-        /**
-         * @param advancedDatapathObservabilityConfigs Configuration for Advanced Datapath Monitoring. Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder advancedDatapathObservabilityConfigs(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs... advancedDatapathObservabilityConfigs) {
-            return advancedDatapathObservabilityConfigs(List.of(advancedDatapathObservabilityConfigs));
+        public Builder advancedDatapathObservabilityConfig(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs advancedDatapathObservabilityConfig) {
+            return advancedDatapathObservabilityConfig(Output.of(advancedDatapathObservabilityConfig));
         }
 
         /**

@@ -379,6 +379,130 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Subnetwork Reserved Internal Range
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.InternalRange;
+ * import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("network-reserved-internal-range")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var reserved = new InternalRange("reserved", InternalRangeArgs.builder()
+ *             .name("reserved")
+ *             .network(default_.id())
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
+ *             .prefixLength(24)
+ *             .targetCidrRanges("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var subnetwork_reserved_internal_range = new Subnetwork("subnetwork-reserved-internal-range", SubnetworkArgs.builder()
+ *             .name("subnetwork-reserved-internal-range")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .reservedInternalRange(reserved.id().applyValue(id -> String.format("networkconnectivity.googleapis.com/%s", id)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Subnetwork Reserved Secondary Range
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.InternalRange;
+ * import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("network-reserved-secondary-range")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var reserved = new InternalRange("reserved", InternalRangeArgs.builder()
+ *             .name("reserved")
+ *             .network(default_.id())
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
+ *             .prefixLength(24)
+ *             .targetCidrRanges("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var reservedSecondary = new InternalRange("reservedSecondary", InternalRangeArgs.builder()
+ *             .name("reserved-secondary")
+ *             .network(default_.id())
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
+ *             .prefixLength(16)
+ *             .targetCidrRanges("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var subnetwork_reserved_secondary_range = new Subnetwork("subnetwork-reserved-secondary-range", SubnetworkArgs.builder()
+ *             .name("subnetwork-reserved-secondary-range")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .reservedInternalRange(reserved.id().applyValue(id -> String.format("networkconnectivity.googleapis.com/%s", id)))
+ *             .secondaryIpRanges(SubnetworkSecondaryIpRangeArgs.builder()
+ *                 .rangeName("secondary")
+ *                 .reservedInternalRange(reservedSecondary.id().applyValue(id -> String.format("networkconnectivity.googleapis.com/%s", id)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -532,6 +656,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
     @Export(name="ipCidrRange", refs={String.class}, tree="[0]")
@@ -542,6 +667,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
     public Output<String> ipCidrRange() {
@@ -734,6 +860,22 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    @Export(name="reservedInternalRange", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> reservedInternalRange;
+
+    /**
+     * @return The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    public Output<Optional<String>> reservedInternalRange() {
+        return Codegen.optional(this.reservedInternalRange);
     }
     /**
      * The role of subnetwork.

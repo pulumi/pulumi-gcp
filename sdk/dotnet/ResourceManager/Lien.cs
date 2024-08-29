@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.ResourceManager
     ///     {
     ///         ProjectId = "staging-project",
     ///         Name = "A very important project!",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var lien = new Gcp.ResourceManager.Lien("lien", new()

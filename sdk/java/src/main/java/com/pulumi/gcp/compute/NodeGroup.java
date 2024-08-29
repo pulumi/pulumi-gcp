@@ -218,6 +218,7 @@ import javax.annotation.Nullable;
  *             .projectId("project-id")
  *             .name("project-name")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()

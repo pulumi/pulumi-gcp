@@ -23,8 +23,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
      * Specifies the balancing mode for this backend.
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
-     * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-     * Default value is `CONNECTION`.
+     * Default value is `UTILIZATION`.
      * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
      * 
      */
@@ -35,8 +34,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
      * @return Specifies the balancing mode for this backend.
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
-     * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-     * Default value is `CONNECTION`.
+     * Default value is `UTILIZATION`.
      * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
      * 
      */
@@ -360,8 +358,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          * @param balancingMode Specifies the balancing mode for this backend.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
-         * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-         * Default value is `CONNECTION`.
+         * Default value is `UTILIZATION`.
          * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          * 
          * @return builder
@@ -376,8 +373,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          * @param balancingMode Specifies the balancing mode for this backend.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
-         * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
-         * Default value is `CONNECTION`.
+         * Default value is `UTILIZATION`.
          * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          * 
          * @return builder

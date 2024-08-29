@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  *         var myFolder = new Folder("myFolder", FolderArgs.builder()
  *             .displayName("my-folder")
  *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()
@@ -119,12 +120,14 @@ import javax.annotation.Nullable;
  *         var myFolder = new Folder("myFolder", FolderArgs.builder()
  *             .displayName("my-folder")
  *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("My Project")
  *             .projectId("your-project-id")
  *             .folderId(myFolder.name())
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()

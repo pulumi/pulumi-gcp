@@ -492,12 +492,12 @@ class BucketLifecycleRuleCondition(dict):
             suggest = "matches_storage_classes"
         elif key == "matchesSuffixes":
             suggest = "matches_suffixes"
-        elif key == "noAge":
-            suggest = "no_age"
         elif key == "noncurrentTimeBefore":
             suggest = "noncurrent_time_before"
         elif key == "numNewerVersions":
             suggest = "num_newer_versions"
+        elif key == "sendAgeIfZero":
+            suggest = "send_age_if_zero"
         elif key == "sendDaysSinceCustomTimeIfZero":
             suggest = "send_days_since_custom_time_if_zero"
         elif key == "sendDaysSinceNoncurrentTimeIfZero":
@@ -527,15 +527,15 @@ class BucketLifecycleRuleCondition(dict):
                  matches_prefixes: Optional[Sequence[str]] = None,
                  matches_storage_classes: Optional[Sequence[str]] = None,
                  matches_suffixes: Optional[Sequence[str]] = None,
-                 no_age: Optional[bool] = None,
                  noncurrent_time_before: Optional[str] = None,
                  num_newer_versions: Optional[int] = None,
+                 send_age_if_zero: Optional[bool] = None,
                  send_days_since_custom_time_if_zero: Optional[bool] = None,
                  send_days_since_noncurrent_time_if_zero: Optional[bool] = None,
                  send_num_newer_versions_if_zero: Optional[bool] = None,
                  with_state: Optional[str] = None):
         """
-        :param int age: Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+        :param int age: Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         :param str created_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
         :param str custom_time_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
         :param int days_since_custom_time: Number of days elapsed since the user-specified timestamp set on an object.
@@ -544,9 +544,9 @@ class BucketLifecycleRuleCondition(dict):
         :param Sequence[str] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param Sequence[str] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         :param Sequence[str] matches_suffixes: One or more matching name suffixes to satisfy this condition.
-        :param bool no_age: While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
         :param str noncurrent_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         :param int num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        :param bool send_age_if_zero: While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
         :param bool send_days_since_custom_time_if_zero: While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
         :param bool send_days_since_noncurrent_time_if_zero: While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
         :param bool send_num_newer_versions_if_zero: While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
@@ -568,12 +568,12 @@ class BucketLifecycleRuleCondition(dict):
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         if matches_suffixes is not None:
             pulumi.set(__self__, "matches_suffixes", matches_suffixes)
-        if no_age is not None:
-            pulumi.set(__self__, "no_age", no_age)
         if noncurrent_time_before is not None:
             pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
             pulumi.set(__self__, "num_newer_versions", num_newer_versions)
+        if send_age_if_zero is not None:
+            pulumi.set(__self__, "send_age_if_zero", send_age_if_zero)
         if send_days_since_custom_time_if_zero is not None:
             pulumi.set(__self__, "send_days_since_custom_time_if_zero", send_days_since_custom_time_if_zero)
         if send_days_since_noncurrent_time_if_zero is not None:
@@ -587,7 +587,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter
     def age(self) -> Optional[int]:
         """
-        Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+        Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         """
         return pulumi.get(self, "age")
 
@@ -649,14 +649,6 @@ class BucketLifecycleRuleCondition(dict):
         return pulumi.get(self, "matches_suffixes")
 
     @property
-    @pulumi.getter(name="noAge")
-    def no_age(self) -> Optional[bool]:
-        """
-        While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-        """
-        return pulumi.get(self, "no_age")
-
-    @property
     @pulumi.getter(name="noncurrentTimeBefore")
     def noncurrent_time_before(self) -> Optional[str]:
         """
@@ -671,6 +663,14 @@ class BucketLifecycleRuleCondition(dict):
         Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         """
         return pulumi.get(self, "num_newer_versions")
+
+    @property
+    @pulumi.getter(name="sendAgeIfZero")
+    def send_age_if_zero(self) -> Optional[bool]:
+        """
+        While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+        """
+        return pulumi.get(self, "send_age_if_zero")
 
     @property
     @pulumi.getter(name="sendDaysSinceCustomTimeIfZero")
@@ -2907,9 +2907,9 @@ class GetBucketLifecycleRuleConditionResult(dict):
                  matches_prefixes: Sequence[str],
                  matches_storage_classes: Sequence[str],
                  matches_suffixes: Sequence[str],
-                 no_age: bool,
                  noncurrent_time_before: str,
                  num_newer_versions: int,
+                 send_age_if_zero: bool,
                  send_days_since_custom_time_if_zero: bool,
                  send_days_since_noncurrent_time_if_zero: bool,
                  send_num_newer_versions_if_zero: bool,
@@ -2924,9 +2924,9 @@ class GetBucketLifecycleRuleConditionResult(dict):
         :param Sequence[str] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param Sequence[str] matches_storage_classes: Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
         :param Sequence[str] matches_suffixes: One or more matching name suffixes to satisfy this condition.
-        :param bool no_age: While set true, age value will be omitted.Required to set true when age is unset in the config file.
         :param str noncurrent_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
         :param int num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        :param bool send_age_if_zero: While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
         :param bool send_days_since_custom_time_if_zero: While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
         :param bool send_days_since_noncurrent_time_if_zero: While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
         :param bool send_num_newer_versions_if_zero: While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
@@ -2940,9 +2940,9 @@ class GetBucketLifecycleRuleConditionResult(dict):
         pulumi.set(__self__, "matches_prefixes", matches_prefixes)
         pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         pulumi.set(__self__, "matches_suffixes", matches_suffixes)
-        pulumi.set(__self__, "no_age", no_age)
         pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         pulumi.set(__self__, "num_newer_versions", num_newer_versions)
+        pulumi.set(__self__, "send_age_if_zero", send_age_if_zero)
         pulumi.set(__self__, "send_days_since_custom_time_if_zero", send_days_since_custom_time_if_zero)
         pulumi.set(__self__, "send_days_since_noncurrent_time_if_zero", send_days_since_noncurrent_time_if_zero)
         pulumi.set(__self__, "send_num_newer_versions_if_zero", send_num_newer_versions_if_zero)
@@ -3014,14 +3014,6 @@ class GetBucketLifecycleRuleConditionResult(dict):
         return pulumi.get(self, "matches_suffixes")
 
     @property
-    @pulumi.getter(name="noAge")
-    def no_age(self) -> bool:
-        """
-        While set true, age value will be omitted.Required to set true when age is unset in the config file.
-        """
-        return pulumi.get(self, "no_age")
-
-    @property
     @pulumi.getter(name="noncurrentTimeBefore")
     def noncurrent_time_before(self) -> str:
         """
@@ -3036,6 +3028,14 @@ class GetBucketLifecycleRuleConditionResult(dict):
         Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         """
         return pulumi.get(self, "num_newer_versions")
+
+    @property
+    @pulumi.getter(name="sendAgeIfZero")
+    def send_age_if_zero(self) -> bool:
+        """
+        While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
+        """
+        return pulumi.get(self, "send_age_if_zero")
 
     @property
     @pulumi.getter(name="sendDaysSinceCustomTimeIfZero")

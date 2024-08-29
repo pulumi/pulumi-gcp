@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     {
     ///         Parent = "organizations/123456789",
     ///         DisplayName = "folder-name",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var example = new Gcp.SecurityCenter.FolderCustomModule("example", new()
@@ -80,6 +81,7 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     {
     ///         Parent = "organizations/123456789",
     ///         DisplayName = "folder-name",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var example = new Gcp.SecurityCenter.FolderCustomModule("example", new()

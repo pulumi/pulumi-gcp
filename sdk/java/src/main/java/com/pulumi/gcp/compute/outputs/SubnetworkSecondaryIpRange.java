@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SubnetworkSecondaryIpRange {
@@ -15,9 +17,10 @@ public final class SubnetworkSecondaryIpRange {
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
-    private String ipCidrRange;
+    private @Nullable String ipCidrRange;
     /**
      * @return The name associated with this subnetwork secondary range, used
      * when adding an alias IP range to a VM instance. The name must
@@ -26,6 +29,12 @@ public final class SubnetworkSecondaryIpRange {
      * 
      */
     private String rangeName;
+    /**
+     * @return The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    private @Nullable String reservedInternalRange;
 
     private SubnetworkSecondaryIpRange() {}
     /**
@@ -33,10 +42,11 @@ public final class SubnetworkSecondaryIpRange {
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
+     * Field is optional when `reserved_internal_range` is defined, otherwise required.
      * 
      */
-    public String ipCidrRange() {
-        return this.ipCidrRange;
+    public Optional<String> ipCidrRange() {
+        return Optional.ofNullable(this.ipCidrRange);
     }
     /**
      * @return The name associated with this subnetwork secondary range, used
@@ -48,6 +58,14 @@ public final class SubnetworkSecondaryIpRange {
     public String rangeName() {
         return this.rangeName;
     }
+    /**
+     * @return The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+     * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+     * 
+     */
+    public Optional<String> reservedInternalRange() {
+        return Optional.ofNullable(this.reservedInternalRange);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -58,20 +76,20 @@ public final class SubnetworkSecondaryIpRange {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String ipCidrRange;
+        private @Nullable String ipCidrRange;
         private String rangeName;
+        private @Nullable String reservedInternalRange;
         public Builder() {}
         public Builder(SubnetworkSecondaryIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.rangeName = defaults.rangeName;
+    	      this.reservedInternalRange = defaults.reservedInternalRange;
         }
 
         @CustomType.Setter
-        public Builder ipCidrRange(String ipCidrRange) {
-            if (ipCidrRange == null) {
-              throw new MissingRequiredPropertyException("SubnetworkSecondaryIpRange", "ipCidrRange");
-            }
+        public Builder ipCidrRange(@Nullable String ipCidrRange) {
+
             this.ipCidrRange = ipCidrRange;
             return this;
         }
@@ -83,10 +101,17 @@ public final class SubnetworkSecondaryIpRange {
             this.rangeName = rangeName;
             return this;
         }
+        @CustomType.Setter
+        public Builder reservedInternalRange(@Nullable String reservedInternalRange) {
+
+            this.reservedInternalRange = reservedInternalRange;
+            return this;
+        }
         public SubnetworkSecondaryIpRange build() {
             final var _resultValue = new SubnetworkSecondaryIpRange();
             _resultValue.ipCidrRange = ipCidrRange;
             _resultValue.rangeName = rangeName;
+            _resultValue.reservedInternalRange = reservedInternalRange;
             return _resultValue;
         }
     }
