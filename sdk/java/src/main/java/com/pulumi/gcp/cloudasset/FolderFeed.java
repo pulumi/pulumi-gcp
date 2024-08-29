@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  *         var myFolder = new Folder("myFolder", FolderArgs.builder()
  *             .displayName("Networking")
  *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         // Create a feed that sends notifications about network resource updates under a

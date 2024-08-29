@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *     projectId: "project-1",
  *     name: "Service Project",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [serviceProject],
@@ -39,6 +40,7 @@ import * as utilities from "../utilities";
  *     projectId: "project-1",
  *     name: "Service Project Full",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [serviceProjectFull],

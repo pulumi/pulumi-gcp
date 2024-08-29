@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -5077,16 +5077,9 @@ func (o DatasetIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type IamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression string `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 // IamBindingConditionInput is an input type that accepts IamBindingConditionArgs and IamBindingConditionOutput values.
@@ -5101,16 +5094,9 @@ type IamBindingConditionInput interface {
 }
 
 type IamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IamBindingConditionArgs) ElementType() reflect.Type {
@@ -5190,21 +5176,14 @@ func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutputWithContext(ctx
 	}).(IamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Textual representation of an expression in Common Expression Language syntax.
 func (o IamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v IamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-// A title for the expression, i.e. a short string describing its purpose.
 func (o IamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v IamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -5233,11 +5212,6 @@ func (o IamBindingConditionPtrOutput) Elem() IamBindingConditionOutput {
 	}).(IamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IamBindingCondition) *string {
 		if v == nil {
@@ -5247,7 +5221,6 @@ func (o IamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Textual representation of an expression in Common Expression Language syntax.
 func (o IamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IamBindingCondition) *string {
 		if v == nil {
@@ -5257,7 +5230,6 @@ func (o IamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A title for the expression, i.e. a short string describing its purpose.
 func (o IamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IamBindingCondition) *string {
 		if v == nil {
@@ -5268,16 +5240,9 @@ func (o IamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type IamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression string `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 // IamMemberConditionInput is an input type that accepts IamMemberConditionArgs and IamMemberConditionOutput values.
@@ -5292,16 +5257,9 @@ type IamMemberConditionInput interface {
 }
 
 type IamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IamMemberConditionArgs) ElementType() reflect.Type {
@@ -5381,21 +5339,14 @@ func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutputWithContext(ctx c
 	}).(IamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Textual representation of an expression in Common Expression Language syntax.
 func (o IamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v IamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-// A title for the expression, i.e. a short string describing its purpose.
 func (o IamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v IamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -5424,11 +5375,6 @@ func (o IamMemberConditionPtrOutput) Elem() IamMemberConditionOutput {
 	}).(IamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o IamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IamMemberCondition) *string {
 		if v == nil {
@@ -5438,7 +5384,6 @@ func (o IamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Textual representation of an expression in Common Expression Language syntax.
 func (o IamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IamMemberCondition) *string {
 		if v == nil {
@@ -5448,7 +5393,6 @@ func (o IamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A title for the expression, i.e. a short string describing its purpose.
 func (o IamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IamMemberCondition) *string {
 		if v == nil {

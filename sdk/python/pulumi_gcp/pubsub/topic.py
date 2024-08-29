@@ -947,7 +947,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="schemaSettings")
-    def schema_settings(self) -> pulumi.Output['outputs.TopicSchemaSettings']:
+    def schema_settings(self) -> pulumi.Output[Optional['outputs.TopicSchemaSettings']]:
         """
         Settings for validating messages published against a schema.
         Structure is documented below.

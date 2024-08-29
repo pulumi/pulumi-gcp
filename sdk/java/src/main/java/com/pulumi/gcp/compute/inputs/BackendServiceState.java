@@ -541,9 +541,23 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="outlierDetection")
     private @Nullable Output<BackendServiceOutlierDetectionArgs> outlierDetection;
 
+    /**
+     * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<BackendServiceOutlierDetectionArgs>> outlierDetection() {
         return Optional.ofNullable(this.outlierDetection);
     }
@@ -1469,11 +1483,29 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
             return name(Output.of(name));
         }
 
+        /**
+         * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
+         * Applicable backend service types can be a global backend service with the
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outlierDetection(@Nullable Output<BackendServiceOutlierDetectionArgs> outlierDetection) {
             $.outlierDetection = outlierDetection;
             return this;
         }
 
+        /**
+         * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
+         * Applicable backend service types can be a global backend service with the
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outlierDetection(BackendServiceOutlierDetectionArgs outlierDetection) {
             return outlierDetection(Output.of(outlierDetection));
         }

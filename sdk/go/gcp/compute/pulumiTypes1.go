@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -13955,9 +13955,7 @@ type GetBackendServiceBackend struct {
 	// and CONNECTION (for TCP/SSL).
 	//
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-	// for an explanation of load balancing modes.
-	//
-	// From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
 	BalancingMode string `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -14051,9 +14049,7 @@ type GetBackendServiceBackendArgs struct {
 	// and CONNECTION (for TCP/SSL).
 	//
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-	// for an explanation of load balancing modes.
-	//
-	// From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
 	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -14186,9 +14182,7 @@ func (o GetBackendServiceBackendOutput) ToGetBackendServiceBackendOutputWithCont
 // and CONNECTION (for TCP/SSL).
 //
 // See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-// for an explanation of load balancing modes.
-//
-// From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
 func (o GetBackendServiceBackendOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) string { return v.BalancingMode }).(pulumi.StringOutput)
 }
@@ -15617,6 +15611,8 @@ func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) Index(i pulumi.I
 }
 
 type GetBackendServiceIap struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	Enabled bool `pulumi:"enabled"`
 	// OAuth2 Client ID for IAP
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
 	// OAuth2 Client Secret for IAP
@@ -15637,6 +15633,8 @@ type GetBackendServiceIapInput interface {
 }
 
 type GetBackendServiceIapArgs struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// OAuth2 Client ID for IAP
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
 	// OAuth2 Client Secret for IAP
@@ -15694,6 +15692,11 @@ func (o GetBackendServiceIapOutput) ToGetBackendServiceIapOutput() GetBackendSer
 
 func (o GetBackendServiceIapOutput) ToGetBackendServiceIapOutputWithContext(ctx context.Context) GetBackendServiceIapOutput {
 	return o
+}
+
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+func (o GetBackendServiceIapOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // OAuth2 Client ID for IAP
@@ -17731,6 +17734,8 @@ type GetForwardingRulesRule struct {
 	// you create the resource.
 	Description     string            `pulumi:"description"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId int `pulumi:"forwardingRuleId"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced 'target' or 'backendService'.
@@ -18013,6 +18018,8 @@ type GetForwardingRulesRuleArgs struct {
 	// you create the resource.
 	Description     pulumi.StringInput    `pulumi:"description"`
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId pulumi.IntInput `pulumi:"forwardingRuleId"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced 'target' or 'backendService'.
@@ -18356,6 +18363,11 @@ func (o GetForwardingRulesRuleOutput) Description() pulumi.StringOutput {
 
 func (o GetForwardingRulesRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetForwardingRulesRule) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o GetForwardingRulesRuleOutput) ForwardingRuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) int { return v.ForwardingRuleId }).(pulumi.IntOutput)
 }
 
 // IP address for which this forwarding rule accepts traffic. When a client

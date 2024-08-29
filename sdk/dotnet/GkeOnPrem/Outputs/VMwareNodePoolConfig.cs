@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// Specifies the vSphere config for node pool.
         /// Structure is documented below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.VMwareNodePoolConfigVsphereConfig> VsphereConfigs;
+        public readonly Outputs.VMwareNodePoolConfigVsphereConfig? VsphereConfig;
 
         [OutputConstructor]
         private VMwareNodePoolConfig(
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
 
             ImmutableArray<Outputs.VMwareNodePoolConfigTaint> taints,
 
-            ImmutableArray<Outputs.VMwareNodePoolConfigVsphereConfig> vsphereConfigs)
+            Outputs.VMwareNodePoolConfigVsphereConfig? vsphereConfig)
         {
             BootDiskSizeGb = bootDiskSizeGb;
             Cpus = cpus;
@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
             MemoryMb = memoryMb;
             Replicas = replicas;
             Taints = taints;
-            VsphereConfigs = vsphereConfigs;
+            VsphereConfig = vsphereConfig;
         }
     }
 }

@@ -123,15 +123,6 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly createSampleIntegrations!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional, Deprecated)
-     * Indicates if sample workflow should be created along with provisioning.
-     *
-     * > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-     *
-     * @deprecated `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-     */
-    public readonly createSampleWorkflows!: pulumi.Output<boolean | undefined>;
-    /**
      * Location in which client needs to be provisioned.
      *
      *
@@ -143,15 +134,6 @@ export class Client extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * (Optional, Deprecated)
-     * Indicates provision with GMEK or CMEK.
-     *
-     * > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-     *
-     * @deprecated `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-     */
-    public readonly provisionGmek!: pulumi.Output<boolean | undefined>;
     /**
      * User input run-as service account, if empty, will bring up a new default service account.
      */
@@ -172,10 +154,8 @@ export class Client extends pulumi.CustomResource {
             const state = argsOrState as ClientState | undefined;
             resourceInputs["cloudKmsConfig"] = state ? state.cloudKmsConfig : undefined;
             resourceInputs["createSampleIntegrations"] = state ? state.createSampleIntegrations : undefined;
-            resourceInputs["createSampleWorkflows"] = state ? state.createSampleWorkflows : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["provisionGmek"] = state ? state.provisionGmek : undefined;
             resourceInputs["runAsServiceAccount"] = state ? state.runAsServiceAccount : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
@@ -184,10 +164,8 @@ export class Client extends pulumi.CustomResource {
             }
             resourceInputs["cloudKmsConfig"] = args ? args.cloudKmsConfig : undefined;
             resourceInputs["createSampleIntegrations"] = args ? args.createSampleIntegrations : undefined;
-            resourceInputs["createSampleWorkflows"] = args ? args.createSampleWorkflows : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["provisionGmek"] = args ? args.provisionGmek : undefined;
             resourceInputs["runAsServiceAccount"] = args ? args.runAsServiceAccount : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -209,15 +187,6 @@ export interface ClientState {
      */
     createSampleIntegrations?: pulumi.Input<boolean>;
     /**
-     * (Optional, Deprecated)
-     * Indicates if sample workflow should be created along with provisioning.
-     *
-     * > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-     *
-     * @deprecated `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-     */
-    createSampleWorkflows?: pulumi.Input<boolean>;
-    /**
      * Location in which client needs to be provisioned.
      *
      *
@@ -229,15 +198,6 @@ export interface ClientState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Indicates provision with GMEK or CMEK.
-     *
-     * > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-     *
-     * @deprecated `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-     */
-    provisionGmek?: pulumi.Input<boolean>;
     /**
      * User input run-as service account, if empty, will bring up a new default service account.
      */
@@ -258,15 +218,6 @@ export interface ClientArgs {
      */
     createSampleIntegrations?: pulumi.Input<boolean>;
     /**
-     * (Optional, Deprecated)
-     * Indicates if sample workflow should be created along with provisioning.
-     *
-     * > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-     *
-     * @deprecated `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-     */
-    createSampleWorkflows?: pulumi.Input<boolean>;
-    /**
      * Location in which client needs to be provisioned.
      *
      *
@@ -278,15 +229,6 @@ export interface ClientArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Indicates provision with GMEK or CMEK.
-     *
-     * > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-     *
-     * @deprecated `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-     */
-    provisionGmek?: pulumi.Input<boolean>;
     /**
      * User input run-as service account, if empty, will bring up a new default service account.
      */

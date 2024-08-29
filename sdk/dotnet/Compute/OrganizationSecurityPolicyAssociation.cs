@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         DisplayName = "tf-test-secpol",
     ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()

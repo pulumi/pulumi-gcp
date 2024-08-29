@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,7 +18,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,7 +66,8 @@ type LookupFolderArgs struct {
 // A collection of values returned by getFolder.
 type LookupFolderResult struct {
 	// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime string `pulumi:"createTime"`
+	CreateTime         string `pulumi:"createTime"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// The folder's display name.
 	DisplayName string `pulumi:"displayName"`
 	Folder      string `pulumi:"folder"`
@@ -127,6 +128,10 @@ func (o LookupFolderResultOutput) ToLookupFolderResultOutputWithContext(ctx cont
 // Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o LookupFolderResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFolderResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupFolderResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFolderResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // The folder's display name.

@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
@@ -106,6 +107,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
@@ -192,6 +194,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .scaling(ServiceTemplateScalingArgs.builder()
@@ -308,6 +311,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
@@ -354,6 +358,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .launchStage("GA")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
@@ -406,6 +411,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
@@ -484,6 +490,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
@@ -553,13 +560,14 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .launchStage("BETA")
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(                
  *                     ServiceTemplateContainerArgs.builder()
  *                         .name("hello-1")
- *                         .ports(ServiceTemplateContainerPortArgs.builder()
+ *                         .ports(ServiceTemplateContainerPortsArgs.builder()
  *                             .containerPort(8080)
  *                             .build())
  *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
@@ -633,6 +641,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .launchStage("BETA")
  *             .template(ServiceTemplateArgs.builder()
  *                 .executionEnvironment("EXECUTION_ENVIRONMENT_GEN2")
@@ -706,6 +715,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .name("cloudrun-service")
  *             .location("us-central1")
+ *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .launchStage("BETA")
  *             .template(ServiceTemplateArgs.builder()
@@ -924,6 +934,12 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.

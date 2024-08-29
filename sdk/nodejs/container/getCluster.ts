@@ -62,6 +62,7 @@ export interface GetClusterResult {
     readonly deletionProtection: boolean;
     readonly description: string;
     readonly dnsConfigs: outputs.container.GetClusterDnsConfig[];
+    readonly effectiveLabels: {[key: string]: string};
     readonly enableAutopilot: boolean;
     readonly enableCiliumClusterwideNetworkPolicy: boolean;
     readonly enableFqdnNetworkPolicy: boolean;
@@ -112,6 +113,7 @@ export interface GetClusterResult {
     readonly privateIpv6GoogleAccess: string;
     readonly project?: string;
     readonly protectConfigs: outputs.container.GetClusterProtectConfig[];
+    readonly pulumiLabels: {[key: string]: string};
     readonly releaseChannels: outputs.container.GetClusterReleaseChannel[];
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};

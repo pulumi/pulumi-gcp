@@ -26,10 +26,13 @@ class GetClientConfigResult:
     """
     A collection of values returned by getClientConfig.
     """
-    def __init__(__self__, access_token=None, id=None, project=None, region=None, zone=None):
+    def __init__(__self__, access_token=None, default_labels=None, id=None, project=None, region=None, zone=None):
         if access_token and not isinstance(access_token, str):
             raise TypeError("Expected argument 'access_token' to be a str")
         pulumi.set(__self__, "access_token", access_token)
+        if default_labels and not isinstance(default_labels, dict):
+            raise TypeError("Expected argument 'default_labels' to be a dict")
+        pulumi.set(__self__, "default_labels", default_labels)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -50,6 +53,14 @@ class GetClientConfigResult:
         The OAuth2 access token used by the client to authenticate against the Google Cloud API.
         """
         return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter(name="defaultLabels")
+    def default_labels(self) -> Mapping[str, str]:
+        """
+        The default labels configured on the provider.
+        """
+        return pulumi.get(self, "default_labels")
 
     @property
     @pulumi.getter
@@ -88,6 +99,7 @@ class AwaitableGetClientConfigResult(GetClientConfigResult):
             yield self
         return GetClientConfigResult(
             access_token=self.access_token,
+            default_labels=self.default_labels,
             id=self.id,
             project=self.project,
             region=self.region,
@@ -106,6 +118,7 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
 
     return AwaitableGetClientConfigResult(
         access_token=pulumi.get(__ret__, 'access_token'),
+        default_labels=pulumi.get(__ret__, 'default_labels'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),

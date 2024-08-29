@@ -86,18 +86,12 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
             set => _taints = value;
         }
 
-        [Input("vsphereConfigs")]
-        private InputList<Inputs.VMwareNodePoolConfigVsphereConfigGetArgs>? _vsphereConfigs;
-
         /// <summary>
         /// Specifies the vSphere config for node pool.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.VMwareNodePoolConfigVsphereConfigGetArgs> VsphereConfigs
-        {
-            get => _vsphereConfigs ?? (_vsphereConfigs = new InputList<Inputs.VMwareNodePoolConfigVsphereConfigGetArgs>());
-            set => _vsphereConfigs = value;
-        }
+        [Input("vsphereConfig")]
+        public Input<Inputs.VMwareNodePoolConfigVsphereConfigGetArgs>? VsphereConfig { get; set; }
 
         public VMwareNodePoolConfigGetArgs()
         {

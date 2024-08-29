@@ -55,11 +55,6 @@ public final class GetBucketLifecycleRuleCondition {
      */
     private List<String> matchesSuffixes;
     /**
-     * @return While set true, age value will be omitted.Required to set true when age is unset in the config file.
-     * 
-     */
-    private Boolean noAge;
-    /**
      * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
@@ -69,6 +64,11 @@ public final class GetBucketLifecycleRuleCondition {
      * 
      */
     private Integer numNewerVersions;
+    /**
+     * @return While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
+     * 
+     */
+    private Boolean sendAgeIfZero;
     /**
      * @return While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
      * 
@@ -149,13 +149,6 @@ public final class GetBucketLifecycleRuleCondition {
         return this.matchesSuffixes;
     }
     /**
-     * @return While set true, age value will be omitted.Required to set true when age is unset in the config file.
-     * 
-     */
-    public Boolean noAge() {
-        return this.noAge;
-    }
-    /**
      * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
      * 
      */
@@ -168,6 +161,13 @@ public final class GetBucketLifecycleRuleCondition {
      */
     public Integer numNewerVersions() {
         return this.numNewerVersions;
+    }
+    /**
+     * @return While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
+     * 
+     */
+    public Boolean sendAgeIfZero() {
+        return this.sendAgeIfZero;
     }
     /**
      * @return While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
@@ -215,9 +215,9 @@ public final class GetBucketLifecycleRuleCondition {
         private List<String> matchesPrefixes;
         private List<String> matchesStorageClasses;
         private List<String> matchesSuffixes;
-        private Boolean noAge;
         private String noncurrentTimeBefore;
         private Integer numNewerVersions;
+        private Boolean sendAgeIfZero;
         private Boolean sendDaysSinceCustomTimeIfZero;
         private Boolean sendDaysSinceNoncurrentTimeIfZero;
         private Boolean sendNumNewerVersionsIfZero;
@@ -233,9 +233,9 @@ public final class GetBucketLifecycleRuleCondition {
     	      this.matchesPrefixes = defaults.matchesPrefixes;
     	      this.matchesStorageClasses = defaults.matchesStorageClasses;
     	      this.matchesSuffixes = defaults.matchesSuffixes;
-    	      this.noAge = defaults.noAge;
     	      this.noncurrentTimeBefore = defaults.noncurrentTimeBefore;
     	      this.numNewerVersions = defaults.numNewerVersions;
+    	      this.sendAgeIfZero = defaults.sendAgeIfZero;
     	      this.sendDaysSinceCustomTimeIfZero = defaults.sendDaysSinceCustomTimeIfZero;
     	      this.sendDaysSinceNoncurrentTimeIfZero = defaults.sendDaysSinceNoncurrentTimeIfZero;
     	      this.sendNumNewerVersionsIfZero = defaults.sendNumNewerVersionsIfZero;
@@ -316,14 +316,6 @@ public final class GetBucketLifecycleRuleCondition {
             return matchesSuffixes(List.of(matchesSuffixes));
         }
         @CustomType.Setter
-        public Builder noAge(Boolean noAge) {
-            if (noAge == null) {
-              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "noAge");
-            }
-            this.noAge = noAge;
-            return this;
-        }
-        @CustomType.Setter
         public Builder noncurrentTimeBefore(String noncurrentTimeBefore) {
             if (noncurrentTimeBefore == null) {
               throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "noncurrentTimeBefore");
@@ -337,6 +329,14 @@ public final class GetBucketLifecycleRuleCondition {
               throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "numNewerVersions");
             }
             this.numNewerVersions = numNewerVersions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sendAgeIfZero(Boolean sendAgeIfZero) {
+            if (sendAgeIfZero == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "sendAgeIfZero");
+            }
+            this.sendAgeIfZero = sendAgeIfZero;
             return this;
         }
         @CustomType.Setter
@@ -381,9 +381,9 @@ public final class GetBucketLifecycleRuleCondition {
             _resultValue.matchesPrefixes = matchesPrefixes;
             _resultValue.matchesStorageClasses = matchesStorageClasses;
             _resultValue.matchesSuffixes = matchesSuffixes;
-            _resultValue.noAge = noAge;
             _resultValue.noncurrentTimeBefore = noncurrentTimeBefore;
             _resultValue.numNewerVersions = numNewerVersions;
+            _resultValue.sendAgeIfZero = sendAgeIfZero;
             _resultValue.sendDaysSinceCustomTimeIfZero = sendDaysSinceCustomTimeIfZero;
             _resultValue.sendDaysSinceNoncurrentTimeIfZero = sendDaysSinceNoncurrentTimeIfZero;
             _resultValue.sendNumNewerVersionsIfZero = sendNumNewerVersionsIfZero;

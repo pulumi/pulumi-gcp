@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1169,7 +1169,7 @@ func (o BucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
 }
 
 type BucketLifecycleRuleCondition struct {
-	// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
+	// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
 	Age *int `pulumi:"age"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
 	CreatedBefore *string `pulumi:"createdBefore"`
@@ -1186,12 +1186,12 @@ type BucketLifecycleRuleCondition struct {
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes []string `pulumi:"matchesSuffixes"`
-	// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-	NoAge *bool `pulumi:"noAge"`
 	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions *int `pulumi:"numNewerVersions"`
+	// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
+	SendAgeIfZero *bool `pulumi:"sendAgeIfZero"`
 	// While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
 	SendDaysSinceCustomTimeIfZero *bool `pulumi:"sendDaysSinceCustomTimeIfZero"`
 	// While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
@@ -1214,7 +1214,7 @@ type BucketLifecycleRuleConditionInput interface {
 }
 
 type BucketLifecycleRuleConditionArgs struct {
-	// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
+	// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
 	Age pulumi.IntPtrInput `pulumi:"age"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
@@ -1231,12 +1231,12 @@ type BucketLifecycleRuleConditionArgs struct {
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
-	// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-	NoAge pulumi.BoolPtrInput `pulumi:"noAge"`
 	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions pulumi.IntPtrInput `pulumi:"numNewerVersions"`
+	// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
+	SendAgeIfZero pulumi.BoolPtrInput `pulumi:"sendAgeIfZero"`
 	// While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
 	SendDaysSinceCustomTimeIfZero pulumi.BoolPtrInput `pulumi:"sendDaysSinceCustomTimeIfZero"`
 	// While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
@@ -1273,7 +1273,7 @@ func (o BucketLifecycleRuleConditionOutput) ToBucketLifecycleRuleConditionOutput
 	return o
 }
 
-// Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `noAge` to `true`, a default `age` of 0 will be set.
+// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
 func (o BucketLifecycleRuleConditionOutput) Age() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.Age }).(pulumi.IntPtrOutput)
 }
@@ -1315,11 +1315,6 @@ func (o BucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArray
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
-func (o BucketLifecycleRuleConditionOutput) NoAge() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.NoAge }).(pulumi.BoolPtrOutput)
-}
-
 // Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.NoncurrentTimeBefore }).(pulumi.StringPtrOutput)
@@ -1328,6 +1323,11 @@ func (o BucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.String
 // Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.NumNewerVersions }).(pulumi.IntPtrOutput)
+}
+
+// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
+func (o BucketLifecycleRuleConditionOutput) SendAgeIfZero() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.SendAgeIfZero }).(pulumi.BoolPtrOutput)
 }
 
 // While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
@@ -8292,12 +8292,12 @@ type GetBucketLifecycleRuleCondition struct {
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes []string `pulumi:"matchesSuffixes"`
-	// While set true, age value will be omitted.Required to set true when age is unset in the config file.
-	NoAge bool `pulumi:"noAge"`
 	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 	NoncurrentTimeBefore string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions int `pulumi:"numNewerVersions"`
+	// While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
+	SendAgeIfZero bool `pulumi:"sendAgeIfZero"`
 	// While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
 	SendDaysSinceCustomTimeIfZero bool `pulumi:"sendDaysSinceCustomTimeIfZero"`
 	// While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
@@ -8337,12 +8337,12 @@ type GetBucketLifecycleRuleConditionArgs struct {
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
-	// While set true, age value will be omitted.Required to set true when age is unset in the config file.
-	NoAge pulumi.BoolInput `pulumi:"noAge"`
 	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 	NoncurrentTimeBefore pulumi.StringInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions pulumi.IntInput `pulumi:"numNewerVersions"`
+	// While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
+	SendAgeIfZero pulumi.BoolInput `pulumi:"sendAgeIfZero"`
 	// While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
 	SendDaysSinceCustomTimeIfZero pulumi.BoolInput `pulumi:"sendDaysSinceCustomTimeIfZero"`
 	// While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
@@ -8446,11 +8446,6 @@ func (o GetBucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringAr
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// While set true, age value will be omitted.Required to set true when age is unset in the config file.
-func (o GetBucketLifecycleRuleConditionOutput) NoAge() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.NoAge }).(pulumi.BoolOutput)
-}
-
 // Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.NoncurrentTimeBefore }).(pulumi.StringOutput)
@@ -8459,6 +8454,11 @@ func (o GetBucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.Str
 // Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.NumNewerVersions }).(pulumi.IntOutput)
+}
+
+// While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
+func (o GetBucketLifecycleRuleConditionOutput) SendAgeIfZero() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.SendAgeIfZero }).(pulumi.BoolOutput)
 }
 
 // While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.

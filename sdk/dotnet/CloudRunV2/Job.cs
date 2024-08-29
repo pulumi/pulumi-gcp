@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -65,6 +66,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -125,6 +127,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -246,6 +249,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -282,6 +286,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         LaunchStage = "GA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -361,6 +366,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -428,6 +434,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -480,6 +487,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         DeletionProtection = false,
     ///         StartExecutionToken = "start-once-created",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -582,6 +590,9 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
@@ -817,6 +828,9 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("clientVersion")]
         public Input<string>? ClientVersion { get; set; }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -959,6 +973,9 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;

@@ -306,7 +306,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="My Project",
             project_id="your-project-id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         key_ring = gcp.kms.KeyRing("key_ring",
             name="key-ring",
             location="global",
@@ -411,7 +412,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="My Project",
             project_id="your-project-id",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         key_ring = gcp.kms.KeyRing("key_ring",
             name="key-ring",
             location="global",

@@ -263,7 +263,8 @@ class Lien(pulumi.CustomResource):
 
         project = gcp.organizations.Project("project",
             project_id="staging-project",
-            name="A very important project!")
+            name="A very important project!",
+            deletion_policy="DELETE")
         lien = gcp.resourcemanager.Lien("lien",
             parent=project.number.apply(lambda number: f"projects/{number}"),
             restrictions=["resourcemanager.projects.delete"],
@@ -322,7 +323,8 @@ class Lien(pulumi.CustomResource):
 
         project = gcp.organizations.Project("project",
             project_id="staging-project",
-            name="A very important project!")
+            name="A very important project!",
+            deletion_policy="DELETE")
         lien = gcp.resourcemanager.Lien("lien",
             parent=project.number.apply(lambda number: f"projects/{number}"),
             restrictions=["resourcemanager.projects.delete"],

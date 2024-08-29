@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17551,29 +17551,45 @@ func (i VMwareClusterVcenterArgs) ToVMwareClusterVcenterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterVcenterOutput)
 }
 
-// VMwareClusterVcenterArrayInput is an input type that accepts VMwareClusterVcenterArray and VMwareClusterVcenterArrayOutput values.
-// You can construct a concrete instance of `VMwareClusterVcenterArrayInput` via:
+func (i VMwareClusterVcenterArgs) ToVMwareClusterVcenterPtrOutput() VMwareClusterVcenterPtrOutput {
+	return i.ToVMwareClusterVcenterPtrOutputWithContext(context.Background())
+}
+
+func (i VMwareClusterVcenterArgs) ToVMwareClusterVcenterPtrOutputWithContext(ctx context.Context) VMwareClusterVcenterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterVcenterOutput).ToVMwareClusterVcenterPtrOutputWithContext(ctx)
+}
+
+// VMwareClusterVcenterPtrInput is an input type that accepts VMwareClusterVcenterArgs, VMwareClusterVcenterPtr and VMwareClusterVcenterPtrOutput values.
+// You can construct a concrete instance of `VMwareClusterVcenterPtrInput` via:
 //
-//	VMwareClusterVcenterArray{ VMwareClusterVcenterArgs{...} }
-type VMwareClusterVcenterArrayInput interface {
+//	        VMwareClusterVcenterArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMwareClusterVcenterPtrInput interface {
 	pulumi.Input
 
-	ToVMwareClusterVcenterArrayOutput() VMwareClusterVcenterArrayOutput
-	ToVMwareClusterVcenterArrayOutputWithContext(context.Context) VMwareClusterVcenterArrayOutput
+	ToVMwareClusterVcenterPtrOutput() VMwareClusterVcenterPtrOutput
+	ToVMwareClusterVcenterPtrOutputWithContext(context.Context) VMwareClusterVcenterPtrOutput
 }
 
-type VMwareClusterVcenterArray []VMwareClusterVcenterInput
+type vmwareClusterVcenterPtrType VMwareClusterVcenterArgs
 
-func (VMwareClusterVcenterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VMwareClusterVcenter)(nil)).Elem()
+func VMwareClusterVcenterPtr(v *VMwareClusterVcenterArgs) VMwareClusterVcenterPtrInput {
+	return (*vmwareClusterVcenterPtrType)(v)
 }
 
-func (i VMwareClusterVcenterArray) ToVMwareClusterVcenterArrayOutput() VMwareClusterVcenterArrayOutput {
-	return i.ToVMwareClusterVcenterArrayOutputWithContext(context.Background())
+func (*vmwareClusterVcenterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareClusterVcenter)(nil)).Elem()
 }
 
-func (i VMwareClusterVcenterArray) ToVMwareClusterVcenterArrayOutputWithContext(ctx context.Context) VMwareClusterVcenterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterVcenterArrayOutput)
+func (i *vmwareClusterVcenterPtrType) ToVMwareClusterVcenterPtrOutput() VMwareClusterVcenterPtrOutput {
+	return i.ToVMwareClusterVcenterPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareClusterVcenterPtrType) ToVMwareClusterVcenterPtrOutputWithContext(ctx context.Context) VMwareClusterVcenterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterVcenterPtrOutput)
 }
 
 type VMwareClusterVcenterOutput struct{ *pulumi.OutputState }
@@ -17588,6 +17604,16 @@ func (o VMwareClusterVcenterOutput) ToVMwareClusterVcenterOutput() VMwareCluster
 
 func (o VMwareClusterVcenterOutput) ToVMwareClusterVcenterOutputWithContext(ctx context.Context) VMwareClusterVcenterOutput {
 	return o
+}
+
+func (o VMwareClusterVcenterOutput) ToVMwareClusterVcenterPtrOutput() VMwareClusterVcenterPtrOutput {
+	return o.ToVMwareClusterVcenterPtrOutputWithContext(context.Background())
+}
+
+func (o VMwareClusterVcenterOutput) ToVMwareClusterVcenterPtrOutputWithContext(ctx context.Context) VMwareClusterVcenterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterVcenter) *VMwareClusterVcenter {
+		return &v
+	}).(VMwareClusterVcenterPtrOutput)
 }
 
 // (Output)
@@ -17631,24 +17657,109 @@ func (o VMwareClusterVcenterOutput) StoragePolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterVcenter) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
 }
 
-type VMwareClusterVcenterArrayOutput struct{ *pulumi.OutputState }
+type VMwareClusterVcenterPtrOutput struct{ *pulumi.OutputState }
 
-func (VMwareClusterVcenterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VMwareClusterVcenter)(nil)).Elem()
+func (VMwareClusterVcenterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareClusterVcenter)(nil)).Elem()
 }
 
-func (o VMwareClusterVcenterArrayOutput) ToVMwareClusterVcenterArrayOutput() VMwareClusterVcenterArrayOutput {
+func (o VMwareClusterVcenterPtrOutput) ToVMwareClusterVcenterPtrOutput() VMwareClusterVcenterPtrOutput {
 	return o
 }
 
-func (o VMwareClusterVcenterArrayOutput) ToVMwareClusterVcenterArrayOutputWithContext(ctx context.Context) VMwareClusterVcenterArrayOutput {
+func (o VMwareClusterVcenterPtrOutput) ToVMwareClusterVcenterPtrOutputWithContext(ctx context.Context) VMwareClusterVcenterPtrOutput {
 	return o
 }
 
-func (o VMwareClusterVcenterArrayOutput) Index(i pulumi.IntInput) VMwareClusterVcenterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareClusterVcenter {
-		return vs[0].([]VMwareClusterVcenter)[vs[1].(int)]
+func (o VMwareClusterVcenterPtrOutput) Elem() VMwareClusterVcenterOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) VMwareClusterVcenter {
+		if v != nil {
+			return *v
+		}
+		var ret VMwareClusterVcenter
+		return ret
 	}).(VMwareClusterVcenterOutput)
+}
+
+// (Output)
+// The vCenter IP address.
+func (o VMwareClusterVcenterPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains the vCenter CA certificate public key for SSL verification.
+func (o VMwareClusterVcenterPtrOutput) CaCertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertData
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter cluster for the user cluster.
+func (o VMwareClusterVcenterPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datacenter for the user cluster.
+func (o VMwareClusterVcenterPtrOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datacenter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datastore for the user cluster.
+func (o VMwareClusterVcenterPtrOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter folder for the user cluster.
+func (o VMwareClusterVcenterPtrOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Folder
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter resource pool for the user cluster.
+func (o VMwareClusterVcenterPtrOutput) ResourcePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePool
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter storage policy for the user cluster.
+func (o VMwareClusterVcenterPtrOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePolicyName
+	}).(pulumi.StringPtrOutput)
 }
 
 type VMwareNodePoolConfig struct {
@@ -17680,7 +17791,7 @@ type VMwareNodePoolConfig struct {
 	Taints []VMwareNodePoolConfigTaint `pulumi:"taints"`
 	// Specifies the vSphere config for node pool.
 	// Structure is documented below.
-	VsphereConfigs []VMwareNodePoolConfigVsphereConfig `pulumi:"vsphereConfigs"`
+	VsphereConfig *VMwareNodePoolConfigVsphereConfig `pulumi:"vsphereConfig"`
 }
 
 // VMwareNodePoolConfigInput is an input type that accepts VMwareNodePoolConfigArgs and VMwareNodePoolConfigOutput values.
@@ -17723,7 +17834,7 @@ type VMwareNodePoolConfigArgs struct {
 	Taints VMwareNodePoolConfigTaintArrayInput `pulumi:"taints"`
 	// Specifies the vSphere config for node pool.
 	// Structure is documented below.
-	VsphereConfigs VMwareNodePoolConfigVsphereConfigArrayInput `pulumi:"vsphereConfigs"`
+	VsphereConfig VMwareNodePoolConfigVsphereConfigPtrInput `pulumi:"vsphereConfig"`
 }
 
 func (VMwareNodePoolConfigArgs) ElementType() reflect.Type {
@@ -17858,8 +17969,8 @@ func (o VMwareNodePoolConfigOutput) Taints() VMwareNodePoolConfigTaintArrayOutpu
 
 // Specifies the vSphere config for node pool.
 // Structure is documented below.
-func (o VMwareNodePoolConfigOutput) VsphereConfigs() VMwareNodePoolConfigVsphereConfigArrayOutput {
-	return o.ApplyT(func(v VMwareNodePoolConfig) []VMwareNodePoolConfigVsphereConfig { return v.VsphereConfigs }).(VMwareNodePoolConfigVsphereConfigArrayOutput)
+func (o VMwareNodePoolConfigOutput) VsphereConfig() VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return o.ApplyT(func(v VMwareNodePoolConfig) *VMwareNodePoolConfigVsphereConfig { return v.VsphereConfig }).(VMwareNodePoolConfigVsphereConfigPtrOutput)
 }
 
 type VMwareNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
@@ -17986,13 +18097,13 @@ func (o VMwareNodePoolConfigPtrOutput) Taints() VMwareNodePoolConfigTaintArrayOu
 
 // Specifies the vSphere config for node pool.
 // Structure is documented below.
-func (o VMwareNodePoolConfigPtrOutput) VsphereConfigs() VMwareNodePoolConfigVsphereConfigArrayOutput {
-	return o.ApplyT(func(v *VMwareNodePoolConfig) []VMwareNodePoolConfigVsphereConfig {
+func (o VMwareNodePoolConfigPtrOutput) VsphereConfig() VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return o.ApplyT(func(v *VMwareNodePoolConfig) *VMwareNodePoolConfigVsphereConfig {
 		if v == nil {
 			return nil
 		}
-		return v.VsphereConfigs
-	}).(VMwareNodePoolConfigVsphereConfigArrayOutput)
+		return v.VsphereConfig
+	}).(VMwareNodePoolConfigVsphereConfigPtrOutput)
 }
 
 type VMwareNodePoolConfigTaint struct {
@@ -18156,29 +18267,45 @@ func (i VMwareNodePoolConfigVsphereConfigArgs) ToVMwareNodePoolConfigVsphereConf
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigOutput)
 }
 
-// VMwareNodePoolConfigVsphereConfigArrayInput is an input type that accepts VMwareNodePoolConfigVsphereConfigArray and VMwareNodePoolConfigVsphereConfigArrayOutput values.
-// You can construct a concrete instance of `VMwareNodePoolConfigVsphereConfigArrayInput` via:
+func (i VMwareNodePoolConfigVsphereConfigArgs) ToVMwareNodePoolConfigVsphereConfigPtrOutput() VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return i.ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VMwareNodePoolConfigVsphereConfigArgs) ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigOutput).ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(ctx)
+}
+
+// VMwareNodePoolConfigVsphereConfigPtrInput is an input type that accepts VMwareNodePoolConfigVsphereConfigArgs, VMwareNodePoolConfigVsphereConfigPtr and VMwareNodePoolConfigVsphereConfigPtrOutput values.
+// You can construct a concrete instance of `VMwareNodePoolConfigVsphereConfigPtrInput` via:
 //
-//	VMwareNodePoolConfigVsphereConfigArray{ VMwareNodePoolConfigVsphereConfigArgs{...} }
-type VMwareNodePoolConfigVsphereConfigArrayInput interface {
+//	        VMwareNodePoolConfigVsphereConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMwareNodePoolConfigVsphereConfigPtrInput interface {
 	pulumi.Input
 
-	ToVMwareNodePoolConfigVsphereConfigArrayOutput() VMwareNodePoolConfigVsphereConfigArrayOutput
-	ToVMwareNodePoolConfigVsphereConfigArrayOutputWithContext(context.Context) VMwareNodePoolConfigVsphereConfigArrayOutput
+	ToVMwareNodePoolConfigVsphereConfigPtrOutput() VMwareNodePoolConfigVsphereConfigPtrOutput
+	ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(context.Context) VMwareNodePoolConfigVsphereConfigPtrOutput
 }
 
-type VMwareNodePoolConfigVsphereConfigArray []VMwareNodePoolConfigVsphereConfigInput
+type vmwareNodePoolConfigVsphereConfigPtrType VMwareNodePoolConfigVsphereConfigArgs
 
-func (VMwareNodePoolConfigVsphereConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VMwareNodePoolConfigVsphereConfig)(nil)).Elem()
+func VMwareNodePoolConfigVsphereConfigPtr(v *VMwareNodePoolConfigVsphereConfigArgs) VMwareNodePoolConfigVsphereConfigPtrInput {
+	return (*vmwareNodePoolConfigVsphereConfigPtrType)(v)
 }
 
-func (i VMwareNodePoolConfigVsphereConfigArray) ToVMwareNodePoolConfigVsphereConfigArrayOutput() VMwareNodePoolConfigVsphereConfigArrayOutput {
-	return i.ToVMwareNodePoolConfigVsphereConfigArrayOutputWithContext(context.Background())
+func (*vmwareNodePoolConfigVsphereConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareNodePoolConfigVsphereConfig)(nil)).Elem()
 }
 
-func (i VMwareNodePoolConfigVsphereConfigArray) ToVMwareNodePoolConfigVsphereConfigArrayOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigArrayOutput)
+func (i *vmwareNodePoolConfigVsphereConfigPtrType) ToVMwareNodePoolConfigVsphereConfigPtrOutput() VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return i.ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareNodePoolConfigVsphereConfigPtrType) ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolConfigVsphereConfigPtrOutput)
 }
 
 type VMwareNodePoolConfigVsphereConfigOutput struct{ *pulumi.OutputState }
@@ -18193,6 +18320,16 @@ func (o VMwareNodePoolConfigVsphereConfigOutput) ToVMwareNodePoolConfigVsphereCo
 
 func (o VMwareNodePoolConfigVsphereConfigOutput) ToVMwareNodePoolConfigVsphereConfigOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigOutput {
 	return o
+}
+
+func (o VMwareNodePoolConfigVsphereConfigOutput) ToVMwareNodePoolConfigVsphereConfigPtrOutput() VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return o.ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VMwareNodePoolConfigVsphereConfigOutput) ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareNodePoolConfigVsphereConfig) *VMwareNodePoolConfigVsphereConfig {
+		return &v
+	}).(VMwareNodePoolConfigVsphereConfigPtrOutput)
 }
 
 // The name of the vCenter datastore. Inherited from the user cluster.
@@ -18211,24 +18348,59 @@ func (o VMwareNodePoolConfigVsphereConfigOutput) Tags() VMwareNodePoolConfigVsph
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfig) []VMwareNodePoolConfigVsphereConfigTag { return v.Tags }).(VMwareNodePoolConfigVsphereConfigTagArrayOutput)
 }
 
-type VMwareNodePoolConfigVsphereConfigArrayOutput struct{ *pulumi.OutputState }
+type VMwareNodePoolConfigVsphereConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (VMwareNodePoolConfigVsphereConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VMwareNodePoolConfigVsphereConfig)(nil)).Elem()
+func (VMwareNodePoolConfigVsphereConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareNodePoolConfigVsphereConfig)(nil)).Elem()
 }
 
-func (o VMwareNodePoolConfigVsphereConfigArrayOutput) ToVMwareNodePoolConfigVsphereConfigArrayOutput() VMwareNodePoolConfigVsphereConfigArrayOutput {
+func (o VMwareNodePoolConfigVsphereConfigPtrOutput) ToVMwareNodePoolConfigVsphereConfigPtrOutput() VMwareNodePoolConfigVsphereConfigPtrOutput {
 	return o
 }
 
-func (o VMwareNodePoolConfigVsphereConfigArrayOutput) ToVMwareNodePoolConfigVsphereConfigArrayOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigArrayOutput {
+func (o VMwareNodePoolConfigVsphereConfigPtrOutput) ToVMwareNodePoolConfigVsphereConfigPtrOutputWithContext(ctx context.Context) VMwareNodePoolConfigVsphereConfigPtrOutput {
 	return o
 }
 
-func (o VMwareNodePoolConfigVsphereConfigArrayOutput) Index(i pulumi.IntInput) VMwareNodePoolConfigVsphereConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareNodePoolConfigVsphereConfig {
-		return vs[0].([]VMwareNodePoolConfigVsphereConfig)[vs[1].(int)]
+func (o VMwareNodePoolConfigVsphereConfigPtrOutput) Elem() VMwareNodePoolConfigVsphereConfigOutput {
+	return o.ApplyT(func(v *VMwareNodePoolConfigVsphereConfig) VMwareNodePoolConfigVsphereConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VMwareNodePoolConfigVsphereConfig
+		return ret
 	}).(VMwareNodePoolConfigVsphereConfigOutput)
+}
+
+// The name of the vCenter datastore. Inherited from the user cluster.
+func (o VMwareNodePoolConfigVsphereConfigPtrOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareNodePoolConfigVsphereConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vsphere host groups to apply to all VMs in the node pool
+func (o VMwareNodePoolConfigVsphereConfigPtrOutput) HostGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMwareNodePoolConfigVsphereConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HostGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tags to apply to VMs.
+// Structure is documented below.
+func (o VMwareNodePoolConfigVsphereConfigPtrOutput) Tags() VMwareNodePoolConfigVsphereConfigTagArrayOutput {
+	return o.ApplyT(func(v *VMwareNodePoolConfigVsphereConfig) []VMwareNodePoolConfigVsphereConfigTag {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(VMwareNodePoolConfigVsphereConfigTagArrayOutput)
 }
 
 type VMwareNodePoolConfigVsphereConfigTag struct {
@@ -19009,13 +19181,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterValidationCheckStatusResultInput)(nil)).Elem(), VMwareClusterValidationCheckStatusResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterValidationCheckStatusResultArrayInput)(nil)).Elem(), VMwareClusterValidationCheckStatusResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterVcenterInput)(nil)).Elem(), VMwareClusterVcenterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterVcenterArrayInput)(nil)).Elem(), VMwareClusterVcenterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterVcenterPtrInput)(nil)).Elem(), VMwareClusterVcenterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigInput)(nil)).Elem(), VMwareNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigPtrInput)(nil)).Elem(), VMwareNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigTaintInput)(nil)).Elem(), VMwareNodePoolConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigTaintArrayInput)(nil)).Elem(), VMwareNodePoolConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigVsphereConfigInput)(nil)).Elem(), VMwareNodePoolConfigVsphereConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigVsphereConfigArrayInput)(nil)).Elem(), VMwareNodePoolConfigVsphereConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigVsphereConfigPtrInput)(nil)).Elem(), VMwareNodePoolConfigVsphereConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigVsphereConfigTagInput)(nil)).Elem(), VMwareNodePoolConfigVsphereConfigTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolConfigVsphereConfigTagArrayInput)(nil)).Elem(), VMwareNodePoolConfigVsphereConfigTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolNodePoolAutoscalingInput)(nil)).Elem(), VMwareNodePoolNodePoolAutoscalingArgs{})
@@ -19255,13 +19427,13 @@ func init() {
 	pulumi.RegisterOutputType(VMwareClusterValidationCheckStatusResultOutput{})
 	pulumi.RegisterOutputType(VMwareClusterValidationCheckStatusResultArrayOutput{})
 	pulumi.RegisterOutputType(VMwareClusterVcenterOutput{})
-	pulumi.RegisterOutputType(VMwareClusterVcenterArrayOutput{})
+	pulumi.RegisterOutputType(VMwareClusterVcenterPtrOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolConfigOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolConfigPtrOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolConfigTaintOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolConfigVsphereConfigOutput{})
-	pulumi.RegisterOutputType(VMwareNodePoolConfigVsphereConfigArrayOutput{})
+	pulumi.RegisterOutputType(VMwareNodePoolConfigVsphereConfigPtrOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolConfigVsphereConfigTagOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolConfigVsphereConfigTagArrayOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolNodePoolAutoscalingOutput{})

@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *             .projectId("m-id")
  *             .name("m-id-display")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var primary = new MonitoredProject("primary", MonitoredProjectArgs.builder()

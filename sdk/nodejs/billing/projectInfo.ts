@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     projectId: "tf-test_81126",
  *     name: "tf-test_88717",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const _default = new gcp.billing.ProjectInfo("default", {
  *     project: project.projectId,

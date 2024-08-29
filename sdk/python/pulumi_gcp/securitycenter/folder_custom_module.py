@@ -289,7 +289,8 @@ class FolderCustomModule(pulumi.CustomResource):
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.FolderCustomModule("example",
             folder=folder.folder_id,
             display_name="basic_custom_module",
@@ -314,7 +315,8 @@ class FolderCustomModule(pulumi.CustomResource):
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.FolderCustomModule("example",
             folder=folder.folder_id,
             display_name="full_custom_module",
@@ -406,7 +408,8 @@ class FolderCustomModule(pulumi.CustomResource):
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.FolderCustomModule("example",
             folder=folder.folder_id,
             display_name="basic_custom_module",
@@ -431,7 +434,8 @@ class FolderCustomModule(pulumi.CustomResource):
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.FolderCustomModule("example",
             folder=folder.folder_id,
             display_name="full_custom_module",

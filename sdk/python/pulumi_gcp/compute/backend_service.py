@@ -162,6 +162,10 @@ class BackendServiceArgs:
                
                
                - - -
+        :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               Applicable backend service types can be a global backend service with the
+               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -569,6 +573,12 @@ class BackendServiceArgs:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
+        """
+        Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        Applicable backend service types can be a global backend service with the
+        loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+        Structure is documented below.
+        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -842,6 +852,10 @@ class _BackendServiceState:
                
                
                - - -
+        :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               Applicable backend service types can be a global backend service with the
+               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -1295,6 +1309,12 @@ class _BackendServiceState:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
+        """
+        Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        Applicable backend service types can be a global backend service with the
+        loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+        Structure is documented below.
+        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -1507,6 +1527,7 @@ class BackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
+                "enabled": True,
                 "oauth2_client_id": "abc",
                 "oauth2_client_secret": "xyz",
             })
@@ -1678,6 +1699,14 @@ class BackendService(pulumi.CustomResource):
             },
             outlier_detection={
                 "consecutive_errors": 2,
+                "consecutive_gateway_failure": 5,
+                "enforcing_consecutive_errors": 100,
+                "enforcing_consecutive_gateway_failure": 0,
+                "enforcing_success_rate": 100,
+                "max_ejection_percent": 10,
+                "success_rate_minimum_hosts": 5,
+                "success_rate_request_volume": 100,
+                "success_rate_stdev_factor": 1900,
             })
         ```
         ### Backend Service Network Endpoint
@@ -1859,6 +1888,10 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               Applicable backend service types can be a global backend service with the
+               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -1937,6 +1970,7 @@ class BackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
+                "enabled": True,
                 "oauth2_client_id": "abc",
                 "oauth2_client_secret": "xyz",
             })
@@ -2108,6 +2142,14 @@ class BackendService(pulumi.CustomResource):
             },
             outlier_detection={
                 "consecutive_errors": 2,
+                "consecutive_gateway_failure": 5,
+                "enforcing_consecutive_errors": 100,
+                "enforcing_consecutive_gateway_failure": 0,
+                "enforcing_success_rate": 100,
+                "max_ejection_percent": 10,
+                "success_rate_minimum_hosts": 5,
+                "success_rate_request_volume": 100,
+                "success_rate_stdev_factor": 1900,
             })
         ```
         ### Backend Service Network Endpoint
@@ -2424,6 +2466,10 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               Applicable backend service types can be a global backend service with the
+               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -2762,6 +2808,12 @@ class BackendService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> pulumi.Output[Optional['outputs.BackendServiceOutlierDetection']]:
+        """
+        Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        Applicable backend service types can be a global backend service with the
+        loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+        Structure is documented below.
+        """
         return pulumi.get(self, "outlier_detection")
 
     @property

@@ -86,6 +86,7 @@ import javax.annotation.Nullable;
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         // Enable Compute API
@@ -248,6 +249,7 @@ import javax.annotation.Nullable;
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         // Enable Compute API

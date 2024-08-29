@@ -540,15 +540,15 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
      * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
-    @Import(name="vcenters")
-    private @Nullable Output<List<VMwareClusterVcenterArgs>> vcenters;
+    @Import(name="vcenter")
+    private @Nullable Output<VMwareClusterVcenterArgs> vcenter;
 
     /**
      * @return VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
-    public Optional<Output<List<VMwareClusterVcenterArgs>>> vcenters() {
-        return Optional.ofNullable(this.vcenters);
+    public Optional<Output<VMwareClusterVcenterArgs>> vcenter() {
+        return Optional.ofNullable(this.vcenter);
     }
 
     /**
@@ -600,7 +600,7 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
         this.updateTime = $.updateTime;
         this.upgradePolicy = $.upgradePolicy;
         this.validationChecks = $.validationChecks;
-        this.vcenters = $.vcenters;
+        this.vcenter = $.vcenter;
         this.vmTrackingEnabled = $.vmTrackingEnabled;
     }
 
@@ -1340,34 +1340,24 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+         * @param vcenter VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
          * 
          * @return builder
          * 
          */
-        public Builder vcenters(@Nullable Output<List<VMwareClusterVcenterArgs>> vcenters) {
-            $.vcenters = vcenters;
+        public Builder vcenter(@Nullable Output<VMwareClusterVcenterArgs> vcenter) {
+            $.vcenter = vcenter;
             return this;
         }
 
         /**
-         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+         * @param vcenter VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
          * 
          * @return builder
          * 
          */
-        public Builder vcenters(List<VMwareClusterVcenterArgs> vcenters) {
-            return vcenters(Output.of(vcenters));
-        }
-
-        /**
-         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vcenters(VMwareClusterVcenterArgs... vcenters) {
-            return vcenters(List.of(vcenters));
+        public Builder vcenter(VMwareClusterVcenterArgs vcenter) {
+            return vcenter(Output.of(vcenter));
         }
 
         /**

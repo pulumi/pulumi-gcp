@@ -289,7 +289,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
             folder_id=my_folder.folder_id,
             notification_emails=[
@@ -308,11 +309,13 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         my_project = gcp.organizations.Project("my_project",
             name="My Project",
             project_id="your-project-id",
-            folder_id=my_folder.name)
+            folder_id=my_folder.name,
+            deletion_policy="DELETE")
         key_ring = gcp.kms.KeyRing("key_ring",
             name="key-ring",
             location="global",
@@ -395,7 +398,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
             folder_id=my_folder.folder_id,
             notification_emails=[
@@ -414,11 +418,13 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         my_project = gcp.organizations.Project("my_project",
             name="My Project",
             project_id="your-project-id",
-            folder_id=my_folder.name)
+            folder_id=my_folder.name,
+            deletion_policy="DELETE")
         key_ring = gcp.kms.KeyRing("key_ring",
             name="key-ring",
             location="global",

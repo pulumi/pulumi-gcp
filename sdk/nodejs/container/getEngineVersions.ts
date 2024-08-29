@@ -7,6 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
  *
+ * To get more information about GKE versions, see:
+ *   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
+ *
  * > If you are using the `gcp.container.getEngineVersions` datasource with a
  * regional cluster, ensure that you have provided a region as the `location` to
  * the datasource. A region can have a different set of supported versions than
@@ -94,11 +97,11 @@ export interface GetEngineVersionsResult {
     readonly location?: string;
     readonly project?: string;
     /**
-     * A map from a release channel name to the channel's default version.
+     * A map from a release channel name to the channel's default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
      */
     readonly releaseChannelDefaultVersion: {[key: string]: string};
     /**
-     * A map from a release channel name to the channel's latest version.
+     * A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
      */
     readonly releaseChannelLatestVersion: {[key: string]: string};
     /**
@@ -113,6 +116,9 @@ export interface GetEngineVersionsResult {
 }
 /**
  * Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
+ *
+ * To get more information about GKE versions, see:
+ *   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
  *
  * > If you are using the `gcp.container.getEngineVersions` datasource with a
  * regional cluster, ensure that you have provided a region as the `location` to

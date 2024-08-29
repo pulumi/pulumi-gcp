@@ -410,7 +410,8 @@ class FolderFeed(pulumi.CustomResource):
         # The folder that will be monitored for resource updates.
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="Networking",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         # Create a feed that sends notifications about network resource updates under a
         # particular folder.
         folder_feed = gcp.cloudasset.FolderFeed("folder_feed",
@@ -511,7 +512,8 @@ class FolderFeed(pulumi.CustomResource):
         # The folder that will be monitored for resource updates.
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="Networking",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         # Create a feed that sends notifications about network resource updates under a
         # particular folder.
         folder_feed = gcp.cloudasset.FolderFeed("folder_feed",

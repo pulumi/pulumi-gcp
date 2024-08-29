@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Apphub
     ///         ProjectId = "project-1",
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
@@ -72,6 +73,7 @@ namespace Pulumi.Gcp.Apphub
     ///         ProjectId = "project-1",
     ///         Name = "Service Project Full",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var wait120s = new Time.Index.Sleep("wait_120s", new()

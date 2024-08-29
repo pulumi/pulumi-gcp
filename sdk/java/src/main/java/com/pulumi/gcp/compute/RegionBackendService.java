@@ -121,6 +121,7 @@ import javax.annotation.Nullable;
  *             .protocol("HTTP")
  *             .loadBalancingScheme("EXTERNAL")
  *             .iap(RegionBackendServiceIapArgs.builder()
+ *                 .enabled(true)
  *                 .oauth2ClientId("abc")
  *                 .oauth2ClientSecret("xyz")
  *                 .build())
@@ -692,7 +693,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
-     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     @Export(name="connectionDrainingTimeoutSec", refs={Integer.class}, tree="[0]")
@@ -701,7 +701,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     /**
      * @return Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
-     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     public Output<Optional<Integer>> connectionDrainingTimeoutSec() {
@@ -1069,9 +1068,23 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> network() {
         return Codegen.optional(this.network);
     }
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * This field is applicable only when the `load_balancing_scheme` is set
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="outlierDetection", refs={RegionBackendServiceOutlierDetection.class}, tree="[0]")
     private Output</* @Nullable */ RegionBackendServiceOutlierDetection> outlierDetection;
 
+    /**
+     * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * This field is applicable only when the `load_balancing_scheme` is set
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<RegionBackendServiceOutlierDetection>> outlierDetection() {
         return Codegen.optional(this.outlierDetection);
     }

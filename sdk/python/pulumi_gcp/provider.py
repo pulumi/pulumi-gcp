@@ -85,7 +85,6 @@ class ProviderArgs:
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -326,8 +325,6 @@ class ProviderArgs:
             pulumi.set(__self__, "dataproc_custom_endpoint", dataproc_custom_endpoint)
         if dataproc_metastore_custom_endpoint is not None:
             pulumi.set(__self__, "dataproc_metastore_custom_endpoint", dataproc_metastore_custom_endpoint)
-        if datastore_custom_endpoint is not None:
-            pulumi.set(__self__, "datastore_custom_endpoint", datastore_custom_endpoint)
         if datastream_custom_endpoint is not None:
             pulumi.set(__self__, "datastream_custom_endpoint", datastream_custom_endpoint)
         if default_labels is not None:
@@ -1133,15 +1130,6 @@ class ProviderArgs:
     @dataproc_metastore_custom_endpoint.setter
     def dataproc_metastore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataproc_metastore_custom_endpoint", value)
-
-    @property
-    @pulumi.getter(name="datastoreCustomEndpoint")
-    def datastore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "datastore_custom_endpoint")
-
-    @datastore_custom_endpoint.setter
-    def datastore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "datastore_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="datastreamCustomEndpoint")
@@ -2177,7 +2165,6 @@ class Provider(pulumi.ProviderResource):
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2387,7 +2374,6 @@ class Provider(pulumi.ProviderResource):
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2569,7 +2555,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dataplex_custom_endpoint"] = dataplex_custom_endpoint
             __props__.__dict__["dataproc_custom_endpoint"] = dataproc_custom_endpoint
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
-            __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
             __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
             __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels).apply(pulumi.runtime.to_json) if default_labels is not None else None
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
@@ -3005,11 +2990,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="dataprocMetastoreCustomEndpoint")
     def dataproc_metastore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dataproc_metastore_custom_endpoint")
-
-    @property
-    @pulumi.getter(name="datastoreCustomEndpoint")
-    def datastore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "datastore_custom_endpoint")
 
     @property
     @pulumi.getter(name="datastreamCustomEndpoint")

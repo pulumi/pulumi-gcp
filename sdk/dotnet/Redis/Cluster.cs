@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             { "maxmemory-policy", "volatile-ttl" },
     ///         },
+    ///         DeletionProtectionEnabled = true,
     ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
     ///         {
     ///             Mode = "MULTI_ZONE",
@@ -151,6 +152,7 @@ namespace Pulumi.Gcp.Redis
     ///             Mode = "SINGLE_ZONE",
     ///             Zone = "us-central1-f",
     ///         },
+    ///         DeletionProtectionEnabled = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -210,6 +212,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+        /// operation will fail. Default value is true.
+        /// </summary>
+        [Output("deletionProtectionEnabled")]
+        public Output<bool?> DeletionProtectionEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Endpoints created on each given network,
@@ -379,6 +388,13 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? AuthorizationMode { get; set; }
 
         /// <summary>
+        /// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+        /// operation will fail. Default value is true.
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
+
+        /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
         /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         /// </summary>
@@ -479,6 +495,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+        /// operation will fail. Default value is true.
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         [Input("discoveryEndpoints")]
         private InputList<Inputs.ClusterDiscoveryEndpointGetArgs>? _discoveryEndpoints;

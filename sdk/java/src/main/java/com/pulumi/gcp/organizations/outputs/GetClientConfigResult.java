@@ -6,6 +6,7 @@ package com.pulumi.gcp.organizations.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +16,11 @@ public final class GetClientConfigResult {
      * 
      */
     private String accessToken;
+    /**
+     * @return The default labels configured on the provider.
+     * 
+     */
+    private Map<String,String> defaultLabels;
     private String id;
     /**
      * @return The ID of the project to apply any resources to.
@@ -39,6 +45,13 @@ public final class GetClientConfigResult {
      */
     public String accessToken() {
         return this.accessToken;
+    }
+    /**
+     * @return The default labels configured on the provider.
+     * 
+     */
+    public Map<String,String> defaultLabels() {
+        return this.defaultLabels;
     }
     public String id() {
         return this.id;
@@ -75,6 +88,7 @@ public final class GetClientConfigResult {
     @CustomType.Builder
     public static final class Builder {
         private String accessToken;
+        private Map<String,String> defaultLabels;
         private String id;
         private String project;
         private String region;
@@ -83,6 +97,7 @@ public final class GetClientConfigResult {
         public Builder(GetClientConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessToken = defaults.accessToken;
+    	      this.defaultLabels = defaults.defaultLabels;
     	      this.id = defaults.id;
     	      this.project = defaults.project;
     	      this.region = defaults.region;
@@ -95,6 +110,14 @@ public final class GetClientConfigResult {
               throw new MissingRequiredPropertyException("GetClientConfigResult", "accessToken");
             }
             this.accessToken = accessToken;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultLabels(Map<String,String> defaultLabels) {
+            if (defaultLabels == null) {
+              throw new MissingRequiredPropertyException("GetClientConfigResult", "defaultLabels");
+            }
+            this.defaultLabels = defaultLabels;
             return this;
         }
         @CustomType.Setter
@@ -132,6 +155,7 @@ public final class GetClientConfigResult {
         public GetClientConfigResult build() {
             final var _resultValue = new GetClientConfigResult();
             _resultValue.accessToken = accessToken;
+            _resultValue.defaultLabels = defaultLabels;
             _resultValue.id = id;
             _resultValue.project = project;
             _resultValue.region = region;

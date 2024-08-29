@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.ForwardingRuleArgs;
 import com.pulumi.gcp.compute.inputs.ForwardingRuleState;
 import com.pulumi.gcp.compute.outputs.ForwardingRuleServiceDirectoryRegistrations;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -1416,6 +1417,20 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="forwardingRuleId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> forwardingRuleId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> forwardingRuleId() {
+        return this.forwardingRuleId;
+    }
+    /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
      * to the referenced `target` or `backendService`.
@@ -1759,6 +1774,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     @Export(name="portRange", refs={String.class}, tree="[0]")
@@ -1784,6 +1800,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     public Output<String> portRange() {
@@ -1807,6 +1824,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     @Export(name="ports", refs={List.class,String.class}, tree="[0,1]")
@@ -1830,6 +1848,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     public Output<Optional<List<String>>> ports() {

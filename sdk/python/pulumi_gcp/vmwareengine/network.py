@@ -309,7 +309,8 @@ class Network(pulumi.CustomResource):
             name="vmw-proj",
             project_id="vmw-proj",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[acceptance_project]))
         acceptance = gcp.projects.Service("acceptance",
@@ -401,7 +402,8 @@ class Network(pulumi.CustomResource):
             name="vmw-proj",
             project_id="vmw-proj",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[acceptance_project]))
         acceptance = gcp.projects.Service("acceptance",

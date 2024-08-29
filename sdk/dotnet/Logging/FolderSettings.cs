@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Logging
     ///     {
     ///         DisplayName = "folder-name",
     ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var settings = Gcp.Logging.GetFolderSettings.Invoke(new()

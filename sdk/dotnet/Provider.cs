@@ -207,9 +207,6 @@ namespace Pulumi.Gcp
         [Output("dataprocMetastoreCustomEndpoint")]
         public Output<string?> DataprocMetastoreCustomEndpoint { get; private set; } = null!;
 
-        [Output("datastoreCustomEndpoint")]
-        public Output<string?> DatastoreCustomEndpoint { get; private set; } = null!;
-
         [Output("datastreamCustomEndpoint")]
         public Output<string?> DatastreamCustomEndpoint { get; private set; } = null!;
 
@@ -751,9 +748,6 @@ namespace Pulumi.Gcp
 
         [Input("dataprocMetastoreCustomEndpoint")]
         public Input<string>? DataprocMetastoreCustomEndpoint { get; set; }
-
-        [Input("datastoreCustomEndpoint")]
-        public Input<string>? DatastoreCustomEndpoint { get; set; }
 
         [Input("datastreamCustomEndpoint")]
         public Input<string>? DatastreamCustomEndpoint { get; set; }

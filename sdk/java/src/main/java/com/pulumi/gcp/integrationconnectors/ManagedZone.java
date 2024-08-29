@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  *             .name("tf-test_22375")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         final var testProject = OrganizationsFunctions.getProject();

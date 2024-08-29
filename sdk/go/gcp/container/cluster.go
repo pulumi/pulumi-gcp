@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,8 +34,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,8 +92,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -141,8 +141,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -255,6 +255,8 @@ type Cluster struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig ClusterDnsConfigPtrOutput `pulumi:"dnsConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -442,6 +444,8 @@ type Cluster struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigOutput `pulumi:"protectConfig"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -458,6 +462,9 @@ type Cluster struct {
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrOutput `pulumi:"removeDefaultNodePool"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -507,6 +514,11 @@ func NewCluster(ctx *pulumi.Context,
 		args = &ClusterArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cluster
 	err := ctx.RegisterResource("gcp:container/cluster:Cluster", name, args, &resource, opts...)
@@ -581,6 +593,8 @@ type clusterState struct {
 	Description *string `pulumi:"description"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig *ClusterDnsConfig `pulumi:"dnsConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -768,6 +782,8 @@ type clusterState struct {
 	Project *string `pulumi:"project"`
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -784,6 +800,9 @@ type clusterState struct {
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -878,6 +897,8 @@ type ClusterState struct {
 	Description pulumi.StringPtrInput
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig ClusterDnsConfigPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -1065,6 +1086,8 @@ type ClusterState struct {
 	Project pulumi.StringPtrInput
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -1081,6 +1104,9 @@ type ClusterState struct {
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1373,6 +1399,9 @@ type clusterArgs struct {
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1651,6 +1680,9 @@ type ClusterArgs struct {
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1866,6 +1898,11 @@ func (o ClusterOutput) Description() pulumi.StringPtrOutput {
 // Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 func (o ClusterOutput) DnsConfig() ClusterDnsConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterDnsConfigPtrOutput { return v.DnsConfig }).(ClusterDnsConfigPtrOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // Enable Autopilot for this cluster. Defaults to `false`.
@@ -2193,6 +2230,11 @@ func (o ClusterOutput) ProtectConfig() ClusterProtectConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterProtectConfigOutput { return v.ProtectConfig }).(ClusterProtectConfigOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 // feature, which provide more control over automatic upgrades of your GKE clusters.
 // When updating this field, GKE imposes specific version requirements. See
@@ -2215,6 +2257,9 @@ func (o ClusterOutput) RemoveDefaultNodePool() pulumi.BoolPtrOutput {
 }
 
 // The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }

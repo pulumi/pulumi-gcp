@@ -145,8 +145,6 @@ dataprocCustomEndpoint: Optional[str]
 
 dataprocMetastoreCustomEndpoint: Optional[str]
 
-datastoreCustomEndpoint: Optional[str]
-
 datastreamCustomEndpoint: Optional[str]
 
 defaultLabels: Optional[str]

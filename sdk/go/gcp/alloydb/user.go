@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,29 +29,31 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("alloydb-network"),
+//			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: pulumi.Any(defaultGoogleComputeNetwork.Id),
+//				},
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					Password: pulumi.String("cluster_secret"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
-//				Network:   defaultNetwork.ID(),
-//				InitialUser: &alloydb.ClusterInitialUserArgs{
-//					Password: pulumi.String("cluster_secret"),
-//				},
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("alloydb-network"),
 //			})
 //			if err != nil {
 //				return err
@@ -116,10 +118,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -135,7 +137,9 @@ import (
 //			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   defaultNetwork.ID(),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: defaultNetwork.ID(),
+//				},
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("cluster_secret"),
 //				},

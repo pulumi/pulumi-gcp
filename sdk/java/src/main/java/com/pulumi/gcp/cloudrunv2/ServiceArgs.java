@@ -129,6 +129,13 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.defaultUriDisabled);
     }
 
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      * 
@@ -312,6 +319,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.clientVersion = $.clientVersion;
         this.customAudiences = $.customAudiences;
         this.defaultUriDisabled = $.defaultUriDisabled;
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.ingress = $.ingress;
         this.labels = $.labels;
@@ -494,6 +502,15 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultUriDisabled(Boolean defaultUriDisabled) {
             return defaultUriDisabled(Output.of(defaultUriDisabled));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

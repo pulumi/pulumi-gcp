@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project",
  *     name: "my-project",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  *     labels: {
  *         firebase: "enabled",
  *     },

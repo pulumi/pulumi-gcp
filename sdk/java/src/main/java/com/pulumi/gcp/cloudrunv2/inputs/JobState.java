@@ -162,6 +162,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deleteTime);
     }
 
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
@@ -529,6 +536,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.creator = $.creator;
         this.deleteTime = $.deleteTime;
+        this.deletionProtection = $.deletionProtection;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
@@ -766,6 +774,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deleteTime(String deleteTime) {
             return deleteTime(Output.of(deleteTime));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {

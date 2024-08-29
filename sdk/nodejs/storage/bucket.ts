@@ -81,8 +81,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
- * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `noAge` flag to `true` to prevent this and avoid any potentially unintended interactions.
+ * ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
+ * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `sendAgeIfZero` flag to `false` to prevent this and avoid any potentially unintended interactions.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,7 +98,7 @@ import * as utilities from "../utilities";
  *         },
  *         condition: {
  *             daysSinceNoncurrentTime: 3,
- *             noAge: true,
+ *             sendAgeIfZero: false,
  *         },
  *     }],
  * });

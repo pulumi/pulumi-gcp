@@ -82,7 +82,14 @@ class RegionInstanceTemplateArgs:
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -349,7 +356,14 @@ class RegionInstanceTemplateArgs:
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Creates a unique name beginning with the specified
-        prefix. Conflicts with `name`.
+        prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -585,7 +599,14 @@ class _RegionInstanceTemplateState:
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -891,7 +912,14 @@ class _RegionInstanceTemplateState:
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Creates a unique name beginning with the specified
-        prefix. Conflicts with `name`.
+        prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -1184,7 +1212,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -1413,7 +1448,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -1628,7 +1670,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
     def name_prefix(self) -> pulumi.Output[str]:
         """
         Creates a unique name beginning with the specified
-        prefix. Conflicts with `name`.
+        prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 

@@ -221,7 +221,8 @@ class HostingVersion(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
-            })
+            },
+            deletion_protection=True)
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
             config={
@@ -379,7 +380,8 @@ class HostingVersion(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
-            })
+            },
+            deletion_protection=True)
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
             config={

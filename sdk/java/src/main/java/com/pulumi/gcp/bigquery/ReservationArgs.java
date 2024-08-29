@@ -103,37 +103,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
-     * 
-     * &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     * 
-     * @deprecated
-     * `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     * 
-     */
-    @Deprecated /* `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API. */
-    @Import(name="multiRegionAuxiliary")
-    private @Nullable Output<Boolean> multiRegionAuxiliary;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
-     * 
-     * &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     * 
-     * @deprecated
-     * `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     * 
-     */
-    @Deprecated /* `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API. */
-    public Optional<Output<Boolean>> multiRegionAuxiliary() {
-        return Optional.ofNullable(this.multiRegionAuxiliary);
-    }
-
-    /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      * 
      * ***
@@ -194,7 +163,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
         this.edition = $.edition;
         this.ignoreIdleSlots = $.ignoreIdleSlots;
         this.location = $.location;
-        this.multiRegionAuxiliary = $.multiRegionAuxiliary;
         this.name = $.name;
         this.project = $.project;
         this.slotCapacity = $.slotCapacity;
@@ -329,43 +297,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
-        }
-
-        /**
-         * @param multiRegionAuxiliary (Optional, Deprecated)
-         * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-         * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
-         * 
-         * &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-         * 
-         */
-        @Deprecated /* `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API. */
-        public Builder multiRegionAuxiliary(@Nullable Output<Boolean> multiRegionAuxiliary) {
-            $.multiRegionAuxiliary = multiRegionAuxiliary;
-            return this;
-        }
-
-        /**
-         * @param multiRegionAuxiliary (Optional, Deprecated)
-         * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-         * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
-         * 
-         * &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-         * 
-         */
-        @Deprecated /* `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API. */
-        public Builder multiRegionAuxiliary(Boolean multiRegionAuxiliary) {
-            return multiRegionAuxiliary(Output.of(multiRegionAuxiliary));
         }
 
         /**

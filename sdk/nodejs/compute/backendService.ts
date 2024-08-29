@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  *     loadBalancingScheme: "EXTERNAL",
  *     iap: {
+ *         enabled: true,
  *         oauth2ClientId: "abc",
  *         oauth2ClientSecret: "xyz",
  *     },
@@ -236,6 +237,14 @@ import * as utilities from "../utilities";
  *     },
  *     outlierDetection: {
  *         consecutiveErrors: 2,
+ *         consecutiveGatewayFailure: 5,
+ *         enforcingConsecutiveErrors: 100,
+ *         enforcingConsecutiveGatewayFailure: 0,
+ *         enforcingSuccessRate: 100,
+ *         maxEjectionPercent: 10,
+ *         successRateMinimumHosts: 5,
+ *         successRateRequestVolume: 100,
+ *         successRateStdevFactor: 1900,
  *     },
  * });
  * ```
@@ -519,6 +528,12 @@ export class BackendService extends pulumi.CustomResource {
      * - - -
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+     * Structure is documented below.
+     */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
     /**
      * Name of backend port. The same name should appear in the instance
@@ -845,6 +860,12 @@ export interface BackendServiceState {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+     * Structure is documented below.
+     */
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
      * Name of backend port. The same name should appear in the instance
@@ -1074,6 +1095,12 @@ export interface BackendServiceArgs {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+     * Structure is documented below.
+     */
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
      * Name of backend port. The same name should appear in the instance

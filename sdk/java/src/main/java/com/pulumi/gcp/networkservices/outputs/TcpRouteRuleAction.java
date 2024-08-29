@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkservices.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.networkservices.outputs.TcpRouteRuleActionDestination;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +21,12 @@ public final class TcpRouteRuleAction {
      */
     private @Nullable List<TcpRouteRuleActionDestination> destinations;
     /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    private @Nullable String idleTimeout;
+    /**
      * @return If true, Router will use the destination IP and port of the original connection as the destination of the request.
      * 
      */
@@ -33,6 +40,14 @@ public final class TcpRouteRuleAction {
      */
     public List<TcpRouteRuleActionDestination> destinations() {
         return this.destinations == null ? List.of() : this.destinations;
+    }
+    /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Optional<String> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
     }
     /**
      * @return If true, Router will use the destination IP and port of the original connection as the destination of the request.
@@ -52,11 +67,13 @@ public final class TcpRouteRuleAction {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<TcpRouteRuleActionDestination> destinations;
+        private @Nullable String idleTimeout;
         private @Nullable Boolean originalDestination;
         public Builder() {}
         public Builder(TcpRouteRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
+    	      this.idleTimeout = defaults.idleTimeout;
     	      this.originalDestination = defaults.originalDestination;
         }
 
@@ -70,6 +87,12 @@ public final class TcpRouteRuleAction {
             return destinations(List.of(destinations));
         }
         @CustomType.Setter
+        public Builder idleTimeout(@Nullable String idleTimeout) {
+
+            this.idleTimeout = idleTimeout;
+            return this;
+        }
+        @CustomType.Setter
         public Builder originalDestination(@Nullable Boolean originalDestination) {
 
             this.originalDestination = originalDestination;
@@ -78,6 +101,7 @@ public final class TcpRouteRuleAction {
         public TcpRouteRuleAction build() {
             final var _resultValue = new TcpRouteRuleAction();
             _resultValue.destinations = destinations;
+            _resultValue.idleTimeout = idleTimeout;
             _resultValue.originalDestination = originalDestination;
             return _resultValue;
         }

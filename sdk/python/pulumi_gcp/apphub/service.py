@@ -462,7 +462,8 @@ class Service(pulumi.CustomResource):
             project_id="project-1",
             name="Service Project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         # Enable Compute API
         compute_service_project = gcp.projects.Service("compute_service_project",
             project=service_project.project_id,
@@ -539,7 +540,8 @@ class Service(pulumi.CustomResource):
             project_id="project-1",
             name="Service Project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         # Enable Compute API
         compute_service_project = gcp.projects.Service("compute_service_project",
             project=service_project.project_id,
@@ -690,7 +692,8 @@ class Service(pulumi.CustomResource):
             project_id="project-1",
             name="Service Project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         # Enable Compute API
         compute_service_project = gcp.projects.Service("compute_service_project",
             project=service_project.project_id,
@@ -767,7 +770,8 @@ class Service(pulumi.CustomResource):
             project_id="project-1",
             name="Service Project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         # Enable Compute API
         compute_service_project = gcp.projects.Service("compute_service_project",
             project=service_project.project_id,

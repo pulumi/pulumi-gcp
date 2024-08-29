@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,7 +51,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,7 +92,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -132,7 +132,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -169,7 +169,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -206,7 +206,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -244,7 +244,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -280,7 +280,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -300,6 +300,133 @@ import (
 //				IpCidrRange:                  pulumi.String("192.168.1.0/24"),
 //				AllowSubnetCidrRoutesOverlap: pulumi.Bool(true),
 //				Network:                      net_cidr_overlap.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Subnetwork Reserved Internal Range
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-reserved-internal-range"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
+//				Name:         pulumi.String("reserved"),
+//				Network:      _default.ID(),
+//				Usage:        pulumi.String("FOR_VPC"),
+//				Peering:      pulumi.String("FOR_SELF"),
+//				PrefixLength: pulumi.Int(24),
+//				TargetCidrRanges: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/8"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-internal-range", &compute.SubnetworkArgs{
+//				Name:    pulumi.String("subnetwork-reserved-internal-range"),
+//				Region:  pulumi.String("us-central1"),
+//				Network: _default.ID(),
+//				ReservedInternalRange: reserved.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Subnetwork Reserved Secondary Range
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-reserved-secondary-range"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
+//				Name:         pulumi.String("reserved"),
+//				Network:      _default.ID(),
+//				Usage:        pulumi.String("FOR_VPC"),
+//				Peering:      pulumi.String("FOR_SELF"),
+//				PrefixLength: pulumi.Int(24),
+//				TargetCidrRanges: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/8"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			reservedSecondary, err := networkconnectivity.NewInternalRange(ctx, "reserved_secondary", &networkconnectivity.InternalRangeArgs{
+//				Name:         pulumi.String("reserved-secondary"),
+//				Network:      _default.ID(),
+//				Usage:        pulumi.String("FOR_VPC"),
+//				Peering:      pulumi.String("FOR_SELF"),
+//				PrefixLength: pulumi.Int(16),
+//				TargetCidrRanges: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/8"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-secondary-range", &compute.SubnetworkArgs{
+//				Name:    pulumi.String("subnetwork-reserved-secondary-range"),
+//				Region:  pulumi.String("us-central1"),
+//				Network: _default.ID(),
+//				ReservedInternalRange: reserved.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
+//				}).(pulumi.StringOutput),
+//				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName: pulumi.String("secondary"),
+//						ReservedInternalRange: reservedSecondary.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -368,6 +495,7 @@ type Subnetwork struct {
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
 	// non-overlapping within a network. Only IPv4 is supported.
+	// Field is optional when `reservedInternalRange` is defined, otherwise required.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -413,6 +541,9 @@ type Subnetwork struct {
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+	ReservedInternalRange pulumi.StringPtrOutput `pulumi:"reservedInternalRange"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -448,9 +579,6 @@ func NewSubnetwork(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.IpCidrRange == nil {
-		return nil, errors.New("invalid value for required argument 'IpCidrRange'")
-	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
 	}
@@ -503,6 +631,7 @@ type subnetworkState struct {
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
 	// non-overlapping within a network. Only IPv4 is supported.
+	// Field is optional when `reservedInternalRange` is defined, otherwise required.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -548,6 +677,9 @@ type subnetworkState struct {
 	Purpose *string `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
+	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -603,6 +735,7 @@ type SubnetworkState struct {
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
 	// non-overlapping within a network. Only IPv4 is supported.
+	// Field is optional when `reservedInternalRange` is defined, otherwise required.
 	IpCidrRange pulumi.StringPtrInput
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -648,6 +781,9 @@ type SubnetworkState struct {
 	Purpose pulumi.StringPtrInput
 	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput
+	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+	ReservedInternalRange pulumi.StringPtrInput
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -696,7 +832,8 @@ type subnetworkArgs struct {
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
 	// non-overlapping within a network. Only IPv4 is supported.
-	IpCidrRange string `pulumi:"ipCidrRange"`
+	// Field is optional when `reservedInternalRange` is defined, otherwise required.
+	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 	// cannot enable direct path.
@@ -739,6 +876,9 @@ type subnetworkArgs struct {
 	Purpose *string `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
+	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -782,7 +922,8 @@ type SubnetworkArgs struct {
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
 	// non-overlapping within a network. Only IPv4 is supported.
-	IpCidrRange pulumi.StringInput
+	// Field is optional when `reservedInternalRange` is defined, otherwise required.
+	IpCidrRange pulumi.StringPtrInput
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 	// cannot enable direct path.
@@ -825,6 +966,9 @@ type SubnetworkArgs struct {
 	Purpose pulumi.StringPtrInput
 	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput
+	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+	ReservedInternalRange pulumi.StringPtrInput
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -985,6 +1129,7 @@ func (o SubnetworkOutput) InternalIpv6Prefix() pulumi.StringOutput {
 // Provide this property when you create the subnetwork. For example,
 // 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
 // non-overlapping within a network. Only IPv4 is supported.
+// Field is optional when `reservedInternalRange` is defined, otherwise required.
 func (o SubnetworkOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }
@@ -1061,6 +1206,12 @@ func (o SubnetworkOutput) Purpose() pulumi.StringOutput {
 // The GCP region for this subnetwork.
 func (o SubnetworkOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+func (o SubnetworkOutput) ReservedInternalRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.ReservedInternalRange }).(pulumi.StringPtrOutput)
 }
 
 // The role of subnetwork.

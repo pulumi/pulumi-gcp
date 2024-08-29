@@ -818,6 +818,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         /// cannot have overlapping `portRange`s.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         [Output("portRange")]
         public Output<string?> PortRange { get; private set; } = null!;
@@ -1121,6 +1122,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         /// cannot have overlapping `portRange`s.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -1391,6 +1393,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         /// cannot have overlapping `portRange`s.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }

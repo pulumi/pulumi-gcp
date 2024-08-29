@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +48,7 @@ type LookupForwardingRuleResult struct {
 	CreationTimestamp    string            `pulumi:"creationTimestamp"`
 	Description          string            `pulumi:"description"`
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	ForwardingRuleId     int               `pulumi:"forwardingRuleId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                                          `pulumi:"id"`
 	IpAddress                     string                                          `pulumi:"ipAddress"`
@@ -154,6 +155,10 @@ func (o LookupForwardingRuleResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupForwardingRuleResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) ForwardingRuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) int { return v.ForwardingRuleId }).(pulumi.IntOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

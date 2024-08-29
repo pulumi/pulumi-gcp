@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Billing
     ///         ProjectId = "tf-test_81126",
     ///         Name = "tf-test_88717",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var @default = new Gcp.Billing.ProjectInfo("default", new()

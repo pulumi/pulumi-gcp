@@ -21,6 +21,7 @@ public final class ClusterReleaseChannelArgs extends com.pulumi.resources.Resour
      * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
      * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
      * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+     * * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
      * 
      */
     @Import(name="channel", required=true)
@@ -33,6 +34,7 @@ public final class ClusterReleaseChannelArgs extends com.pulumi.resources.Resour
      * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
      * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
      * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+     * * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
      * 
      */
     public Output<String> channel() {
@@ -70,6 +72,7 @@ public final class ClusterReleaseChannelArgs extends com.pulumi.resources.Resour
          * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
          * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
          * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+         * * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
          * 
          * @return builder
          * 
@@ -86,6 +89,7 @@ public final class ClusterReleaseChannelArgs extends com.pulumi.resources.Resour
          * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
          * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
          * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+         * * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
          * 
          * @return builder
          * 

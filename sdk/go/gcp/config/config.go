@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -205,9 +205,6 @@ func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetDataprocMetastoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocMetastoreCustomEndpoint")
-}
-func GetDatastoreCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:datastoreCustomEndpoint")
 }
 func GetDatastreamCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:datastreamCustomEndpoint")

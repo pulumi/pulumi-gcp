@@ -332,6 +332,7 @@ import javax.annotation.Nullable;
  *             .name("tf-test_40289")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()

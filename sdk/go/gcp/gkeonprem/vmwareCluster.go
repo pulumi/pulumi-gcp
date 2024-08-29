@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -95,7 +95,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -192,7 +192,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkeonprem"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkeonprem"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -271,16 +271,14 @@ import (
 //						KonnectivityServerNodePort: pulumi.Int(30008),
 //					},
 //				},
-//				Vcenters: gkeonprem.VMwareClusterVcenterArray{
-//					&gkeonprem.VMwareClusterVcenterArgs{
-//						ResourcePool:      pulumi.String("test-resource-pool"),
-//						Datastore:         pulumi.String("test-datastore"),
-//						Datacenter:        pulumi.String("test-datacenter"),
-//						Cluster:           pulumi.String("test-cluster"),
-//						Folder:            pulumi.String("test-folder"),
-//						CaCertData:        pulumi.String("test-ca-cert-data"),
-//						StoragePolicyName: pulumi.String("test-storage-policy-name"),
-//					},
+//				Vcenter: &gkeonprem.VMwareClusterVcenterArgs{
+//					ResourcePool:      pulumi.String("test-resource-pool"),
+//					Datastore:         pulumi.String("test-datastore"),
+//					Datacenter:        pulumi.String("test-datacenter"),
+//					Cluster:           pulumi.String("test-cluster"),
+//					Folder:            pulumi.String("test-folder"),
+//					CaCertData:        pulumi.String("test-ca-cert-data"),
+//					StoragePolicyName: pulumi.String("test-storage-policy-name"),
 //				},
 //				DataplaneV2: &gkeonprem.VMwareClusterDataplaneV2Args{
 //					DataplaneV2Enabled:        pulumi.Bool(true),
@@ -430,7 +428,7 @@ type VMwareCluster struct {
 	// Structure is documented below.
 	ValidationChecks VMwareClusterValidationCheckArrayOutput `pulumi:"validationChecks"`
 	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-	Vcenters VMwareClusterVcenterArrayOutput `pulumi:"vcenters"`
+	Vcenter VMwareClusterVcenterPtrOutput `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolOutput `pulumi:"vmTrackingEnabled"`
 }
@@ -566,7 +564,7 @@ type vmwareClusterState struct {
 	// Structure is documented below.
 	ValidationChecks []VMwareClusterValidationCheck `pulumi:"validationChecks"`
 	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-	Vcenters []VMwareClusterVcenter `pulumi:"vcenters"`
+	Vcenter *VMwareClusterVcenter `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled *bool `pulumi:"vmTrackingEnabled"`
 }
@@ -661,7 +659,7 @@ type VMwareClusterState struct {
 	// Structure is documented below.
 	ValidationChecks VMwareClusterValidationCheckArrayInput
 	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-	Vcenters VMwareClusterVcenterArrayInput
+	Vcenter VMwareClusterVcenterPtrInput
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolPtrInput
 }
@@ -717,7 +715,7 @@ type vmwareClusterArgs struct {
 	// Specifies upgrade policy for the cluster.
 	UpgradePolicy *VMwareClusterUpgradePolicy `pulumi:"upgradePolicy"`
 	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-	Vcenters []VMwareClusterVcenter `pulumi:"vcenters"`
+	Vcenter *VMwareClusterVcenter `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled *bool `pulumi:"vmTrackingEnabled"`
 }
@@ -770,7 +768,7 @@ type VMwareClusterArgs struct {
 	// Specifies upgrade policy for the cluster.
 	UpgradePolicy VMwareClusterUpgradePolicyPtrInput
 	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-	Vcenters VMwareClusterVcenterArrayInput
+	Vcenter VMwareClusterVcenterPtrInput
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolPtrInput
 }
@@ -1044,8 +1042,8 @@ func (o VMwareClusterOutput) ValidationChecks() VMwareClusterValidationCheckArra
 }
 
 // VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-func (o VMwareClusterOutput) Vcenters() VMwareClusterVcenterArrayOutput {
-	return o.ApplyT(func(v *VMwareCluster) VMwareClusterVcenterArrayOutput { return v.Vcenters }).(VMwareClusterVcenterArrayOutput)
+func (o VMwareClusterOutput) Vcenter() VMwareClusterVcenterPtrOutput {
+	return o.ApplyT(func(v *VMwareCluster) VMwareClusterVcenterPtrOutput { return v.Vcenter }).(VMwareClusterVcenterPtrOutput)
 }
 
 // Enable VM tracking.

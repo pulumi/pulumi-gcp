@@ -381,7 +381,8 @@ class ManagedZone(pulumi.CustomResource):
             project_id="tf-test_34535",
             name="tf-test_22375",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         test_project = gcp.organizations.get_project()
         dns_peer_binding = gcp.projects.IAMMember("dns_peer_binding",
             project=target_project.project_id,
@@ -491,7 +492,8 @@ class ManagedZone(pulumi.CustomResource):
             project_id="tf-test_34535",
             name="tf-test_22375",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
         test_project = gcp.organizations.get_project()
         dns_peer_binding = gcp.projects.IAMMember("dns_peer_binding",
             project=target_project.project_id,

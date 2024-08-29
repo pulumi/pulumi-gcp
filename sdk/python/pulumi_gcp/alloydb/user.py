@@ -253,14 +253,16 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("default", name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id,
+            network_config={
+                "network": default_google_compute_network["id"],
+            },
             initial_user={
                 "password": "cluster_secret",
             })
+        default_network = gcp.compute.Network("default", name="alloydb-network")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -295,7 +297,9 @@ class User(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id,
+            network_config={
+                "network": default_network.id,
+            },
             initial_user={
                 "password": "cluster_secret",
             })
@@ -383,14 +387,16 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("default", name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id,
+            network_config={
+                "network": default_google_compute_network["id"],
+            },
             initial_user={
                 "password": "cluster_secret",
             })
+        default_network = gcp.compute.Network("default", name="alloydb-network")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -425,7 +431,9 @@ class User(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.id,
+            network_config={
+                "network": default_network.id,
+            },
             initial_user={
                 "password": "cluster_secret",
             })

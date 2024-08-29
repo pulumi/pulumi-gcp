@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, allow_net_admin=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, dns_configs=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, fleets=None, gateway_api_configs=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, allow_net_admin=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, fleets=None, gateway_api_configs=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -76,6 +76,9 @@ class GetClusterResult:
         if dns_configs and not isinstance(dns_configs, list):
             raise TypeError("Expected argument 'dns_configs' to be a list")
         pulumi.set(__self__, "dns_configs", dns_configs)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_autopilot and not isinstance(enable_autopilot, bool):
             raise TypeError("Expected argument 'enable_autopilot' to be a bool")
         pulumi.set(__self__, "enable_autopilot", enable_autopilot)
@@ -217,6 +220,9 @@ class GetClusterResult:
         if protect_configs and not isinstance(protect_configs, list):
             raise TypeError("Expected argument 'protect_configs' to be a list")
         pulumi.set(__self__, "protect_configs", protect_configs)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if release_channels and not isinstance(release_channels, list):
             raise TypeError("Expected argument 'release_channels' to be a list")
         pulumi.set(__self__, "release_channels", release_channels)
@@ -342,6 +348,11 @@ class GetClusterResult:
     @pulumi.getter(name="dnsConfigs")
     def dns_configs(self) -> Sequence['outputs.GetClusterDnsConfigResult']:
         return pulumi.get(self, "dns_configs")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableAutopilot")
@@ -582,6 +593,11 @@ class GetClusterResult:
         return pulumi.get(self, "protect_configs")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="releaseChannels")
     def release_channels(self) -> Sequence['outputs.GetClusterReleaseChannelResult']:
         return pulumi.get(self, "release_channels")
@@ -679,6 +695,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             deletion_protection=self.deletion_protection,
             description=self.description,
             dns_configs=self.dns_configs,
+            effective_labels=self.effective_labels,
             enable_autopilot=self.enable_autopilot,
             enable_cilium_clusterwide_network_policy=self.enable_cilium_clusterwide_network_policy,
             enable_fqdn_network_policy=self.enable_fqdn_network_policy,
@@ -726,6 +743,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             private_ipv6_google_access=self.private_ipv6_google_access,
             project=self.project,
             protect_configs=self.protect_configs,
+            pulumi_labels=self.pulumi_labels,
             release_channels=self.release_channels,
             remove_default_node_pool=self.remove_default_node_pool,
             resource_labels=self.resource_labels,
@@ -784,6 +802,7 @@ def get_cluster(location: Optional[str] = None,
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
         dns_configs=pulumi.get(__ret__, 'dns_configs'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_autopilot=pulumi.get(__ret__, 'enable_autopilot'),
         enable_cilium_clusterwide_network_policy=pulumi.get(__ret__, 'enable_cilium_clusterwide_network_policy'),
         enable_fqdn_network_policy=pulumi.get(__ret__, 'enable_fqdn_network_policy'),
@@ -831,6 +850,7 @@ def get_cluster(location: Optional[str] = None,
         private_ipv6_google_access=pulumi.get(__ret__, 'private_ipv6_google_access'),
         project=pulumi.get(__ret__, 'project'),
         protect_configs=pulumi.get(__ret__, 'protect_configs'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         release_channels=pulumi.get(__ret__, 'release_channels'),
         remove_default_node_pool=pulumi.get(__ret__, 'remove_default_node_pool'),
         resource_labels=pulumi.get(__ret__, 'resource_labels'),

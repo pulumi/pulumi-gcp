@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,39 +21,6 @@ import (
 //   - [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
 //
 // ## Example Usage
-//
-// ### Active Directory Domain Trust Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/activedirectory"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := activedirectory.NewDomainTrust(ctx, "ad-domain-trust", &activedirectory.DomainTrustArgs{
-//				Domain:           pulumi.String("test-managed-ad.com"),
-//				TargetDomainName: pulumi.String("example-gcp.com"),
-//				TargetDnsIpAddresses: pulumi.StringArray{
-//					pulumi.String("10.1.0.100"),
-//				},
-//				TrustDirection:       pulumi.String("OUTBOUND"),
-//				TrustType:            pulumi.String("FOREST"),
-//				TrustHandshakeSecret: pulumi.String("Testing1!"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

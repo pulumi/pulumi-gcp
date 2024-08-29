@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     name: "vpc-con",
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
+ *     minInstances: 2,
+ *     maxInstances: 3,
  * });
  * ```
  * ### Vpc Access Connector Shared Vpc
@@ -47,6 +49,8 @@ import * as utilities from "../utilities";
  *         name: customTest.name,
  *     },
  *     machineType: "e2-standard-4",
+ *     minInstances: 2,
+ *     maxInstances: 3,
  * });
  * ```
  *
@@ -131,7 +135,7 @@ export class Connector extends pulumi.CustomResource {
      * min_throughput. If both maxThroughput and maxInstances are provided, maxInstances takes precedence over max_throughput. The use of
      * maxThroughput is discouraged in favor of max_instances.
      */
-    public readonly maxThroughput!: pulumi.Output<number | undefined>;
+    public readonly maxThroughput!: pulumi.Output<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
      * lower than the value specified by max_instances.
@@ -142,7 +146,7 @@ export class Connector extends pulumi.CustomResource {
      * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both minThroughput and
      * minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
      */
-    public readonly minThroughput!: pulumi.Output<number | undefined>;
+    public readonly minThroughput!: pulumi.Output<number>;
     /**
      * The name of the resource (Max 25 characters).
      *

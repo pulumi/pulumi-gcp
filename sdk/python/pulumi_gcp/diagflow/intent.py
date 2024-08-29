@@ -607,7 +607,8 @@ class Intent(pulumi.CustomResource):
         agent_project = gcp.organizations.Project("agent_project",
             project_id="my-project",
             name="my-project",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         agent_project_service = gcp.projects.Service("agent_project",
             project=agent_project.project_id,
             service="dialogflow.googleapis.com",
@@ -727,7 +728,8 @@ class Intent(pulumi.CustomResource):
         agent_project = gcp.organizations.Project("agent_project",
             project_id="my-project",
             name="my-project",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         agent_project_service = gcp.projects.Service("agent_project",
             project=agent_project.project_id,
             service="dialogflow.googleapis.com",

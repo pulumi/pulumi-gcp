@@ -127,6 +127,7 @@ import javax.annotation.Nullable;
  *             .projectId("rtdb-project")
  *             .name("rtdb-project")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 

@@ -91,6 +91,7 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()

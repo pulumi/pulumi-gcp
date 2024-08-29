@@ -323,7 +323,7 @@ import javax.annotation.Nullable;
  *                     .konnectivityServerNodePort(30008)
  *                     .build())
  *                 .build())
- *             .vcenters(VMwareClusterVcenterArgs.builder()
+ *             .vcenter(VMwareClusterVcenterArgs.builder()
  *                 .resourcePool("test-resource-pool")
  *                 .datastore("test-datastore")
  *                 .datacenter("test-datacenter")
@@ -866,15 +866,15 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
-    @Export(name="vcenters", refs={List.class,VMwareClusterVcenter.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<VMwareClusterVcenter>> vcenters;
+    @Export(name="vcenter", refs={VMwareClusterVcenter.class}, tree="[0]")
+    private Output</* @Nullable */ VMwareClusterVcenter> vcenter;
 
     /**
      * @return VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
-    public Output<Optional<List<VMwareClusterVcenter>>> vcenters() {
-        return Codegen.optional(this.vcenters);
+    public Output<Optional<VMwareClusterVcenter>> vcenter() {
+        return Codegen.optional(this.vcenter);
     }
     /**
      * Enable VM tracking.

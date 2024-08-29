@@ -529,14 +529,6 @@ Object.defineProperty(exports, "dataprocMetastoreCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const datastoreCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "datastoreCustomEndpoint", {
-    get() {
-        return __config.get("datastoreCustomEndpoint");
-    },
-    enumerable: true,
-});
-
 export declare const datastreamCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "datastreamCustomEndpoint", {
     get() {

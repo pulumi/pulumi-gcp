@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.Compute
     ///         ProjectId = "project-id",
     ///         Name = "project-name",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()

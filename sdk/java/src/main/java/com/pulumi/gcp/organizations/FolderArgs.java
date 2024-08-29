@@ -6,13 +6,23 @@ package com.pulumi.gcp.organizations;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FolderArgs Empty = new FolderArgs();
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
 
     /**
      * The folder’s display name.
@@ -51,6 +61,7 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
     private FolderArgs() {}
 
     private FolderArgs(FolderArgs $) {
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.parent = $.parent;
     }
@@ -71,6 +82,15 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FolderArgs defaults) {
             $ = new FolderArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

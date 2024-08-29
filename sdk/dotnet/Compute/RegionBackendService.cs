@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Compute
     ///         LoadBalancingScheme = "EXTERNAL",
     ///         Iap = new Gcp.Compute.Inputs.RegionBackendServiceIapArgs
     ///         {
+    ///             Enabled = true,
     ///             Oauth2ClientId = "abc",
     ///             Oauth2ClientSecret = "xyz",
     ///         },
@@ -481,7 +482,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Time for which instance will be drained (not accept new
         /// connections, but still work to finish started).
-        /// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         /// </summary>
         [Output("connectionDrainingTimeoutSec")]
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
@@ -653,6 +653,12 @@ namespace Pulumi.Gcp.Compute
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
 
+        /// <summary>
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        /// This field is applicable only when the `load_balancing_scheme` is set
+        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
         [Output("outlierDetection")]
         public Output<Outputs.RegionBackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
 
@@ -815,7 +821,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Time for which instance will be drained (not accept new
         /// connections, but still work to finish started).
-        /// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         /// </summary>
         [Input("connectionDrainingTimeoutSec")]
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
@@ -968,6 +973,12 @@ namespace Pulumi.Gcp.Compute
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        /// This field is applicable only when the `load_balancing_scheme` is set
+        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
 
@@ -1086,7 +1097,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Time for which instance will be drained (not accept new
         /// connections, but still work to finish started).
-        /// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         /// </summary>
         [Input("connectionDrainingTimeoutSec")]
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
@@ -1258,6 +1268,12 @@ namespace Pulumi.Gcp.Compute
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        /// This field is applicable only when the `load_balancing_scheme` is set
+        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
 

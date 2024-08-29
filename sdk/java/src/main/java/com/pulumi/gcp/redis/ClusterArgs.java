@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -38,6 +39,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> authorizationMode() {
         return Optional.ofNullable(this.authorizationMode);
+    }
+
+    /**
+     * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+     * operation will fail. Default value is true.
+     * 
+     */
+    @Import(name="deletionProtectionEnabled")
+    private @Nullable Output<Boolean> deletionProtectionEnabled;
+
+    /**
+     * @return Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+     * operation will fail. Default value is true.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtectionEnabled() {
+        return Optional.ofNullable(this.deletionProtectionEnabled);
     }
 
     /**
@@ -204,6 +222,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClusterArgs(ClusterArgs $) {
         this.authorizationMode = $.authorizationMode;
+        this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.name = $.name;
         this.nodeType = $.nodeType;
         this.project = $.project;
@@ -257,6 +276,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authorizationMode(String authorizationMode) {
             return authorizationMode(Output.of(authorizationMode));
+        }
+
+        /**
+         * @param deletionProtectionEnabled Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+         * operation will fail. Default value is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionEnabled(@Nullable Output<Boolean> deletionProtectionEnabled) {
+            $.deletionProtectionEnabled = deletionProtectionEnabled;
+            return this;
+        }
+
+        /**
+         * @param deletionProtectionEnabled Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
+         * operation will fail. Default value is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
+            return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
         }
 
         /**

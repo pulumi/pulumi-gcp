@@ -146,36 +146,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigquery/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
-     * If set to true, it allows table
-     * deletion when there are still resource tags attached. The default value is
-     * false.
-     * 
-     * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-     * removed in a future major release. The default behavior will be allowing
-     * the presence of resource tags on deletion after the next major release.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release.
-     * 
-     */
-    @Deprecated /* This field is deprecated and will be removed in a future major release. The default behavior will be allowing the presence of resource tags on deletion after the next major release. */
-    @Export(name="allowResourceTagsOnDeletion", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowResourceTagsOnDeletion;
-
-    /**
-     * @return If set to true, it allows table
-     * deletion when there are still resource tags attached. The default value is
-     * false.
-     * 
-     * ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-     * removed in a future major release. The default behavior will be allowing
-     * the presence of resource tags on deletion after the next major release.
-     * 
-     */
-    public Output<Optional<Boolean>> allowResourceTagsOnDeletion() {
-        return Codegen.optional(this.allowResourceTagsOnDeletion);
-    }
-    /**
      * Specifies column names to use for data clustering.
      * Up to four top-level columns are allowed, and should be specified in
      * descending priority order.

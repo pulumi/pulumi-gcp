@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * const myFolder = new gcp.organizations.Folder("my_folder", {
  *     displayName: "folder-name",
  *     parent: "organizations/123456789",
+ *     deletionProtection: false,
  * });
  * const settings = gcp.logging.getFolderSettingsOutput({
  *     folder: myFolder.folderId,

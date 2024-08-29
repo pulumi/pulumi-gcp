@@ -75,6 +75,7 @@ import * as utilities from "../utilities";
  *                 weight: 1,
  *             }],
  *             originalDestination: false,
+ *             idleTimeout: "60s",
  *         },
  *     }],
  * });
