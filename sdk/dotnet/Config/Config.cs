@@ -60,11 +60,11 @@ namespace Pulumi.Gcp
             set => _activeDirectoryCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<bool?> _addTerraformAttributionLabel = new __Value<bool?>(() => __config.GetBoolean("addTerraformAttributionLabel"));
-        public static bool? AddTerraformAttributionLabel
+        private static readonly __Value<bool?> _addPulumiAttributionLabel = new __Value<bool?>(() => __config.GetBoolean("addPulumiAttributionLabel"));
+        public static bool? AddPulumiAttributionLabel
         {
-            get => _addTerraformAttributionLabel.Get();
-            set => _addTerraformAttributionLabel.Set(value);
+            get => _addPulumiAttributionLabel.Get();
+            set => _addPulumiAttributionLabel.Set(value);
         }
 
         private static readonly __Value<string?> _alloydbCustomEndpoint = new __Value<string?>(() => __config.Get("alloydbCustomEndpoint"));
@@ -942,6 +942,13 @@ namespace Pulumi.Gcp
             set => _pubsubLiteCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _pulumiAttributionLabelAdditionStrategy = new __Value<string?>(() => __config.Get("pulumiAttributionLabelAdditionStrategy"));
+        public static string? PulumiAttributionLabelAdditionStrategy
+        {
+            get => _pulumiAttributionLabelAdditionStrategy.Get();
+            set => _pulumiAttributionLabelAdditionStrategy.Set(value);
+        }
+
         private static readonly __Value<string?> _recaptchaEnterpriseCustomEndpoint = new __Value<string?>(() => __config.Get("recaptchaEnterpriseCustomEndpoint"));
         public static string? RecaptchaEnterpriseCustomEndpoint
         {
@@ -1157,13 +1164,6 @@ namespace Pulumi.Gcp
         {
             get => _tagsLocationCustomEndpoint.Get();
             set => _tagsLocationCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _terraformAttributionLabelAdditionStrategy = new __Value<string?>(() => __config.Get("terraformAttributionLabelAdditionStrategy"));
-        public static string? TerraformAttributionLabelAdditionStrategy
-        {
-            get => _terraformAttributionLabelAdditionStrategy.Get();
-            set => _terraformAttributionLabelAdditionStrategy.Set(value);
         }
 
         private static readonly __Value<string?> _tpuCustomEndpoint = new __Value<string?>(() => __config.Get("tpuCustomEndpoint"));

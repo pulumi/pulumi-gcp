@@ -773,6 +773,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> pubsubLiteCustomEndpoint() {
         return Codegen.optional(this.pubsubLiteCustomEndpoint);
     }
+    @Export(name="pulumiAttributionLabelAdditionStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> pulumiAttributionLabelAdditionStrategy;
+
+    public Output<Optional<String>> pulumiAttributionLabelAdditionStrategy() {
+        return Codegen.optional(this.pulumiAttributionLabelAdditionStrategy);
+    }
     @Export(name="recaptchaEnterpriseCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> recaptchaEnterpriseCustomEndpoint;
 
@@ -946,12 +952,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> tagsLocationCustomEndpoint() {
         return Codegen.optional(this.tagsLocationCustomEndpoint);
-    }
-    @Export(name="terraformAttributionLabelAdditionStrategy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> terraformAttributionLabelAdditionStrategy;
-
-    public Output<Optional<String>> terraformAttributionLabelAdditionStrategy() {
-        return Codegen.optional(this.terraformAttributionLabelAdditionStrategy);
     }
     @Export(name="tpuCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tpuCustomEndpoint;
