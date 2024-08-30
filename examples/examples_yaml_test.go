@@ -61,6 +61,8 @@ func TestInvalidExplicitProviderProject(t *testing.T) {
 	gcpProject := os.Getenv("GCP_PROJECT")
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "non-existent-project"),
-		Config: map[string]string{"gcpProj": gcpProject},
+		Config: map[string]string{
+			"gcpProj": gcpProject,
+		},
 	})
 }

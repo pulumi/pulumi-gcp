@@ -63,6 +63,9 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 		Dependencies: []string{
 			"github.com/pulumi/pulumi-gcp/sdk/v8",
 		},
+		Config: map[string]string{
+			"gcp:addPulumiAttributionLabel": "false",
+		},
 	})
 
 	return goBase
@@ -397,7 +400,7 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 
 	baseOpts := integration.ProgramTestOptions{
 		Dependencies: []string{
-			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v7=%s", goSdkFolder),
+			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v8=%s", goSdkFolder),
 		},
 	}
 	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
@@ -413,8 +416,9 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 			ExtraRuntimeValidation: validateStateResult(2, st, st2),
 		}},
 		Config: map[string]string{
-			"state1": st.serialize(t),
-			"state2": st2.serialize(t),
+			"state1":                        st.serialize(t),
+			"state2":                        st2.serialize(t),
+			"gcp:addPulumiAttributionLabel": "false",
 		},
 		Quick:            true,
 		SkipRefresh:      true,

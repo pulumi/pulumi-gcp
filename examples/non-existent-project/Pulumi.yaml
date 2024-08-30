@@ -2,6 +2,7 @@ name: non-existent-project
 runtime: yaml
 config:
   gcpProj: string
+  gcp:addPulumiAttributionLabel: false
 resources:
   _:
     type: pulumi:providers:gcp
