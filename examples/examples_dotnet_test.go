@@ -18,6 +18,9 @@ func getCSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 		Dependencies: []string{
 			"Pulumi.Gcp",
 		},
+		Config: map[string]string{
+			"gcp:addPulumiAttributionLabel": "false",
+		},
 	})
 
 	return csharpBase
