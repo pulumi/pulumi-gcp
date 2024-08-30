@@ -63,6 +63,9 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 		Dependencies: []string{
 			"github.com/pulumi/pulumi-gcp/sdk/v8",
 		},
+		Config: map[string]string{
+			"gcp:addPulumiAttributionLabel": "false",
+		},
 	})
 
 	return goBase
