@@ -397,7 +397,7 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 
 	baseOpts := integration.ProgramTestOptions{
 		Dependencies: []string{
-			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v7=%s", goSdkFolder),
+			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v8=%s", goSdkFolder),
 		},
 	}
 	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
