@@ -393,6 +393,9 @@ namespace Pulumi.Gcp
         [Output("pubsubLiteCustomEndpoint")]
         public Output<string?> PubsubLiteCustomEndpoint { get; private set; } = null!;
 
+        [Output("pulumiAttributionLabelAdditionStrategy")]
+        public Output<string?> PulumiAttributionLabelAdditionStrategy { get; private set; } = null!;
+
         [Output("recaptchaEnterpriseCustomEndpoint")]
         public Output<string?> RecaptchaEnterpriseCustomEndpoint { get; private set; } = null!;
 
@@ -480,9 +483,6 @@ namespace Pulumi.Gcp
         [Output("tagsLocationCustomEndpoint")]
         public Output<string?> TagsLocationCustomEndpoint { get; private set; } = null!;
 
-        [Output("terraformAttributionLabelAdditionStrategy")]
-        public Output<string?> TerraformAttributionLabelAdditionStrategy { get; private set; } = null!;
-
         [Output("tpuCustomEndpoint")]
         public Output<string?> TpuCustomEndpoint { get; private set; } = null!;
 
@@ -566,8 +566,8 @@ namespace Pulumi.Gcp
         [Input("activeDirectoryCustomEndpoint")]
         public Input<string>? ActiveDirectoryCustomEndpoint { get; set; }
 
-        [Input("addTerraformAttributionLabel", json: true)]
-        public Input<bool>? AddTerraformAttributionLabel { get; set; }
+        [Input("addPulumiAttributionLabel", json: true)]
+        public Input<bool>? AddPulumiAttributionLabel { get; set; }
 
         [Input("alloydbCustomEndpoint")]
         public Input<string>? AlloydbCustomEndpoint { get; set; }
@@ -954,6 +954,9 @@ namespace Pulumi.Gcp
         [Input("pubsubLiteCustomEndpoint")]
         public Input<string>? PubsubLiteCustomEndpoint { get; set; }
 
+        [Input("pulumiAttributionLabelAdditionStrategy")]
+        public Input<string>? PulumiAttributionLabelAdditionStrategy { get; set; }
+
         [Input("recaptchaEnterpriseCustomEndpoint")]
         public Input<string>? RecaptchaEnterpriseCustomEndpoint { get; set; }
 
@@ -1048,9 +1051,6 @@ namespace Pulumi.Gcp
 
         [Input("tagsLocationCustomEndpoint")]
         public Input<string>? TagsLocationCustomEndpoint { get; set; }
-
-        [Input("terraformAttributionLabelAdditionStrategy")]
-        public Input<string>? TerraformAttributionLabelAdditionStrategy { get; set; }
 
         [Input("tpuCustomEndpoint")]
         public Input<string>? TpuCustomEndpoint { get; set; }

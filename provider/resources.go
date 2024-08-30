@@ -514,6 +514,12 @@ func Provider() tfbridge.ProviderInfo {
 			"access_token": {
 				Secret: tfbridge.True(),
 			},
+			"add_terraform_attribution_label": {
+				Name: "addPulumiAttributionLabel",
+			},
+			"terraform_attribution_label_addition_strategy": {
+				Name: "pulumiAttributionLabelAdditionStrategy",
+			},
 		},
 		ExtraConfig: map[string]*tfbridge.ConfigInfo{
 			"skipRegionValidation": {

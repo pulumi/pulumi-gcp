@@ -23,8 +23,8 @@ func GetAccessToken(ctx *pulumi.Context) string {
 func GetActiveDirectoryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:activeDirectoryCustomEndpoint")
 }
-func GetAddTerraformAttributionLabel(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "gcp:addTerraformAttributionLabel")
+func GetAddPulumiAttributionLabel(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "gcp:addPulumiAttributionLabel")
 }
 func GetAlloydbCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:alloydbCustomEndpoint")
@@ -409,6 +409,9 @@ func GetPubsubCustomEndpoint(ctx *pulumi.Context) string {
 func GetPubsubLiteCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:pubsubLiteCustomEndpoint")
 }
+func GetPulumiAttributionLabelAdditionStrategy(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:pulumiAttributionLabelAdditionStrategy")
+}
 func GetRecaptchaEnterpriseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:recaptchaEnterpriseCustomEndpoint")
 }
@@ -517,9 +520,6 @@ func GetTagsCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetTagsLocationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tagsLocationCustomEndpoint")
-}
-func GetTerraformAttributionLabelAdditionStrategy(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:terraformAttributionLabelAdditionStrategy")
 }
 func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuCustomEndpoint")
