@@ -1,6 +1,8 @@
 name: labeled-bucket
 runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
+config:
+  gcp:addPulumiAttributionLabel: false
 outputs:
   resourceId: ${resource.id}
   resourceUrn: ${resource.urn}
