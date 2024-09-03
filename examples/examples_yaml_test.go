@@ -62,8 +62,7 @@ func TestInvalidExplicitProviderProject(t *testing.T) {
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "non-existent-project"),
 		Config: map[string]string{
-			"gcpProj":                       gcpProject,
-			"gcp:addPulumiAttributionLabel": "false",
+			"gcpProj": gcpProject,
 		},
 	})
 }
